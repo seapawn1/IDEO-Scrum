@@ -19,7 +19,11 @@
 | `plugins/ideo-scrum/skills/ideo-kernel/methods/` | Design Thinking 方法库（~40 个方法） |
 | `plugins/ideo-scrum/skills/scrum-kernel/SKILL.md` | Scrum Sprint 技能内核 |
 | `Scrum/ProductBacklog.md` | 项目 Product Backlog |
+| `references/scrum-guide-2020.md` | Scrum Guide 2020 官方全文 |
+| `references/scrum-on-one-page.md` | Scrum on One Page 概要 (v2026.1) |
+| `references/scrum-guide-expanded-2026.1.md` | Scrum Guide Expanded 最新扩展版 (Jan 2026) |
+| `references/scrum-guide-expanded-2025.6.md` | Scrum Guide Expanded 历史版本 (Jun 2025) |
 
 ## 当前状态
 
-2026-07-22：方法论内核已包装为 marketplace 插件 `ideo-scrum@ideo-scrum`，包含 ideo-kernel 与 scrum-kernel 两个 skill。安装方式：`/plugin marketplace add <路径> --scope user` → `/plugin install ideo-scrum@ideo-scrum --scope user` → 开启 auto-update。
+2026-07-22：方法论内核已包装为 marketplace 插件 `ideo-scrum@ideo-scrum`，包含 ideo-kernel 与 scrum-kernel 两个 skill。新增 `references/` 目录，收录 Scrum Guide 官方全文及扩展包的四个版本作为参考知识库。
