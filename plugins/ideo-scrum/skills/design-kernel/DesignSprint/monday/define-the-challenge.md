@@ -22,21 +22,15 @@ When we talk to startups about sprints, we encourage them to go after their most
 
 ## How big is too big?
 
-So how big is too big? Sure, sprints work great for websites and other software challenges. But what about really large, complicated problems?
+Sprints work great for websites and software. But what about really large, complicated problems?
 
-Not long ago, Jake visited his friend David Lowe, a vice president of a company called Graco that manufactures pumps and sprayers. Graco is not a small startup. They're a multinational company who have been in business for more than ninety years.
+Graco, a manufacturer of industrial pumps and sprayers, was developing a new kind of pump for assembly lines—an eighteen-month, multimillion-dollar project. The VP wondered if a sprint could help. Jake was skeptical: "An industrial pump sounds too complicated to prototype and test in a week."
 
-The company was developing a new kind of industrial pump—a machine used in assembly lines. David, the VP, wondered if a sprint might help lower the risk of the project. After all, it would take eighteen months and millions of dollars to design and manufacture the new pump. How could he be sure they were on the right track?
+But the engineers wouldn't give up. To test marketability, they could prototype a brochure for sales visits. To test ease-of-use, they could 3D print new nozzles and attach them to existing pumps. To test installation, they could bring cables and hoses to nearby plants and get reactions from assembly line workers. These tests wouldn't be perfect, but they would answer big questions before the pump existed.
 
-Jake doesn't know anything about industrial assembly lines, but out of curiosity, he joined a meeting with the engineering team. "I'll be honest," Jake said. "An industrial pump sounds too complicated to prototype and test in a week."
+Jake was wrong. The team accepted the five-day constraint, sliced the challenge into important questions, and shortcuts appeared.
 
-But the team wouldn't give up so easily. If limited to just five days, they could prototype a brochure for the pump's new features and try it in sales visits. That kind of test could answer questions about marketability.
-
-But what about the pump itself? The engineers had ideas for that, too. To test ease-of-use, they could 3D print new nozzles and attach them to existing pumps. To test installation, they could bring cables and hoses to nearby manufacturing plants and get reactions from assembly line workers. These tests wouldn't be perfect. But they would answer big questions, before the pump even existed.
-
-Jake was wrong. The industrial pump wasn't too complicated for a sprint. The team of engineers accepted the five-day constraint and used their domain expertise to think creatively. They sliced the challenge into important questions, and shortcuts started to appear.
-
-The lesson? No problem is too large for a sprint. Yes, this statement sounds absurd, but there are two big reasons why it's true. First, the sprint forces your team to focus on the most pressing questions. Second, the sprint allows you to learn from just the surface of a finished product. Blue Bottle could use a slide show to prototype the surface of a website—before they built the software and inventory processes to make it really work. Graco could use a brochure to prototype the surface of a sales conversation—before they engineered and built the product they were selling.
+The lesson: no problem is too large for a sprint. First, the sprint forces you to focus on the most pressing questions. Second, the sprint lets you learn from just the surface of a finished product. Blue Bottle used a slide show to prototype the surface of a website—before building the software and inventory behind it. Graco used a brochure to prototype the surface of a sales conversation—before engineering the product they were selling.
 
 ### Solve the surface first
 
