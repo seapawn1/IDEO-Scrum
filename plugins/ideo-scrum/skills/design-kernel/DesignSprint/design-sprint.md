@@ -22,7 +22,7 @@
 ### How Might We
 
 - [ ] **Write HMW questions.** Turn each problem you hear into an opportunity. See `monday/how-might-we.md` for the full method.
-- [ ] **Organize and select.** Group by theme, then pick the questions most critical to your sprint goal. Move winners onto your map.
+- [ ] **Organize and select.** Group by theme, then pick the questions most critical to your sprint goal. Move winners onto your map. See `monday/how-might-we.md` for the full method.
 
 ### Pick a target
 
