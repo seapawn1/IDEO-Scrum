@@ -35,19 +35,6 @@ The **Design Sprint** is a time-constrained, five-day process that uses design t
 
 A cross-functional team (typically ~7 people) works together in one room for the full week, with a designated **Decider** who has final authority on key choices. The Sprint replaces speculation with user evidence, giving teams clarity on whether to invest, pivot, or abandon an idea — all in five days.
 
-**Source:** Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster.
-
-### Role Agents
-
-Four role-specific agents provide on-demand guidance for Design Sprint roles defined in the book's "Team" chapter:
-
-| Agent | Role |
-| --- | --- |
-| `agents/design-sprint-decider.md` | Decider — final authority on key choices, breaks deadlocks, appears Mon/Wed/Fri |
-| `agents/design-sprint-facilitator.md` | Facilitator — manages time, conversations, and sprint process; neutral on content |
-| `agents/design-sprint-team.md` | Sprint Team — 7 or fewer, diverse skills (finance/marketing/customer/tech/design) |
-| `agents/design-sprint-experts.md` | Experts — extra specialists for Monday afternoon knowledge transfer |
-
 ---
 
 ## Use Protocol
