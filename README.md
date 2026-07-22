@@ -18,6 +18,7 @@
 | `plugins/ideo-scrum/skills/ideo-kernel/SKILL.md` | IDEO Design Thinking 技能内核 |
 | `plugins/ideo-scrum/skills/ideo-kernel/methods/` | Design Thinking 方法库（~40 个方法） |
 | `plugins/ideo-scrum/skills/scrum-kernel/SKILL.md` | Scrum Sprint 技能内核 |
+| `Scrum/ProductBacklog.md` | 项目 Product Backlog |
 
 ## 当前状态
 
