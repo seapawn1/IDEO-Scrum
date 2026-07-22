@@ -13,10 +13,12 @@
 | `.gitignore` | Git 忽略规则 |
 | `.env` | 本地私人环境 |
 | `seapawn.md` | 本地私人笔记 |
-| `resources/ideo-kernel/SKILL.md` | IDEO Design Thinking 技能内核 |
-| `resources/ideo-kernel/methods/` | Design Thinking 方法库（~40 个方法） |
-| `resources/scrum-kernel/SKILL.md` | Scrum Sprint 技能内核 |
+| `.claude-plugin/marketplace.json` | Marketplace 清单 |
+| `plugins/ideo-scrum/.claude-plugin/plugin.json` | 插件清单 |
+| `plugins/ideo-scrum/skills/ideo-kernel/SKILL.md` | IDEO Design Thinking 技能内核 |
+| `plugins/ideo-scrum/skills/ideo-kernel/methods/` | Design Thinking 方法库（~40 个方法） |
+| `plugins/ideo-scrum/skills/scrum-kernel/SKILL.md` | Scrum Sprint 技能内核 |
 
 ## 当前状态
 
-2026-07-22：方法论内核已引入——Design Thinking（IDEO 五模式 + 方法库）与 Scrum Sprint（Scrum Guide 原文），配置 ai-partner 输出样式。待开发面向用户的 skill 入口。
+2026-07-22：方法论内核已包装为 marketplace 插件 `ideo-scrum@ideo-scrum`，包含 ideo-kernel 与 scrum-kernel 两个 skill。安装方式：`/plugin marketplace add <路径> --scope user` → `/plugin install ideo-scrum@ideo-scrum --scope user` → 开启 auto-update。

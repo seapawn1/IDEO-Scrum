@@ -1,0 +1,11 @@
+{
+  "name": "ideo-scrum",
+  "owner": { "name": "SeaPawn" },
+  "plugins": [
+    {
+      "name": "ideo-scrum",
+      "source": "./plugins/ideo-scrum",
+      "description": "IDEO Design Thinking 与 Scrum Sprint 方法论"
+    }
+  ]
+}
