@@ -54,9 +54,9 @@ flowchart LR
     MakeAppt --> Appt[Appointment: Discuss trial]
     MakeAppt --> Search[Search for matching trials]
     Doctor --> Search
+    Coordinator --> Search
     Search --> Appt
     Appt --> Enroll[Enroll]
-    Coordinator --> Enroll
     Enroll --> Begin[BEGIN THERAPY]
 ```
 
