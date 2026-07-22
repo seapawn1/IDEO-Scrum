@@ -8,30 +8,14 @@ The method was developed at Procter & Gamble in the 1970s, but we learned about 
 
 The open-ended, optimistic phrasing forces you to look for opportunities rather than getting bogged down by problems or jumping to solutions too soon. And because every question shares the same format, you can read, understand, and evaluate a whole wall of them at once.
 
-## Take How Might We notes
+## How to use
 
-Every person on the team needs his or her own pad of sticky notes (plain yellow, three by five inches) and a thick black dry-erase marker. Using thick markers on a small surface forces everyone to write succinct, easy-to-read headlines.
+The basic formula: interview experts using your map as an outline, and turn each problem you hear into an opportunity. For the classic HMW writing technique, see `methods/how-might-we-questions.md`.
 
-To take notes, follow these steps:
+Write down each HMW question as you go. By the end of the interviews, you'll have a pile — somewhere between ten and forty is typical for an async session. That's too many for the human brain to track once you turn your attention to sketching. You've got to narrow them down.
 
-1. Put the letters "HMW" in the top left corner of your sticky note.
-2. Wait.
-3. When you hear something interesting, convert it into a question (quietly).
-4. Write the question on your sticky note.
-5. Peel off the note and set it aside.
+Collect all questions in a file. Group them by theme as patterns emerge — you won't know the themes ahead of time, they'll reveal themselves. Label each group. There's always a "Misc" pile, and those misfits are often the best ones. Don't perfect it; ten minutes is enough.
 
-Each person will end up with a little stack of notes — you'll organize them later.
+Then select the winners. Review each group and pick the questions most critical to answering your sprint questions and reaching your long-term goal. Each HMW should be not too broad ("How might we reinvent health care?") or too narrow ("How might we put our logo in the top right corner?") — just specific enough to inspire multiple solutions. Move the winners onto your map; most will correspond with a specific step in the story.
 
-There's no denying that this method is awkward at first, but every team we work with figures it out once they start writing.
-
-## Organize How Might We notes
-
-As soon as the expert interviews are finished, everybody should gather his or her How Might We notes and stick them on the wall. Put them up in any haphazard fashion, then organize the notes into groups. Working together, find How Might We questions with similar themes and physically group them together on the wall.
-
-Label the themes as they emerge. Don't perfect it — stop after about ten minutes.
-
-## Vote on How Might We notes
-
-Each person has two votes. Everyone votes for their favorite How Might We questions (can vote on their own notes, or even the same note twice). Move winners onto your map.
-
-The voted notes will help you make a decision about which part of the map to target, and on Tuesday, they'll give you ideas for your sketches.
+On Tuesday, these selected HMW questions will provide the perfect inspiration for your sketches.
