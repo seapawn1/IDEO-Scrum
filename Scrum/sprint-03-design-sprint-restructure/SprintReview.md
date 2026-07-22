@@ -77,6 +77,6 @@ Monday 的每个节是独立的认知单元（隐喻 + 原理 + 方法），天�
 ## Product Backlog Adaptations
 
 - PBI-5 标记为部分完成
-- 新建 PBI：为 solo + AI 场景设计 Design Sprint Tuesday-Friday 方法论（非摘录，是新设计）
+- **新建 PBI-6：Design Sprint Tuesday-Friday 细化——solo + AI 方法论设计**（非摘录，是新设计；骨架保留，肉身替换）
 - Product Goal 不变：design-kernel 达到与 scrum-kernel 同等细致的结构化水平
-- 建议：下个 Sprint 之前，确认周二到周五的方向——是继续 Design Sprint 还是先处理 PBI-2/PBI-4（小 S 级 PBI）
+- 建议：下个 Sprint 之前，确认是开 PBI-6 还是先处理 PBI-2/PBI-4（小 S/M 级 PBI）
