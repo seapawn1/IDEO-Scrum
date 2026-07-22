@@ -57,5 +57,31 @@ Scrum operates in Sprints (iterations of determinate length up to four weeks) wi
 
 ---
 
+## The Scrum Artifacts in the Expansion Pack
+
+Scrum’s artifacts provide Transparency about what the Scrum Team and Stakeholders believe will deliver value. Thus, everyone can have the same basis for Inspection and Adaptation.
+
+Each artifact contains a commitment:
+
+For the Product serving the Stakeholders, it is the Definition of Outcome Done. (SGEP added)
+For the Increment that is a candidate update for the Product, it is the Definition of Output Done (SGEP renamed).
+For the Product Backlog, it is the Product Goal.
+For the Sprint Backlog, it is the Sprint Goal.
+
+Upon release of the Increment (output), the Product is what creates value (outcomes). Value is the measurable or observable fulfillment or creation of expectations, needs, or wants from the Stakeholders’ perspective.
+
+These commitments reinforce the pillars of Transparency, Inspection, and Adaptation, enabling empirical process control [27-29]. The Product Goal is fixed for as long as no contrary evidence or observations emerge in the observed Product’s Definition of Outcome Done. The Definition of Output Done is not weakened during the Sprint. So what could be changed instead? It could be the Acceptance Criteria for a specific Product Backlog Item, the implementation or fidelity of a specific feature, or even alternative Product Backlog Items for achieving the Sprint Goal, etc.
+
+If the Product Goal shifts often, it could indicate that something is off, perhaps due to a lack of Focus on what matters. Focus is about being professional and deciding what to work on but also what not to work on.
+
+| Artifact | Reference | Commitment | Read when |
+| --- | --- | --- | --- |
+| Product | `references/scrum-artifact-product.md` | Definition of Outcome Done | The team needs to define what the Product is (experience vs. platform), identify its Stakeholders, or establish outcome measures for value validation. Also when distinguishing output (Increment) from outcome (realized value). |
+| Increment | `references/scrum-artifact-increment.md` | Definition of Output Done | The team negotiates quality standards, inspects whether work meets the Definition of Output Done, or decides if an Increment is releasable. Also when multiple Scrum Teams share a Definition of Output Done. |
+| Product Backlog | `references/scrum-artifact-product-backlog.md` | Product Goal | The Product Owner orders the backlog, the team refines PBIs into smaller items, writes Acceptance Criteria or Outcome Criteria, or connects Sprint work to the medium-term Product Goal. Also when evaluating whether a Product Vision should be decomposed into a Product Goal. |
+| Sprint Backlog | `references/scrum-artifact-sprint-backlog.md` | Sprint Goal | Sprint Planning is about to start, the Developers need to create or adapt their actionable plan, or the Sprint Goal must be negotiated without endangering it. Also when multiple objectives within one Sprint risk diluting Focus. |
+
+---
+
 **Source:** [Scrum on One Page - Scrum Guide Expansion Pack](https://scrumexpansion.org/scrum-on-one-page/)
 [2020 Scrum Guide] (https://scrumguides.org/scrum-guide.html) 
