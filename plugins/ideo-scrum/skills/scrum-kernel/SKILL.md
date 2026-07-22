@@ -110,10 +110,11 @@ Communication is key to ensuring the Scrum Team and Supporters Focus on the righ
 | Category | Reference | Contains | Read when |
 | --- | --- | --- | --- |
 | **Foundation** | `scrum-guide-2020.md` | The definitive 2020 Scrum Guide by Ken Schwaber & Jeff Sutherland | The team is new to Scrum, needs the canonical definitions of roles/events/artifacts, or a dispute about "what Scrum says" must be settled by the source. |
+| **SGEP Source** | `assets/scrum-guide-expansion-pack-2026.1.md` | The full Scrum Guide Expansion Pack (SGEP) v2026.1 — the source from which all reference files, role agents, and catalog tables are derived. Additionally contains: supporting Theory (complexity, emergence, empiricism, lean thinking, cadence), Scrum Values through the OODA lens, Product/Systems/Discovery/Leadership theory, People & Change guidance, and the complete academic reference list. | The team needs the canonical SGEP source for a role, artifact, or event, or wants to understand the theoretical underpinnings beyond what the reference files cover. |
 
 ### Role Agents
 
-Six role-specific agents provide on-demand guidance for Scrum roles defined in the SGEP:
+Six role-specific agents provide on-demand guidance for Scrum roles defined in the SGEP (see `references/scrum-roles.md` for the full Scrum Roles specification):
 
 | Agent | Role |
 | --- | --- |
@@ -123,7 +124,3 @@ Six role-specific agents provide on-demand guidance for Scrum roles defined in t
 | `agents/scrum-stakeholder.md` | Stakeholder — types, engagement patterns, satisfaction gaps |
 | `agents/scrum-supporter.md` | Supporter — organizational change agents, guiding coalition |
 | `agents/scrum-artificial-intelligence.md` | AI — augmentation, human-in-the-loop, experimentation boundaries |
-
-### Source Document
-
-`assets/scrum-guide-expanded-2026.1.md` is the full SGEP source from which all reference files, role agents, and catalog tables are derived. It additionally contains: supporting Theory (complexity, emergence, empiricism, lean thinking, cadence), the Scrum Values through the OODA lens, Product/Systems/Discovery/Leadership theory, People & Change guidance, and the complete academic reference list.
