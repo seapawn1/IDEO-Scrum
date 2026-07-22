@@ -1,119 +1,33 @@
 ---
-name: ideo-kernel
-description: Use when work involves IDEO Design Thinking — the five modes (Empathize, Define, Ideate, Prototype, Test) or a time-boxed Design Sprint. This skill holds the verbatim five-mode teaching plus a concrete method library; load it to ground a mode or before using a method, then read that method's document under methods/ first and keep verbatim source separate from project notes.
+name: design-thinking
+description: Use when work involves Design Thinking — the five modes (Empathize, Define, Ideate, Prototype, Test) or a time-boxed Design Sprint. Each mode has a detailed reference under modes/; the Method Catalog maps ~40 methods to modes.
 ---
 
-# IDEO Design Thinking Kernel
+# Design Thinking Kernel
 
-## IDEO Guide
+## Design Thinking 概述
 
-<!-- BEGIN IDEO_DSCHOOL_VERBATIM -->
+<!-- TODO -->
 
-### Welcome
+## Mode Reference
 
-In your hands you hold a Design Thinking Bootleg, a set of tools and methods that we keep in our back pockets, and now you can do the same.
+### Design Thinking
 
-**Process modules**
+| Mode | Reference | Read when |
+|---|---|---|
+| Empathize | `modes/empathize.md` | 用户需要理解用户、进入共情模式——观察、互动、沉浸，从人的行为和情感中发现深层需求 |
+| Define | `modes/define.md` | 用户已收集共情发现，需要定义有意义的问题——提炼 Point of View（用户 + 需求 + 洞察） |
+| Ideate | `modes/ideate.md` | 用户已有 POV，需要生成大量创意——发散探索，不急于收敛 |
+| Prototype | `modes/prototype.md` | 用户已有选定的创意，需要低成本原型——动手做、快速失败、迭代学习 |
+| Test | `modes/test.md` | 用户已有原型，需要用户反馈——在真实场景中测试，继续学习用户 |
 
-The diagram below shows five “modes” that we identify as the components of design thinking.
+### Design Sprint
 
-### MODE-1: Empathize
+| Method | Reference | Read when |
+|---|---|---|
+| Design Sprint | `methods/design-sprint.md` | SeaPawn 明确切换到时间盒 Sprint、问 Monday-Friday 流程，或需要长期目标、Sprint 问题、地图、HMW 笔记、目标用户、草图、故事板、原型或用户测试 |
 
-Empathy is the foundation of human-centered design. The problems you’re trying to solve are rarely your own, they’re those of particular users. Build empathy for your users by learning their values.  To empathize, you:
-
-**Observe**
-View users and their behavior in the context of their lives.
-
-**Engage**
-Interact with and interview users through both scheduled and short ‘intercept’ encounters.
-
-**Immerse**
-Wear your users’ shoes. Experience what they experience for a mile or two.
-
-### How to empathize
-
-**Observe** how users interact with their environment. Capture quotes, behaviors and other notes that reflect their experience. Watching users gives you clues as to what they think and feel— what they need.
-
-**Engage** users directly—interact with and interview them. Engaging users reveals deeper insights into their beliefs and values.
-
-**Immerse** yourself in your users’ experience. Find (or create if necessary) ways to immerse yourself in specific environments to understand first hand who you’re designing for.
-
-The best solutions come from the best insights into human behavior. Discover the emotions that drive user behavior. Uncover user needs (which they may or may not be aware of). Identify the right users to design for. Use your insights to design innovative solutions.
-
-### MODE-2: Define
-
-The define mode is when you unpack your empathy findings into needs and insights and scope a meaningful challenge. Based on your understanding of users and their environments, come up with an actionable problem statement: your Point Of View.
-
-More than simply defining the problem, your Point of View is a unique design vision that is framed by your specific users.
-
-Understanding the meaningful challenge at hand, and the user insights you can leverage, is fundamental to creating a successful solution.
-
-### How to define
-
-The define mode explicitly expresses the problem you strive to address. In order to be truly generative, you must reframe your challenge based on new insights gained through your empathy work. This reframed Point of View, or problem statement, can then be used as a solution-generating springboard.
-
-**A spectacular Point of View...**
-Preserves emotion and the individual you’re designing for.Includes strong language.Uses sensical wording.Includes a strong insight. Generates lots of possibilities.
-
-### MODE-3: Ideate
-
-Ideate is the mode in which you generate radical design alternatives. Ideation is a process of “going wide” in terms of concepts and outcomes—a mode of “flaring” instead of “focus”. The goal of ideation is to explore a wide solution space—both a large quantity and broad diversity of ideas. From this vast repository of ideas, you can build prototypes to test with users.
-
-### How to ideate
-
-You ideate in order to transition from identifying problems to exploring solutions for your users.
-
-**Ideation is leveraged to:**
-
-- Harness the collective perspectives and  strengths of your team.
-- Step beyond obvious solutions and drive  innovation.
-- Uncover unexpected areas of exploration.
-- Create fluency (volume) and flexibility  (variety) in your innovation options.
-
-When ideating, your team needs to fluctuate between times of focus and flare. Idea generation is a moment to  “go wide” while evaluation/selection  of ideas is a time for narrowing-in.
-
-Curtailing “bad” behaviors, such as evaluating during idea generation,  is very important—innovative concepts  can often come from the most  outlandish ideas.
-
-### MODE-4: Prototype
-
-Prototyping gets ideas out of your head and into the world. A prototype can be anything that takes a physical form—a wall of post-its, a role-playing activity, an object. In early stages, keep prototypes inexpensive and low resolution to learn quickly and explore possibilities.
-
-Prototypes are most successful when people (the design team, users, and others) can experience and interact with them. They’re a great way to start a conversation. What you learn from interactions with prototypes drives deeper empathy and shapes successful solutions.
-
-### How to prototype
-
-Prototyping is often thought of as a way to test functionality, but it serves many other purposes.
-
-**Empathy gaining**
-Prototyping deepens your understanding of users and the design space.
-
-**Exploration**
-Develop multiple concepts to test in parallel.
-
-**Testing**
-Create prototypes to test and refine solutions.
-
-**Inspiration**
-Inspire others by showcasing your vision.
-
-### MODE-5: Test
-
-Testing is your chance to gather feedback, refine solutions, and continue to learn about your users. The test mode is an iterative mode in which you place low-resolution prototypes in the appropriate context of your user’s life. Prototype as if you know you’re right, but test as if you know you’re wrong.
-
-### How to test
-
-Create authentic experiences for users  to test your prototypes.
-
-**Learn more about your user.**
-Testing is another opportunity to build empathy through observation and engagement—often yielding unexpected insights.
-
-**Refine your prototypes and solutions.**
-Testing informs the next iterations of prototypes. Sometimes this means going back to the drawing board.
-
-**Test and refine your Point of View.**
-Testing may reveal that, not only did you get the solution wrong, but you also framed the problem incorrectly.
-
-<!-- END IDEO_DSCHOOL_VERBATIM -->
+---
 
 ## Use Protocol
 
@@ -123,13 +37,9 @@ Testing may reveal that, not only did you get the solution wrong, but you also f
 4. Treat the `Cleaned Transcription` section as source text.
 5. Treat `Use Before`, `Use Notes`, and `Do Not Use When` as project-specific notes, not source text.
 
+---
+
 ## Method Catalog
-
-### Design Sprint
-
-| Method | Document | Trigger |
-| --- | --- | --- |
-| Design Sprint | `methods/design-sprint.md` | Use when SeaPawn explicitly switches to a time-boxed sprint, asks for Monday-Friday sprint flow, or needs sprint activities such as long-term goal, sprint questions, map, HMW notes, target, sketches, storyboard, prototype, or user test. |
 
 ### Empathize
 
@@ -217,6 +127,8 @@ Testing may reveal that, not only did you get the solution wrong, but you also f
 | Review Your Portfolio | `methods/review-your-portfolio.md` | Use when multiple artifacts, prototypes, or evidence points need review. |
 | Shooting Video | `methods/shooting-video.md` | Use when video can preserve behavior, setting, emotion, or interaction evidence. |
 | Editing Video | `methods/editing-video.md` | Use when video material must be turned into a shareable learning artifact. |
+
+---
 
 ## Runtime Rule
 
