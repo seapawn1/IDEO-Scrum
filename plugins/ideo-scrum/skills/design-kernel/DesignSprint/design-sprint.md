@@ -11,13 +11,9 @@
 - [ ] **Set a long-term goal.** Get optimistic. Ask: Why are we doing this project? Where do we want to be in six months, a year, or even five years from now? See `monday/set-a-long-term-goal.md` for the full rationale.
 - [ ] **List sprint questions.** Get pessimistic. Ask: How could we fail? Turn these fears into questions you could answer this week. See `monday/list-sprint-questions.md` for the full rationale.
 
-### 11:30-ish
+### Map
 
-- [ ] **Make a map.** List customers and key players on the left. Draw the ending, with your completed goal, on the right. Finally, make a flowchart in between showing how customers interact with your product. Keep it simple: five to fifteen steps.
-
-### 1 p.m.
-
-- [ ] **Lunch break.** Eat together if you can (it's fun). Remind your team to choose a light lunch to maintain energy in the afternoon. There are snacks if you get hungry later.
+- [ ] **Make a map.** List customers and key players on the left. Draw the ending, with your completed goal, on the right. Finally, make a flowchart in between. Keep it simple: five to fifteen steps. See `monday/make-a-map.md` for the full rationale.
 
 ### 2 p.m.
 
