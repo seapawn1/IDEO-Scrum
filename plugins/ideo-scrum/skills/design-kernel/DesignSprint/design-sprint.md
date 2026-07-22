@@ -1,13 +1,9 @@
-## Design Sprint
+# Design Sprint
 
-A design sprint is a time-constrained, five-phase process that uses design thinking with the aim of reducing the risk when bringing a new product, service or a feature to the market. The process aims to help teams to clearly define goals, validate assumptions and decide on a product roadmap before starting development. It seeks to address strategic issues using interdisciplinary expertise, rapid prototyping, and usability testing. This design process is similar to Sprints in an Agile development cycle.
+The **Design Sprint** is a time-constrained, five-day process that uses design thinking to reduce the risk of bringing a new product, service, or feature to market. Developed by **Jake Knapp** at **Google Ventures** (GV) and detailed in *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days* (Knapp, Zeratsky & Kowitz, 2016), it compresses months of debate into a single focused week. The process combines interdisciplinary expertise, rapid prototyping, and usability testing to help teams define goals, validate assumptions, and decide on a product roadmap before starting development.
 
-## How to Design Sprint
-
-Source:
-
-- Reference: Jake Knapp《Design Sprint》"Checklists"
-- How to use: This is an in-person 5-day workshop checklist; your context is "SeaPawn + AI, working async in a repo." **Take the methods and flow that fit your context; drop the in-person logistics (physical supplies, clock times, recruiting, equipment).**
+> **Source:** Jake Knapp, *Design Sprint* — "Checklists" section.
+> **Usage note:** This is an in-person 5-day workshop checklist; your context is SeaPawn + AI working async in a repo. Take the methods and flow that fit; drop in-person logistics (physical supplies, clock times, recruiting, equipment).
 
 ### Set The Stage
 
