@@ -7,7 +7,7 @@ description: Use when work involves Scrum or Scrum Sprint — the framework for 
 
 ## The Scrum Guide
 
-Scrum is described in the [2020 Scrum Guide]. Scrum is a lightweight framework for addressing complex work, particularly in Product discovery, development, delivery, and value realization. Scrum is based on empirical process control (decisions informed by evidence) and lean thinking (reducing waste and focusing on the flow of value). Scrum is purposefully incomplete, guiding interactions rather than prescribing detailed recipes.
+Scrum is described in `scrum-guide-2020.md`, the definitive 2020 Scrum Guide by Ken Schwaber & Jeff Sutherland. Scrum is a lightweight framework for addressing complex work, particularly in Product discovery, development, delivery, and value realization. Scrum is based on empirical process control (decisions informed by evidence) and lean thinking (reducing waste and focusing on the flow of value). Scrum is purposefully incomplete, guiding interactions rather than prescribing detailed recipes.
 
 ## Why Use Scrum?
 
@@ -54,6 +54,14 @@ Scrum operates in Sprints (iterations of determinate length up to four weeks) wi
 - **Increment & Definition of Output Done** – A potentially valuable, releasable candidate update for the Product.
 - **Product Backlog & Product Goal** – The ordered (sequenced) list of work to achieve a medium-term, more strategic objective.
 - **Sprint Backlog & Sprint Goal** – Selected Product Backlog Items and a plan for the Sprint, short-term objective.
+
+---
+
+## Reference Catalog
+
+| Category | Reference | Contains | Read when |
+| --- | --- | --- | --- |
+| **Foundation** | `scrum-guide-2020.md` | The definitive 2020 Scrum Guide by Ken Schwaber & Jeff Sutherland | The team is new to Scrum, needs the canonical definitions of roles/events/artifacts, or a dispute about "what Scrum says" must be settled by the source. |
 
 ---
 
