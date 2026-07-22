@@ -4,29 +4,29 @@
 
 ### Challenge
 
-- [ ] **Define the challenge.** Define the big challenge for this sprint week. Use a sprint when the stakes are high, when there's not enough time, or when you're just plain stuck. See `monday/define-the-challenge.md` for the full rationale.
+- [ ] **Define the challenge.** Define the big challenge for this sprint week. Use a sprint when the stakes are high, when there's not enough time, or when you're just plain stuck. See `references/define-the-challenge.md` for the full rationale.
 
 ### Start at the End
 
-- [ ] **Set a long-term goal.** Get optimistic. Ask: Why are we doing this project? Where do we want to be in six months, a year, or even five years from now? See `monday/start-at-the-end.md` for the full rationale.
-- [ ] **List sprint questions.** Get pessimistic. Ask: How could we fail? Turn these fears into questions you could answer this week. See `monday/start-at-the-end.md` for the full method.
+- [ ] **Set a long-term goal.** Get optimistic. Ask: Why are we doing this project? Where do we want to be in six months, a year, or even five years from now? See `references/start-at-the-end.md` for the full rationale.
+- [ ] **List sprint questions.** Get pessimistic. Ask: How could we fail? Turn these fears into questions you could answer this week. See `references/start-at-the-end.md` for the full method.
 
 ### Map
 
-- [ ] **Make a map.** List customers and key players on the left. Draw the ending, with your completed goal, on the right. Finally, make a flowchart in between. Keep it simple: five to fifteen steps. See `monday/make-a-map.md` for the full rationale.
+- [ ] **Make a map.** List customers and key players on the left. Draw the ending, with your completed goal, on the right. Finally, make a flowchart in between. Keep it simple: five to fifteen steps. See `references/make-a-map.md` for the full rationale.
 
 ### Ask the Experts
 
-- [ ] **Interview experts.** A series of one-at-a-time interviews with people from your sprint team, from around your company, and possibly outsiders with special knowledge. See `monday/ask-the-experts.md` for the full method.
+- [ ] **Interview experts.** A series of one-at-a-time interviews with people from your sprint team, from around your company, and possibly outsiders with special knowledge. See `references/ask-the-experts.md` for the full method.
 
 ### How Might We
 
-- [ ] **Write HMW questions.** Turn each problem you hear into an opportunity. See `monday/how-might-we.md` for the full method.
-- [ ] **Organize and select.** Group by theme, then pick the questions most critical to your sprint goal. Move winners onto your map. See `monday/how-might-we.md` for the full method.
+- [ ] **Write HMW questions.** Turn each problem you hear into an opportunity. See `references/how-might-we.md` for the full method.
+- [ ] **Organize and select.** Group by theme, then pick the questions most critical to your sprint goal. Move winners onto your map. See `references/how-might-we.md` for the full method.
 
 ### Pick a target
 
-- [ ] **Pick a target.** Choose the most important customer and the critical moment of their experience. The Decider makes the call. See `monday/pick-a-target.md` for the full rationale.
+- [ ] **Pick a target.** Choose the most important customer and the critical moment of their experience. The Decider makes the call. See `references/pick-a-target.md` for the full rationale.
 
 ## Tuesday
 
@@ -45,7 +45,7 @@
 
 ## Wednesday
 
-### 10 a.m.
+### Decide
 
 - [ ] **Sticky decision.** Follow these five steps to choose the strongest solutions:
 - [ ] **Art museum.** Tape the solution sketches to the wall in one long row.
@@ -54,76 +54,26 @@
 - [ ] **Straw poll.** Each person silently chooses a favorite idea. All at once, each person places one large dot sticker to register his or her (nonbinding) vote.
 - [ ] **Supervote.** Give the Decider three large dot stickers and write her initials on the sticker. Explain that you'll prototype and test the solutions the Decider chooses.
 
-### 11:30-ish
-
-- [ ] **Divide winners from "maybe-laters."** Move the sketches with supervotes together.
-- [ ] **Rumble or all-in-one.** Decide if the winners can fit into one prototype, or if conflicting ideas require two or three competing prototypes in a Rumble.
-- [ ] **Fake brand names.** If you're doing a Rumble, use a Note-and-Vote to choose fake brand names.
-- [ ] **Note-and-Vote.** Use this technique whenever you need to quickly gather ideas from the group and narrow down to a decision. Ask people to write ideas individually, then list them on a whiteboard, vote, and let the Decider pick the winner.
-
-### 1 p.m.
-
-- [ ] Lunch.
-
-### 2 p.m.
+### Storyboard
 
 - [ ] **Make a storyboard.** Use a storyboard to plan your prototype.
 - [ ] **Draw a grid.** About fifteen squares on a whiteboard.
 - [ ] **Choose an opening scene.** Think of how customers normally encounter your product or service. Keep your opening scene simple: web search, magazine article, store shelf, etc.
 - [ ] **Fill out the storyboard.** Move existing sketches to the storyboard when you can. Draw when you can't, but don't write together. Include just enough detail to help the team prototype on Thursday. When in doubt, take risks. The finished story should be five to fifteen steps.
 
-### Facilitator Tip
-
-- [ ] **Don't drain the battery.** Each decision takes energy. When tough decisions appear, defer to the Decider. For small decisions, defer until tomorrow. Don't let new abstract ideas sneak in. Work with what you have.
-
 ## Thursday
 
-### 10 a.m.
+### Prototype
 
 - [ ] **Pick the right tools.** Don't use your everyday tools. They're optimized for quality. Instead, use tools that are rough, fast, and flexible.
 - [ ] **Divide and conquer.** Assign roles: Maker, Stitcher, Writer, Asset Collector, and Interviewer. You can also break the storyboard into smaller scenes and assign each to different team members.
-- [ ] **Prototype!**
-
-### 1 p.m.
-
-- [ ] Lunch.
-
-### 2 p.m.
-
-- [ ] **Prototype!**
 - [ ] **Stitch it together.** With the work split into parts, it's easy to lose track of the whole. The Stitcher checks for quality and ensures all the pieces make sense together.
-
-### 3-ish
-
 - [ ] **Do a trial run.** Run through your prototype. Look for mistakes. Make sure the Interviewer and the Decider see it.
 - [ ] **Finish up the prototype.**
 
-### Throughout the Day
-
-- [ ] **Write interview script.** The Interviewer prepares for Friday's test by writing a script.
-- [ ] **Remind customers to show up for Friday's test.** Email is good, phone call is better.
-- [ ] **Buy gift cards for customers.** We usually use $100 gift cards.
-
-### Key Ideas
-
-- [ ] **Prototype mindset.** You can prototype anything. Prototypes are disposable. Build just enough to learn, but not more. The prototype must appear real.
-- [ ] **Goldilocks quality.** Create a prototype with just enough quality to evoke honest reactions from customers.
-
 ## Friday
 
-### Makeshift Research Lab
-
-- [ ] **Two rooms.** In the sprint room, the sprint team will watch a video feed of the interviews. You'll need a second, smaller room for the actual interviews. Make sure the interview room is clean and comfortable for your guests.
-- [ ] **Set up hardware.** Position a webcam so you can see customers' reactions. If your customer will be using a smartphone, iPad, or other hardware device, set up a document camera and microphone.
-- [ ] **Set up video stream.** Use any video-conferencing software to stream video to the sprint room. Make sure the sound quality is good. Make sure the video and audio are one-way only.
-
-### Key Ideas
-
-- [ ] **Five is the magic number.** After five customer interviews, big patterns will emerge. Do all five interviews in one day.
-- [ ] **Watch together, learn together.** Don't disband the sprint team. Watching together is more efficient, and you'll draw better conclusions.
-- [ ] **A winner every time.** Your prototype might be an efficient failure or a flawed success. In every case, you'll learn what you need for the next step.
-
-### Five-Act Interview
+### Interview
 
 - [ ] **Friendly welcome.** Welcome the customer and put him or her at ease. Explain that you're looking for candid feedback.
 - [ ] **Context questions.** Start with easy small talk, then transition to questions about the topic you're trying to learn about.
@@ -137,26 +87,6 @@
 - [ ] **Ask open-ended questions.** Ask "Who/What/Where/When/Why/How...?" questions. Don't ask leading "yes/no" or multiple-choice questions.
 - [ ] **Ask broken questions.** Allow your speech to trail off before you finish a question. Silence encourages the customer to talk without creating any bias.
 - [ ] **Curiosity mindset.** Be authentically fascinated by your customer's reactions and thoughts.
-
-### Observing Interviews
-
-#### Before the First Interview
-
-- [ ] **Draw a grid on a whiteboard.** Create a column for each customer. Then add a row for each prototype or section of prototype.
-
-#### During Each Interview
-
-- [ ] **Take notes as you watch.** Hand out sticky notes and markers. Write down direct quotes, observations, and interpretations. Indicate positive or negative.
-
-#### After Each Interview
-
-- [ ] **Stick up notes.** Stick your interview notes in the correct row and column on the whiteboard grid. Briefly discuss the interview, but wait to draw conclusions.
-- [ ] **Take a quick break.**
-
-#### At the End of the Day
-
-- [ ] **Look for patterns.** At the end of the day, read the board in silence and write down patterns. Make a list of all the patterns people noticed. Label each as positive, negative, or neutral.
-- [ ] **Wrap up.** Review your long-term goal and your sprint questions. Compare with the patterns you saw in the interviews. Decide how to follow-up after the sprint. Write it down.
 
 ---
 
