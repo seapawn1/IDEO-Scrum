@@ -36,27 +36,4 @@
 
 ---
 
-## Sprint Review
-
-### Increment
-
-- `DesignSprint/references/` — 6 个 Monday 引用文件（~15 KB 方法论内容，忠实摘录原书）
-- `DesignSprint/design-sprint.md` — Monday checklist 完整引用 references/，Tuesday-Friday 保持原始格式
-- `SKILL.md` — Design Sprint 部分结构优化（单行引用表 + 简化五天总览 + Use Protocol 合并）
-- 源材料 `references/DesignSprint-HowtoSolveBigProblemsandTestJakeKnapp.md` — OCR 修复、章节标题补齐、分隔线清理
-
-### 关键发现
-
-**Monday 和 Tuesday-Friday 是两种不同的内容类型。** Monday 的每个节是独立的认知单元（隐喻 + 原理 + 方法），可以独立提取为引用文件。周二到周五各节是一个 workshop 操作系统的流程步骤（纸笔、折纸、圆点贴纸、匿名评审），核心概念每一句话能讲完，操作指令是 7 人 × 5 天 × 物理空间的产物。
-
-**这一分化意味着不能对 Design Sprint 全书统一套用同一种文件化模式。** Monday 的引用文件结构已经达到目标质量；Tuesday-Friday 需要单独设计适合 solo + AI 的方法论，而非忠实摘录原书 workshop 流程。
-
-### Sprint Goal 评估
-
-Sprint Goal 部分达成。Monday 结构化完成（质量达到 SGEP/Stanford 级别），但全书结构化的目标因为发现方法论分化而调整了范围。这一分化是正向产出——避免了在错误的方向上继续投入。
-
-### Lessons Learned
-
-1. **先拆一个样本，再决定拆全部。** Monday 做完后模式清晰，但周二一做就暴露了结构差异。应该在每个 day 开始时用更小的样本验证后再铺开。
-2. **引用文件 ≠ 翻译 checkboxes。** Four-Step Sketch 的 "Fold a sheet of paper into eight panels" 变成引用文件不会变成方法论——它仍然是操作指令。引用文件适合的是概念密度高的内容。
-3. **Design Sprint 全书有一个隐含的用户界面假设：7 人在一个房间里。** 拆文件的过程本质上是在做解耦——把方法论核心从这个特定 UI 中分离出来。
+详见 `SprintReview.md`
