@@ -23,15 +23,17 @@ The process is **not linear** — teams move back and forth between modes as ins
 
 ## Design Sprint
 
-The **Design Sprint** is a time-constrained, five-day process that uses design thinking to reduce the risk of bringing a new product, service, or feature to market. Developed by **Jake Knapp** at **Google Ventures** (GV) and detailed in *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days* (Knapp, Zeratsky & Kowitz, 2016), it compresses months of debate into a single focused week. The process combines interdisciplinary expertise, rapid prototyping, and usability testing to help teams define goals, validate assumptions, and decide on a product roadmap before starting development.
+| Reference | Contains | Read when |
+|---|---|---|---|
+| `DesignSprint/design-sprint.md` | Jake Knapp's GV five-day sprint: Monday Define → Tuesday Ideate → Wednesday Decide → Thursday Prototype → Friday Test, with role agents and reference files under `references/` | When user explicitly switches to a time-boxed sprint, or needs long-term goal, sprint questions, map, HMW notes, target, sketches, storyboard, prototype, or user test |
 
-| Day | Theme | Core Activities | Reference | Read when |
-|---|---|---|---|---|
-| **Monday** | Define | Set a long-term goal, map the problem space, interview experts, choose a target | `DesignSprint/design-sprint.md` | When user explicitly switches to a time-boxed sprint, asks for Monday-Friday flow, or needs long-term goal, sprint questions, map, HMW notes, target, sketches, storyboard, prototype, or user test |
-| **Tuesday** | Ideate | Review existing inspiration, individually sketch detailed solution concepts | `DesignSprint/design-sprint.md` | |
-| **Wednesday** | Decide | Silent critique, vote on elements, Decider selects winning ideas, create a storyboard | `DesignSprint/design-sprint.md` | |
-| **Thursday** | Prototype | Build a realistic, testable facade — "fake it" with Keynote, Figma, or paper | `DesignSprint/design-sprint.md` | |
-| **Friday** | Test | Conduct five one-hour user interviews, observe reactions, identify patterns, decide next steps | `DesignSprint/design-sprint.md` | |
+| Day | Theme | Core Activities |
+|---|---|---|
+| **Monday** | Define | Set a long-term goal, map the problem space, interview experts, choose a target |
+| **Tuesday** | Ideate | Review existing inspiration, individually sketch detailed solution concepts |
+| **Wednesday** | Decide | Silent critique, vote on elements, Decider selects winning ideas, create a storyboard |
+| **Thursday** | Prototype | Build a realistic, testable facade — "fake it" with Keynote, Figma, or paper |
+| **Friday** | Test | Conduct five one-hour user interviews, observe reactions, identify patterns, decide next steps |
 
 A cross-functional team (typically ~7 people) works together in one room for the full week, with a designated **Decider** who has final authority on key choices. The Sprint replaces speculation with user evidence, giving teams clarity on whether to invest, pivot, or abandon an idea — all in five days.
 
