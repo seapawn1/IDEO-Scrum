@@ -18,13 +18,14 @@
 | `CLAUDE.md` | 项目定位 |
 | `.claude-plugin/marketplace.json` | Marketplace 清单 |
 
-### ideo-kernel skill
+### design-kernel skill
 
 | 文件/目录 | 内容 |
 |---|---|
 | `plugins/ideo-scrum/.claude-plugin/plugin.json` | 插件清单 |
-| `plugins/ideo-scrum/skills/ideo-kernel/SKILL.md` | IDEO Design Thinking 技能内核（5 mode + Use Protocol + Method Catalog） |
-| `plugins/ideo-scrum/skills/ideo-kernel/methods/` | Design Thinking 方法库（~40 个方法） |
+| `plugins/ideo-scrum/skills/design-kernel/SKILL.md` | Design Kernel 入口（Overview + Use Protocol + Method Catalog + Runtime Rule） |
+| `plugins/ideo-scrum/skills/design-kernel/IDEO-modes/` | IDEO Design Thinking 五模式 reference（Empathize / Define / Ideate / Prototype / Test，各含 WHAT/WHY/HOW + Transition） |
+| `plugins/ideo-scrum/skills/design-kernel/methods/` | Design Thinking 方法库（~40 个方法） |
 
 ### scrum-kernel skill
 
@@ -44,6 +45,15 @@
 | `plugins/ideo-scrum/skills/scrum-kernel/references/scrum-event-sprint-review.md` | Event — Sprint Review |
 | `plugins/ideo-scrum/skills/scrum-kernel/references/scrum-event-sprint-retrospective.md` | Event — Sprint Retrospective |
 
+### Scrum 工作目录
+
+| 文件/目录 | 内容 |
+|---|---|
+| `Scrum/product.md` | Product artifact — Product 定义 + Vision |
+| `Scrum/DefinitionofDone.md` | Definition of Outcome Done + Definition of Output Done |
+| `Scrum/product-backlog.md` | Product Backlog — Product Goal + PBI 列表 |
+| `Scrum/sprint-01-skill-stanford/` | Sprint 01：sprint-backlog + SprintReview + 工作材料（stanford-modes / ideo-modes） |
+
 ### 源参考
 
 | 文件/目录 | 内容 |
@@ -59,4 +69,4 @@
 
 ## 当前状态
 
-2026-07-22：scrum-kernel 完成结构化改造——Scrum Guide Expanded 的 Artifacts 和 Events 章节已拆分为 9 个独立 reference 文档，6 个角色拆分为 agent，SKILL.md 作为入口通过 Reference Catalog 和目录表索引所有文件。ideo-kernel 保持原有结构。
+2026-07-22：Sprint 01 完成——design-kernel（原 ideo-kernel）完成结构化改造：SKILL.md 重构为 Overview（IDEO + Design Sprint）+ Method Catalog 两层架构，五模式拆分为独立 IDEO-modes/ reference（WHAT/WHY/HOW + Transition），skill 更名为 design-kernel 与 scrum-kernel 对称。scrum-kernel 前期已完成结构化改造。Product Backlog 现有 PBI-2（output-styles）、PBI-3（agents 重构）、PBI-4（description 审计）排队中。
