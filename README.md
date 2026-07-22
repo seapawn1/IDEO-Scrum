@@ -11,12 +11,8 @@
 | 文件/目录 | 内容 |
 |---|---|
 | `.gitignore` | Git 忽略规则 |
-| `.env` | 本地私人，不入库 |
-| `seapawn.md` | 本地私人，不入库 |
-| `README.md` | 项目地图与本文件 |
-| `CLAUDE.md` | 项目定位 |
-| `.claude/settings.json` | 项目级配置（outputStyle: ai-partner） |
-| `.claude/output-styles/ai-partner.md` | AI-field 讨论伙伴输出样式 |
+| `.env` | 本地私人环境 |
+| `seapawn.md` | 本地私人笔记 |
 | `resources/ideo-kernel/SKILL.md` | IDEO Design Thinking 技能内核 |
 | `resources/ideo-kernel/methods/` | Design Thinking 方法库（~40 个方法） |
 | `resources/scrum-kernel/SKILL.md` | Scrum Sprint 技能内核 |
