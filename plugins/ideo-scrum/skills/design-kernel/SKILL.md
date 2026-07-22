@@ -1,6 +1,6 @@
 ---
 name: design-kernel
-description: Use when work involves Design Thinking — the five modes (Empathize, Define, Ideate, Prototype, Test) or a time-boxed Design Sprint. Each mode has a detailed reference under IDEO-modes/; the Method Catalog maps ~40 methods to modes.
+description: Use when work involves IDEO Design Thinking — the five modes (Empathize, Define, Ideate, Prototype, Test) or a time-boxed Design Sprint. Each mode has a detailed reference under IDEO-modes/; the Method Catalog maps ~40 methods to modes.
 ---
 
 # Design Thinking Kernel
