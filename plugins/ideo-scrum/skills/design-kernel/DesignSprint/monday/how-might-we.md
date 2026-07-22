@@ -8,9 +8,13 @@ The method was developed at Procter & Gamble in the 1970s, but we learned about 
 
 The open-ended, optimistic phrasing forces you to look for opportunities rather than getting bogged down by problems or jumping to solutions too soon. And because every question shares the same format, you can read, understand, and evaluate a whole wall of them at once.
 
-## How to use
+## How to do
 
-The basic formula: interview experts using your map as an outline, and turn each problem you hear into an opportunity. For the classic HMW writing technique, see `methods/how-might-we-questions.md`.
+The basic formula: interview experts using your map as an outline, and turn each problem you hear into an opportunity. For the classic HMW writing technique:
+
+| Reference | Contains | Read when |
+|---|---|---|
+| `methods/how-might-we-questions.md` | HMW scoping (not too broad / not too narrow), five angles (alleviate tension, explore the opposite, question an assumption, create an analogy, change a status quo), POV-driven examples | You need help phrasing a specific HMW or want the full technique beyond the Design Sprint context |
 
 Write down each HMW question as you go. By the end of the interviews, you'll have a pile — somewhere between ten and forty is typical for an async session. That's too many for the human brain to track once you turn your attention to sketching. You've got to narrow them down.
 

@@ -21,9 +21,8 @@
 
 ### How Might We
 
-- [ ] **Take How Might We notes.** Reframe problems as opportunities. Start with the letters "HMW" on the top left corner. Write one idea per sticky note. See `monday/how-might-we.md` for the full method.
-- [ ] **Organize How Might We notes.** Stick all the notes onto a wall in any order. Move similar ideas next to one another. Label themes as they emerge. See `monday/how-might-we.md` for the full method.
-- [ ] **Vote on How Might We notes.** Each person has two votes. Move winners onto your map. See `monday/how-might-we.md` for the full method.
+- [ ] **Write HMW questions.** Turn each problem you hear into an opportunity. See `monday/how-might-we.md` for the full method.
+- [ ] **Organize and select.** Group by theme, then pick the questions most critical to your sprint goal. Move winners onto your map.
 
 ### Pick a target
 
