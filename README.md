@@ -50,6 +50,8 @@
 |---|---|
 | `references/scrum-guide-expanded-2025.6.md` | Scrum Guide Expanded 历史版本 (Jun 2025) |
 | `references/scrum-on-one-page.md` | Scrum on One Page 概要 |
+| `references/DesignSprint-HowtoSolveBigProblemsandTestJakeKnapp.md` | *Design Sprint* — Jake Knapp 全书（1890 段落，7 章） |
+| `references/IDEO-StanfordDesignGuides.md` | IDEO / Stanford d.school 设计思维五模式指南 |
 
 ## 当前状态
 
