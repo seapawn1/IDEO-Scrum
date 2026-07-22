@@ -1,29 +1,12 @@
 # Design Sprint
 
-## Set The Stage
-
-Before the sprint begins, you need the right challenge, the right team, and the right time and space. The four essential roles are covered by dedicated agents:
-
-| Role | Agent | Purpose |
-|---|---|---|
-| **Decider** | `agents/design-sprint-decider.md` | Final authority on key choices; breaks deadlocks |
-| **Facilitator** | `agents/design-sprint-facilitator.md` | Manages time, conversations, and sprint process |
-| **Sprint Team** | `agents/design-sprint-team.md` | 7 or fewer; diverse skills; full-time in the room |
-| **Experts** | `agents/design-sprint-experts.md` | Extra specialists for Monday afternoon interviews |
-
-> For the full team composition rationale and in-person logistics (supplies, room setup, schedule), see the book: Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint.* Simon & Schuster. Chapter: "Team" and "Time and Space."
-
 ## Monday
 
-Note: Schedules are approximate. Don't worry if you run behind. Remember to take breaks every sixty to ninety minutes (or around 11:30 a.m. and 3:30 p.m. each day).
+### Challenge
 
-### 10 a.m.
+- [ ] Define the big challenge for this sprint week. Use a sprint when the stakes are high, when there's not enough time, or when you're just plain stuck. See `references/challenge.md` for the full rationale.
 
-- [ ] **Write this checklist on a whiteboard.** When you're done, check off this first item. See how easy that was? Keep checking off items throughout the day.
-- [ ] **Introductions.** If some people don't know one another, do a round of introductions. Point out the Facilitator and the Decider and describe their roles.
-- [ ] **Explain the sprint.** Introduce the five-day sprint process (you can use the slide deck on thesprintbook.com). Run through this checklist and briefly describe each activity.
-
-### 10:15-ish
+### Start at the End
 
 - [ ] **Set a long-term goal.** Get optimistic. Ask: Why are we doing this project? Where do we want to be in six months, a year, or even five years from now? Write the long-term goal on a whiteboard.
 - [ ] **List sprint questions.** Get pessimistic. Ask: How could we fail? Turn these fears into questions you could answer this week. List them on a whiteboard.
@@ -216,3 +199,16 @@ Note: Schedules are approximate. Don't worry if you run behind. Remember to take
 
 - [ ] **Look for patterns.** At the end of the day, read the board in silence and write down patterns. Make a list of all the patterns people noticed. Label each as positive, negative, or neutral.
 - [ ] **Wrap up.** Review your long-term goal and your sprint questions. Compare with the patterns you saw in the interviews. Decide how to follow-up after the sprint. Write it down.
+
+---
+
+## Roles
+
+The four essential roles for a Design Sprint, defined in the book's "Team" chapter:
+
+| Role | Agent | Purpose |
+|------|-------|---------|
+| Decider | `agents/design-sprint-decider.md` | Final authority on key choices |
+| Facilitator | `agents/design-sprint-facilitator.md` | Manages time, conversations, and process |
+| Sprint Team | `agents/design-sprint-team.md` | 7 or fewer, diverse skills, full-time in the room |
+| Experts | `agents/design-sprint-experts.md` | Extra specialists for Monday afternoon interviews |
