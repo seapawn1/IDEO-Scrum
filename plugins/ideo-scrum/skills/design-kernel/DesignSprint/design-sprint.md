@@ -30,41 +30,18 @@
 
 ## Tuesday
 
-### 10 a.m.
+### Lightning Demos
 
-- [ ] **Lightning Demos.** Look at great solutions from a range of companies, including yours. Three minutes per demo. Capture good ideas with a quick drawing on the whiteboard.
+- [ ] **Make a list.** List products or services with inspiring solutions—from other industries, and from within your own company. See `tuesday/lightning-demos.md` for the full rationale.
+- [ ] **Give three-minute demos.** Go through each product. For each one, ask: What's the big idea that might be useful? Capture it with a headline, a quick sketch, and the source.
+- [ ] **Capture big ideas as you go.** Don't rely on memory. Aim for ten to twenty captured ideas by the end. Most won't turn into anything, but one or two may inspire a great solution.
 
-### 12:30-ish
+### Four-Step Sketch
 
-- [ ] **Divide or swarm.** Decide who will sketch which part of the map. If you're targeting a big chunk of the map in your sprint, divide it up and assign someone to each section.
-
-### 1 p.m.
-
-- [ ] Lunch.
-
-### 2 p.m.
-
-**The Four-Step Sketch.** Briefly explain the four steps. Everyone sketches. When you're done, place the sketches in a pile and save them for tomorrow.
-
-- [ ] **1. Notes.** Twenty minutes. Silently walk around the room and gather notes.
-- [ ] **2. Ideas.** Twenty minutes. Privately jot down some rough ideas. Circle the most promising ones.
-- [ ] **3. Crazy 8s.** Eight minutes. Fold a sheet of paper to create eight frames. Sketch a variation of one of your best ideas in each frame. Spend one minute per sketch.
-- [ ] **4. Solution sketch.** Thirty to ninety minutes. Create a three-panel storyboard by sketching in three sticky notes on a sheet of paper. Make it self-explanatory. Keep it anonymous. Ugly is okay. Words matter. Give it a catchy title.
-
-### Key Ideas
-
-- [ ] **Remix and improve.** Every great invention is built on existing ideas.
-- [ ] **Anyone can sketch.** Most solution sketches are just rectangles and words.
-- [ ] **Concrete beats abstract.** Use sketches to turn abstract ideas into concrete solutions that can be assessed by others.
-- [ ] **Work alone together.** Group brainstorms don't work. Instead, give each person time to develop solutions on his or her own.
-
-### Recruit Customers for Friday's Test
-
-- [ ] **Put someone in charge of recruiting.** It will take an extra one or two hours of work each day during the sprint.
-- [ ] **Recruit on Craigslist.** Post a generic ad that will appeal to a wide audience. Offer compensation (we use a $100 gift card). Link to the screener survey.
-- [ ] **Write a screener survey.** Ask questions that will help you identify your target customers, but don't reveal who you're looking for.
-- [ ] **Recruit customers through your network.** If you need experts or existing customers, use your network to find customers.
-- [ ] **Follow up with email and phone calls.** Throughout the week, make contact with each customer to make sure he or she shows up on Friday.
+- [ ] **1. Notes.** Twenty minutes. Review Monday's map, HMW questions, and your Lightning Demo captures. Copy down anything useful. Circle what stands out. See `tuesday/four-step-sketch.md` for the full method.
+- [ ] **2. Ideas.** Twenty minutes. Jot down rough ideas—doodles, headlines, diagrams, stick figures. Messy is fine. Circle your favorites.
+- [ ] **3. Crazy 8s.** Eight minutes. Fold a sheet of paper into eight panels. Sketch one variation per panel, sixty seconds each. Push past your first idea.
+- [ ] **4. Solution sketch.** Thirty to ninety minutes. Create a three-panel storyboard showing what the customer sees. Make it self-explanatory. Keep it anonymous. Ugly is okay. Words matter. Give it a catchy title.
 
 ## Wednesday
 
