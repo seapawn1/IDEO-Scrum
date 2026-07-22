@@ -130,16 +130,10 @@ A cross-functional team (typically ~7 people) works together in one room for the
 
 ---
 
-## Runtime Rule
-
-Never invoke a method only by name. Read the method document first, then state which method you are using and why it fits the current mode.
-
----
-
 ## Use Protocol
 
 1. Confirm the current mode or the active docs.
 2. Choose a method only if the trigger matches the current work.
-3. Before using the method, read its document under `methods/`.
+3. Before using the method, read its document under `methods/`. Never invoke a method only by name — state which method you are using and why it fits the current mode.
 4. Treat the `Cleaned Transcription` section as source text.
 5. Treat `Use Before`, `Use Notes`, and `Do Not Use When` as project-specific notes, not source text.
