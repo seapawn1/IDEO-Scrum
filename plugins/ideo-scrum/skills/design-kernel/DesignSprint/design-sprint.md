@@ -26,7 +26,7 @@
 
 ### Pick a target
 
-- [ ] **Pick a target.** Circle your most important customer and one target moment on the map. The team can weigh in, but the Decider makes the call.
+- [ ] **Pick a target.** Choose the most important customer and the critical moment of their experience. The Decider makes the call. See `monday/pick-a-target.md` for the full rationale.
 
 ### Key Ideas
 
