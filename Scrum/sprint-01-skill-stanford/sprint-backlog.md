@@ -27,4 +27,5 @@
 |---|---|---|---|---|
 | H-1 | 拆分 Stanford Design Guides 为 5 个 mode 文件 | `references/IDEO-StanfordDesignGuides.md` | `stanford-modes/stanford-empatize.md` ~ `stanford-test.md`，各含 WHAT/WHY/HOW + Transition + Source/License | ✅ 完成 |
 | H-2 | 摘抄当前 ideo-kernel SKILL.md 五模式内容 | `plugins/ideo-scrum/skills/ideo-kernel/SKILL.md` verbatim 段 | `ideo-modes/ideo-empatize.md` ~ `ideo-test.md`，各含当前 mode 原文 + Source 标注 | ✅ 完成 |
+| H-3 | 融合 Stanford + IDEO → 最终版五模式 | `stanford-modes/`（底本）+ `ideo-modes/`（补充） | `final-modes/empathize.md` ~ `test.md`，Stanford WHAT/WHY/HOW 骨架 + ideo 独特内容（Immerse / POV checklist / focus-flare / 四目的） | ✅ 完成 |
 | | | | | |
