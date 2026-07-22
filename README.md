@@ -14,11 +14,13 @@
 | `.env` | 本地私人，不入库 |
 | `seapawn.md` | 本地私人，不入库 |
 | `README.md` | 项目地图与本文件 |
-| `CLAUDE.md` | 项目定位（Claude 会话入口） |
-| `.claude/settings.json` | 项目级 Claude Code 配置 |
-| `.claude/skills/` | 自定义技能（预留，待配置） |
-| `.claude/output-styles/` | 自定义输出样式（预留，待配置） |
+| `CLAUDE.md` | 项目定位 |
+| `.claude/settings.json` | 项目级配置（outputStyle: ai-partner） |
+| `.claude/output-styles/ai-partner.md` | AI-field 讨论伙伴输出样式 |
+| `resources/ideo-kernel/SKILL.md` | IDEO Design Thinking 技能内核 |
+| `resources/ideo-kernel/methods/` | Design Thinking 方法库（~40 个方法） |
+| `resources/scrum-kernel/SKILL.md` | Scrum Sprint 技能内核 |
 
 ## 当前状态
 
-2026-07-22：刚初始化，待开发 Design Thinking 与 Scrum Sprint 技能。
+2026-07-22：方法论内核已引入——Design Thinking（IDEO 五模式 + 方法库）与 Scrum Sprint（Scrum Guide 原文），配置 ai-partner 输出样式。待开发面向用户的 skill 入口。
