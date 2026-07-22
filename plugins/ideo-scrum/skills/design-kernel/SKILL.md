@@ -5,7 +5,7 @@ description: Use when work involves IDEO Design Thinking — the five modes (Emp
 
 # Design Thinking Kernel
 
-## Design Thinking 概述
+## Design Thinking Overview
 
 <!-- TODO -->
 
@@ -15,17 +15,17 @@ description: Use when work involves IDEO Design Thinking — the five modes (Emp
 
 | Mode | Reference | Read when |
 |---|---|---|
-| Empathize | `IDEO-modes/empathize.md` | 用户需要理解用户、进入共情模式——观察、互动、沉浸，从人的行为和情感中发现深层需求 |
-| Define | `IDEO-modes/define.md` | 用户已收集共情发现，需要定义有意义的问题——提炼 Point of View（用户 + 需求 + 洞察） |
-| Ideate | `IDEO-modes/ideate.md` | 用户已有 POV，需要生成大量创意——发散探索，不急于收敛 |
-| Prototype | `IDEO-modes/prototype.md` | 用户已有选定的创意，需要低成本原型——动手做、快速失败、迭代学习 |
-| Test | `IDEO-modes/test.md` | 用户已有原型，需要用户反馈——在真实场景中测试，继续学习用户 |
+| Empathize | `IDEO-modes/empathize.md` | When the user needs to understand people — observe, engage, immerse — to discover deep needs from human behavior and emotion |
+| Define | `IDEO-modes/define.md` | When empathy findings are collected and a meaningful challenge needs framing — craft a Point of View (user + need + insight) |
+| Ideate | `IDEO-modes/ideate.md` | When a POV is ready and a wide range of ideas is needed — diverge and explore, don't converge too early |
+| Prototype | `IDEO-modes/prototype.md` | When selected ideas need low-cost prototypes — build, fail fast, iterate and learn |
+| Test | `IDEO-modes/test.md` | When prototypes are ready for user feedback — test in real contexts, continue learning about users |
 
 ### Design Sprint
 
 | Method | Reference | Read when |
 |---|---|---|
-| Design Sprint | `methods/design-sprint.md` | SeaPawn 明确切换到时间盒 Sprint、问 Monday-Friday 流程，或需要长期目标、Sprint 问题、地图、HMW 笔记、目标用户、草图、故事板、原型或用户测试 |
+| Design Sprint | `methods/design-sprint.md` | When SeaPawn explicitly switches to a time-boxed sprint, asks for Monday-Friday flow, or needs long-term goal, sprint questions, map, HMW notes, target, sketches, storyboard, prototype, or user test |
 
 ---
 
