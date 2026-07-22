@@ -28,20 +28,6 @@
 
 - [ ] **Pick a target.** Choose the most important customer and the critical moment of their experience. The Decider makes the call. See `monday/pick-a-target.md` for the full rationale.
 
-### Key Ideas
-
-- [ ] **Start at the end.** Start by imagining your end result and risks along the way. Then work backward to figure out the steps you'll need to get there.
-- [ ] **Nobody knows everything.** Not even the Decider. All the knowledge on your sprint team is locked away in each person's brain. To solve your big problem, you'll need to unlock that knowledge and build a shared understanding.
-- [ ] **Reframe problems as opportunities.** Listen carefully for problems and use "How might we" phrasing to turn them into opportunities.
-
-### Facilitator Tips
-
-- [ ] **Ask for permission.** Ask the group for permission to facilitate. Explain that you'll try to keep things moving, which will make the sprint more efficient for everyone.
-- [ ] **ABC: Always be capturing.** Synthesize the team's discussion into notes on the whiteboard. Improvise when needed. Keep asking, "How should I capture that?"
-- [ ] **Ask obvious questions.** Pretend to be naive. Ask "Why?" a lot.
-- [ ] **Take care of the humans.** Keep your team energized. Take breaks every sixty to ninety minutes. Remind people to snack and to eat a light lunch.
-- [ ] **Decide and move on.** Slow decisions sap energy and threaten the sprint timeline. If the group sinks into a long debate, ask the Decider to make a call.
-
 ## Tuesday
 
 ### 10 a.m.
