@@ -83,5 +83,27 @@ If the Product Goal shifts often, it could indicate that something is off, perha
 
 ---
 
+## The Scrum Events in the Expansion Pack
+
+Scrum combines four timeboxed events for Inspection and Adaptation within a containing fifth event of determinate consistent length, the Sprint. These events support the Scrum pillars of Transparency, Inspection, and Adaptation. Releases enable value, ideally, continuously. Infrequent releases lead to delayed result feedback.
+
+A timebox is a stipulated maximum amount of elapsed time from beginning to end for a defined event, not to be confused with an expectation to use that full amount of time. The purpose of a timebox in Scrum is to foster the selection of essential work, creating Focus to achieve desired results quickly.
+
+Events create cadence and minimize the need for other meetings not part of Scrum. Ideally, each event is held at the same time and place to reduce complexity [12-17] and foster the formation of habits. Skilled facilitation improves effectiveness. Ineffective events risk losing emphasis on the Sprint Goal, Product Goal, Transparency, Inspection, Adaptation, and Scrum Values.
+
+Each event has its own purpose and should include deep, meaningful work. Together, the Scrum events provide a scaffold of Transparency to inspect and adapt, pause, and reflect. The Scrum events support structured thinking and working, effectiveness, and a balanced workload. (SGEP is influenced by Cynefin and Evidence-Based Management)
+
+Communication is key to ensuring the Scrum Team and Supporters Focus on the right thing. Apart from the Sprint, events may consume less time as long as coherence is not lost.
+
+| Event | Reference | Purpose | Read when |
+| --- | --- | --- | --- |
+| The Sprint | `references/scrum-event-sprint.md` | Container event that turns ideas into value through an iteration of determinate length. Provides Focus, stability, and a cadence for Inspection and Adaptation toward the Product Goal. | The team needs to understand Sprint rules: what cannot change during a Sprint, when cancellation is appropriate, how shorter Sprints affect learning cycles and risk, or why frequent releasing matters for result feedback. |
+| Sprint Planning | `references/scrum-event-sprint-planning.md` | Initiate the Sprint by defining the Sprint Goal (Why), selecting Product Backlog Items (What), and creating an actionable plan (How). Where the Scrum Team gives Focus and creates commitment. | A new Sprint is about to begin. The Product Owner proposes value-increasing ideas, the Developers select and decompose PBIs, and the team must craft a Sprint Goal covering Why / What / How. Also when the team chronically overloads Sprints — consult the SGEP guidance on buffers and slack. |
+| Daily Scrum | `references/scrum-event-daily-scrum.md` | Product Developers inspect progress toward the Sprint Goal and adapt the Sprint Backlog for the next day. Provides Focus, cohesion, urgency, and fosters self-management. | The Developers need to inspect progress toward the Sprint Goal, adapt the Sprint Backlog, identify impediments, or decide whether to pivot toward the Product Goal when the Sprint Goal is already met. Also when the team is starting too many items instead of finishing work in progress. |
+| Sprint Review | `references/scrum-event-sprint-review.md` | Inspect the Sprint outcome with Stakeholders and collaboratively determine future adaptations. Inspects the Increment, Product Goal, Product Backlog, market, and Definition of Outcome Done. | The Sprint outcome is ready for Stakeholder inspection. The team presents the Increment, Definition of Output Done, and Definition of Outcome Done measures; Stakeholders and the Scrum Team collaborate on what to do next; the Product Backlog (and possibly Product Goal) may adapt. Also when incomplete PBIs need to be returned to the backlog. |
+| Sprint Retrospective | `references/scrum-event-sprint-retrospective.md` | Plan ways to increase quality and effectiveness. The Scrum Team inspects how the last Sprint went and identifies the most helpful changes to improve. | The Sprint is ending. The Scrum Team inspects how the last Sprint went — individuals, interactions, processes, tools, Definition of Done — identifies bad assumptions, and agrees on the most impactful improvements. Also when improvement actions from prior Retros were not followed through. |
+
+---
+
 **Source:** [Scrum on One Page - Scrum Guide Expansion Pack](https://scrumexpansion.org/scrum-on-one-page/)
 [2020 Scrum Guide] (https://scrumguides.org/scrum-guide.html) 
