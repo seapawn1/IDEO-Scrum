@@ -37,6 +37,17 @@ A cross-functional team (typically ~7 people) works together in one room for the
 
 **Source:** Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster.
 
+### Role Agents
+
+Four role-specific agents provide on-demand guidance for Design Sprint roles defined in the book's "Team" chapter:
+
+| Agent | Role |
+| --- | --- |
+| `agents/design-sprint-decider.md` | Decider — final authority on key choices, breaks deadlocks, appears Mon/Wed/Fri |
+| `agents/design-sprint-facilitator.md` | Facilitator — manages time, conversations, and sprint process; neutral on content |
+| `agents/design-sprint-team.md` | Sprint Team — 7 or fewer, diverse skills (finance/marketing/customer/tech/design) |
+| `agents/design-sprint-experts.md` | Experts — extra specialists for Monday afternoon knowledge transfer |
+
 ---
 
 ## Use Protocol

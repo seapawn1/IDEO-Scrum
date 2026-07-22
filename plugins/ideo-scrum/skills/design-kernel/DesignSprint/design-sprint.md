@@ -2,33 +2,16 @@
 
 ## Set The Stage
 
-- [ ] **Choose a big challenge.** Use sprints when the stakes are high, when there's not enough time, or when you're just plain stuck.
-- [ ] **Get a Decider (or two).** Without a Decider, decisions won't stick. If your Decider can't join the entire sprint, have her appoint a delegate who can.
-- [ ] **Recruit a sprint team.** Seven people or fewer. Get diverse skills along with the people who work on the project day-to-day.
-- [ ] **Schedule extra experts.** Not every expert can be in the sprint all week. For Monday afternoon, schedule fifteen- to twenty-minute interviews with extra experts. Plan for two to three hours total.
-- [ ] **Pick a Facilitator.** She will manage time, conversations, and the overall sprint process. Look for someone who's confident leading a meeting and synthesizing discussions on the fly. It might be you!
-- [ ] **Block five full days on the calendar.** Reserve time with your sprint team from 10 a.m. to 5 p.m. Monday through Thursday, and 9 a.m. to 5 p.m. Friday.
-- [ ] **Book a room with two whiteboards.** Reserve a sprint room for the entire week. If it doesn't have two whiteboards in it already, buy some or improvise. Book a second room for Friday's interviews.
+Before the sprint begins, you need the right challenge, the right team, and the right time and space. The four essential roles are covered by dedicated agents:
 
-### Key Ideas
+| Role | Agent | Purpose |
+|---|---|---|
+| **Decider** | `agents/design-sprint-decider.md` | Final authority on key choices; breaks deadlocks |
+| **Facilitator** | `agents/design-sprint-facilitator.md` | Manages time, conversations, and sprint process |
+| **Sprint Team** | `agents/design-sprint-team.md` | 7 or fewer; diverse skills; full-time in the room |
+| **Experts** | `agents/design-sprint-experts.md` | Extra specialists for Monday afternoon interviews |
 
-- [ ] **No distractions.** No laptops, phones, or iPads allowed. If you need your device, leave the room or wait for a break.
-- [ ] **Timebox.** A tight schedule builds confidence in the sprint process. Use a Time Timer to create focus and urgency.
-- [ ] **Plan for a late lunch.** Snack break around 11:30 a.m. and lunch around 1 p.m. This schedule maintains energy and avoids lunch crowds.
-
-## Sprint Supplies
-
-- [ ] **Lots of whiteboards.** Wall-mounted are best, but rolling whiteboards are good, too. Alternatives: IdeaPaint, Post-it easel pads, or butcher paper taped to the walls. Get two big whiteboards (or equivalent surface area).
-- [ ] **Yellow 3-by-5 sticky notes.** Stick with classic yellow, because the multicolored notes cause unnecessary cognitive load. Get fifteen pads.
-- [ ] **Black whiteboard markers.** Using a thick marker will keep your ideas pithy and easy for others to read. We prefer whiteboard markers over Sharpies because they're more versatile, they smell less, and you don't have to worry about accidentally putting a permanent mark on your whiteboard. Get ten markers.
-- [ ] **Green and red whiteboard markers.** For Friday's observation notes. Get ten of each color.
-- [ ] **Black felt-tip pens.** For sketching on Tuesday. Avoid super-thin pens that encourage microscopic writing. We like the medium-point Paper Mate Flair. Get ten pens.
-- [ ] **Printer paper.** For sketching (sadly, not everything fits on a sticky note). Get one hundred sheets, letter-size or A4.
-- [ ] **Masking tape.** For posting solution sketches on the walls. Get one roll.
-- [ ] **Small dot stickers (1/4-inch).** For heat map votes. Must be all the same color (we like blue). If you're searching online, these are often called "Round Color Coding Labels." Get about two hundred small dots.
-- [ ] **Large dot stickers (3/4-inch).** For How Might We votes, straw poll, and supervotes. Must be all the same color, and a different color than the small dots (we like pink or orange). Get about one hundred large dots.
-- [ ] **Time Timers.** For keeping time throughout the sprint. Get two: one to keep the current activity on time, and one to remind you when to take a break.
-- [ ] **Healthy snacks.** Good snacks will help keep your team's energy up throughout the day. Eat real food like apples, bananas, yogurt, cheese, and nuts. For a boost, have dark chocolate, coffee, and tea. Get more than enough for everybody.
+> For the full team composition rationale and in-person logistics (supplies, room setup, schedule), see the book: Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint.* Simon & Schuster. Chapter: "Team" and "Time and Space."
 
 ## Monday
 
