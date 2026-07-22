@@ -8,8 +8,8 @@
 
 ### Start at the End
 
-- [ ] **Set a long-term goal.** Get optimistic. Ask: Why are we doing this project? Where do we want to be in six months, a year, or even five years from now? See `monday/set-a-long-term-goal.md` for the full rationale.
-- [ ] **List sprint questions.** Get pessimistic. Ask: How could we fail? Turn these fears into questions you could answer this week. See `monday/list-sprint-questions.md` for the full rationale.
+- [ ] **Set a long-term goal.** Get optimistic. Ask: Why are we doing this project? Where do we want to be in six months, a year, or even five years from now? See `monday/start-at-the-end.md` for the full rationale.
+- [ ] **List sprint questions.** Get pessimistic. Ask: How could we fail? Turn these fears into questions you could answer this week. See `monday/start-at-the-end.md` for the full method.
 
 ### Map
 
