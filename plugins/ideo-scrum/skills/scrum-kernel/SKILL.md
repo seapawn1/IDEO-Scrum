@@ -57,14 +57,6 @@ Scrum operates in Sprints (iterations of determinate length up to four weeks) wi
 
 ---
 
-## Reference Catalog
-
-| Category | Reference | Contains | Read when |
-| --- | --- | --- | --- |
-| **Foundation** | `scrum-guide-2020.md` | The definitive 2020 Scrum Guide by Ken Schwaber & Jeff Sutherland | The team is new to Scrum, needs the canonical definitions of roles/events/artifacts, or a dispute about "what Scrum says" must be settled by the source. |
-
----
-
 ## The Scrum Artifacts in the Expansion Pack
 
 Scrum’s artifacts provide Transparency about what the Scrum Team and Stakeholders believe will deliver value. Thus, everyone can have the same basis for Inspection and Adaptation.
@@ -113,5 +105,25 @@ Communication is key to ensuring the Scrum Team and Supporters Focus on the righ
 
 ---
 
-**Source:** [Scrum on One Page - Scrum Guide Expansion Pack](https://scrumexpansion.org/scrum-on-one-page/)
-[2020 Scrum Guide] (https://scrumguides.org/scrum-guide.html) 
+## Reference Catalog
+
+| Category | Reference | Contains | Read when |
+| --- | --- | --- | --- |
+| **Foundation** | `scrum-guide-2020.md` | The definitive 2020 Scrum Guide by Ken Schwaber & Jeff Sutherland | The team is new to Scrum, needs the canonical definitions of roles/events/artifacts, or a dispute about "what Scrum says" must be settled by the source. |
+
+### Role Agents
+
+Six role-specific agents provide on-demand guidance for Scrum roles defined in the SGEP:
+
+| Agent | Role |
+| --- | --- |
+| `agents/scrum-product-owner.md` | Product Owner — value maximization, backlog management, stakeholder engagement |
+| `agents/scrum-scrum-master.md` | Scrum Master — change agency, effectiveness, impediment removal |
+| `agents/scrum-product-developer.md` | Product Developers — collective accountability, cross-functionality |
+| `agents/scrum-stakeholder.md` | Stakeholder — types, engagement patterns, satisfaction gaps |
+| `agents/scrum-supporter.md` | Supporter — organizational change agents, guiding coalition |
+| `agents/scrum-artificial-intelligence.md` | AI — augmentation, human-in-the-loop, experimentation boundaries |
+
+### Source Document
+
+`assets/scrum-guide-expanded-2026.1.md` is the full SGEP source from which all reference files, role agents, and catalog tables are derived. It additionally contains: supporting Theory (complexity, emergence, empiricism, lean thinking, cadence), the Scrum Values through the OODA lens, Product/Systems/Discovery/Leadership theory, People & Change guidance, and the complete academic reference list.
