@@ -7,7 +7,39 @@ description: Use when work involves IDEO Design Thinking — the five modes (Emp
 
 ## Design Thinking Overview
 
-<!-- TODO -->
+### IDEO Design Thinking
+
+Design Thinking is a **human-centered approach to innovation** that integrates the needs of people, the possibilities of technology, and the requirements for business success. Originating from IDEO and formalized at Stanford's Hasso Plattner Institute of Design (the d.school, founded by David Kelley), it is an iterative, non-linear methodology for tackling complex, ill-defined problems. Its core ethos is **bias toward action** — learning by doing rather than analysis alone.
+
+The d.school's five-mode model:
+
+| Mode | Focus | Key Action |
+|---|---|---|
+| **Empathize** | Understand users deeply | Observe, engage, immerse in users' lives to uncover real needs |
+| **Define** | Frame the right problem | Synthesize findings into a Point of View (user + need + insight) |
+| **Ideate** | Generate possibilities | Diverge — brainstorm radical alternatives beyond the obvious |
+| **Prototype** | Make ideas tangible | Build low-cost artifacts to test; "build to think" |
+| **Test** | Learn from users | Put prototypes in front of real users; iterate based on feedback |
+
+The process is **not linear** — teams move back and forth between modes as insights emerge. Empathize and Ideate are divergent (opening up possibilities); Define and Prototype are convergent (narrowing toward solutions); Test feeds learning back into any mode.
+
+**Source:** IDEO / Stanford d.school — Bootcamp Bootleg and Design Thinking Method Guides.
+
+### Design Sprint
+
+The **Design Sprint** is a structured five-day process for answering critical business questions through design, prototyping, and testing with real customers. Developed by **Jake Knapp** at **Google Ventures** (GV) and detailed in the book *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days* (Knapp, Zeratsky & Kowitz, 2016), it compresses months of debate into a single focused week of evidence-based learning.
+
+| Day | Theme | Core Activities |
+|---|---|---|
+| **Monday** | Define | Set a long-term goal, map the problem space, interview experts, choose a target |
+| **Tuesday** | Ideate | Review existing inspiration, individually sketch detailed solution concepts |
+| **Wednesday** | Decide | Silent critique, vote on elements, Decider selects winning ideas, create a storyboard |
+| **Thursday** | Prototype | Build a realistic, testable facade — "fake it" with Keynote, Figma, or paper |
+| **Friday** | Test | Conduct five one-hour user interviews, observe reactions, identify patterns, decide next steps |
+
+A cross-functional team (typically ~7 people) works together in one room for the full week, with a designated **Decider** who has final authority on key choices. The Sprint replaces speculation with user evidence, giving teams clarity on whether to invest, pivot, or abandon an idea — all in five days.
+
+**Source:** Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster.
 
 ## Mode Reference
 
@@ -25,7 +57,7 @@ description: Use when work involves IDEO Design Thinking — the five modes (Emp
 
 | Method | Reference | Read when |
 |---|---|---|
-| Design Sprint | `methods/design-sprint.md` | When SeaPawn explicitly switches to a time-boxed sprint, asks for Monday-Friday flow, or needs long-term goal, sprint questions, map, HMW notes, target, sketches, storyboard, prototype, or user test |
+| Design Sprint | `methods/design-sprint.md` | When user explicitly switches to a time-boxed sprint, asks for Monday-Friday flow, or needs long-term goal, sprint questions, map, HMW notes, target, sketches, storyboard, prototype, or user test |
 
 ---
 
