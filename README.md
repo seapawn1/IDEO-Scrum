@@ -53,7 +53,7 @@
 | `Scrum/DefinitionofDone.md` | Definition of Outcome Done + Definition of Output Done |
 | `Scrum/product-backlog.md` | Product Backlog — Product Goal + PBI 列表 |
 | `Scrum/sprint-01-skill-stanford/` | Sprint 01：sprint-backlog + SprintReview + 工作材料（stanford-modes / ideo-modes） |
-| `Scrum/sprint-02-agents-sgep/` | Sprint 02：PBI-3 — scrum-kernel agents 重构（迁移 + SGEP 原文摘抄） |
+| `Scrum/sprint-02-agents-sgep/` | Sprint 02 ✅：PBI-3 — 6 个 agent 全部替换为 SGEP 原文摘抄 + SprintReview |
 | `Scrum/sprint-03-design-sprint-restructure/` | Sprint 03：PBI-5 — Design Sprint 全书拆分为多文件体系 |
 
 ### 源参考
@@ -71,4 +71,4 @@
 
 ## 当前状态
 
-2026-07-22：Sprint 01 完成——design-kernel（原 ideo-kernel）完成结构化改造：SKILL.md 重构为 Overview（IDEO + Design Sprint）+ Method Catalog 两层架构，五模式拆分为独立 IDEO-modes/ reference（WHAT/WHY/HOW + Transition），skill 更名为 design-kernel 与 scrum-kernel 对称。Sprint 02（PBI-3：agents 重构）+ Sprint 03（PBI-5：Design Sprint 内容重组）已创建 Sprint Backlog，即将开始。PBI-2（output-styles）、PBI-4（description 审计）、PBI-6（删除 SGEP 内容）排队中。
+2026-07-22：Sprint 01 完成——design-kernel（原 ideo-kernel）完成结构化改造：SKILL.md 重构为 Overview（IDEO + Design Sprint）+ Method Catalog 两层架构，五模式拆分为独立 IDEO-modes/ reference（WHAT/WHY/HOW + Transition），skill 更名为 design-kernel 与 scrum-kernel 对称。Sprint 02（PBI-3：agents SGEP 原文摘抄）已完成。Sprint 03（PBI-5：Design Sprint 内容重组）即将开始。PBI-2（output-styles）、PBI-4（description 审计）、PBI-6（删除 SGEP 内容）排队中。
