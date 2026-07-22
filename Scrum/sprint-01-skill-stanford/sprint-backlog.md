@@ -17,7 +17,7 @@
 
 | # | 标题 | 用户故事 | Outcome Criteria | Acceptance Criteria | Size | 当前状态 | 备注 |
 |---|---|---|---|---|---|---|---|
-| PBI-1 | 细化 ideo-kernel SKILL.md — 融合 Stanford Design Guides | 作为 ideo-kernel 用户，我希望 SKILL.md 中的五模式引导有 WHAT / WHY / HOW 三层结构，而不是当前的单层概述，这样一次对话就能获得完整方法论引导，不需要额外查阅 Stanford 原文 | ideo-kernel SKILL.md 的每个 mode 达到 Stanford Design Guides 的细致程度，用户在 Empathize / Define / Ideate / Prototype / Test 任一 mode 都能获得"是什么—为什么—怎么做"的完整引导 | 5 个 mode 各自包含 WHAT / WHY / HOW 三个子节；内容忠于 `references/IDEO-StanfordDesignGuides.md` 原文；标注 Source: IDEO / Stanford d.school Design Guides；保留当前 verbatim 段中 Stanford 未覆盖的补充内容；mode 间 transition 指引保留（如 Empathize >> Define 的 Unpack） | L | 待开始 | 源材料：`references/IDEO-StanfordDesignGuides.md`（214 行）；当前 SKILL.md verbatim 段约 100 行，需扩展为 5 个 mode × 3 层结构 |
+| PBI-1 | 细化 ideo-kernel SKILL.md — 融合 Stanford Design Guides | 作为 ideo-kernel 用户，我希望 SKILL.md 中的五模式引导有 WHAT / WHY / HOW 三层结构，而不是当前的单层概述，这样一次对话就能获得完整方法论引导，不需要额外查阅 Stanford 原文 | ideo-kernel SKILL.md 的每个 mode 达到 Stanford Design Guides 的细致程度，用户在 Empathize / Define / Ideate / Prototype / Test 任一 mode 都能获得"是什么—为什么—怎么做"的完整引导 | 5 个 mode 各自包含 WHAT / WHY / HOW 三个子节；内容忠于 `references/IDEO-StanfordDesignGuides.md` 原文；标注 Source: IDEO / Stanford d.school Design Guides；保留当前 verbatim 段中 Stanford 未覆盖的补充内容；mode 间 transition 指引保留（如 Empathize >> Define 的 Unpack） | L | 进行中 | 源材料：`references/IDEO-StanfordDesignGuides.md`（214 行）；当前 SKILL.md verbatim 段约 100 行，需扩展为 5 个 mode × 3 层结构 |
 
 ---
 
@@ -25,4 +25,5 @@
 
 | # | 步骤 | 输入 | 输出 | 状态 |
 |---|---|---|---|---|
+| H-1 | 拆分 Stanford Design Guides 为 5 个 mode 文件 | `references/IDEO-StanfordDesignGuides.md` | `stanford-modes/stanford-empatize.md` ~ `stanford-test.md`，各含 WHAT/WHY/HOW + Transition + Source/License | ✅ 完成 |
 | | | | | |
