@@ -18,9 +18,3 @@
 | # | 标题 | 用户故事 | Outcome Criteria | Acceptance Criteria | Size | 当前状态 | 备注 |
 |---|---|---|---|---|---|---|---|
 | PBI-5 | 重组 Design Sprint 内容结构 | 作为 IDEO-Scrum 用户，我希望 Design Sprint 方法论的内容像 Stanford Design Guides 和 SGEP 一样有清晰的文件结构，而不是堆在一个大 markdown 文件里，这样在 Sprint Week 的每个阶段都能快速找到对应的方法论引导 | — | — | L | 待开始 | 源材料：`references/DesignSprint-HowtoSolveBigProblemsandTestJakeKnapp.md`（3750 行，含 111 张图片引用）；当前入口：`methods/design-sprint.md`（245 行 checklist）；目标目录：`design-kernel/design-sprint/`（新建） |
-
----
-
-## How — 工作计划
-
-（待定）
