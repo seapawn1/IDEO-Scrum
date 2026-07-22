@@ -12,11 +12,13 @@
 | 类别 | 度量 | 目标信号 |
 |---|---|---|
 | **User outcomes** | 一次对话中完成完整 Scrum Event 引导 | 事件引导覆盖 Why / What / How 三个层面 |
+| | 一次对话中完成完整 Design Thinking mode 引导 | mode 引导覆盖该 mode 的核心动作（如 Empathize 的 Observe/Engage/Immerse） |
 | | 查阅 reference 后能独立执行，不反复追问 | ≤ 2 轮对话进入执行 |
 | | 角色 agent 回答被采纳或认可 | 用户不再追问同一问题 |
 | **Product Stakeholder outcomes** | scrum-kernel 引用完整性 | SGEP 关键章节无遗漏 |
-| | 文档溯源标注合规 | 所有 reference 文件标注来源和 CC BY-SA 4.0 license |
-| | 新用户从 SKILL.md 找到目标 reference 的跳数 | ≤ 2 跳 |
+| | ideo-kernel 引用完整性 | IDEO/Stanford Design Guides 五个 mode 原文无遗漏 |
+| | 文档溯源标注合规 | 所有 reference + method 文件标注来源和 license（SGEP CC BY-SA 4.0 / IDEO Stanford Design Guides / Design Sprint by Jake Knapp） |
+| | 新用户从 SKILL.md 找到目标 reference 的跳数 | ≤ 2 跳（两个 kernel 均满足） |
 | **Business impact** | 第三方用户成功安装并使用 | `claude plugins install` 可用 |
 | | 版本迭代节奏 | 每个 Sprint 产出可发布的 Increment |
 

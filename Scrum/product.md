@@ -11,5 +11,7 @@
 
 **Product Vision**：让 Claude Code 成为一个随身的设计思维与敏捷教练——有方法论需求的人打开 Claude Code 调用 IDEO-Scrum，就能获得结构化、忠于原文、可操作的方法论引导。
 
+**当前 Product Goal**：见 [Product Backlog](product-backlog.md)。
+
 
 
