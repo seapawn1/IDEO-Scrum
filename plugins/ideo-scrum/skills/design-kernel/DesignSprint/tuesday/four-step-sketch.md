@@ -2,27 +2,13 @@
 
 > Source: Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster. Chapter: "Sketch."
 
-Serah Giarusso, Blue Bottle Coffee's customer support lead, looked uneasy. And she wasn't the only one. James Freeman, the CEO, furrowed his brow.
+On Tuesday afternoon, it's time to come up with solutions. No brainstorming, no shouting—you'll work individually, take your time, and sketch. Paper is the great equalizer: everyone can write words, draw boxes, and express ideas with the same clarity.
 
-It was Tuesday afternoon of Blue Bottle's sprint. Sunlight made rectangles on the carpet. Somewhere on the street below, a car honked. And there, in the middle of the sprint room, on a coffee table, was the source of the team's consternation: a stack of paper, a dozen clipboards, and a paper cup filled with black pens.
+If you think you can't draw, you're in good company. At Blue Bottle Coffee's sprint, Byard Duncan—the communications manager—asked, "What if I can't draw?" His solution sketch, **"The Mind Reader,"** organized the online store the way a barista talks with a customer: welcome, ask how they brew, then recommend. The drawing was mostly boxes and text—anyone can do it.
 
-Somebody cleared his throat. It was Byard Duncan, Blue Bottle's communications manager. As everyone turned, he cracked a sheepish smile. "So ...," he said. "What if I can't draw?"
+On Friday, real customers called "The Mind Reader" "way better" than competing retailers. It became the foundation for Blue Bottle's new website. The person who drew it? Byard Duncan. Not a designer. The communications manager.
 
----
-
-On Tuesday afternoon, it's time to come up with solutions. But there will be no brainstorming; no shouting over one another; no deferring judgment so wacky ideas can flourish. Instead, you'll work individually, take your time, and sketch.
-
-Even though we're total tech nerds, we're believers in the importance of starting on paper. It's a great equalizer. Everyone can write words, draw boxes, and express his or her ideas with the same clarity. If you can't draw (or rather, if you *think* you can't draw), don't freak out. Plenty of people worry about putting pen to paper, but anybody—absolutely anybody—can sketch a great solution.
-
-To show you what we're talking about, let's take a look at one of the sketches that came out of Blue Bottle Coffee's sprint—a solution called **"The Mind Reader."**
-
-The big idea behind "The Mind Reader" was to organize the online store the same way a barista might talk with a customer. The solution leads with a welcome, then asks how the customer prepares coffee at home, before offering recommendations and a brewing guide. There's a lot of complexity to the idea, but the drawing itself was straightforward: mostly boxes and text, the kind of thing anyone can draw.
-
-Later in the week, the team made a realistic prototype based on "The Mind Reader," with details filled in from some of the other sketches. On Friday, when shown to real customers, "The Mind Reader" was remarkably effective. Customers grew confident in the quality of the coffee as they clicked through the website. They found beans they wanted to order. They described the prototype as "way better" than competing retailers and mentioned that "clearly, these people know coffee." It was the big winner of Friday's test, and it became the foundation for Blue Bottle's new website.
-
-So, who sketched that solution? It wasn't a designer, an architect, or an illustrator. It was Byard Duncan, the Man Who Couldn't Draw.
-
-See, Tuesday afternoon is about sketching, but more importantly, it's about **solutions.** When you evaluate these sketches on Wednesday to decide which are best, and when you test your prototype on Friday, it will be the quality of the solutions that matters, not the artistry of the drawings from which they came.
+Tuesday afternoon is about sketching, but more importantly, it's about **solutions.** When you evaluate sketches on Wednesday and test your prototype on Friday, the quality of the solutions matters—not the artistry of the drawings.
 
 ## The power of sketching
 

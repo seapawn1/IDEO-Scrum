@@ -2,29 +2,11 @@
 
 > Source: Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster. Chapter: "Remix and Improve."
 
-Imagine it's the early 1900s. You're drinking a nice hot cup of coffee. Only ... it's not so nice. Coffee grounds stick in your teeth, and the liquid is so bitter your mouth puckers. If it weren't for the caffeine, you probably wouldn't bother. Back in those days, coffee was brewed like tea, by dunking a pouch of ground beans into boiling water. There was a lot of room for error: over-brewing, underbrewing, and plenty of grit at the bottom of the cup. Some people strained their coffee through filters made of cloth, but the material was overly porous and a mess to clean up.
+In 1908, a German woman named Melitta Bentz got fed up with gritty, bitter coffee. Back then, coffee was brewed by dunking a pouch of ground beans into boiling water—messy, inconsistent, and full of grit. Convinced there had to be a better way, Bentz went looking. She came across the blotting paper in her son's school notebook, designed for mopping up excess ink. It was thick, absorbent, and disposable. She punctured holes in a brass pot, placed the paper inside, added ground coffee and hot water—and invented the paper coffee filter. More than a hundred years later, it remains one of the best tools for brewing coffee.
 
-In 1908, a German woman named Melitta Bentz got fed up with gritty, bitter coffee. Convinced there had to be a better way, Bentz went looking for ideas. She came across the blotting paper in her son's school notebook. The material was designed for mopping up excess ink. It was thick and absorbent—and disposable.
+We all want a flash of divine inspiration. But amazing ideas don't happen like that. The lesson of Melitta Bentz: **great innovation is built on existing ideas, repurposed with vision.** Coffee filters had been tried before (cloth). The blotting paper was just sitting there. In your sprint, you'll follow her example: **remix and improve—but never blindly copy.**
 
-Inspired, Bentz tore out a sheet of the blotting paper. She punctured holes in a brass pot with a nail, placed the pot on top of a cup, put the paper inside, filled it with ground coffee, and added hot water. The resulting drink was smooth, grit-free, and a snap to clean up after. Bentz had invented the paper coffee filter. More than a hundred years later, it remains one of the most popular (and best) tools for brewing coffee.
-
----
-
-We all want a flash of divine inspiration that changes the world—and impresses our teammates. We want to create something completely new. But amazing ideas don't happen like that. The lesson of Melitta Bentz is that great innovation is built on existing ideas, repurposed with vision. Coffee filters had been tried before, but they were made of cloth. And the blotting paper? It was just sitting there.
-
-This combination of existing ideas doesn't take anything away from Bentz's achievement, but it is promising news for the rest of us would-be inventors. In your sprint, you'll follow her example: **remix and improve—but never blindly copy.**
-
-You'll begin Tuesday morning by searching for existing ideas you can use in the afternoon to inform your solution. It's like playing with Lego bricks: first gather useful components, then convert them into something original and new.
-
-Our method for collecting and synthesizing these existing ideas is an exercise we call Lightning Demos. Your team will take turns giving three-minute tours of their favorite solutions: from other products, from different domains, and from within your own company. This exercise is about finding raw materials, not about copying your competitors. We've found limited benefit in looking at products from the same industry. Time and time again, the ideas that spark the best solutions come from similar problems in different environments.
-
-**Blue Bottle** wanted to help customers find coffee they'd love. But coffee beans all look alike, so photos wouldn't be helpful. To find useful solutions, the team did Lightning Demos of websites selling everything from clothes to wine, looking for ways to describe sensory details such as flavor, aroma, and texture.
-
-In the end, it was a chocolate-bar wrapper that provided the most useful idea. Tcho is a chocolate manufacturer in Berkeley, California. Printed on the wrapper of every Tcho bar is a simple flavor wheel with just six words: Bright, Fruity, Floral, Earthy, Nutty, and Chocolatey. When Blue Bottle looked at that wheel, they got inspired, and when we sketched, someone repurposed the idea as a simple flavor vocabulary for describing Blue Bottle's coffee beans. In Friday's test, and later, at the new online store, customers loved the simple descriptions. It's a prime example of finding inspiration outside your domain (and yet another reason to be grateful for chocolate).
-
-Sometimes, the best way to broaden your search is to look inside your own organization. Great solutions often come along at the wrong time, and the sprint can be a perfect opportunity to rejuvenate them. Also look for ideas that are in progress but unfinished—and even old ideas that have been abandoned. **Savioke** wanted to avoid the expectations of fictional robots who can carry on conversations and think independently. Both Steve, the CEO, and Adrian, the head designer, were convinced they could convey the right feeling with just a pair of eyes. On Tuesday morning of their sprint, the team spent an hour looking at eyes—robots in movies, animated characters. But the eyes that won their hearts had been there all along: an unfinished design Adrian had created long before the sprint. In Friday's test, those simple blinking eyes conveyed a friendly personality, without promising conversation.
-
-Like Savioke, you and your team should look far afield and close to home in your search for existing solutions. If you do, you're sure to uncover surprising and useful ideas.
+Tuesday morning is for gathering raw materials. The method is called Lightning Demos: take three-minute tours of great solutions—from other products, different domains, and within your own company. The best ideas almost never come from your own industry. Look for similar problems in different environments. Look for unfinished ideas inside your organization. If you search far afield and close to home, you're sure to uncover surprising and useful ideas.
 
 ## How to do
 
