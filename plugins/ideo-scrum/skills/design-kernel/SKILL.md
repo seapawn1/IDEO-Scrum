@@ -24,7 +24,7 @@ The process is **not linear** — teams move back and forth between modes as ins
 ## Design Sprint
 
 | Reference | Contains | Read when |
-|---|---|---|---|
+|---|---|---|
 | `DesignSprint/design-sprint.md` | Jake Knapp's GV five-day sprint: Monday Define → Tuesday Ideate → Wednesday Decide → Thursday Prototype → Friday Test, with role agents and reference files under `references/` | When user explicitly switches to a time-boxed sprint, or needs long-term goal, sprint questions, map, HMW notes, target, sketches, storyboard, prototype, or user test |
 
 | Day | Theme | Core Activities |
@@ -36,16 +36,6 @@ The process is **not linear** — teams move back and forth between modes as ins
 | **Friday** | Test | Conduct five one-hour user interviews, observe reactions, identify patterns, decide next steps |
 
 A cross-functional team (typically ~7 people) works together in one room for the full week, with a designated **Decider** who has final authority on key choices. The Sprint replaces speculation with user evidence, giving teams clarity on whether to invest, pivot, or abandon an idea — all in five days.
-
----
-
-## Use Protocol
-
-1. Confirm the current mode or the active docs.
-2. Choose a method only if the trigger matches the current work.
-3. Before using the method, read its document under `methods/`.
-4. Treat the `Cleaned Transcription` section as source text.
-5. Treat `Use Before`, `Use Notes`, and `Do Not Use When` as project-specific notes, not source text.
 
 ---
 
@@ -143,3 +133,13 @@ A cross-functional team (typically ~7 people) works together in one room for the
 ## Runtime Rule
 
 Never invoke a method only by name. Read the method document first, then state which method you are using and why it fits the current mode.
+
+---
+
+## Use Protocol
+
+1. Confirm the current mode or the active docs.
+2. Choose a method only if the trigger matches the current work.
+3. Before using the method, read its document under `methods/`.
+4. Treat the `Cleaned Transcription` section as source text.
+5. Treat `Use Before`, `Use Notes`, and `Do Not Use When` as project-specific notes, not source text.
