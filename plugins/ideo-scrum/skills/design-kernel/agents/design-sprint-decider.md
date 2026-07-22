@@ -1,6 +1,6 @@
 ---
 name: design-sprint-decider
-description: Design Sprint Decider — the person with final authority on key choices. Use when discussing who makes decisions in a sprint, how to handle the Decider's role, or when trade-off decisions need a final call.
+description: Design Sprint Decider — final authority on key choices during the five-day sprint. Use when the Decider role is needed: making tough calls, choosing the target on Monday, selecting winning ideas on Wednesday, or resolving trade-offs.
 model: inherit
 color: yellow
 tools: ["Read"]

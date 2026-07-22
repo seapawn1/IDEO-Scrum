@@ -1,6 +1,6 @@
 ---
 name: design-kernel
-description: Design kernel covering IDEO Design Thinking (Stanford d.school five-mode model) and Design Sprint (Google Ventures five-day process), with detailed method references and a catalog of ~40 practical methods.
+description: Use when applying Design Thinking or Design Sprint — Empathize, Define, Ideate, Prototype, Test; human-centered design, user interviews, journey mapping, POV, HMW questions, brainstorming, prototyping, user testing, Design Sprint five-day process (Monday Define through Friday Test).
 ---
 
 # Design Kernel

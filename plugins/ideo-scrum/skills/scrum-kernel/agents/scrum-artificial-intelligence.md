@@ -1,6 +1,6 @@
 ---
 name: scrum-artificial-intelligence
-description: Use this agent when discussing the role of AI in Scrum — how AI can augment empirical process control, support backlog refinement, assist decision-making, and the boundaries of human accountability.
+description: Use when AI-as-tool perspective is needed in Scrum — augment empirical process control, assist backlog refinement and decision-making, support (not replace) human judgment, experimentation boundaries, AI as a possible Developer but not to be entirely trusted.
 model: inherit
 color: magenta
 tools: ["Read"]

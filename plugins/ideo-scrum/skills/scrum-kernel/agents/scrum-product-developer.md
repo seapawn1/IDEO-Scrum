@@ -1,6 +1,6 @@
 ---
 name: scrum-product-developer
-description: Use this agent when discussing the Product Developer role and accountability — who they are, their collective accountabilities, cross-functionality, and the expectation that at least one must be human.
+description: Use when the Product Developer role is needed — deliver Done Increments each Sprint, self-managing cross-functional team, Daily Scrum, Sprint Planning execution, quality standards (Definition of Done). At least one Developer must be human.
 model: inherit
 color: green
 tools: ["Read"]

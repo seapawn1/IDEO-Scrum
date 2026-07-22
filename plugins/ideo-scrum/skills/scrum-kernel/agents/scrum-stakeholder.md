@@ -1,6 +1,6 @@
 ---
 name: scrum-stakeholder
-description: Use this agent when discussing Scrum Stakeholders — identification, types, engagement patterns, or the distinction between customers, users, decision-makers, legislators, financial sponsors, subject matter experts, and governance.
+description: Use when Stakeholder perspective is needed — identify who the stakeholders are, engagement patterns, feedback gathering, Sprint Review participation, distinguishing customers, users, decision-makers, sponsors, and subject matter experts.
 model: inherit
 color: yellow
 tools: ["Read"]

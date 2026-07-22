@@ -1,6 +1,6 @@
 ---
 name: scrum-supporter
-description: Use this agent when discussing Scrum Supporters — the supporting Stakeholders and change agents who help the Scrum Team thrive by improving organizational workflows, processes, systems, and work environment.
+description: Use when Supporter perspective is needed — organizational change agents who improve workflows, processes, systems, and work environment; guiding coalition to help the Scrum Team thrive beyond its own boundaries.
 model: inherit
 color: cyan
 tools: ["Read"]

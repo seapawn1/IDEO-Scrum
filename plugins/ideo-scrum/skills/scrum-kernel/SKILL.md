@@ -1,6 +1,6 @@
 ---
 name: scrum-kernel
-description: Use when work involves Scrum or Scrum Sprint — the framework for managing complex projects through iterative and incremental development. This skill holds the verbatim Scrum guide plus a concrete method library; load it to ground a concept.
+description: Use when work involves Scrum or a Scrum Sprint — Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective, backlog refinement, Sprint Goal, Product Goal, Definition of Done, Scrum roles (Product Owner, Scrum Master, Developers), empirical process control for complex projects.
 ---
 
 # Scrum Kernel

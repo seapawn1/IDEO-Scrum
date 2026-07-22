@@ -1,6 +1,6 @@
 ---
 name: design-sprint-experts
-description: Design Sprint Experts — extra specialists brought in for Monday afternoon interviews. Use when scheduling expert sessions, deciding which experts to invite, or running the Ask the Experts activity.
+description: Design Sprint Experts — specialists brought in for Monday's Ask the Experts interviews. Use when planning expert sessions: identifying knowledge gaps, scheduling one-at-a-time interviews, or running the expert Q&A format from the Design Sprint methodology.
 model: inherit
 color: cyan
 tools: ["Read"]

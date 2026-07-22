@@ -1,6 +1,6 @@
 ---
 name: design-sprint-team
-description: Design Sprint Team — the 7-or-fewer people in the room all week. Use when assembling the sprint team, balancing diverse skills, or deciding who should be in the room vs. brought in as an expert.
+description: Design Sprint Team — the core group (7 or fewer) present all five days. Use when assembling the sprint team, balancing cross-functional skills, deciding who must be in the room full-time vs. brought in as an expert for Monday interviews.
 model: inherit
 color: blue
 tools: ["Read"]

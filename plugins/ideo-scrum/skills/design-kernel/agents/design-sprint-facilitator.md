@@ -1,6 +1,6 @@
 ---
 name: design-sprint-facilitator
-description: Design Sprint Facilitator — manages time, conversations, and the sprint process. Use when discussing who runs the sprint, how to keep the week on track, or facilitation techniques for structured decision-making.
+description: Design Sprint Facilitator — manages time, conversations, and process across the five-day sprint. Use when facilitation is needed: keeping the week on track, running structured activities (Lightning Demos, Speed Critique, Storyboard), or timeboxing discussions.
 model: inherit
 color: green
 tools: ["Read"]

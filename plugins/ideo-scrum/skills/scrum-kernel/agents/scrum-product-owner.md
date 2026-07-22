@@ -1,6 +1,6 @@
 ---
 name: scrum-product-owner
-description: Use this agent when discussing the Product Owner role and accountability — value maximization, Product Backlog management, stakeholder engagement, trade-off balancing, and the expectation that the PO must be human.
+description: Use when the Product Owner role is needed — maximize product value, manage and prioritize the Product Backlog, define Product Goal, engage stakeholders, balance trade-offs, make ROI decisions. The PO must be human.
 model: inherit
 color: blue
 tools: ["Read"]

@@ -1,6 +1,6 @@
 ---
 name: scrum-scrum-master
-description: Use this agent when discussing the Scrum Master role and accountability — change agency, effectiveness facilitation, impediment removal, coaching the Scrum Team/PO/Stakeholders/Supporters, and the expectation that the SM must be human.
+description: Use when the Scrum Master role is needed — facilitate Scrum adoption, remove impediments, coach the Scrum Team and organization, lead Sprint Retrospectives, improve effectiveness, foster self-management. The SM must be human.
 model: inherit
 color: red
 tools: ["Read"]
