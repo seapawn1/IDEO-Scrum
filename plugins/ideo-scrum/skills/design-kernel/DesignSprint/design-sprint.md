@@ -15,17 +15,17 @@
 
 - [ ] **Make a map.** List customers and key players on the left. Draw the ending, with your completed goal, on the right. Finally, make a flowchart in between. Keep it simple: five to fifteen steps. See `monday/make-a-map.md` for the full rationale.
 
-### 2 p.m.
+### Ask the Experts
 
-- [ ] **Ask the Experts.** Interview experts on your sprint team and guests from the outside. Aim for fifteen to thirty minutes each. Ask about the vision, customer research, how things work, and previous efforts. Pretend you're a reporter. Update long-term goal, questions, and map as you go.
-- [ ] **Explain How Might We notes.** Distribute whiteboard markers and sticky notes. Reframe problems as opportunities. Start with the letters "HMW" on the top left corner. Write one idea per sticky note. Make a stack as you go.
+- [ ] **Interview experts.** A series of one-at-a-time interviews with people from your sprint team, from around your company, and possibly outsiders with special knowledge. See `monday/ask-the-experts.md` for the full method.
 
-### 4-ish
+### How Might We
 
-- [ ] **Organize How Might We notes.** Stick all the How Might We notes onto a wall in any order. Move similar ideas next to one another. Label themes as they emerge. Don't perfect it. Stop after about ten minutes.
-- [ ] **Vote on How Might We notes.** Each person has two votes, can vote on his or her own notes, or even the same note twice. Move winners onto your map.
+- [ ] **Take How Might We notes.** Reframe problems as opportunities. Start with the letters "HMW" on the top left corner. Write one idea per sticky note. See `monday/how-might-we.md` for the full method.
+- [ ] **Organize How Might We notes.** Stick all the notes onto a wall in any order. Move similar ideas next to one another. Label themes as they emerge. See `monday/how-might-we.md` for the full method.
+- [ ] **Vote on How Might We notes.** Each person has two votes. Move winners onto your map. See `monday/how-might-we.md` for the full method.
 
-### 4:30-ish
+### Pick a target
 
 - [ ] **Pick a target.** Circle your most important customer and one target moment on the map. The team can weigh in, but the Decider makes the call.
 
