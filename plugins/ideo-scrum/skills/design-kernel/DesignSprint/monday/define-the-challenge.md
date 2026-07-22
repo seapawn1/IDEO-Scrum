@@ -38,7 +38,7 @@ Jake was wrong. The industrial pump wasn't too complicated for a sprint. The tea
 
 The lesson? No problem is too large for a sprint. Yes, this statement sounds absurd, but there are two big reasons why it's true. First, the sprint forces your team to focus on the most pressing questions. Second, the sprint allows you to learn from just the surface of a finished product. Blue Bottle could use a slide show to prototype the surface of a website—before they built the software and inventory processes to make it really work. Graco could use a brochure to prototype the surface of a sales conversation—before they engineered and built the product they were selling.
 
-## Solve the surface first
+### Solve the surface first
 
 The surface is important. It's where your product or service meets customers. Human beings are complex and fickle, so it's impossible to predict how they'll react to a brand-new solution. When our new ideas fail, it's usually because we were overconfident about how well customers would understand and how much they would care.
 

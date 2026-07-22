@@ -4,12 +4,12 @@
 
 ### Challenge
 
-- [ ] Define the big challenge for this sprint week. Use a sprint when the stakes are high, when there's not enough time, or when you're just plain stuck. See `references/challenge.md` for the full rationale.
+- [ ] **Define the challenge.** Define the big challenge for this sprint week. Use a sprint when the stakes are high, when there's not enough time, or when you're just plain stuck. See `monday/define-the-challenge.md` for the full rationale.
 
 ### Start at the End
 
-- [ ] **Set a long-term goal.** Get optimistic. Ask: Why are we doing this project? Where do we want to be in six months, a year, or even five years from now? Write the long-term goal on a whiteboard.
-- [ ] **List sprint questions.** Get pessimistic. Ask: How could we fail? Turn these fears into questions you could answer this week. List them on a whiteboard.
+- [ ] **Set a long-term goal.** Get optimistic. Ask: Why are we doing this project? Where do we want to be in six months, a year, or even five years from now? Write the long-term goal in a file.
+- [ ] **List sprint questions.** Get pessimistic. Ask: How could we fail? Turn these fears into questions you could answer this week. List them in a file.
 
 ### 11:30-ish
 
