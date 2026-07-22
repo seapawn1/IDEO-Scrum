@@ -44,7 +44,21 @@ Flatiron Health had a complicated problem and a straightforward map. Your map sh
 
 It was an intricate and messy system. But, after an hour of discussion and a lot of revision, we were able to create a simple map:
 
-![image47.jpg](references/images/design-sprint/image47.jpg)
+```mermaid
+flowchart LR
+    Patient([Patient])
+    Doctor([Doctor])
+    Coordinator([Coordinator])
+
+    Patient --> MakeAppt[Make appt.]
+    MakeAppt --> Appt[Appointment: Discuss trial]
+    MakeAppt --> Search[Search for matching trials]
+    Doctor --> Search
+    Search --> Appt
+    Appt --> Enroll[Enroll]
+    Coordinator --> Enroll
+    Enroll --> Begin[BEGIN THERAPY]
+```
 
 On the left was a list of the people involved in trial enrollment: the patient and the doctor (who were central to the treatment decision) and the clinic's research coordinator (who was easy to overlook but might be the best informed about trial availability). From there, the map showed the patient scheduling an appointment, the doctor and staff searching for matching trials, the appointment, the complete enrollment, and finally, the beginning of treatment.
 
@@ -54,10 +68,47 @@ Behind those few simple steps were all kinds of difficulties with the enrollment
 
 Savioke had to organize information about robotics, navigation, hotel operations, and guest habits. This is their map:
 
-![image48.jpg](references/images/design-sprint/image48.jpg)
+```mermaid
+flowchart LR
+    Guest([Guest])
+    FrontDesk([Front desk])
+    Robot([Robot])
+    Bystander([Bystander])
+
+    Guest --> Calls[Calls front desk]
+    Calls --> Delivery[DELIVERY]
+    Calls --> Puts[Puts item in robot]
+    FrontDesk --> Puts
+    Puts --> Lobby[Lobby]
+    Robot --> Lobby
+    Lobby --> Elevator[Elevator]
+    Elevator --> Hallway[Hallway]
+    Hallway --> Delivery
+    Lobby --> Surprise[SURPRISE ENCOUNTER!]
+    Elevator --> Surprise
+    Hallway --> Surprise
+    Bystander --> Surprise
+```
 
 ### Blue Bottle Coffee — online sales
 
 Blue Bottle Coffee sorted through information about coffee selection, customer support, café operations, and distribution channels. Here is their map:
 
-![image49.jpg](references/images/design-sprint/image49.jpg)
+```mermaid
+flowchart LR
+    New([New customer])
+    New --> Visit[Visit cafe]
+    New --> WebSearch[Web search]
+    New --> Press[Press story]
+
+    Visit --> Talk[Talk to barista]
+    Talk --> Coffee[Have coffee]
+    Coffee --> BB[Blue Bottle website]
+
+    WebSearch --> Compare[Compare retailers]
+    Compare --> BB
+    Press --> BB
+
+    BB --> Choose[Choose beans]
+    Choose --> Buy[BUY]
+```
