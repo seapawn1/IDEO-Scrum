@@ -13,13 +13,13 @@ Design Thinking is a **human-centered approach to innovation** that integrates t
 
 The d.school's five-mode model:
 
-| Mode | Focus | Key Action |
-|---|---|---|
-| **Empathize** | Understand users deeply | Observe, engage, immerse in users' lives to uncover real needs |
-| **Define** | Frame the right problem | Synthesize findings into a Point of View (user + need + insight) |
-| **Ideate** | Generate possibilities | Diverge — brainstorm radical alternatives beyond the obvious |
-| **Prototype** | Make ideas tangible | Build low-cost artifacts to test; "build to think" |
-| **Test** | Learn from users | Put prototypes in front of real users; iterate based on feedback |
+| Mode | Focus | Key Action | Reference | Read when |
+|---|---|---|---|---|
+| **Empathize** | Understand users deeply | Observe, engage, immerse in users' lives to uncover real needs | `IDEO-modes/empathize.md` | When the user needs to understand people — observe, engage, immerse — to discover deep needs from human behavior and emotion |
+| **Define** | Frame the right problem | Synthesize findings into a Point of View (user + need + insight) | `IDEO-modes/define.md` | When empathy findings are collected and a meaningful challenge needs framing — craft a Point of View (user + need + insight) |
+| **Ideate** | Generate possibilities | Diverge — brainstorm radical alternatives beyond the obvious | `IDEO-modes/ideate.md` | When a POV is ready and a wide range of ideas is needed — diverge and explore, don't converge too early |
+| **Prototype** | Make ideas tangible | Build low-cost artifacts to test; "build to think" | `IDEO-modes/prototype.md` | When selected ideas need low-cost prototypes — build, fail fast, iterate and learn |
+| **Test** | Learn from users | Put prototypes in front of real users; iterate based on feedback | `IDEO-modes/test.md` | When prototypes are ready for user feedback — test in real contexts, continue learning about users |
 
 The process is **not linear** — teams move back and forth between modes as insights emerge. Empathize and Ideate are divergent (opening up possibilities); Define and Prototype are convergent (narrowing toward solutions); Test feeds learning back into any mode.
 
@@ -29,35 +29,17 @@ The process is **not linear** — teams move back and forth between modes as ins
 
 The **Design Sprint** is a structured five-day process for answering critical business questions through design, prototyping, and testing with real customers. Developed by **Jake Knapp** at **Google Ventures** (GV) and detailed in the book *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days* (Knapp, Zeratsky & Kowitz, 2016), it compresses months of debate into a single focused week of evidence-based learning.
 
-| Day | Theme | Core Activities |
-|---|---|---|
-| **Monday** | Define | Set a long-term goal, map the problem space, interview experts, choose a target |
-| **Tuesday** | Ideate | Review existing inspiration, individually sketch detailed solution concepts |
-| **Wednesday** | Decide | Silent critique, vote on elements, Decider selects winning ideas, create a storyboard |
-| **Thursday** | Prototype | Build a realistic, testable facade — "fake it" with Keynote, Figma, or paper |
-| **Friday** | Test | Conduct five one-hour user interviews, observe reactions, identify patterns, decide next steps |
+| Day | Theme | Core Activities | Reference | Read when |
+|---|---|---|---|---|
+| **Monday** | Define | Set a long-term goal, map the problem space, interview experts, choose a target | `methods/design-sprint.md` | When user explicitly switches to a time-boxed sprint, asks for Monday-Friday flow, or needs long-term goal, sprint questions, map, HMW notes, target, sketches, storyboard, prototype, or user test |
+| **Tuesday** | Ideate | Review existing inspiration, individually sketch detailed solution concepts | | |
+| **Wednesday** | Decide | Silent critique, vote on elements, Decider selects winning ideas, create a storyboard | | |
+| **Thursday** | Prototype | Build a realistic, testable facade — "fake it" with Keynote, Figma, or paper | | |
+| **Friday** | Test | Conduct five one-hour user interviews, observe reactions, identify patterns, decide next steps | | |
 
 A cross-functional team (typically ~7 people) works together in one room for the full week, with a designated **Decider** who has final authority on key choices. The Sprint replaces speculation with user evidence, giving teams clarity on whether to invest, pivot, or abandon an idea — all in five days.
 
 **Source:** Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster.
-
-## Mode Reference
-
-### IDEO Design Thinking
-
-| Mode | Reference | Read when |
-|---|---|---|
-| Empathize | `IDEO-modes/empathize.md` | When the user needs to understand people — observe, engage, immerse — to discover deep needs from human behavior and emotion |
-| Define | `IDEO-modes/define.md` | When empathy findings are collected and a meaningful challenge needs framing — craft a Point of View (user + need + insight) |
-| Ideate | `IDEO-modes/ideate.md` | When a POV is ready and a wide range of ideas is needed — diverge and explore, don't converge too early |
-| Prototype | `IDEO-modes/prototype.md` | When selected ideas need low-cost prototypes — build, fail fast, iterate and learn |
-| Test | `IDEO-modes/test.md` | When prototypes are ready for user feedback — test in real contexts, continue learning about users |
-
-### Design Sprint
-
-| Method | Reference | Read when |
-|---|---|---|
-| Design Sprint | `methods/design-sprint.md` | When user explicitly switches to a time-boxed sprint, asks for Monday-Friday flow, or needs long-term goal, sprint questions, map, HMW notes, target, sketches, storyboard, prototype, or user test |
 
 ---
 
