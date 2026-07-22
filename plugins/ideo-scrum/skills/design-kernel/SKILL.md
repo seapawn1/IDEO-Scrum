@@ -1,17 +1,15 @@
 ---
 name: design-kernel
-description: Use when work involves IDEO Design Thinking — the five modes (Empathize, Define, Ideate, Prototype, Test) or a time-boxed Design Sprint. Each mode has a detailed reference under IDEO-modes/; the Method Catalog maps ~40 methods to modes.
+description: Design kernel covering IDEO Design Thinking (Stanford d.school five-mode model) and Design Sprint (Google Ventures five-day process), with detailed method references and a catalog of ~40 practical methods.
 ---
 
-# Design Thinking Kernel
+# Design Kernel
 
-## Design Thinking Overview
-
-### IDEO Design Thinking
+## IDEO design thinking
 
 Design Thinking is a **human-centered approach to innovation** that integrates the needs of people, the possibilities of technology, and the requirements for business success. Originating from IDEO and formalized at Stanford's Hasso Plattner Institute of Design (the d.school, founded by David Kelley), it is an iterative, non-linear methodology for tackling complex, ill-defined problems. Its core ethos is **bias toward action** — learning by doing rather than analysis alone.
 
-The d.school's five-mode model:
+The IDEO's five-mode model:
 
 | Mode | Focus | Key Action | Reference | Read when |
 |---|---|---|---|---|
@@ -23,9 +21,7 @@ The d.school's five-mode model:
 
 The process is **not linear** — teams move back and forth between modes as insights emerge. Empathize and Ideate are divergent (opening up possibilities); Define and Prototype are convergent (narrowing toward solutions); Test feeds learning back into any mode.
 
-**Source:** IDEO / Stanford d.school — Bootcamp Bootleg and Design Thinking Method Guides.
-
-### Design Sprint
+## Design Sprint
 
 The **Design Sprint** is a structured five-day process for answering critical business questions through design, prototyping, and testing with real customers. Developed by **Jake Knapp** at **Google Ventures** (GV) and detailed in the book *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days* (Knapp, Zeratsky & Kowitz, 2016), it compresses months of debate into a single focused week of evidence-based learning.
 
