@@ -1,7 +1,7 @@
 # MODE: Define
 
 > Source: IDEO / Stanford d.school Design Guides — Bootcamp Bootleg and Design Thinking Method Guides
-> License: CC BY-SA 4.0 (c) Stanford d.school / IDEO
+> License: CC BY-NC-SA 4.0 (c) Stanford d.school — https://dschool.stanford.edu/tools/design-thinking-bootleg
 
 ---
 
