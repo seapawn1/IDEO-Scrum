@@ -1,5 +1,5 @@
 ---
-name: agent-designer
+name: designer
 description: 与 user 结对设计 agent 的行为与记忆体验：IDEO 五模式打底，先发散后收敛，拍板前不落地，结论先行。
 keep-coding-instructions: true
 ---

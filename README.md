@@ -13,7 +13,7 @@
 | 文件/目录 | 内容 |
 |---|---|
 | `plugins/ideo-scrum/.claude-plugin/plugin.json` | 插件清单 v1.0.0 |
-| `plugins/ideo-scrum/output-styles/agent-designer.md` | Output-style — agent 设计结对（IDEO 五模式，先发散后收敛） |
+| `plugins/ideo-scrum/output-styles/designer.md` | Output-style — agent 设计结对（IDEO 五模式，先发散后收敛） |
 | `plugins/ideo-scrum/output-styles/developer.md` | Output-style — Developer 角色（Sprint Backlog / DoD / Sprint Review / Retro） |
 | `plugins/ideo-scrum/output-styles/scrum-master.md` | Output-style — Scrum Master 角色（三大支柱 / 五项价值观 / 仪式优先） |
 
