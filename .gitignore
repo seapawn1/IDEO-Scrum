@@ -1,5 +1,9 @@
 .env
 seapawn.md
+
+# 源材料原件（本地保留，不入库；见 ATTRIBUTION.md）
+references/
+
 .DS_Store
 Thumbs.db
 *.aux
