@@ -1,6 +1,6 @@
 # IDEO-Scrum
 
-为 Claude Code 提供 Design Thinking 与 Scrum Sprint 方法论的插件。v1.0.0。
+为 Claude Code 提供 Design Thinking 与 Scrum Sprint 方法论的插件。v1.0.2。
 
 ## 这里是什么
 
@@ -12,7 +12,7 @@
 
 | 文件/目录 | 内容 |
 |---|---|
-| `plugins/ideo-scrum/.claude-plugin/plugin.json` | 插件清单 v1.0.0 |
+| `plugins/ideo-scrum/.claude-plugin/plugin.json` | 插件清单 v1.0.2 |
 | `plugins/ideo-scrum/output-styles/designer.md` | Output-style — agent 设计结对（IDEO 五模式，先发散后收敛） |
 | `plugins/ideo-scrum/output-styles/developer.md` | Output-style — Developer 角色（Sprint Backlog / DoD / Sprint Review / Retro） |
 | `plugins/ideo-scrum/output-styles/scrum-master.md` | Output-style — Scrum Master 角色（三大支柱 / 五项价值观 / 仪式优先） |
@@ -67,7 +67,9 @@
 
 ## 当前状态
 
-2026-07-23：v1.0.0。5 个 Sprint 完成——插件具备完整的两套方法论体系（IDEO Design Thinking + Scrum Sprint），含 skills、agents、output-styles、method catalog。Design Sprint 五天流程中 Monday 已结构化完成，Tuesday-Friday 待 PBI-6（solo+AI 方法论设计）。
+2026-08-03：v1.0.2。5 个 Sprint 完成——插件具备完整的两套方法论体系（IDEO Design Thinking + Scrum Sprint），含 skills、agents、output-styles、method catalog。Design Sprint 五天流程中 Monday 已结构化完成，Tuesday-Friday 待 PBI-6（solo+AI 方法论设计）。
+
+v1.0.0 之后的增量：删除设计冲刺知识代理文档（v1.0.1）；output-style `agent-designer` 更名 `designer`，Monday 流程中 Map 提前至 Ask the Experts 之前、`POV and HMW` 收敛为 `HMW`（v1.0.2）。
 
 ### Product Backlog 概览
 

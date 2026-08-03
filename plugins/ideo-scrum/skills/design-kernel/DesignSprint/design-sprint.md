@@ -15,6 +15,13 @@
     - [ ] **List sprint questions.** Get pessimistic. Ask: How could we fail? Turn these fears into questions you could answer this week. See `references/start-at-the-end.md` for the full method.
 - Output：DesignMapping.md
 
+## Map
+
+- Input：Challenge.md 与 DesignMapping.md
+- 过程：human and agent 直接定义当前 Map 骨架。
+    - [ ] **Make a map.** List customers and key players on the left. Draw the ending, with your completed goal, on the right. Finally, make a flowchart in between. Keep it simple: five to fifteen steps. See `references/make-a-map.md` for the full rationale.
+- Output：细化 DesignMapping.md 文件
+
 ## Ask the Experts or Deep Research
 
 - Input：Challenge.md 与 DesignMapping.md
@@ -23,17 +30,10 @@
     ......
 - Output：完成 Challenge.md 文件
 
-## Map
+## HMW
 
 - Input：Challenge.md 与 DesignMapping.md
-- 过程：human and agent 直接定义当前 Map 骨架。
-    - [ ] **Make a map.** List customers and key players on the left. Draw the ending, with your completed goal, on the right. Finally, make a flowchart in between. Keep it simple: five to fifteen steps. See `references/make-a-map.md` for the full rationale.
-- Output：细化 DesignMapping.md 文件
-
-## POV and HMW
-
-- Input：Challenge.md 与 DesignMapping.md
-- 过程：POV 和 HMW 方法论指导多 Agent 完成，总体是先发散再收敛，收敛到 Map 上。主 Agent 作为主力，subagent 辅助；主 Agent 总是双倍 subagent 权力；最后交给 decider 决定，形成 HMW 表格。细节可能是，多agent-->HMW池-->投票池-->decider选定。
+- 过程：HMW 方法论指导多 Agent 完成，总体是先发散再收敛，收敛到 Map 上。主 Agent 作为主力，subagent 辅助；主 Agent 总是双倍 subagent 权力；最后交给 decider 决定，形成 HMW 表格。细节可能是，多agent-->HMW池-->投票池-->decider选定。
     - [ ] **Write HMW questions.** Turn each problem you hear into an opportunity. See `references/how-might-we.md` for the full method.
     - [ ] **Organize and select.** Group by theme, then pick the questions most critical to your sprint goal. Move winners onto your map. See `references/how-might-we.md` for the full method.
 - Output：完成 DesignMapping.md 文件。
