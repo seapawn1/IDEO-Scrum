@@ -50,6 +50,7 @@
 | `LICENSE` | MIT — 覆盖本仓库原创部分 |
 | `ATTRIBUTION.md` | 四个第三方来源的完整署名与授权条款 |
 | `.claude-plugin/marketplace.json` | marketplace 清单，供 `/plugin marketplace add` 使用 |
+| `.claude/` | 项目配置——`CLAUDE.md`（项目指令，随会话加载）、`memory/`（蒸馏档案 + MEMORY.md 索引）、`settings.json` |
 
 ### 插件
 
@@ -67,7 +68,7 @@
 | `plugins/ideo-scrum/skills/design-kernel/SKILL.md` | Design Kernel 入口（IDEO 五模式表 + Design Sprint 单行引用 + Method Catalog + Use Protocol） |
 | `plugins/ideo-scrum/skills/design-kernel/IDEO-modes/` | IDEO Design Thinking 五模式 reference（Empathize / Define / Ideate / Prototype / Test，各含 WHAT/WHY/HOW + Transition） |
 | `plugins/ideo-scrum/skills/design-kernel/methods/` | Design Thinking 方法库（~40 个方法，含 Use Before / Use Notes / Do Not Use When） |
-| `plugins/ideo-scrum/skills/design-kernel/DesignSprint/design-sprint.md` | Design Sprint 五天入口（Monday checklist 完整，引用 `references/`；Tuesday-Friday 待 PBI-6 重构） |
+| `plugins/ideo-scrum/skills/design-kernel/DesignSprint/design-sprint.md` | Design Sprint 五天入口（Monday checklist 完整，引用 `references/`；Tuesday-Friday 待 PBI-7 重构） |
 | `plugins/ideo-scrum/skills/design-kernel/DesignSprint/references/` | Monday 6 个引用文件：define-the-challenge / start-at-the-end / make-a-map / ask-the-experts / how-might-we / pick-a-target |
 
 ### scrum-kernel skill
@@ -95,7 +96,7 @@
 
 ## 来源与授权
 
-本仓库的**原创部分**（插件结构、skill 组织、Scrum 工作记录）以 [MIT](LICENSE) 发布。
+本仓库的**原创部分**（插件结构、skill 组织、工作记录 `scrum/` + `docs/`）以 [MIT](LICENSE) 发布。
 
 插件内的方法论摘录来自四个外部来源，各自的许可条款不同：
 
@@ -112,7 +113,7 @@
 
 ## 当前状态
 
-2026-08-30：**v2.0.0 新轨**。1.x 的 Product Goal（结构对等）判定为方向性错误（详见 [scrum/ProductBacklog.md](scrum/ProductBacklog.md) 修订记录）。插件仍为 v1.0.2；v2.0.0 PBI 序列（PBI-7~11）已立项为草案，PBI-7（ideo 与 Design Sprint 融合重构）前置 Design Sprint 验证轮。工作层已重整：产品三件套合并为 `ProductBacklog.md`，五期冲刺日志归一为四段式 `SprintBacklog.md`（教训已蒸馏入 `.claude/memory/`，原文 git 历史可查）。
+2026-08-30：**v2.0.0 新轨 + 治理层重整**。1.x 的 Product Goal（结构对等）判定为方向性错误（详见 [scrum/ProductBacklog.md](scrum/ProductBacklog.md) 修订记录）。插件仍为 v1.0.2；v2.0.0 PBI 序列（PBI-7~11）已立项为草案，PBI-7（ideo 与 Design Sprint 融合重构）前置 Design Sprint 验证轮。工作层重整：产品三件套合并为 `ProductBacklog.md`，五期冲刺日志蒸馏入 `.claude/memory/`（原文 git 历史可查），CLAUDE.md 移入 `.claude/`，`Scrum/` → `scrum/` + `docs/`。蒸馏闭环已成规约（见 `.claude/CLAUDE.md` 冲刺蒸馏闭环）。
 
 v1.0.2（2026-08-03）：5 个 Sprint 完成——插件具备完整的两套方法论体系（IDEO Design Thinking + Scrum Sprint），含 skills、agents、output-styles、method catalog。Design Sprint 五天流程中 Monday 已结构化完成，周二至五发现方法论分化。
 
