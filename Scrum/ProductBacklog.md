@@ -58,4 +58,4 @@
 | PBI-5 | 重组 Design Sprint 内容结构 | ◐ | Monday references/ 6 文件完成；周二至五发现方法论分化 → 被 PBI-7 吸收 |
 | PBI-6 | Design Sprint Tuesday-Friday 细化—solo+AI | ⏳ | 五天法废弃 → 被 PBI-7 吸收 |
 
-> 细节见各 `Scrum/sprint-0X/` 目录（SprintBacklog / SprintReview）与 git 历史。
+> 细节见各 `Scrum/sprint-0X/` 目录（`SprintBacklog.md`，含 Review）与 git 历史。
