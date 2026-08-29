@@ -81,12 +81,14 @@
 | `plugins/ideo-scrum/skills/scrum-kernel/references/scrum-artifact-*.md` | 4 个 Artifact reference：Product / Increment / Product Backlog / Sprint Backlog |
 | `plugins/ideo-scrum/skills/scrum-kernel/references/scrum-event-*.md` | 5 个 Event reference：Sprint / Sprint Planning / Daily Scrum / Sprint Review / Sprint Retrospective |
 
-### Scrum 工作目录
+### 工作记录层（docs/）
 
 | 文件/目录 | 内容 |
 |---|---|
-| `Scrum/README.md` | 本目录的文件索引与当前状态（一层索引） |
-| `Scrum/ProductBacklog.md` | 产品日志——Product 定义 / Vision / Architecture（待补）/ DoD（草案）/ v2.0.0 PBI 序列 / Review 1.x 收官 |
+| `docs/README.md` | 本目录的文件索引与当前状态（一层索引） |
+| `docs/ProductBacklog.md` | 产品日志——Product 定义 / Vision / Architecture（待补）/ DoD（草案）/ v2.0.0 PBI 序列 / Review 1.x 收官 |
+| `docs/Design.md` | v2.0.0 验证轮设计地图——Challenge / Goal / Q1-Q3；Map 待专家会议后绘制 |
+| `docs/ExpertNotes.md` | 客户之声——作者作为插件真实用户的使用流程与感悟（骨架，待口述填充） |
 | `Scrum/sprint-01-skill-stanford/` ~ `sprint-05-pbi2-output-styles/` | Sprint 01-05 日志（PBI-1~5）——已迁出至 `.claude/memory/`（MEMORY.md 详细索引 + 五期全文档）；git 历史可追溯原文 |
 
 > 五期冲刺日志全文（`SprintBacklog.md`，四段式：Goal-why / PBI-what / Developer-how / Review）已迁入 `.claude/memory/`。
@@ -114,7 +116,7 @@
 
 ## 当前状态
 
-2026-08-30：**v2.0.0 新轨**。1.x 的 Product Goal（结构对等）判定为方向性错误（详见 [Scrum/ProductBacklog.md](Scrum/ProductBacklog.md) 修订记录）。插件仍为 v1.0.2；v2.0.0 PBI 序列（PBI-7~11）已立项为草案，PBI-7（ideo 与 Design Sprint 融合重构）前置 Design Sprint 验证轮。Scrum 工作层已重整：产品三件套合并为 `ProductBacklog.md`，五期冲刺日志归一为四段式 `SprintBacklog.md`。
+2026-08-30：**v2.0.0 新轨**。1.x 的 Product Goal（结构对等）判定为方向性错误（详见 [docs/ProductBacklog.md](docs/ProductBacklog.md) 修订记录）。插件仍为 v1.0.2；v2.0.0 PBI 序列（PBI-7~11）已立项为草案，PBI-7（ideo 与 Design Sprint 融合重构）前置 Design Sprint 验证轮。工作层已重整：产品三件套合并为 `ProductBacklog.md`，五期冲刺日志归一为四段式 `SprintBacklog.md`（已迁入 `.claude/memory/`）。
 
 v1.0.2（2026-08-03）：5 个 Sprint 完成——插件具备完整的两套方法论体系（IDEO Design Thinking + Scrum Sprint），含 skills、agents、output-styles、method catalog。Design Sprint 五天流程中 Monday 已结构化完成，周二至五发现方法论分化。
 
@@ -136,4 +138,4 @@ v1.0.0 之后的增量：删除设计冲刺知识代理文档（v1.0.1）；outp
 | PBI-10 | designer output-style 重写 | ⏳ 待开始 |
 | PBI-11 | 方法论感悟背景文档 | ⏳ 待开始 |
 
-> 详细定义见 [Scrum/ProductBacklog.md](Scrum/ProductBacklog.md)。
+> 详细定义见 [docs/ProductBacklog.md](docs/ProductBacklog.md)。

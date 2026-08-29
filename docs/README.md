@@ -1,4 +1,4 @@
-# Scrum —— 工作记录层
+# Docs —— 工作记录层
 
 > 本目录是"用 IDEO-Scrum 插件的方法论开发 IDEO-Scrum 插件"的过程记录。**已完成的 sprint 内容不回改**；细节追溯看 git 历史。
 
@@ -11,8 +11,9 @@
 | 文件/目录 | 内容 |
 |---|---|
 | `ProductBacklog.md` | 产品日志——Product 定义 / Product Vision / Architecture（待补）/ Definition of Done（草案）/ v2.0.0 PBI 序列 / Review — 1.x 收官 |
-| `.IDEO/` | 当前 IDEO 阶段工作区——v2.0.0 验证轮的 DesignMapping.md 与 voice-of-customer/ |
-| **1.x 冲刺日志** | 已迁出至 `.claude/memory/`（MEMORY.md 索引，内含 five 期 SprintBacklog.md 全文）；git 历史 `99a28ba` 起可追溯原文 |
+| `Design.md` | v2.0.0 验证轮设计地图——Challenge（agent 插件角度）/ Goal / Q1-Q3；Map 待专家会议后绘制 |
+| `ExpertNotes.md` | 客户之声——作者作为插件真实用户的使用流程与感悟（骨架，待口述填充） |
+| **1.x 冲刺日志** | 已迁出至 `.claude/memory/`（MEMORY.md 索引，含 5 期 SprintBacklog.md 全文）；git 历史 `99a28ba` 起可追溯原文 |
 
 > 五期冲刺日志全文（`SprintBacklog.md`，四段式：Goal-why / PBI-what / Developer-how / Review）已迁入 `.claude/memory/`。
 

@@ -1,7 +1,7 @@
 # 设计地图（本场设计冲刺）
 
 > Source: Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster.
-> 本文件是 v2.0.0 验证轮的 DesignMapping——按 `design-kernel` 的 design-sprint.md 流程推进；Map 待专家会议后绘制。
+> 本文件是 v2.0.0 验证轮的设计地图（对应 `design-kernel` design-sprint.md 流程中的 DesignMapping 产出物）——按该流程推进；Map 待专家会议后绘制。
 
 ## 第一部分 Design Sprint（设计冲刺）
 
