@@ -85,14 +85,15 @@
 
 | 文件/目录 | 内容 |
 |---|---|
-| `Scrum/product.md` | Product artifact — Product 定义 + Vision |
-| `Scrum/DefinitionofDone.md` | Definition of Outcome Done + Definition of Output Done |
-| `Scrum/product-backlog.md` | Product Backlog — Product Goal + PBI 列表（PBI-1~4 已完成，PBI-5 部分完成，PBI-6 待开始） |
+| `Scrum/README.md` | 本目录的文件索引与当前状态（一层索引） |
+| `Scrum/ProductBacklog.md` | 产品日志——Product 定义 / Vision / Architecture（待补）/ DoD（草案）/ v2.0.0 PBI 序列 / Review 1.x 收官 |
 | `Scrum/sprint-01-skill-stanford/` | Sprint 01 ✅：PBI-1 — design-kernel SKILL.md 重构 + IDEO-modes/ 五模式 WHAT/WHY/HOW |
 | `Scrum/sprint-02-agents-sgep/` | Sprint 02 ✅：PBI-3 — 6 个 scrum-kernel agent 全部替换为 SGEP 原文摘抄 |
-| `Scrum/sprint-03-design-sprint-restructure/` | Sprint 03 ◐：PBI-5 — Monday references/ 6 文件 + SKILL.md 重构完成；Tuesday-Friday 发现方法论分化，转 PBI-6 |
+| `Scrum/sprint-03-design-sprint-restructure/` | Sprint 03 ✅：PBI-5 — Monday references/ 6 文件 + SKILL.md 重构完成；发现方法论分化 |
 | `Scrum/sprint-04-pbi4-descriptions/` | Sprint 04 ✅：PBI-4 — 13 个 description 字段全部优化（"discussing" → "role is needed"） |
 | `Scrum/sprint-05-pbi2-output-styles/` | Sprint 05 ✅：PBI-2 — 3 个角色型 output-style 放入插件（agent-designer / developer / scrum-master） |
+
+> 每个 sprint 目录唯一文件：`SprintBacklog.md`——四段式冲刺日志（Goal-why / PBI-what / Developer-how / Review）。
 
 ### 源参考
 
@@ -117,17 +118,26 @@
 
 ## 当前状态
 
-2026-08-03：v1.0.2。5 个 Sprint 完成——插件具备完整的两套方法论体系（IDEO Design Thinking + Scrum Sprint），含 skills、agents、output-styles、method catalog。Design Sprint 五天流程中 Monday 已结构化完成，Tuesday-Friday 待 PBI-6（solo+AI 方法论设计）。
+2026-08-30：**v2.0.0 新轨**。1.x 的 Product Goal（结构对等）判定为方向性错误（详见 [Scrum/ProductBacklog.md](Scrum/ProductBacklog.md) 修订记录）。插件仍为 v1.0.2；v2.0.0 PBI 序列（PBI-7~11）已立项为草案，PBI-7（ideo 与 Design Sprint 融合重构）前置 Design Sprint 验证轮。Scrum 工作层已重整：产品三件套合并为 `ProductBacklog.md`，五期冲刺日志归一为四段式 `SprintBacklog.md`。
+
+v1.0.2（2026-08-03）：5 个 Sprint 完成——插件具备完整的两套方法论体系（IDEO Design Thinking + Scrum Sprint），含 skills、agents、output-styles、method catalog。Design Sprint 五天流程中 Monday 已结构化完成，周二至五发现方法论分化。
 
 v1.0.0 之后的增量：删除设计冲刺知识代理文档（v1.0.1）；output-style `agent-designer` 更名 `designer`，Monday 流程中 Map 提前至 Ask the Experts 之前、`POV and HMW` 收敛为 `HMW`（v1.0.2）。
 
 ### Product Backlog 概览
 
-| # | 标题 | Size | 状态 |
-|---|---|---|---|
-| PBI-1 | 细化 design-kernel SKILL.md — 融合 Stanford Design Guides | L | ✅ Sprint 01 |
-| PBI-2 | 插件新增 output-styles | M | ✅ Sprint 05 |
-| PBI-3 | scrum-kernel agents 重构——SGEP 原文摘抄 | L | ✅ Sprint 02 |
-| PBI-4 | 细化插件所有 description 字段 | S | ✅ Sprint 04 |
-| PBI-5 | 重组 Design Sprint 内容结构 | — | ◐ Sprint 03 |
-| PBI-6 | Design Sprint Tuesday-Friday 细化——solo+AI 方法论设计 | L | ⏳ |
+| # | 标题 | 状态 |
+|---|---|---|
+| PBI-1 | 细化 design-kernel SKILL.md — 融合 Stanford Design Guides | ✅ Sprint 01 |
+| PBI-2 | 插件新增 output-styles | ✅ Sprint 05 |
+| PBI-3 | scrum-kernel agents 重构——SGEP 原文摘抄 | ✅ Sprint 02 |
+| PBI-4 | 细化插件所有 description 字段 | ✅ Sprint 04 |
+| PBI-5 | 重组 Design Sprint 内容结构 | ✅ Sprint 03（剩余范围并入 PBI-7） |
+| PBI-6 | Design Sprint Tuesday-Friday 细化——solo+AI 方法论设计 | 已并入 PBI-7（五天法废弃） |
+| PBI-7 | ideo 与 Design Sprint 融合重构 | ⏳ 待开始（前置 Design Sprint 验证轮） |
+| PBI-8 | 角色体系重构 | ⏳ 待开始 |
+| PBI-9 | 双内核联动 | ⏳ 待开始 |
+| PBI-10 | designer output-style 重写 | ⏳ 待开始 |
+| PBI-11 | 方法论感悟背景文档 | ⏳ 待开始 |
+
+> 详细定义见 [Scrum/ProductBacklog.md](Scrum/ProductBacklog.md)。
