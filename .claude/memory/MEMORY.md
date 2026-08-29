@@ -10,6 +10,3 @@
 - [Sprint 04 — pbi4-descriptions](sprint-04-pbi4-descriptions.md) — PBI-4：13 个 description 字段（plugin.json + 2 SKILL + 10 agents）全部优化，"discussing"→"role/perspective is needed"。**核心发现：** description 的功能是 **trigger condition**（embedding-space anchor placement）——"Use when..." 优于 "This is..."；区分度 > 全面性（模板趋同=embedding 里互相叠影）；plugin.json description 是人类元数据，非触发主战场。**教训：** S 级 PBI 单人一次成型 ~30 分钟，不需拆分。
 - [Sprint 05 — pbi2-output-styles](sprint-05-pbi2-output-styles.md) — PBI-2：3 个角色型 output-style 入插件（agent-designer / developer / scrum-master，`keep-coding-instructions: true`）。**核心发现：** output-style 有两种形态——**模式型**（改变探索/综合/发散行为倾向）与**角色型**（定义身份/职责/节律/边界，更高承诺、一整套行为契约）；本次交付为角色型。**教训：** 插件文件项目名引用须通用化（"ClaudeDream"→"当前项目"）。
 
-## 其他
-
-- [v2.0.0 验证轮设计地图](Scrum/.IDEO/DesignMapping.md) — v2.0.0 验证轮；挑战 = 插件重塑为 agent 插件（solo 用户 vs 团队方法论场景错配），Goal = 产品愿景，Q1-Q3（速度/收敛张力/信度）。说明：此条指向仓库文件，随仓库入库。
