@@ -11,7 +11,7 @@
 | **插件本体** | `plugins/ideo-scrum/` | 交付物。别人安装的就是这里 |
 | **工作记录** | `Scrum/` | 用本插件的方法论开发本插件的过程记录 |
 
-`Scrum/` 是**当前状态与验证轮工作区**；1.x 的 sprint 日志是**历史记录**，已全文迁入 `.claude/memory/`（git 历史可追溯），不回改。除非发现事实错误，否则不要回头修改已完成 sprint 的内容。
+`Scrum/` 是**当前状态与验证轮工作区**；1.x 的 sprint 日志是**历史记录**，教训已蒸馏入 `.claude/memory/`（原文 git 历史可追溯），不回改。除非发现事实错误，否则不要回头修改已完成 sprint 的内容。
 
 ## 维护规约
 
@@ -27,6 +27,20 @@
 - 主干分支是 `main`，永远指向最新状态
 - 版本号用 tag 标记，不写进分支名
 - 插件版本号在 `plugins/ideo-scrum/.claude-plugin/plugin.json`，改动时 README 的两处版本号需同步
+
+**组件描述（attribute description）规约**
+
+写插件组件（skill / agent / output-style）的 `description` 时：它是**触发条件**，不是自我介绍——用 "Use when..." + 具体场景词；同类组件描述必须有区分度（模板趋同 = embedding 空间互相叠影，系统无法选择）。plugin.json 的 description 是元数据（展示用），非触发主战场。（来源：Sprint 04。）
+
+**冲刺蒸馏闭环**
+
+每期 Sprint 结束的 Review 阶段，本着"SprintBacklog 归西"的目的：AI 狠读冲刺日志 + 产品日志 → 写入四段式日志（Review 段写厚）→ 将教训/关键发现/变更**蒸馏**为一份记忆档案（30-50 行，带出处指向 git）存入 `.claude/memory/` → 删除 SprintBacklog 及中间产物。脚手架已拆、教训常在、原文 git 兜底。
+
+> 三分工：**memory 管教训**（常驻、蒸馏过，见 `.claude/memory/MEMORY.md`），**git 管原文**（可查、完整），**`Scrum/` 管现状**（产品日志、验证轮工作区）。
+
+**插件验证**
+
+本仓库无 build/test。改动插件后，用 Agent 类型 `plugin-dev:plugin-validator` 校验插件结构/plugin.json；涉及 skill 质量时用 `plugin-dev:skill-reviewer`（两者经 Agent 工具调用，非 slash command）。marketplace 清单在 `.claude-plugin/marketplace.json`。
 
 ## 源材料与授权
 

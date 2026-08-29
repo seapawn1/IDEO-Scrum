@@ -87,7 +87,7 @@
 |---|---|
 | `Scrum/ProductBacklog.md` | 产品日志——Product 定义 / Vision / Architecture（待补）/ DoD（草案）/ v2.0.0 PBI 序列 / Review 1.x 收官 |
 | `Scrum/ExpertNotes.md` | 客户之声——作者作为插件真实用户的使用流程与感悟（骨架，待口述填充） |
-| **五期冲刺日志** | 已迁出至 `.claude/memory/`（MEMORY.md 详细索引 + 五期全文档 `SprintBacklog.md`，四段式）；git 历史可追溯原文 |
+| **五期冲刺蒸馏** | 已蒸馏至 `.claude/memory/`（MEMORY.md 索引 + 五期教训档案，含出处指向 git）；原文 git 历史可追溯 |
 
 ### 源参考
 
@@ -112,7 +112,7 @@
 
 ## 当前状态
 
-2026-08-30：**v2.0.0 新轨**。1.x 的 Product Goal（结构对等）判定为方向性错误（详见 [Scrum/ProductBacklog.md](Scrum/ProductBacklog.md) 修订记录）。插件仍为 v1.0.2；v2.0.0 PBI 序列（PBI-7~11）已立项为草案，PBI-7（ideo 与 Design Sprint 融合重构）前置 Design Sprint 验证轮。工作层已重整：产品三件套合并为 `ProductBacklog.md`，五期冲刺日志归一为四段式 `SprintBacklog.md`（已迁入 `.claude/memory/`）。
+2026-08-30：**v2.0.0 新轨**。1.x 的 Product Goal（结构对等）判定为方向性错误（详见 [Scrum/ProductBacklog.md](Scrum/ProductBacklog.md) 修订记录）。插件仍为 v1.0.2；v2.0.0 PBI 序列（PBI-7~11）已立项为草案，PBI-7（ideo 与 Design Sprint 融合重构）前置 Design Sprint 验证轮。工作层已重整：产品三件套合并为 `ProductBacklog.md`，五期冲刺日志归一为四段式 `SprintBacklog.md`（教训已蒸馏入 `.claude/memory/`，原文 git 历史可查）。
 
 v1.0.2（2026-08-03）：5 个 Sprint 完成——插件具备完整的两套方法论体系（IDEO Design Thinking + Scrum Sprint），含 skills、agents、output-styles、method catalog。Design Sprint 五天流程中 Monday 已结构化完成，周二至五发现方法论分化。
 

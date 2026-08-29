@@ -70,4 +70,4 @@
 | PBI-4 | 细化插件所有 description 字段 | ✅ | 13 字段 |
 | PBI-5 | 重组 Design Sprint 内容结构 | ✅ | Monday references/ 6 文件完成；周二至五方法论分化发现，剩余范围由 v2.0.0 的 PBI-7 承接 |
 
-> 细节见 `.claude/memory/`（五期 Sprints 全文 + MEMORY.md 索引，含 Review）与 git 历史。
+> 细节见 `.claude/memory/`（五期教训蒸馏档案 + MEMORY.md 索引；原文含 Review 全文在 git 历史）。
