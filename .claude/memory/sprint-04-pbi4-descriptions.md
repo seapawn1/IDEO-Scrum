@@ -1,3 +1,10 @@
+---
+name: sprint-04-pbi4-descriptions
+description: Sprint 04 日志全文——PBI-4：13 description 字段优化；description=trigger condition 非自我介绍；S 级一次成型
+metadata:
+  type: project
+---
+
 # 冲刺日志 — Sprint 04（pbi4-descriptions）
 
 > 按 Scrum Guide Expanded v2026.1 的 Sprint Backlog / Sprint Review artifact 框架定义。

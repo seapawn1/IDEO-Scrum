@@ -1,3 +1,10 @@
+---
+name: sprint-01-skill-stanford
+description: Sprint 01 日志全文——PBI-1：design-kernel SKILL.md 融合 Stanford Design Guides，五模式 WHAT/WHY/HOW 三层；命名反复三换
+metadata:
+  type: project
+---
+
 # 冲刺日志 — Sprint 01（skill-stanford）
 
 > 按 Scrum Guide Expanded v2026.1 的 Sprint Backlog / Sprint Review artifact 框架定义。

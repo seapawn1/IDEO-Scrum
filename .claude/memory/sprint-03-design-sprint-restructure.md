@@ -1,3 +1,10 @@
+---
+name: sprint-03-design-sprint-restructure
+description: Sprint 03 日志全文——PBI-5：Design Sprint 结构化；核心发现 Monday 认知单元 vs Tuesday-Friday workshop OS
+metadata:
+  type: project
+---
+
 # 冲刺日志 — Sprint 03（design-sprint-restructure）
 
 > 按 Scrum Guide Expanded v2026.1 的 Sprint Backlog / Sprint Review artifact 框架定义。

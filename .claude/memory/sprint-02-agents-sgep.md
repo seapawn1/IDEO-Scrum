@@ -1,3 +1,10 @@
+---
+name: sprint-02-agents-sgep
+description: Sprint 02 日志全文——PBI-3：6 个 scrum role agent 替换为 SGEP 原文摘抄；worktree 写入坑；做 A 顺便做 B 模式
+metadata:
+  type: project
+---
+
 # 冲刺日志 — Sprint 02（agents-sgep）
 
 > 按 Scrum Guide Expanded v2026.1 的 Sprint Backlog / Sprint Review artifact 框架定义。

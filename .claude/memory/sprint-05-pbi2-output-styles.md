@@ -1,3 +1,10 @@
+---
+name: sprint-05-pbi2-output-styles
+description: Sprint 05 日志全文——PBI-2：3 个角色型 output-style 入插件；模式型 vs 角色型之别
+metadata:
+  type: project
+---
+
 # 冲刺日志 — Sprint 05（pbi2-output-styles）
 
 > 按 Scrum Guide Expanded v2026.1 的 Sprint Backlog / Sprint Review artifact 框架定义。

@@ -87,13 +87,9 @@
 |---|---|
 | `Scrum/README.md` | 本目录的文件索引与当前状态（一层索引） |
 | `Scrum/ProductBacklog.md` | 产品日志——Product 定义 / Vision / Architecture（待补）/ DoD（草案）/ v2.0.0 PBI 序列 / Review 1.x 收官 |
-| `Scrum/sprint-01-skill-stanford/` | Sprint 01 ✅：PBI-1 — design-kernel SKILL.md 重构 + IDEO-modes/ 五模式 WHAT/WHY/HOW |
-| `Scrum/sprint-02-agents-sgep/` | Sprint 02 ✅：PBI-3 — 6 个 scrum-kernel agent 全部替换为 SGEP 原文摘抄 |
-| `Scrum/sprint-03-design-sprint-restructure/` | Sprint 03 ✅：PBI-5 — Monday references/ 6 文件 + SKILL.md 重构完成；发现方法论分化 |
-| `Scrum/sprint-04-pbi4-descriptions/` | Sprint 04 ✅：PBI-4 — 13 个 description 字段全部优化（"discussing" → "role is needed"） |
-| `Scrum/sprint-05-pbi2-output-styles/` | Sprint 05 ✅：PBI-2 — 3 个角色型 output-style 放入插件（agent-designer / developer / scrum-master） |
+| `Scrum/sprint-01-skill-stanford/` ~ `sprint-05-pbi2-output-styles/` | Sprint 01-05 日志（PBI-1~5）——已迁出至 `.claude/memory/`（MEMORY.md 详细索引 + 五期全文档）；git 历史可追溯原文 |
 
-> 每个 sprint 目录唯一文件：`SprintBacklog.md`——四段式冲刺日志（Goal-why / PBI-what / Developer-how / Review）。
+> 五期冲刺日志全文（`SprintBacklog.md`，四段式：Goal-why / PBI-what / Developer-how / Review）已迁入 `.claude/memory/`。
 
 ### 源参考
 
