@@ -9,9 +9,9 @@
 | 层 | 位置 | 性质 |
 |---|---|---|
 | **插件本体** | `plugins/ideo-scrum/` | 交付物。别人安装的就是这里 |
-| **工作记录** | `Scrum/` | 用本插件的方法论开发本插件的过程记录 |
+| **工作记录** | `scrum/` + `docs/` | 用本插件的方法论开发本插件的过程记录 |
 
-`Scrum/` 是**当前状态与验证轮工作区**；1.x 的 sprint 日志是**历史记录**，教训已蒸馏入 `.claude/memory/`（原文 git 历史可追溯），不回改。除非发现事实错误，否则不要回头修改已完成 sprint 的内容。
+`scrum/` 是**当前状态与验证轮工作区**（产品日志）；`docs/` 放工作记录文档（如客户之声）。1.x 的 sprint 日志是**历史记录**，教训已蒸馏入 `.claude/memory/`（原文 git 历史可追溯），不回改。除非发现事实错误，否则不要回头修改已完成 sprint 的内容。
 
 ## 维护规约
 
@@ -36,7 +36,7 @@
 
 每期 Sprint 结束的 Review 阶段，本着"SprintBacklog 归西"的目的：AI 狠读冲刺日志 + 产品日志 → 写入四段式日志（Review 段写厚）→ 将教训/关键发现/变更**蒸馏**为一份记忆档案（30-50 行，带出处指向 git）存入 `.claude/memory/` → 删除 SprintBacklog 及中间产物。脚手架已拆、教训常在、原文 git 兜底。
 
-> 三分工：**memory 管教训**（常驻、蒸馏过，见 `.claude/memory/MEMORY.md`），**git 管原文**（可查、完整），**`Scrum/` 管现状**（产品日志、验证轮工作区）。
+> 三分工：**memory 管教训**（常驻、蒸馏过，见 `.claude/memory/MEMORY.md`），**git 管原文**（可查、完整），**`scrum/` 管现状**（产品日志、验证轮工作区）。
 
 **插件验证**
 
@@ -46,7 +46,7 @@
 
 插件内所有第三方摘录必须带署名。新增摘录时：
 
-1. 文件顶部标注 `> Source:` 与 `> License:` 两行，License 须与 [ATTRIBUTION.md](ATTRIBUTION.md) 中记录的条款一致
+1. 文件顶部标注 `> Source:` 与 `> License:` 两行，License 须与 [../ATTRIBUTION.md](../ATTRIBUTION.md) 中记录的条款一致
 2. 若引入新来源，先在 ATTRIBUTION.md 中登记，再写摘录
 
 **已知的授权约束：**
