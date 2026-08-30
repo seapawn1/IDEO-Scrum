@@ -13,11 +13,16 @@
 
 `scrum/` 是**当前状态工作区**（产品日志）；`docs/` 放工作记录文档（如 ExpertNotes 客户之声）。1.x 的 sprint 日志是**历史记录**，教训已蒸馏入 `.claude/memory/`（原文 git 历史可追溯），不回改。除非发现事实错误，否则不要回头修改已完成 sprint 的内容。
 
+## 当前状态（蒸馏锚点，随 Sprint 更新）
+
+- **2026-08-30 · v2.0.0 新轨**：插件本体 v1.0.2；PBI-7~11 立项为草案（详见 [../scrum/ProductBacklog.md](../scrum/ProductBacklog.md)），PBI-7（ideo 与 Design Sprint 融合重构）前置 Design Sprint 验证轮——客户之声使用流程已落盘 `docs/ExpertNotes.md`（感悟待写），其未决清单是融合设计的直接输入。
+- **1.x 已收官蒸馏**：旧目标（两内核结构对等）判定方向性错误，勿延续；教训见 `.claude/memory/`（MEMORY.md 索引 + 五期档案）。
+
 ## 维护规约
 
 **README 是文件索引与当前状态，Git 历史负责追溯过去。**
 
-- README 优先陈述：这里是什么、文件地图、当前状态
+- README 面向外部读者：只陈述这里是什么、文件地图、来源授权；作者侧的当前状态不入 README——由本文件「当前状态」锚点与 `scrum/ProductBacklog.md`（产品日志）承担
 - 提交前确认 README 是否需要同步更新——尤其是新增/删除/重命名文件、改动插件版本号时
 - 若发现 README 已过期、可能误导新会话的 LLM，必须显式提醒用户更新，不要默默放过
 - 追溯旧决策、文件演变、阶段状态时，放手查阅 Git 历史

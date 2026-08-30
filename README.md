@@ -86,7 +86,7 @@
 
 | 文件/目录 | 内容 |
 |---|---|
-| `scrum/ProductBacklog.md` | 产品日志——Product 定义 / Vision / Architecture（待补）/ DoD（草案）/ v2.0.0 PBI 序列 / Review 1.x 收官 |
+| `scrum/ProductBacklog.md` | 产品日志——Product 定义 / Vision / DoD（草案）/ v2.0.0 PBI 序列 / Architecture（草案大节，据验证轮客户之声抽象） |
 | `docs/ExpertNotes.md` | 客户之声——作者使用流程已口述落盘（项目骨架→IDEO→design 文件→背景研究→target 四阶段，含与 SprintBacklog 同源表、分工原则、未决清单）；感悟待写 |
 | **五期冲刺蒸馏** | 已蒸馏至 `.claude/memory/`（MEMORY.md 索引 + 五期教训档案，含出处指向 git）；原文 git 历史可追溯 |
 
@@ -110,29 +110,3 @@
 > ⚠️ 第三项含**非商业限制**，因此本仓库整体**不构成 OSI 定义下的开源软件**。商业场景使用前请阅读 [ATTRIBUTION.md](ATTRIBUTION.md)。
 
 本仓库不包含任何书籍全文或原始出版物。若这些方法论对你有价值，请通过官方渠道支持原作者。
-
-## 当前状态
-
-2026-08-30：**v2.0.0 新轨 + 治理层重整**。1.x 的 Product Goal（结构对等）判定为方向性错误（详见 [scrum/ProductBacklog.md](scrum/ProductBacklog.md) 修订记录）。插件仍为 v1.0.2；v2.0.0 PBI 序列（PBI-7~11）已立项为草案，PBI-7（ideo 与 Design Sprint 融合重构）前置 Design Sprint 验证轮。工作层重整：产品三件套合并为 `ProductBacklog.md`，五期冲刺日志蒸馏入 `.claude/memory/`（原文 git 历史可查），CLAUDE.md 移入 `.claude/`，`Scrum/` → `scrum/` + `docs/`。蒸馏闭环已成规约（见 `.claude/CLAUDE.md` 冲刺蒸馏闭环）。
-
-v1.0.2（2026-08-03）：5 个 Sprint 完成——插件具备完整的两套方法论体系（IDEO Design Thinking + Scrum Sprint），含 skills、agents、output-styles、method catalog。Design Sprint 五天流程中 Monday 已结构化完成，周二至五发现方法论分化。
-
-v1.0.0 之后的增量：删除设计冲刺知识代理文档（v1.0.1）；output-style `agent-designer` 更名 `designer`，Monday 流程中 Map 提前至 Ask the Experts 之前、`POV and HMW` 收敛为 `HMW`（v1.0.2）。
-
-### Product Backlog 概览
-
-| # | 标题 | 状态 |
-|---|---|---|
-| PBI-1 | 细化 design-kernel SKILL.md — 融合 Stanford Design Guides | ✅ Sprint 01 |
-| PBI-2 | 插件新增 output-styles | ✅ Sprint 05 |
-| PBI-3 | scrum-kernel agents 重构——SGEP 原文摘抄 | ✅ Sprint 02 |
-| PBI-4 | 细化插件所有 description 字段 | ✅ Sprint 04 |
-| PBI-5 | 重组 Design Sprint 内容结构 | ✅ Sprint 03（剩余范围并入 PBI-7） |
-| PBI-6 | Design Sprint Tuesday-Friday 细化——solo+AI 方法论设计 | 已并入 PBI-7（五天法废弃） |
-| PBI-7 | ideo 与 Design Sprint 融合重构 | ⏳ 待开始（前置 Design Sprint 验证轮） |
-| PBI-8 | 角色体系重构 | ⏳ 待开始 |
-| PBI-9 | 双内核联动 | ⏳ 待开始 |
-| PBI-10 | designer output-style 重写 | ⏳ 待开始 |
-| PBI-11 | 方法论感悟背景文档 | ⏳ 待开始 |
-
-> 详细定义见 [scrum/ProductBacklog.md](scrum/ProductBacklog.md)。

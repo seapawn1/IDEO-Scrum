@@ -1,7 +1,7 @@
 > 按 Scrum Guide Expanded v2026.1 的 Product / Increment / Product Backlog artifact 框架定义。
 > Product Owner: SeaPawn
 >
-> 修订记录：2026-08-30 旧目标（design-kernel 与 scrum-kernel 结构对等）判定为方向性错误——以文档结构为终点而非产品价值，且未经 Design Sprint 验证即直接进入 Scrum（`scrum/` 中无初始验证记录）。v2.0.0 新轨重启；Sprint 01-05 作为历史保留，不再延续旧目标。
+> 修订记录：2026-08-30 旧目标（design-kernel 与 scrum-kernel 结构对等）判定为方向性错误——以文档结构为终点而非产品价值，且未经 Design Sprint 验证即直接进入 Scrum（`scrum/` 中无初始验证记录）。v2.0.0 新轨重启；Sprint 01-05 作为历史保留，不再延续旧目标。同日：Architecture 节据验证轮客户之声落为草案（流程 mermaid 图 + What/How 边界原则，受未决清单约束）；删除「Review — 1.x 历史」节——教训已蒸馏至 `.claude/memory/`，原文 git 可查。
 
 # Product Backlog
 
@@ -14,10 +14,6 @@
 ## Product Vision
 
 让 Claude Code 成为一个随身的设计思维与敏捷教练——有方法论需求的人打开 Claude Code 调用 IDEO-Scrum，就能获得结构化、忠于原文、可操作的方法论引导。
-
-## Architecture
-
-> 待补：v2.0.0 融合架构（ideo 与 Design Sprint 融合、角色体系）经 Design Sprint 验证轮后写入。
 
 ## Definition of Done（草案：经 Design Sprint 验证轮后定稿）
 
@@ -39,7 +35,7 @@
 
 > **总目标（v2.0.0）**：实现 IDEO-Scrum v2.0.0——完成 v2.0.0 改进（双内核联动、角色体系重构、ideo 与 Design Sprint 融合），并将本次开发的方法论感悟沉淀为随插件交付的背景文档。
 >
-> **概览**：本清单为 v2.0.0 新轨 PBI 序列（草案）。设计阶段（PBI-7）先过 Design Sprint 验证轮；1.x 的 PBI-1~5 已完成、PBI-6 已并入 PBI-7，处置详情见 Review。
+> **概览**：本清单为 v2.0.0 新轨 PBI 序列（草案）。设计阶段（PBI-7）先过 Design Sprint 验证轮；1.x 的 PBI-1~5 已完成、PBI-6 已并入 PBI-7，处置详情见 git 历史（原「Review — 1.x 历史」节已删，教训蒸馏于 `.claude/memory/`）。
 
 ## v2.0.0 PBI 序列（草案）
 
@@ -54,20 +50,23 @@
 | PBI-11 | 方法论感悟背景文档 | 作为作者，我希望把 1.x 的教训（目标错了一期）与五个 Sprint 的复盘写下来，作为背景交付 | 交付物：随插件交付 | 待开始 | 建议尽早（记忆新鲜、不阻塞重构） |
 | PBI-6 | Design Sprint Tuesday-Friday 细化——solo + AI 方法论设计 | 作为 IDEO-Scrum 的 solo 用户，我需要 Monday 问题定义之后有一套单人 + AI 可执行的后续流程 | 旧范围：被 PBI-7 吸收 | 已并入 | 五天法废弃；骨架保留、肉身替换的设计已并入 PBI-7（融合重构） |
 
-# Review — 1.x 历史
+# Architecture
 
-## Review 总览 — 1.x 收官
+> 2026-08-30 据验证轮客户之声（[docs/ExpertNotes.md](../docs/ExpertNotes.md)）抽象为**草案**——受未决清单约束（map 精化时机、角色点名、target 落位等），随 PBI-7 推进修订；细节后面敲定。
 
-1.x（Sprint 01-05）以 v1.0.2 收官：双内核 + 6 角色 agent + 3 output-style 齐备。关键发现与教训留档：命名反复（Sprint 01 SKILL.md 定名、Sprint 03 文件命名等待结构稳定）；方法论分化——Monday 认知单元 vs Tuesday-Friday workshop 流程（Sprint 03 核心发现，PBI-6 由此而生）；description 语义锚（Sprint 04）；worktree 写入坑与"做 A 顺便做 B"单人模式（Sprint 02）；S 级 PBI 一次成型节奏（Sprint 04）。旧 Product Goal（结构对等）已判方向性错误（见文档头修订记录），1.x 不再延伸；其成品与教训继续服务于 v2.0.0。
+一条「研究 → 实施」流水线：IDEO 侧开启研究（design 文件定死挑战 → 背景研究产出 Map）→ target 收敛（选问题、抄 map、**定验收标准**）→ 进 Sprint 执行（AI 干 How）→ 人验收。**验收标准（AC）是 What 与 How 的边界线**：人守 What（goal、question、DoD、map、PBI、AC），AI 干 How、人不管。target 与 SprintBacklog 同源同构（goal / 抄录 / AC / How / 验收一一对应，对照表见 ExpertNotes 第五节）。
 
-## PBI 快照（1.x）
+```mermaid
+flowchart TD
+    A["项目骨架 repo-init"] --> B["IDEO 文件夹：研究正式开启<br/>问题有名字、没定义"]
+    B --> C["design 文件：第一部分定死<br/>挑战宣言 · 设计目标 · 冲刺问题"]
+    C --> D["背景研究 Empathize<br/>产出：背景调研文档 + Map"]
+    D -. 冲刺问题被否定则回改第一部分 .-> C
+    D --> E["target 四阶段<br/>定 goal · 选问题进来 · 抄 map 只抄不细化 · 对 map 细化"]
+    E --> F["定验收标准 AC：What 与 How 的边界线<br/>人全力参与"]
+    F --> G["进 Sprint：SprintBacklog 与 target 同源<br/>sprint goal · DoD 与 PBI 抄录 · AC 与 test"]
+    G --> H["执行：方案节 = 细化 map = 拆解 PBI<br/>AI 干 How，人不管"]
+    H --> I["结尾：人验收"]
+```
 
-| # | 标题 | 现状 | 摘要 |
-|---|---|---|---|
-| PBI-1 | 细化 ideo-kernel SKILL.md—融合 Stanford Design Guides | ✅ | SKILL.md 重构 + IDEO-modes/ 五文件（被 v2.0.0 吸收改造） |
-| PBI-2 | 插件新增 output-styles | ✅ | 3 个角色型 output-style |
-| PBI-3 | scrum-kernel agents 重构—SGEP 原文摘抄 | ✅ | 6 agent 全文摘抄（266 行） |
-| PBI-4 | 细化插件所有 description 字段 | ✅ | 13 字段 |
-| PBI-5 | 重组 Design Sprint 内容结构 | ✅ | Monday references/ 6 文件完成；周二至五方法论分化发现，剩余范围由 v2.0.0 的 PBI-7 承接 |
-
-> 细节见 `.claude/memory/`（五期教训蒸馏档案 + MEMORY.md 索引；原文含 Review 全文在 git 历史）。
+<small>**1.x 历史存档**（原「Review — 1.x 历史」节，2026-08-30 删除）：Sprint 01-05 以 v1.0.2 收官，PBI-1~5 完成、PBI-6 并入 PBI-7（五天法废弃，骨架保留）。教训蒸馏于 `.claude/memory/`（MEMORY.md 索引 + 五期档案）；Review 全文与 PBI 快照见 git 历史。旧 Product Goal（结构对等）判定方向性错误，见文档头修订记录。</small>
