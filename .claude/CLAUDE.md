@@ -15,7 +15,7 @@
 
 ## 当前状态（蒸馏锚点，随 Sprint 更新）
 
-- **2026-08-30 · v2.0.0 新轨**：插件本体 v1.0.2；PBI-7~11 立项为草案（详见 [../scrum/ProductBacklog.md](../scrum/ProductBacklog.md)），PBI-7（ideo 与 Design Sprint 融合重构）前置 Design Sprint 验证轮——客户之声使用流程已落盘 `docs/ExpertNotes.md`（感悟待写），其未决清单是融合设计的直接输入。
+- **2026-08-30 · Sprint 06 进行中**（v2.0.0 新轨 · Sprint 1）：分支 `sprint-06-dual-kernel-refactor`；Goal=Developer 与 SeaPawn 一同优化插件至 v2.0.0、待修条目基本修改完毕；选材 PBI-13~18（PBI-18 双内核执行模板为 Planning 口述新增；PBI-12 感悟留待另外的 Sprint，客户之声使用流程已落盘 `docs/ExpertNotes.md`）。详见 [../scrum/ProductBacklog.md](../scrum/ProductBacklog.md) 与 [../scrum/SprintBacklog.md](../scrum/SprintBacklog.md)。插件本体 v1.0.2。
 - **1.x 已收官蒸馏**：旧目标（两内核结构对等）判定方向性错误，勿延续；教训见 `.claude/memory/`（MEMORY.md 索引 + 五期档案）。
 
 ## 维护规约
