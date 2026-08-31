@@ -1,6 +1,6 @@
 ---
 name: design-kernel
-description: Use when applying Design Thinking or Design Sprint — Empathize, Define, Ideate, Prototype, Test; human-centered design, user interviews, journey mapping, POV, HMW questions, brainstorming, prototyping, user testing, Design Sprint five-day process (Monday Define through Friday Test).
+description: Use when applying Design Thinking or a Design Sprint — Empathize, Define, Ideate, Prototype, Test; human-centered design, user interviews, journey mapping, POV, HMW questions, brainstorming, user testing; rapid prototype validation — when an idea must be checked quickly with a prototype that feels like a prototype (fast, informal, never a formal result, built to learn rather than ship); and when a challenge is still undefined and needs pre-research before any execution. When research concludes and findings must become planned, executable work, hand off to the scrum-kernel skill.
 ---
 
 # Design Kernel
@@ -9,6 +9,8 @@ description: Use when applying Design Thinking or Design Sprint — Empathize, D
 
 Design Thinking is a **human-centered approach to innovation** that integrates the needs of people, the possibilities of technology, and the requirements for business success. Originating from IDEO and formalized at Stanford's Hasso Plattner Institute of Design (the d.school, founded by David Kelley), it is an iterative, non-linear methodology for tackling complex, ill-defined problems. Its core ethos is **bias toward action** — learning by doing rather than analysis alone.
 
+**Bias toward fast prototype validation.** The design work optimizes for speed of learning, not polish: a prototype must feel like a prototype — rough, quick, and disposable — built to learn, never a formal result.
+
 The IDEO's five-mode model:
 
 | Mode | Focus | Key Action | Reference | Read when |
@@ -16,7 +18,7 @@ The IDEO's five-mode model:
 | **Empathize** | Understand users deeply | Observe, engage, immerse in users' lives to uncover real needs | `IDEO-modes/empathize.md` | When the user needs to understand people — observe, engage, immerse — to discover deep needs from human behavior and emotion |
 | **Define** | Frame the right problem | Synthesize findings into a Point of View (user + need + insight) | `IDEO-modes/define.md` | When empathy findings are collected and a meaningful challenge needs framing — craft a Point of View (user + need + insight) |
 | **Ideate** | Generate possibilities | Diverge — brainstorm radical alternatives beyond the obvious | `IDEO-modes/ideate.md` | When a POV is ready and a wide range of ideas is needed — diverge and explore, don't converge too early |
-| **Prototype** | Make ideas tangible | Build low-cost artifacts to test; "build to think" | `IDEO-modes/prototype.md` | When selected ideas need low-cost prototypes — build, fail fast, iterate and learn |
+| **Prototype** | Make ideas tangible | Build low-cost artifacts to test; "build to think" | `IDEO-modes/prototype.md` | When selected ideas need low-cost prototypes — build, fail fast, iterate and learn; keep it fast and prototype-feeling — rough, quick, and disposable, built to learn, never a formal result |
 | **Test** | Learn from users | Put prototypes in front of real users; iterate based on feedback | `IDEO-modes/test.md` | When prototypes are ready for user feedback — test in real contexts, continue learning about users |
 
 The process is **not linear** — teams move back and forth between modes as insights emerge. Empathize and Ideate are divergent (opening up possibilities); Define and Prototype are convergent (narrowing toward solutions); Test feeds learning back into any mode.
@@ -137,3 +139,4 @@ A cross-functional team works together in one room for the full week, with a des
 3. Before using the method, read its document under `methods/`. Never invoke a method only by name — state which method you are using and why it fits the current mode.
 4. Treat the `Cleaned Transcription` section as source text.
 5. Treat `Use Before`, `Use Notes`, and `Do Not Use When` as project-specific notes, not source text.
+6. When research concludes and findings must become planned, executable work, hand off to the scrum-kernel skill.

@@ -1,6 +1,6 @@
 ---
 name: scrum-kernel
-description: Use when work involves Scrum or a Scrum Sprint — Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective, backlog refinement, Sprint Goal, Product Goal, Definition of Done, Scrum roles (Product Owner, Scrum Master, Developers), empirical process control for complex projects.
+description: "Use when work involves Scrum or a Scrum Sprint — Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective, backlog refinement, Sprint Goal, Product Goal, Definition of Done, Scrum roles (Product Owner, Scrum Master, Developers), empirical process control for complex projects. Division of labor: IDEO handles research, Scrum handles implementation — before starting, check whether open questions need a pre-study: if the problem or solution direction is unvalidated, run the design-kernel skill first and treat its findings as key Sprint evidence; a difficult Sprint may open with an IDEO research round, and when stuck mid-Sprint, IDEO methods can help inspect the problem."
 ---
 
 # Scrum Kernel
@@ -12,6 +12,12 @@ Scrum is described in `scrum-guide-2020.md`, the definitive 2020 Scrum Guide by 
 ## Why Use Scrum?
 
 Scrum enables Scrum Teams to identify, represent, or measure emergence, embrace uncertainty, respond to change, deliver and validate value frequently, and continuously improve. Scrum fosters collaboration, accountability, and evidence-informed decision-making, fostering the best possible outcomes in a rapidly changing environment. Self-managing Scrum Teams, organized around value, are crucial for creative problem-solving and opportunity capture; non-self-managing Scrum Teams hinder the ability to deal with complexity. Self-managing Scrum Teams are not to be confused with individual self-management.
+
+## Working with the Design Kernel
+
+Research and implementation are divided: the design side (design-kernel skill) handles research; Scrum handles implementation. Before a Sprint, judge whether open questions need a pre-study — when the problem or direction is unvalidated, run the design-kernel skill first and treat its findings as key Sprint evidence. A difficult Sprint may open with an IDEO research round (research → prototype) before implementation, and when the team gets stuck mid-Sprint (e.g., at the Daily Scrum), IDEO methods can inspect and research the problem the Sprint is stuck on.
+
+*(Author's methodology design for solo + AI teams, 2026-08 — not part of the Scrum Guide or SGEP.)*
 
 ## Elements of Scrum
 

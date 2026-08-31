@@ -78,11 +78,11 @@ Developer 与 SeaPawn 一同优化插件至 v2.0.0：将所选待修条目（PBI
 
 - 14-A designer 重造（设计阶段专有定位，弃旧版「AI agent 设计师」内容）
 - 14-B developer / scrum-master 重构（抄书合规路径：方法流程可录、不逐字大段）
-- 14-C description 触发条件式 + 区分度复查（对照 CLAUDE.md 规约）
+- 14-C description 触发条件式 + 区分度复查（对照 CLAUDE.md 规约）（2026-08-31：两 describe 已重写互链，14-1 三处写入同时落盘；复查随 skill-reviewer）
 
 #### PBI-16 描述互链（收尾）
 
-- 16-A 两 kernel 描述深度优化互链 + plugin.json 元数据同步
+- 16-A 两 kernel 描述深度优化互链（2026-08-31 完成）+ plugin.json 元数据同步（已查：展示用元数据已覆盖双内核，无需改）
 
 #### 收尾
 
@@ -97,3 +97,4 @@ Developer 与 SeaPawn 一同优化插件至 v2.0.0：将所选待修条目（PBI
 | 2026-08-31 | 决策批①：PBI-13 撤销、14/15/16/17 重塑定案（重整 seapawn.md + 对话确认） | 完成 | 删除批已执行（agents/ 六文件 + designer.md）并过 plugin-validator PASS             |
 | 2026-08-31 | 删除批提交两笔：8544d4d（chore 护栏）、8f62ced（refactor 删除）  | 完成 | 提交方式定案：每工作项完成即提交、不 push                                          |
 | 2026-08-31 | 产品日志回写 + 本文件重写（How 区 v2）                          | 完成 | 回写内容待 PO 查阅，可随时否决                                                     |
+| 2026-08-31 | 五行融合批（plan 批准后执行）：两 describe 重写互链（16-1/16-2）+ 14-1 三处写入 + scrum 侧「Working with the Design Kernel」节 | 完成 | describe 五天字样顺手清；plugin.json 决定不动；skill-reviewer PASS（六处措辞修订已落）；validator 抓获 scrum 描述 YAML 冒号缺陷→加引号修复后通过 |
