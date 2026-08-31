@@ -110,17 +110,5 @@ Communication is key to ensuring the Scrum Team and Supporters Focus on the righ
 | Category | Reference | Contains | Read when |
 | --- | --- | --- | --- |
 | **Foundation** | `scrum-guide-2020.md` | The definitive 2020 Scrum Guide by Ken Schwaber & Jeff Sutherland | The team is new to Scrum, needs the canonical definitions of roles/events/artifacts, or a dispute about "what Scrum says" must be settled by the source. |
-| **SGEP Source** | `assets/scrum-guide-expansion-pack-2026.1.md` | The full Scrum Guide Expansion Pack (SGEP) v2026.1 — the canonical source from which all reference files and role agents are derived. Contains content not yet extracted to references: supporting Theory (complexity, emergence, empiricism, lean thinking, cadence), Scrum Values through the OODA lens, Product/Systems/Discovery/Leadership theory, People & Change guidance, and the complete academic reference list (resolves inline citations like `[12-17]` found throughout reference files). | Specific artifact/event/role content should be looked up in the corresponding reference file first. Read the SGEP source directly when the reference file doesn't cover a topic, when the full theoretical underpinnings are needed, or to look up the full citation for an inline reference marker. |
-
-### Role Agents
-
-Six role-specific agents provide on-demand guidance for Scrum roles defined in the SGEP (see `references/scrum-roles.md` for the full Scrum Roles specification):
-
-| Agent | Role |
-| --- | --- |
-| `agents/scrum-product-owner.md` | Product Owner — value maximization, backlog management, stakeholder engagement |
-| `agents/scrum-scrum-master.md` | Scrum Master — change agency, effectiveness, impediment removal |
-| `agents/scrum-product-developer.md` | Product Developers — collective accountability, cross-functionality |
-| `agents/scrum-stakeholder.md` | Stakeholder — types, engagement patterns, satisfaction gaps |
-| `agents/scrum-supporter.md` | Supporter — organizational change agents, guiding coalition |
-| `agents/scrum-artificial-intelligence.md` | AI — augmentation, human-in-the-loop, experimentation boundaries |
+| **SGEP Source** | `assets/scrum-guide-expansion-pack-2026.1.md` | The full Scrum Guide Expansion Pack (SGEP) v2026.1 — the canonical source from which all reference files are derived. Contains content not yet extracted to references: supporting Theory (complexity, emergence, empiricism, lean thinking, cadence), Scrum Values through the OODA lens, Product/Systems/Discovery/Leadership theory, People & Change guidance, and the complete academic reference list (resolves inline citations like `[12-17]` found throughout reference files). | Specific artifact/event/role content should be looked up in the corresponding reference file first. Read the SGEP source directly when the reference file doesn't cover a topic, when the full theoretical underpinnings are needed, or to look up the full citation for an inline reference marker. |
+| **Roles** | `references/scrum-roles.md` | The full Scrum Roles specification from the SGEP — every role and accountability in detail (Product Owner, Scrum Master, Product Developers, Stakeholder, Supporter, AI). | Role definitions or accountabilities are needed beyond the summary in Elements of Scrum §3, e.g. when clarifying who does what, or when writing role guidance. |

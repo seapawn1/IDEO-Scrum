@@ -25,7 +25,6 @@
 
 ```
 /output-style scrum-master     # Scrum Master：三大支柱、五项价值观、仪式优先
-/output-style designer         # 设计结对：IDEO 五模式，先发散后收敛
 /output-style developer        # Developer：Sprint Backlog、DoD、Review、Retro
 ```
 
@@ -34,12 +33,12 @@
 | 组件 | 内容 |
 |---|---|
 | `design-kernel` skill | IDEO / d.school 五模式（Empathize → Test）、~40 个设计方法、Design Sprint 五天流程 |
-| `scrum-kernel` skill | Scrum Guide 2020 全文、Artifact 与 Event 的分项引用、6 个 Scrum 角色 agent |
-| 3 个 output-style | Scrum Master / Designer / Developer 三种工作视角 |
+| `scrum-kernel` skill | Scrum Guide 2020 全文、SGEP 扩展包全文、Artifact / Event / Roles 分项引用 |
+| 2 个 output-style | Scrum Master / Developer 两种工作视角 |
 
 ## 这里是什么
 
-本插件将 Design Thinking（设计思维）和 Scrum Sprint（敏捷冲刺）两套方法论集成到 Claude Code 中，通过技能（skills）、角色代理（agents）和输出样式（output-styles）提供结构化的协作流程。不做项目管理工具本身，不做 JIRA/Linear 集成，也不做团队协作平台——只提供方法论引导和流程框架。
+本插件将 Design Thinking（设计思维）和 Scrum Sprint（敏捷冲刺）两套方法论集成到 Claude Code 中，通过技能（skills）和输出样式（output-styles）提供结构化的协作流程。不做项目管理工具本身，不做 JIRA/Linear 集成，也不做团队协作平台——只提供方法论引导和流程框架。
 
 ## 文件地图
 
@@ -57,7 +56,6 @@
 | 文件/目录 | 内容 |
 |---|---|
 | `plugins/ideo-scrum/.claude-plugin/plugin.json` | 插件清单 v1.0.2 |
-| `plugins/ideo-scrum/output-styles/designer.md` | Output-style — agent 设计结对（IDEO 五模式，先发散后收敛） |
 | `plugins/ideo-scrum/output-styles/developer.md` | Output-style — Developer 角色（Sprint Backlog / DoD / Sprint Review / Retro） |
 | `plugins/ideo-scrum/output-styles/scrum-master.md` | Output-style — Scrum Master 角色（三大支柱 / 五项价值观 / 仪式优先） |
 
@@ -68,19 +66,19 @@
 | `plugins/ideo-scrum/skills/design-kernel/SKILL.md` | Design Kernel 入口（IDEO 五模式表 + Design Sprint 单行引用 + Method Catalog + Use Protocol） |
 | `plugins/ideo-scrum/skills/design-kernel/IDEO-modes/` | IDEO Design Thinking 五模式 reference（Empathize / Define / Ideate / Prototype / Test，各含 WHAT/WHY/HOW + Transition） |
 | `plugins/ideo-scrum/skills/design-kernel/methods/` | Design Thinking 方法库（~40 个方法，含 Use Before / Use Notes / Do Not Use When） |
-| `plugins/ideo-scrum/skills/design-kernel/DesignSprint/design-sprint.md` | Design Sprint 五天入口（Monday checklist 完整，引用 `references/`；Tuesday-Friday 待 PBI-7 重构） |
+| `plugins/ideo-scrum/skills/design-kernel/DesignSprint/design-sprint.md` | Design Sprint 五天入口（Monday checklist 完整，引用 `references/`） |
 | `plugins/ideo-scrum/skills/design-kernel/DesignSprint/references/` | Monday 6 个引用文件：define-the-challenge / start-at-the-end / make-a-map / ask-the-experts / how-might-we / pick-a-target |
 
 ### scrum-kernel skill
 
 | 文件/目录 | 内容 |
 |---|---|
-| `plugins/ideo-scrum/skills/scrum-kernel/SKILL.md` | Scrum Sprint 技能内核（Scrum Guide 概述 + Artifact/Event 目录表 + Role Agent 列表） |
+| `plugins/ideo-scrum/skills/scrum-kernel/SKILL.md` | Scrum Sprint 技能内核（Scrum Guide 概述 + Artifact / Event / Reference 目录表） |
 | `plugins/ideo-scrum/skills/scrum-kernel/scrum-guide-2020.md` | Scrum Guide 2020 官方全文 |
-| `plugins/ideo-scrum/skills/scrum-kernel/agents/` | 6 个 Scrum 角色 agent（PO / SM / PD / Stakeholder / Supporter / AI，SGEP 原文摘抄） |
 | `plugins/ideo-scrum/skills/scrum-kernel/assets/scrum-guide-expansion-pack-2026.1.md` | SGEP 完整源文档（Theory / Values-OODA / Roles / 引用列表） |
 | `plugins/ideo-scrum/skills/scrum-kernel/references/scrum-artifact-*.md` | 4 个 Artifact reference：Product / Increment / Product Backlog / Sprint Backlog |
 | `plugins/ideo-scrum/skills/scrum-kernel/references/scrum-event-*.md` | 5 个 Event reference：Sprint / Sprint Planning / Daily Scrum / Sprint Review / Sprint Retrospective |
+| `plugins/ideo-scrum/skills/scrum-kernel/references/scrum-roles.md` | Scrum Roles 规范（SGEP 角色节摘录） |
 
 ### 工作记录（scrum/ + docs/）
 
