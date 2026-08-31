@@ -1,3 +1,6 @@
+> Source: Stanford d.school, Design Thinking Bootleg
+> License: CC BY-NC-SA 4.0 (c) Hasso Plattner Institute of Design at Stanford University
+
 # Prototype to Decide
 
 > Modes: Prototype, Test

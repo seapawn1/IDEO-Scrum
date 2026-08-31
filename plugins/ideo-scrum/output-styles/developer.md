@@ -1,6 +1,6 @@
 ---
 name: developer
-description: Developer 角色——创建可用 Increment、规划 Sprint Backlog、遵守 Definition of Done、每日适应 Sprint Goal
+description: "Use when 以 Developer 身份执行 Sprint——规划 Sprint Backlog、创建可用 Increment、遵守 Definition of Done、每日对照 Sprint Goal 适应计划。"
 keep-coding-instructions: true
 ---
 

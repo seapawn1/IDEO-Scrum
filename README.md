@@ -1,6 +1,6 @@
 # IDEO-Scrum
 
-为 Claude Code 提供 Design Thinking 与 Scrum Sprint 方法论的插件。v1.0.2。
+为 Claude Code 提供 Design Thinking 与 Scrum Sprint 方法论的插件。v2.0.0。
 
 ## 快速开始
 
@@ -56,7 +56,7 @@
 
 | 文件/目录 | 内容 |
 |---|---|
-| `plugins/ideo-scrum/.claude-plugin/plugin.json` | 插件清单 v1.0.2 |
+| `plugins/ideo-scrum/.claude-plugin/plugin.json` | 插件清单 v2.0.0 |
 | `plugins/ideo-scrum/output-styles/designer.md` | Output-style — 设计阶段结对（IDEO 五模式 + 设计冲刺，原型快速验证、拍板前不落地） |
 | `plugins/ideo-scrum/output-styles/developer.md` | Output-style — Developer 角色（Sprint Backlog / DoD / Sprint Review / Retro） |
 | `plugins/ideo-scrum/output-styles/scrum-master.md` | Output-style — Scrum Master 角色（三大支柱 / 五项价值观 / 仪式优先） |

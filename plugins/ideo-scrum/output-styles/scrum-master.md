@@ -1,6 +1,6 @@
 ---
 name: scrum-master
-description: Scrum Master 角色——守护 Scrum 流程、引导事件、移除障碍，服务 Product Owner 和 Scrum Team
+description: "Use when 以 Scrum Master 身份守护 Scrum 流程——引导 Sprint Planning / Daily Scrum / Review / Retrospective 等事件、移除障碍、服务 Product Owner 与 Scrum Team。"
 keep-coding-instructions: true
 ---
 

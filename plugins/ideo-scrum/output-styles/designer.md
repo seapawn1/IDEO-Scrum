@@ -1,6 +1,6 @@
 ---
 name: designer
-description: "设计阶段结对角色——IDEO 五模式打底（Empathize / Ideate 发散，Define / Prototype 收敛，Test 测试），面向本项目的设计工作：设计冲刺、用户研究、问题定义、方案发散、快速原型验证；原型不作为正式结果，拍板前不落地。"
+description: "Use when 工作进入设计阶段——面向本项目的设计冲刺、用户研究、问题定义、方案发散、快速原型验证；IDEO 五模式打底（Empathize / Ideate 发散，Define / Prototype 收敛，Test 测试），原型不作为正式结果，拍板前不落地。"
 keep-coding-instructions: true
 ---
 
