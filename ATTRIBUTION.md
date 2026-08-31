@@ -46,7 +46,7 @@
 | 出品 | Hasso Plattner Institute of Design at Stanford University (d.school) |
 | 许可 | **CC BY-NC-SA 4.0** — https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode |
 | 原始出处 | https://dschool.stanford.edu/tools/design-thinking-bootleg |
-| 本仓库位置 | `plugins/ideo-scrum/skills/design-kernel/IDEO-modes/`（五模式 WHAT/WHY/HOW）<br>`plugins/ideo-scrum/skills/design-kernel/methods/`（方法库） |
+| 本仓库位置 | `plugins/ideo-scrum/skills/design-kernel/IDEO-modes/`（五模式 WHAT/WHY/HOW；同目录另存设计冲刺五阶段参考，属第 4 节 Knapp 来源）<br>`plugins/ideo-scrum/skills/design-kernel/methods/`（方法库） |
 | 修改说明 | 五模式内容重组为 WHAT / WHY / HOW 三层结构并补充模式间衔接；方法库条目补充 Use Before / Use Notes / Do Not Use When 字段。 |
 
 > **⚠️ NonCommercial 提示**
@@ -65,8 +65,8 @@
 | 出版 | Simon & Schuster, 2016 |
 | 许可 | **全版权保护**（All Rights Reserved），无开放许可 |
 | 官方网站 | https://www.thesprintbook.com/ |
-| 本仓库位置 | `plugins/ideo-scrum/skills/design-kernel/DesignSprint/` |
-| 使用范围 | Design Sprint 五天流程的**结构与方法步骤**，各文件均标注章节出处。 |
+| 本仓库位置 | `plugins/ideo-scrum/skills/design-kernel/IDEO-modes/`（设计冲刺五阶段参考：define-the-challenge / start-at-the-end / ask-the-experts / make-a-map / pick-a-target） |
+| 使用范围 | 设计冲刺五阶段的**方法步骤与阶段参考**（作者适配；各文件标注章节出处；decider 术语按作者方法论改为 Product Owner）。 |
 
 > **请支持正版**
 >

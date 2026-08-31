@@ -1,6 +1,6 @@
 ---
 name: design-kernel
-description: Use when applying Design Thinking or a Design Sprint — Empathize, Define, Ideate, Prototype, Test; human-centered design, user interviews, journey mapping, POV, HMW questions, brainstorming, user testing; rapid prototype validation — when an idea must be checked quickly with a prototype that feels like a prototype (fast, informal, never a formal result, built to learn rather than ship); and when a challenge is still undefined and needs pre-research before any execution. When research concludes and findings must become planned, executable work, hand off to the scrum-kernel skill.
+description: "Use when applying Design Thinking or a Design Sprint — Empathize, Define, Ideate, Prototype, Test; human-centered design, user interviews, journey mapping, POV, HMW questions, brainstorming, user testing; rapid prototype validation — when an idea must be checked quickly with a prototype that feels like a prototype (fast, informal, never a formal result, built to learn rather than ship); and when a challenge is still undefined and needs pre-research before any execution. The Design Sprint here is a fast research sprint — lock the target quickly, finish the design fast, clarify whether the problem is solvable and what the basic approach is — and its findings pave the way for, then hand off to, the scrum-kernel Sprint."
 ---
 
 # Design Kernel
@@ -11,7 +11,7 @@ Design Thinking is a **human-centered approach to innovation** that integrates t
 
 **Bias toward fast prototype validation.** The design work optimizes for speed of learning, not polish: a prototype must feel like a prototype — rough, quick, and disposable — built to learn, never a formal result.
 
-The IDEO's five-mode model:
+IDEO's five-mode model:
 
 | Mode | Focus | Key Action | Reference | Read when |
 |---|---|---|---|---|
@@ -25,19 +25,27 @@ The process is **not linear** — teams move back and forth between modes as ins
 
 ## Design Sprint
 
-| Reference | Contains | Read when |
-|---|---|---|
-| `DesignSprint/design-sprint.md` | Jake Knapp's GV five-day sprint: Monday Define → Tuesday Ideate → Wednesday Ideate → Thursday Prototype → Friday Test, with role agents and reference files under `references/` | When user explicitly switches to a time-boxed sprint, or needs long-term goal, sprint questions, map, HMW notes, target, sketches, storyboard, prototype, or user test |
+A fast, structured sprint for the design side: lock the target quickly, finish the design fast, clarify whether the problem is solvable and what the basic approach looks like — the outcome paves the way for the scrum-kernel Sprint that follows. Five stages, no day-by-day script: move as fast as the work allows. Beyond the five stages, prototyping and testing ride on the Prototype and Test modes and the methods catalog above.
 
-| Day | Theme | Core Activities |
-|---|---|---|
-| **Monday** | Define | Set a long-term goal, map the problem space, interview experts, choose a target |
-| **Tuesday** | Ideate | Review existing inspiration, individually sketch detailed solution concepts |
-| **Wednesday** | Ideate | Silent critique, vote on elements, Decider selects winning ideas, create a storyboard |
-| **Thursday** | Prototype | Build a realistic, testable facade — "fake it" with Keynote, Figma, or paper |
-| **Friday** | Test | Conduct five one-hour user interviews, observe reactions, identify patterns, decide next steps |
+*(Author's methodology design for solo + AI teams, 2026-08; stage steps adapted from Knapp, Zeratsky & Kowitz, _Sprint_ (2016), cited per file.)*
 
-A cross-functional team works together in one room for the full week, with a designated **Decider** who has final authority on key choices. The Sprint replaces speculation with user evidence, giving teams clarity on whether to invest, pivot, or abandon an idea — all in five days.
+| File | Purpose | Read when |
+|---|---|---|
+| `IDEO-modes/define-the-challenge.md` | What makes a challenge sprint-worthy (high stakes, deadline, stuck) and how to size it — solve the surface first | Stage 1 — Challenge; also the entry point when starting a design sprint |
+| `IDEO-modes/start-at-the-end.md` | Set the long-term goal (optimistic) and list sprint questions (pessimistic) — assumptions turned into answerable questions | Stage 2 — Goal and Questions |
+| `IDEO-modes/ask-the-experts.md` | One-at-a-time expert interviews (strategy, customer voice, how things work, previous efforts) with a five-step script | Stage 3 — Ask the Experts / deep research |
+| `IDEO-modes/make-a-map.md` | Draw the map: actors on the left, ending on the right, words and arrows in between — five to fifteen steps | Stage 4 — Map |
+| `IDEO-modes/pick-a-target.md` | Choose the most important customer and the critical moment of their experience; align the target with sprint questions | Stage 5 — Target |
+
+| Stage | Steps |
+|---|---|
+| **Challenge** | Define the big challenge for this sprint. Use a sprint when the stakes are high, when there's not enough time, or when you're just plain stuck. Full method: `IDEO-modes/define-the-challenge.md` |
+| **Goal and Questions** | Set a long-term goal — get optimistic: why are we doing this project, where do we want to be? Then list sprint questions — get pessimistic: how could we fail? Turn fears into questions this sprint can answer. Full method: `IDEO-modes/start-at-the-end.md` |
+| **Ask the Experts** | One-at-a-time interviews with your team, your company, and outside specialists; revise goal, questions, and map as you learn. Full method: `IDEO-modes/ask-the-experts.md` |
+| **Map** | List customers and key players on the left; draw the ending, with the completed goal, on the right; words and arrows in between — keep it to five to fifteen steps. Full method: `IDEO-modes/make-a-map.md` |
+| **Target** | Choose the most important customer and the critical moment of their experience — the Product Owner makes the call. Full rationale: `IDEO-modes/pick-a-target.md` |
+
+<small>这五个阶段都是为了快速明确背景、快速定义问题、缩小范围用的。These five stages exist to quickly clarify the background, define the problem, and narrow the scope.</small>
 
 ---
 

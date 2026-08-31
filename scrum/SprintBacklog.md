@@ -36,7 +36,7 @@ Developer 与 SeaPawn 一同优化插件至 v2.0.0：将所选待修条目（PBI
 | #      | 标题                                          | 状态   | 验收标准（AC）                                                                                                                                                                                                                                                                                                                    |
 | ------ | --------------------------------------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | PBI-14 | 设计阶段快原则与 output-styles 重构            | 待开始 | 14-1 design-kernel 三处写入原型原则：describe（触发式措辞）/ 第一节 / 对应章节（Prototype 模式及相关方法页）；设计冲刺整体原则不单列<br>14-2 designer 重造落盘：定位=设计阶段专有结对风格（弃旧版「AI agent 设计师」内容）；与 skill 三处的分工写清（skill 讲原则方法，designer 承载人格与引导）<br>14-3 三 output-styles（developer / scrum-master / designer）全部重构；「直接抄书」走合规路径（方法流程可录、不逐字大段、与 ATTRIBUTION 一致）<br>14-4 description 全部触发条件式、互不叠影 |
-| PBI-15 | ideo 与设计冲刺融合重构（scrum 技能同步重构） | 待开始 | 15-1 讲清设计冲刺是什么、与五模式的关系；五天法（Monday–Friday）痕迹清零，decider 消除、职能归 PO<br>15-2 DesignSprint/ 子目录去留有定论并执行；重构后无死链<br>15-3 scrum-kernel 重构至清晰可读、与 design-kernel 同构对齐<br>15-4 三个机制点落文：targetmap 收敛（主收敛/子发散、方案汇总第三节）、Sprint 同源一条龙、摘抄边界（摘不了保持空集）<br>15-5 四开放点定案落文：map 精化=方案节；targetmap=单一文档三节式；选问题=design 第一部分命中者；细化 PBI=伪需求不采纳 |
+| PBI-15 | ideo 与设计冲刺融合重构（scrum 技能同步重构） | 进行中 | 15-1 讲清设计冲刺是什么、与五模式的关系；五天法（Monday–Friday）痕迹清零（书摘内文除外，见 Q4 立场），decider 消除、职能归 PO<br>15-2 已执行：DesignSprint/ 整删——references 五件迁 IDEO-modes/、design-sprint.md 五阶段并入 SKILL.md、how-might-we.md 删；重构后无死链<br>15-3 scrum-kernel 重构至清晰可读、与 design-kernel 同构对齐<br>15-4 两个机制点落文：Sprint 同源一条龙、摘抄边界（摘不了保持空集）；主收敛/子发散机制经 PO 2026-08-31 决定删除、不落文<br>15-5 四开放点定案落文：map 精化=方案节；targetmap=单一文档三节式；选问题=design 第一部分命中者；细化 PBI=伪需求不采纳 |
 | PBI-16 | 双内核联动——描述字段互链                      | 待开始 | 16-1 互链成立：scrum 侧写明「scrum 前的问题需 ideo 预研究」、ideo 侧写明「研究完进 scrum 执行」；两描述可区分（触发条件式）<br>16-2 两描述深度优化完成（一次性，不做机制自动化；claude.md 注入以 L12 结论为准不采用）                                                                                                                                                |
 | PBI-17 | 流程规格——关键文档与元件的预先规格设计        | 待开始 | 17-1 规格清单确定：哪些关键文档/元件需要预先规格（与 PBI-18 模板清单一并敲定）；每份规格含「每次执行前写清楚」的形态<br>17-2 review 产出规格为第一份落地规格，成文落位                                                                                                                                                                    |
 | PBI-18 | 双内核执行模板——设计冲刺与 Scrum 配套模板      | 待开始 | 18-1 设计冲刺侧与 Scrum 侧模板均有设计稿并落盘<br>18-2 模板显式区分「人填 What / AI 填 How」的分工环节（人的因素落进模板结构）<br>18-3 模板与对应 skill 接线（SKILL.md 可达；「可导航 ≤2 跳」DoD 覆盖）<br>18-4 每份模板经 PO 逐份验收                                                                                                                        |
@@ -61,8 +61,8 @@ Developer 与 SeaPawn 一同优化插件至 v2.0.0：将所选待修条目（PBI
 #### PBI-15 融合重构（最大块；含 14-1 的 skill 三处写入）
 
 - 15-A 定案核对与落文准备：机制点与四开放点已在产品日志定案，落进重构稿
-- 15-B design-kernel SKILL.md 重构：融合设计冲刺、讲清设计冲刺是什么、五天法清零（含 decider 归 PO）、原型原则写入三处（describe / 第一节 / 对应章节）
-- 15-C DesignSprint/ 子目录处置（去留定论后执行；内容融入或保留为引用）
+- 15-B design-kernel SKILL.md 重构（2026-08-31 完成：Design Sprint 章节重写为定位/文件表/五阶段表/小字注记，五天叙事清零，decider→Product Owner；原型原则三处已落）
+- 15-C DesignSprint/ 处置（2026-08-31 完成：整目录删除——references 五件迁 IDEO-modes/ 并补 License 头，design-sprint.md 删除并入 SKILL.md，how-might-we.md 删除）
 - 15-D scrum-kernel SKILL.md 重构：清晰可读、与 design-kernel 同构对齐（以盘上最新版为基准——Roles 已收为 PO/SM/Developers）
 - 15-E 无死链扫描 + plugin-validator
 
@@ -98,3 +98,4 @@ Developer 与 SeaPawn 一同优化插件至 v2.0.0：将所选待修条目（PBI
 | 2026-08-31 | 删除批提交两笔：8544d4d（chore 护栏）、8f62ced（refactor 删除）  | 完成 | 提交方式定案：每工作项完成即提交、不 push                                          |
 | 2026-08-31 | 产品日志回写 + 本文件重写（How 区 v2）                          | 完成 | 回写内容待 PO 查阅，可随时否决                                                     |
 | 2026-08-31 | 五行融合批（plan 批准后执行）：两 describe 重写互链（16-1/16-2）+ 14-1 三处写入 + scrum 侧「Working with the Design Kernel」节 | 完成 | describe 五天字样顺手清；plugin.json 决定不动；skill-reviewer PASS（六处措辞修订已落）；validator 抓获 scrum 描述 YAML 冒号缺陷→加引号修复后通过 |
+| 2026-08-31 | PBI-15 手术批（PO 口述蓝图 + Q1-Q4 确认）：DesignSprint/ 整删、五阶段并入 SKILL.md、五天叙事清零、decider→Product Owner（含两件书摘统一改 + ATTRIBUTION 登记适配）、License 头回填（5 件迁入文件 + scrum-guide-2020.md）、描述同步设计冲刺定位 | 完成 | validator 复检 PASS（0 critical/0 warning、零死链、Decider 零残留）；skill-reviewer 复检 PASS（0 critical/0 major），7 处打磨修订随落、3 处有意保留（PO 原话呼应/区分度错开/双落位定案） |

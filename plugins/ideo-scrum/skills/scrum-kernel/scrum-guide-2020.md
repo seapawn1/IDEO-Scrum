@@ -1,5 +1,8 @@
 # The 2020 Scrum Guide™
 
+> Source: The Scrum Guide 2020, Ken Schwaber & Jeff Sutherland — https://scrumguides.org/
+> License: CC BY-SA 4.0 (© 2020 Ken Schwaber and Jeff Sutherland)
+
 > **The Definitive Guide to Scrum: The Rules of the Methodology**
 
 ---

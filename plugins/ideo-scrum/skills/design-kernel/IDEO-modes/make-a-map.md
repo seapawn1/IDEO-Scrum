@@ -1,6 +1,7 @@
 # Map
 
 > Source: Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster. Chapter: "Map."
+> License: All rights reserved — method excerpts only (see ATTRIBUTION.md).
 
 ## Introduction
 

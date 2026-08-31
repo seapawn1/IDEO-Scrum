@@ -1,6 +1,7 @@
 # Pick a target
 
 > Source: Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster. Chapter: "Target."
+> License: All rights reserved — method excerpts only (see ATTRIBUTION.md).
 
 At the end of Monday, you've compiled the data — long-term goal, sprint questions, map, expert interviews, HMW notes. Like Marie Tharp mapping the ocean floor and discovering the Mid-Ocean Ridge, the most important part of your project should jump right out of the map.
 
@@ -18,7 +19,7 @@ Once you've clustered your team's How Might We notes, the decision is usually st
 
 ## How to decide
 
-The Decider needs to choose one target customer and one target event on the map. Whatever she chooses becomes the focus of the rest of the sprint — the sketches, prototype, and test all flow from this decision. By Monday afternoon, after a full day of mapping, interviewing, and note-taking, the target should be clear. If you're working solo, you are the Decider — review your map and HMW clusters, and make the call.
+The Product Owner needs to choose one target customer and one target event on the map. Whatever she chooses becomes the focus of the rest of the sprint — the sketches, prototype, and test all flow from this decision. By Monday afternoon, after a full day of mapping, interviewing, and note-taking, the target should be clear. If you're working solo, you are the Product Owner — review your map and HMW clusters, and make the call.
 
 Once you've selected a target, take a look back at your sprint questions. You usually can't answer all of them in one sprint, but one or more should line up with the target. For example, Flatiron Health's target — research coordinators searching for matching trials — matched their sprint question "Will clinics change their workflow?" By testing a solution with real coordinators, they hoped to learn the answer. The target and the sprint question lined up perfectly.
 

@@ -1,6 +1,7 @@
 # Ask the Experts
 
 > Source: Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster. Chapter: "Ask the Experts."
+> License: All rights reserved — method excerpts only (see ATTRIBUTION.md).
 
 Your team knows a lot about your challenge — but that knowledge is distributed. Somebody knows the most about your customers; somebody knows the most about the technology, the marketing, the business. In the normal course of business, teams don't get the chance to join forces and use all of that knowledge. Monday afternoon is devoted to fixing that.
 
@@ -16,7 +17,7 @@ Deciding who to talk to is a bit of an art. For your own team, you probably have
 
 ### Strategy
 
-Start by talking to the Decider. If the Decider is not going to be in the sprint the whole time, be sure she joins you on Monday afternoon. Some useful questions to ask: "What will make this project a success?" "What's our unique advantage or opportunity?" "What's the biggest risk?"
+Start by talking to the Product Owner. If the Product Owner is not going to be in the sprint the whole time, be sure she joins you on Monday afternoon. Some useful questions to ask: "What will make this project a success?" "What's our unique advantage or opportunity?" "What's the biggest risk?"
 
 ### Voice of the Customer
 
