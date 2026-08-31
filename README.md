@@ -25,6 +25,7 @@
 
 ```
 /output-style scrum-master     # Scrum Master：三大支柱、五项价值观、仪式优先
+/output-style designer         # Designer：设计结对——IDEO 五模式 + 设计冲刺，原型快速验证
 /output-style developer        # Developer：Sprint Backlog、DoD、Review、Retro
 ```
 
@@ -34,7 +35,7 @@
 |---|---|
 | `design-kernel` skill | IDEO / d.school 五模式（Empathize → Test）、~40 个设计方法、设计冲刺五阶段（快速锁定目标，为 Scrum 铺垫） |
 | `scrum-kernel` skill | Scrum Guide 2020 全文、SGEP 扩展包全文、Artifact / Event / Roles 分项引用 |
-| 2 个 output-style | Scrum Master / Developer 两种工作视角 |
+| 3 个 output-style | Scrum Master / Designer / Developer 三种工作视角 |
 
 ## 这里是什么
 
@@ -56,6 +57,7 @@
 | 文件/目录 | 内容 |
 |---|---|
 | `plugins/ideo-scrum/.claude-plugin/plugin.json` | 插件清单 v1.0.2 |
+| `plugins/ideo-scrum/output-styles/designer.md` | Output-style — 设计阶段结对（IDEO 五模式 + 设计冲刺，原型快速验证、拍板前不落地） |
 | `plugins/ideo-scrum/output-styles/developer.md` | Output-style — Developer 角色（Sprint Backlog / DoD / Sprint Review / Retro） |
 | `plugins/ideo-scrum/output-styles/scrum-master.md` | Output-style — Scrum Master 角色（三大支柱 / 五项价值观 / 仪式优先） |
 

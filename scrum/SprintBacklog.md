@@ -76,7 +76,7 @@ Developer 与 SeaPawn 一同优化插件至 v2.0.0：将所选待修条目（PBI
 
 #### PBI-14 快原则与 output-styles
 
-- 14-A designer 重造（设计阶段专有定位，弃旧版「AI agent 设计师」内容）
+- 14-A designer 重造（2026-08-31 完成：旧稿为底，身份段面向本项目、设计冲刺=五模式子集应用、产出句并入身份段、原型原则三条独立成节、Decider→Product Owner；「学习速度优先/故事讲出来」两条与交棒节经 PO 判定删除）
 - 14-B developer / scrum-master 重构（抄书合规路径：方法流程可录、不逐字大段）
 - 14-C description 触发条件式 + 区分度复查（对照 CLAUDE.md 规约）（2026-08-31：两 describe 已重写互链，14-1 三处写入同时落盘；复查随 skill-reviewer）
 
@@ -99,3 +99,4 @@ Developer 与 SeaPawn 一同优化插件至 v2.0.0：将所选待修条目（PBI
 | 2026-08-31 | 产品日志回写 + 本文件重写（How 区 v2）                          | 完成 | 回写内容待 PO 查阅，可随时否决                                                     |
 | 2026-08-31 | 五行融合批（plan 批准后执行）：两 describe 重写互链（16-1/16-2）+ 14-1 三处写入 + scrum 侧「Working with the Design Kernel」节 | 完成 | describe 五天字样顺手清；plugin.json 决定不动；skill-reviewer PASS（六处措辞修订已落）；validator 抓获 scrum 描述 YAML 冒号缺陷→加引号修复后通过 |
 | 2026-08-31 | PBI-15 手术批（PO 口述蓝图 + Q1-Q4 确认）：DesignSprint/ 整删、五阶段并入 SKILL.md、五天叙事清零、decider→Product Owner（含两件书摘统一改 + ATTRIBUTION 登记适配）、License 头回填（5 件迁入文件 + scrum-guide-2020.md）、描述同步设计冲刺定位 | 完成 | validator 复检 PASS（0 critical/0 warning、零死链、Decider 零残留）；skill-reviewer 复检 PASS（0 critical/0 major），7 处打磨修订随落、3 处有意保留（PO 原话呼应/区分度错开/双落位定案） |
+| 2026-08-31 | PBI-14-A：designer output-style 重造落盘（plan v1→v3 经 PO 三轮反馈收敛：子集表述/删括号注/学习速度优先与故事条删/交棒节删/面向本项目） | 完成 | validator PASS（3/3 output-styles、YAML 安全、零死链）；skill-reviewer PASS（必改点逐条验证在位、与 design-kernel 五阶段事实一致）；修订随落 2 处（描述去共享特质尾「结论先行」、未溯源格言换 prototype.md 署名句 Build to think and test to learn），有意保留 2 处（工作纪律节名与 user 小写为 PO 批准稿原样）；描述三风格统一为触发式归 14-C |
