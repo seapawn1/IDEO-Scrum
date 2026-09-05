@@ -84,6 +84,7 @@ Codex 版附带三份角色模板，入门可先选 Scrum Master：
 | `ATTRIBUTION.md` | 四个第三方来源的完整署名与授权条款 |
 | `.claude-plugin/marketplace.json` | Claude marketplace 清单，供 `/plugin marketplace add` 使用 |
 | `.agents/plugins/marketplace.json` | Codex marketplace 清单，指向 `codex/plugins/ideo-scrum/` |
+| `.agents/AGENTS.md` | 通用项目记忆入口：读取 `.claude/CLAUDE.md` 与 `.claude/memory/MEMORY.md`；由个人配置指定加载 |
 | `.claude/` | 项目配置——`CLAUDE.md`（项目指令，随会话加载）、`memory/`（蒸馏档案 + MEMORY.md 索引）、`settings.json` |
 
 ### Claude Code 插件
