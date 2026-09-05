@@ -1,0 +1,23 @@
+{
+  "name": "ideo-scrum",
+  "version": "2.0.0",
+  "description": "Design Thinking (IDEO Stanford d.school five-mode) and Scrum Sprint methodology — human-centered design, user research, prototyping, sprint planning, and backlog refinement.",
+  "author": {
+    "name": "SeaPawn"
+  },
+  "repository": "https://github.com/seapawn1/IDEO-Scrum",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "IDEO-Scrum",
+    "shortDescription": "Design Thinking 与 Scrum Sprint 方法论",
+    "longDescription": "提供 design-kernel、scrum-kernel 两个方法论 skill，以及可手动选用的 Scrum Master、Designer、Developer 三份 AGENTS.md 角色模板。",
+    "developerName": "SeaPawn",
+    "category": "Productivity",
+    "capabilities": ["Interactive"],
+    "defaultPrompt": [
+      "帮我规划下个 Sprint，并明确 Sprint Goal。",
+      "这个功能要不要做我拿不准，先设计一轮用户访谈。",
+      "帮我准备 Sprint Review 和 Retrospective。"
+    ]
+  }
+}

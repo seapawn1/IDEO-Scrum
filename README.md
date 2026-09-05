@@ -1,32 +1,64 @@
 # IDEO-Scrum
 
-为 Claude Code 提供 Design Thinking 与 Scrum Sprint 方法论的插件。v2.0.0。
+为 Claude Code 和 Codex 提供 Design Thinking 与 Scrum Sprint 方法论的插件。两个版本的插件名均为 `ideo-scrum`，版本均为 `2.0.0`。
 
 ## 快速开始
 
+### Claude Code
+
 在 Claude Code 会话中安装：
 
-```
+```text
 /plugin marketplace add seapawn1/IDEO-Scrum
 /plugin install ideo-scrum@ideo-scrum
 /reload-plugins
 ```
 
-装好后不需要记任何命令——描述你在做的事，相关方法论会自动介入：
-
-```
-帮我规划下个 Sprint，我们有 5 个待办项要排优先级
-```
-```
-这个功能要不要做我拿不准，先做一轮用户访谈的设计
-```
-
 也可以显式切换到某个角色视角工作：
 
-```
+```text
 /output-style scrum-master     # Scrum Master：三大支柱、五项价值观、仪式优先
-/output-style designer         # Designer：设计结对——IDEO 五模式 + 设计冲刺，原型快速验证
+/output-style designer         # Designer：IDEO 五模式 + 设计冲刺，原型快速验证
 /output-style developer        # Developer：Sprint Backlog、DoD、Review、Retro
+```
+
+### Codex
+
+Codex 版本在本仓库的 **`codex` 维护分支**发布。在任意目录（例如你要使用插件的项目目录）运行即可，无需先克隆本仓库：
+
+```powershell
+codex plugin marketplace add seapawn1/IDEO-Scrum --ref codex
+codex plugin add ideo-scrum@ideo-scrum
+```
+
+`--ref codex` 指定 Codex 维护分支。安装后检查结果，并重新启动 Codex CLI 或开启新的 app 会话：
+
+```powershell
+codex plugin list --marketplace ideo-scrum --json
+```
+
+确认结果中包含已安装的 `ideo-scrum`。完整安装说明、本地开发安装和验证示例见 [Codex 使用指南](codex/plugins/ideo-scrum/README.md)。
+
+Codex 版附带三份角色模板，入门可先选 Scrum Master：
+
+| 角色 | 模板 |
+|---|---|
+| Scrum Master | [AGENTS.scrum-master.md](codex/plugins/ideo-scrum/templates/AGENTS.scrum-master.md) |
+| Designer | [AGENTS.designer.md](codex/plugins/ideo-scrum/templates/AGENTS.designer.md) |
+| Developer | [AGENTS.developer.md](codex/plugins/ideo-scrum/templates/AGENTS.developer.md) |
+
+项目没有 `AGENTS.md` 时，将所选模板复制到项目根目录并改名为 `AGENTS.md`；已有文件时手动合并，保留项目原有指令。切换时替换原角色部分，只保留一份角色规则，再开启新会话。安装插件不会自动写入或启用这些模板。
+
+### 开始使用方法论
+
+装好后可以直接描述你在做的事，让相关方法论按任务需要介入：
+
+```text
+帮我规划下个 Sprint，我们有 5 个待办项要排优先级
+```
+
+```text
+这个功能要不要做我拿不准，先做一轮用户访谈的设计
 ```
 
 **插件提供什么**
@@ -35,11 +67,12 @@
 |---|---|
 | `design-kernel` skill | IDEO / d.school 五模式（Empathize → Test）、~40 个设计方法、设计冲刺五阶段（快速锁定目标，为 Scrum 铺垫） |
 | `scrum-kernel` skill | Scrum Guide 2020 全文、SGEP 扩展包全文、Artifact / Event / Roles 分项引用 |
-| 3 个 output-style | Scrum Master / Designer / Developer 三种工作视角 |
+| Claude：3 个 output-style | Scrum Master / Designer / Developer 三种工作视角 |
+| Codex：3 份 AGENTS.md 模板 | 手动选择并合并到项目指令，通过更换角色内容切换工作视角 |
 
 ## 这里是什么
 
-本插件将 Design Thinking（设计思维）和 Scrum Sprint（敏捷冲刺）两套方法论集成到 Claude Code 中，通过技能（skills）和输出样式（output-styles）提供结构化的协作流程。不做项目管理工具本身，不做 JIRA/Linear 集成，也不做团队协作平台——只提供方法论引导和流程框架。
+本插件将 Design Thinking（设计思维）和 Scrum Sprint（敏捷冲刺）两套方法论集成到 Claude Code 与 Codex 中，通过技能（skills）提供方法论，并以 Claude output-styles 或 Codex AGENTS.md 模板表达角色职责。只提供方法论引导和流程框架，不包含 JIRA/Linear 集成或团队协作平台。
 
 ## 文件地图
 
@@ -49,10 +82,11 @@
 |---|---|
 | `LICENSE` | MIT — 覆盖本仓库原创部分 |
 | `ATTRIBUTION.md` | 四个第三方来源的完整署名与授权条款 |
-| `.claude-plugin/marketplace.json` | marketplace 清单，供 `/plugin marketplace add` 使用 |
+| `.claude-plugin/marketplace.json` | Claude marketplace 清单，供 `/plugin marketplace add` 使用 |
+| `.agents/plugins/marketplace.json` | Codex marketplace 清单，指向 `codex/plugins/ideo-scrum/` |
 | `.claude/` | 项目配置——`CLAUDE.md`（项目指令，随会话加载）、`memory/`（蒸馏档案 + MEMORY.md 索引）、`settings.json` |
 
-### 插件
+### Claude Code 插件
 
 | 文件/目录 | 内容 |
 |---|---|
@@ -60,6 +94,18 @@
 | `plugins/ideo-scrum/output-styles/designer.md` | Output-style — 设计阶段结对（IDEO 五模式 + 设计冲刺，原型快速验证、拍板前不落地） |
 | `plugins/ideo-scrum/output-styles/developer.md` | Output-style — Developer 角色（Sprint Backlog / DoD / Sprint Review / Retro） |
 | `plugins/ideo-scrum/output-styles/scrum-master.md` | Output-style — Scrum Master 角色（三大支柱 / 五项价值观 / 仪式优先） |
+
+### Codex 插件
+
+| 文件/目录 | 内容 |
+|---|---|
+| `codex/plugins/ideo-scrum/.codex-plugin/plugin.json` | Codex 插件清单 v2.0.0 |
+| `codex/plugins/ideo-scrum/skills/` | `design-kernel`、`scrum-kernel` 及完整参考资料，独立于 Claude 版本 |
+| `codex/plugins/ideo-scrum/templates/` | Scrum Master / Designer / Developer 三份 AGENTS.md 模板 |
+| `codex/plugins/ideo-scrum/README.md` | 安装、检查、角色接入与切换说明 |
+| `codex/plugins/ideo-scrum/LICENSE`、`ATTRIBUTION.md` | 随插件分发的许可与来源说明，后者路径相对于 Codex 插件根目录 |
+
+下面两个 skill 的文件地图以 Claude 目录为例，Codex 对应内容位于 `codex/plugins/ideo-scrum/skills/`。
 
 ### design-kernel skill
 
@@ -108,4 +154,4 @@
 
 > ⚠️ 第三项含**非商业限制**，因此本仓库整体**不构成 OSI 定义下的开源软件**。商业场景使用前请阅读 [ATTRIBUTION.md](ATTRIBUTION.md)。
 
-本仓库不包含任何书籍全文或原始出版物。若这些方法论对你有价值，请通过官方渠道支持原作者。
+本仓库包含 Scrum Guide 与 SGEP 指南全文及其他带署名的方法摘录，不包含《Sprint》书籍全文或原始扫描件。若这些方法论对你有价值，请通过官方渠道支持原作者。
