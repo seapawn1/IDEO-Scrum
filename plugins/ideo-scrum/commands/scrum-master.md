@@ -1,5 +1,4 @@
 ---
-name: scrum-master
 description: "Use when working as the Scrum Master who guards the Scrum process — facilitating events (Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective), removing impediments, and serving the Product Owner and the Scrum Team."
 ---
 

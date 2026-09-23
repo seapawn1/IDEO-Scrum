@@ -1,6 +1,6 @@
 # IDEO-Scrum
 
-为 Claude Code 提供 Design Thinking 与 Scrum Sprint 方法论的插件。v2.0.1。
+为 Claude Code 提供 Design Thinking 与 Scrum Sprint 方法论的插件。v3.0.0。
 
 ## 快速开始
 
@@ -21,12 +21,12 @@
 这个功能要不要做我拿不准，先做一轮用户访谈的设计
 ```
 
-也可以显式切换到某个角色视角工作：
+也可以显式进入某个角色工作（角色注入当前对话，不影响其他对话）：
 
 ```
-/output-style scrum-master     # Scrum Master：三大支柱、五项价值观、仪式优先
-/output-style designer         # Designer：设计结对——IDEO 五模式 + 设计冲刺，原型快速验证
-/output-style developer        # Developer：Sprint Backlog、DoD、Review、Retro
+/ideo-scrum:scrum-master     # Scrum Master：三大支柱、五项价值观、仪式优先
+/ideo-scrum:designer         # Designer：设计结对——IDEO 五模式 + 设计冲刺，原型快速验证
+/ideo-scrum:developer        # Developer：Sprint Backlog、DoD、Review、Retro
 ```
 
 **插件提供什么**
@@ -35,11 +35,11 @@
 |---|---|
 | `design-kernel` skill | IDEO / d.school 五模式（Empathize → Test）、~40 个设计方法、设计冲刺五阶段（快速锁定目标，为 Scrum 铺垫） |
 | `scrum-kernel` skill | Scrum Guide 2020 全文、SGEP 扩展包全文、Artifact / Event / Roles 分项引用 |
-| 3 个 output-style | Scrum Master / Designer / Developer 三种工作视角 |
+| 3 个 command | Scrum Master / Designer / Developer 三种角色视角，用 `/ideo-scrum:scrum-master` 等手动进入 |
 
 ## 这里是什么
 
-本插件将 Design Thinking（设计思维）和 Scrum Sprint（敏捷冲刺）两套方法论集成到 Claude Code 中，通过技能（skills）和输出样式（output-styles）提供结构化的协作流程。不做项目管理工具本身，不做 JIRA/Linear 集成，也不做团队协作平台——只提供方法论引导和流程框架。
+本插件将 Design Thinking（设计思维）和 Scrum Sprint（敏捷冲刺）两套方法论集成到 Claude Code 中，通过技能（skills）和斜杠命令（commands）提供结构化的协作流程。不做项目管理工具本身，不做 JIRA/Linear 集成，也不做团队协作平台——只提供方法论引导和流程框架。
 
 ## 文件地图
 
@@ -56,10 +56,10 @@
 
 | 文件/目录 | 内容 |
 |---|---|
-| `plugins/ideo-scrum/.claude-plugin/plugin.json` | 插件清单 v2.0.1 |
-| `plugins/ideo-scrum/output-styles/designer.md` | Output-style — 设计阶段结对（IDEO 五模式 + 设计冲刺，原型快速验证、拍板前不落地） |
-| `plugins/ideo-scrum/output-styles/developer.md` | Output-style — Developer 角色（Sprint Backlog / DoD / Sprint Review / Retro） |
-| `plugins/ideo-scrum/output-styles/scrum-master.md` | Output-style — Scrum Master 角色（三大支柱 / 五项价值观 / 仪式优先） |
+| `plugins/ideo-scrum/.claude-plugin/plugin.json` | 插件清单 v3.0.0 |
+| `plugins/ideo-scrum/commands/designer.md` | Command `/ideo-scrum:designer` — 设计阶段结对（IDEO 五模式 + 设计冲刺，原型快速验证、拍板前不落地） |
+| `plugins/ideo-scrum/commands/developer.md` | Command `/ideo-scrum:developer` — Developer 角色（Sprint Backlog / DoD / Sprint Review / Retro） |
+| `plugins/ideo-scrum/commands/scrum-master.md` | Command `/ideo-scrum:scrum-master` — Scrum Master 角色（三大支柱 / 五项价值观 / 仪式优先） |
 
 ### design-kernel skill
 

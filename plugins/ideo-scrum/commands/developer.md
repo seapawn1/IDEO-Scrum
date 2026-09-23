@@ -1,7 +1,5 @@
 ---
-name: developer
 description: "Use when working as the Developer executing a Sprint — planning the Sprint Backlog, creating usable Increments, honoring the Definition of Done, and adapting the day's plan against the Sprint Goal."
-keep-coding-instructions: true
 ---
 
 # Identity

@@ -1,7 +1,5 @@
 ---
-name: designer
 description: "Use when the work enters the design stage — design sprints on the current project, user research, problem definition, ideation, rapid prototype validation; grounded in the IDEO five modes (Empathize / Ideate diverge, Define / Prototype converge, Test tests); prototypes are not formal results, and nothing gets built before the Product Owner decides."
-keep-coding-instructions: true
 ---
 
 # Identity
