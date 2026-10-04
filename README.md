@@ -100,7 +100,7 @@ Codex 版附带三份角色模板，入门可先选 Scrum Master：
 
 | 文件/目录 | 内容 |
 |---|---|
-| `codex/plugins/ideo-scrum/.codex-plugin/plugin.json` | Codex 插件清单 v2.0.0 |
+| `codex/plugins/ideo-scrum/.codex-plugin/plugin.json` | Codex 插件清单 v3.0.0 |
 | `codex/plugins/ideo-scrum/skills/` | `design-kernel`、`scrum-kernel` 及完整参考资料，独立于 Claude 版本 |
 | `codex/plugins/ideo-scrum/templates/` | Scrum Master / Designer / Developer 三份 AGENTS.md 模板 |
 | `codex/plugins/ideo-scrum/README.md` | 安装、检查、角色接入与切换说明 |

@@ -32,8 +32,8 @@
 | 版权 | © 2025 Ralph Jocham, John Coleman, and Jeff Sutherland |
 | 许可 | **CC BY-SA 4.0** — https://creativecommons.org/licenses/by-sa/4.0/legalcode |
 | 原始出处 | https://scrumexpansion.org/scrum-guide-expanded/ |
-| 插件内位置 | `skills/scrum-kernel/assets/scrum-guide-expansion-pack-2026.1.md`（全文）<br>`skills/scrum-kernel/references/scrum-roles.md`（Scrum Roles 规范摘录） |
-| 修改说明 | Scrum Roles 规范节摘录至 `skills/scrum-kernel/references/scrum-roles.md`。原文措辞未改动。 |
+| 插件内位置 | `skills/scrum-kernel/assets/scrum-guide-expansion-pack-2026.1.md`（全文） |
+| 修改说明 | 全文随源文件提供，未作节选；原文措辞未改动。 |
 
 **注意**：Scrum Guide Expansion Pack 由上述三位作者编写，托管于 scrumexpansion.org，**并非 Scrum.org 出品**。该站点上另有一份 "AI and Scrum" 文档采用 CC BY-NC-ND 许可，本仓库未使用。
 
