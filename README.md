@@ -20,6 +20,7 @@
 /ideo-scrum:scrum-master     # Scrum Master：三大支柱、五项价值观、仪式优先
 /ideo-scrum:designer         # Designer：设计结对——IDEO 五模式 + 设计冲刺，原型快速验证
 /ideo-scrum:developer        # Developer：Sprint Backlog、DoD、Review、Retro
+/ideo-scrum:stakeholder      # Stakeholder：独立核验——干净上下文 + 证据包，verified / in doubt
 ```
 
 ### Codex
@@ -39,13 +40,14 @@ codex plugin list --marketplace ideo-scrum --json
 
 确认结果中包含已安装的 `ideo-scrum`。完整安装说明、本地开发安装和验证示例见 [Codex 使用指南](codex/plugins/ideo-scrum/README.md)。
 
-Codex 版附带三份角色 skill，显式调用才生效：
+Codex 版附带四份角色 skill，显式调用才生效：
 
 | 角色 | 调用 |
 |---|---|
 | Scrum Master | `$scrum-master` |
 | Designer | `$designer` |
 | Developer | `$developer` |
+| Stakeholder | `$stakeholder` |
 
 角色 skill 不自动介入会话，也不写入项目文件——在会话中输入 `$scrum-master`（等）即可把角色契约注入当前对话；项目原有的 `AGENTS.md` 指令不受影响。
 
@@ -66,13 +68,13 @@ Codex 版附带三份角色 skill，显式调用才生效：
 | 组件 | 内容 |
 |---|---|
 | `design-kernel` skill | IDEO / d.school 五模式（Empathize → Test）、~40 个设计方法、设计冲刺五阶段（快速锁定目标，为 Scrum 铺垫） |
-| `scrum-kernel` skill | Scrum Guide 2020 全文、SGEP 扩展包全文、Artifact / Event / Roles 分项引用 |
-| Claude：3 个 command | Scrum Master / Designer / Developer 三种角色视角，用 `/ideo-scrum:scrum-master` 等手动进入 |
-| Codex：3 份 AGENTS.md 模板 | 手动选择并合并到项目指令，通过更换角色内容切换工作视角 |
+| `scrum-kernel` skill | Scrum Guide 2020 全文、SGEP 扩展包全文（含角色章）、Artifact / Event 分项引用 |
+| Claude：4 个 command | Scrum Master / Designer / Developer / Stakeholder 四种角色视角，用 `/ideo-scrum:scrum-master` 等手动进入 |
+| Codex：4 份角色 skill | scrum-master / designer / developer / stakeholder——`$` 显式调用，不自动介入 |
 
 ## 这里是什么
 
-本插件将 Design Thinking（设计思维）和 Scrum Sprint（敏捷冲刺）两套方法论集成到 Claude Code 与 Codex 中，通过技能（skills）提供方法论，并以 Claude command 或 Codex AGENTS.md 模板表达角色职责。不做项目管理工具本身，不做 JIRA/Linear 集成，也不做团队协作平台——只提供方法论引导和流程框架。
+本插件将 Design Thinking（设计思维）和 Scrum Sprint（敏捷冲刺）两套方法论集成到 Claude Code 与 Codex 中，通过技能（skills）提供方法论，并以 Claude command 或 Codex 角色 skill 表达角色职责。不做项目管理工具本身，不做 JIRA/Linear 集成，也不做团队协作平台——只提供方法论引导和流程框架。
 
 ## 文件地图
 
@@ -93,15 +95,16 @@ Codex 版附带三份角色 skill，显式调用才生效：
 |---|---|
 | `plugins/ideo-scrum/.claude-plugin/plugin.json` | 插件清单 v3.0.0 |
 | `plugins/ideo-scrum/commands/designer.md` | Command `/ideo-scrum:designer` — 设计阶段结对（IDEO 五模式 + 设计冲刺，原型快速验证、拍板前不落地） |
-| `plugins/ideo-scrum/commands/developer.md` | Command `/ideo-scrum:developer` — Developer 角色（Sprint Backlog / DoD / Sprint Review / Retro） |
-| `plugins/ideo-scrum/commands/scrum-master.md` | Command `/ideo-scrum:scrum-master` — Scrum Master 角色（三大支柱 / 五项价值观 / 仪式优先） |
+| `plugins/ideo-scrum/commands/developer.md` | Command `/ideo-scrum:developer` — Developer 角色（Scrum Guide 2020 原文抄录＋2026 精炼补充） |
+| `plugins/ideo-scrum/commands/scrum-master.md` | Command `/ideo-scrum:scrum-master` — Scrum Master 角色（Scrum Guide 2020 原文抄录＋2026 精炼补充） |
+| `plugins/ideo-scrum/commands/stakeholder.md` | Command `/ideo-scrum:stakeholder` — Stakeholder 监理（SGEP 角色章为底；干净上下文独立核验，输出 verified / in doubt） |
 
 ### Codex 插件
 
 | 文件/目录 | 内容 |
 |---|---|
 | `codex/plugins/ideo-scrum/.codex-plugin/plugin.json` | Codex 插件清单 v3.0.0 |
-| `codex/plugins/ideo-scrum/skills/` | `design-kernel`、`scrum-kernel` + 三份角色 skill（scrum-master / designer / developer，`$` 显式调用），独立于 Claude 版本 |
+| `codex/plugins/ideo-scrum/skills/` | `design-kernel`、`scrum-kernel` + 四份角色 skill（scrum-master / designer / developer / stakeholder，`$` 显式调用），独立于 Claude 版本 |
 | `codex/plugins/ideo-scrum/README.md` | 安装、检查、角色接入与切换说明 |
 | `codex/plugins/ideo-scrum/LICENSE`、`ATTRIBUTION.md` | 随插件分发的许可与来源说明，后者路径相对于 Codex 插件根目录 |
 
