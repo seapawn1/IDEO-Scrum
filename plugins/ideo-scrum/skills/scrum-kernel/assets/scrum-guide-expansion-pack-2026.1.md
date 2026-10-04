@@ -120,11 +120,11 @@ An effective Scrum adoption reduces the distance between Stakeholders who presen
 
 Working in Sprints provides a consistent rhythm that helps the Scrum Team focus on clear, short-term goals. This cadence supports regular inspection and adaptation, enabling the Scrum Team to learn and adjust informed by feedback. Over time, it builds a sustainable pace of delivery, improving predictability and fostering continuous improvement.
 
-The Three Pillars of Scrum’s Empirical Process Control
+## The Three Pillars of Scrum’s Empirical Process Control
 
 Empiricism, at its core, is the philosophy that knowledge comes from experience and observation. Valuable insights emerge from curiosity, experience, experimentation, data, visualization, and observation. Empirical process control [27-29] is a method of managing complex [12-17] processes, like those in Scrum, by adapting informed by observed results, relying on the three pillars of transparency, inspection, and adaptation.
 
-#### Transparency
+### Transparency
 
 Transparency is a pillar of Scrum. It reveals reality and work clarity, and enables empiricism. Transparency reveals a more accurate perception of reality and is the entry point for Inspection and Adaptation. The emergent process, work, and results must be visible to those performing the work or receiving the inputs in the form of goals, Product Backlog Items, and associated outputs in the form of Increments.
 
@@ -134,7 +134,7 @@ Result feedback is data, ideally both quantitative and qualitative, that might r
 
 Achieving Transparency is unrealistic and potentially inapplicable if there are institutional inefficiencies or there is a lack of trust. As a corollary, Scrum can make institutional inefficiencies transparent, and with collective will, trust can be built.
 
-#### Inspection
+### Inspection
 
 Inspection is a pillar of Scrum. Inspection is looking at reality, given the direction of the Product (the Product Goal) and the effectiveness of the Scrum Team and Stakeholders. Inspection enables Adaptation. Inspection is about looking at reality intentionally and is informed by the things that were made transparent, including evidence or observation. To foster Inspection and Adaptation, Scrum provides cadence in the form of its events.
 
@@ -142,7 +142,7 @@ The Scrum Artifacts, associated commitments, and progress toward agreed goals mu
 
 Inspection without Transparency is ill-informed, misleading, and wasteful.
 
-#### Adaptation
+### Adaptation
 
 Adaptation is a pillar of Scrum. Given the direction of the Product, the Scrum Team and Stakeholders are expected to adapt to reality the moment improvement opportunities emerge, such as experiment outcomes, insights, risks, or opportunities. Adaptation becomes more difficult when institutional inefficiencies exist or when the people involved are not ready, willing, or able to do what needs to be done.
 
@@ -150,7 +150,7 @@ Adaptation starts with accepting ‘reality,’ informed by evidence. Adaptation
 
 Without Adaptation, Transparency and Inspection are meaningless.
 
-### The Scrum Values
+## The Scrum Values
 
 The Scrum Values —focus, openness, commitment, courage, and *respect—*help create a Scrum Team environment that supports psychological safety and positive collaboration, which align with principles identified in neuroscience as beneficial for learning and effective teamwork. Consider the context.
 
@@ -183,9 +183,9 @@ Orient—Courage is needed to interpret reality, navigate uncertainty, and agree
 Decide—Deciding what to do requires timely analysis, such as backlog refinement, bringing potential next steps into Focus through parallel safe-to-fail experiments to test hypotheses, like small-scale probes (probes should be small, parallel, and designed so that failure is survivable and informative).
 Act—With clarity on what needs to be done, why, and by whom, Commitment can drive the team to execute effectively within enabling constraints like Sprint of determinant length, fostering emergent solutions.
 
-### More Supporting and Complementary Theory
+## More Supporting and Complementary Theory
 
-#### Product Thinking
+### Product Thinking
 
 People consume Products (including services), not projects. A Product is the conduit to deliver value, balancing the short- and long-term. This is why Scrum has a Product Owner and not a Project Owner. Products are long-term and need to be taken care of for their entire existence, whereas a project is timeboxed and often leaves an orphaned Product behind once the project is completed.
 
@@ -208,13 +208,13 @@ In the specific case of technology Products, through Product engineering.
 
 Scrum favors a healthy balance of the short-term and the long-term. Goal orientation enables potential outcomes through an emphasis on value and risk reduction. The Sprint Goal (here and now) should be a step toward the Product Goal (there and then), which enables pathways to the long-term. The Product Goal often supports the Product strategy and Product Vision.
 
-#### Systems Thinking
+### Systems Thinking
 
 Systems thinking [36] acknowledges the interconnectedness of elements within organizational and social contexts, recognizing that actions in one area ripple in ways that aren’t always predictable or linear. Theory-informed experiments, feedback loops, and follow-up data analysis help surface valuable and actionable insights. Systems Thinking provides valuable tools and ideas and facilitates insights.
 
 For an organization to become adaptive [37], it is necessary to avoid local sub-optimizations such as reducing unit costs while increasing long-term costs, eroding quality goals only to lose customer trust, or improving a Scrum Team, workflow, or process that should not exist. For complex work [12-17], it’s not always possible to link cause and effect, except in hindsight. It’s helpful, nevertheless, to consider possible and actual upstream, cross-stream, and downstream effects of interventions.
 
-#### Discovery
+### Discovery
 
 Discovery [38-39] often starts with understanding people’s expectations, needs, and wants through observation, analysis, conversations, and synthesis toward a desired outcome. Once a Scrum Team has gathered insights, it frames the problem or opportunity and orders them by potential value. The Scrum Team crowdsources possible solutions without judging them too quickly. If the potential value is high but there is a lack of evidence that the value can be realized, the Scrum Team should do research, assumption testing, or build simple prototypes they can test with real customers, decision-makers, or users. Discovery is never over; consider regular interviews or observations of customers, decision-makers, or users.
 
@@ -222,7 +222,7 @@ Discovery is about learning toward a desired outcome through prioritizing, doing
 
 If discovery is needed, it should (insofar as it is possible) be included in a manner that is consistent with Scrum. For example, discovery work is made transparent in the Product Backlog and Sprint Backlog, Scrum Team members practice discovery and other skills, learnings are discussed during the Sprint and at the Scrum events, and at least one Increment is produced (and ideally released) every Sprint, regardless of how much discovery is done. There is a balance to be struck: discovery can help avoid building the wrong thing, but it can be overdone, and, in the end, the result feedback matters the most.
 
-#### Leadership
+### Leadership
 
 Leadership is the ability to influence, guide, and inspire a group of people to achieve a common goal while avoiding demotivation. It inspires thoughts, actions, and passion and fosters clear strategic directions. It embraces purposeful and intentional Go See, Listen, and Understand, collecting facts and observations to inform decisions, better known as Genchi Genbutsu [40].
 
@@ -234,7 +234,7 @@ Leadership happens from all angles, should be at all levels, and fosters reflect
 
 Product Owners and Scrum Masters balance leadership, authority, and subtle control by providing clear intent, fostering initiative, and reinforcing accountability. They guide rather than micromanage, ensuring the Scrum Team understands the vision and goals, has the autonomy to execute, and remains accountable for outcomes. When intervention is needed, they step in decisively while preserving the Scrum Team’s ownership of their accountabilities. Product Developers demonstrate leadership with their self-managing team orientation, professionalism, and goal orientation; self-management comes with responsibilities. Supporters demonstrate leadership by supporting short- and long-term impediment removal, improving the coherence of management processes with Scrum, and supporting emergent change in a powerful direction when requested.
 
-#### First Principles Thinking
+### First Principles Thinking
 
 First principles thinking is a method of problem-solving that involves breaking down challenges into their most fundamental truths and discovering solutions from the ground up. Instead of relying on analogy or established conventions, this approach asks, ‘What do we know for certain?’ and reconstructs understanding and solutions from those basic elements. Examples could include but are not limited to:
 
@@ -242,7 +242,7 @@ Encouraging the Scrum Team to Focus on the core drivers of effectiveness, adapti
 Questioning every assumption and reconstructing solutions based on facts and essential principles, which can enable breakthroughs.
 Advocating original thinking, continuous improvement, and the Courage to challenge the status quo-unlocking creativity and enabling transformative results.
 
-#### People and Change
+### People and Change
 
 The level of difficulty in adopting Scrum should not be underestimated. Scrum offers some guiding principles through its elements. It offers an approach to go back to first principles.
 
@@ -258,6 +258,10 @@ Start with disciplined emergent change in a direction. Strive to make emergent c
 
 Scrum Practitioners and Supporters try not to be victims and do not rely on others to change. They try to make continual marginal changes within their grasp and create continual positive momentum. Ideally they are change catalysts and they radiate realistic positivity and possibilities.
 
+## The Scrum Roles in the Expansion Pack
+
+*Extracted to the scrum-kernel skill's role references (`../references/scrum-role-overview.md` and `../references/scrum-role-*.md`); the extracted files keep the original wording. This pointer preserves the document's section order.*
+
 ## End Note
 
 Scrum is like a mirror. If the image in the mirror is not as expected, should the mirror be hidden?
@@ -266,7 +270,7 @@ Attain at least one Increment each Sprint as a habit before you adapt Scrum. Eve
 
 Be careful about copying approaches from other organizations without also fostering their culture. Emergent change in the direction of travel is the change. The change includes (but is not limited to) leadership, workflows, processes, and systems, including HR, Finance, Procurement, and more. Scrum is part of a never-ending expedition of continual improvement and evolution in a direction of travel rather than a destination.
 
-## Acknowledgments
+### Acknowledgments
 
 Scrum was inspired by Lean [20], the Toyota Production System [57-58], the Harvard Business Review article ‘The New New Product Development Game’ by Hirotaka Takeuchi and Ikujiro Nonaka [18], and Empiricism at Dupont [59].
 
