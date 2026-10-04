@@ -103,7 +103,7 @@ Codex 版附带四份角色 skill，显式调用才生效：
 
 | 文件/目录 | 内容 |
 |---|---|
-| `codex/plugins/ideo-scrum/.codex-plugin/plugin.json` | Codex 插件清单 v3.0.0 |
+| `codex/plugins/ideo-scrum/.codex-plugin/plugin.json` | Codex 插件清单 v3.1.0 |
 | `codex/plugins/ideo-scrum/skills/` | `design-kernel`、`scrum-kernel` + 四份角色 skill（scrum-master / designer / developer / stakeholder，`$` 显式调用），独立于 Claude 版本 |
 | `codex/plugins/ideo-scrum/README.md` | 安装、检查、角色接入与切换说明 |
 | `codex/plugins/ideo-scrum/LICENSE`、`ATTRIBUTION.md` | 随插件分发的许可与来源说明，后者路径相对于 Codex 插件根目录 |

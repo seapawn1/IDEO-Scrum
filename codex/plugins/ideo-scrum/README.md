@@ -1,6 +1,6 @@
 # IDEO-Scrum for Codex
 
-Design Thinking 与 Scrum Sprint 方法论插件。插件名：`ideo-scrum`，版本：`3.0.0`。
+Design Thinking 与 Scrum Sprint 方法论插件。插件名：`ideo-scrum`，版本：`3.1.0`。
 
 ## 插件内容
 
