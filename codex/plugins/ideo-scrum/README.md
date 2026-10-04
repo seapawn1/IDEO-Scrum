@@ -11,8 +11,9 @@ Design Thinking 与 Scrum Sprint 方法论插件。插件名：`ideo-scrum`，�
 | Scrum Master 角色 skill | [skills/scrum-master/SKILL.md](skills/scrum-master/SKILL.md)（`$scrum-master` 显式调用） |
 | Designer 角色 skill | [skills/designer/SKILL.md](skills/designer/SKILL.md)（`$designer` 显式调用） |
 | Developer 角色 skill | [skills/developer/SKILL.md](skills/developer/SKILL.md)（`$developer` 显式调用） |
+| Stakeholder 角色 skill | [skills/stakeholder/SKILL.md](skills/stakeholder/SKILL.md)（`$stakeholder` 显式调用） |
 
-本插件携带完整的方法论资料与三份角色 skill，不依赖 Claude 插件目录。使用插件无需 Python、MCP 服务或额外脚本。
+本插件携带完整的方法论资料与四份角色 skill，不依赖 Claude 插件目录。使用插件无需 Python、MCP 服务或额外脚本。
 
 ## 安装
 
@@ -60,13 +61,14 @@ codex plugin list --marketplace ideo-scrum --json
 
 ## 选择角色
 
-三个角色由三份角色 skill 承载。角色 skill 声明了 `allow_implicit_invocation: false`——不自动介入会话，显式调用才注入：
+四个角色由四份角色 skill 承载。角色 skill 声明了 `allow_implicit_invocation: false`——不自动介入会话，显式调用才注入：
 
 | 角色 skill | 调用 | 使用场景 |
 |---|---|---|
 | [scrum-master](skills/scrum-master/SKILL.md) | `$scrum-master` | 组织 Sprint 事件、检视流程、移除障碍、协助 Product Owner |
 | [designer](skills/designer/SKILL.md) | `$designer` | 用户研究、问题定义、方案探索与原型验证 |
 | [developer](skills/developer/SKILL.md) | `$developer` | 制定 Sprint Backlog、实现 Increment、检查 DoD、Review 与 Retro |
+| [stakeholder](skills/stakeholder/SKILL.md) | `$stakeholder` | 独立核验 Increment：干净上下文＋证据包，出 verified / in doubt |
 
 在会话中输入调用（可附带请求）：
 
@@ -87,7 +89,7 @@ $scrum-master 帮我主持这次 Sprint Planning
 ## 目录与维护
 
 - `.codex-plugin/plugin.json`：Codex 插件清单。
-- `skills/`：两个方法论 skill、三份角色 skill 及各自完整参考资料。
+- `skills/`：两个方法论 skill、四份角色 skill 及各自完整参考资料。
 - `LICENSE`、`ATTRIBUTION.md`：原创内容许可与第三方来源说明。
 
 Codex 版本在 `codex` 分支持续维护，安装入口固定为该分支；Claude 版本继续使用 `main` 分支。Codex 分支保留 Claude 目录作为迁移来源，首版两个 skill 的内容相同。修改共享方法论时，需要同步检查两份内容和相对引用。分发本插件时应保留整个插件目录；仓库安装还需要根目录的 Codex marketplace 清单。
