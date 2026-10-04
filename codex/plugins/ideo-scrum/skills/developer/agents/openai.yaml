@@ -1,0 +1,6 @@
+interface:
+  display_name: "Developer"
+  short_description: "制定 Sprint Backlog、实现 Increment、遵守 DoD、每日适应计划"
+  default_prompt: "使用 $developer 执行本项目的 Sprint 工作。"
+policy:
+  allow_implicit_invocation: false

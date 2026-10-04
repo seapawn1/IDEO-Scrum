@@ -1,0 +1,6 @@
+interface:
+  display_name: "Scrum Master"
+  short_description: "以 Scrum Master 视角守护流程、引导事件、移除障碍"
+  default_prompt: "使用 $scrum-master 守护本项目的 Scrum 流程，并帮我准备下一个事件。"
+policy:
+  allow_implicit_invocation: false

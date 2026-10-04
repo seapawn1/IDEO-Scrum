@@ -10,7 +10,7 @@
   "interface": {
     "displayName": "IDEO-Scrum",
     "shortDescription": "Design Thinking 与 Scrum Sprint 方法论",
-    "longDescription": "提供 design-kernel、scrum-kernel 两个方法论 skill，以及可手动选用的 Scrum Master、Designer、Developer 三份 AGENTS.md 角色模板。",
+    "longDescription": "提供 design-kernel、scrum-kernel 两个方法论 skill，以及 Scrum Master、Designer、Developer 三份角色 skill（以 $scrum-master、$designer、$developer 显式调用）。",
     "developerName": "SeaPawn",
     "category": "Productivity",
     "capabilities": ["Interactive"],

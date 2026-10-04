@@ -39,15 +39,15 @@ codex plugin list --marketplace ideo-scrum --json
 
 确认结果中包含已安装的 `ideo-scrum`。完整安装说明、本地开发安装和验证示例见 [Codex 使用指南](codex/plugins/ideo-scrum/README.md)。
 
-Codex 版附带三份角色模板，入门可先选 Scrum Master：
+Codex 版附带三份角色 skill，显式调用才生效：
 
-| 角色 | 模板 |
+| 角色 | 调用 |
 |---|---|
-| Scrum Master | [AGENTS.scrum-master.md](codex/plugins/ideo-scrum/templates/AGENTS.scrum-master.md) |
-| Designer | [AGENTS.designer.md](codex/plugins/ideo-scrum/templates/AGENTS.designer.md) |
-| Developer | [AGENTS.developer.md](codex/plugins/ideo-scrum/templates/AGENTS.developer.md) |
+| Scrum Master | `$scrum-master` |
+| Designer | `$designer` |
+| Developer | `$developer` |
 
-项目没有 `AGENTS.md` 时，将所选模板复制到项目根目录并改名为 `AGENTS.md`；已有文件时手动合并，保留项目原有指令。切换时替换原角色部分，只保留一份角色规则，再开启新会话。安装插件不会自动写入或启用这些模板。
+角色 skill 不自动介入会话，也不写入项目文件——在会话中输入 `$scrum-master`（等）即可把角色契约注入当前对话；项目原有的 `AGENTS.md` 指令不受影响。
 
 ### 开始使用方法论
 
@@ -101,8 +101,7 @@ Codex 版附带三份角色模板，入门可先选 Scrum Master：
 | 文件/目录 | 内容 |
 |---|---|
 | `codex/plugins/ideo-scrum/.codex-plugin/plugin.json` | Codex 插件清单 v3.0.0 |
-| `codex/plugins/ideo-scrum/skills/` | `design-kernel`、`scrum-kernel` 及完整参考资料，独立于 Claude 版本 |
-| `codex/plugins/ideo-scrum/templates/` | Scrum Master / Designer / Developer 三份 AGENTS.md 模板 |
+| `codex/plugins/ideo-scrum/skills/` | `design-kernel`、`scrum-kernel` + 三份角色 skill（scrum-master / designer / developer，`$` 显式调用），独立于 Claude 版本 |
 | `codex/plugins/ideo-scrum/README.md` | 安装、检查、角色接入与切换说明 |
 | `codex/plugins/ideo-scrum/LICENSE`、`ATTRIBUTION.md` | 随插件分发的许可与来源说明，后者路径相对于 Codex 插件根目录 |
 

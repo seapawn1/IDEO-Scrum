@@ -1,0 +1,6 @@
+interface:
+  display_name: "Designer"
+  short_description: "设计阶段结对：用户研究、问题定义、方案探索与原型验证"
+  default_prompt: "使用 $designer 与我结对本项目的设计阶段工作。"
+policy:
+  allow_implicit_invocation: false

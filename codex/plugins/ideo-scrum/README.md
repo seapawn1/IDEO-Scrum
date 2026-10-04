@@ -8,11 +8,11 @@ Design Thinking 与 Scrum Sprint 方法论插件。插件名：`ideo-scrum`，�
 |---|---|
 | IDEO / d.school 五模式、设计方法库、设计冲刺五阶段 | [design-kernel](skills/design-kernel/SKILL.md) |
 | Scrum Guide 2020、SGEP 扩展包、Artifact / Event / Roles 参考 | [scrum-kernel](skills/scrum-kernel/SKILL.md) |
-| Scrum Master 角色模板 | [AGENTS.scrum-master.md](templates/AGENTS.scrum-master.md) |
-| Designer 角色模板 | [AGENTS.designer.md](templates/AGENTS.designer.md) |
-| Developer 角色模板 | [AGENTS.developer.md](templates/AGENTS.developer.md) |
+| Scrum Master 角色 skill | [skills/scrum-master/SKILL.md](skills/scrum-master/SKILL.md)（`$scrum-master` 显式调用） |
+| Designer 角色 skill | [skills/designer/SKILL.md](skills/designer/SKILL.md)（`$designer` 显式调用） |
+| Developer 角色 skill | [skills/developer/SKILL.md](skills/developer/SKILL.md)（`$developer` 显式调用） |
 
-本插件携带完整的方法论资料与三份角色模板，不依赖 Claude 插件目录。使用插件无需 Python、MCP 服务或额外脚本。
+本插件携带完整的方法论资料与三份角色 skill，不依赖 Claude 插件目录。使用插件无需 Python、MCP 服务或额外脚本。
 
 ## 安装
 
@@ -56,39 +56,38 @@ codex plugin list --marketplace ideo-scrum --json
 请使用 ideo-scrum 插件的 design-kernel，帮我设计一轮用户访谈，验证这个功能是否值得做。
 ```
 
-确认 Codex 能找到对应 skill 并按需读取参考资料。安装不会自动选用角色模板；两个方法论 skill 可以独立使用。
+确认 Codex 能找到对应 skill 并按需读取参考资料。两个方法论 skill 可以独立使用；角色 skill 不自动介入会话，需以 `$scrum-master` 等显式调用。
 
 ## 选择角色
 
-角色由使用者项目根目录的 `AGENTS.md` 决定。入门可先选 Scrum Master：
+三个角色由三份角色 skill 承载。角色 skill 声明了 `allow_implicit_invocation: false`——不自动介入会话，显式调用才注入：
 
-| 模板 | 使用场景 |
-|---|---|
-| [Scrum Master](templates/AGENTS.scrum-master.md) | 组织 Sprint 事件、检视流程、移除障碍、协助 Product Owner |
-| [Designer](templates/AGENTS.designer.md) | 用户研究、问题定义、方案探索与原型验证 |
-| [Developer](templates/AGENTS.developer.md) | 制定 Sprint Backlog、实现 Increment、检查 DoD、Review 与 Retro |
+| 角色 skill | 调用 | 使用场景 |
+|---|---|---|
+| [scrum-master](skills/scrum-master/SKILL.md) | `$scrum-master` | 组织 Sprint 事件、检视流程、移除障碍、协助 Product Owner |
+| [designer](skills/designer/SKILL.md) | `$designer` | 用户研究、问题定义、方案探索与原型验证 |
+| [developer](skills/developer/SKILL.md) | `$developer` | 制定 Sprint Backlog、实现 Increment、检查 DoD、Review 与 Retro |
 
-1. 打开所选模板。可从本地仓库的 `codex/plugins/ideo-scrum/templates/` 获取；通过 Git 安装时，也可以在源仓库的 `codex` 分支中打开同名文件复制正文。
-2. 项目没有 `AGENTS.md` 时，将模板复制到该项目根目录并命名为 **`AGENTS.md`**。
-3. 项目已有 `AGENTS.md` 时，手动合并模板中的角色内容，保留项目原有的开发、测试和协作指令。
-4. 切换角色时，替换原来的 IDEO-Scrum 角色部分，保留项目其他指令；同一时间只采用一份角色模板。
-5. 在该项目重新启动 Codex CLI，或开启新的 app 会话，让项目指令重新加载。
-
-模板使用的 `AGENTS.scrum-master.md` 等文件名仅用于区分角色；原样留在 `templates/` 中不会成为项目常驻指令。项目如果已有 `AGENTS.override.md`，它优先于同目录的 `AGENTS.md`，需要一并检查是否覆盖了所选角色。
-
-选用后可在新会话中询问：
+在会话中输入调用（可附带请求）：
 
 ```text
-请根据当前项目的 AGENTS.md，说明你的角色、我的角色，以及你负责哪些工作。
+$scrum-master 帮我主持这次 Sprint Planning
 ```
 
-预期使用 Scrum Master 模板时，Codex 以 Scrum Master 协作，用户是 Product Owner；换用 Designer 或 Developer 模板后，应体现各自职责。
+角色 skill 与项目 `AGENTS.md` 互不冲突：`AGENTS.md` 继续承载项目自身的开发、测试和协作指令，角色契约只在调用时进入当前会话；同一时间采用一个角色，切换时改调用名即可。
+
+调用后可在会话中询问：
+
+```text
+请说明你的角色、我的角色，以及你负责哪些工作。
+```
+
+预期使用 `$scrum-master` 时，Codex 以 Scrum Master 协作，用户是 Product Owner；调用 `$designer` 或 `$developer` 后，应体现各自职责。
 
 ## 目录与维护
 
 - `.codex-plugin/plugin.json`：Codex 插件清单。
-- `skills/`：两个方法论 skill 及各自完整参考资料。
-- `templates/`：三份可手动选用的角色模板。
+- `skills/`：两个方法论 skill、三份角色 skill 及各自完整参考资料。
 - `LICENSE`、`ATTRIBUTION.md`：原创内容许可与第三方来源说明。
 
 Codex 版本在 `codex` 分支持续维护，安装入口固定为该分支；Claude 版本继续使用 `main` 分支。Codex 分支保留 Claude 目录作为迁移来源，首版两个 skill 的内容相同。修改共享方法论时，需要同步检查两份内容和相对引用。分发本插件时应保留整个插件目录；仓库安装还需要根目录的 Codex marketplace 清单。
