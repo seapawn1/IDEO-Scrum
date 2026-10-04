@@ -7,3 +7,4 @@
 - [Sprint 03 (design-sprint-restructure)](sprint-03-design-sprint-restructure.md) — Design Sprint 结构化：**Monday 认知单元 vs Tuesday-Friday workshop OS**（v2.0.0 种子）
 - [Sprint 04 (pbi4-descriptions)](sprint-04-pbi4-descriptions.md) — description=trigger condition / 区分度>全面性（→ CLAUDE.md 规约）
 - [Sprint 05 (pbi2-output-styles)](sprint-05-pbi2-output-styles.md) — output-style 两形态：模式型 vs 角色型 / 项目名引用通用化
+- [插件内容分层原则](plugin-guidance-vs-operational-content.md) — 参考层只放操作型内容；指导型（角色定义等）留源文档，不单独拆件（2026-10-04 角色拆分撤销）
