@@ -55,6 +55,8 @@
 1. 文件顶部标注 `> Source:` 与 `> License:` 两行，License 须与 [../ATTRIBUTION.md](../ATTRIBUTION.md) 中记录的条款一致
 2. 若引入新来源，先在 ATTRIBUTION.md 中登记，再写摘录
 
+> 例外：命令类组件（`commands/*.md`）的抄录主体不设文件头两行；其署名义务由 ATTRIBUTION.md 的登记承担。
+
 **已知的授权约束：**
 
 - Scrum Guide 2020 / SGEP —— CC BY-SA 4.0，可摘录、可商用

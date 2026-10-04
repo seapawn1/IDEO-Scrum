@@ -27,6 +27,7 @@
 /ideo-scrum:scrum-master     # Scrum Master：三大支柱、五项价值观、仪式优先
 /ideo-scrum:designer         # Designer：设计结对——IDEO 五模式 + 设计冲刺，原型快速验证
 /ideo-scrum:developer        # Developer：Sprint Backlog、DoD、Review、Retro
+/ideo-scrum:stakeholder      # Stakeholder：独立核验——干净上下文 + 证据包，verified / in doubt
 ```
 
 **插件提供什么**
@@ -34,8 +35,8 @@
 | 组件 | 内容 |
 |---|---|
 | `design-kernel` skill | IDEO / d.school 五模式（Empathize → Test）、~40 个设计方法、设计冲刺五阶段（快速锁定目标，为 Scrum 铺垫） |
-| `scrum-kernel` skill | Scrum Guide 2020 全文、SGEP 扩展包全文、Artifact / Event / Roles 分项引用 |
-| 3 个 command | Scrum Master / Designer / Developer 三种角色视角，用 `/ideo-scrum:scrum-master` 等手动进入 |
+| `scrum-kernel` skill | Scrum Guide 2020 全文、SGEP 扩展包全文（含角色章）、Artifact / Event 分项引用 |
+| 4 个 command | Scrum Master / Designer / Developer / Stakeholder 四种角色视角，用 `/ideo-scrum:scrum-master` 等手动进入 |
 
 ## 这里是什么
 
@@ -58,8 +59,9 @@
 |---|---|
 | `plugins/ideo-scrum/.claude-plugin/plugin.json` | 插件清单 v3.0.0 |
 | `plugins/ideo-scrum/commands/designer.md` | Command `/ideo-scrum:designer` — 设计阶段结对（IDEO 五模式 + 设计冲刺，原型快速验证、拍板前不落地） |
-| `plugins/ideo-scrum/commands/developer.md` | Command `/ideo-scrum:developer` — Developer 角色（Sprint Backlog / DoD / Sprint Review / Retro） |
-| `plugins/ideo-scrum/commands/scrum-master.md` | Command `/ideo-scrum:scrum-master` — Scrum Master 角色（三大支柱 / 五项价值观 / 仪式优先） |
+| `plugins/ideo-scrum/commands/developer.md` | Command `/ideo-scrum:developer` — Developer 角色（Scrum Guide 2020 原文抄录＋2026 精炼补充） |
+| `plugins/ideo-scrum/commands/scrum-master.md` | Command `/ideo-scrum:scrum-master` — Scrum Master 角色（Scrum Guide 2020 原文抄录＋2026 精炼补充） |
+| `plugins/ideo-scrum/commands/stakeholder.md` | Command `/ideo-scrum:stakeholder` — Stakeholder 监理（SGEP 角色章为底；干净上下文独立核验，输出 verified / in doubt） |
 
 ### design-kernel skill
 
