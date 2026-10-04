@@ -15,6 +15,7 @@
 
 ## 当前状态（蒸馏锚点，随 Sprint 更新）
 
+- **2026-10-04 · v3.1.0 发版（大整合批）**：roles 参考层撤销（PO 定「指导性内容不进参考层」——SGEP 角色章还回 asset、删 scrum-roles.md 与 SKILL.md Roles 条目）；**14-B 完成**（scrum-master / developer 以 SG2020 原文重建：三节式＝Identity 原稿逐字／原文抄录／CoC 原条目＋2026 精炼）；第四 command **stakeholder**（监理位——PBI-19 升级位；designer 与 stakeholder 随后三节定稿）；**codex 分支同步**（角色载体由 AGENTS.md 模板改为原生 skill：`$scrum-master / $designer / $developer / $stakeholder` 显式调用，templates/ 废弃）；命令不设 Source/License 文件头（署名归 ATTRIBUTION，规约已加例外）；双复检（validator / skill-reviewer）通过；v3.0.0（09-23，output-style→command）经补录。**留待后续：15-D、17、18**（14-B 已闭）。插件本体 v3.1.0（main 与 codex 双版本同号）。详见 [../scrum/ProductBacklog.md](../scrum/ProductBacklog.md) 与 [../scrum/SprintBacklog.md](../scrum/SprintBacklog.md)。
 - **2026-09-08 · Sprint 06 延续：v2.0.1 小发版**：执行 seapawn.md L44——scrum-master output-style 去 coding 功能（frontmatter 移除 `keep-coding-instructions`，docs 语义：角色不做软件工程即不放；developer/designer 保留）；sm/developer/designer 三 output-style 全量英文化（description 随落英文 Use when 触发式，译文经 PO 过目放行）；版本号 2.0.0→2.0.1（plugin.json + README 两处）；分支 `sprint-06-dual-kernel-refactor` 合入 main、tag v2.0.1、推送远端。留待后续冲刺不变：15-D、14-B（抄书合规路径）、17、18。详见 [../scrum/ProductBacklog.md](../scrum/ProductBacklog.md) 与 [../scrum/SprintBacklog.md](../scrum/SprintBacklog.md)。插件本体 v2.0.1。
 - **2026-08-31 · Sprint 06 收官（v2.0.0 已发布）**：本冲刺完成 PBI-16（双内核描述互链）、14-1/14-2/14-4 + 14-A（designer 重造回归）、15-B/15-C（DesignSprint 手术：五天法废弃、五阶段进 skill、decider→Product Owner、L18a 关闭）；**留待后续冲刺：15-D（scrum-kernel 重构）、14-B（developer/scrum-master 重构）、17（关键文档预先规格）、18（双内核执行模板）**；15-4 两机制点经 PO 定案不落文（定案存产品日志）；PBI-12（笔记）下一冲刺。分支 `sprint-06-dual-kernel-refactor` 已合入 main、tag v2.0.0、推送远端。详见 [../scrum/ProductBacklog.md](../scrum/ProductBacklog.md) 与 [../scrum/SprintBacklog.md](../scrum/SprintBacklog.md)。插件本体 v2.0.0。
 - **1.x 已收官蒸馏**：旧目标（两内核结构对等）判定方向性错误，勿延续；教训见 `.claude/memory/`（MEMORY.md 索引 + 五期档案）。
@@ -36,7 +37,7 @@
 
 **组件描述（attribute description）规约**
 
-写插件组件（skill / agent / output-style）的 `description` 时：它是**触发条件**，不是自我介绍——用 "Use when..." + 具体场景词；同类组件描述必须有区分度（模板趋同 = embedding 空间互相叠影，系统无法选择）。plugin.json 的 description 是元数据（展示用），非触发主战场。（来源：Sprint 04。）
+写插件组件（skill / command）的 `description` 时：它是**触发条件**，不是自我介绍——用 "Use when..." + 具体场景词；同类组件描述必须有区分度（模板趋同 = embedding 空间互相叠影，系统无法选择）。plugin.json 的 description 是元数据（展示用），非触发主战场。（来源：Sprint 04。）
 
 **冲刺蒸馏闭环**
 
