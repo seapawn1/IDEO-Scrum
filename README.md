@@ -87,7 +87,7 @@ Codex 版附带四份角色 skill，显式调用才生效：
 | `.claude-plugin/marketplace.json` | Claude marketplace 清单，供 `/plugin marketplace add` 使用 |
 | `.agents/plugins/marketplace.json` | Codex marketplace 清单，指向 `codex/plugins/ideo-scrum/` |
 | `.agents/AGENTS.md` | 通用项目记忆入口：读取 `.claude/CLAUDE.md` 与 `.claude/memory/MEMORY.md`；由个人配置指定加载 |
-| `.claude/` | 项目配置——`CLAUDE.md`（项目指令，随会话加载）、`memory/`（蒸馏档案 + MEMORY.md 索引）、`settings.json` |
+| `.claude/` | 项目配置——`CLAUDE.md`（项目指令，随会话加载）、`memory/`（蒸馏档案 + MEMORY.md 索引）、`settings.json`、`seapawn.md`（作者待办与私人笔记，不入库） |
 
 ### Claude Code 插件
 
@@ -132,7 +132,7 @@ Codex 版附带四份角色 skill，显式调用才生效：
 
 | 文件/目录 | 内容 |
 |---|---|
-| `scrum/ProductBacklog.md` | 产品日志——Product 定义 / Vision / DoD / v2.0.0 PBI 序列（PBI-12~18）/ Architecture（草案大节，据验证轮客户之声抽象） |
+| `scrum/ProductBacklog.md` | 产品日志——Product 定义 / Vision / DoD / PBI 序列（PBI-12~19）/ Architecture（草案大节，据验证轮客户之声抽象） |
 | `scrum/SprintBacklog.md` | Sprint 06 冲刺日志（Sprint Goal + DoD / PBI+验收标准 / How 区）——Review 后按蒸馏闭环删除 |
 | `docs/ExpertNotes.md` | 客户之声——作者使用流程已口述落盘（项目骨架→IDEO→design 文件→背景研究→target 四阶段，含与 SprintBacklog 同源表、分工原则、未决清单）；感悟待写 |
 | **五期冲刺蒸馏** | 已蒸馏至 `.claude/memory/`（MEMORY.md 索引 + 五期教训档案，含出处指向 git）；原文 git 历史可追溯 |
