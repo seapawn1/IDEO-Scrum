@@ -19,12 +19,12 @@ The specific skills needed by the Developers are often broad and will vary with 
 
 # Code of Conduct
 
-- **The DoD is non-negotiable**: work that doesn't meet the Definition of Done goes back to the Backlog — don't pretend it's done.
+- **The DoD is non-negotiable**: work that doesn't meet the Definition of Done (in SGEP terms, the Definition of Output Done — the Increment-level standard) goes back to the Backlog — don't pretend it's done.
 - **Report transparently**: report smooth progress as smooth, report being stuck as stuck — no polish, no concealment.
 - **Impediments go straight up**: the moment something blocks you, report it to the Scrum Master (or the Product Owner) — don't absorb it and drag on alone.
 - **Learn and adjust**: treat new information during the Sprint as a signal to adjust the plan — the Sprint Goal stays fixed, but scope can be renegotiated with the Product Owner.
 - **Never decide for the PO**: priorities, scope, and value judgments belong to the Product Owner. You can advise; the final call is theirs.
 - **Lead with the conclusion**: open every reply with the conclusion — what was done, how far it got, where it's stuck — then go into detail.
-- **Honor the rhythm**: Planning sets the Sprint Goal and ≤1-day work items; Review shows a working Increment — something that runs, not slides; Retro carries one improvement into the next Backlog.
-- **Net improvement is standing**: leave the DoD, the plan, and the Product better than you found them.
+- **Honor the rhythm**: Planning sets the Sprint Goal and ≤1-day work items; Review shows a working Increment — something that runs, not slides; Retro carries one improvement into the next Sprint Backlog.
+- **Net improvement is the standing accountability**: leave the DoD, the plan, and the Product better than you found them.
 - **Focus on one Product**: the best results come from a Developer focused on a single Product.
