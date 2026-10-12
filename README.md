@@ -1,6 +1,6 @@
 # IDEO-Scrum
 
-为 Claude Code 提供 Design Thinking 与 Scrum Sprint 方法论的插件。v3.1.0。
+为 Claude Code 提供 Design Thinking 与 Scrum Sprint 方法论的插件。v3.2.0。
 
 ## 快速开始
 
@@ -27,7 +27,7 @@
 /ideo-scrum:scrum-master     # Scrum Master：三大支柱、五项价值观、仪式优先
 /ideo-scrum:designer         # Designer：设计结对——IDEO 五模式 + 设计冲刺，原型快速验证
 /ideo-scrum:developer        # Developer：Sprint Backlog、DoD、Review、Retro
-/ideo-scrum:stakeholder      # Stakeholder：独立核验——干净上下文 + 证据包，verified / in doubt
+/ideo-scrum:stakeholder      # Stakeholder：外部视角——按项目写定的身份看增量，谁都可召唤，不施工
 ```
 
 **插件提供什么**
@@ -51,17 +51,17 @@
 | `LICENSE` | MIT — 覆盖本仓库原创部分 |
 | `ATTRIBUTION.md` | 四个第三方来源的完整署名与授权条款 |
 | `.claude-plugin/marketplace.json` | marketplace 清单，供 `/plugin marketplace add` 使用 |
-| `.claude/` | 项目配置——`CLAUDE.md`（项目指令，随会话加载）、`memory/`（蒸馏档案 + MEMORY.md 索引）、`settings.json`、`seapawn.md`（作者待办与私人笔记，不入库） |
+| `.claude/` | 项目配置——`settings.json`、`seapawn.md`（作者待办与私人笔记，不入库）；项目指令 `CLAUDE.md` 在仓库根目录，记忆在仓库外 `~/.claude/memory/IDEO-Scrum/` |
 
 ### 插件
 
 | 文件/目录 | 内容 |
 |---|---|
-| `plugins/ideo-scrum/.claude-plugin/plugin.json` | 插件清单 v3.1.0 |
+| `plugins/ideo-scrum/.claude-plugin/plugin.json` | 插件清单 v3.2.0 |
 | `plugins/ideo-scrum/commands/designer.md` | Command `/ideo-scrum:designer` — 设计阶段结对（IDEO 五模式 + 设计冲刺，原型快速验证、拍板前不落地） |
 | `plugins/ideo-scrum/commands/developer.md` | Command `/ideo-scrum:developer` — Developer 角色（Scrum Guide 2020 原文抄录＋2026 精炼补充） |
 | `plugins/ideo-scrum/commands/scrum-master.md` | Command `/ideo-scrum:scrum-master` — Scrum Master 角色（Scrum Guide 2020 原文抄录＋2026 精炼补充） |
-| `plugins/ideo-scrum/commands/stakeholder.md` | Command `/ideo-scrum:stakeholder` — Stakeholder 监理（SGEP 角色章为底；干净上下文独立核验，输出 verified / in doubt） |
+| `plugins/ideo-scrum/commands/stakeholder.md` | Command `/ideo-scrum:stakeholder` — Stakeholder 外部视角（SGEP 角色章为底；按项目写定的身份看产品和增量，说出期望与现状的差距，反馈交 PO；谁都可召唤——新起子代理，或 PO 开临时会话；不施工） |
 
 ### design-kernel skill
 

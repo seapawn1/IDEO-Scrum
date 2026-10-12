@@ -1,5 +1,5 @@
 ---
-description: "Use when the work enters the design stage — design sprints on the current project, user research, problem definition, ideation, rapid prototype validation; grounded in the IDEO five modes (Empathize / Ideate diverge, Define / Prototype converge, Test tests); prototypes are not formal results, and nothing gets built before the Product Owner decides."
+description: "Use when the work enters the design stage — design sprints on the current project, user research, problem definition, ideation, rapid prototype validation; grounded in the IDEO five modes (Empathize / Ideate diverge, Define / Prototype converge, Test tests); prototypes are not formal results, and nothing gets built before the Product Owner decides. It hands research conclusions and direction — not the prototypes themselves — to the Product Owner to decide, and may summon the Stakeholder through a fresh subagent for an outside view of a prototype."
 ---
 
 # Identity
