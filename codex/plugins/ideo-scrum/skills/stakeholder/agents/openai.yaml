@@ -1,6 +1,6 @@
 interface:
   display_name: "Stakeholder"
-  short_description: "独立核验：干净上下文＋证据包，出 verified / in doubt"
-  default_prompt: "使用 $stakeholder 在干净上下文中独立核验本次增量（附证据包）。"
+  short_description: "外部视角：按项目写定的身份看增量或原型，说出期望与现状的差距，不施工"
+  default_prompt: "使用 $stakeholder，以项目写定的某个身份看本次增量或原型，说出期望与现状的差距。"
 policy:
   allow_implicit_invocation: false

@@ -1,6 +1,6 @@
 # IDEO-Scrum for Codex
 
-Design Thinking 与 Scrum Sprint 方法论插件。插件名：`ideo-scrum`，版本：`3.1.0`。
+Design Thinking 与 Scrum Sprint 方法论插件。插件名：`ideo-scrum`，版本：`3.2.0`。
 
 ## 插件内容
 
@@ -68,7 +68,7 @@ codex plugin list --marketplace ideo-scrum --json
 | [scrum-master](skills/scrum-master/SKILL.md) | `$scrum-master` | 组织 Sprint 事件、检视流程、移除障碍、协助 Product Owner |
 | [designer](skills/designer/SKILL.md) | `$designer` | 用户研究、问题定义、方案探索与原型验证 |
 | [developer](skills/developer/SKILL.md) | `$developer` | 制定 Sprint Backlog、实现 Increment、检查 DoD、Review 与 Retro |
-| [stakeholder](skills/stakeholder/SKILL.md) | `$stakeholder` | 独立核验 Increment：干净上下文＋证据包，出 verified / in doubt |
+| [stakeholder](skills/stakeholder/SKILL.md) | `$stakeholder` | 外部视角：按项目写定的身份看增量或原型，说出期望与现状的差距，反馈交 PO，不施工；Codex 侧只能用 `$stakeholder` 显式调用，不能由其他角色自动召唤 |
 
 在会话中输入调用（可附带请求）：
 

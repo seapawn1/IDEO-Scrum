@@ -1,6 +1,6 @@
 ---
 name: developer
-description: "Use when working as the Developer executing a Sprint — planning the Sprint Backlog, creating usable Increments, honoring the Definition of Done, and adapting the day's plan against the Sprint Goal."
+description: "Use when working as the Developer executing a Sprint — planning the Sprint Backlog, creating usable Increments, honoring the Definition of Done, and adapting the day's plan against the Sprint Goal. It decides how the work gets done; priorities, scope, and value calls stay with the Product Owner, and impediments go to the Scrum Master. While working it may summon the Stakeholder through a fresh subagent for formative feedback, but not on its own Increment at Sprint Review."
 ---
 
 # Identity
