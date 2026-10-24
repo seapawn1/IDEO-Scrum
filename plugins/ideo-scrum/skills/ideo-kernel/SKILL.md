@@ -1,6 +1,6 @@
 ---
 name: ideo-kernel
-description: "Use when applying Design Thinking or a Design Sprint — Empathize, Define, Ideate, Prototype, Test; human-centered design, user interviews, journey mapping, POV, HMW questions, brainstorming, user testing; rapid prototype validation — when an idea must be checked quickly with a prototype that feels like a prototype (fast, informal, never a formal result, built to learn rather than ship); and when a challenge is still undefined and needs pre-research before any execution. The Design Sprint here is a fast research sprint — lock the target quickly, finish the design fast, clarify whether the problem is solvable and what the basic approach is — and its findings pave the way for, then hand off to, the scrum-kernel Sprint."
+description: "Use when the user mentions IDEO, the five modes, design thinking, or a Design Sprint — load it before answering, even for a quick outline. Covers the IDEO five modes (Empathize, Define, Ideate, Prototype, Test), human-centered design, user interviews, journey mapping, POV, HMW questions, brainstorming, user testing; rapid prototype validation — when an idea must be checked quickly with a prototype that feels like a prototype (fast, informal, never a formal result, built to learn rather than ship); and when a challenge is still undefined and needs pre-research before any execution. The Design Sprint here is a fast research sprint — lock the target quickly with its five stages, clarify whether the problem is solvable and what the basic approach is, then continue in Ideate, Prototype, and Test — and its findings pave the way for, then hand off to, the scrum-kernel Sprint."
 ---
 
 # IDEO Kernel
@@ -52,7 +52,15 @@ A fast, structured sprint for the design side: lock the target quickly, finish t
 
 ## Method Catalog
 
-Each method is listed once; **Modes** names the modes it serves.
+Methods by mode — names only; the Trigger and the file for each are in the table below:
+
+- **Empathize** (13): Assume a beginner's mindset; What? How? Why?; Interview Preparation; Interview for Empathy; Extreme Users; Story Share-and-Capture; Journey Map; Prototype for Empathy; Empathetic Data; Empathy Probe; Analogous Empathy; Shooting Video; Editing Video
+- **Define** (13): What? How? Why?; Extreme Users; Story Share-and-Capture; Journey Map; Powers of Ten; 2x2 Matrix; Why-How Laddering; Point of View; Design Guidelines; How Might We Questions; Storytelling; Review Your Portfolio; Surprise-to-Insights Leap
+- **Ideate** (13): Analogous Empathy; Powers of Ten; Why-How Laddering; Design Guidelines; How Might We Questions; Stoke; Brainstorming; Facilitate a brainstorm; Brainstorm selection; Impose Constraints; I Like, I Wish, What If; Describe Your Concept; Yes, And! Brainstorm
+- **Prototype** (10): Prototype for Empathy; Brainstorm selection; Impose Constraints; Describe Your Concept; Improvise to Life; Scenes/Props/Roles; Prototype to Decide; Identify a Variable; User-Driven Prototyping; Wizard of Oz Prototyping
+- **Test** (13): Empathetic Data; Shooting Video; Editing Video; Storytelling; Review Your Portfolio; I Like, I Wish, What If; Scenes/Props/Roles; Prototype to Decide; Identify a Variable; User-Driven Prototyping; Wizard of Oz Prototyping; Testing with Users; Feedback Capture Matrix
+
+In the table, each method is listed once; **Modes** names the modes it serves.
 
 | Method | Modes | Document | Trigger |
 | --- | --- | --- | --- |
