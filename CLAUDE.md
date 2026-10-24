@@ -15,6 +15,7 @@
 
 ## 当前状态（蒸馏锚点，随 Sprint 更新）
 
+- **2026-10-25 · Sprint 07 收官，发版 v4.0.0**：Sprint Goal 达成（一天）。PBI-21：design-kernel 改名 ideo-kernel（调用名变，故升大版本），「Two Schemes」分清 IDEO 五模式与设计冲刺五阶段（设计冲刺之后接构思、原型、测试，HMW 不单列），五阶段参考迁 `design-sprint/`，Method Catalog 去重并加按模式索引；PBI-20：只有 PO 必须是人（作者设计，注明与 SGEP 不同），stakeholder 一个命令多种身份、可常驻做非源码杂务，SM 派活跟进度、派子代理审阅，Developer 交证据；PBI-22：developer / designer / scrum-master 进入即加载对应内核，ideo-kernel 描述加强（「用 IDEO 五模式」触发 0/5 → 5/5）；PBI-24：插件与 marketplace.json 零中文。蒸馏为记忆档 `sprint-07-roles-kernels`，SprintBacklog 删除（原文 `git show 8f3fb44:scrum/SprintBacklog.md`）。Retro 改进项写入下方「组件描述规约」与「插件验证」。codex 分支未同步，停在 3.2.0，这次没做到双版本同号。新登记 PBI-25、PBI-26，排序由 PO 在 Sprint 08 Planning 定。插件本体 v4.0.0（tag `v4.0.0`、`sprint-07-done`）。
 - **2026-10-24 · #28 讨论定案，准备 Sprint 07**：Product Goal 由 PO 重定为「IDEO-Scrum 4.0：让插件带着流程走——角色、内核、流程参考与模板成体系，新项目照着就能跑通」；新增 PBI-20（角色重定义：只有 PO 必须是人；Stakeholder 一个命令多种身份、可常驻；Master 派活跟进度，审阅派全新子代理）、PBI-21（design-kernel 改名 ideo-kernel，分清 IDEO 五模式与设计冲刺五阶段）、PBI-22（角色命令自动加载内核）、PBI-23（流程化参考与文件模板）；PBI-12 改写为方法论分享；PBI-15 关闭，17、18 并入 23，19 并入 20。拆分：Sprint 07＝PBI-21、20、22，Sprint 08＝PBI-23，之后 PBI-12。「Sprint 节律」第一条由「发版即收官」改为「按时间盒收官」；Sprint 06 收官 tag 改名 `sprint-06-done`。插件本体 v3.2.0 未动。详见 [scrum/ProductBacklog.md](scrum/ProductBacklog.md)。
 - **2026-10-24 · Sprint 06 正式收官（Review + Retro，单提交）**：Sprint 06 自 08-30 起一份日志跨 55 天、含五次发版（v2.0.0 / v2.0.1 / v3.0.0 / v3.1.0 / v3.2.0），超出 4 周时间盒；下方 08-31 条的「收官」只是 v2.0.0 发版时的范围定案，Review 与 Retro 当时未做，本日由 Developer 收口。本次：四段式日志经 PO 批准后蒸馏为记忆档 `sprint-06-dual-kernel-refactor`（`S:\SeaPawn-Memory\memory\IDEO-Scrum\`），`scrum/SprintBacklog.md` 删除（原文：`git show 3f81260:scrum/SprintBacklog.md`）；记忆路径、Product 节（output-styles→commands）、PBI-15 / PBI-19 状态、README 文件地图已对齐；**总目标（v2.0.0）所指版本早已发布，产品日志原处标「待 PO 重定」，文字未改**；未完成项（15-D、17、18、19 的核验去向、12）回产品日志。Retro 改进项：发版即收官、时间盒写日志头、计划外工作先登记、PBI 状态只写产品日志、迁移类改动全仓 grep，已写入下方「维护规约」的「Sprint 节律」；蒸馏闭环补「日志不单独入库」一句。插件本体 v3.2.0 未动。
 - **2026-10-13 · v3.2.0 角色说明更新（SeaPawn 日 Sprint #14）**：stakeholder 由监理位改为**外部视角**——按项目写定的身份看产品与增量，谁都可召唤（新起子代理，或 PO 开临时独立会话），Sprint Review 时由 PO / SM 召唤，不施工，反馈交 PO（依据：PO 10-10 在 D:\MidTerm 定的五条规则；10-13 定保留命令形式、可开独立会话）；正文按逐字保留规约改，【原文】块与 v3.1.0 逐字一致；scrum-master / developer / designer 三个 description 原句不动、末尾追加边界与相互关系句（组件描述规约同步补一句）；PBI-19 监理位撤回、独立核验去向待定；codex 分支同步（四份角色 skill 重生成，`.agents/AGENTS.md` 删除）。插件本体 v3.2.0（main 与 codex 双版本同号）。
@@ -40,7 +41,7 @@
 
 **组件描述（attribute description）规约**
 
-写插件组件（skill / command）的 `description` 时：它是**触发条件**，不是自我介绍——用 "Use when..." + 具体场景词；同类组件描述必须有区分度（模板趋同 = embedding 空间互相叠影，系统无法选择）。plugin.json 的 description 是元数据（展示用），非触发主战场。（来源：Sprint 04。）角色命令可以在触发句之后追加一两句边界和相互关系（替谁做事、不做什么、谁召唤谁），让各角色在技能清单里互相知道；触发句保持在最前（2026-10-13，#14）。
+写插件组件（skill / command）的 `description` 时：它是**触发条件**，不是自我介绍——用 "Use when..." + 具体场景词；同类组件描述必须有区分度（模板趋同 = embedding 空间互相叠影，系统无法选择）。plugin.json 的 description 是元数据（展示用），非触发主战场。（来源：Sprint 04。）角色命令可以在触发句之后追加一两句边界和相互关系（替谁做事、不做什么、谁召唤谁），让各角色在技能清单里互相知道；触发句保持在最前（2026-10-13，#14）。触发不足时，写明「什么情况下先加载」，不要只堆关键词（2026-10-25，PBI-22：ideo-kernel 的触发由 1/10 升到 5/5）。
 
 **冲刺蒸馏闭环**
 
@@ -59,6 +60,14 @@
 **插件验证**
 
 本仓库无 build/test。改动插件后，用 Agent 类型 `plugin-dev:plugin-validator` 校验插件结构/plugin.json；涉及 skill 质量时用 `plugin-dev:skill-reviewer`（两者经 Agent 工具调用，非 slash command）。marketplace 清单在 `.claude-plugin/marketplace.json`。
+
+**回归测试**（2026-10-25，Sprint 07 Retro）
+
+- 判定标准先写、单独提交，再跑；出结果后不改标准。
+- 触发测两条路径：从角色命令进入，和直接说。
+- 比较描述效果，同日同环境对照，带改前基线。
+- 无头测法：`reclaude -p --plugin-dir <插件 Windows 路径>`（顶替已装同名插件）；Git Bash 下 `/` 开头的提示加 `MSYS_NO_PATHCONV=1`，路径用 `cygpath -w`。
+- 工具审查员（skill-reviewer 等）的必改项，落盘前先对一遍 PO 的定案；冲突就报 Master，不照改。
 
 ## 源材料与授权
 

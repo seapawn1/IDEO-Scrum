@@ -1,6 +1,6 @@
 # IDEO-Scrum
 
-为 Claude Code 提供 Design Thinking 与 Scrum Sprint 方法论的插件。v3.2.0。
+为 Claude Code 提供 Design Thinking 与 Scrum Sprint 方法论的插件。v4.0.0。
 
 ## 快速开始
 
@@ -27,7 +27,7 @@
 /ideo-scrum:scrum-master     # Scrum Master：三大支柱、五项价值观、仪式优先
 /ideo-scrum:designer         # Designer：设计结对——IDEO 五模式 + 设计冲刺，原型快速验证
 /ideo-scrum:developer        # Developer：Sprint Backlog、DoD、Review、Retro
-/ideo-scrum:stakeholder      # Stakeholder：外部视角——按项目写定的身份看增量，谁都可召唤，不施工
+/ideo-scrum:stakeholder      # Stakeholder：一个命令多种身份——外部视角，或常驻做非源码杂务；源码归 Developer
 ```
 
 **插件提供什么**
@@ -36,7 +36,7 @@
 |---|---|
 | `ideo-kernel` skill | IDEO / d.school 五模式（Empathize → Test）、~40 个设计方法、设计冲刺五阶段（快速锁定目标，为 Scrum 铺垫） |
 | `scrum-kernel` skill | Scrum Guide 2020 全文、SGEP 扩展包全文（含角色章）、Artifact / Event 分项引用 |
-| 4 个 command | Scrum Master / Designer / Developer / Stakeholder 四种角色视角，用 `/ideo-scrum:scrum-master` 等手动进入 |
+| 4 个 command | Scrum Master / Designer / Developer / Stakeholder 四种角色视角，用 `/ideo-scrum:scrum-master` 等手动进入；进入时自动加载对应内核（Stakeholder 除外） |
 
 ## 这里是什么
 
@@ -57,17 +57,17 @@
 
 | 文件/目录 | 内容 |
 |---|---|
-| `plugins/ideo-scrum/.claude-plugin/plugin.json` | 插件清单 v3.2.0 |
-| `plugins/ideo-scrum/commands/designer.md` | Command `/ideo-scrum:designer` — 设计阶段结对（IDEO 五模式 + 设计冲刺，原型快速验证、拍板前不落地） |
-| `plugins/ideo-scrum/commands/developer.md` | Command `/ideo-scrum:developer` — Developer 角色（Scrum Guide 2020 原文抄录＋2026 精炼补充） |
-| `plugins/ideo-scrum/commands/scrum-master.md` | Command `/ideo-scrum:scrum-master` — Scrum Master 角色（Scrum Guide 2020 原文抄录＋2026 精炼补充） |
-| `plugins/ideo-scrum/commands/stakeholder.md` | Command `/ideo-scrum:stakeholder` — Stakeholder 外部视角（SGEP 角色章为底；按项目写定的身份看产品和增量，说出期望与现状的差距，反馈交 PO；谁都可召唤——新起子代理，或 PO 开临时会话；不施工） |
+| `plugins/ideo-scrum/.claude-plugin/plugin.json` | 插件清单 v4.0.0 |
+| `plugins/ideo-scrum/commands/designer.md` | Command `/ideo-scrum:designer` — 设计阶段结对（IDEO 五模式 + 设计冲刺，原型快速验证、拍板前不落地；进入时加载 ideo-kernel） |
+| `plugins/ideo-scrum/commands/developer.md` | Command `/ideo-scrum:developer` — Developer 角色（Scrum Guide 2020 原文抄录＋2026 精炼补充；进入时加载 scrum-kernel） |
+| `plugins/ideo-scrum/commands/scrum-master.md` | Command `/ideo-scrum:scrum-master` — Scrum Master 角色（Scrum Guide 2020 原文抄录＋2026 精炼补充；替 PO 派活、派子代理审阅；进入时加载两个内核） |
+| `plugins/ideo-scrum/commands/stakeholder.md` | Command `/ideo-scrum:stakeholder` — Stakeholder（SGEP 角色章为底；一个命令多种身份：外部视角——按项目写定的身份看产品和增量，说出期望与现状的差距，反馈交 PO，独立评价由全新子代理给；也可作常驻会话做非源码杂务，如维护看板；源码归 Developer） |
 
 ### ideo-kernel skill
 
 | 文件/目录 | 内容 |
 |---|---|
-| `plugins/ideo-scrum/skills/ideo-kernel/SKILL.md` | IDEO Kernel 入口（两套五步对照 + IDEO 五模式表 + 设计冲刺：定位/文件表/五阶段表 + Method Catalog + Use Protocol） |
+| `plugins/ideo-scrum/skills/ideo-kernel/SKILL.md` | IDEO Kernel 入口（两套五步对照 + IDEO 五模式表 + 设计冲刺五阶段表 + Method Catalog：按模式索引与合表 + Use Protocol） |
 | `plugins/ideo-scrum/skills/ideo-kernel/IDEO-modes/` | IDEO Design Thinking 五模式 reference（Empathize / Define / Ideate / Prototype / Test，各含 WHAT/WHY/HOW + Transition） |
 | `plugins/ideo-scrum/skills/ideo-kernel/design-sprint/` | 设计冲刺五阶段参考（Knapp 摘录：define-the-challenge / start-at-the-end / ask-the-experts / make-a-map / pick-a-target） |
 | `plugins/ideo-scrum/skills/ideo-kernel/methods/` | Design Thinking 方法库（~40 个方法，含 Use Before / Use Notes / Do Not Use When） |
@@ -87,7 +87,6 @@
 | 文件/目录 | 内容 |
 |---|---|
 | `scrum/ProductBacklog.md` | 产品日志——Product 定义 / Vision / DoD / PBI 序列（PBI-12~23）/ Architecture（草案大节，据验证轮客户之声抽象） |
-| `scrum/SprintBacklog.md` | Sprint 07 冲刺日志（Sprint Goal + DoD / PBI 与验收标准 / How 区）——Review 后按蒸馏闭环删除 |
 | `docs/ExpertNotes.md` | 客户之声——作者使用流程已口述落盘（项目骨架→IDEO→design 文件→背景研究→target 四阶段，含与 SprintBacklog 同源表、分工原则、未决清单）；将作为方法论分享的素材 |
 | **冲刺蒸馏** | 1.x 五期与 Sprint 06 已蒸馏至 `S:\SeaPawn-Memory\memory\IDEO-Scrum\`（MEMORY.md 索引 + 各期教训档案，含出处指向 git）；原文 git 历史可追溯 |
 
