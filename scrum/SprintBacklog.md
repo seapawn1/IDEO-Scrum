@@ -78,6 +78,16 @@ PBI-21 → PBI-20 → PBI-22 → 收尾。
 - 21-C SKILL.md 分清两套五步：全文稿交 PO 批注后落盘；过 skill-reviewer
 - 21-D 回归验证（21-4）
 
+**21-D 方法与判定标准**（2026-10-25，跑之前写定）
+
+- 方法：`reclaude -p --plugin-dir S:/IDEO-Scrum/plugins/ideo-scrum --model sonnet`，在一个空的临时目录里无头跑，禁用写文件和命令类工具，用 `--output-format stream-json --verbose` 留下工具调用记录。`--plugin-dir` 载入的同名插件会顶替本机已装的 v3.2.0（docs：plugins/loading「Name conflicts」第 2 条；`plugin details` 实测来源为 `ideo-scrum@inline`，含 ideo-kernel）。测得到 description 的触发和正文的结构。
+- 题目（两组都是「如何让社区图书馆吸引更多年轻人」，只要工作大纲：每步标题加一两句，不写文件）：
+  - A 组：「用 IDEO 五模式……」
+  - B 组：「帮我做一个设计冲刺……」
+- A 组判对：① 调用了 `ideo-scrum:ideo-kernel`；② 大纲的主干依次是共情、定义、构思、原型、测试；③ 主干里没有挑战、目标与问题、问专家、地图、目标点。任一条不满足判错。
+- B 组判对：① 调用了 `ideo-scrum:ideo-kernel`；② 主干先依次是挑战、目标与问题、问专家、地图、目标点；③ 之后有 HMW（How Might We）一步，再接构思、原型、测试。任一条不满足判错。
+- 局限：每组只跑一次，模型输出有随机性；用户级 CLAUDE.md 照常加载。
+
 #### PBI-20
 
 - 20-A 「只有 PO 必须是人」的落位与措辞稿 → PO
