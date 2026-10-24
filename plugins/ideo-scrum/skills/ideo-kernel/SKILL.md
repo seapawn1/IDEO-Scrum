@@ -7,16 +7,12 @@ description: "Use when applying Design Thinking or a Design Sprint — Empathize
 
 ## Two Schemes: IDEO Five Modes and the Design Sprint
 
-This kernel holds two schemes that both have five steps. They are related but not the same, so keep them apart.
+Two schemes here both have five steps. Keep to the one the user asked for, and never put one scheme's steps in place of the other's.
 
-| | IDEO five modes | Design Sprint five stages |
-|---|---|---|
-| Steps | Empathize, Define, Ideate, Prototype, Test — non-linear | Challenge, Goal and Questions, Ask the Experts, Map, Target — in order |
-| What it is | The full design-thinking process: understand people, frame the problem, generate ideas, build to learn, test with users | The faster path: steps adapted from the start of Knapp's _Sprint_ to clarify the background, define the problem, and pick a target quickly |
-| Use when | The user asks for the five modes or for design thinking, or the work needs a deep understanding of people | The user asks for a Design Sprint, or the target has to be locked fast |
-| After it | Hand off to the scrum-kernel Sprint | Open ideation with How Might We questions (`methods/how-might-we-questions.md`; here the map and the target stand in for the POV, so once the map is drawn they usually come almost for free), then continue in the IDEO modes — Ideate, Prototype, Test — then hand off to the scrum-kernel Sprint |
+- **IDEO five modes** — Empathize, Define, Ideate, Prototype, Test, non-linear: the full design-thinking process. Use it when the user asks for the five modes or for design thinking.
+- **Design Sprint five stages** — Challenge, Goal and Questions, Ask the Experts, Map, Target, in order: a faster path adapted from the start of Knapp's _Sprint_, covering roughly what Empathize and Define do. Use it when the user asks for a Design Sprint or the target has to be locked fast; after Target, continue with Ideate, Prototype, Test.
 
-When the user asks for the five modes, structure the work as Empathize, Define, Ideate, Prototype, Test; do not swap in Challenge, Goal and Questions, Ask the Experts, Map, or Target. When the user asks for a Design Sprint, run its five stages first, then open ideation with How Might We questions and continue in the IDEO modes. If the user names neither, choose by the "Use when" row; if it is still unclear, ask the user. The five stages roughly cover what Empathize and Define do: understand the background and choose the problem to solve.
+If the user names neither, choose by the work; if it is still unclear, ask. Both can end by handing off to the scrum-kernel Sprint.
 
 *(Author's methodology design for solo + AI teams, 2026-10-25.)*
 
@@ -40,118 +36,64 @@ The process is **not linear** — teams move back and forth between modes as ins
 
 ## Design Sprint
 
-A fast, structured sprint for the design side: lock the target quickly, finish the design fast, clarify whether the problem is solvable and what the basic approach looks like — the outcome paves the way for the scrum-kernel Sprint that follows. Five stages, no day-by-day script: move as fast as the work allows. Beyond the five stages, open ideation with How Might We questions (`methods/how-might-we-questions.md`; here the map and the target stand in for the POV, so once the map is drawn they usually come almost for free), then the work continues in the Ideate, Prototype, and Test modes and the methods catalog above.
+A fast, structured sprint for the design side: lock the target quickly, finish the design fast, clarify whether the problem is solvable and what the basic approach looks like — the outcome paves the way for the scrum-kernel Sprint that follows. Five stages, no day-by-day script: move as fast as the work allows. Beyond the five stages, the work continues in the Ideate, Prototype, and Test modes and the methods catalog below.
 
 *(Author's methodology design for solo + AI teams, 2026-08; stage steps adapted from Knapp, Zeratsky & Kowitz, _Sprint_ (2016), cited per file.)*
 
-| File | Purpose | Read when |
+| Stage | Steps | Reference |
 |---|---|---|
-| `design-sprint/define-the-challenge.md` | What makes a challenge sprint-worthy (high stakes, deadline, stuck) and how to size it — solve the surface first | Stage 1 — Challenge; also the entry point when starting a design sprint |
-| `design-sprint/start-at-the-end.md` | Set the long-term goal (optimistic) and list sprint questions (pessimistic) — assumptions turned into answerable questions | Stage 2 — Goal and Questions |
-| `design-sprint/ask-the-experts.md` | One-at-a-time expert interviews (strategy, customer voice, how things work, previous efforts) with a five-step script | Stage 3 — Ask the Experts / deep research |
-| `design-sprint/make-a-map.md` | Draw the map: actors on the left, ending on the right, words and arrows in between — five to fifteen steps | Stage 4 — Map |
-| `design-sprint/pick-a-target.md` | Choose the most important customer and the critical moment of their experience; align the target with sprint questions | Stage 5 — Target |
-
-| Stage | Steps |
-|---|---|
-| **Challenge** | Define the big challenge for this sprint. Use a sprint when the stakes are high, when there's not enough time, or when you're just plain stuck. Full method: `design-sprint/define-the-challenge.md` |
-| **Goal and Questions** | Set a long-term goal — get optimistic: why are we doing this project, where do we want to be? Then list sprint questions — get pessimistic: how could we fail? Turn fears into questions this sprint can answer. Full method: `design-sprint/start-at-the-end.md` |
-| **Ask the Experts** | One-at-a-time interviews with your team, your company, and outside specialists; revise goal, questions, and map as you learn. Full method: `design-sprint/ask-the-experts.md` |
-| **Map** | List customers and key players on the left; draw the ending, with the completed goal, on the right; words and arrows in between — keep it to five to fifteen steps. Full method: `design-sprint/make-a-map.md` |
-| **Target** | Choose the most important customer and the critical moment of their experience — the Product Owner makes the call. Full rationale: `design-sprint/pick-a-target.md` |
-
-<small>These five stages exist to quickly clarify the background, define the problem, and narrow the scope.</small>
+| **Challenge** | Define the big challenge for this sprint. Use a sprint when the stakes are high, when there's not enough time, or when you're just plain stuck. | `design-sprint/define-the-challenge.md` |
+| **Goal and Questions** | Set a long-term goal — get optimistic: why are we doing this project, where do we want to be? Then list sprint questions — get pessimistic: how could we fail? Turn fears into questions this sprint can answer. | `design-sprint/start-at-the-end.md` |
+| **Ask the Experts** | One-at-a-time interviews with your team, your company, and outside specialists; revise goal, questions, and map as you learn. | `design-sprint/ask-the-experts.md` |
+| **Map** | List customers and key players on the left; draw the ending, with the completed goal, on the right; words and arrows in between — keep it to five to fifteen steps. | `design-sprint/make-a-map.md` |
+| **Target** | Choose the most important customer and the critical moment of their experience — the Product Owner makes the call. | `design-sprint/pick-a-target.md` |
 
 ---
 
 ## Method Catalog
 
-### Empathize
+Each method is listed once; **Modes** names the modes it serves.
 
-| Method | Document | Trigger |
-| --- | --- | --- |
-| Assume a beginner's mindset | `methods/assume-beginners-mindset.md` | Use before interviews, observation, or source review when prior expertise may bias interpretation. |
-| What? How? Why? | `methods/what-how-why.md` | Use when observations are too abstract or when the user gives conclusions without scene-level detail. |
-| Interview Preparation | `methods/interview-preparation.md` | Use before a scheduled or intercept interview. |
-| Interview for Empathy | `methods/interview-for-empathy.md` | Use when the work needs lived stories, choices, and behavior rather than opinions about a solution. |
-| Extreme Users | `methods/extreme-users.md` | Use when average cases hide strong needs, constraints, or workarounds. |
-| Story Share-and-Capture | `methods/story-share-and-capture.md` | Use after fieldwork to preserve stories before synthesis. |
-| Journey Map | `methods/journey-map.md` | Use when the experience unfolds across time, roles, handoffs, or emotional shifts. |
-| Prototype for Empathy | `methods/prototype-for-empathy.md` | Use when making something can reveal user behavior, emotion, or context. |
-| Empathetic Data | `methods/empathetic-data.md` | Use when research or test material needs evidence separated from interpretation. |
-| Empathy Probe | `methods/empathy-probe.md` | Use when participants can capture lived evidence over time without you present. |
-| Analogous Empathy | `methods/analogous-empathy.md` | Use when the direct domain is stuck and analogous human experiences may reveal patterns. |
-| Shooting Video | `methods/shooting-video.md` | Use when video can preserve behavior, setting, emotion, or interaction evidence. |
-| Editing Video | `methods/editing-video.md` | Use when video material must be turned into a shareable learning artifact. |
-
-### Define
-
-| Method | Document | Trigger |
-| --- | --- | --- |
-| What? How? Why? | `methods/what-how-why.md` | Use when observations are too abstract or when the user gives conclusions without scene-level detail. |
-| Extreme Users | `methods/extreme-users.md` | Use when average cases hide strong needs, constraints, or workarounds. |
-| Story Share-and-Capture | `methods/story-share-and-capture.md` | Use after fieldwork to preserve stories before synthesis. |
-| Journey Map | `methods/journey-map.md` | Use when the experience unfolds across time, roles, handoffs, or emotional shifts. |
-| Powers of Ten | `methods/powers-of-ten.md` | Use when the problem frame may be too narrow or too broad. |
-| 2x2 Matrix | `methods/two-by-two-matrix.md` | Use to compare observations, users, insights, or concepts along two meaningful dimensions. |
-| Why-How Laddering | `methods/why-how-laddering.md` | Use to move between concrete needs and deeper purpose. |
-| Point of View | `methods/point-of-view.md` | Use only when user, need, and insight are grounded in empathy material. |
-| Design Guidelines | `methods/design-guidelines.md` | Use when insights should become constraints for later ideation. |
-| How Might We Questions | `methods/how-might-we-questions.md` | Use when a POV is ready to open an ideation space. |
-| Storytelling | `methods/storytelling.md` | Use when others need to understand a user, problem, or prototype experience. |
-| Review Your Portfolio | `methods/review-your-portfolio.md` | Use when multiple artifacts, prototypes, or evidence points need review. |
-| Surprise-to-Insights Leap | `methods/surprise-to-insights-leap.md` | Use when material contains surprise, contradiction, or unexpected behavior. |
-
-### Ideate
-
-| Method | Document | Trigger |
-| --- | --- | --- |
-| Powers of Ten | `methods/powers-of-ten.md` | Use when the problem frame may be too narrow or too broad. |
-| Why-How Laddering | `methods/why-how-laddering.md` | Use to move between concrete needs and deeper purpose. |
-| Design Guidelines | `methods/design-guidelines.md` | Use when insights should become constraints for later ideation. |
-| How Might We Questions | `methods/how-might-we-questions.md` | Use when a POV is ready to open an ideation space. |
-| Stoke | `methods/stoke.md` | Use before divergent work when energy is low or judgment is premature. |
-| Brainstorming | `methods/brainstorming.md` | Use after an HMW is clear and many varied ideas are needed. |
-| Facilitate a brainstorm | `methods/facilitate-a-brainstorm.md` | Use when a group needs structure, pace, and guardrails for ideation. |
-| Brainstorm selection | `methods/brainstorm-selection.md` | Use after a pool of ideas exists and prototype candidates must be chosen. |
-| Impose Constraints | `methods/impose-constraints.md` | Use when ideas are too broad or a prototype needs focus. |
-| I Like, I Wish, What If | `methods/i-like-i-wish-what-if.md` | Use to gather constructive feedback while keeping possibility open. |
-| Describe Your Concept | `methods/describe-your-concept.md` | Use when a concept must become clear enough to build, compare, or test. |
-| Yes, And! Brainstorm | `methods/yes-and-brainstorm.md` | Use when ideas are killed too early or need collaborative build-up. |
-| Analogous Empathy | `methods/analogous-empathy.md` | Use when the direct domain is stuck and analogous human experiences may reveal patterns. |
-
-### Prototype
-
-| Method | Document | Trigger |
-| --- | --- | --- |
-| Brainstorm selection | `methods/brainstorm-selection.md` | Use after a pool of ideas exists and prototype candidates must be chosen. |
-| Impose Constraints | `methods/impose-constraints.md` | Use when ideas are too broad or a prototype needs focus. |
-| Prototype for Empathy | `methods/prototype-for-empathy.md` | Use when making something can reveal user behavior, emotion, or context. |
-| Improvise to Life | `methods/improvise-to-life.md` | Use when a service or interaction can be made tangible through enactment. |
-| Scenes/Props/Roles | `methods/scenes-props-roles.md` | Use when testing an experience rather than a static artifact. |
-| Prototype to Decide | `methods/prototype-to-decide.md` | Use when alternatives need concrete comparison. |
-| Identify a Variable | `methods/identify-a-variable.md` | Use when a prototype or test tries to validate too many things at once. |
-| User-Driven Prototyping | `methods/user-driven-prototyping.md` | Use when participant modification or assembly can reveal needs and preferences. |
-| Wizard of Oz Prototyping | `methods/wizard-of-oz-prototyping.md` | Use when the visible experience can be simulated before the backend exists. |
-| Describe Your Concept | `methods/describe-your-concept.md` | Use when a concept must become clear enough to build, compare, or test. |
-
-### Test
-
-| Method | Document | Trigger |
-| --- | --- | --- |
-| Scenes/Props/Roles | `methods/scenes-props-roles.md` | Use when testing an experience rather than a static artifact. |
-| Testing with Users | `methods/testing-with-users.md` | Use when a low-resolution prototype is ready for behavior-based user learning. |
-| Prototype to Decide | `methods/prototype-to-decide.md` | Use when alternatives need concrete comparison. |
-| Identify a Variable | `methods/identify-a-variable.md` | Use when a prototype or test tries to validate too many things at once. |
-| User-Driven Prototyping | `methods/user-driven-prototyping.md` | Use when participant modification or assembly can reveal needs and preferences. |
-| Wizard of Oz Prototyping | `methods/wizard-of-oz-prototyping.md` | Use when the visible experience can be simulated before the backend exists. |
-| Feedback Capture Matrix | `methods/feedback-capture-matrix.md` | Use after a test to structure feedback, questions, positives, and new ideas. |
-| Storytelling | `methods/storytelling.md` | Use when others need to understand a user, problem, or prototype experience. |
-| I Like, I Wish, What If | `methods/i-like-i-wish-what-if.md` | Use to gather constructive feedback while keeping possibility open. |
-| Empathetic Data | `methods/empathetic-data.md` | Use when research or test material needs evidence separated from interpretation. |
-| Review Your Portfolio | `methods/review-your-portfolio.md` | Use when multiple artifacts, prototypes, or evidence points need review. |
-| Shooting Video | `methods/shooting-video.md` | Use when video can preserve behavior, setting, emotion, or interaction evidence. |
-| Editing Video | `methods/editing-video.md` | Use when video material must be turned into a shareable learning artifact. |
+| Method | Modes | Document | Trigger |
+| --- | --- | --- | --- |
+| Assume a beginner's mindset | Empathize | `methods/assume-beginners-mindset.md` | Use before interviews, observation, or source review when prior expertise may bias interpretation. |
+| What? How? Why? | Empathize, Define | `methods/what-how-why.md` | Use when observations are too abstract or when the user gives conclusions without scene-level detail. |
+| Interview Preparation | Empathize | `methods/interview-preparation.md` | Use before a scheduled or intercept interview. |
+| Interview for Empathy | Empathize | `methods/interview-for-empathy.md` | Use when the work needs lived stories, choices, and behavior rather than opinions about a solution. |
+| Extreme Users | Empathize, Define | `methods/extreme-users.md` | Use when average cases hide strong needs, constraints, or workarounds. |
+| Story Share-and-Capture | Empathize, Define | `methods/story-share-and-capture.md` | Use after fieldwork to preserve stories before synthesis. |
+| Journey Map | Empathize, Define | `methods/journey-map.md` | Use when the experience unfolds across time, roles, handoffs, or emotional shifts. |
+| Prototype for Empathy | Empathize, Prototype | `methods/prototype-for-empathy.md` | Use when making something can reveal user behavior, emotion, or context. |
+| Empathetic Data | Empathize, Test | `methods/empathetic-data.md` | Use when research or test material needs evidence separated from interpretation. |
+| Empathy Probe | Empathize | `methods/empathy-probe.md` | Use when participants can capture lived evidence over time without you present. |
+| Analogous Empathy | Empathize, Ideate | `methods/analogous-empathy.md` | Use when the direct domain is stuck and analogous human experiences may reveal patterns. |
+| Shooting Video | Empathize, Test | `methods/shooting-video.md` | Use when video can preserve behavior, setting, emotion, or interaction evidence. |
+| Editing Video | Empathize, Test | `methods/editing-video.md` | Use when video material must be turned into a shareable learning artifact. |
+| Powers of Ten | Define, Ideate | `methods/powers-of-ten.md` | Use when the problem frame may be too narrow or too broad. |
+| 2x2 Matrix | Define | `methods/two-by-two-matrix.md` | Use to compare observations, users, insights, or concepts along two meaningful dimensions. |
+| Why-How Laddering | Define, Ideate | `methods/why-how-laddering.md` | Use to move between concrete needs and deeper purpose. |
+| Point of View | Define | `methods/point-of-view.md` | Use only when user, need, and insight are grounded in empathy material. |
+| Design Guidelines | Define, Ideate | `methods/design-guidelines.md` | Use when insights should become constraints for later ideation. |
+| How Might We Questions | Define, Ideate | `methods/how-might-we-questions.md` | Use when a POV is ready to open an ideation space. |
+| Storytelling | Define, Test | `methods/storytelling.md` | Use when others need to understand a user, problem, or prototype experience. |
+| Review Your Portfolio | Define, Test | `methods/review-your-portfolio.md` | Use when multiple artifacts, prototypes, or evidence points need review. |
+| Surprise-to-Insights Leap | Define | `methods/surprise-to-insights-leap.md` | Use when material contains surprise, contradiction, or unexpected behavior. |
+| Stoke | Ideate | `methods/stoke.md` | Use before divergent work when energy is low or judgment is premature. |
+| Brainstorming | Ideate | `methods/brainstorming.md` | Use after an HMW is clear and many varied ideas are needed. |
+| Facilitate a brainstorm | Ideate | `methods/facilitate-a-brainstorm.md` | Use when a group needs structure, pace, and guardrails for ideation. |
+| Brainstorm selection | Ideate, Prototype | `methods/brainstorm-selection.md` | Use after a pool of ideas exists and prototype candidates must be chosen. |
+| Impose Constraints | Ideate, Prototype | `methods/impose-constraints.md` | Use when ideas are too broad or a prototype needs focus. |
+| I Like, I Wish, What If | Ideate, Test | `methods/i-like-i-wish-what-if.md` | Use to gather constructive feedback while keeping possibility open. |
+| Describe Your Concept | Ideate, Prototype | `methods/describe-your-concept.md` | Use when a concept must become clear enough to build, compare, or test. |
+| Yes, And! Brainstorm | Ideate | `methods/yes-and-brainstorm.md` | Use when ideas are killed too early or need collaborative build-up. |
+| Improvise to Life | Prototype | `methods/improvise-to-life.md` | Use when a service or interaction can be made tangible through enactment. |
+| Scenes/Props/Roles | Prototype, Test | `methods/scenes-props-roles.md` | Use when testing an experience rather than a static artifact. |
+| Prototype to Decide | Prototype, Test | `methods/prototype-to-decide.md` | Use when alternatives need concrete comparison. |
+| Identify a Variable | Prototype, Test | `methods/identify-a-variable.md` | Use when a prototype or test tries to validate too many things at once. |
+| User-Driven Prototyping | Prototype, Test | `methods/user-driven-prototyping.md` | Use when participant modification or assembly can reveal needs and preferences. |
+| Wizard of Oz Prototyping | Prototype, Test | `methods/wizard-of-oz-prototyping.md` | Use when the visible experience can be simulated before the backend exists. |
+| Testing with Users | Test | `methods/testing-with-users.md` | Use when a low-resolution prototype is ready for behavior-based user learning. |
+| Feedback Capture Matrix | Test | `methods/feedback-capture-matrix.md` | Use after a test to structure feedback, questions, positives, and new ideas. |
 
 ---
 
@@ -159,7 +101,7 @@ A fast, structured sprint for the design side: lock the target quickly, finish t
 
 1. Identify which scheme the user asked for — the IDEO five modes or the Design Sprint (see "Two Schemes" above) — and keep to its structure.
 2. Confirm the current mode or the active docs.
-3. Choose a method only if the trigger matches the current work.
+3. Choose a method only if its Modes include the current mode and its trigger matches the current work.
 4. Before using the method, read its document under `methods/`. Never invoke a method only by name — state which method you are using and why it fits the current mode.
 5. Treat the `Cleaned Transcription` section as source text.
 6. Treat `Use Before`, `Use Notes`, and `Do Not Use When` as project-specific notes, not source text.

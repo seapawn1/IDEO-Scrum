@@ -123,5 +123,37 @@ PBI-21 → PBI-20 → PBI-22 → 收尾。
 | 2026-10-25 | 21-D 回归验证 | 部分通过 | 按事先写定的标准：**B 组判对**（调用 ideo-kernel；挑战→目标与问题→问专家→地图→目标点→HMW→构思→原型→测试）。**A 组判错**：首跑主干是共情→定义→构思→原型→测试、没混入设计冲刺结构（AC 21-4 原文满足），但没有调用 ideo-kernel，凭模型自身知识作答，第 ① 条不满足。加跑 A 组两次（只看触发率，不改判定）：两次都调用了 ideo-kernel，结构全对。结论：正文加载后 3/3 路由正确；「用 IDEO 五模式」的触发 3 次里有 1 次没触发，归 22-3（description）处理。原始输出存于本组会话共享笔记目录 `21-D/`（A、A2、A3、B 的 .md 与 .jsonl） |
 | 2026-10-25 | PBI-21 收尾 | 完成 | Master 定：PBI-21 完成，待 Sprint Review 由 PO 验收；第 ① 条判定与 A 组判错照实保留；未触发问题记进产品日志 PBI-22 的 22-3 开放点。转入 PBI-20 |
 | 2026-10-25 | PBI-20 角色重定义（20-A～20-D） | 完成 | 稿经 Master 审、PO 批准。scrum-kernel 的 Roles 段加作者注记（只有 PO 必须是人）；stakeholder 一个命令多种身份、可常驻做非源码杂务、源码归 Developer、独立外部视角仍由全新子代理给；scrum-master 加「派活跟进度」「派子代理审阅」；developer 加「完工交证据」与条件句「有 SM 派活时向它汇报、请放行」（Master 改为条件句，保插件自足）；designer 改「Test feeds back」、补设计冲刺先行一句。SG2020 原文两节与 Stakeholder Voices 节与改前逐字一致（脚本比对）。skill-reviewer 3 条必改与 1 条可选已落：注记补 SGEP「至少一名 Product Developer 应为人」；「跟进度」写明是问状态、报给 PO，步骤、顺序、节奏归 Developer；交给常驻 stakeholder 的限于维护看板；SM 给出或扣下放行。另一条可选（stakeholder 描述边界句偏多）为既有问题，留到 Review |
-| 2026-10-25 | PBI-20 补正 | 完成 | Master 退回一处：skill-reviewer 把交给常驻 stakeholder 的事收窄成「Keeping the board」，与 PO 10-24 原话（盯进度可交 stakeholder，由它和 Developer 直接沟通）不符；改为「Keeping the board and tracking progress can go to a standing Stakeholder session.」，前半句 Master 自己跟进度的写法保留。PBI-20、24 的 plugin-validator 补跑 PASS（frontmatter、两份 json、零中文、Source/License 行四项） |
 | 2026-10-25 | PBI-24 插件全文英文化 | 完成 | 全插件扫出 7 行中文，已改：IDEO-modes 五份文件头「融合自」行改为 Merged from: … (base text) …；ideo-kernel SKILL.md 双语小字删去中文半句；marketplace.json 的 description 改英文。复扫零中文，marketplace.json 可解析；Source/License 行未动 |
+| 2026-10-25 | PBI-20 补正 | 完成 | Master 退回一处：skill-reviewer 把交给常驻 stakeholder 的事收窄成「Keeping the board」，与 PO 10-24 原话（盯进度可交 stakeholder，由它和 Developer 直接沟通）不符；改为「Keeping the board and tracking progress can go to a standing Stakeholder session.」，前半句 Master 自己跟进度的写法保留。PBI-20、24 的 plugin-validator 补跑 PASS（frontmatter、两份 json、零中文、Source/License 行四项） |
+| 2026-10-25 | 21-E ideo-kernel 返工（PBI-21） | 完成 | PO 两点意见（Master 转）：① 设计冲刺流程不再单列 HMW，五阶段之后直接接构思、原型、测试；HMW 方法页与 Catalog 里的 HMW 条目保留，仍是可选方法。② SKILL.md 缩短：「Two Schemes」压成两条要点；Design Sprint 两表合成「Stage \| Steps \| Reference」一张（Steps 沿用原阶段表文字）；删去意思重复的小字。PO 同意加做 Method Catalog 去重：五表合一，每个方法一行，加 Modes 列；脚本核对 38 个方法一个不少，模式归属、方法名、路径、Trigger 与原表逐字一致（Master 另行逐表复核）。附带修订三处（skill-reviewer 提，Master 同意）：「put one scheme's steps in place of the other's」「Both can end by handing off」「methods catalog below」（原误写 above）。全文 17191 → 12213 字符，短 29%。skill-reviewer 两轮：21-E 本体提出的三处小改即上述附带修订，另三条留到 Review（见交接段）；去重后一轮 1 条必改已落——Catalog 合表后不再按模式分组，Use Protocol 第 3 步改为「its Modes include the current mode and its trigger matches the current work」（原文只认 Trigger，属合表的连带修订），其余两条可选不改。回归（B 组第 ③ 条按新标准）：B 组判对；A 组主干正确但没调用技能，判错。A 组累计 5 次运行（21-D 三次、21-E 中间核对一次、21-E 最终一次）：触发 3 次、未触发 2 次——归 22-3。原始输出：共享笔记目录 `21-D/` 下 E-A、E-B（中间核对）、F-A、F-B（最终） |
+
+### 交接（2026-10-25 01:30，Master 与 Developer 会话归档前写，供新会话接手）
+
+**① Sprint 07 已完成的各项**（状态以产品日志为准，均待 Sprint Review 由 PO 验收）
+
+| 项 | 提交 |
+| --- | --- |
+| #28 定案落盘（Product Goal 4.0、PBI-20～23 登记） | 4919416 |
+| Sprint 07 立项（本文件） | 197cb12 |
+| PBI-21：21-A L47 定案 / 21-B 改名 ideo-kernel / 21-C 两套五步写清、五阶段参考迁 `design-sprint/` | ecfd5c2 / 16b1a4b / f106a21 |
+| PBI-21：21-D 回归（标准、结果）/ 收尾 | 4da85d0、d893d4e / 72a6edb |
+| PBI-21：21-E 回归标准改动 / 21-E 返工与 Method Catalog 去重 | 815ceab / 本段所在提交 |
+| PBI-20 角色重定义 / 补正 | 9ed7d6d / 42e1cde |
+| PBI-24 插件全文英文化 | 8dddc2a |
+
+**② 下一项：PBI-22 加载机制**（AC 见本文件第二节 PBI-22）。从 22-A 开始：用 plugin-dev 与 claude-code-docs 核对「命令正文要求先调用技能」是否可靠、能否连续加载两个技能，结论记进 How 区；再做 22-B（四个命令加加载句并验证）。22-3 要一并处理产品日志 PBI-22 的开放点：「用 IDEO 五模式」触发不稳，A 组 5 次运行中 2 次没调用 ideo-kernel（证据见上表 21-D、21-E 两行）。验证可沿用 21-D 的方法：`reclaude -p --plugin-dir S:/IDEO-Scrum/plugins/ideo-scrum`，在空目录无头跑（见第三节「21-D 方法与判定标准」）。PBI-22 做完后按「Sprint 节律」开 Review + Retro；版本号由 PO 定（见下）。
+
+**③ 留到 Review 的问题**
+
+- plugin-validator 的 4 条既有警告：(a) stakeholder 的 description 称自己为 skill——已判不改，命令在 Claude Code 里就是 skill；(b) IDEO-modes 五份文件的许可行写「see ATTRIBUTION.md」，指向仓库根，插件单独分发后失效；(c) ideo-kernel、scrum-kernel 两个 SKILL.md 无 Source/License 文件头；(d) SGEP asset 文件头的 Source/License 格式与规约不一致。
+- Method Catalog 与 `methods/brainstorming.md` 里 Brainstorming 的 Trigger「Use after an HMW is clear」——HMW 现在是可选方法。
+- `design-sprint/pick-a-target.md` 的「HMW notes」「Monday」等措辞（《Sprint》摘录）。
+- ideo-kernel Use Protocol 第 2 步「Confirm the current mode」，对设计冲刺应说 stage。
+- stakeholder 的 description 触发句之后边界句偏多（组件描述规约是「一两句」）。
+- ideo-kernel 的 description 仍说设计冲刺的结果直接交 scrum，与「Two Schemes」的续接写法有张力——归 22-3。
+- 版本号：PBI-21 改名让调用名由 `ideo-scrum:design-kernel` 变为 `ideo-scrum:ideo-kernel`，对已安装用户不兼容；Sprint 收尾时发 v4.0.0，还是等 PBI-23 做完再发，由 PO 定。plugin.json 与 README 仍是 3.2.0。
+- codex 分支未同步本冲刺任何改动（PO：Codex 先放着），停在 3.2.0。
+
+**④ 本地未推送**（main 比 origin/main 多 17 个提交；推送由 PO 定）
+
+本段所在提交（21-E）、42e1cde、815ceab、8dddc2a、9ed7d6d、72a6edb、d893d4e、4da85d0、f106a21、16b1a4b、ecfd5c2、197cb12、4919416、fd8d81e、3f81260、f0ce5e9、3062bba。另有本地 tag `sprint-06-done` 未推送。
