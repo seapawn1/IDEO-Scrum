@@ -67,8 +67,9 @@
 
 | 文件/目录 | 内容 |
 |---|---|
-| `plugins/ideo-scrum/skills/ideo-kernel/SKILL.md` | IDEO Kernel 入口（IDEO 五模式表 + 设计冲刺：定位/文件表/五阶段表 + Method Catalog + Use Protocol） |
-| `plugins/ideo-scrum/skills/ideo-kernel/IDEO-modes/` | IDEO Design Thinking 五模式 reference（Empathize / Define / Ideate / Prototype / Test，各含 WHAT/WHY/HOW + Transition）；另含设计冲刺 5 阶段参考（Knapp 摘录：define-the-challenge / start-at-the-end / ask-the-experts / make-a-map / pick-a-target） |
+| `plugins/ideo-scrum/skills/ideo-kernel/SKILL.md` | IDEO Kernel 入口（两套五步对照 + IDEO 五模式表 + 设计冲刺：定位/文件表/五阶段表 + Method Catalog + Use Protocol） |
+| `plugins/ideo-scrum/skills/ideo-kernel/IDEO-modes/` | IDEO Design Thinking 五模式 reference（Empathize / Define / Ideate / Prototype / Test，各含 WHAT/WHY/HOW + Transition） |
+| `plugins/ideo-scrum/skills/ideo-kernel/design-sprint/` | 设计冲刺五阶段参考（Knapp 摘录：define-the-challenge / start-at-the-end / ask-the-experts / make-a-map / pick-a-target） |
 | `plugins/ideo-scrum/skills/ideo-kernel/methods/` | Design Thinking 方法库（~40 个方法，含 Use Before / Use Notes / Do Not Use When） |
 
 ### scrum-kernel skill

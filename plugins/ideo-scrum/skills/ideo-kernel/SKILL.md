@@ -5,6 +5,21 @@ description: "Use when applying Design Thinking or a Design Sprint — Empathize
 
 # IDEO Kernel
 
+## Two Schemes: IDEO Five Modes and the Design Sprint
+
+This kernel holds two schemes that both have five steps. They are related but not the same, so keep them apart.
+
+| | IDEO five modes | Design Sprint five stages |
+|---|---|---|
+| Steps | Empathize, Define, Ideate, Prototype, Test — non-linear | Challenge, Goal and Questions, Ask the Experts, Map, Target — in order |
+| What it is | The full design-thinking process: understand people, frame the problem, generate ideas, build to learn, test with users | The faster path: steps adapted from the start of Knapp's _Sprint_ to clarify the background, define the problem, and pick a target quickly |
+| Use when | The user asks for the five modes or for design thinking, or the work needs a deep understanding of people | The user asks for a Design Sprint, or the target has to be locked fast |
+| After it | Hand off to the scrum-kernel Sprint | Open ideation with How Might We questions (`methods/how-might-we-questions.md`; here the map and the target stand in for the POV, so once the map is drawn they usually come almost for free), then continue in the IDEO modes — Ideate, Prototype, Test — then hand off to the scrum-kernel Sprint |
+
+When the user asks for the five modes, structure the work as Empathize, Define, Ideate, Prototype, Test; do not swap in Challenge, Goal and Questions, Ask the Experts, Map, or Target. When the user asks for a Design Sprint, run its five stages first, then open ideation with How Might We questions and continue in the IDEO modes. If the user names neither, choose by the "Use when" row; if it is still unclear, ask the user. The five stages roughly cover what Empathize and Define do: understand the background and choose the problem to solve.
+
+*(Author's methodology design for solo + AI teams, 2026-10-25.)*
+
 ## IDEO design thinking
 
 Design Thinking is a **human-centered approach to innovation** that integrates the needs of people, the possibilities of technology, and the requirements for business success. Originating from IDEO and formalized at Stanford's Hasso Plattner Institute of Design (the d.school, founded by David Kelley), it is an iterative, non-linear methodology for tackling complex, ill-defined problems. Its core ethos is **bias toward action** — learning by doing rather than analysis alone.
@@ -25,25 +40,25 @@ The process is **not linear** — teams move back and forth between modes as ins
 
 ## Design Sprint
 
-A fast, structured sprint for the design side: lock the target quickly, finish the design fast, clarify whether the problem is solvable and what the basic approach looks like — the outcome paves the way for the scrum-kernel Sprint that follows. Five stages, no day-by-day script: move as fast as the work allows. Beyond the five stages, prototyping and testing ride on the Prototype and Test modes and the methods catalog above.
+A fast, structured sprint for the design side: lock the target quickly, finish the design fast, clarify whether the problem is solvable and what the basic approach looks like — the outcome paves the way for the scrum-kernel Sprint that follows. Five stages, no day-by-day script: move as fast as the work allows. Beyond the five stages, open ideation with How Might We questions (`methods/how-might-we-questions.md`; here the map and the target stand in for the POV, so once the map is drawn they usually come almost for free), then the work continues in the Ideate, Prototype, and Test modes and the methods catalog above.
 
 *(Author's methodology design for solo + AI teams, 2026-08; stage steps adapted from Knapp, Zeratsky & Kowitz, _Sprint_ (2016), cited per file.)*
 
 | File | Purpose | Read when |
 |---|---|---|
-| `IDEO-modes/define-the-challenge.md` | What makes a challenge sprint-worthy (high stakes, deadline, stuck) and how to size it — solve the surface first | Stage 1 — Challenge; also the entry point when starting a design sprint |
-| `IDEO-modes/start-at-the-end.md` | Set the long-term goal (optimistic) and list sprint questions (pessimistic) — assumptions turned into answerable questions | Stage 2 — Goal and Questions |
-| `IDEO-modes/ask-the-experts.md` | One-at-a-time expert interviews (strategy, customer voice, how things work, previous efforts) with a five-step script | Stage 3 — Ask the Experts / deep research |
-| `IDEO-modes/make-a-map.md` | Draw the map: actors on the left, ending on the right, words and arrows in between — five to fifteen steps | Stage 4 — Map |
-| `IDEO-modes/pick-a-target.md` | Choose the most important customer and the critical moment of their experience; align the target with sprint questions | Stage 5 — Target |
+| `design-sprint/define-the-challenge.md` | What makes a challenge sprint-worthy (high stakes, deadline, stuck) and how to size it — solve the surface first | Stage 1 — Challenge; also the entry point when starting a design sprint |
+| `design-sprint/start-at-the-end.md` | Set the long-term goal (optimistic) and list sprint questions (pessimistic) — assumptions turned into answerable questions | Stage 2 — Goal and Questions |
+| `design-sprint/ask-the-experts.md` | One-at-a-time expert interviews (strategy, customer voice, how things work, previous efforts) with a five-step script | Stage 3 — Ask the Experts / deep research |
+| `design-sprint/make-a-map.md` | Draw the map: actors on the left, ending on the right, words and arrows in between — five to fifteen steps | Stage 4 — Map |
+| `design-sprint/pick-a-target.md` | Choose the most important customer and the critical moment of their experience; align the target with sprint questions | Stage 5 — Target |
 
 | Stage | Steps |
 |---|---|
-| **Challenge** | Define the big challenge for this sprint. Use a sprint when the stakes are high, when there's not enough time, or when you're just plain stuck. Full method: `IDEO-modes/define-the-challenge.md` |
-| **Goal and Questions** | Set a long-term goal — get optimistic: why are we doing this project, where do we want to be? Then list sprint questions — get pessimistic: how could we fail? Turn fears into questions this sprint can answer. Full method: `IDEO-modes/start-at-the-end.md` |
-| **Ask the Experts** | One-at-a-time interviews with your team, your company, and outside specialists; revise goal, questions, and map as you learn. Full method: `IDEO-modes/ask-the-experts.md` |
-| **Map** | List customers and key players on the left; draw the ending, with the completed goal, on the right; words and arrows in between — keep it to five to fifteen steps. Full method: `IDEO-modes/make-a-map.md` |
-| **Target** | Choose the most important customer and the critical moment of their experience — the Product Owner makes the call. Full rationale: `IDEO-modes/pick-a-target.md` |
+| **Challenge** | Define the big challenge for this sprint. Use a sprint when the stakes are high, when there's not enough time, or when you're just plain stuck. Full method: `design-sprint/define-the-challenge.md` |
+| **Goal and Questions** | Set a long-term goal — get optimistic: why are we doing this project, where do we want to be? Then list sprint questions — get pessimistic: how could we fail? Turn fears into questions this sprint can answer. Full method: `design-sprint/start-at-the-end.md` |
+| **Ask the Experts** | One-at-a-time interviews with your team, your company, and outside specialists; revise goal, questions, and map as you learn. Full method: `design-sprint/ask-the-experts.md` |
+| **Map** | List customers and key players on the left; draw the ending, with the completed goal, on the right; words and arrows in between — keep it to five to fifteen steps. Full method: `design-sprint/make-a-map.md` |
+| **Target** | Choose the most important customer and the critical moment of their experience — the Product Owner makes the call. Full rationale: `design-sprint/pick-a-target.md` |
 
 <small>这五个阶段都是为了快速明确背景、快速定义问题、缩小范围用的。These five stages exist to quickly clarify the background, define the problem, and narrow the scope.</small>
 
@@ -142,9 +157,10 @@ A fast, structured sprint for the design side: lock the target quickly, finish t
 
 ## Use Protocol
 
-1. Confirm the current mode or the active docs.
-2. Choose a method only if the trigger matches the current work.
-3. Before using the method, read its document under `methods/`. Never invoke a method only by name — state which method you are using and why it fits the current mode.
-4. Treat the `Cleaned Transcription` section as source text.
-5. Treat `Use Before`, `Use Notes`, and `Do Not Use When` as project-specific notes, not source text.
-6. When research concludes and findings must become planned, executable work, hand off to the scrum-kernel skill.
+1. Identify which scheme the user asked for — the IDEO five modes or the Design Sprint (see "Two Schemes" above) — and keep to its structure.
+2. Confirm the current mode or the active docs.
+3. Choose a method only if the trigger matches the current work.
+4. Before using the method, read its document under `methods/`. Never invoke a method only by name — state which method you are using and why it fits the current mode.
+5. Treat the `Cleaned Transcription` section as source text.
+6. Treat `Use Before`, `Use Notes`, and `Do Not Use When` as project-specific notes, not source text.
+7. When research concludes and findings must become planned, executable work, hand off to the scrum-kernel skill.
