@@ -15,6 +15,7 @@
 
 ## 当前状态（蒸馏锚点，随 Sprint 更新）
 
+- **2026-10-24 · #28 讨论定案，准备 Sprint 07**：Product Goal 由 PO 重定为「IDEO-Scrum 4.0：让插件带着流程走——角色、内核、流程参考与模板成体系，新项目照着就能跑通」；新增 PBI-20（角色重定义：只有 PO 必须是人；Stakeholder 一个命令多种身份、可常驻；Master 派活跟进度，审阅派全新子代理）、PBI-21（design-kernel 改名 ideo-kernel，分清 IDEO 五模式与设计冲刺五阶段）、PBI-22（角色命令自动加载内核）、PBI-23（流程化参考与文件模板）；PBI-12 改写为方法论分享；PBI-15 关闭，17、18 并入 23，19 并入 20。拆分：Sprint 07＝PBI-21、20、22，Sprint 08＝PBI-23，之后 PBI-12。「Sprint 节律」第一条由「发版即收官」改为「按时间盒收官」；Sprint 06 收官 tag 改名 `sprint-06-done`。插件本体 v3.2.0 未动。详见 [scrum/ProductBacklog.md](scrum/ProductBacklog.md)。
 - **2026-10-24 · Sprint 06 正式收官（Review + Retro，单提交）**：Sprint 06 自 08-30 起一份日志跨 55 天、含五次发版（v2.0.0 / v2.0.1 / v3.0.0 / v3.1.0 / v3.2.0），超出 4 周时间盒；下方 08-31 条的「收官」只是 v2.0.0 发版时的范围定案，Review 与 Retro 当时未做，本日由 Developer 收口。本次：四段式日志经 PO 批准后蒸馏为记忆档 `sprint-06-dual-kernel-refactor`（`S:\SeaPawn-Memory\memory\IDEO-Scrum\`），`scrum/SprintBacklog.md` 删除（原文：`git show 3f81260:scrum/SprintBacklog.md`）；记忆路径、Product 节（output-styles→commands）、PBI-15 / PBI-19 状态、README 文件地图已对齐；**总目标（v2.0.0）所指版本早已发布，产品日志原处标「待 PO 重定」，文字未改**；未完成项（15-D、17、18、19 的核验去向、12）回产品日志。Retro 改进项：发版即收官、时间盒写日志头、计划外工作先登记、PBI 状态只写产品日志、迁移类改动全仓 grep，已写入下方「维护规约」的「Sprint 节律」；蒸馏闭环补「日志不单独入库」一句。插件本体 v3.2.0 未动。
 - **2026-10-13 · v3.2.0 角色说明更新（SeaPawn 日 Sprint #14）**：stakeholder 由监理位改为**外部视角**——按项目写定的身份看产品与增量，谁都可召唤（新起子代理，或 PO 开临时独立会话），Sprint Review 时由 PO / SM 召唤，不施工，反馈交 PO（依据：PO 10-10 在 D:\MidTerm 定的五条规则；10-13 定保留命令形式、可开独立会话）；正文按逐字保留规约改，【原文】块与 v3.1.0 逐字一致；scrum-master / developer / designer 三个 description 原句不动、末尾追加边界与相互关系句（组件描述规约同步补一句）；PBI-19 监理位撤回、独立核验去向待定；codex 分支同步（四份角色 skill 重生成，`.agents/AGENTS.md` 删除）。插件本体 v3.2.0（main 与 codex 双版本同号）。
 - **2026-10-04 · v3.1.0 发版（大整合批）**：roles 参考层撤销（PO 定「指导性内容不进参考层」——SGEP 角色章还回 asset、删 scrum-roles.md 与 SKILL.md Roles 条目）；**14-B 完成**（scrum-master / developer 以 SG2020 原文重建：三节式＝Identity 原稿逐字／原文抄录／CoC 原条目＋2026 精炼）；第四 command **stakeholder**（监理位——PBI-19 升级位；designer 与 stakeholder 随后三节定稿）；**codex 分支同步**（角色载体由 AGENTS.md 模板改为原生 skill：`$scrum-master / $designer / $developer / $stakeholder` 显式调用，templates/ 废弃）；命令不设 Source/License 文件头（署名归 ATTRIBUTION，规约已加例外）；双复检（validator / skill-reviewer）通过；v3.0.0（09-23，output-style→command）经补录。**留待后续：15-D、17、18**（14-B 已闭）。插件本体 v3.1.0（main 与 codex 双版本同号）。详见 [scrum/ProductBacklog.md](scrum/ProductBacklog.md)。
@@ -49,7 +50,7 @@
 
 **Sprint 节律**（2026-10-24，Sprint 06 Retro）
 
-- **发版即收官**：每次发版（打版本 tag）当天是该 Sprint 的终点，当天做 Review + Retro（单提交）；之后的新工作开新 Sprint、新日志；日志当日记，不事后补录。
+- **按时间盒收官**：Sprint 到 SprintBacklog 头部写的截止日（≤4 周）收官，当天做 Review + Retro（单提交）；期间发版照常，记进当期日志，不结束 Sprint；之后的新工作开新 Sprint、新日志；日志当日记，不事后补录。（10-24 由「发版即收官」改：SGEP 的 Sprint 长度固定，一个 Sprint 内可多次发版。）
 - **时间盒写在日志头**：SprintBacklog 头部写截止日（≤4 周）；到期未完成的 PBI 回产品日志，不顺延。
 - **计划外工作先登记**：作者待办或对话中定下的新工作，先在产品日志登记 PBI，再由 PO 定是否进当前 Sprint（范围可重谈，Sprint Goal 不变）；不进则等下个 Sprint。
 - **PBI 状态只写产品日志**：SprintBacklog 引用 PBI 编号，不复写状态；进展写在 How 区。
