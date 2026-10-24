@@ -102,3 +102,4 @@ PBI-21 → PBI-20 → PBI-22 → 收尾。
 | --- | --- | --- | --- |
 | 2026-10-24～25 | Sprint Planning 与 SprintBacklog 落盘 | 完成 | 选材 PBI-21、20、22；AC 基线成文，经 PO 批注 |
 | 2026-10-25 | 21-A L47 的取舍 | 完成 | PO 定：不绑定也不割裂，诚实写明两者的关系——设计冲刺是更快的做法，前半段借《Sprint》的前几步（挑战、目标与问题、问专家、地图、目标点）快速定目标，后面仍用 IDEO 的模式（构思、原型、测试）；两套各是什么、何时用写清楚。落文归 21-C |
+| 2026-10-25 | 21-B 改名迁移 | 完成 | `git mv` 目录、frontmatter `name`、标题；scrum-kernel 描述与正文、README、ATTRIBUTION 引用同改；`git grep -i design-kernel` 只剩日志与锚点里的历史记录。plugin-validator PASS（0 critical）；4 条 warning 均为改名前就有的：stakeholder 描述称自己为 skill（归 20-B 一并看）、IDEO-modes 五件许可行指向仓库根的 ATTRIBUTION.md、两个 SKILL.md 无 Source/License 头、SGEP asset 头格式，留到 Review 报给 PO |

@@ -46,12 +46,12 @@
 | 出品 | Hasso Plattner Institute of Design at Stanford University (d.school) |
 | 许可 | **CC BY-NC-SA 4.0** — https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode |
 | 原始出处 | https://dschool.stanford.edu/tools/design-thinking-bootleg |
-| 本仓库位置 | `plugins/ideo-scrum/skills/design-kernel/IDEO-modes/`（五模式 WHAT/WHY/HOW；同目录另存设计冲刺五阶段参考，属第 4 节 Knapp 来源）<br>`plugins/ideo-scrum/skills/design-kernel/methods/`（方法库） |
+| 本仓库位置 | `plugins/ideo-scrum/skills/ideo-kernel/IDEO-modes/`（五模式 WHAT/WHY/HOW；同目录另存设计冲刺五阶段参考，属第 4 节 Knapp 来源）<br>`plugins/ideo-scrum/skills/ideo-kernel/methods/`（方法库） |
 | 修改说明 | 五模式内容重组为 WHAT / WHY / HOW 三层结构并补充模式间衔接；方法库条目补充 Use Before / Use Notes / Do Not Use When 字段。 |
 
 > **⚠️ NonCommercial 提示**
 >
-> 上述文件采用的许可**含非商业限制**。这意味着以本仓库的 `design-kernel` 内容为主要目的的商业使用（如作为付费咨询或培训的交付物）不在该许可授权范围内。
+> 上述文件采用的许可**含非商业限制**。这意味着以本仓库的 `ideo-kernel` 内容为主要目的的商业使用（如作为付费咨询或培训的交付物）不在该许可授权范围内。
 >
 > 本仓库整体因此**不构成 OSI 定义下的开源软件**。若你的使用场景涉及商业用途，请自行评估或直接联系 d.school。
 
@@ -65,7 +65,7 @@
 | 出版 | Simon & Schuster, 2016 |
 | 许可 | **全版权保护**（All Rights Reserved），无开放许可 |
 | 官方网站 | https://www.thesprintbook.com/ |
-| 本仓库位置 | `plugins/ideo-scrum/skills/design-kernel/IDEO-modes/`（设计冲刺五阶段参考：define-the-challenge / start-at-the-end / ask-the-experts / make-a-map / pick-a-target） |
+| 本仓库位置 | `plugins/ideo-scrum/skills/ideo-kernel/IDEO-modes/`（设计冲刺五阶段参考：define-the-challenge / start-at-the-end / ask-the-experts / make-a-map / pick-a-target） |
 | 使用范围 | 设计冲刺五阶段的**方法步骤与阶段参考**（作者适配；各文件标注章节出处；decider 术语按作者方法论改为 Product Owner）。 |
 
 > **请支持正版**

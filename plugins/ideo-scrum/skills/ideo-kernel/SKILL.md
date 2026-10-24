@@ -1,9 +1,9 @@
 ---
-name: design-kernel
+name: ideo-kernel
 description: "Use when applying Design Thinking or a Design Sprint — Empathize, Define, Ideate, Prototype, Test; human-centered design, user interviews, journey mapping, POV, HMW questions, brainstorming, user testing; rapid prototype validation — when an idea must be checked quickly with a prototype that feels like a prototype (fast, informal, never a formal result, built to learn rather than ship); and when a challenge is still undefined and needs pre-research before any execution. The Design Sprint here is a fast research sprint — lock the target quickly, finish the design fast, clarify whether the problem is solvable and what the basic approach is — and its findings pave the way for, then hand off to, the scrum-kernel Sprint."
 ---
 
-# Design Kernel
+# IDEO Kernel
 
 ## IDEO design thinking
 
