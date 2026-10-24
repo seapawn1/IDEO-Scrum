@@ -51,7 +51,7 @@
 | `LICENSE` | MIT — 覆盖本仓库原创部分 |
 | `ATTRIBUTION.md` | 四个第三方来源的完整署名与授权条款 |
 | `.claude-plugin/marketplace.json` | marketplace 清单，供 `/plugin marketplace add` 使用 |
-| `.claude/` | 项目配置——`settings.json`、`seapawn.md`（作者待办与私人笔记，不入库）；项目指令 `CLAUDE.md` 在仓库根目录，记忆在仓库外 `~/.claude/memory/IDEO-Scrum/` |
+| `.claude/` | 项目配置——`settings.json`、`seapawn.md`（作者待办与私人笔记，不入库）；项目指令 `CLAUDE.md` 在仓库根目录，记忆在仓库外 `S:\SeaPawn-Memory\memory\IDEO-Scrum\` |
 
 ### 插件
 
@@ -86,9 +86,8 @@
 | 文件/目录 | 内容 |
 |---|---|
 | `scrum/ProductBacklog.md` | 产品日志——Product 定义 / Vision / DoD / PBI 序列（PBI-12~19）/ Architecture（草案大节，据验证轮客户之声抽象） |
-| `scrum/SprintBacklog.md` | Sprint 06 冲刺日志（Sprint Goal + DoD / PBI+验收标准 / How 区）——Review 后按蒸馏闭环删除 |
 | `docs/ExpertNotes.md` | 客户之声——作者使用流程已口述落盘（项目骨架→IDEO→design 文件→背景研究→target 四阶段，含与 SprintBacklog 同源表、分工原则、未决清单）；感悟待写 |
-| **五期冲刺蒸馏** | 已蒸馏至 `~/.claude/memory/IDEO-Scrum/`（MEMORY.md 索引 + 五期教训档案，含出处指向 git）；原文 git 历史可追溯 |
+| **冲刺蒸馏** | 1.x 五期与 Sprint 06 已蒸馏至 `S:\SeaPawn-Memory\memory\IDEO-Scrum\`（MEMORY.md 索引 + 各期教训档案，含出处指向 git）；原文 git 历史可追溯 |
 
 ### 源参考
 
