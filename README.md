@@ -86,6 +86,7 @@
 | 文件/目录 | 内容 |
 |---|---|
 | `scrum/ProductBacklog.md` | 产品日志——Product 定义 / Vision / DoD / PBI 序列（PBI-12~23）/ Architecture（草案大节，据验证轮客户之声抽象） |
+| `scrum/SprintBacklog.md` | Sprint 07 冲刺日志（Sprint Goal + DoD / PBI 与验收标准 / How 区）——Review 后按蒸馏闭环删除 |
 | `docs/ExpertNotes.md` | 客户之声——作者使用流程已口述落盘（项目骨架→IDEO→design 文件→背景研究→target 四阶段，含与 SprintBacklog 同源表、分工原则、未决清单）；将作为方法论分享的素材 |
 | **冲刺蒸馏** | 1.x 五期与 Sprint 06 已蒸馏至 `S:\SeaPawn-Memory\memory\IDEO-Scrum\`（MEMORY.md 索引 + 各期教训档案，含出处指向 git）；原文 git 历史可追溯 |
 
