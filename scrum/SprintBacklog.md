@@ -106,6 +106,14 @@ PBI-21 → PBI-20 → PBI-22 → 收尾。
 - 22-A 核对加载写法（22-2）
 - 22-B 四个命令加上加载句，并验证（22-4）
 
+**22-4 方法与判定标准**（2026-10-25，跑之前写定）
+
+- 方法同 21-D：`reclaude -p --plugin-dir <工作区插件的 Windows 路径> --model sonnet`，在空目录无头跑，禁用写文件和命令类工具；命令类提示前加 `MSYS_NO_PATHCONV=1`（Git Bash 会把 `/` 开头的参数改写成路径）。
+- T1 触发率：A 组「用 IDEO 五模式帮我梳理：如何让社区图书馆吸引更多年轻人。只给工作大纲……」跑 5 次。判对：至少 4 次调用了 ideo-kernel（改前 5 次里 3 次），并且每次产出的主干都是共情→定义→构思→原型→测试。
+- T2 不退步：B 组「帮我做一个设计冲刺……」跑 1 次。判对：调用了 ideo-kernel，主干先是挑战→目标与问题→问专家→地图→目标点，再接构思→原型→测试（HMW 不作判定）。
+- T3 自动加载：四个角色命令各调用 1 次，提示「/ideo-scrum:<角色> 我们今天开始一个新的 Sprint，你先用两三句话说说你打算怎么开始。」判对：developer 加载了 scrum-kernel；designer 加载了 ideo-kernel；scrum-master 两个都加载了；stakeholder 两个都没加载。
+- 局限：每组次数少，模型输出有随机性；用户级 CLAUDE.md 照常加载。
+
 #### 收尾
 
 - 全量验证：plugin-validator + skill-reviewer + 无死链
