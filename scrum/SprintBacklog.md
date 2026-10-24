@@ -55,6 +55,11 @@ DoD 适用于下列每条 PBI；AC 只写 PBI 特有的标准。
 - **22-3 流程靠描述常驻**：两个内核的 description 写清「IDEO 研究、Scrum 落地」的关系（PBI-16 已有，随 PBI-21 改名同步），长度不超过上限。
 - **22-4 验证**：四个命令各在全新会话或全新子代理里调用一次，记录有没有自动加载；结果记进进展记录。
 
+### PBI-24 插件全文英文化（2026-10-25 PO 加入，Sprint Goal 不变）
+
+- **24-1**：插件本体与 marketplace.json 零中文；`> Source:` / `> License:` 行不变，与 ATTRIBUTION.md 一致。
+- **不在范围**：README、CLAUDE.md、`scrum/` 日志照旧用中文；codex 分支不同步。
+
 ## 三、执行计划（How）
 
 > **本区归 Developer 所有。** 细化 PBI、拆解任务、排执行顺序、记录进展，均由 Developer 在此进行，Sprint 期间自行更新；PO 与其他角色不在此区预设内容。
@@ -117,3 +122,4 @@ PBI-21 → PBI-20 → PBI-22 → 收尾。
 | 2026-10-25 | 21-D 回归验证 | 部分通过 | 按事先写定的标准：**B 组判对**（调用 ideo-kernel；挑战→目标与问题→问专家→地图→目标点→HMW→构思→原型→测试）。**A 组判错**：首跑主干是共情→定义→构思→原型→测试、没混入设计冲刺结构（AC 21-4 原文满足），但没有调用 ideo-kernel，凭模型自身知识作答，第 ① 条不满足。加跑 A 组两次（只看触发率，不改判定）：两次都调用了 ideo-kernel，结构全对。结论：正文加载后 3/3 路由正确；「用 IDEO 五模式」的触发 3 次里有 1 次没触发，归 22-3（description）处理。原始输出存于本组会话共享笔记目录 `21-D/`（A、A2、A3、B 的 .md 与 .jsonl） |
 | 2026-10-25 | PBI-21 收尾 | 完成 | Master 定：PBI-21 完成，待 Sprint Review 由 PO 验收；第 ① 条判定与 A 组判错照实保留；未触发问题记进产品日志 PBI-22 的 22-3 开放点。转入 PBI-20 |
 | 2026-10-25 | PBI-20 角色重定义（20-A～20-D） | 完成 | 稿经 Master 审、PO 批准。scrum-kernel 的 Roles 段加作者注记（只有 PO 必须是人）；stakeholder 一个命令多种身份、可常驻做非源码杂务、源码归 Developer、独立外部视角仍由全新子代理给；scrum-master 加「派活跟进度」「派子代理审阅」；developer 加「完工交证据」与条件句「有 SM 派活时向它汇报、请放行」（Master 改为条件句，保插件自足）；designer 改「Test feeds back」、补设计冲刺先行一句。SG2020 原文两节与 Stakeholder Voices 节与改前逐字一致（脚本比对）。skill-reviewer 3 条必改与 1 条可选已落：注记补 SGEP「至少一名 Product Developer 应为人」；「跟进度」写明是问状态、报给 PO，步骤、顺序、节奏归 Developer；交给常驻 stakeholder 的限于维护看板；SM 给出或扣下放行。另一条可选（stakeholder 描述边界句偏多）为既有问题，留到 Review |
+| 2026-10-25 | PBI-24 插件全文英文化 | 完成 | 全插件扫出 7 行中文，已改：IDEO-modes 五份文件头「融合自」行改为 Merged from: … (base text) …；ideo-kernel SKILL.md 双语小字删去中文半句；marketplace.json 的 description 改英文。复扫零中文，marketplace.json 可解析；Source/License 行未动 |

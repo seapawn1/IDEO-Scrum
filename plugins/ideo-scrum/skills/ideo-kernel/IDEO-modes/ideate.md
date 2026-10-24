@@ -1,6 +1,6 @@
 # MODE: Ideate
 
-> 融合自：Stanford Design Guides（底本）+ IDEO Bootcamp Bootleg
+> Merged from: Stanford Design Guides (base text) + IDEO Bootcamp Bootleg
 > Source: IDEO / Stanford d.school Design Guides
 > License: CC BY-NC-SA 4.0 (c) Stanford d.school — https://dschool.stanford.edu/tools/design-thinking-bootleg
 

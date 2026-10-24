@@ -5,7 +5,7 @@
     {
       "name": "ideo-scrum",
       "source": "./plugins/ideo-scrum",
-      "description": "IDEO Design Thinking 与 Scrum Sprint 方法论"
+      "description": "IDEO Design Thinking and Scrum Sprint methodology"
     }
   ]
 }

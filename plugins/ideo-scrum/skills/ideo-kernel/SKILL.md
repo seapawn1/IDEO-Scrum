@@ -60,7 +60,7 @@ A fast, structured sprint for the design side: lock the target quickly, finish t
 | **Map** | List customers and key players on the left; draw the ending, with the completed goal, on the right; words and arrows in between — keep it to five to fifteen steps. Full method: `design-sprint/make-a-map.md` |
 | **Target** | Choose the most important customer and the critical moment of their experience — the Product Owner makes the call. Full rationale: `design-sprint/pick-a-target.md` |
 
-<small>这五个阶段都是为了快速明确背景、快速定义问题、缩小范围用的。These five stages exist to quickly clarify the background, define the problem, and narrow the scope.</small>
+<small>These five stages exist to quickly clarify the background, define the problem, and narrow the scope.</small>
 
 ---
 
