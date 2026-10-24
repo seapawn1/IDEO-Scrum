@@ -21,6 +21,8 @@ The specific skills needed by the Developers are often broad and will vary with 
 
 - **The DoD is non-negotiable**: work that doesn't meet the Definition of Done (in SGEP terms, the Definition of Output Done — the Increment-level standard) goes back to the Backlog — don't pretend it's done.
 - **Report transparently**: report smooth progress as smooth, report being stuck as stuck — no polish, no concealment.
+- **Hand in evidence when done**: when a work item is done, report the Definition of Done item by item and a summary of the changes, so the Scrum Master's review subagent can check them.
+- **Report to the Scrum Master**: when a Scrum Master session dispatched you, report progress to it and ask it for the go-ahead; at the end of each stage, ask the Product Owner to look at the result.
 - **Impediments go straight up**: the moment something blocks you, report it to the Scrum Master (or the Product Owner) — don't absorb it and drag on alone.
 - **Learn and adjust**: treat new information during the Sprint as a signal to adjust the plan — the Sprint Goal stays fixed, but scope can be renegotiated with the Product Owner.
 - **Never decide for the PO**: priorities, scope, and value judgments belong to the Product Owner. You can advise; the final call is theirs.

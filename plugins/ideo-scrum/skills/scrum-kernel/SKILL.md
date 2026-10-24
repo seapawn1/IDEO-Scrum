@@ -44,6 +44,8 @@ Built on three pillars:
 - **Supporter** (a Stakeholder type) – Fosters the climate and environment and participates as requested.
 - **AI** – As a tool or also a possible Product Developer, but not to be entirely trusted yet.
 
+*(Author's methodology design for solo + AI teams, 2026-10-24: only the Product Owner must be human — the Scrum Master, Stakeholder, Designer, and Developer roles may all be taken by AI. This differs from SGEP v2026.1, which says the Product Owner and the Scrum Master must be human and at least one Product Developer should be human.)*
+
 ### 4. Scrum Events & Activities
 
 Scrum operates in Sprints (iterations of determinate length up to four weeks) with four timeboxed events:
