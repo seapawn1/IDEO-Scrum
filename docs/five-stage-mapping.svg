@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1100" width="900" height="1100" role="img" aria-labelledby="title desc">
+  <title id="title">IDEO five modes and Scrum stages</title>
+  <desc id="desc">A vertical five-stage mapping from Empathize to Test, with a feedback loop from Test back to Define.</desc>
+  <rect width="900" height="1100" fill="#f7f1e3"/>
+  <text x="60" y="78" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="34" font-weight="700" fill="#1f2a44">IDEO five modes ↔ Scrum</text>
+  <text x="60" y="112" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="18" fill="#6b7280">Our team's reading · Sprint 08</text>
+
+  <line x1="150" y1="170" x2="150" y2="900" stroke="#e86a5a" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- 1 Empathize -->
+  <circle cx="150" cy="235" r="26" fill="#1f2a44"/>
+  <text x="150" y="243" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="20" font-weight="700" fill="#f7f1e3">1</text>
+  <rect x="200" y="180" width="620" height="110" rx="18" fill="#fffaf0" stroke="#e5dccb"/>
+  <text x="230" y="218" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="22" font-weight="700" fill="#1f2a44">EMPATHIZE</text>
+  <text x="230" y="246" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="17" font-weight="600" fill="#e86a5a">Sprint Goal + selected PBI → POV</text>
+  <text x="230" y="272" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" fill="#6b7280">Define the problem: who, why, what.</text>
+
+  <!-- 2 Define -->
+  <circle cx="150" cy="385" r="26" fill="#1f2a44"/>
+  <text x="150" y="393" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="20" font-weight="700" fill="#f7f1e3">2</text>
+  <rect x="200" y="330" width="620" height="110" rx="18" fill="#fffaf0" stroke="#e5dccb"/>
+  <text x="230" y="368" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="22" font-weight="700" fill="#1f2a44">DEFINE</text>
+  <text x="230" y="396" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="17" font-weight="600" fill="#2a9d8f">Refinement: each PBI → HMW + points</text>
+  <text x="230" y="422" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" fill="#6b7280">Open the unknowns; agree what "done" means.</text>
+
+  <!-- 3 Ideate -->
+  <circle cx="150" cy="535" r="26" fill="#1f2a44"/>
+  <text x="150" y="543" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="20" font-weight="700" fill="#f7f1e3">3</text>
+  <rect x="200" y="480" width="620" height="110" rx="18" fill="#fffaf0" stroke="#e5dccb"/>
+  <text x="230" y="518" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="22" font-weight="700" fill="#1f2a44">IDEATE</text>
+  <text x="230" y="546" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="17" font-weight="600" fill="#e86a5a">How: options → plan</text>
+  <text x="230" y="572" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" fill="#6b7280">Diverge, then converge on the approach.</text>
+
+  <!-- 4 Prototype -->
+  <circle cx="150" cy="685" r="26" fill="#1f2a44"/>
+  <text x="150" y="693" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="20" font-weight="700" fill="#f7f1e3">4</text>
+  <rect x="200" y="630" width="620" height="110" rx="18" fill="#fffaf0" stroke="#e5dccb"/>
+  <text x="230" y="668" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="22" font-weight="700" fill="#1f2a44">PROTOTYPE</text>
+  <text x="230" y="696" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="17" font-weight="600" fill="#2a9d8f">Increment: v1 kernels + templates</text>
+  <text x="230" y="722" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" fill="#6b7280">Build the smallest real thing.</text>
+
+  <!-- 5 Test -->
+  <circle cx="150" cy="835" r="26" fill="#1f2a44"/>
+  <text x="150" y="843" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="20" font-weight="700" fill="#f7f1e3">5</text>
+  <rect x="200" y="780" width="620" height="110" rx="18" fill="#fffaf0" stroke="#e5dccb"/>
+  <text x="230" y="818" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="22" font-weight="700" fill="#1f2a44">TEST</text>
+  <text x="230" y="846" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="17" font-weight="600" fill="#e86a5a">Sprint Review + end-to-end test</text>
+  <text x="230" y="872" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" fill="#6b7280">Cold start, empty dir, PO acceptance.</text>
+
+  <!-- feedback loop -->
+  <path d="M 828 835 L 862 835 L 862 385 L 828 385" fill="none" stroke="#2a9d8f" stroke-width="3" stroke-dasharray="8 7" stroke-linecap="round"/>
+  <path d="M 828 385 L 840 378 L 840 392 Z" fill="#2a9d8f"/>
+  <text x="874" y="610" transform="rotate(90 874 610)" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" fill="#2a9d8f">feedback → refine</text>
+</svg>

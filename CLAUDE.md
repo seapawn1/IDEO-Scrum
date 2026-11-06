@@ -11,7 +11,7 @@
 | **插件本体** | `plugins/ideo-scrum/` | 交付物。别人安装的就是这里 |
 | **工作记录** | `scrum/` + `docs/` | 用本插件的方法论开发本插件的过程记录 |
 
-`scrum/` 是**当前状态工作区**（产品日志）；`docs/` 放工作记录文档（如 ExpertNotes 客户之声）。1.x 的 sprint 日志是**历史记录**，教训已蒸馏入 `S:\SeaPawn-Memory\memory\IDEO-Scrum\`（原文 git 历史可追溯），不回改。除非发现事实错误，否则不要回头修改已完成 sprint 的内容。
+`scrum/` 是**当前状态工作区**（产品日志 + `sprint-NN/` 当期冲刺工作件）；`docs/` 放工作记录文档（如 ExpertNotes 客户之声）。1.x 的 sprint 日志是**历史记录**，教训已蒸馏入 `S:\SeaPawn-Memory\memory\IDEO-Scrum\`（原文 git 历史可追溯），不回改。除非发现事实错误，否则不要回头修改已完成 sprint 的内容。
 
 ## 当前状态（蒸馏锚点，随 Sprint 更新）
 
