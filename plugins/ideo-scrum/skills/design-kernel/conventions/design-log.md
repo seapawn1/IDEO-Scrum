@@ -10,6 +10,13 @@ Each convention has a short name, so it can be referred to in conversation, and 
 
 The design log template is `design-backlog-template.md` in this folder. The book's techniques are in this skill's stage folders; the methods are in the ideo-kernel skill. Paths to excerpts, such as `ideate/sketch.md`, are relative to the design-kernel skill folder.
 
+Where an excerpt describes the book's room — whiteboards, sticky notes, dot voting, a team at a table — these conventions say how a solo + AI team does that step, and they apply.
+
+Two terms used below:
+
+- **Role card** — a stakeholder identity the project writes down: who they are, what they want, what counts as satisfied for them, what they can see, and when to summon them. The author keeps role cards in the product backlog; keep them wherever your project records its stakeholders. A role-card Stakeholder is a fresh subagent given one card.
+- **Folders** — `scrum/design-<suffix>/` for a design in progress and `docs/` for finished work are the author's layout. If your project already has its own places for this, use them.
+
 ## Where a design sits
 
 1. **Design beside the Sprint** — *Author's practice.* Below the product backlog sit two peer modules: Sprints and designs. A Sprint is the Developer's and delivers an Increment; a design is the Designer's and delivers a prototype and conclusions. Both answer to the product backlog. A design is opened as its own module, not inside a Sprint.

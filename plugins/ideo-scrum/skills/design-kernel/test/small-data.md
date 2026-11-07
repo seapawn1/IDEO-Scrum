@@ -46,4 +46,4 @@ One-on-one interviews are a remarkable shortcut. They allow you to test a façad
 
 That “why” is critical. If you don’t know why a product or service isn’t working, it’s hard to fix it. When all you have is statistics, you have to guess what your customers are thinking. When you’re doing an interview, you can just ... ask.
 
-These interviews are easy to do. They don’t require special expertise or equipment. You won’t need a behavioral psychologist or a laser eye-tracker—just a friendly demeanor, a sense of curiosity, and a willingness to have your assumptions proven wrong. In the next chapter, we’ll show you how to do it.
+These interviews are easy to do. They don’t require special expertise or equipment. You won’t need a behavioral psychologist or a laser eye-tracker—just a friendly demeanor, a sense of curiosity, and a willingness to have your assumptions proven wrong.

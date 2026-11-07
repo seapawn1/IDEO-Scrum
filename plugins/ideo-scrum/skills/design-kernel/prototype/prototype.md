@@ -86,7 +86,7 @@ We like to do our trial run around 3 p.m., so that we still have enough time to 
 
 As you go, you should double-check against the storyboard to make sure everything made it into the prototype. The trial run is also a great time to revisit your sprint questions. It’s one last check to make sure your prototype will help you get answers.
 
-The primary audience for the trial run is the Interviewer, who will be talking with customers on Friday. The Interviewer needs to be familiar with the prototype and the sprint questions so he can get the most out of the interviews. (We’ll explain how to run these interviews in the next chapter.) But the whole team will benefit from watching the trial run. If the Decider isn’t a full-time participant in the sprint, now is another good time for a cameo appearance. The Decider can make sure everything matches what she was expecting.
+The primary audience for the trial run is the Interviewer, who will be talking with customers on Friday. The Interviewer needs to be familiar with the prototype and the sprint questions so he can get the most out of the interviews. But the whole team will benefit from watching the trial run. If the Decider isn’t a full-time participant in the sprint, now is another good time for a cameo appearance. The Decider can make sure everything matches what she was expecting.
 
 ---
 

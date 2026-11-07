@@ -20,7 +20,7 @@ On Wednesday morning, your team will make a Sticky Decision to narrow down to th
 
 When you have two good, conflicting ideas, you don’t have to choose between them at all. Instead, you can prototype both, and in Friday’s test, you’ll be able to see how each one fares with your customers. Your prototypes will battle head-to-head, like professional wrestlers whacking each other with folding chairs. We call this kind of test a Rumble.
 
-A Rumble allows your team to explore multiple options at once. For Slack, it meant building two prototypes: one for “The Tenacious Tour” and one for “Bot Team.” Merci and Stewart didn’t have to argue, or compromise on a watereddown solution. With a sprint, they could get data in just five days—before they made a commitment. (Later in this book, we’ll tell you whose hunch was correct.)
+A Rumble allows your team to explore multiple options at once. For Slack, it meant building two prototypes: one for “The Tenacious Tour” and one for “Bot Team.” Merci and Stewart didn’t have to argue, or compromise on a watereddown solution. With a sprint, they could get data in just five days—before they made a commitment.
 
 Of course, it doesn’t always make sense to do a Rumble. Sometimes, there’s just one winning sketch. Sometimes, there are many winners, but they all fit together. Savioke’s winning solutions for their robot personality—sound effects, survey, and happy dance—could all coexist in one prototype. Which was lucky, because we only had one robot.
 

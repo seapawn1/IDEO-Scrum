@@ -86,4 +86,4 @@ Make sure the whole prototype can be tested in about fifteen minutes. That might
 
 Once you’ve incorporated all of the winning sketches, the storyboard will be complete. And you’ve finished with the hardest part of the sprint. The decisions are made, the plan for your prototype is ready, and Wednesday is a wrap.
 
-On Wednesday, you and your team created a storyboard. On Thursday, you’ll adopt a “fake it” philosophy to turn that storyboard into a realistic prototype. In the next chapters, we’ll explain the mindset, strategy, and tools that make it possible to build that prototype in just seven hours.
+On Wednesday, you and your team created a storyboard. On Thursday, you’ll adopt a “fake it” philosophy to turn that storyboard into a realistic prototype.

@@ -132,4 +132,4 @@ At this point, you will have reached an important milestone. You have a rough dr
 
 For the rest of the day, you’ll interview the experts on your team to gather more information about the problem space. As you go, you’ll add more questions, make updates to your map, and perhaps even adjust the phrasing of your long-term goal. And you’ll take notes as a team, to add more depth to the map on the whiteboard.
 
-Your job on Monday afternoon will be to assemble one cohesive picture from everyone’s pooled knowledge and expertise. In the next chapter, we’ll give you a recipe for learning from the experts at your company, and we’ll show a nearly magical way to take notes.
+Your job on Monday afternoon will be to assemble one cohesive picture from everyone’s pooled knowledge and expertise.

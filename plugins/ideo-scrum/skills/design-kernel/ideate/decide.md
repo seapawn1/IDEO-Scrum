@@ -170,4 +170,4 @@ It’s important to note that this decision-making process isn’t perfect. Some
 
 After your team has organized the winning solutions, everyone will probably feel relieved—after all, the biggest decision of the sprint has been made. Everyone will have had a chance to be heard, and everyone will understand how the decision was reached. On top of that relief, it’s exciting to identify and see the building blocks of your prototype.
 
-But there is one more hitch. Since each Decider gets three votes, and there are sometimes two Deciders, there is bound to be more than one winning sketch. So what do you do if those winning sketches conflict with one another? What do you do if those ideas can’t coexist in the same prototype? In the next chapter, you’ll find out.
+But there is one more hitch. Since each Decider gets three votes, and there are sometimes two Deciders, there is bound to be more than one winning sketch. So what do you do if those winning sketches conflict with one another? What do you do if those ideas can’t coexist in the same prototype?
