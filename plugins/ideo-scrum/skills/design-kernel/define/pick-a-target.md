@@ -2,7 +2,7 @@
 
 > Source: Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster. Chapter: "Target."
 > License: All rights reserved (see ATTRIBUTION.md).
-> Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Day names are the book's schedule, not an instruction.
+> Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures are redrawn from the book as Mermaid diagrams or text. Day names are the book's schedule, not an instruction.
 
 In 1948, a young scientist named Marie Tharp moved to New York and found a job in the geology department at Columbia University. There she took on an unusual assignment: making the world’s first detailed map of the ocean floor. Tharp plotted thousands of sonar soundings with painstaking precision. Where there were gaps between data points, she used her expertise in geology and math to figure out what was missing.
 
@@ -30,9 +30,27 @@ At last, it was time to make the final decision about where to focus the sprint.
 
 “Right here.” Amy made two circles on the whiteboard:
 
-![image57.jpg](../images/image57.jpg)
+```mermaid
+flowchart TD
+    Patient(["Patient"]) --> MakeAppt["Make appt."]
+    Doctor(["Doctor"]) --- Search
+    Coordinator(["Coordinator"]) --- Search
+    MakeAppt --> Appt["Appointment: Discuss trial"]
+    MakeAppt --> Search["Search for matching trials"]
+    Search --> Appt
+    Search --> Enroll
+    Appt --> Enroll["Enroll"]
+    Enroll --> Begin["BEGIN THERAPY"]
+    H1{{"HMW review EMR faster?"}} -.- Search
+    H2{{"HMW structure key screen info?"}} -.- Search
+    H3{{"HMW flag progression to prior condit.?"}} -.- Search
+    H4{{"HMW get doctor’s attention?"}} -.- Appt
+    H5{{"HMW get the timing right?"}} -.- Enroll
+    classDef target stroke:#1e90c8,stroke-width:4px
+    class Coordinator,Search target
+```
 
-*Flatiron Health’s map, with target customer and target moment.*
+*Flatiron Health’s map, with target customer and target moment. (Redrawn from the book.)*
 
 “The research coordinators,” she said, “when they’re searching to see if a new patient matches a trial. It’s the top of the funnel, where we can evaluate the most patients. And it’s the coordinators’ primary job to match patients with trials. We won’t be competing for attention like we would be with the doctors.”
 
@@ -62,8 +80,13 @@ Ask everyone on the team to choose the customer and the event each of them belie
 
 Once you’ve selected a target, take a look back at your sprint questions. You usually can’t answer all those questions in one sprint, but one or more should line up with the target. In our sprint with Flatiron, the target (coordinators searching for matching trials) matched the sprint question “Will clinics change their workflow?” By testing a solution with real coordinators, we hoped to learn the answer.
 
-![image58.jpg](../images/image58.jpg)
+> **LONG TERM GOAL:** More patients enrolled in trials.
+>
+> **SPRINT QUESTIONS**
+>
+> - Can we find matches fast enough?
+> - **Will clinics change their workflow?** ← matches the target
 
-*Flatiron Health’s target matched one of their sprint questions.*
+*Flatiron Health’s target matched one of their sprint questions. (Redrawn from the book.)*
 
 By Monday afternoon, you’ve identified a long-term goal and the questions to answer along the way. You’ve made a map and circled the target for your sprint. Everyone on the team will have the same information, and everyone will understand the week’s objective. Next, on Tuesday, it’ll be time to come up with solutions.

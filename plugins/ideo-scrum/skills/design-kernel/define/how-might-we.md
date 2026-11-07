@@ -2,7 +2,7 @@
 
 > Source: Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster. Chapter: "Ask the Experts."
 > License: All rights reserved (see ATTRIBUTION.md).
-> Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Day names are the book's schedule, not an instruction.
+> Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures are redrawn from the book as Mermaid diagrams or text. Day names are the book's schedule, not an instruction.
 
 Your experts will provide a ton of information. So how are you going to keep track of it all? By tomorrow, when the team sketches solutions, a lot of the interesting details will have faded from your short-term memory. The whiteboards will be helpful, but they’re not enough. You’re going to need some additional notes.
 
@@ -66,7 +66,13 @@ The number of patients, trials, and requirements is overwhelming.
 
 Ugh. That’s depressing, right? But the entire time Bobby was talking, the Flatiron team was turning those problems into How Might We opportunities. Here are some of the notes they took:
 
-![image52.jpg](../images/image52.jpg)
+> HMW structure key info for screening patients?
+>
+> HMW streamline discussion with outside doctors?
+>
+> HMW make reviewing electronic medical records faster?
+
+*(Redrawn from the book.)*
 
 Reading the How Might We list feels a lot better than reading the problem list. It was exciting when the interviews ended and we saw each other’s notes on the wall. Each How Might We note captured a problem and converted it into an opportunity.
 
@@ -96,8 +102,24 @@ Ask everyone to vote in silence for the most useful How Might We questions.
 
 When the voting is over, take the How Might We notes with multiple votes, remove them from the wall, and find a place to stick them on your map. Most notes will probably correspond with a specific step in the story. Here’s Flatiron’s map again:
 
-![image56.jpg](../images/image56.jpg)
+```mermaid
+flowchart TD
+    Patient(["Patient"]) --> MakeAppt["Make appt."]
+    Doctor(["Doctor"]) --- Search
+    Coordinator(["Coordinator"]) --- Search
+    MakeAppt --> Appt["Appointment: Discuss trial"]
+    MakeAppt --> Search["Search for matching trials"]
+    Search --> Appt
+    Search --> Enroll
+    Appt --> Enroll["Enroll"]
+    Enroll --> Begin["BEGIN THERAPY"]
+    H1{{"HMW review EMR faster?"}} -.- Search
+    H2{{"HMW structure key screen info?"}} -.- Search
+    H3{{"HMW flag progression to prior condit.?"}} -.- Search
+    H4{{"HMW get doctor’s attention?"}} -.- Appt
+    H5{{"HMW get the timing right?"}} -.- Enroll
+```
 
-*Flatiron Health’s map with top How Might We notes.*
+*Flatiron Health’s map with top How Might We notes. (Redrawn from the book.)*
 
 The prioritization process isn’t perfect: There’s little time for deliberation, and early votes will sometimes bias later votes. But it leads to pretty good decisions, and it happens fast enough to leave time for the most important job of the day: After a look back over your long-term goal, your sprint questions, your map, and the notes you took this afternoon, your team will choose one specific target for the rest of your sprint’s efforts.

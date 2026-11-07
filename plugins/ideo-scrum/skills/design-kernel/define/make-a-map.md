@@ -2,7 +2,7 @@
 
 > Source: Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster. Chapter: "Map."
 > License: All rights reserved (see ATTRIBUTION.md).
-> Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Day names are the book's schedule, not an instruction.
+> Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures are redrawn from the book as Mermaid diagrams or text. Day names are the book's schedule, not an instruction.
 
 J.R.R. Tolkien’s The Lord of the Rings is an epic adventure, spanning three volumes and hundreds of pages. There are invented languages, histories, backstories, and subplots galore. It’s an awesome story, but it’s also complicated.
 
@@ -28,15 +28,31 @@ With the sprint questions listed, we started on the map. Michael Margolis and Al
 
 To match patients with trials, doctors and research coordinators look at long lists of trial requirements: treatment history, blood count, DNA mutations in the cancer cells, and much more. As cancer care has become more sophisticated and targeted, those requirements have gotten more specific. “For a given trial, you might be talking about a handful of eligible patients across the country,” said Amy. “It’s like looking for needles in a haystack.”
 
-![image46.jpg](../images/image46.jpg)
+> **LONG TERM GOAL:** More patients enrolled in trials.
+>
+> **SPRINT QUESTIONS**
+>
+> - Can we find matches fast enough?
+> - Will clinics change their workflow?
 
-*Flatiron Health’s long-term goal and sprint questions.*
+*Flatiron Health’s long-term goal and sprint questions. (Redrawn from the book.)*
 
 It was an intricate and messy system. But, after an hour of discussion and a lot of revision, we were able to create a simple map:
 
-![image47.jpg](../images/image47.jpg)
+```mermaid
+flowchart TD
+    Patient(["Patient"]) --> MakeAppt["Make appt."]
+    Doctor(["Doctor"]) --- Search
+    Coordinator(["Coordinator"]) --- Search
+    MakeAppt --> Appt["Appointment: Discuss trial"]
+    MakeAppt --> Search["Search for matching trials"]
+    Search --> Appt
+    Search --> Enroll
+    Appt --> Enroll["Enroll"]
+    Enroll --> Begin["BEGIN THERAPY"]
+```
 
-*Flatiron Health’s clinical trial enrollment map.*
+*Flatiron Health’s clinical trial enrollment map. (Redrawn from the book.)*
 
 On the left was a list of the people involved in trial enrollment: the patient and the doctor (who were central to the treatment decision) and the clinic’s research coordinator (who was easy to overlook but might be the best informed about trial availability). From there, the map showed the patient scheduling an appointment, the doctor and staff searching for matching trials, the appointment, the complete enrollment, and finally, the beginning of treatment.
 
@@ -46,15 +62,43 @@ Flatiron Health had a complicated problem and a straightforward map. Your map sh
 
 Let’s look at a couple more examples. (For bonus points, see if you can spot the common elements in every map.) On Monday of their sprint, Savioke had to organize information about robotics, navigation, hotel operations, and guest habits. This is their map:
 
-![image48.jpg](../images/image48.jpg)
+```mermaid
+flowchart TD
+    Guest(["Guest"]) --> Calls["Calls front desk"]
+    FrontDesk(["Front desk"]) --> Puts
+    Robot(["Robot"]) --> Lobby
+    Bystander(["Bystander"]) --> Surprise
+    Calls --> Puts["Puts item in robot"]
+    Calls --> Delivery["DELIVERY"]
+    Puts --> Lobby["Lobby"]
+    Lobby --> Elevator["Elevator"]
+    Elevator --> Hallway["Hallway"]
+    Hallway --> Delivery
+    Lobby --> Surprise["SURPRISE ENCOUNTER!"]
+    Elevator --> Surprise
+    Hallway --> Surprise
+```
 
-*Savioke’s robot delivery map.*
+*Savioke’s robot delivery map. (Redrawn from the book.)*
 
 On the first day of their sprint, Blue Bottle Coffee sorted through information about coffee selection, customer support, café operations, and distribution channels. Here is their map:
 
-![image49.jpg](../images/image49.jpg)
+```mermaid
+flowchart TD
+    New(["New customer"]) --> Visit["Visit cafe"]
+    New --> WebSearch["Web search"]
+    New --> Press["Press story"]
+    Visit --> Talk["Talk to barista"]
+    Talk --> Coffee["Have coffee"]
+    Coffee --> BB["Blue Bottle website"]
+    WebSearch --> Compare["Compare retailers"]
+    Compare --> BB
+    Press --> BB
+    BB --> Choose["Choose beans"]
+    Choose --> Buy["BUY"]
+```
 
-*Blue Bottle Coffee’s online sales map.*
+*Blue Bottle Coffee’s online sales map. (Redrawn from the book.)*
 
 The common elements? Each map is customer-centric, with a list of key actors on the left. Each map is a story, with a beginning, a middle, and an end. And, no matter the business, each map is simple. The diagrams are composed of nothing more than words, arrows, and a few boxes. So now that you know what a map looks like, you’re ready to make your own.
 

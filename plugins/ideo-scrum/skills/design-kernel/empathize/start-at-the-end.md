@@ -2,15 +2,19 @@
 
 > Source: Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster. Chapter: "Start at the End."
 > License: All rights reserved (see ATTRIBUTION.md).
-> Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Day names are the book's schedule, not an instruction.
+> Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures are redrawn from the book as Mermaid diagrams or text. Day names are the book's schedule, not an instruction.
 
 Everybody knows the story of Apollo 13, but just in case, it goes like this: Astronauts head to moon, explosion on spacecraft, nail-biting return to earth. In Ron Howard’s 1995 movie version, there’s a scene where the team at Mission Control gathers around a blackboard to form a plan.
 
 Gene Kranz, the flight director, wears a white vest, a flattop haircut, and a grim expression. He grabs a piece of chalk and draws a simple diagram on the blackboard. It’s a map showing the damaged spacecraft’s path from outer space, around the moon, and (hopefully) back to the earth’s surface—a trip that will take more than two days. The goal is clear: To get the astronauts home safely, Mission Control has to keep them alive and on the right course for every minute of that journey.
 
-![image45.jpg](../images/image45.jpg)
+```mermaid
+flowchart TD
+    Earth["Earth"] --> Moon["Around the Moon"]
+    Moon --> Home["Back to Earth"]
+```
 
-*Mission Control’s blackboard looked sort of like this.*
+*Mission Control’s blackboard looked sort of like this. (Redrawn from the book.)*
 
 Throughout the film, Kranz returns to that goal on the blackboard. In the chaos of Mission Control, the simple diagram helps keep the team focused on the right problems. First, they correct the ship’s course to ensure it won’t veer into deep space. Next, they replace a failing air filter so the astronauts can breathe. And only then do they turn their attention to a safe landing.
 
