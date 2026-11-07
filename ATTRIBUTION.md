@@ -66,11 +66,11 @@
 | 许可 | **全版权保护**（All Rights Reserved），无开放许可 |
 | 官方网站 | https://www.thesprintbook.com/ |
 | 本仓库位置 | `plugins/ideo-scrum/skills/design-kernel/`（设计冲刺原书摘录，按 IDEO 五阶段放：`empathize/` define-the-challenge、start-at-the-end、ask-the-experts；`define/` make-a-map、how-might-we、pick-a-target；`ideate/` remix-and-improve、sketch、decide、rumble、storyboard；`prototype/` fake-it、prototype；`test/` small-data、interview、learn；例图改画成 Mermaid 或文字） |
-| 使用范围 | 设计冲刺五阶段的**方法步骤与阶段参考**（作者适配；各文件标注章节出处；decider 术语按作者方法论改为 Product Owner）。 |
+| 使用范围 | 设计冲刺各章的**原文摘录**：只删不改，删去与 solo + AI 团队无关的段落（日程、场地与用品、部分长例子）；各文件标注章节出处。原书例图改画成 Mermaid 或文字，不含图片文件。术语保留原文（Decider、Facilitator 等）；对应到本插件角色的写法、作者的做法另放 `design-kernel/conventions/`，标为约定。 |
 
 > **请支持正版**
 >
-> 本仓库不包含该书全文、章节完整内容或书中插图。此处仅记录方法流程，无法替代原书。
+> 本仓库摘录了该书讲方法的多章原文（有删节），不含书中图片文件，也不含全书。摘录无法替代原书。
 > 若 Design Sprint 方法对你有用，请购买原书：https://www.thesprintbook.com/
 
 ---
