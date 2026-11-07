@@ -2,7 +2,7 @@
 
 > Source: Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster. Chapter: "Ask the Experts."
 > License: All rights reserved (see ATTRIBUTION.md).
-> Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures are redrawn from the book as Mermaid diagrams or text. Day names are the book's schedule, not an instruction.
+> Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures that explain a method are redrawn as Mermaid diagrams or text; the others are left out. Day names, clock times, and timers are the book's schedule, not an instruction.
 
 Your team knows a lot about your challenge. But that knowledge is distributed. Somebody knows the most about your customers; somebody knows the most about the technology, the marketing, the business, and so on. In the normal course of business, teams don’t get the chance to join forces and use all of that knowledge. In the next set of exercises, you’ll do exactly that.
 

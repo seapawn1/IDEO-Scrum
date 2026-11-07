@@ -2,7 +2,7 @@
 
 > Source: Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster. Chapter: "Target."
 > License: All rights reserved (see ATTRIBUTION.md).
-> Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures are redrawn from the book as Mermaid diagrams or text. Day names are the book's schedule, not an instruction.
+> Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures that explain a method are redrawn as Mermaid diagrams or text; the others are left out. Day names, clock times, and timers are the book's schedule, not an instruction.
 
 In 1948, a young scientist named Marie Tharp moved to New York and found a job in the geology department at Columbia University. There she took on an unusual assignment: making the world’s first detailed map of the ocean floor. Tharp plotted thousands of sonar soundings with painstaking precision. Where there were gaps between data points, she used her expertise in geology and math to figure out what was missing.
 

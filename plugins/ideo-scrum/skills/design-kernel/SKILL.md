@@ -1,11 +1,11 @@
 ---
 name: design-kernel
-description: "Use when the user wants a design sprint or a design — \"run a design sprint\", \"open a design for this\", \"this needs designing before we build\" — or works in a design log (DesignBacklog), or when a challenge is still undefined and needs research before any execution; load it before answering. Covers the design sprint from Knapp's Sprint, organized by the five IDEO stages instead of five days: Empathize (challenge, design goal, design questions, ask the experts), Define (map, How Might We, target), Ideate (sketch solutions, choose one, storyboard), Prototype, and Test (interviews, learn). Each stage takes its methods from the ideo-kernel skill, the plugin's shared toolbox; a design's conclusions flow back to the product backlog and to the scrum-kernel Sprint that asked for it."
+description: "Use when the user wants to run a design sprint or open a design — \"run a design sprint\", \"open a design for this\", \"this needs designing before we build\" — works in a design log (DesignBacklog), or has an undefined challenge that needs a pre-study before any Sprint; load it before answering, even for a quick outline. A design is a research module beside the Sprint, from a challenge to a tested prototype and conclusions — not code, API, or UI design work. Runs Knapp's design sprint in five stages, not five days: Empathize (challenge, design goal, design questions, ask the experts), Define (map, How Might We, target), Ideate (sketch solutions, choose one, storyboard), Prototype, and Test (interviews, answers). Built on the ideo-kernel skill, the plugin's shared toolbox; for IDEO, design thinking, or one named method alone, use ideo-kernel. Conclusions flow back to the product backlog and the Sprint that asked."
 ---
 
 # Design Kernel
 
-A design answers a hard question before the team builds: it starts from a challenge and ends with a tested prototype and conclusions. The method is the design sprint from Knapp, Zeratsky & Kowitz, _Sprint_ (2016), regrouped under the five IDEO stages. The book runs the sprint Monday to Friday with a team in one room; here the stages run as fast as the work allows, not by day. Day names left in the source text are the book's schedule, not an instruction.
+A design answers a hard question before the team builds: it starts from a challenge and ends with a tested prototype and conclusions. The method is the design sprint from Knapp, Zeratsky & Kowitz, _Sprint_ (2016), regrouped under the five IDEO stages. The book runs the sprint Monday to Friday with a team in one room; here the stages run as fast as the work allows, not by day. Day names, clock times, and timers left in the source text are the book's schedule, not an instruction. The source text keeps the book's terms: its long-term goal is the design goal here, its sprint questions are the design questions, its Decider is the Product Owner, and its Facilitator is the Scrum Master.
 
 Each stage maps to an IDEO mode. The mode's guide and its methods live in the ideo-kernel skill, the plugin's shared toolbox, and are not repeated here — read the mode file named in the table when you need them.
 
@@ -19,9 +19,9 @@ Each stage maps to an IDEO mode. The mode's guide and its methods live in the id
 | --- | --- | --- | --- |
 | **Empathize** | `../ideo-kernel/IDEO-modes/empathize.md` | Write the challenge, the design goal, and the design questions; then ask the experts and research | `empathize/define-the-challenge.md`, `empathize/start-at-the-end.md`, `empathize/ask-the-experts.md` |
 | **Define** | `../ideo-kernel/IDEO-modes/define.md` | Make a map; turn what you learned into How Might We questions; pick a target if the challenge is too wide | `define/make-a-map.md`, `define/how-might-we.md`, `define/pick-a-target.md` |
-| **Ideate** | `../ideo-kernel/IDEO-modes/ideate.md` | Gather existing ideas; each person sketches one solution alone; decide which to prototype; rumble if two winners conflict; storyboard the winner | `ideate/remix-and-improve.md`, `ideate/sketch.md`, `ideate/decide.md`, `ideate/rumble.md`, `ideate/storyboard.md` |
+| **Ideate** | `../ideo-kernel/IDEO-modes/ideate.md` | Gather existing ideas; each person sketches one solution alone; decide which to prototype; rumble if two winners conflict; storyboard the winner (here: conventions 12–16) | `ideate/remix-and-improve.md`, `ideate/sketch.md`, `ideate/decide.md`, `ideate/rumble.md`, `ideate/storyboard.md` |
 | **Prototype** | `../ideo-kernel/IDEO-modes/prototype.md` | Adopt the prototype mindset and build a realistic facade of the storyboard — just enough to learn; divide the work, stitch it together, do a trial run | `prototype/fake-it.md`, `prototype/prototype.md` |
-| **Test** | `../ideo-kernel/IDEO-modes/test.md` | Interview five target users one at a time with the Five-Act Interview; watch together, look for patterns, and answer the design questions | `test/small-data.md`, `test/interview.md`, `test/learn.md` |
+| **Test** | `../ideo-kernel/IDEO-modes/test.md` | Interview the testers one at a time with the Five-Act Interview; watch together, look for patterns, and answer the design questions (here the testers are role-card Stakeholders and the Product Owner: convention 18) | `test/small-data.md`, `test/interview.md`, `test/learn.md` |
 
 ## Conventions
 
@@ -29,9 +29,10 @@ How a solo + AI team runs a design — where the design log lives, who decides, 
 
 ## Use Protocol
 
-1. Work in the design log — `scrum/design-<suffix>/DesignBacklog.md`, started from the template. Read the conventions once when the design opens.
-2. Identify the current stage. Keep to the stage order — Empathize, Define, Ideate, Prototype, Test — and go back when a later stage shows that an earlier answer was wrong.
-3. Read the stage's source excerpts before running it, and treat them as source text.
-4. Use the IDEO methods whenever the work needs them — first from the mode the stage maps to, but from any mode if it helps — following the ideo-kernel skill's Use Protocol.
-5. The Product Owner decides the design goal, the chosen solution, and when the design is done.
-6. When the design questions are answered, the conclusions flow back to the product backlog and to the Sprint that asked for the design (scrum-kernel skill).
+1. If the ideo-kernel skill is not loaded yet, invoke `ideo-scrum:ideo-kernel` first — every stage stands on it.
+2. Work in the design log — `scrum/design-<suffix>/DesignBacklog.md`, started from the template. Read the conventions whenever you open or resume a design.
+3. Identify the current stage. Keep to the stage order — Empathize, Define, Ideate, Prototype, Test — and go back when a later stage shows that an earlier answer was wrong.
+4. Read the stage's source excerpts before running it, and treat them as source text.
+5. Use the IDEO methods whenever the work needs them — first from the mode the stage maps to, but from any mode if it helps — following the ideo-kernel skill's Use Protocol.
+6. The Product Owner decides the design goal, the chosen solution, and when the design is done.
+7. When the design questions are answered, the conclusions flow back to the product backlog and to the Sprint that asked for the design (scrum-kernel skill); close the design as in conventions 19–20.

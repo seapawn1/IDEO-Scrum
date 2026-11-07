@@ -2,7 +2,7 @@
 
 > Source: Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster. Chapter: "Storyboard."
 > License: All rights reserved (see ATTRIBUTION.md).
-> Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures are redrawn from the book as Mermaid diagrams or text. Day names are the book's schedule, not an instruction.
+> Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures that explain a method are redrawn as Mermaid diagrams or text; the others are left out. Day names, clock times, and timers are the book's schedule, not an instruction.
 
 By Wednesday afternoon, you’ll be able to feel Friday’s test with customers looming ahead. Because of the short timeline, it’s tempting to jump into prototyping as soon as you’ve selected your winning ideas. But if you start prototyping without a plan, you’ll get bogged down by small, unanswered questions. Pieces won’t fit together, and your prototype could fall apart.
 
@@ -12,8 +12,6 @@ This kind of long-form storyboarding is a common practice in movie production. P
 
 Sprints have a shorter timeline and smaller scale than a Pixar production. But storyboarding is still worthwhile. You’ll use your storyboard to imagine your finished prototype, so you can spot problems and points of confusion before the prototype is built. By taking care of those decisions up front, you’ll be free to focus on Thursday.
 
-When you’re finished, your storyboard will make just as much sense to your team as Slack’s storyboard did to them. Next, we’ll dive right in and talk about how to make one, and as we go, we’ll show you how Slack put theirs together.
-
 First of all, somebody needs to be the storyboard “artist.” We put the word “artist” in quotes because the job doesn’t require artistic talent. In this case, the “artist” is just someone willing to write on the whiteboard a lot. (It might be another good time to give the Facilitator a break.)
 
 ## Draw a grid
@@ -22,7 +20,7 @@ First, you need a big grid with around fifteen frames. Draw a bunch of boxes on 
 
 You’ll start drawing your storyboard in the top left box of the grid. This frame will be the first moment that customers experience on Friday. So ... what should it be? What’s the best opening scene for your prototype?
 
-If you get it right, the opening scene will boost the quality of your test. The right context can help customers forget they’re trying a prototype and react to your product in a natural way—just as if they had come across it on their own. If you’re prototyping an app, start in the App Store. If you’re prototyping a new cereal box, start on a grocery shelf. And if you’re prototyping business communication software?
+If you get it right, the opening scene will boost the quality of your test. The right context can help customers forget they’re trying a prototype and react to your product in a natural way—just as if they had come across it on their own. If you’re prototyping an app, start in the App Store. If you’re prototyping a new cereal box, start on a grocery shelf.
 
 ## Choose an opening scene
 

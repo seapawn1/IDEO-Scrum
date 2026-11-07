@@ -2,15 +2,13 @@
 
 > Source: Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster. Chapter: "Decide."
 > License: All rights reserved (see ATTRIBUTION.md).
-> Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures are redrawn from the book as Mermaid diagrams or text. Day names are the book's schedule, not an instruction.
+> Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures that explain a method are redrawn as Mermaid diagrams or text; the others are left out. Day names, clock times, and timers are the book's schedule, not an instruction.
 
 You know those meetings. The ones that go on and on, wandering off on tangents, burning up time and energy. The ones that end in a decision nobody’s happy about—or worse, end without any decision at all. We’re not anthropologists, but we have observed (and engaged in) a lot of human behavior in the office environment. Left to our own devices, we humans tend to debate this way:
 
-Okay, we’re exaggerating, but not that much. You might recognize this kind of back-and-forth. Someone comes up with a solution, the group critiques it, someone tries to explain the details, and then someone else has a new idea:
-
 These discussions are frustrating, because humans have limited short-term memory and limited energy for decision-making. When we jump from option to option, it’s difficult to hold important details in our heads. On the other hand, when we debate one idea for too long, we get worn out—like a judge at a baking contest who fills up on apple pie before tasting anything else.
 
-Normally, if we want the benefit of everyone’s perspective, we’re forced to endure these slogs. But not in a sprint. We’ve structured Wednesday to do one thing at a time—and do it well. We’ll evaluate solutions all at once, critique all at once, and then make a decision all at once. Kind of like this:
+Normally, if we want the benefit of everyone’s perspective, we’re forced to endure these slogs. But not in a sprint. We’ve structured Wednesday to do one thing at a time—and do it well. We’ll evaluate solutions all at once, critique all at once, and then make a decision all at once.
 
 Your goal for Wednesday morning is to decide which solutions to prototype. Our motto for these decisions is “unnatural but efficient.” Instead of meandering, your team’s conversations will follow a script. This structure is socially awkward, but logical—if you feel like Spock from Star Trek, you’re doing it right. It’s all designed to get the most out of the team’s expertise, accommodate for our human strengths and shortcomings, and make it as easy as possible to come to a great decision.
 
@@ -32,7 +30,7 @@ We’ve spent years optimizing our sprint decisions to be as efficient as possib
 
 - Supervote: The Decider makes the final decision, with—you guessed it —more stickers.
 
-This sticky stuff isn’t a gimmick. The dot stickers let us form and express our opinions without lengthy debate, and the sticky notes allow us to record big ideas without relying on our short-term memory. (For a complete sprint shopping list, see the checklists at the end of the book.)
+This sticky stuff isn’t a gimmick. The dot stickers let us form and express our opinions without lengthy debate, and the sticky notes allow us to record big ideas without relying on our short-term memory.
 
 Of course, there are more reasons for all of these steps, but we’ll explain those as we go. Here’s how the Sticky Decision works:
 
@@ -62,7 +60,7 @@ If you have a concern or question, write it on a sticky note and place it below 
 
 Move on to the next sketch, and repeat.
 
-There are no limits or rules for these dots. If people want to put dots on their own sketch, they should. If people run out of dots, give them more. By the end, you’ll have something like this:
+There are no limits or rules for these dots. If people want to put dots on their own sketch, they should. If people run out of dots, give them more.
 
 Together, all those dots create a “heat map” on top of the sketches—kind of like a heat map of the weather—showing which ideas the group finds intriguing. It’s a simple activity, but as you’ll see over the coming pages, this heat map forms the foundation for the Sticky Decision.
 
@@ -74,7 +72,7 @@ Talking out loud is risky. Humans are social animals, and when our natural impul
 
 ### 3. Speed critique
 
-In the speed critique, you and your team will discuss each solution sketch and make note of standout ideas. The conversation will follow a structure—and a time limit. The first time you do it, it might feel uncomfortable and rushed, and it might be hard to keep track of all the steps (when in doubt, use a checklist from the back of the book). But it won’t take long to get the hang of it. Once you do, your team will have a powerful tool for analyzing ideas, and you may find yourselves using it in other meetings.
+In the speed critique, you and your team will discuss each solution sketch and make note of standout ideas. The conversation will follow a structure—and a time limit. The first time you do it, it might feel uncomfortable and rushed, and it might be hard to keep track of all the steps. But it won’t take long to get the hang of it. Once you do, your team will have a powerful tool for analyzing ideas, and you may find yourselves using it in other meetings.
 
 During the speed critique, the Facilitator is going to be very busy, so someone needs to volunteer to help by being the Scribe. As you review the sketches on the wall, the Scribe will write down standout ideas on sticky notes. The Scribe’s notes serve several purposes. The notes give everyone a common vocabulary to describe solutions. They help everyone on the team to feel heard, which speeds up the discussion. And they organize the team’s observations, making it easier to place your votes in the next step.
 
@@ -106,7 +104,7 @@ Try to keep each review to three minutes, but be a little flexible. If a sketch 
 
 Remember that all you’re trying to accomplish in the speed critique is to create a record of promising ideas. You don’t need to debate whether something should be included in the prototype; that will come later. You shouldn’t try to come up with new ideas on the spot. Just write down what stands out about each solution.
 
-By the end of the speed critique, everyone will understand all of the promising ideas and details. You’ll also have a nice tangible record of the discussion on the wall, like this:
+By the end of the speed critique, everyone will understand all of the promising ideas and details.
 
 If you’re the Facilitator, the speed critique will require you to think on your feet and keep the group moving. You’re both narrator and referee, but the process should be fun. After all, the solutions will be interesting, and since the discussion focuses on the best ideas, the tone will be positive.
 
@@ -160,9 +158,9 @@ The supervote is the ultimate decision. Each Decider will get three special vote
 
 Deciders can choose ideas that were popular in the straw poll. Or they can choose to ignore the straw poll. They can spread out their votes, or put them all in one place. Basically, the Deciders can do whatever the heck they want.
 
-All the same, it’s a good idea to remind the Decider of the long-term goal and the sprint questions (which should still be on one of your whiteboards!). Finally, when the Decider has placed her votes, the hardest choice of the week is complete. It’ll look something like this:
+All the same, it’s a good idea to remind the Decider of the long-term goal and the sprint questions (which should still be on one of your whiteboards!). Finally, when the Decider has placed her votes, the hardest choice of the week is complete.
 
-The sketches with supervotes on them (even just one!) are the winners. You’ll plan your prototype around those ideas and put them to the test on Friday. We like to rearrange the sketches on the wall, so that the supervote winners are all together, like this:
+The sketches with supervotes on them (even just one!) are the winners. You’ll plan your prototype around those ideas and put them to the test on Friday.
 
 The sketches that didn’t get any supervotes aren’t winners, but they aren’t losers either. They’re “maybe-laters.” You might incorporate them when you plan your prototype on Wednesday afternoon, or perhaps you’ll use them in your next sprint.
 

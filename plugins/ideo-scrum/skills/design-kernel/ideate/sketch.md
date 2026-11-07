@@ -2,7 +2,7 @@
 
 > Source: Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster. Chapter: "Sketch."
 > License: All rights reserved (see ATTRIBUTION.md).
-> Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures are redrawn from the book as Mermaid diagrams or text. Day names are the book's schedule, not an instruction.
+> Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures that explain a method are redrawn as Mermaid diagrams or text; the others are left out. Day names, clock times, and timers are the book's schedule, not an instruction.
 
 On Tuesday afternoon, it’s time to come up with solutions. But there will be no brainstorming; no shouting over one another; no deferring judgment so wacky ideas can flourish. Instead, you’ll work individually, take your time, and sketch.
 
@@ -30,7 +30,7 @@ The sketches you create on Tuesday will become the fuel for the rest of the spri
 
 As you can see, these sketches are detailed, but they’re not works of art. Each sketch consists of words, boxes, and the occasional stick figure, drawn on normal printer paper and normal sticky notes with a normal pen.
 
-We’re just kidding. That blank sheet of paper always intimidates us. So, inspired by productivity expert David Allen, we break the process into steps. In his book Getting Things Done, Allen provides a smart strategy for daunting jobs. The secret, Allen writes, is not to think about the task as one monolithic effort (like “Pay taxes”), but instead to find the first small action needed to make progress (like “Collect tax paperwork”) and go from there.
+That blank sheet of paper always intimidates us. So, inspired by productivity expert David Allen, we break the process into steps. In his book Getting Things Done, Allen provides a smart strategy for daunting jobs. The secret, Allen writes, is not to think about the task as one monolithic effort (like “Pay taxes”), but instead to find the first small action needed to make progress (like “Collect tax paperwork”) and go from there.
 
 ## The four-step sketch
 
@@ -74,8 +74,6 @@ And before you get the wrong idea, the “crazy” in Crazy 8s refers to the pac
 The exercise works best when you sketch several variations of the same idea. Take a favorite piece from your ideas sheet and ask yourself, “What would be another good way to do this?” Keep going until you can’t think of any more variations, then look back at your ideas sheet, choose a new idea, and start riffing on it instead.
 
 Crazy 8s is also a great writing exercise. If your idea contains words or marketing headlines or any other bits of text, you can use Crazy 8s to improve your phrasing. As you’ll see in the next step, writing is often the most important component of the solution sketch.
-
-Crazy 8s from the Blue Bottle Coffee sprint. The frames show experiments with phrasing (“hand pour coffee” vs. “pour over coffee”), navigation, and page layout.
 
 Sometimes Crazy 8s leads to a revelation. You might come away with several new ways of looking at your ideas. Other times, it feels less productive. Sometimes that first idea really is the best idea. Either way, Crazy 8s helps you consider alternatives—and also serves as an excellent warm-up for the main event.
 

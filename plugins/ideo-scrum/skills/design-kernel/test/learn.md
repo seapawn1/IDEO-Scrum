@@ -2,7 +2,7 @@
 
 > Source: Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster. Chapter: "Learn."
 > License: All rights reserved (see ATTRIBUTION.md).
-> Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures are redrawn from the book as Mermaid diagrams or text. Day names are the book's schedule, not an instruction.
+> Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures that explain a method are redrawn as Mermaid diagrams or text; the others are left out. Day names, clock times, and timers are the book's schedule, not an instruction.
 
 Friday feels like one long mystery. Throughout the day, you’ll collect clues. Some of those clues help you crack the case, but some lead you in the wrong direction. It’s only at the end—around 5 p.m.—that everything ties together and the answers become clear.
 
@@ -58,6 +58,6 @@ After looking back, it’s usually easy to figure out the next step. The team ca
 
 ## A winner every time
 
-Maybe the best part about a sprint is that you can’t lose. If you test your prototype with customers, you’ll win the best prize of all—the chance to learn, in just five days, whether you’re on the right track with your ideas. The results don’t follow a neat template. You can have efficient failures that are good news, flawed successes that need more work, and many other outcomes. Let’s look at how five teams interpreted their test results, and what they decided to do next.
+Maybe the best part about a sprint is that you can’t lose. If you test your prototype with customers, you’ll win the best prize of all—the chance to learn, in just five days, whether you’re on the right track with your ideas. The results don’t follow a neat template. You can have efficient failures that are good news, flawed successes that need more work, and many other outcomes.
 
-Many companies want to launch quickly so they can get data from hundreds, thousands, or even millions of people. That large-scale data is great. But in the rush to get there, it’s easy to miss the opportunity to gather small-scale data early, when there’s still time to course-correct. As Medium’s story illustrates, you can have the best of both worlds. You can talk to your customers, and you can learn from large-scale data.
+Many companies want to launch quickly so they can get data from hundreds, thousands, or even millions of people. That large-scale data is great. But in the rush to get there, it’s easy to miss the opportunity to gather small-scale data early, when there’s still time to course-correct. You can talk to your customers, and you can learn from large-scale data.

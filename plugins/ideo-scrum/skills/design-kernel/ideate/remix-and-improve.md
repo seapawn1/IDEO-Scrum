@@ -2,7 +2,7 @@
 
 > Source: Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster. Chapter: "Remix and Improve."
 > License: All rights reserved (see ATTRIBUTION.md).
-> Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures are redrawn from the book as Mermaid diagrams or text. Day names are the book's schedule, not an instruction.
+> Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures that explain a method are redrawn as Mermaid diagrams or text; the others are left out. Day names, clock times, and timers are the book's schedule, not an instruction.
 
 Imagine it’s the early 1900s. You’re drinking a nice hot cup of coffee. Only ... it’s not so nice. Coffee grounds stick in your teeth, and the liquid is so bitter your mouth puckers. If it weren’t for the caffeine, you probably wouldn’t bother. Back in those days, coffee was brewed like tea, by dunking a pouch of ground beans into boiling water. There was a lot of room for error: over-brewing, underbrewing, and plenty of grit at the bottom of the cup. Some people strained their coffee through filters made of cloth, but the material was overly porous and a mess to clean up.
 
@@ -22,7 +22,7 @@ Our method for collecting and synthesizing these existing ideas is an exercise w
 
 Blue Bottle wanted to help customers find coffee they’d love. But coffee beans all look alike, so photos wouldn’t be helpful. To find useful solutions, the team did Lightning Demos of websites selling everything from clothes to wine, looking for ways to describe sensory details such as flavor, aroma, and texture.
 
-In the end, it was a chocolate-bar wrapper that provided the most useful idea. Tcho is a chocolate manufacturer in Berkeley, California. Printed on the wrapper of every Tcho bar is a simple flavor wheel with just six words: Bright, Fruity, Floral, Earthy, Nutty, and Chocolatey. When Blue Bottle looked at that wheel, they got inspired, and when we sketched, someone repurposed the idea as a simple flavor vocabulary for describing Blue Bottle’s coffee beans:
+In the end, it was a chocolate-bar wrapper that provided the most useful idea. Tcho is a chocolate manufacturer in Berkeley, California. Printed on the wrapper of every Tcho bar is a simple flavor wheel with just six words: Bright, Fruity, Floral, Earthy, Nutty, and Chocolatey. When Blue Bottle looked at that wheel, they got inspired.
 
 In Friday’s test, and later, at the new online store, customers loved the simple descriptions. It’s a prime example of finding inspiration outside your domain (and yet another reason to be grateful for chocolate).
 

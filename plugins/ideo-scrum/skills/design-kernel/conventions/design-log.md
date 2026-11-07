@@ -8,7 +8,7 @@ Each convention has a short name, so it can be referred to in conversation, and 
 - **Supplement** — inferred by the author's assistant; not yet confirmed in practice.
 - **Decide on the spot** — no fixed rule; decide when it comes up.
 
-The design log template is `design-backlog-template.md` in this folder. The book's techniques are in this skill's stage folders; the methods are in the ideo-kernel skill.
+The design log template is `design-backlog-template.md` in this folder. The book's techniques are in this skill's stage folders; the methods are in the ideo-kernel skill. Paths to excerpts, such as `ideate/sketch.md`, are relative to the design-kernel skill folder.
 
 ## Where a design sits
 
@@ -37,7 +37,7 @@ The design log template is `design-backlog-template.md` in this folder. The book
 | Test | Five customers, the Five-Act Interview, the team watching together | Convention 18 |
 
 10. **Experts at hand** — *Author's practice.* Write the challenge, the design goal, and the design questions first. Then ask the experts: the Product Owner, in the conversation, and the Stakeholders written as role cards in the product backlog, each summoned as a fresh subagent that is given its card. Research fills the rest. Fix the goal, the questions, and the map as you learn.
-11. **Map and questions in the log** — *Author's practice.* Draw the map in the log as a Mermaid diagram (`flowchart TD`). List the How Might We questions in the log and group them by theme; the Product Owner picks the ones that matter — no dot voting. A target is optional: pick one when the challenge is too wide for one design.
+11. **Map and questions in the log** — *Author's practice.* Draw the map in the log as a Mermaid diagram (`flowchart TD`); the book's left and right become top and bottom — actors at the top, the ending at the bottom. List the How Might We questions in the log and group them by theme; the Product Owner picks the ones that matter — no dot voting. A target is optional: pick one when the challenge is too wide for one design.
 12. **Lightning Demos** — *Author's practice.* Before anyone sketches, look for existing solutions — other products, other domains, earlier attempts in the project — and list ten to twenty ideas worth remixing in chapter 3. Subagents can search in parallel.
 13. **Isolated solutions** — *Author's practice.* Several fresh subagents, unable to see one another, each produce one complete solution — the book's "work alone together". Give each one chapters 1 and 2 of the log, the Lightning Demos list, and `ideate/sketch.md`, and ask for a solution sketch: a step-by-step storyboard in words (Mermaid allowed), self-explanatory, with a catchy title and without the author's name.
 14. **Choosing is the key step** — *Author's practice.* Run the book's Sticky Decision (`ideate/decide.md`) in the log. Lay all the solutions side by side. The Scrum Master marks the standout parts and runs a speed critique — narrate each solution, name its standout ideas, list concerns — before hearing from whoever wrote it. If the Product Owner wants input, ask the role-card Stakeholders for a straw poll. Then the Product Owner makes the final call. Do not seek consensus. Solutions not chosen are "maybe-later", not failures.

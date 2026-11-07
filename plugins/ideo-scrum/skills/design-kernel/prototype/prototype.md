@@ -2,7 +2,7 @@
 
 > Source: Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster. Chapter: "Prototype."
 > License: All rights reserved (see ATTRIBUTION.md).
-> Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures are redrawn from the book as Mermaid diagrams or text. Day names are the book's schedule, not an instruction.
+> Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures that explain a method are redrawn as Mermaid diagrams or text; the others are left out. Day names, clock times, and timers are the book's schedule, not an instruction.
 
 Thursday is a bit different from other parts of the sprint. Every prototype is different, so there’s no exact step-by-step process we can share. But after making hundreds of our own prototypes, we’ve come up with four exercises that always set us on the right path:
 
@@ -60,11 +60,11 @@ You’ll want at least two Makers on Thursday. We’ve told you some wild storie
 
 The Stitcher is responsible for collecting components from the Makers and combining them in a seamless fashion. This person is usually a designer or engineer, but can be almost anyone, depending on the format of your prototype. The best Stitcher is detail-oriented. He or she will probably give everyone some style guides to follow in the morning, then start stitching after lunch as the Makers complete their components.
 
-Every sprint team needs a Writer, and it’s one of the most important roles. In Chapter 9 on page 103, we talked about the importance of words in your sketches. And earlier in this chapter we told you that your prototype must appear real. It’s impossible to make a realistic prototype with unrealistic text.
+Every sprint team needs a Writer, and it’s one of the most important roles. And earlier in this chapter we told you that your prototype must appear real. It’s impossible to make a realistic prototype with unrealistic text.
 
 You’ll want at least one Asset Collector on Thursday. It’s not a glamorous role (although “asset collector” does sound glamorous), but it’s one of the keys to rapid prototyping. Your prototype will likely include photos, icons, or sample content that you don’t need to make from scratch. Your Asset Collectors will scour the web, image libraries, your own products, and any other conceivable place to find these elements. This speeds up the work of your Makers, who don’t have to pause and go collect every bit and piece they need for the prototype.
 
-Finally, there’s the Interviewer, who will use the finished prototype to conduct Friday’s customer interviews. On Thursday, he should write an interview script. (We’ll go into detail about the structure of this script in Chapter 16 on page 201.) It’s best if the Interviewer doesn’t work on the prototype. This way, he won’t be emotionally invested in Friday’s test, and won’t betray any hurt feelings or glee to the customer.
+Finally, there’s the Interviewer, who will use the finished prototype to conduct Friday’s customer interviews. On Thursday, he should write an interview script. It’s best if the Interviewer doesn’t work on the prototype. This way, he won’t be emotionally invested in Friday’s test, and won’t betray any hurt feelings or glee to the customer.
 
 After assigning roles, you should also divide up the storyboard. Let’s say your storyboard calls for a customer to see an ad, visit your website, and download your app. You can assign one Maker to create the ad, one to mock up the fake website, and a third to handle the app download screens.
 

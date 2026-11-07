@@ -1,6 +1,6 @@
 ---
 name: ideo-kernel
-description: "Use when the user mentions IDEO, the five modes, design thinking, or a design-thinking method by name — load it before answering, even for a quick outline. It is the plugin's shared toolbox and the foundation of every design stage: every role loads it, and both designs (design-kernel) and Scrum Sprints (scrum-kernel) draw on it. Covers the IDEO five modes (Empathize, Define, Ideate, Prototype, Test), human-centered design, user interviews, journey mapping, POV, HMW questions, brainstorming, user testing; rapid prototype validation — when an idea must be checked quickly with a prototype that feels like a prototype (fast, informal, never a formal result, built to learn rather than ship)."
+description: "Use when the user mentions IDEO, the five modes, design thinking, or a design-thinking method by name — load it before answering, even for a quick outline. Also load it whenever a design stage or a stuck Sprint needs a method: it is the plugin's shared toolbox and the foundation of every stage, and every role loads it first. Covers the IDEO five modes (Empathize, Define, Ideate, Prototype, Test), human-centered design, user interviews, journey mapping, POV, HMW questions, brainstorming, user testing; rapid prototype validation — when an idea must be checked quickly with a prototype that feels like a prototype (fast, informal, never a formal result, built to learn rather than ship). A full design sprint, from a challenge to a tested prototype, is design-kernel."
 ---
 
 # IDEO Kernel
@@ -88,8 +88,8 @@ In the table, each method is listed once; **Modes** names the modes it serves.
 
 ## Use Protocol
 
-1. Confirm the current mode or the active docs.
-2. Choose a method only if its Modes include the current mode and its trigger matches the current work.
+1. Confirm the current mode, and the design or Sprint the work belongs to.
+2. Prefer a method whose Modes include the current mode and whose trigger matches the current work. A method from another mode is fine when its trigger fits the work — say which mode it comes from and why.
 3. Before using the method, read its document under `methods/`. Never invoke a method only by name — state which method you are using and why it fits the current mode.
 4. Treat the `Cleaned Transcription` section as source text.
 5. Treat `Use Before`, `Use Notes`, and `Do Not Use When` as project-specific notes, not source text.

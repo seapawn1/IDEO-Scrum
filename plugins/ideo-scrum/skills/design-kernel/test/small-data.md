@@ -2,7 +2,7 @@
 
 > Source: Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster. Chapter: "Small Data."
 > License: All rights reserved (see ATTRIBUTION.md).
-> Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures are redrawn from the book as Mermaid diagrams or text. Day names are the book's schedule, not an instruction.
+> Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures that explain a method are redrawn as Mermaid diagrams or text; the others are left out. Day names, clock times, and timers are the book's schedule, not an instruction.
 
 One August evening in 1996, a publisher named Nigel Newton left his office in London’s Soho district and headed home, carrying a stack of papers. Among them were fifty sample pages from a book he needed to review, but Newton didn’t have high hopes for it. The manuscript had already been rejected by eight other publishers.
 
@@ -41,10 +41,6 @@ So Nielsen analyzed eighty-three of his own product studies. He plotted how many
 Testing with more people didn’t lead to many more insights—just a lot more work. “The number of findings quickly reaches the point of diminishing returns,” Nielsen concluded. “There’s little additional benefit to running more than five people through the same study; ROI drops like a stone.” Instead of investing a great deal more time to find the last 15 percent, Nielsen realized he could just fix the 85 percent and test again.
 
 We’ve seen the same phenomenon in our own tests. By the time we observe the fifth customer, we’re just confirming patterns that showed up in the first four interviews. We tried testing with more customers, but as Nielsen says, it just wasn’t worth it.
-
-The number five also happens to be very convenient. You can fit five one-hour interviews into a single day, with time for a short break between each one and a team debrief at the end:
-
-This condensed schedule allows the whole team to watch the interviews together, and analyze them firsthand. This means no waiting for results, and no second-guessing the interpretation.
 
 One-on-one interviews are a remarkable shortcut. They allow you to test a façade of your product, long before you’ve built the real thing—and fallen in love with it. They deliver meaningful results in a single day. But they also offer an important insight that’s nearly impossible to get with large-scale quantitative data: why things work or don’t work.
 
