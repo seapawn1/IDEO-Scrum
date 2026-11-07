@@ -1,6 +1,10 @@
 {
   "worktree": {
-    "bgIsolation": "none"
+    "bgIsolation": "none",
+    "baseRef": "head",
+    "symlinkDirectories": [
+      "references"
+    ]
   },
   "autoMemoryDirectory": "S:/SeaPawn-Memory/memory/IDEO-Scrum"
 }
