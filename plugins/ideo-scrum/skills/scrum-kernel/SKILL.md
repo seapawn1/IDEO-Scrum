@@ -1,6 +1,6 @@
 ---
 name: scrum-kernel
-description: "Use when work involves Scrum or a Scrum Sprint — Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective, backlog refinement, Sprint Goal, Product Goal, Definition of Done, Scrum roles (Product Owner, Scrum Master, Developers), empirical process control for complex projects. Division of labor: IDEO handles research, Scrum handles implementation — before starting, check whether open questions need a pre-study: if the problem or solution direction is unvalidated, run the ideo-kernel skill first and treat its findings as key Sprint evidence; a difficult Sprint may open with an IDEO research round, and when stuck mid-Sprint, IDEO methods can help inspect the problem."
+description: "Use when work involves Scrum or a Scrum Sprint — Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective, backlog refinement, Sprint Goal, Product Goal, Definition of Done, Scrum roles (Product Owner, Scrum Master, Developers), empirical process control for complex projects. Division of labor: a design handles research, Scrum handles implementation — before starting, check whether open questions need a pre-study: if the problem or solution direction is unvalidated, open a design with the design-kernel skill first and treat its findings as key Sprint evidence; the IDEO methods in the ideo-kernel skill are the plugin's shared toolbox, usable at any time — when stuck mid-Sprint, they can help inspect the problem."
 ---
 
 # Scrum Kernel
@@ -13,11 +13,11 @@ Scrum is described in `scrum-guide-2020.md`, the definitive 2020 Scrum Guide by 
 
 Scrum enables Scrum Teams to identify, represent, or measure emergence, embrace uncertainty, respond to change, deliver and validate value frequently, and continuously improve. Scrum fosters collaboration, accountability, and evidence-informed decision-making, fostering the best possible outcomes in a rapidly changing environment. Self-managing Scrum Teams, organized around value, are crucial for creative problem-solving and opportunity capture; non-self-managing Scrum Teams hinder the ability to deal with complexity. Self-managing Scrum Teams are not to be confused with individual self-management.
 
-## Working with the IDEO Kernel
+## Working with the Design and IDEO Kernels
 
-Research and implementation are divided: the design side (ideo-kernel skill) handles research; Scrum handles implementation. Before a Sprint, judge whether open questions need a pre-study — when the problem or direction is unvalidated, run the ideo-kernel skill first and treat its findings as key Sprint evidence. A difficult Sprint may open with an IDEO research round (research → prototype) before implementation, and when the team gets stuck mid-Sprint (e.g., at the Daily Scrum), IDEO methods can inspect and research the problem the Sprint is stuck on.
+Research and implementation are divided: a design (design-kernel skill) handles research; Scrum handles implementation. Before a Sprint, judge whether open questions need a pre-study — when the problem or direction is unvalidated, open a design first and treat its findings as key Sprint evidence; a hard point met during refinement can also be opened as a design while the rest of the Sprint goes on. The IDEO methods (ideo-kernel skill) are the plugin's shared toolbox and can be used at any time — when the team gets stuck mid-Sprint (e.g., at the Daily Scrum), they can inspect and research the problem the Sprint is stuck on.
 
-*(Author's methodology design for solo + AI teams, 2026-08 — not part of the Scrum Guide or SGEP.)*
+*(Author's methodology design for solo + AI teams, 2026-08; revised 2026-11-08 — not part of the Scrum Guide or SGEP.)*
 
 ## Elements of Scrum
 

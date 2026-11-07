@@ -63,13 +63,19 @@
 | `plugins/ideo-scrum/commands/scrum-master.md` | Command `/ideo-scrum:scrum-master` — Scrum Master 角色（Scrum Guide 2020 原文抄录＋2026 精炼补充；替 PO 派活、派子代理审阅；进入时加载两个内核） |
 | `plugins/ideo-scrum/commands/stakeholder.md` | Command `/ideo-scrum:stakeholder` — Stakeholder（SGEP 角色章为底；一个命令多种身份：外部视角——按项目写定的身份看产品和增量，说出期望与现状的差距，反馈交 PO，独立评价由全新子代理给；也可作常驻会话做非源码杂务，如维护看板；源码归 Developer） |
 
+### design-kernel skill
+
+| 文件/目录 | 内容 |
+|---|---|
+| `plugins/ideo-scrum/skills/design-kernel/SKILL.md` | Design Kernel 入口（设计冲刺按 IDEO 五阶段组织：每个阶段对应的 IDEO 模式、原书摘录、Use Protocol） |
+| `plugins/ideo-scrum/skills/design-kernel/empathize/`、`define/` | 设计冲刺原书摘录（Knapp）：共情 define-the-challenge / start-at-the-end / ask-the-experts；定义 make-a-map / pick-a-target |
+
 ### ideo-kernel skill
 
 | 文件/目录 | 内容 |
 |---|---|
-| `plugins/ideo-scrum/skills/ideo-kernel/SKILL.md` | IDEO Kernel 入口（两套五步对照 + IDEO 五模式表 + 设计冲刺五阶段表 + Method Catalog：按模式索引与合表 + Use Protocol） |
+| `plugins/ideo-scrum/skills/ideo-kernel/SKILL.md` | IDEO Kernel 入口（整个插件共用的工具箱：IDEO 五模式表 + Method Catalog：按模式索引与合表 + Use Protocol） |
 | `plugins/ideo-scrum/skills/ideo-kernel/IDEO-modes/` | IDEO Design Thinking 五模式 reference（Empathize / Define / Ideate / Prototype / Test，各含 WHAT/WHY/HOW + Transition） |
-| `plugins/ideo-scrum/skills/ideo-kernel/design-sprint/` | 设计冲刺五阶段参考（Knapp 摘录：define-the-challenge / start-at-the-end / ask-the-experts / make-a-map / pick-a-target） |
 | `plugins/ideo-scrum/skills/ideo-kernel/methods/` | Design Thinking 方法库（~40 个方法，含 Use Before / Use Notes / Do Not Use When） |
 
 ### scrum-kernel skill
