@@ -9,6 +9,8 @@ A design answers a hard question before the team builds: it starts from a challe
 
 Each stage maps to an IDEO mode. The mode's guide and its methods live in the ideo-kernel skill, the plugin's shared toolbox, and are not repeated here — read the mode file named in the table when you need them.
 
+**IDEO methods are always in play.** The book's methods excerpted here are added so the design sprint runs as one piece; they do not limit what you use. In any stage, use any method from the ideo-kernel toolbox whenever the work needs it — for example, Interview for Empathy while asking the experts, or Brainstorming and Analogous Empathy while ideating — even where the book prefers a different technique.
+
 *(Author's methodology design for solo + AI teams, 2026-11-08; source excerpts are cited per file.)*
 
 ## Five Stages
@@ -25,6 +27,6 @@ Each stage maps to an IDEO mode. The mode's guide and its methods live in the id
 
 1. Identify the current stage. Keep to the stage order — Empathize, Define, Ideate, Prototype, Test — and go back when a later stage shows that an earlier answer was wrong.
 2. Read the stage's source excerpts before running it, and treat them as source text.
-3. Choose methods from the IDEO mode the stage maps to, following the ideo-kernel skill's Use Protocol.
+3. Use the IDEO methods whenever the work needs them — first from the mode the stage maps to, but from any mode if it helps — following the ideo-kernel skill's Use Protocol.
 4. The Product Owner decides the design goal, the chosen solution, and when the design is done.
 5. When the design questions are answered, the conclusions flow back to the product backlog and to the Sprint that asked for the design (scrum-kernel skill).

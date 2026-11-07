@@ -96,7 +96,8 @@ PO 放行：2026-11-08，可在冲刺分支上提交（含 Planning 落盘与记
 | 2026-11-08 | 34-1 + 29（含 29-3） | design-kernel 骨架与五阶段表；ideo-kernel 改成工具箱、删设计冲刺两节；scrum-kernel 预研究改指 design-kernel；designer 第 9 行顺带改（不然指向已删的内容），加载句留给 36 | `885bf1b` | 34-2 |
 | 2026-11-08 | 34-2 共情、定义 | 五份旧文件和新的 how-might-we 全部改成原书原文：脚本按行号从原书取，只删不改写（修了转换造成的断字和脚注标记）。删去：开头的 Blue Bottle 整段故事、Flatiron 背景、记 HMW 的便利贴与马克笔、投票的贴点规则、零食与休息。保留：例子里讲方法的部分、9 张方法图（地图、HMW、选靶，共 840K）。旧文件里作者加的话（「solo 时你就是 PO」、Decider 改成 Product Owner）不进原文，改到 28 的约定里写。ATTRIBUTION 第 4 节「不含插图、只记方法流程」的说法已不符，34-6 改 | `d5e79d2` | 给 PO 看共情、定义 |
 | 2026-11-08 | 检查点：共情、定义 | PO：不放图片，改画成 Mermaid 或写成文字（以前就是这样做的）；示范例子按推荐保留。9 张图改画：地图与选靶用 Mermaid，目标与问题、HMW 便签写成文字；`images/` 删除；2.2.7、CLAUDE.md、记忆里的「可带例图」一并改 | `7f91c34` | 34-3 构思 |
-| 2026-11-08 | 34-3 构思 | 五份原文：Remix and Improve（闪电演示，可选）、Sketch（各自出方案，四步草图）、Decide（挑方案：Sticky Decision 与「Make honest decisions」）、Rumble（两个赢家冲突时都做原型；含 Note-and-Vote）、Storyboard。删去：Slack 公司前史、贴胶带布展、折纸计时、起飞玩笑、各章脚注；原书 Note-and-Vote 最后一句在转换稿里就断了，删去断掉的半句。挑方案的步骤原样保留（PO：挑方案很重要），贴点投票的细节到 28 的约定里换成我们的做法（子代理出方案、Master 讲评、PO 拍板）。四步草图画成 Mermaid | 本次提交 | 给 PO 看构思 |
+| 2026-11-08 | 34-3 构思 | 五份原文：Remix and Improve（闪电演示，可选）、Sketch（各自出方案，四步草图）、Decide（挑方案：Sticky Decision 与「Make honest decisions」）、Rumble（两个赢家冲突时都做原型；含 Note-and-Vote）、Storyboard。删去：Slack 公司前史、贴胶带布展、折纸计时、起飞玩笑、各章脚注；原书 Note-and-Vote 最后一句在转换稿里就断了，删去断掉的半句。挑方案的步骤原样保留（PO：挑方案很重要），贴点投票的细节到 28 的约定里换成我们的做法（子代理出方案、Master 讲评、PO 拍板）。四步草图画成 Mermaid | `3cead2e` | 给 PO 看构思 |
+| 2026-11-08 | 声明 IDEO 方法随时可用 | PO：设计冲刺时只要需要就用 IDEO 的方法；加原书的方法是为了配合设计冲刺，不是限定只用这几个。写进 design-kernel SKILL.md（单独一段，Use Protocol 第 3 步同改）与产品日志 2.2.6；28 的约定也要写 | 本次提交 | 34-4 原型 |
 
 # 四、Review
 
