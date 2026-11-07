@@ -32,7 +32,7 @@ Building a façade may be uncomfortable for you and your team. To prototype your
 
 ### 1. You Can Prototype Anything
 
-This statement might sound corny, but here it is. You have to believe. If you go into Thursday with optimism and a conviction that there is some way to prototype and test your product, you will find a way. Those methods may work for you, or you may have to be resourceful and invent your own. But if you stay optimistic and adopt the prototype mindset, there is almost always a way.
+This statement might sound corny, but here it is. You have to believe. If you go into Thursday with optimism and a conviction that there is some way to prototype and test your product, you will find a way. But if you stay optimistic and adopt the prototype mindset, there is almost always a way.
 
 ### 2. Prototypes Are Disposable
 

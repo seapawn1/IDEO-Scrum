@@ -22,7 +22,13 @@ Our method for collecting and synthesizing these existing ideas is an exercise w
 
 Blue Bottle wanted to help customers find coffee they’d love. But coffee beans all look alike, so photos wouldn’t be helpful. To find useful solutions, the team did Lightning Demos of websites selling everything from clothes to wine, looking for ways to describe sensory details such as flavor, aroma, and texture.
 
-In the end, it was a chocolate-bar wrapper that provided the most useful idea. Tcho is a chocolate manufacturer in Berkeley, California. Printed on the wrapper of every Tcho bar is a simple flavor wheel with just six words: Bright, Fruity, Floral, Earthy, Nutty, and Chocolatey.
+In the end, it was a chocolate-bar wrapper that provided the most useful idea. Tcho is a chocolate manufacturer in Berkeley, California. Printed on the wrapper of every Tcho bar is a simple flavor wheel with just six words: Bright, Fruity, Floral, Earthy, Nutty, and Chocolatey. When Blue Bottle looked at that wheel, they got inspired, and when we sketched, someone repurposed the idea as a simple flavor vocabulary for describing Blue Bottle’s coffee beans:
+
+> How it tastes
+>
+> Rich, chocolatey, comforting
+
+*(Part of a solution sketch. Redrawn from the book.)*
 
 In Friday’s test, and later, at the new online store, customers loved the simple descriptions. It’s a prime example of finding inspiration outside your domain (and yet another reason to be grateful for chocolate).
 
