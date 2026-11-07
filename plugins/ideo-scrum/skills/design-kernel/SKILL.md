@@ -20,8 +20,8 @@ Each stage maps to an IDEO mode. The mode's guide and its methods live in the id
 | **Empathize** | `../ideo-kernel/IDEO-modes/empathize.md` | Write the challenge, the design goal, and the design questions; then ask the experts and research | `empathize/define-the-challenge.md`, `empathize/start-at-the-end.md`, `empathize/ask-the-experts.md` |
 | **Define** | `../ideo-kernel/IDEO-modes/define.md` | Make a map; turn what you learned into How Might We questions; pick a target if the challenge is too wide | `define/make-a-map.md`, `define/how-might-we.md`, `define/pick-a-target.md` |
 | **Ideate** | `../ideo-kernel/IDEO-modes/ideate.md` | Gather existing ideas; each person sketches one solution alone; decide which to prototype; rumble if two winners conflict; storyboard the winner | `ideate/remix-and-improve.md`, `ideate/sketch.md`, `ideate/decide.md`, `ideate/rumble.md`, `ideate/storyboard.md` |
-| **Prototype** | `../ideo-kernel/IDEO-modes/prototype.md` | Build a realistic facade of the chosen solution | — |
-| **Test** | `../ideo-kernel/IDEO-modes/test.md` | Test the prototype and answer the design questions | — |
+| **Prototype** | `../ideo-kernel/IDEO-modes/prototype.md` | Adopt the prototype mindset and build a realistic facade of the storyboard — just enough to learn; divide the work, stitch it together, do a trial run | `prototype/fake-it.md`, `prototype/prototype.md` |
+| **Test** | `../ideo-kernel/IDEO-modes/test.md` | Interview five target users one at a time with the Five-Act Interview; watch together, look for patterns, and answer the design questions | `test/small-data.md`, `test/interview.md`, `test/learn.md` |
 
 ## Use Protocol
 
