@@ -23,10 +23,15 @@ Each stage maps to an IDEO mode. The mode's guide and its methods live in the id
 | **Prototype** | `../ideo-kernel/IDEO-modes/prototype.md` | Adopt the prototype mindset and build a realistic facade of the storyboard — just enough to learn; divide the work, stitch it together, do a trial run | `prototype/fake-it.md`, `prototype/prototype.md` |
 | **Test** | `../ideo-kernel/IDEO-modes/test.md` | Interview five target users one at a time with the Five-Act Interview; watch together, look for patterns, and answer the design questions | `test/small-data.md`, `test/interview.md`, `test/learn.md` |
 
+## Conventions
+
+How a solo + AI team runs a design — where the design log lives, who decides, how each stage works with subagents and role cards, and how a design closes — is in `conventions/design-log.md`. The design log template is `conventions/design-backlog-template.md`. These are working conventions, not source text: follow what fits, override what doesn't, and note why.
+
 ## Use Protocol
 
-1. Identify the current stage. Keep to the stage order — Empathize, Define, Ideate, Prototype, Test — and go back when a later stage shows that an earlier answer was wrong.
-2. Read the stage's source excerpts before running it, and treat them as source text.
-3. Use the IDEO methods whenever the work needs them — first from the mode the stage maps to, but from any mode if it helps — following the ideo-kernel skill's Use Protocol.
-4. The Product Owner decides the design goal, the chosen solution, and when the design is done.
-5. When the design questions are answered, the conclusions flow back to the product backlog and to the Sprint that asked for the design (scrum-kernel skill).
+1. Work in the design log — `scrum/design-<suffix>/DesignBacklog.md`, started from the template. Read the conventions once when the design opens.
+2. Identify the current stage. Keep to the stage order — Empathize, Define, Ideate, Prototype, Test — and go back when a later stage shows that an earlier answer was wrong.
+3. Read the stage's source excerpts before running it, and treat them as source text.
+4. Use the IDEO methods whenever the work needs them — first from the mode the stage maps to, but from any mode if it helps — following the ideo-kernel skill's Use Protocol.
+5. The Product Owner decides the design goal, the chosen solution, and when the design is done.
+6. When the design questions are answered, the conclusions flow back to the product backlog and to the Sprint that asked for the design (scrum-kernel skill).
