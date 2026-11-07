@@ -294,7 +294,7 @@ The Developers are required to conform to the Definition of Done. If there are m
 
 ---
 
-#### Scrum Guide History
+## Scrum Guide History
 
 Ken Schwaber and Jeff Sutherland first co-presented Scrum at the OOPSLA Conference in 1995. It essentially documented the learning that Ken and Jeff gained over the previous few years and made public the first formal definition of Scrum.
 
