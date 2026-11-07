@@ -68,7 +68,7 @@
 | 文件/目录 | 内容 |
 |---|---|
 | `plugins/ideo-scrum/skills/design-kernel/SKILL.md` | Design Kernel 入口（设计冲刺按 IDEO 五阶段组织：每个阶段对应的 IDEO 模式、原书摘录、Use Protocol） |
-| `plugins/ideo-scrum/skills/design-kernel/empathize/`、`define/` | 设计冲刺原书摘录（Knapp）：共情 define-the-challenge / start-at-the-end / ask-the-experts；定义 make-a-map / pick-a-target |
+| `plugins/ideo-scrum/skills/design-kernel/empathize/`、`define/`、`images/` | 设计冲刺原书摘录（Knapp，原文只删不改）：共情 define-the-challenge / start-at-the-end / ask-the-experts；定义 make-a-map / how-might-we / pick-a-target；`images/` 原书例图 |
 
 ### ideo-kernel skill
 

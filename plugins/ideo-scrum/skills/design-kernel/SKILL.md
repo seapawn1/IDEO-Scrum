@@ -16,7 +16,7 @@ Each stage maps to an IDEO mode. The mode's guide and its methods live in the id
 | Stage | IDEO mode (ideo-kernel) | What happens | Source excerpts |
 | --- | --- | --- | --- |
 | **Empathize** | `../ideo-kernel/IDEO-modes/empathize.md` | Write the challenge, the design goal, and the design questions; then ask the experts and research | `empathize/define-the-challenge.md`, `empathize/start-at-the-end.md`, `empathize/ask-the-experts.md` |
-| **Define** | `../ideo-kernel/IDEO-modes/define.md` | Make a map; turn what you learned into How Might We questions; pick a target if the challenge is too wide | `define/make-a-map.md`, `define/pick-a-target.md` |
+| **Define** | `../ideo-kernel/IDEO-modes/define.md` | Make a map; turn what you learned into How Might We questions; pick a target if the challenge is too wide | `define/make-a-map.md`, `define/how-might-we.md`, `define/pick-a-target.md` |
 | **Ideate** | `../ideo-kernel/IDEO-modes/ideate.md` | Sketch competing solutions, choose one, storyboard it | — |
 | **Prototype** | `../ideo-kernel/IDEO-modes/prototype.md` | Build a realistic facade of the chosen solution | — |
 | **Test** | `../ideo-kernel/IDEO-modes/test.md` | Test the prototype and answer the design questions | — |

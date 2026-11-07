@@ -93,6 +93,8 @@ PO 放行：2026-11-08，可在冲刺分支上提交（含 Planning 落盘与记
 | 2026-11-08 | 工作区 | 先按 PO 上一条开了 worktree；PO 定这个冲刺不用（Master 兼 Developer 直接做），退出并删除，在主目录切到本分支。worktree 配置留着，以后并行时用：从本地 HEAD 开、`.worktreeinclude` 复制 `.env`、本地设置与 `references/`（Windows 下 symlinkDirectories 没建出链接） | `3dd410d`（main）、`f010a8d` | — |
 | 2026-11-08 | Planning 阶段 1 | PO 定：Sprint Goal 照 PO 以前的行文风格写；选入 PBI-29、34、28，设计日志模板一起做；从 PBI-32 切出 PBI-36（内核加载：Master 三个，Developer、Designer 各两个，Stakeholder 只加载 ideo-kernel）；DoD 全选，「≤2 轮进入执行」PO 看不懂、删去；冲刺路线拟为 08～10（09、10 也可合并）；新增「拿不准就问 PO」 | 产品日志修订记录 2026-11-08 | Planning 阶段 2：精化 |
 | 2026-11-08 | Planning 阶段 2、3 | PO 定精化结束（见 2.2）、How 方向（3.1）、放行；我提的两问：原文里的周几保留、SKILL.md 一句说明；scrum-kernel 改与 IDEO 衔接的一节。后面两个冲刺拟另开 Developer（PO：本冲刺上下文最全、后面要等它，所以 Master 兼 Developer） | 产品日志 1.2、2.2.7 | 施工：34-1 + 29 |
+| 2026-11-08 | 34-1 + 29（含 29-3） | design-kernel 骨架与五阶段表；ideo-kernel 改成工具箱、删设计冲刺两节；scrum-kernel 预研究改指 design-kernel；designer 第 9 行顺带改（不然指向已删的内容），加载句留给 36 | `885bf1b` | 34-2 |
+| 2026-11-08 | 34-2 共情、定义 | 五份旧文件和新的 how-might-we 全部改成原书原文：脚本按行号从原书取，只删不改写（修了转换造成的断字和脚注标记）。删去：开头的 Blue Bottle 整段故事、Flatiron 背景、记 HMW 的便利贴与马克笔、投票的贴点规则、零食与休息。保留：例子里讲方法的部分、9 张方法图（地图、HMW、选靶，共 840K）。旧文件里作者加的话（「solo 时你就是 PO」、Decider 改成 Product Owner）不进原文，改到 28 的约定里写。ATTRIBUTION 第 4 节「不含插图、只记方法流程」的说法已不符，34-6 改 | 本次提交 | 给 PO 看共情、定义 |
 
 # 四、Review
 

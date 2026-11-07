@@ -65,7 +65,7 @@
 | 出版 | Simon & Schuster, 2016 |
 | 许可 | **全版权保护**（All Rights Reserved），无开放许可 |
 | 官方网站 | https://www.thesprintbook.com/ |
-| 本仓库位置 | `plugins/ideo-scrum/skills/design-kernel/`（设计冲刺原书摘录，按 IDEO 五阶段放：`empathize/` define-the-challenge、start-at-the-end、ask-the-experts；`define/` make-a-map、pick-a-target） |
+| 本仓库位置 | `plugins/ideo-scrum/skills/design-kernel/`（设计冲刺原书摘录，按 IDEO 五阶段放：`empathize/` define-the-challenge、start-at-the-end、ask-the-experts；`define/` make-a-map、how-might-we、pick-a-target；`images/` 原书例图） |
 | 使用范围 | 设计冲刺五阶段的**方法步骤与阶段参考**（作者适配；各文件标注章节出处；decider 术语按作者方法论改为 Product Owner）。 |
 
 > **请支持正版**
