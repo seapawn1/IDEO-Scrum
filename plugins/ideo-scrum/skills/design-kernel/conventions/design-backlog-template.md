@@ -34,7 +34,7 @@
 
 ### 2.1 Map
 
-<!-- Actors on top, the ending at the bottom, five to fifteen steps between. Mermaid, flowchart TD. -->
+<!-- Drafted before asking the experts (1.4), then fixed as you learn. Actors on top, the ending at the bottom, five to fifteen steps between. Mermaid, flowchart TD. -->
 
 ### 2.2 How Might We
 
