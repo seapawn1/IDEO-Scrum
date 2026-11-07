@@ -15,10 +15,10 @@
 
 ## 当前状态（蒸馏锚点，随 Sprint 更新；只留最近三条，更早的见 `git log -p -- CLAUDE.md`）
 
+- **2026-11-08 · Sprint 08 立项（设计内核独立）**：分支 `sprint-08-design-kernel`，不开 worktree；Master 兼 Developer。选入 PBI-29、34、28，从 PBI-32 切出 PBI-36（Stakeholder 也加载 ideo-kernel）。ideo-kernel 定位为整个插件共用的工具箱；design-kernel 各阶段对应 IDEO 模式，原书只摘和人机协作有关的；scrum-kernel 改与 IDEO 衔接的一节。产品日志 2.2.3 增「拿不准就问 PO」；DoD 删去「≤2 轮进入执行」；1.2 写下冲刺路线 08～10（之后产品化、分享）。worktree 配置（从本地 HEAD 开、`.worktreeinclude` 带 `references/`）留给以后并行。冲刺日志 `scrum/sprint-08-design-kernel/SprintBacklog.md`。
 - **2026-11-07 · Sprint 08 撤销，产品日志精化出架构 v1**：Sprint 08 的 Planning 未完成、未开工，PO 撤销，工作区删除（原文 `git show fac0383:scrum/sprint-08/<文件>`）。改做产品日志精化，四轮结论都写进产品日志，并按新模板重排（第一个样例）：产品日志是唯一的第一层、一种写法，取消第一层的设计日志；一 Product / Product Goal（Vision 并入）/ DoD，二 2.1 Stakeholders 角色卡、2.2 架构以 Map 为骨架（不写待定），三 PBI 七列（含用户故事，精化并入各行）。产品日志之下冲刺与设计两个平级模块：冲刺由 Developer 负责、产出增量；设计由 Designer 负责，设计日志按 IDEO 五阶段写，产出原型与结论，收官时整份重写成 Review 归档 `docs/`。冲刺流程为 Planning 三阶段（How 只给方向）+ PO 放行（写明授权）、3.2 笔记、检查点、对抗审查（默认 Master）、Review 归档 `docs/` 并给产品日志保鲜、Retro、收官；冲刺不写截止日，收官点是 Sprint Goal 达成或 PO 叫停。插件：内核拆成三个（ideo-kernel 只留五模式与方法库，新建 design-kernel 讲设计冲刺，scrum-kernel 不变），约定放 `conventions/`（约定 v1，仅供参考、可越过，用着不顺每周集中改）；写流程原文优先。之后的方向：流程落地 → 产品化（PBI-30）与分享（PBI-12）。PBI-23、28、29、30 改写，新增 PBI-31～35，PBI-27 完成（研究稿 `docs/PBI-27-bot-research.md`）。下一步：开新的 Sprint 08（拟做 PBI-29、34、28：内核拆分与设计日志约定）。插件本体 v4.0.0 未动。
 - **2026-10-25 · Sprint 07 收官，发版 v4.0.0**：Sprint Goal 达成（一天）。PBI-21：design-kernel 改名 ideo-kernel（调用名变，故升大版本），「Two Schemes」分清 IDEO 五模式与设计冲刺五阶段（设计冲刺之后接构思、原型、测试，HMW 不单列），五阶段参考迁 `design-sprint/`，Method Catalog 去重并加按模式索引；PBI-20：只有 PO 必须是人（作者设计，注明与 SGEP 不同），stakeholder 一个命令多种身份、可常驻做非源码杂务，SM 派活跟进度、派子代理审阅，Developer 交证据；PBI-22：developer / designer / scrum-master 进入即加载对应内核，ideo-kernel 描述加强（「用 IDEO 五模式」触发 0/5 → 5/5）；PBI-24：插件与 marketplace.json 零中文。蒸馏为记忆档 `sprint-07-roles-kernels`，SprintBacklog 删除（原文 `git show 8f3fb44:scrum/SprintBacklog.md`）。Retro 改进项写入下方「组件描述规约」与「插件验证」。codex 分支未同步，停在 3.2.0，这次没做到双版本同号。新登记 PBI-25、PBI-26，排序由 PO 在 Sprint 08 Planning 定。插件本体 v4.0.0（tag `v4.0.0`、`sprint-07-done`）。
-- **2026-10-24 · #28 讨论定案，准备 Sprint 07**：Product Goal 由 PO 重定为「IDEO-Scrum 4.0：让插件带着流程走——角色、内核、流程参考与模板成体系，新项目照着就能跑通」；新增 PBI-20（角色重定义：只有 PO 必须是人；Stakeholder 一个命令多种身份、可常驻；Master 派活跟进度，审阅派全新子代理）、PBI-21（design-kernel 改名 ideo-kernel，分清 IDEO 五模式与设计冲刺五阶段）、PBI-22（角色命令自动加载内核）、PBI-23（流程化参考与文件模板）；PBI-12 改写为方法论分享；PBI-15 关闭，17、18 并入 23，19 并入 20。拆分：Sprint 07＝PBI-21、20、22，Sprint 08＝PBI-23，之后 PBI-12。「Sprint 节律」第一条由「发版即收官」改为「按时间盒收官」；Sprint 06 收官 tag 改名 `sprint-06-done`。插件本体 v3.2.0 未动。详见 [scrum/ProductBacklog.md](scrum/ProductBacklog.md)。
-- 更早的状态（2026-08-31 至 10-24 Sprint 06 收官各条）见 `git log -p -- CLAUDE.md`；教训已蒸馏入记忆档 sprint-06-dual-kernel-refactor。
+- 更早的状态（2026-08-31 至 10-24 #28 讨论定案各条）见 `git log -p -- CLAUDE.md`；教训已蒸馏入记忆档 sprint-06-dual-kernel-refactor。
 - **1.x 已收官蒸馏**：旧目标（两内核结构对等）判定方向性错误，勿延续；教训见 `S:\SeaPawn-Memory\memory\IDEO-Scrum\`（MEMORY.md 索引 + 五期档案）。
 
 ## 维护规约
@@ -64,6 +64,7 @@
 **回归测试**（2026-10-25，Sprint 07 Retro）
 
 - 判定标准先写、单独提交，再跑；出结果后不改标准。
+- 用 Haiku 跑（PO 2026-11-08：测试要用便宜的模型）。
 - 触发测两条路径：从角色命令进入，和直接说。
 - 比较描述效果，同日同环境对照，带改前基线。
 - 无头测法：`reclaude -p --plugin-dir <插件 Windows 路径>`（顶替已装同名插件）；Git Bash 下 `/` 开头的提示加 `MSYS_NO_PATHCONV=1`，路径用 `cygpath -w`。
@@ -78,7 +79,7 @@
 
 > 例外：命令类组件（`commands/*.md`）的抄录主体不设文件头两行；其署名义务由 ATTRIBUTION.md 的登记承担。
 
-**原文优先**（PO 2026-11-07）：写方法流程时能用原文就用原文，可带原书例图；不是原文的写法写进 `conventions/`，标为约定建议。
+**原文优先**（PO 2026-11-07）：写方法流程时能用原文就用原文，可带原书例图；不是原文的写法写进 `conventions/`，标为约定建议。删减的标准：和人机协作无关的删去（日程、周几、零食与休息、白板与用品、线下投票这类；PO 2026-11-08）。
 
 **已知的授权约束：**
 
