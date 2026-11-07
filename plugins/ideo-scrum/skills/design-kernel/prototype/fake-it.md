@@ -54,48 +54,6 @@ Once the illusion is broken, customers switch into feedback mode. They’ll try 
 
 This distinction between feedback and reaction is crucial. You want to create a prototype that evokes honest reactions from your customers. You want it to be as real as possible, while sticking to your one-day timeline. As our partner Daniel Burka says, the ideal prototype should be “Goldilocks quality.” If the quality is too low, people won’t believe the prototype is a real product. If the quality is too high, you’ll be working all night and you won’t finish. You need Goldilocks quality. Not too high, not too low, but just right.
 
-## FITSTAR
-
-Question: How can we explain a new kind of fitness software?
-
-Format: Simulated App Store and iPad app.
-
-Tools: Keynote (presentation software), acting, iPhone videos, iPad.
-
-“People are getting the wrong idea. They download the app. They try it. But they think it’s something else.”
-
-Mike Maser sat back in a plastic chair in our San Francisco office. The brim of his baseball cap was shredded from years of wear, and his plaid lumberjack shirt was faded. Not the look we’d expected for a guy who palled around with professional athletes and spent half his time at video shoots in Los Angeles.
-
-Mike was the CEO of a startup called FitStar. In 2013 and 2014, FitStar’s iPad apps would win Apple’s coveted Best of the Year awards. In the App Store, FitStar would rank among the top of the charts in the health category, and in 2015, the fitness technology company Fitbit would acquire the startup.
-
-But this afternoon was before all of that, back in 2012, when nobody—except for Mike and his cofounder, Dave Grijalva—quite knew what FitStar was all about. GV had invested in the company, and Mike and Dave spent a week with us. The goal of our sprint: Find a better way to explain their new app.
-
-Mike and Dave had a vision for bringing personal fitness training to the masses. Personal trainers are expensive and tricky to fit into busy schedules. “Most people just can’t do it,” said Mike. Thanks to Mike’s connections in the entertainment industry, FitStar had brought on the best personal trainer they could think of: Tony Gonzalez, a fitness guru and star player in the National Football League. They’d filmed hundreds of hours of Tony giving instruction for different exercises, at all kinds of ability levels. And Dave—a programmer with a background building video games—had created algorithms that stitched together video clips of Tony into custom workout sessions.
-
-They had created an automated personal trainer. It could tailor each workout so it was suited to the customer’s fitness level and goals. As he or she progressed, the workouts would adapt and get more difficult. The app had just launched, but FitStar was waiting to promote it until they knew customers could understand how it worked.
-
-So far, people were confused. The message about customization and personalized training wasn’t getting through. Most of their early customers thought it was just a workout video, like the old VH Stapes and D VD s hawked on television. “Once you have that mental model, it’s tough to break,” said Dave.
-
-By Wednesday afternoon of their sprint, Mike and Dave had a slate of promising ideas for improving the initial experience of the iPad app, everything from better descriptions in the App Store to new animations between exercises.
-
-Unfortunately, Mike’s favorite idea appeared impossible to prototype. He wanted to record videos of Tony Gonzalez asking the customer questions as he or she set up the app. In real life, when you start working with a personal trainer, the trainer is right there, talking with you. Mike was betting that a back-andforth conversation would give FitStar the opportunity to explain—in Tony’s own words— how customized the software could be.
-
-But Tony wasn’t in the sprint with us. He was on the other side of the country, playing football for the Atlanta Falcons. Plus, it would be impossible to build a new version of the iPad app in just one day. And even if we could, we would never be able to get it launched to the App Store in time for Friday’s test. We only had one day before the customers came in, and a seemingly impossible prototype to build.
-
-But all we had to do was fake it. On Thursday morning, we divvied up the prototyping tasks. Dave grabbed his laptop and started writing the script for Tony’s video introduction. Mike volunteered to stand in for Tony as the onscreen talent. He put on some workout clothes, set up an iPhone to record video, and read lines from the script.
-
-What about the software? FitStar couldn’t reprogram and re-release their iPad app in time for the test. But we didn’t need a real app. We just needed something that looked like a real app. We remembered that you can run Keynote (Apple’s presentation software, like PowerPoint) on an iPad. A slideshow running full-screen would look just like an app. It could even play videos.
-
-We divided the storyboard into sections—one for each of us to work on. Then, using both the storyboard and the solution sketches as our blueprint, we built the prototype, screen by screen. We found a template kit online with realistic iPad buttons and icons that we could copy over. We added photos and illustrations from the actual FitStar app to make it more realistic. We dropped the videos from Mike and Dave into the slides.
-
-To complete the illusion, we added screenshots from the iPad App Store to the beginning of the slideshow. These screenshots showed FitStar’s app in the health category, and even showed the installation process. When we’d finished making all the slides, John took on the job of “stitcher”: going through the whole deck, making sure everything looked consistent from slide to slide.
-
-By the end of the day, it looked just like real software—even though there was no software at all. FitStar’s prototype was just like one of those Old West façades: The illusion only worked for a few minutes, from a certain angle. But that was enough to answer Mike and Dave’s big question for the sprint: Can we better explain our app to new customers? After Thursday, FitStar was ready for their test.
-
-Some solutions worked. The videos of Mike explaining the software were effective. Right away, customers could explain the app in their own words (“Kind of an automated personal trainer”), and they were willing to pay for it (“Can I sign up right now?”). Other solutions failed. After the introductory conversation, there was a clip of Dave wearing a lab coat. He introduced himself as “Doctor Algo Rhythm” and went on to explain how the software was programmed. But by that point, customers understood (“I get it.”), and they were ready to exercise. They found Doctor Algo unnecessary and even obnoxious (no knock to Dave’s acting).
-
-For FitStar, success in the market depended on quality. But in their sprint, success depended only on being real enough to answer their key questions. They got the information they needed to identify the right solutions—and shut down the wrong ones—with a prototype that only took seven hours to build.
-
 ## SLACK
 
 Slack had two competing ideas to prototype. First was “The Tenacious Tour,” a step-by-step explanation of the software. Just as with Blue Bottle Coffee, this idea could be faked with a series of slides that looked like a website. No sweat.

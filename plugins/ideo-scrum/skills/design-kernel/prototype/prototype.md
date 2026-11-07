@@ -62,8 +62,6 @@ The Stitcher is responsible for collecting components from the Makers and combin
 
 Every sprint team needs a Writer, and it’s one of the most important roles. In Chapter 9 on page 103, we talked about the importance of words in your sketches. And earlier in this chapter we told you that your prototype must appear real. It’s impossible to make a realistic prototype with unrealistic text.
 
-A dedicated Writer becomes extra important if you work in a scientific, technical, or other specialized industry. Think back to Foundation Medicine’s prototype of a cancer genomics report: It would have been tough for just anyone to write medically realistic text, so we relied on a product manager with domain expertise to act as Writer during the sprint.
-
 You’ll want at least one Asset Collector on Thursday. It’s not a glamorous role (although “asset collector” does sound glamorous), but it’s one of the keys to rapid prototyping. Your prototype will likely include photos, icons, or sample content that you don’t need to make from scratch. Your Asset Collectors will scour the web, image libraries, your own products, and any other conceivable place to find these elements. This speeds up the work of your Makers, who don’t have to pause and go collect every bit and piece they need for the prototype.
 
 Finally, there’s the Interviewer, who will use the finished prototype to conduct Friday’s customer interviews. On Thursday, he should write an interview script. (We’ll go into detail about the structure of this script in Chapter 16 on page 201.) It’s best if the Interviewer doesn’t work on the prototype. This way, he won’t be emotionally invested in Friday’s test, and won’t betray any hurt feelings or glee to the customer.
@@ -75,8 +73,6 @@ Don’t forget the opening scene—the realistic moment that happens before the 
 It’s important to give your opening scene enough time to be credible and set the stage. Don’t spend half your day working on it, but do make it believable.
 
 As individual sections of the prototype near completion, the Stitcher moves in. It’s the Stitcher’s job to make the prototype consistent from beginning to end— and ensure that every step is as realistic as possible.
-
-In FitStar’s sprint, John was the Stitcher. To ensure consistency, he pasted everyone’s Keynote slides into the same file, and then tweaked the fonts and colors so that the slides appeared to be one seamless app. To turn up the realism, he added detail to the sign-up screen, adding a slide with a screenshot of the iPad’s on-screen keyboard, to make it look as though the user was really typing.
 
 ## Stitch it together
 

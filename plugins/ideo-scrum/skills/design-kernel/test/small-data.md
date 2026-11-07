@@ -42,14 +42,12 @@ Testing with more people didn’t lead to many more insights—just a lot more w
 
 We’ve seen the same phenomenon in our own tests. By the time we observe the fifth customer, we’re just confirming patterns that showed up in the first four interviews. We tried testing with more customers, but as Nielsen says, it just wasn’t worth it.
 
-Remember the door frame in One Medical’s prototype family clinic? After seeing two children nearly bounce out of their strollers as they rolled into the office, the problem was obvious. The team didn’t need to gather a thousand data points before they fixed it. The same thing with crowding in the lobby and desks in the exam room. When two or three people out of five have the same strong reaction—positive or negative—you should pay attention.
-
 The number five also happens to be very convenient. You can fit five one-hour interviews into a single day, with time for a short break between each one and a team debrief at the end:
 
 This condensed schedule allows the whole team to watch the interviews together, and analyze them firsthand. This means no waiting for results, and no second-guessing the interpretation.
 
 One-on-one interviews are a remarkable shortcut. They allow you to test a façade of your product, long before you’ve built the real thing—and fallen in love with it. They deliver meaningful results in a single day. But they also offer an important insight that’s nearly impossible to get with large-scale quantitative data: why things work or don’t work.
 
-That “why” is critical. If you don’t know why a product or service isn’t working, it’s hard to fix it. If One Medical had put desks in their family exam rooms, parents would have been frustrated. But it would have been difficult to pinpoint the problem. By showing families a prototype clinic and interviewing them about the experience, One Medical found out the why behind the problem: Parents needed reassurance from the doctor, and even a tiny bit of distraction was too much. When all you have is statistics, you have to guess what your customers are thinking. When you’re doing an interview, you can just ... ask.
+That “why” is critical. If you don’t know why a product or service isn’t working, it’s hard to fix it. When all you have is statistics, you have to guess what your customers are thinking. When you’re doing an interview, you can just ... ask.
 
 These interviews are easy to do. They don’t require special expertise or equipment. You won’t need a behavioral psychologist or a laser eye-tracker—just a friendly demeanor, a sense of curiosity, and a willingness to have your assumptions proven wrong. In the next chapter, we’ll show you how to do it.

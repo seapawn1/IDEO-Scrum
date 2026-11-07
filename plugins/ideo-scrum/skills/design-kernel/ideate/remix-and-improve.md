@@ -28,12 +28,6 @@ In Friday’s test, and later, at the new online store, customers loved the simp
 
 Sometimes, the best way to broaden your search is to look inside your own organization. Great solutions often come along at the wrong time, and the sprint can be a perfect opportunity to rejuvenate them. Also look for ideas that are in progress but unfinished—and even old ideas that have been abandoned. In Savioke’s sprint, an unfinished design for the robot’s eyes became the heart of the Relay’s personality.
 
-Savioke wanted to avoid the expectations of fictional robots who can carry on conversations and think independently. Both Steve, the CEO, and Adrian, the head designer, were convinced they could convey the right feeling with just a pair of eyes. So on Tuesday morning of our sprint with Savioke, we spent an hour looking at eyes. We reviewed the eyes of robots in movies. We reviewed the eyes of animated characters. One stood out: a nontalking cartoon creature from the Japanese movie My Neighbor Totoro, who conveyed a peaceful expression with a placid, slow-moving gaze.
-
-But the eyes that won our hearts had been there all along. Adrian showed us a variety of styles he had created long before the sprint. One design had the peaceful manner of the Totoro creature, combined with a simple visual style that perfectly fit the robot’s aesthetic. In Friday’s test, those simple blinking eyes conveyed a friendly personality, without promising conversation.
-
-Like Savioke, you and your team should look far afield and close to home in your search for existing solutions. If you do, you’re sure to uncover surprising and useful ideas.
-
 ## Lightning Demos
 
 Lightning Demos are pretty informal. Here’s how they work:
@@ -52,21 +46,11 @@ One at a time, the person who suggested each product gives a tour—showing the 
 
 Your three-minute Lightning Demos will go by quickly, and you don’t want to rely on short-term memory to keep track of all the good ideas. Remember the “Always be capturing” mantra and take notes on the whiteboard as you go. Start by asking the person who’s giving the tour, “What’s the big idea here that might be useful?” Then make a quick drawing of that inspiring component, write a simple headline above it, and note the source underneath.
 
-For example, someone from the Flatiron team thought it would be interesting to see how comments worked in Google spreadsheets, in case we wanted to add commenting to our clinical trial matching tool. We quickly demonstrated the software, wrote the big idea (“Inline Commenting”), and jotted a quick drawing:
-
-These notes are just to jog your memory later in the day, so they don’t have to be fancy or detailed. We usually end up with a whiteboard full of ideas, such as this one from Flatiron’s sprint:
-
-Flatiron found plenty of interesting elements, but in the end they discarded most of them. If you record on the whiteboard as you go, you don’t have to decide which ideas should be discarded and which are worth remixing and improving. You can figure that out later, when you sketch—a much more efficient use of your energy. For now, don’t make decisions and don’t debate. Just capture anything that might be useful.
-
 By the end of your Lightning Demos, you should have a whiteboard full of ten to twenty ideas. That’s enough to make sure you’ve captured each person’s best inspiration—but it’s a small enough set that you won’t be overwhelmed when you start to sketch. Like the ideas on Flatiron’s list, most won’t turn into anything, but one or two may inspire a great solution. If you look hard enough, you can usually find your blotting paper.
 
 ---
 
 When you combine the ideas you just captured with Monday’s map, your sprint questions, and your How Might We notes, you’ve got a wealth of raw material. In the afternoon, you’ll turn that raw material into solutions. But before you do, you need to form a quick strategy. Should your team split up to tackle different parts of the problem, or should you all focus on the same spot?
-
-Blue Bottle Coffee had one specific target for their sprint: helping customers choose beans. But there were several smaller pieces of the website that were involved: the home page, the list of coffees, and the shopping cart. Without a plan, every person in the sprint might sketch the same part—say, the home page —leaving Blue Bottle without enough ideas for a whole prototype. So they divided up. Each person picked a spot, then the team checked the distribution on the map (page 102).
-
-As you can see, the distribution wasn’t even, but the team was spread out enough to ensure there would be at least a couple of solutions for each important part.
 
 ## Divide or swarm
 

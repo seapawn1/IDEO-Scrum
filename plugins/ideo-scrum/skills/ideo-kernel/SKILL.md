@@ -1,13 +1,13 @@
 ---
 name: ideo-kernel
-description: "Use when the user mentions IDEO, the five modes, design thinking, or a design-thinking method by name — load it before answering, even for a quick outline. It is the plugin's shared toolbox: every role loads it, and both designs (design-kernel) and Scrum Sprints (scrum-kernel) draw on it. Covers the IDEO five modes (Empathize, Define, Ideate, Prototype, Test), human-centered design, user interviews, journey mapping, POV, HMW questions, brainstorming, user testing; rapid prototype validation — when an idea must be checked quickly with a prototype that feels like a prototype (fast, informal, never a formal result, built to learn rather than ship)."
+description: "Use when the user mentions IDEO, the five modes, design thinking, or a design-thinking method by name — load it before answering, even for a quick outline. It is the plugin's shared toolbox and the foundation of every design stage: every role loads it, and both designs (design-kernel) and Scrum Sprints (scrum-kernel) draw on it. Covers the IDEO five modes (Empathize, Define, Ideate, Prototype, Test), human-centered design, user interviews, journey mapping, POV, HMW questions, brainstorming, user testing; rapid prototype validation — when an idea must be checked quickly with a prototype that feels like a prototype (fast, informal, never a formal result, built to learn rather than ship)."
 ---
 
 # IDEO Kernel
 
 ## The Shared Toolbox
 
-This kernel is the plugin's shared toolbox: the IDEO five modes and the method catalog. Every role loads it first. A design (design-kernel skill) maps each of its stages to one of the modes here; a Scrum Sprint (scrum-kernel skill) uses the methods whenever the work calls for them — for example, when the team is stuck mid-Sprint.
+This kernel is the plugin's shared toolbox and the foundation of every stage: the IDEO five modes and the method catalog. Every role loads it first. Each stage of a design (design-kernel skill) stands on one of the five modes, and any method here can be used in any stage whenever the work needs it — the design sprint's own techniques are added on top of these, not in place of them. A Scrum Sprint (scrum-kernel skill) uses the methods whenever the work calls for them — for example, when the team is stuck mid-Sprint.
 
 *(Author's methodology design for solo + AI teams, 2026-11-08.)*
 

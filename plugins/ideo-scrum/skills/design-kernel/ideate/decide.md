@@ -14,28 +14,6 @@ Normally, if we want the benefit of everyone’s perspective, we’re forced to 
 
 Your goal for Wednesday morning is to decide which solutions to prototype. Our motto for these decisions is “unnatural but efficient.” Instead of meandering, your team’s conversations will follow a script. This structure is socially awkward, but logical—if you feel like Spock from Star Trek, you’re doing it right. It’s all designed to get the most out of the team’s expertise, accommodate for our human strengths and shortcomings, and make it as easy as possible to come to a great decision.
 
-To show you what Wednesday looks like, we’d like to introduce you to another startup. This company makes business software, but they didn’t start out that way. In fact, their first product was a video game called Glitch.
-
-Slack was growing fast, but—like any team—they had challenges. One of those challenges was maintaining their rapid growth. Many of the teams adopting Slack were at tech companies, which are often more willing to try new software. But there were only so many tech companies in the world. To keep expanding, Slack needed to get better at explaining their product to all kinds of businesses. It was a tricky problem. On the surface, Slack was simple: a messaging app for the workplace. But under the surface, the story was more complicated.
-
-Slack had become so popular because it changed the way teams functioned. Teams started by using the service to send instant messages to one another, and then often abandoned email in favor of it. But Slack wasn’t just for one-to-one messages. When a team used Slack, all of its employees were in a chat room, so they could communicate as a group. Soon, Slack replaced check-in meetings and phone calls. Teams used it to manage projects and stay up to speed on what the whole company was doing. They connected other software and services to Slack, so that everything was in one place. Slack became the hub for all of their work, and that efficiency and connectedness somehow made work feel good. As a reporter for the New York Times—one of the workplaces that had adopted Slack —put it, “I have a feeling of intimacy with coworkers on the other side of the country that is almost fun. That’s a big deal, for a job.”
-
-That whole story of Slack—how it provided a service that was familiar, but different and somehow better ... Well, that story was really difficult to explain, especially as Slack expanded to new audiences.
-
-Merci Grace, a product manager new to the company, was in charge of solving this problem. It was her team’s job to figure out how to explain Slack to potential customers. Merci decided to start with a sprint, and since GV was an investor in Slack, she invited us to join.
-
-The sprint team included Merci, two designers, an engineer, and a marketer, along with a few of us from GV. On Wednesday morning, everything was right on schedule. There were about a dozen solution sketches, all stuck to the glass walls with blue masking tape.
-
-We walked around the room in silence, seeing one another’s ideas for the first time. One sketch featured a case study of a well-known company using Slack, one sketch had an animated video, and one introduced the software with a guided tour. Each of the dozen ideas for explaining Slack was different, and each had potential. It would be a difficult decision.
-
-Luckily, we didn’t have to make any choices right away. Instead, we placed dot stickers beside the parts of ideas we found interesting. After a few minutes, there were clusters of dots on almost every sketch. When we were done with our silent review, we gathered into a group and discussed the sketches, one at a time. We kept the conversations short by focusing on the clusters of dots—and by using a timer.
-
-It took just under an hour to review all of the sketches. When we were done, everyone took a pink dot sticker to cast his or her final vote. After a few minutes of deliberation, each person silently placed the sticker on the sketch he or she wanted to prototype and test.
-
-After a short discussion, the decision was turned over to Merci, the Decider, and Stewart—who, as CEO, made a cameo appearance to share his opinion. They looked at the pink stickers, took a moment to think, and placed their own “supervotes.” And with that—with no meandering debate and no sales pitches— the decision was made.
-
----
-
 In the Slack sprint, there were about a dozen different solutions for explaining the product to new customers. Each person believed his or her own idea could work. And each person could have spent an hour explaining why. But if we had spent an hour discussing each idea, the whole day could have gone by without any clear conclusion.
 
 Instead, we used the sprint process to reshape that open-ended discussion into efficient critique and decision-making. By the end of the morning, we knew which ideas we wanted to test.

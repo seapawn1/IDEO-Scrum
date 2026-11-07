@@ -12,10 +12,6 @@ This kind of long-form storyboarding is a common practice in movie production. P
 
 Sprints have a shorter timeline and smaller scale than a Pixar production. But storyboarding is still worthwhile. You’ll use your storyboard to imagine your finished prototype, so you can spot problems and points of confusion before the prototype is built. By taking care of those decisions up front, you’ll be free to focus on Thursday.
 
-Slack’s storyboard showed how their prototype would work, following the customers as they read about the two products (Slack and Gather) in a news article, then clicked through to the websites, and, hopefully, signed up for the service.
-
-At a glance, this storyboard might look like the world’s most boring (and poorly drawn) comic strip. But for the Slack team, it was a masterpiece. The storyboard contained all of our best ideas, stuck together in a story we could all understand, and we hoped it would make sense to customers, too. When we looked at the whiteboard, we saw this:
-
 When you’re finished, your storyboard will make just as much sense to your team as Slack’s storyboard did to them. Next, we’ll dive right in and talk about how to make one, and as we go, we’ll show you how Slack put theirs together.
 
 First of all, somebody needs to be the storyboard “artist.” We put the word “artist” in quotes because the job doesn’t require artistic talent. In this case, the “artist” is just someone willing to write on the whiteboard a lot. (It might be another good time to give the Facilitator a break.)
@@ -27,12 +23,6 @@ First, you need a big grid with around fifteen frames. Draw a bunch of boxes on 
 You’ll start drawing your storyboard in the top left box of the grid. This frame will be the first moment that customers experience on Friday. So ... what should it be? What’s the best opening scene for your prototype?
 
 If you get it right, the opening scene will boost the quality of your test. The right context can help customers forget they’re trying a prototype and react to your product in a natural way—just as if they had come across it on their own. If you’re prototyping an app, start in the App Store. If you’re prototyping a new cereal box, start on a grocery shelf. And if you’re prototyping business communication software?
-
-In real life, Slack was getting lots of great press. Many of their new customers discovered the service by reading an article about it. So Merci suggested we use a fake New York Times article for our opening scene. The article could be about “new trends in office software”—giving us the perfect opportunity to introduce our two prototypes, Slack and Gather. Here’s how we drew it on the storyboard:
-
-The fake news article is a useful opening scene. We used the same method in our sprint with Blue Bottle, when we opened with a (fake) New York Times article about three (fake) up-and-coming coffee companies.
-
-But there are lots of ways to open your storyboard. Flatiron Health wondered if existing users of their software would change their workflow for a new clinical trial tool. A news article wouldn’t have made much sense. Instead, Flatiron’s opening scene was an email inbox—the place research coordinators would receive notifications from the new system. For Savioke, the opening scene was checking in to a hotel and forgetting a toothbrush. The trick is to take one or two steps upstream from the beginning of the actual solution you want to test.
 
 ## Choose an opening scene
 

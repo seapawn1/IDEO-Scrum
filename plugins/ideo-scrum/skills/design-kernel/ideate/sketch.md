@@ -4,12 +4,6 @@
 > License: All rights reserved (see ATTRIBUTION.md).
 > Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures are redrawn from the book as Mermaid diagrams or text. Day names are the book's schedule, not an instruction.
 
-Serah Giarusso, Blue Bottle Coffee’s customer support lead, looked uneasy. And she wasn’t the only one. James Freeman, the CEO, furrowed his brow.
-
-It was Tuesday afternoon of Blue Bottle’s sprint. Sunlight made rectangles on the carpet. Somewhere on the street below, a car honked. And there, in the middle of the sprint room, on a coffee table, was the source of the team’s consternation: a stack of paper, a dozen clipboards, and a paper cup filled with black pens.
-
-Somebody cleared his throat. It was Byard Duncan, Blue Bottle’s communications manager. As everyone turned, he cracked a sheepish smile. “So ...,” he said. “What if I can’t draw?”
-
 On Tuesday afternoon, it’s time to come up with solutions. But there will be no brainstorming; no shouting over one another; no deferring judgment so wacky ideas can flourish. Instead, you’ll work individually, take your time, and sketch.
 
 Even though we’re total tech nerds, we’re believers in the importance of starting on paper. It’s a great equalizer. Everyone can write words, draw boxes, and express his or her ideas with the same clarity. If you can’t draw (or rather, if you think you can’t draw), don’t freak out. Plenty of people worry about putting pen to paper, but anybody—absolutely anybody—can sketch a great solution.
@@ -18,21 +12,9 @@ To show you what we’re talking about, let’s take a look at one of the sketch
 
 The big idea behind “The Mind Reader” was to organize the online store the same way a barista might talk with a customer. As you can see in the three frames, this solution leads with a welcome, then asks how the customer prepares coffee at home, before offering recommendations and a brewing guide. There’s a lot of complexity to the idea, but the drawing itself was straightforward: mostly boxes and text, the kind of thing anyone can draw.
 
-Later in the week, the team made a realistic prototype based on “The Mind Reader,” with details filled in from some of the other sketches. The prototype is on page 106.
-
-On Friday, when shown to real customers, “The Mind Reader” was remarkably effective. Customers grew confident in the quality of the coffee as they clicked through the website. They found beans they wanted to order. They described the prototype as “way better” than competing retailers and mentioned that “clearly, these people know coffee.” It was the big winner of Friday’s test, and it became the foundation for Blue Bottle’s new website.
-
-So, who sketched that solution? It wasn’t a designer, an architect, or an illustrator. It was Byard Duncan, the Man Who Couldn’t Draw.
-
 See, Tuesday afternoon is about sketching, but more importantly, it’s about solutions. When your team evaluates these sketches on Wednesday to decide which are best, and when you test your prototype on Friday, it will be the quality of the solutions that matters, not the artistry of the drawings from which they came.
 
 ## The power of sketching
-
-Imagine you’ve got a great idea. You’ve been thinking about it for weeks. You go to work, describe the idea to your teammates, and ... they just stare at you. Maybe you aren’t explaining it well. Maybe the timing isn’t right. For whatever reason, they just can’t picture it. Totally frustrating, right? It’s about to get worse.
-
-Now imagine your boss suggests an alternative idea. It just popped into his head, and you can tell right away that the idea isn’t thought out and won’t work. But all your teammates nod their heads! Maybe it’s because the boss’s idea is vague and each person is interpreting it in his or her own way. Maybe everyone is just supporting him because he’s the boss. Either way, it’s game over.
-
-Okay, come back to reality. That was an imaginary scenario, but it’s the sort of thing that happens when people make decisions about abstract ideas. Because abstract ideas lack concrete detail, it’s easy for them to be undervalued (like your idea) or overvalued (like the boss’s idea).
 
 On Tuesday, we’re not asking you to sketch because we think it’s fun. We’re asking you to sketch because we’re convinced it’s the fastest and easiest way to transform abstract ideas into concrete solutions. Once your ideas become concrete, they can be critically and fairly evaluated by the rest of the team— without any sales pitch. And, perhaps most important of all, sketching allows every person to develop those concrete ideas while working alone.
 
@@ -47,8 +29,6 @@ In our sprints, we work alone, but we follow specific steps to help everyone foc
 The sketches you create on Tuesday will become the fuel for the rest of the sprint. On Wednesday, you’ll critique everyone’s sketches and pick the best ones. On Thursday, you’ll turn them into a prototype. And on Friday you’ll test the ideas with customers. That’s a lot of mileage out of a few drawings, and it might make you think we’re expecting a work of genius straight out of Leonardo da Vinci’s notebook. Not so. To put the power of the sketch in perspective, let’s check out a few more solutions from the Blue Bottle sprint:
 
 As you can see, these sketches are detailed, but they’re not works of art. Each sketch consists of words, boxes, and the occasional stick figure, drawn on normal printer paper and normal sticky notes with a normal pen.
-
-Simple, right? So ... Okay, you’re all set. Go ahead and sketch a great solution!
 
 We’re just kidding. That blank sheet of paper always intimidates us. So, inspired by productivity expert David Allen, we break the process into steps. In his book Getting Things Done, Allen provides a smart strategy for daunting jobs. The secret, Allen writes, is not to think about the task as one monolithic effort (like “Pay taxes”), but instead to find the first small action needed to make progress (like “Collect tax paperwork”) and go from there.
 

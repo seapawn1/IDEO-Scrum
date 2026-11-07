@@ -4,16 +4,6 @@
 > License: All rights reserved (see ATTRIBUTION.md).
 > Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures are redrawn from the book as Mermaid diagrams or text. Day names are the book's schedule, not an instruction.
 
-Michael Margolis is an excellent conversationalist. He smiles easily and asks lots of questions, brimming with a natural curiosity about what it’s like to live where you live, work where you work, and do whatever it is that you do. It’s only afterward that you realize you were talking the whole time and learned little about him.
-
-Michael’s friendliness and curiosity are genuine, but his conversational skills aren’t just a natural gift. Michael is a research partner at GV, and when you watch him interviewing customers—which we’ve seen him do hundreds of times —you realize it’s a practiced art. Everything from the structure of his questions to his body language helps people think aloud and express themselves honestly.
-
-For more than twenty-five years, Michael has conducted research for all kinds of companies—Electronic Arts, Alcoa, Sun Microsystems, Maytag, Unilever, Walmart.com, and Google. Since 2010, he’s been at GV, working with the startups in our portfolio.
-
-Over the years, Michael has adapted his research methods to be fast enough for startups, and learnable for the people who work there. Michael has trained product managers, engineers, designers, salespeople, and countless others in how to conduct these interviews. Anyone can do it—even a CEO.
-
-In this chapter, we’ll let you in on some of Michael’s secrets. In this chapter, you’ll learn how to interview. These interviews can teach you about the people who use your product, reveal hidden problems with your solutions, and uncover the “why” behind it all.
-
 No matter what kind of customer he’s talking to, or what kind of prototype he’s testing, Michael uses the same basic structure: the Five-Act Interview.
 
 ## The Five-Act Interview
@@ -149,24 +139,6 @@ And that’s it. When the interview is over, the Interviewer thanks the customer
 Throughout the session, the Interviewer should remain engaged in the conversation. He should encourage the customer to talk while remaining neutral (say things like “uh-huh” and “mmm hmm,” not “great!” and “good job!”) There’s no need to take notes. The rest of the team in the sprint room will take care of that for you.
 
 Of course, we don’t expect anyone to memorize every question and all five acts. On Thursday, the Interviewer can start early by writing up a script while the rest of the team is prototyping. On Friday, he can make a printout to refer to as the interview goes along. Not only will the script make the interviews easier to run, it will also make them consistent—which makes it easier to spot patterns throughout the day.
-
----
-
-One of our favorite stories about the power of interviews comes from our friend, a designer named Joe Gebbia. Back in 2008, Joe and a couple of friends founded a startup. They had what they thought was an amazing idea for a new online marketplace. They built and launched a website, then spent months improving it until they were pretty sure it was perfect.
-
-But despite their efforts, the new service wasn’t catching on. They had a few customers and a little revenue, but they weren’t growing, and—bringing in just $200 a week—they weren’t even making enough to pay the rent. Hoping they could turn the business around before running out of money, the founders took a somewhat desperate measure. They stopped their engineering work, left the office, and tracked down a handful of their customers. Then they interviewed them. One at a time, face-to-face, they watched people use their website.
-
-Joe describes those interviews as “agonizing and enlightening.” He recalls, “We were, like, smacking our heads.” Their website was riddled with flaws. Even simple issues—such as picking a date on a calendar—confused people.
-
-When they returned to the office, Joe and his cofounders spent a week fixing the most glaring problems, and then released a new version to their customers. Revenue doubled to $400 a week, and Joe checked to make sure it wasn’t a bug in their accounting system. But the numbers were real. So they did another round of interviews, and another round of improvements. Revenue doubled again to $800, then $1,600, then $3,200 a week. That growth didn’t stop.
-
-That startup was Airbnb. Today, the online hospitality marketplace operates in more than 30,000 cities and 190 countries. They’ve served more than 35 million guests. It turns out it was an amazing idea, but to make it work, they had to do those interviews. “There’s this gap between the vision and the customer,”
-
-Joe says. “To make the two fit, you have to talk to people.”
-
-Airbnb’s interviews showed the founders how the product looked through their customers’ eyes, revealing problems the founders themselves couldn’t see. Listening to customers didn’t mean abandoning their vision. Instead, it gave them the knowledge they needed to combine with that vision, so they could close the gap and make a product that worked for real people.
-
-We can’t promise that your interviews will make you as successful as Airbnb, but we can promise that the process will be enlightening. In the next chapter, we’ll talk about how to make sense of what you observe: taking notes, finding patterns, and drawing conclusions about next steps.
 
 ## Ask open-ended questions
 
