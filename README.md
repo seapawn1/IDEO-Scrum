@@ -86,10 +86,11 @@
 
 | 文件/目录 | 内容 |
 |---|---|
-| `scrum/ProductBacklog.md` | 产品日志——Product 定义 / Vision / DoD / PBI 序列（PBI-12~23）/ Architecture（草案大节，据验证轮客户之声抽象） |
-| `scrum/sprint-08/` | Sprint 08 工作区——`SprintBacklog.md`（Why / What / How）、`handoff.md`（交接）、`PBI-27-bot-research.md`（预研究）；收官按蒸馏闭环处理 |
+| `scrum/ProductBacklog.md` | 产品日志——一 Product / Vision / Goal / DoD；二 架构 v1（两侧三层、冲刺流程、插件约定载体）；三 PBI（3.1 当前、3.2 已完成附出处） |
 | `docs/ExpertNotes.md` | 客户之声——作者使用流程已口述落盘（项目骨架→IDEO→design 文件→背景研究→target 四阶段，含与 SprintBacklog 同源表、分工原则、未决清单）；将作为方法论分享的素材 |
-| **冲刺蒸馏** | 1.x 五期与 Sprint 06 已蒸馏至 `S:\SeaPawn-Memory\memory\IDEO-Scrum\`（MEMORY.md 索引 + 各期教训档案，含出处指向 git）；原文 git 历史可追溯 |
+| `docs/PBI-27-bot-research.md` | Bot 工作方式研究（PBI-27）：Grok Bot、DeepSeekBot（pstack）、DS-Bot 等的可借鉴机制，带出处 |
+| `docs/five-stage-mapping.svg` | Scrum 三阶段与 IDEO 五模式的对应图（2026-11-06，ExpertNotes 附录用） |
+| **冲刺蒸馏 / 归档** | 1.x 五期与 Sprint 06、07 已蒸馏至 `S:\SeaPawn-Memory\memory\IDEO-Scrum\`（MEMORY.md 索引 + 各期教训档案，含出处指向 git）；之后的冲刺日志压缩后归档进 `docs/` |
 
 ### 源参考
 

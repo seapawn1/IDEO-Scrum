@@ -11,10 +11,11 @@
 | **插件本体** | `plugins/ideo-scrum/` | 交付物。别人安装的就是这里 |
 | **工作记录** | `scrum/` + `docs/` | 用本插件的方法论开发本插件的过程记录 |
 
-`scrum/` 是**当前状态工作区**（产品日志 + `sprint-NN/` 当期冲刺工作件）；`docs/` 放工作记录文档（如 ExpertNotes 客户之声）。1.x 的 sprint 日志是**历史记录**，教训已蒸馏入 `S:\SeaPawn-Memory\memory\IDEO-Scrum\`（原文 git 历史可追溯），不回改。除非发现事实错误，否则不要回头修改已完成 sprint 的内容。
+`scrum/` 是**当前状态工作区**（产品日志 + `sprint-NN-后缀/` 当期冲刺工作件）；`docs/` 放工作记录文档（ExpertNotes 客户之声、研究稿、收官归档的冲刺日志）。1.x 的 sprint 日志是**历史记录**，教训已蒸馏入 `S:\SeaPawn-Memory\memory\IDEO-Scrum\`（原文 git 历史可追溯），不回改。除非发现事实错误，否则不要回头修改已完成 sprint 的内容。
 
 ## 当前状态（蒸馏锚点，随 Sprint 更新）
 
+- **2026-11-07 · Sprint 08 撤销，产品日志精化出架构 v1**：Sprint 08 的 Planning 未完成、未开工，PO 撤销，工作区删除（原文 `git show fac0383:scrum/sprint-08/<文件>`）。改做产品日志精化，架构 v1 定稿进产品日志第二章：主线改为设计冲刺、五模式退到背后；两侧三层（产品日志 / 冲刺日志 / 增量 ↔ 设计日志 / Target 日志 / 原型），主场依次是 PO / Master / Developer·Designer；冲刺流程为 Planning 三阶段 + PO 放行、3.2 笔记、检查点、对抗审查、Review 归档 `docs/`、Retro、收官；插件载体是两个内核下的 `conventions/`（约定 v1，仅供参考、可越过）。PBI-23、28、29 改写，新增 PBI-31、32，PBI-27 完成（研究稿移至 `docs/PBI-27-bot-research.md`）；产品日志重排为三章；收官做法改写为下方「冲刺收官与归档」。下一步：PO 细讲 Target 日志与产品日志，再开新的 Sprint 08。插件本体 v4.0.0 未动。
 - **2026-10-25 · Sprint 07 收官，发版 v4.0.0**：Sprint Goal 达成（一天）。PBI-21：design-kernel 改名 ideo-kernel（调用名变，故升大版本），「Two Schemes」分清 IDEO 五模式与设计冲刺五阶段（设计冲刺之后接构思、原型、测试，HMW 不单列），五阶段参考迁 `design-sprint/`，Method Catalog 去重并加按模式索引；PBI-20：只有 PO 必须是人（作者设计，注明与 SGEP 不同），stakeholder 一个命令多种身份、可常驻做非源码杂务，SM 派活跟进度、派子代理审阅，Developer 交证据；PBI-22：developer / designer / scrum-master 进入即加载对应内核，ideo-kernel 描述加强（「用 IDEO 五模式」触发 0/5 → 5/5）；PBI-24：插件与 marketplace.json 零中文。蒸馏为记忆档 `sprint-07-roles-kernels`，SprintBacklog 删除（原文 `git show 8f3fb44:scrum/SprintBacklog.md`）。Retro 改进项写入下方「组件描述规约」与「插件验证」。codex 分支未同步，停在 3.2.0，这次没做到双版本同号。新登记 PBI-25、PBI-26，排序由 PO 在 Sprint 08 Planning 定。插件本体 v4.0.0（tag `v4.0.0`、`sprint-07-done`）。
 - **2026-10-24 · #28 讨论定案，准备 Sprint 07**：Product Goal 由 PO 重定为「IDEO-Scrum 4.0：让插件带着流程走——角色、内核、流程参考与模板成体系，新项目照着就能跑通」；新增 PBI-20（角色重定义：只有 PO 必须是人；Stakeholder 一个命令多种身份、可常驻；Master 派活跟进度，审阅派全新子代理）、PBI-21（design-kernel 改名 ideo-kernel，分清 IDEO 五模式与设计冲刺五阶段）、PBI-22（角色命令自动加载内核）、PBI-23（流程化参考与文件模板）；PBI-12 改写为方法论分享；PBI-15 关闭，17、18 并入 23，19 并入 20。拆分：Sprint 07＝PBI-21、20、22，Sprint 08＝PBI-23，之后 PBI-12。「Sprint 节律」第一条由「发版即收官」改为「按时间盒收官」；Sprint 06 收官 tag 改名 `sprint-06-done`。插件本体 v3.2.0 未动。详见 [scrum/ProductBacklog.md](scrum/ProductBacklog.md)。
 - **2026-10-24 · Sprint 06 正式收官（Review + Retro，单提交）**：Sprint 06 自 08-30 起一份日志跨 55 天、含五次发版（v2.0.0 / v2.0.1 / v3.0.0 / v3.1.0 / v3.2.0），超出 4 周时间盒；下方 08-31 条的「收官」只是 v2.0.0 发版时的范围定案，Review 与 Retro 当时未做，本日由 Developer 收口。本次：四段式日志经 PO 批准后蒸馏为记忆档 `sprint-06-dual-kernel-refactor`（`S:\SeaPawn-Memory\memory\IDEO-Scrum\`），`scrum/SprintBacklog.md` 删除（原文：`git show 3f81260:scrum/SprintBacklog.md`）；记忆路径、Product 节（output-styles→commands）、PBI-15 / PBI-19 状态、README 文件地图已对齐；**总目标（v2.0.0）所指版本早已发布，产品日志原处标「待 PO 重定」，文字未改**；未完成项（15-D、17、18、19 的核验去向、12）回产品日志。Retro 改进项：发版即收官、时间盒写日志头、计划外工作先登记、PBI 状态只写产品日志、迁移类改动全仓 grep，已写入下方「维护规约」的「Sprint 节律」；蒸馏闭环补「日志不单独入库」一句。插件本体 v3.2.0 未动。
@@ -43,11 +44,13 @@
 
 写插件组件（skill / command）的 `description` 时：它是**触发条件**，不是自我介绍——用 "Use when..." + 具体场景词；同类组件描述必须有区分度（模板趋同 = embedding 空间互相叠影，系统无法选择）。plugin.json 的 description 是元数据（展示用），非触发主战场。（来源：Sprint 04。）角色命令可以在触发句之后追加一两句边界和相互关系（替谁做事、不做什么、谁召唤谁），让各角色在技能清单里互相知道；触发句保持在最前（2026-10-13，#14）。触发不足时，写明「什么情况下先加载」，不要只堆关键词（2026-10-25，PBI-22：ideo-kernel 的触发由 1/10 升到 5/5）。
 
-**冲刺蒸馏闭环**
+**冲刺收官与归档**（2026-11-07 改，原「冲刺蒸馏闭环」；Sprint 01–07 按旧做法蒸馏为记忆档，不回改）
 
-每期 Sprint 结束的 Review 阶段，本着"SprintBacklog 归西"的目的：AI 狠读冲刺日志 + 产品日志 → 写入四段式日志（Review 段写厚）→ 将教训/关键发现/变更**蒸馏**为一份记忆档案（30-50 行，带出处指向 git）存入 `S:\SeaPawn-Memory\memory\IDEO-Scrum\`（路径以 `.claude/settings.json` 的 `autoMemoryDirectory` 为准）→ 删除 SprintBacklog 及中间产物。脚手架已拆、教训常在、原文 git 兜底。日志经 PO 批准后即蒸馏，日志本身不单独入库。
+- **Review**：备料 → 删除冲刺目录里除 `SprintBacklog.md` 以外的中间文件 → 冲刺日志压缩成关键决定、补上 Review 章 → 改名为冲刺文件夹名（`sprint-NN-后缀.md`）移进 `docs/` → 更新产品日志：做完的 PBI 移入 3.2 并引用该文件，没做完的回 3.1。
+- **Retro**：教训写进记忆（`S:\SeaPawn-Memory\memory\IDEO-Scrum\`，路径以 `.claude/settings.json` 的 `autoMemoryDirectory` 为准）或本文件；特别好的改进经 PO 同意写进 DoD。冲刺日志不设 Retro 章。
+- **收官**：全项目文件保持最新；Review 与 Retro 只出一个提交；tag 与冲刺文件夹同名（同名分支随即删除）；合入 main，关分支与 worktree。
 
-> 三分工：**memory 管教训**（常驻、蒸馏过，见 `S:\SeaPawn-Memory\memory\IDEO-Scrum\MEMORY.md`），**git 管原文**（可查、完整），**`scrum/` 管现状**（产品日志、工作记录）。
+> 分工：**memory 管教训**（见 `S:\SeaPawn-Memory\memory\IDEO-Scrum\MEMORY.md`），**`docs/` 管冲刺原文**（压缩后的冲刺日志），**git 管全部历史**，**`scrum/` 管现状**（产品日志、当期冲刺）。完整流程见产品日志第二章 2.3。
 
 **Sprint 节律**（2026-10-24，Sprint 06 Retro）
 

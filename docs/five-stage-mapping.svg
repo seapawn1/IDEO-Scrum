@@ -3,7 +3,7 @@
   <desc id="desc">A vertical five-stage mapping from Empathize to Test, with a feedback loop from Test back to Define.</desc>
   <rect width="900" height="1100" fill="#f7f1e3"/>
   <text x="60" y="78" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="34" font-weight="700" fill="#1f2a44">IDEO five modes ↔ Scrum</text>
-  <text x="60" y="112" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="18" fill="#6b7280">Our team's reading · Sprint 08</text>
+  <text x="60" y="112" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="18" fill="#6b7280">Our team's reading · 2026-11-06</text>
 
   <line x1="150" y1="170" x2="150" y2="900" stroke="#e86a5a" stroke-width="4" stroke-linecap="round"/>
 
