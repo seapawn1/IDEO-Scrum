@@ -69,6 +69,22 @@ PO 2026-11-08 定，精化结束。要点：
 - 例图不放图片文件，改画成 Mermaid（flowchart TD）或写成文字（PO 2026-11-08，以前的 Map 文件就是这样做的）；只画讲方法的图。
 - 不收：Team、Time and Space、按天的检查清单、FAQ。
 
+### 2.2.1 触发回归：方法与判定标准（2026-11-08，跑之前写定，单独提交）
+
+- **方法**：`reclaude -p --plugin-dir <插件 Windows 路径> --model haiku --output-format stream-json --verbose`，禁用 Write、Edit、Bash、NotebookEdit，在一个空的临时目录里无头跑，从工具调用记录里看加载了哪些技能。用 Haiku（PO：测试用便宜的）。
+- **对照**：同一天、同一环境、同样的题目，用 v4.0.0（`git archive v4.0.0` 导出到临时目录）当改前基线。
+- **题目**：沿用 Sprint 07 的「如何让社区图书馆吸引更多年轻人」，只要工作大纲（每步标题加一两句，不写文件）。
+
+| 组 | 怎么问 | 跑几次 | 判对（任一条不满足判错） |
+| --- | --- | --- | --- |
+| A 直接说 | 「用 IDEO 五模式……」 | 新、旧各 5 | ① 加载了 ideo-kernel；② 没加载 design-kernel；③ 大纲主干依次是共情、定义、构思、原型、测试 |
+| B 直接说 | 「帮我做一个设计冲刺……」 | 新、旧各 5 | 新版：① 加载了 design-kernel；② 大纲主干依次是共情、定义、构思、原型、测试；③ 不按周一到周五排。旧版只记录加载了什么，不判 |
+| C 直接说 | 「帮我开 Sprint Planning：……」 | 新、旧各 5 | 加载了 scrum-kernel |
+| R 角色命令 | designer、developer、scrum-master、stakeholder 各带一个任务 | 新版各 2 | 加载的内核与产品日志 2.2.3 一致：designer = ideo + design；developer = ideo + scrum；scrum-master = ideo + scrum + design；stakeholder = ideo |
+
+- **通过线**：A 新版 ≥ 4/5，且不低于旧版；B 新版 ≥ 4/5；C 新版不低于旧版；R 全部 2/2。
+- **局限**：每组次数少，模型输出有随机性；用户级 CLAUDE.md 照常加载；大纲主干的判定先用脚本按关键词排顺序，再人工抽看。
+
 # 三、How
 
 ## 3.1 How
