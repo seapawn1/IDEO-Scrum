@@ -120,7 +120,8 @@ PO 放行：2026-11-08，可在冲刺分支上提交（含 Planning 落盘与记
 | 2026-11-08 | 36 角色命令加载内核 | 按产品日志 2.2.3：Master 依次加载 ideo、scrum、design；Developer 加载 ideo、scrum；Designer 加载 ideo、design；Stakeholder 加载 ideo（新加一句，原来不加载）。都先加载 ideo-kernel。README 命令表同步 | `1fa87da` | 34-6 |
 | 2026-11-08 | 34-6 署名与说明 | 每份摘录文件头已有 Source / License / Excerpt 三行。ATTRIBUTION 第 4 节：位置（已随各次提交更新）；使用范围改为「原文摘录，只删不改；例图改画；术语保留原文，角色对应写进约定」；「请支持正版」里「不含章节完整内容」已不属实，改为「摘录多章原文（有删节），不含图片文件和全书」——这段版权声明的最终文字待 PO 定。README 加一句说明 design-kernel 是 v3 的旧名、意思变了 | `39155b1` | 回归判定标准 |
 | 2026-11-08 | 触发回归第一轮（改前的新版文字） | reclaude 报「账号暂不可用」，PO 定改用本机 `claude -p`，其余照 2.2.1。结果：A 新 5/5（旧 4/5）；B 新 2/5，未过线——3 次 Haiku 没加载任何技能就直接作答；C 新 4/5、旧 4/5；R 四个命令全 2/2。B 的差别在描述：ideo-kernel 有「even for a quick outline」，design-kernel 没有 | `6ed3e43`（标准）；原始记录在作业临时目录 | 改描述后重跑新版 |
-| 2026-11-08 | 工具审查 | plugin-validator：PASS，5 条警告（README 组件表已改 `e3b7af5`；版本号发版时改；scrum-guide 改动留 PBI-25）。skill-reviewer：需改进，3 条必改——① ideo-kernel Use Protocol 第 2 步与「任何阶段可用任何方法」矛盾（照 PO 定案改）② 地图先后 ③ 原型像不像真的（②③待 PO 定）。其余照已定方向改：两个描述更好区分（design-kernel 加「even for a quick outline」，排除代码、API、UI 设计）、design-kernel 先加载 ideo-kernel、约定在开设计或接手时都读、术语对照、表里指向约定、删悬空引导句与书页指引、Use Protocol 补收官；PBI-25 ① 扩到 16 份摘录 | 本次提交 | 等 PO 定 ②③，再重跑 |
+| 2026-11-08 | 工具审查 | plugin-validator：PASS，5 条警告（README 组件表已改 `e3b7af5`；版本号发版时改；scrum-guide 改动留 PBI-25）。skill-reviewer：需改进，3 条必改——① ideo-kernel Use Protocol 第 2 步与「任何阶段可用任何方法」矛盾（照 PO 定案改）② 地图先后 ③ 原型像不像真的（②③待 PO 定）。其余照已定方向改：两个描述更好区分（design-kernel 加「even for a quick outline」，排除代码、API、UI 设计）、design-kernel 先加载 ideo-kernel、约定在开设计或接手时都读、术语对照、表里指向约定、删悬空引导句与书页指引、Use Protocol 补收官；PBI-25 ① 扩到 16 份摘录 | `bcf2eb0` | 等 PO 定 ②③，再重跑 |
+| 2026-11-08 | B 组试跑两轮 | 加了「even for a quick outline」后 B 仍 2/5（加载 3/5）：Haiku 自认懂设计冲刺，直接作答。描述再加一句加载理由——这里的设计冲刺和常见的五天版不同，要照技能答、别凭记忆——之后加载 5/5；脚本判 4/5，另 1 次是关键词排序误判（第 1 步标题含「定义挑战」），人工看五阶段依次排列，判对，计 5/5。这是试跑，正式结果以 ②③ 改完后的全量重跑为准 | 本次提交 | 等 PO 定 ②③ |
 
 # 四、Review
 
