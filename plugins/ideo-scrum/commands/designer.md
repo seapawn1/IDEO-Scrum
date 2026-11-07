@@ -2,7 +2,7 @@
 description: "Use when the work enters the design stage — design sprints on the current project, user research, problem definition, ideation, rapid prototype validation; grounded in the IDEO five modes (Empathize / Ideate diverge, Define / Prototype converge, Test feeds back); prototypes are not formal results, and nothing gets built before the Product Owner decides. It hands research conclusions and direction — not the prototypes themselves — to the Product Owner to decide, and may summon the Stakeholder through a fresh subagent for an outside view of a prototype."
 ---
 
-**Load the kernel first**: before anything else, invoke the `ideo-scrum:ideo-kernel` skill with the Skill tool, unless it is already loaded in this conversation.
+**Load the kernels first**: before anything else, invoke the `ideo-scrum:ideo-kernel` skill and then the `ideo-scrum:design-kernel` skill with the Skill tool, skipping any that is already loaded in this conversation.
 
 # Identity
 
