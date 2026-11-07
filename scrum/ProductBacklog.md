@@ -68,10 +68,14 @@ flowchart TD
     A --> B["② 写产品日志：Product · 架构 · PBI（2.2.4）"]
     M --> B
     B --> C["③ Planning：Why → What（精化）→ How（只给方向）（2.2.5）"]
+    B -- "某条 PBI 要设计" --> X["设计：共情 → 定义 → 构思 → 原型 → 测试（2.2.6）"]
+    C -- "精化碰到难点" --> X
+    G --> X
+    S --> X
+    X -- "结论回流" --> B
     C --> P["④ PO 放行"]
-    P --> W["⑤ 施工；某条 PBI 要设计时开 Target（2.2.6）"]
+    P --> W["⑤ 施工（2.2.5）"]
     D --> W
-    G --> W
     W --> R["⑥ 对抗审查 · PO 验收"]
     R --> V["⑦ Review：冲刺日志归档 · 产品日志保鲜"]
     S --> V
@@ -81,7 +85,7 @@ flowchart TD
 
 ### 2.2.2 主线与分层
 
-**一条主线：产品日志 → 冲刺**（PO 2026-11-07 第三轮定，取代同日第一轮的「主线是设计冲刺」）：新老项目都从产品日志开始，所有工作都在冲刺里做。冲刺里某条 PBI 需要设计时，在冲刺里开 Target 日志；设计冲刺只作为 Target 日志的写法（design-kernel）。IDEO 五模式是所有角色共用的方法库（ideo-kernel）。不另设设计日志：设计冲刺第一层的挑战、长期目标、冲刺问题、Map，在产品日志里都有对应（Product、Product Goal、DoD、架构）。PBI-21（v4.0.0 的「Two Schemes」）保持完成、不回改；内核拆分归 PBI-29、PBI-34。
+**产品日志之下两个平级模块：冲刺与设计**（PO 2026-11-07 第四轮定，取代第三轮的「Target 开在冲刺里」）：新老项目都从产品日志开始。做事开冲刺（Developer 负责，产出增量）；要设计时开设计（Designer 负责，产出原型与结论）——产品日志里某条 PBI 要设计，或冲刺精化碰到难点，都开成独立的设计，不放在冲刺下面。两者可以任意组合，都对产品日志负责。设计日志按 IDEO 五阶段写（design-kernel），IDEO 五模式也是所有角色共用的方法库（ideo-kernel）。不另设第一层的设计日志：设计冲刺第一层的挑战、长期目标、冲刺问题、Map，在产品日志里都有对应（Product、Product Goal、DoD、架构）。PBI-21（v4.0.0 的「Two Schemes」）保持完成、不回改；内核拆分归 PBI-29、PBI-34。
 
 **三层**，与 Scrum 的工件一一对应：
 
@@ -89,32 +93,48 @@ flowchart TD
 | --- | --- | --- | --- | --- |
 | 1 | 产品日志 | Product Goal | PO（与 Master 一起） | — |
 | 2 | 冲刺日志 | Sprint Goal | Developer | Master |
-| 2 之内 | Target 日志：冲刺里某条 PBI 需要设计时开 | Target 目标 | Designer | Master |
+| 2 | 设计日志（DesignBacklog）：某条 PBI 要设计时开，与冲刺平级 | 设计目标 | Designer | Master |
 | 3 | 增量：代码或文档，是什么由 DoD 定 | DoD | Developer | — |
-| 3 | 原型：用完即弃，只有学到的东西回流 | 冲刺问题 | Designer | — |
+| 3 | 原型：留在设计文件夹里，不进增量；设计收官时删掉，只有学到的东西回流 | 设计问题 | Designer | — |
 
-- 以 PBI 为单位判断要不要做设计：很多 PBI 都要，做完设计照样要交增量。纯设计的需求也开冲刺，Sprint Goal 就是设计，增量是设计文档（PO 2026-11-07：增量不一定是代码）。
+- 以 PBI 为单位判断要不要做设计：很多 PBI 都要；设计的结论要落地，照样开冲刺交增量（PO 2026-11-07：增量不一定是代码，是什么由 DoD 定）。
 - 第三层不是日志，也不规定方法——靠干活人自己的技能；做完在 Review 交回 PO 与 Master。增量累加进产品；原型用完即弃，只有学到的东西回流。
+- **文件**（PO 2026-11-07）：`scrum/` 是根，放产品日志和两类文件夹；做完的都归档进 `docs/`。看板以后再设计（PBI-35）。
+
+```
+scrum/
+├── ProductBacklog.md     产品日志
+├── sprint-NN-后缀/       冲刺：SprintBacklog.md + 中间文件
+└── design-后缀/          设计：DesignBacklog.md + 原型（不编号）
+docs/
+├── sprint-NN-后缀.md     冲刺收官归档
+└── design-后缀.md        设计收官归档（Review 文档）
+```
 
 ```mermaid
 flowchart TD
     PL["第一层 · 产品日志（PO）<br/>一 Product · Goal · DoD ｜ 二 Stakeholders · 架构 ｜ 三 PBI"]
     PL -- "Planning 选入" --> SL["第二层 · 冲刺日志（Developer 负责，Master 主持）<br/>一 Why ｜ 二 What ｜ 三 How 与笔记 ｜ 四 Review"]
-    SL -- "某条 PBI 需要设计" --> TL["冲刺之内 · Target 日志（Designer 负责，Master 主持）<br/>设计冲刺的写法"]
+    PL -- "某条 PBI 要设计" --> DL["第二层 · 设计日志（Designer 负责，Master 主持）<br/>一 共情 ｜ 二 定义 ｜ 三 构思 ｜ 四 原型 ｜ 五 测试"]
+    SL -- "精化碰到难点" --> DL
     SL -- "PO 放行" --> INC["第三层 · 增量（Developer）"]
-    TL --> PR["第三层 · 原型（Designer）"]
+    DL --> PR["第三层 · 原型（Designer）"]
     INC -- "对抗审查 → Review" --> SL
-    PR -- "测试：学到的东西回流" --> SL
+    PR -- "测试：学到的东西" --> DL
+    DL -- "结论回流" --> PL
+    DL -. "发起它的冲刺" .-> SL
     SL -- "收官：压缩后归档" --> DOC["docs/sprint-NN-后缀.md"]
+    DL -- "收官：重写成 Review 归档" --> DDOC["docs/design-后缀.md"]
     DOC -. "3.2 引用" .-> PL
+    DDOC -. "3.2 引用" .-> PL
 ```
 
 ### 2.2.3 角色与主场
 
-- **PO**（唯一必须是人的角色，PBI-20）：主场是产品日志，以及产品日志向冲刺日志的交接；和 Master 一起定 PBI（Master 是 PO 的秘书）；定价值方向、Sprint Goal、选入的 PBI；放行施工；自己用插件，用着不顺就记下来，每周集中改一次（见 2.2.7）。PO 有时也动手施工，这时以 Developer 身份参与（Scrum Guide："If the Product Owner or Scrum Master are actively working on items in the Sprint Backlog, they participate as Developers."），How 必须和 PO 深入商量，不由 Developer 独自决定。
-- **Master**（项目会话里的 scrum-master）：主场是冲刺日志与 Target 日志——主持 Planning 与精化、记录、跟进度；审阅 How 与增量。
+- **PO**（唯一必须是人的角色，PBI-20）：主场是产品日志，以及产品日志向冲刺日志、设计日志的交接；和 Master 一起定 PBI（Master 是 PO 的秘书）；定价值方向、Sprint Goal、选入的 PBI；放行施工；自己用插件，用着不顺就记下来，每周集中改一次（见 2.2.7）。PO 有时也动手施工，这时以 Developer 身份参与（Scrum Guide："If the Product Owner or Scrum Master are actively working on items in the Sprint Backlog, they participate as Developers."），How 必须和 PO 深入商量，不由 Developer 独自决定。
+- **Master**（项目会话里的 scrum-master）：主场是冲刺日志与设计日志——主持 Planning 与精化、记录、跟进度；审阅 How 与增量。
 - **Developer**：对冲刺负责：写 How、做增量；在 Planning 阶段 2 参与讨论，并做最后的「没有不明白的点」审查。
-- **Designer**：对 Target 负责：在冲刺里做设计研究和原型，学到的东西回流冲刺日志（PO 2026-11-07）。
+- **Designer**：对设计负责：做设计研究和原型，结论回流产品日志和发起它的冲刺；与 Developer 同等，都对产品负责（PO 2026-11-07）。
 - **Stakeholder**：外部视角，身份写在 2.1；Review 时由 PO 或 Master 召唤；PO 指定时，对抗审查也交给它（见 2.2.5 单元 7）。
 - **加载的内核**（PO 2026-11-07）：每个角色先加载 ideo-kernel；Master 三个都加载，Developer 再加 scrum-kernel，Designer 再加 design-kernel；Stakeholder 不加载（PBI-32）。
 - 冲刺日志由 PO、Master、Developer 三方一起做；简单项目没有 Developer 时，Master 和 PO 直接走完。
@@ -137,7 +157,7 @@ PO 2026-11-07 第三轮定；本产品日志是第一个样例（PBI-31）。
 | | 3.2 已完成 | 一行一条，附出处 |
 | 修订记录 | — | 最近三条 |
 
-- **架构照 Make a Map 写**：上面列人（2.1 的 Stakeholders；AI 角色也算——Make a Map："And sometimes, of course, there's a robot."），下面写结局，中间 5～15 步，只用字、箭头和少量方框，画图用 `flowchart TD`。要细说的步骤，在 Map 后面单开小节。不写「待定」：不明白的地方登记成 PBI，放进冲刺研究（要设计就开 Target）。技术层面的架构（模块、接口）是 Developer 的技能，写在增量里，不进产品日志。
+- **架构照 Make a Map 写**：上面列人（2.1 的 Stakeholders；AI 角色也算——Make a Map："And sometimes, of course, there's a robot."），下面写结局，中间 5～15 步，只用字、箭头和少量方框，画图用 `flowchart TD`。要细说的步骤，在 Map 后面单开小节。不写「待定」：不明白的地方登记成 PBI，交给冲刺或设计去研究（2.2.6）。技术层面的架构（模块、接口）是 Developer 的技能，写在增量里，不进产品日志。
 - **PBI 七列**：编号 | 标题 | 用户故事 | 架构定位 | 当前状态 | 规模 | 备注。
   - 用户故事：「作为〈2.1 里的谁〉，我想要……，以便……」。
   - 架构定位：指向 Map 的某一步，或 2.2 的某个小节。
@@ -177,7 +197,7 @@ PO 2026-11-07 第三轮定；本产品日志是第一个样例（PBI-31）。
 ```mermaid
 flowchart TD
     S1["Planning 阶段 1：Why 与选材<br/>PO 主导 → 1.1、1.2、2.1"] --> S2["Planning 阶段 2：精化<br/>Master 主导，Developer 最后审查 → 2.2"]
-    S2 -- "碰到难点" --> T["难点成为 Target：开 Target 日志（冲刺分支上的子分支）"]
+    S2 -- "碰到难点" --> T["难点开成设计（独立的设计文件夹，2.2.6）"]
     T -. "学到的东西" .-> S2
     S2 --> S3["Planning 阶段 3：How（只给方向）<br/>Developer 主导，Master 与 PO 看方向 → 3.1"]
     S3 --> G{"PO 放行"}
@@ -204,7 +224,7 @@ flowchart TD
    6. 两个「不用再问」：Developer 不用再问「你指的是什么」，PO 不用再问「你做的是什么」。检验办法：Developer 用自己的话复述每个点，PO 认可；
    7. 精化结束由 PO 说。
 
-   验收标准可以写在产品日志里，也可以在冲刺日志 2.2 补；产品日志已经写全的，冲刺日志 2.2 不再写。精化也可以随时在产品日志里做，那里只是放细，最终在这里做（见 2.2.4）。归为研究任务的难点成为 Target（见 2.2.6），冲刺其余部分照常。最后 Developer 审查：没有不明白的点。
+   验收标准可以写在产品日志里，也可以在冲刺日志 2.2 补；产品日志已经写全的，冲刺日志 2.2 不再写。精化也可以随时在产品日志里做，那里只是放细，最终在这里做（见 2.2.4）。归为研究任务的难点开成设计（见 2.2.6），冲刺其余部分照常。最后 Developer 审查：没有不明白的点。
 3. **Planning 阶段 3（How）**：Developer 主导，每个点只写大致方向，不写具体步骤——写得出具体步骤，就直接去做；这时还不动增量。Master 与 PO 只看方向对不对，同意就放行；细节在施工时定，细审放到做出来的增量上（单元 7）。Planning 整体从简：精化可以细一些，How 不要细。（PO 2026-11-07：「How 千万不能写成具体计划，具体的计划为什么不直接去干呢」；pstack 也故意不设计划技能，把「打磨抽象计划」列为坑。）
 4. **PO 放行**：How 定稿、PO 放行后才能施工——计划批准不等于开工授权（2026-11-06 教训）。放行写成一行，带上这次授权到哪一步，例如「PO 放行：2026-11-08，可提交、可合入 main，不推送」。
 5. **施工与笔记（3.2）**：冲刺日志是全程记录本——会话关了，新会话读日志就能接上；变长没关系。（补充）每行写：日期 · 做了什么 · 决定与理由 · 证据或提交号 · 下一步；接手的会话以笔记为准，不重新推导。
@@ -221,23 +241,35 @@ flowchart TD
 | --- | --- |
 | 对抗审查或 PO 验收不过 | 写明缺什么，回施工 |
 | 外部阻碍 | Master 立刻报 PO |
-| 精化碰到难点 | 难点成为 Target，开 Target 日志研究，其余照常 |
+| 精化碰到难点 | 难点开成设计去研究（2.2.6），冲刺其余部分照常 |
 | 中途可以发版 | 照发，不结束 Sprint |
 | 收官时没做完 | 没做完的 PBI 回产品日志，不顺延 |
 | Sprint Goal 作废 | 只有 PO 能取消 Sprint |
 
-### 2.2.6 Target 日志（冲刺之内·设计）
+### 2.2.6 设计日志（DesignBacklog，与冲刺平级）
 
-- **何时开**：冲刺里某条 PBI 需要设计——精化碰到难点，或施工卡在问题没想清。拿出来的是难点，不是整条 PBI——它叫 Target，就是要击中的点。
-- **谁**：Designer 负责，Master 主持、记录；产出原型和学到的东西（PO 2026-11-07）。
-- **在哪**：在冲刺分支上再开一个子分支，专做设计研究；可以有自己的 worktree（同一仓库的多个 worktree 共用一个 git 仓库，目录不要建在冲刺 worktree 里面）。
-- **写什么**：设计冲刺的写法（design-kernel，PBI-34）。暂套冲刺日志骨架：Target 目标 → 选入的问题 → Map（抄来再细化）→ 发散、收敛出方案（用 ideo-kernel 的方法）→（原型、测试，可选）→ 学到的东西回流发起它的冲刺日志（需要时也更新产品日志）。
-- 完整写法、原型放哪与用完怎么处理、研究完怎么合回：PO 细讲，见 PBI-28。
+PO 2026-11-07 第四轮定，取代第三轮的「Target 日志」。
+
+- **何时开**：产品日志里某条 PBI 要设计，或冲刺精化碰到难点（拿出来的是难点，不是整条 PBI）。都开成独立的设计，不放在冲刺下面。
+- **谁**：Designer 负责，Master 主持；PO 在构思末尾拍板定方案。
+- **在哪**：`scrum/design-后缀/`，不编号，放 `DesignBacklog.md` 和原型。原型不进增量，留在设计文件夹里；设计问题没答完，可以跨几个冲刺。分支从冲刺分支开还是从 main 开，用到时再定。
+- **写什么**：按 IDEO 五阶段分五章，不设笔记节（PO：做原型时自然会往里写），也不按原书的五天写。方法以 design-kernel 里设计冲刺的原文为主，ideo-kernel 的方法在背后。
+
+| 章 | 写什么 |
+| --- | --- |
+| 一 共情 | 先写挑战、设计目标、设计问题；然后问专家（PO、2.1 的角色卡）、做深度研究 |
+| 二 定义 | Map（相当于 POV）、HMW；选靶可选 |
+| 三 构思 | 几个互不相通的子代理各出一个方案 → 组合 → PO 拍板定方案 |
+| 四 原型 | 照选定的方案做原型 |
+| 五 测试 | 用 2.1 的角色卡召唤 Stakeholder 测，PO 也测；拿结果回答设计问题 |
+
+- **收官**：设计问题答完，或 PO 叫停。整份设计日志重写成一份 Review 文档，覆盖原文，改名为 `design-后缀.md` 移进 `docs/`；原型等文件删掉（git 里还在）；产品日志保鲜。（补充）Review 文档写：挑战与设计问题、选定的方案、每个设计问题的测试结论、回流到哪里、原型在哪个提交。Retro 同冲刺：不设章，教训写进记忆和 CLAUDE.md。
+- 模板与约定见 PBI-28。
 
 ### 2.2.7 在插件里的载体：约定 v1
 
 - **三个内核**（PO 2026-11-07 第三轮定，取代「不新建技能」）：ideo-kernel 只放 IDEO 五模式与方法库（以现有的为底，删去设计冲刺部分，PBI-29）；新建 design-kernel，专讲设计冲刺，从原书扩充（PBI-34）；scrum-kernel 不变。代价（PO 接受）：design-kernel 是 v3 用过的名字，意思变了；内核分工变，升大版本；三个内核的触发按 PBI-22 的基线重测。
-- **放哪**：scrum-kernel 下新建 `conventions/`，放产品日志、冲刺日志的模板与各单元约定；共用的单元（检查点、审阅）只在这里写一份。design-kernel 下的 `conventions/` 放 Target 日志的模板与约定。
+- **放哪**：scrum-kernel 下新建 `conventions/`，放产品日志、冲刺日志的模板与各单元约定；共用的单元（检查点、审阅）只在这里写一份。design-kernel 下的 `conventions/` 放设计日志的模板与约定。
 - **运行时**：插件装在 Claude Code 上，运行时就是 Claude Code，不造平台（PO 2026-11-07，原 PBI-30 精化记录的「定位」）。
 - **三处分工**：模板为主（流程长在冲刺日志的章节里，AI 填日志时自然读到）；参考为辅（每个单元的理由、何时可以跳过，按需读）；角色命令里只放一句指路。
 - **身份声明**（每份约定文件开头，英文）："These are working conventions, v1 — the author's reading of Scrum and design thinking for solo + AI teams. They are less precise than the official guides. Use them as reference: follow what fits, override what doesn't, and note why. Where a convention departs from the official guide on purpose, it says so and gives the reason."
@@ -245,7 +277,7 @@ flowchart TD
 - **原文优先**（PO 2026-11-07）：写方法流程时能用原文就用原文，可带原书例图；不是原文的写法都进 `conventions/`，标为约定建议。版权由 PO 负责，发布前声明。
 - **写法**：约定文件长度不限，重点放前面；常驻部分（技能描述、SKILL.md 里的一张短表、命令里的一句指路）保持短；全英文、自足。每条约定起一个短名，方便口头引用（例：「How 只给方向」「PO 放行」；写进插件时用英文）；短名由 Master 起（PO 2026-11-07）。
 - **迭代**（PO 2026-11-07）：约定会一直改，这是敏捷的做法。用着不顺就记下来（3.2 或作者待办），大约每周集中改一次；新约定写好后，下一个冲刺就照着用；冲刺进行中不改约定。
-- **取消**：设计日志（PO 2026-11-07，见 2.2.2）。
+- **取消**：第一层的设计日志（PO 2026-11-07，见 2.2.2）。
 - **全局记忆**（`S:\SeaPawn-Memory\memory\GlobalMemory\` 里的 Sprint 收尾等条目）是过渡态；约定落地后，被取代的条目删除，以插件约定为准。
 
 ### 2.2.8 与官方故意不同之处（附理由）
@@ -258,7 +290,8 @@ flowchart TD
 | 检查点取代每日站会，PO 参加 | 每日站会：每天 15 分钟，只有 Developer 参加 | AI 按会话工作，不按天；停下来就问 PO |
 | 必须有审阅方：默认 Master，PO 可指定 Stakeholder 或子代理 | 增量由 Developer 自己负责 | 同上；Stakeholder 接审阅时，现有命令只写了外部视角，不含对 DoD 的核验（见 PBI-32） |
 | 冲刺不写截止日，收官点是 Sprint Goal 达成或 PO 叫停 | Scrum Guide：Sprint 定长，不超过一个月 | AI 按会话工作，日期没有意义（PO 2026-11-07）；代价是冲刺拖长只能靠 PO 发现（Sprint 06 曾一份日志跨 55 天） |
-| 冲刺日志压缩后归档 `docs/` | — | 原文留在仓库里，产品日志 3.2 可直接引用 |
+| 设计与冲刺平级，设计可以不在冲刺里做 | Scrum Guide："All the work necessary to achieve the Product Goal, including Sprint Planning, Daily Scrums, Sprint Review, and Sprint Retrospective, happen within Sprints." | 设计的产出是原型和结论，不进增量；它的去留跟着设计问题走，可能跨几个冲刺；Designer 与 Developer 同等，都对产品负责（PO 2026-11-07）。只写在约定里，官方文件不动 |
+| 冲刺日志压缩、设计日志重写成 Review 后归档 `docs/` | — | 原文留在仓库里，产品日志 3.2 可直接引用 |
 
 # 三、Product Backlog Items
 
@@ -269,15 +302,16 @@ flowchart TD
 | 编号 | 标题 | 用户故事 | 架构定位 | 当前状态 | 规模 | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
 | PBI-12 | 方法论分享——公开系列（原「专家笔记完善」） | 作为读者，我想要一套公开的方法论分享（系列文章、网页或视频），讲清 solo + AI 怎么用 Scrum 和设计思维，以便不装插件也能学会、用到自己的项目里 | 产品之外：分享线（1.2「之后的方向」） | 待开始（排在 PBI-23 之后） | L | 作者自己也借此梳理一遍；素材：[ExpertNotes.md](../docs/ExpertNotes.md) 里已写下的使用方法；公开发布前过一遍授权（d.school 非商业；版权声明由 PO 负责，PO 2026-11-07）；发布属对外动作，发前经 PO 确认；来源：seapawn.md L3，2026-10-24 PO 改为方法论分享 |
-| PBI-23 | 冲刺日志约定 v1——模板与各单元约定 | 作为熟手，我想要插件自带冲刺日志模板和各单元的约定，以便每个冲刺都照同一套流程开会、记录、收官，不用我每次口述规矩 | 2.2.5 一个 Sprint（Map ③～⑧） | 待排序 | L | 放 scrum-kernel 的 `conventions/`；范围：冲刺日志模板（四章）、各单元约定（Planning 三阶段与 PO 放行、施工与笔记、检查点、对抗审查、PO 验收、Review 与归档、Retro、收官）、SKILL.md 加一张短表、每份文件开头写身份声明（2.2.7）；不含产品日志模板（PBI-31）、Target 日志（PBI-28）、角色命令（PBI-32）；验收草案（Planning 时 PO 定）：① 空目录冷启动，只靠插件能按约定开 Planning、建出冲刺日志骨架 ② 从角色命令进入、直接说，两条路径都找得到约定 ③ 技能描述不变，SKILL.md 只多一张短表 ④ 全英文、自足，故意不同处写明理由 ⑤ 对抗审查通过；开放点：文件怎么拆（Developer 定）、回归测法（先写判定标准、单独提交）、约定落地后删哪些全局记忆（PO 定）；来源：#28 A4（PO 10-21：「非常重要，以后插件就这么定」），PBI-17、18 并入，2026-11-07 改写范围 |
+| PBI-23 | 冲刺日志约定 v1——模板与各单元约定 | 作为熟手，我想要插件自带冲刺日志模板和各单元的约定，以便每个冲刺都照同一套流程开会、记录、收官，不用我每次口述规矩 | 2.2.5 一个 Sprint（Map ③～⑧） | 待排序 | L | 放 scrum-kernel 的 `conventions/`；范围：冲刺日志模板（四章）、各单元约定（Planning 三阶段与 PO 放行、施工与笔记、检查点、对抗审查、PO 验收、Review 与归档、Retro、收官）、SKILL.md 加一张短表、每份文件开头写身份声明（2.2.7）；不含产品日志模板（PBI-31）、设计日志（PBI-28）、角色命令（PBI-32）；验收草案（Planning 时 PO 定）：① 空目录冷启动，只靠插件能按约定开 Planning、建出冲刺日志骨架 ② 从角色命令进入、直接说，两条路径都找得到约定 ③ 技能描述不变，SKILL.md 只多一张短表 ④ 全英文、自足，故意不同处写明理由 ⑤ 对抗审查通过；开放点：文件怎么拆（Developer 定）、回归测法（先写判定标准、单独提交）、约定落地后删哪些全局记忆（PO 定）；来源：#28 A4（PO 10-21：「非常重要，以后插件就这么定」），PBI-17、18 并入，2026-11-07 改写范围 |
 | PBI-25 | 插件小修集合 | 作为陌生人，我想要单独装上的插件里链接、署名、触发句和标题层级都对，以便不被死链和过时的说法误导 | 2.2.7 载体（插件文件） | 待排序 | S | ① IDEO-modes 五份文件的许可行指向仓库根 ATTRIBUTION.md，插件单独分发后失效（改法实现前定）；② ideo-kernel、scrum-kernel 两个 SKILL.md 没有 Source/License 头（先判定哪些段落属摘录）；③ Brainstorming 的触发句「Use after an HMW is clear」（HMW 已是可选方法；新文字由 PO 定）；④ 随 PBI-29 解决（设计冲刺移出 ideo-kernel）；⑤ scrum-guide-2020.md 第 297 行「Scrum Guide History」应为 `##`（工作区已有这处来源不明的改动，保留，随本条提交）；来源：2026-10-25 Sprint 07 Review，⑤ 2026-11-07 登记 |
-| PBI-28 | Target 日志约定 v1 | 作为熟手，我想要冲刺里某条 PBI 需要设计时，有一份 Target 日志模板可以照着做，以便把难点研究清楚、学到的东西回流冲刺，而不是卡住或凭感觉做 | 2.2.6 Target 日志（Map ⑤） | 待排序（待 PO 细讲 Target 日志） | M | 放 design-kernel 的 `conventions/`，依赖 PBI-34；范围：Target 日志模板、子分支做法、回流规则；开放点：完整写法（PO 细讲）、原型放哪与用完怎么处理、研究完怎么合回；来源：2026-11-06 PO 精化口述（原「DesignBacklog 模板」），2026-11-07 改写（取消设计日志；Target 开在冲刺里） |
-| PBI-29 | ideo-kernel 收窄——只留 IDEO 五模式与方法库 | 作为熟手，我想要 ideo-kernel 只讲 IDEO 五模式和方法库，并且每个角色都先加载它，以便 Developer 冲刺卡住、Designer 做原型时，手边都有共情、定义、发散、原型、测试的方法 | 2.2.7 载体：ideo-kernel | 待排序 | M | 以现有 ideo-kernel 为底，删去设计冲刺部分（Two Schemes、Design Sprint 表、`design-sprint/` 目录，交 PBI-34）；描述保留 IDEO、five modes、design thinking 等触发词；PBI-25 ④ 随之解决；与 PBI-34 同版发，升大版本；验收草案：三个内核同日对照，两条路径的触发回归（以 PBI-22 的 5/5 为基线），SKILL.md 不变长；来源：2026-11-06 PO 精化（原「换主线」），2026-11-07 第三轮改为拆内核 |
+| PBI-28 | 设计日志约定 v1 | 作为熟手，我想要某条 PBI 需要设计时，有一份设计日志模板可以照着做，以便把难点研究清楚、结论回流产品日志和冲刺，而不是卡住或凭感觉做 | 2.2.6 设计日志（Map 的「设计」） | 待排序（拟进 Sprint 08） | M | 放 design-kernel 的 `conventions/`，依赖 PBI-34；范围：设计日志模板（五章：共情、定义、构思、原型、测试）、设计文件夹与分支做法、收官（重写成 Review 文档归档 `docs/`）；分支从冲刺分支开还是从 main 开，用到时再定（分支名不能写成「冲刺分支名/xxx」：git 不允许 `a` 与 `a/b` 两个分支并存）；来源：2026-11-06 PO 精化口述（原「DesignBacklog 模板」），2026-11-07 改写（第一轮叫 Target 日志，第四轮改回设计日志、与冲刺平级） |
+| PBI-29 | ideo-kernel 收窄——只留 IDEO 五模式与方法库 | 作为熟手，我想要 ideo-kernel 只讲 IDEO 五模式和方法库，并且每个角色都先加载它，以便 Developer 冲刺卡住、Designer 做原型时，手边都有共情、定义、发散、原型、测试的方法 | 2.2.7 载体：ideo-kernel | 待排序（拟进 Sprint 08） | M | 以现有 ideo-kernel 为底，删去设计冲刺部分（Two Schemes、Design Sprint 表、`design-sprint/` 目录，交 PBI-34）；描述保留 IDEO、five modes、design thinking 等触发词；PBI-25 ④ 随之解决；与 PBI-34 同版发，升大版本；验收草案：三个内核同日对照，两条路径的触发回归（以 PBI-22 的 5/5 为基线），SKILL.md 不变长；来源：2026-11-06 PO 精化（原「换主线」），2026-11-07 第三轮改为拆内核 |
 | PBI-30 | 产品化——从作者能用到陌生人好用 | 作为陌生人，我想要装上插件就知道第一句说什么、术语有解释、会话断了能接上，以便不读作者的仓库也能顺利走完第一个冲刺 | Map ①（装插件，开会话） | 待排序（流程落地后） | L | 范围：入口（没有产品日志就按模板建）、由浅入深（默认 PO + Master 一个会话走完，需要时再加 Developer、审阅、worktree）、说人话（术语第一次出现时解释，附词汇表）、接手不丢、体验测试、发布包装（用户 README、样例、CHANGELOG 与升级提示、发布渠道、授权说明、反馈渠道）；体验测试：Stakeholder 扮「陌生人」（只给 README、身份、任务），Developer 搭环境、跑、记卡点，Master 监督，跑之前先写好什么算卡住；每版都跑，发成熟版前 PO 和至少一个真人各走一遍；判据含「≤2 轮进入执行」（PBI-26 并入）与 Sprint 07 的两个测试点；开放点：测试环境与测法（PO：到时候再说）、发布渠道、成熟版版本号、codex 分支是否一起做；与 PBI-12 的区别：12 是内容分享，30 是产品本身；来源：2026-11-06 PO 口述，2026-11-07 改写 |
 | PBI-31 | 产品日志约定 v1——模板与精化 | 作为熟手，我想要开新项目时插件自带产品日志模板和精化约定，以便新老项目都从一份产品日志开始，白纸也知道先写什么、PBI 怎么写 | 2.2.4 产品日志（Map ②） | 待排序 | M | 放 scrum-kernel 的 `conventions/`；范围：产品日志模板（按 2.2.4：三章、Stakeholders 角色卡、架构 Map、PBI 七列）与精化约定（精化七步；随时可做，最终在冲刺日志 2.2）；样例：本产品日志；开放点：是否与 PBI-23 同一个冲刺做；来源：2026-11-07 精化 |
-| PBI-32 | 角色命令接上约定 | 作为熟手，我想要每个角色一进入就加载该加载的内核、知道该读哪份约定、清楚自己负责什么不负责什么，以便不用我提醒，角色就按约定办事 | 2.2.3 角色与主场 | 待排序 | M | 范围：四个命令各加一句指路；内核加载按 2.2.3；scrum-master 的「Review through fresh subagents」改为默认 Master 审、PO 可指定 Stakeholder 或子代理；PO 放行；检查点；PO 可兼 Developer；Developer 对冲刺负责、Designer 对 Target 负责；stakeholder 命令里身份「写在 CLAUDE.md 或 AGENTS.md」改为指向产品日志 2.1；角色卡（Owns / Does not own / Needs approval，PBI-27 子项）；开放点：Stakeholder 接审阅时要不要写「对着 DoD 与验收标准核验」（现有命令只写外部视角，跑测试归 Developer）；来源：2026-11-07 精化 |
+| PBI-32 | 角色命令接上约定 | 作为熟手，我想要每个角色一进入就加载该加载的内核、知道该读哪份约定、清楚自己负责什么不负责什么，以便不用我提醒，角色就按约定办事 | 2.2.3 角色与主场 | 待排序 | M | 范围：四个命令各加一句指路；内核加载按 2.2.3；scrum-master 的「Review through fresh subagents」改为默认 Master 审、PO 可指定 Stakeholder 或子代理；PO 放行；检查点；PO 可兼 Developer；Developer 对冲刺负责、Designer 对设计负责；scrum-master 的「no ad-hoc work outside a Sprint」改为冲刺或设计之外（官方文件不动，只改命令）；stakeholder 命令里身份「写在 CLAUDE.md 或 AGENTS.md」改为指向产品日志 2.1；角色卡（Owns / Does not own / Needs approval，PBI-27 子项）；开放点：Stakeholder 接审阅时要不要写「对着 DoD 与验收标准核验」（现有命令只写外部视角，跑测试归 Developer）；来源：2026-11-07 精化 |
 | PBI-33 | 方法库改写——解除非商业限制 | 作为陌生人（在商业项目里用），我想要方法库不带非商业限制，以便商业项目里也能用 | 2.2.7 载体：ideo-kernel 方法库 | 待排序（以后再做） | L | d.school Bootleg 是 CC BY-NC-SA，插件因此带非商业限制；PO 定：先接受（README 已写明），以后再做；注意：改写成自己的话与「原文优先」（2.2.7）相反，做之前先定还做不做；改写范围、署名怎么处理，实现前定；来源：2026-11-07 精化 |
-| PBI-34 | 新建 design-kernel——设计冲刺 | 作为熟手，我想要设计冲刺有一套完整、照着就能做的方法，和原型、测试、发散的方法接上，以便 Target 日志里的设计研究有章可循，而不只靠五张单薄的阶段卡 | 2.2.7 载体：design-kernel；2.2.6 Target 日志 | 待排序（待 PO 补充写法） | L | 从 `references/` 的原书扩充，原文优先、可带例图（2.2.7）；和 ideo-kernel 重复的方法不再写；Target 日志模板放它的 `conventions/`（PBI-28）；ATTRIBUTION.md 第 4 节随之更新（位置、使用范围），版权声明由 PO 定；名字是 v3 用过的旧名、意思变了（PO 接受），发版时在 README、CHANGELOG 说明；与 PBI-29 同版发，升大版本；验收草案：触发回归——「设计冲刺 / design sprint」进 design-kernel，「五模式 / design thinking」进 ideo-kernel；PO 深度参与；来源：2026-11-07 精化第三轮（PO 定新建） |
+| PBI-34 | 新建 design-kernel——设计冲刺 | 作为熟手，我想要设计冲刺有一套完整、照着就能做的方法，和原型、测试、发散的方法接上，以便设计日志里的研究有章可循，而不只靠五张单薄的阶段卡 | 2.2.7 载体：design-kernel；2.2.6 设计日志 | 待排序（拟进 Sprint 08） | L | 从 `references/` 的原书扩充，原文优先、可带例图，太长的可删减（2.2.7）；按 IDEO 五阶段组织（共情、定义、构思、原型、测试），不按原书的五天（PO 2026-11-07）；和 ideo-kernel 重复的方法不再写；设计日志模板放它的 `conventions/`（PBI-28）；ATTRIBUTION.md 第 4 节随之更新（位置、使用范围），版权声明由 PO 定；名字是 v3 用过的旧名、意思变了（PO 接受），发版时在 README、CHANGELOG 说明；与 PBI-29 同版发，升大版本；验收草案：触发回归——「设计冲刺 / design sprint」进 design-kernel，「五模式 / design thinking」进 ideo-kernel；PO 深度参与；来源：2026-11-07 精化第三轮（PO 定新建） |
+| PBI-35 | 看板（Scrum Board） | 作为熟手，我想要一块看板，一眼看到正在进行的冲刺、设计和各自的状态，以便不用翻各份日志就知道全局 | 2.2.2 文件（`scrum/` 下） | 待排序（以后再设计） | M | 主要对 PO 负责，做记录用；放 `scrum/` 下；（补充）可以交给常驻的 Stakeholder 会话维护，在 2.1 加一张带「负责 / 不负责」的卡（Grok Bot 的看板维护者："Don't prioritise, don't do the work, don't delete cards without asking"）；来源：2026-11-07 精化第四轮（PO 登记，这次不做） |
 
 ## 3.2 已完成 / 已关闭的 PBI
 
@@ -302,6 +336,7 @@ flowchart TD
 
 # 修订记录（最近三条；更早的见 `git log -p -- scrum/ProductBacklog.md`）
 
+- **2026-11-07（四）**：精化第四轮。第二层改为冲刺与设计两个平级模块（取代第三轮的「Target 开在冲刺里」）；Target 日志改名设计日志（DesignBacklog），按 IDEO 五阶段分五章，收官时整份重写成 Review 文档归档 `docs/`；文件结构定为 `scrum/` 下产品日志、`sprint-NN-后缀/`、`design-后缀/`；「冲刺问题」「Target 目标」改名「设计问题」「设计目标」；2.2.8 增「设计可以不在冲刺里做」；新增 PBI-35（看板）；PBI-28、29、34 拟进 Sprint 08。
 - **2026-11-07（三）**：精化第三轮，按新模板重排本日志（第一个样例）。
   - 产品日志定为唯一的第一层、一种写法，取消设计日志。
   - 第一章三节，Vision 并入 Product Goal。
@@ -310,4 +345,3 @@ flowchart TD
   - Target 日志开在冲刺里，由 Designer 负责；内核拆成三个（新建 design-kernel）；原文优先。
   - PBI-29 改写，新增 PBI-34。
 - **2026-11-07（续）**：精化第二轮。写下之后的方向（流程落地 → 产品化、分享）。架构 2.3 按 PO 定案改：How 只给方向、Planning 从简；冲刺日志随时可改；PO 放行写明授权；对抗审查默认 Master；先复述；Review 给产品日志保鲜；Retro 写原则、不写故事；冲刺不写截止日，收官点是 Sprint Goal 达成或 PO 叫停。2.5 迭代改为用着不顺就记、每周集中改，约定起短名。PBI-30 改写并入 PBI-26，新增 PBI-33，PBI-25 增 ⑤。
-- **2026-11-07**：Sprint 08 撤销（Planning 未完成、未开工），改做产品日志精化。架构 v1 定稿进第二章（主线改为设计冲刺；两侧三层与角色主场；冲刺流程与冲刺日志结构；插件载体为 `conventions/` 约定 v1），取代 08-30 流水线草案。PBI-23、28、29 改写，新增 PBI-31、32，PBI-27 完成。产品日志重排为三章：Product Goal 并入第一章，已完成的 PBI 移入 3.2 附出处，修订记录移到文末、只留最近三条。
