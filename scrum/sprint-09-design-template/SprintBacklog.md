@@ -65,3 +65,4 @@ PO 放行：2026-11-08，批准 plan 即放行。冲刺分支上可以提交；�
 | 日期 | 做了什么 | 决定与理由 | 证据 | 下一步 |
 | --- | --- | --- | --- | --- |
 | 2026-11-08 | 开工：分支、本日志、登记 PBI-38、路线顺延 | 按 plan How 1；产品日志 1.2 路线换成 plan D-1 的句子，PBI-23、31 拟进 Sprint 10，PBI-25、32 拟进 Sprint 11 | 见提交 | How 2 |
+| 2026-11-08 | How 2：照 plan A～D 改模板、约定、SKILL.md、产品日志 | 一字照抄 plan；2.2.5 特殊情况表的新行放在表末，2.2.7 的新条放在「三处分工」后。核对：原书摘录 `git diff main` 为空；design-kernel 里 target 只剩约定第 11 条、「How each stage runs」表原书那格、SKILL.md 定义一行（plan 批准的新句子里本来就有），其余都在原书摘录原文里；旧小节编号与「in chapter 3」「in the log.」清零；SKILL.md、约定、模板提到的路径都在。留给 Master：SKILL.md 原型一行仍写「build a realistic facade of the storyboard」，故事板已改为可选，plan 写「其余不动」，没改 | 见提交 | How 3 |
