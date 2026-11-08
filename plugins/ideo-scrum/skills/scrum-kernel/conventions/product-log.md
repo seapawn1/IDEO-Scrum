@@ -10,13 +10,13 @@ The product log is the first layer. Its template is `product-backlog-template.md
 ## Starting
 
 1. **One product log** — *Author's practice.* Every project, new or old, starts by writing one product log from the template.
-2. **Blank page** — *Author's practice.* When the first chapter is unclear, make it clear with the IDEO methods in the ideo-kernel skill: empathize, define, interview.
+2. **Blank page** — *Author's practice.* When neither the product nor its architecture is clear, the IDEO methods alone will not make them clear; run a design (design-kernel skill): the IDEO methods with the design sprint, a prototype, and a test. Until its conclusions flow back, the product log holds less: a challenge in place of the product, questions in place of acceptance criteria, and a provisional roadmap in place of the architecture.
 3. **Facts first, then questions** — *Supplement.* The Scrum Master looks up the facts itself; what the Product Owner must decide goes into one message, numbered, each question with a recommended answer.
 
 ## Each part
 
 4. **Product and Product Goal** — *Author's practice.* Fill sections 1.1 and 1.2 as the template shows; the vision line is optional.
-5. **Two kinds of Done** — *Author's practice.* Outcome Done covers the value the product delivers to its stakeholders; Output Done covers the quality of every Increment. A Sprint picks the items that matter to it; the whole Definition of Done still applies.
+5. **Two kinds of Done** — *Author's practice.* Outcome Done covers the value the product delivers to its stakeholders; Output Done covers the quality of every Increment. A Sprint picks the items that matter to it; the whole Definition of Done still applies. Write the Definition of Done precisely: add an item only when it holds in every case you can foresee, not just because it came up; one you are unsure of goes into the acceptance criteria instead.
 6. **Stakeholders in a short table** — *Author's practice.* Section 2.1 lists the stakeholders in a short table, not a long profile per person. A Stakeholder subagent gets one row as its identity, and the AI fills in the details. If the table is empty, ask the Product Owner who belongs in it, and add the rows.
 7. **Architecture as a map** — *Author's practice.* Section 2.2 starts with one map, drawn as `../design-kernel/define/make-a-map.md` describes: actors on top, AI roles included, the ending at the bottom, five to fifteen steps between, as a Mermaid `flowchart TD`. Add a subsection only for a step that needs more words.
 8. **No TBD** — *Author's practice.* An unclear point becomes an item, and a Sprint or a design works it out.
@@ -35,8 +35,8 @@ The product log is the first layer. Its template is `product-backlog-template.md
     | Status | Where the item stands: waiting, in Sprint NN, in a design |
     | Size | S — one or two sessions; M — three to five sessions; L — more than five sessions, to be split when refining |
     | Notes | Source, open points, draft acceptance criteria, refinement notes |
-11. **Numbers, not ranks** — *Author's practice.* A number counts an item and does not rank it; the Product Owner orders the items when a person needs the order. *Departs from the Scrum Guide on purpose*, which calls the Product Backlog "an emergent, ordered list": the AI roles rarely need the order.
-12. **Items with the Scrum Master** — *Author's practice.* The Product Owner decides the items together with the Scrum Master, who works as a secretary. At Planning the Product Owner leads the selection, and the Scrum Master and the Developer say when it is too much or too little. *Departs from the Scrum Guide on purpose*, where "the Developers select items from the Product Backlog": the Product Owner sets the value direction, and the others say how much fits.
+11. **Numbers, not ranks** — *Author's practice.* A number counts an item and must be unique; ranking is another matter — moving an item up the list — and the Product Owner does it when an order is needed.
+12. **Items with the Scrum Master** — *Author's practice.* The Product Owner decides the items together with the Scrum Master, who works as a secretary. At Planning the Product Owner leads the selection, and the Scrum Master and the Developer say when it is too much or too little. The measure is the Sprint Goal: every selected item serves it, and an item the goal still needs is added — never one just to fill the Sprint. *Departs from the Scrum Guide on purpose*, where "the Developers select items from the Product Backlog": the Product Owner sets the value direction, and the others say how much fits.
 13. **Status lives here** — *Author's practice.* An item's status is written in the product log only; a sprint log names items by number.
 
 ## Refinement
@@ -56,7 +56,7 @@ The product log is the first layer. Its template is `product-backlog-template.md
 
 ## Keeping it fresh
 
-17. **Fresh at every Review** — *Author's practice.* Done items move to section 3.2, one line each, with the source, usually the archived sprint log in `scrum/documents/`; outdated architecture text and resolved open points are deleted; unfinished items go back to section 3.1. There is no revision record; version control keeps the history.
+17. **Fresh at every Review** — *Author's practice.* Done items move to section 3.2, one line each, with the source, usually the archived sprint log in `scrum/documents/`; outdated architecture text and resolved open points are deleted; unfinished items go back to section 3.1. There is no revision record; version control keeps the history. Fresh means more than the items: the same Review goes through the whole `scrum/` folder, `scrum/documents/` included (`sprint-log.md`, convention 18).
 
 ## What stays fixed
 

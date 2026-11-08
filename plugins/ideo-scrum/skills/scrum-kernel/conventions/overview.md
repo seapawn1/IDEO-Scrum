@@ -7,7 +7,7 @@
 
 Source labels and short names are explained in convention 13.
 
-The other files: `product-log.md` and `product-backlog-template.md`; `sprint-log.md` and `sprint-backlog-template.md`; for designs, `../design-kernel/conventions/design-log.md` and `../design-kernel/conventions/design-backlog-template.md` (paths starting with `../` are relative to the scrum-kernel skill folder).
+The other files: `product-log.md` and `product-backlog-template.md`; `sprint-log.md` and `sprint-backlog-template.md`; for designs, `../design-kernel/conventions/design-log.md` and `../design-kernel/conventions/design-backlog-template.md` (paths starting with `../` are relative to the scrum-kernel skill folder; the two design files belong to the design-kernel skill — read them when you open or resume a design).
 
 ## The map
 
@@ -39,7 +39,7 @@ flowchart TD
 ## Where things live
 
 1. **One product log** — *Author's practice.* Every project, new or old, starts from one product log.
-2. **Sprints and designs side by side** — *Author's practice.* Below the product log sit two peers: a Sprint, the Developer's, delivers an Increment; a design, the Designer's, delivers a prototype and conclusions. Open a design when an item needs design or Sprint refinement hits a hard point; it is not part of a Sprint. Decide item by item whether design is needed; a design's conclusions still land through a Sprint; an Increment need not be code — the Definition of Done says what it is.
+2. **Sprints and designs side by side** — *Author's practice.* Under the product log, Sprints and designs are peers: a Sprint, the Developer's, delivers an Increment; a design, the Designer's, delivers a prototype and conclusions. Open a design when an item needs design or Sprint refinement hits a hard point; it is not part of a Sprint. Decide item by item whether design is needed; a design's conclusions still land through a Sprint; an Increment need not be code — the Definition of Done says what it is.
    *Departs from the Scrum Guide on purpose*, which has all the work "happen within Sprints": a design delivers no Increment, may span several Sprints, and the Designer and the Developer are peers.
 3. **Three layers** — *Author's practice.*
 
@@ -53,7 +53,7 @@ flowchart TD
 
    The third layer is not a log and has no prescribed method; it relies on the skills of whoever does the work. Increments add up into the product; prototypes are thrown away when the design closes, and only what was learned flows back.
 4. **Folders** — *Author's practice.* `scrum/` holds all of the Scrum work: `ProductBacklog.md`; one folder for each Sprint or design in progress — `sprint-NN-<suffix>/` with its `SprintBacklog.md` and working files, `design-<suffix>/`, unnumbered, with its `DesignBacklog.md` and prototypes; and `documents/` (convention 5). This is the author's layout; use your project's own places if it has them.
-5. **The documents folder** — *Author's practice.* A file that serves only one Sprint or design stays in its folder and is deleted at close; git keeps it. A file that serves the whole Scrum goes into `scrum/documents/`, and the logs reference it: design documents, background material, long content written for the product log, and the archives made at close — compressed sprint logs and design Reviews. At each Review, glance at `scrum/documents/` and delete what is outdated. The project's own documentation, such as a user manual or API notes, is outside these conventions; keep it where the project keeps it, such as `docs/` at the root.
+5. **Where files go** — *Author's practice.* A file that serves only one Sprint or design stays in its folder and is deleted at close; git keeps it. A file that serves the whole Scrum goes into `scrum/documents/`, and the logs reference it: design documents, background material, long content written for the product log, and the archives made at close — compressed sprint logs and design Reviews. At each Review, glance at `scrum/documents/` and delete what is outdated. The project's own documentation, such as a user manual or API notes, is outside these conventions; keep it where the project keeps it, such as `docs/` at the root.
 6. **Names** — *Author's practice.* The terms used in all the conventions are defined here once:
    - the **product log** is the Product Backlog, kept in `ProductBacklog.md`; the **sprint log** is the Sprint Backlog, kept in `SprintBacklog.md`; the **design log** is kept in `DesignBacklog.md` — a file made from a template takes these names, whatever the template is called;
    - a **product backlog item (PBI)** is one row of the product log's item table;
@@ -84,7 +84,7 @@ flowchart TD
 ## About these conventions
 
 13. **Working conventions** — *Author's practice.* Reference, not law. Each convention has a short name, for use in conversation, and one source label: **Author's practice** — how the author works; **Supplement** — inferred by the author's assistant, not yet confirmed in practice; **Decide on the spot** — no fixed rule, decide when it comes up. The templates carry the flow; the convention files say how, and when a step may be skipped. They describe roles and steps, not the mechanics of any tool.
-14. **Revise them weekly** — *Author's practice.* Note what does not fit, and revise the conventions about once a week; a revision applies from the next Sprint, never in the middle of one.
+14. **When a revision applies** — *Author's practice.* Note what does not fit; a revision of the conventions applies from the next Sprint, never in the middle of one.
 15. **Templates record outputs** — *Author's practice.* A template's chapters follow the flow, and its sections hold only what each step produced; how to do a step belongs in the conventions. A log made from a template keeps all of the template's headings, including the chapters filled in later, and adds no sections of its own; remarks go in the notes.
 
 ## What stays fixed
@@ -100,7 +100,6 @@ Each reason is in the convention named in the last column.
 | --- | --- | --- |
 | Only the Product Owner must be human | SGEP: the Product Owner and the Scrum Master must be human, and at least one Product Developer should be | Convention 8 |
 | Designs sit beside Sprints | Scrum Guide: all the work happens within Sprints | Convention 2 |
-| Items are numbered, not ranked | Scrum Guide: the Product Backlog is ordered | `product-log.md`, convention 11 |
 | The Product Owner decides the items with the Scrum Master | Scrum Guide: the Developers select items with the Product Owner | `product-log.md`, convention 12 |
 | The How is a plan, and building waits for the go-ahead | Scrum Guide: how is the Developers' call | `sprint-log.md`, conventions 7 and 8 |
 | Checkpoints replace the Daily Scrum | Scrum Guide: a daily event for the Developers | `sprint-log.md`, convention 10 |

@@ -44,10 +44,7 @@ Go-ahead: <date, who gave it, and how far it reaches — for example: commit on 
 
 ### 3.2 Notes
 
-<!-- Whoever did the thing writes the row; append only (sprint-log.md, convention 9). A session that picks up the Sprint reads these first. -->
-
-| Date | What was done | Decision and reason | Evidence | Next |
-| --- | --- | --- | --- | --- |
+<!-- Whoever does the work writes the notes, in whatever form helps: each change and its reason, and what a new session needs to pick the Sprint up; they may refine the How (sprint-log.md, conventions 3 and 9). A session that picks up the Sprint reads these first. -->
 
 ## 4. Review
 
