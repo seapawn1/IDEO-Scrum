@@ -84,6 +84,32 @@ PO 2026-11-08 宣布精化结束。
 | GlobalMemory 五条 | 收尾做法、压缩代替交接、plan 视图审阅进冲刺日志约定；会话角色分层、派活分工进总览 | 23、39 |
 | CLAUDE.md 的流程教训 | 审阅交全新子代理；Review 时召唤 2.1 的角色；新模板先给 PO 看结构；小冲刺 | 23 |
 
+### 2.2.4 测试：方法与判定标准（2026-11-08，跑之前写定，单独提交）
+
+- **方法**：`claude -p --plugin-dir <本分支插件的 Windows 路径> --model haiku --output-format stream-json --verbose`（与 Sprint 08 相同；reclaude 可用时也可以用它，参数相同）。每次跑都用一个新的临时目录，从工具调用记录里看加载了哪些技能、读了哪些文件，跑完看目录里写出了什么。用 Haiku（PO：测试用便宜的模型）。
+  - 只读的组（C、R）：禁用 Write、Edit、Bash、NotebookEdit，与 Sprint 08 相同。
+  - 冷启动组（P、S、D）：允许写文件（`--permission-mode acceptEdits`），禁用 Bash、NotebookEdit，只在临时目录里写。
+- **对照**：C 组同一天跑改前版本（main 上的 v5.0.1，用 `git archive` 导出）当基线。冷启动组改前没有模板，只判新版。
+- **题目**：沿用社区图书馆。
+  - C：Sprint 08 原题「帮我开 Sprint Planning：这个冲刺要让社区图书馆的借阅小程序上线预约功能。先给我 Sprint Goal 的草稿和 Planning 的步骤大纲，不要写文件。」
+  - R：Sprint 08 的四道原题。
+  - P（空目录）：「我要开一个新项目：社区图书馆的借阅小程序。按插件的约定先把产品日志建起来：照模板建出骨架，不清楚的地方留空，最后把要我定的问题编号列出来。」
+  - S（目录里预先放好夹具）：直接说「开 Sprint 01 的 Planning：按插件的约定建出冲刺日志，Sprint Goal 和选哪些 PBI 先写你的建议，How 先空着；不要改产品日志。」从命令进入：同一句话前面加 `/ideo-scrum:scrum-master`，或加 `/ideo-scrum:developer`。
+  - D（目录里预先放好夹具）：「PBI-02 要先做设计。按插件的约定开一份设计：建好文件夹和设计日志，填好文件头，停在开头，不往下做。」
+- **夹具**：一份用新模板写的样例产品日志 `scrum/ProductBacklog.md`（社区图书馆借阅小程序，三条 PBI，其中 PBI-02 写明要先做设计）。施工时和模板一起写好，放在任务临时目录、不入库；跑测试前不再改；验收时连同结果一起给 Master 看。
+
+| 组 | 怎么问 | 跑几次 | 判对（任一条不满足判错） |
+| --- | --- | --- | --- |
+| C 直接说 | Sprint 08 原题 | 新、旧各 5 | 加载了 scrum-kernel |
+| R 角色命令 | Sprint 08 原题，四个命令 | 新版各 2 | 加载的内核与产品日志 2.2.3 一致：designer = ideo + design；developer = ideo + scrum；scrum-master = ideo + scrum + design；stakeholder = ideo |
+| P 冷启动：产品日志 | 空目录 | 新版 5 | ① 加载了 scrum-kernel；② 读了产品日志的模板或约定；③ 建出名为 `ProductBacklog.md` 的文件；④ 标题按模板排：Product、Product Goal、DoD；Stakeholders、架构（Map）；当前的 PBI、已完成；修订记录（中文或英文都算）；⑤ Stakeholders 一节是一张表，不是逐人的长卡 |
+| S 冷启动：冲刺日志 | 夹具；直接说 5 次，从 scrum-master、developer 命令进入各 2 次 | 新版 9 | ① 加载了 scrum-kernel；② 读了冲刺日志的模板或约定；③ 建出 `scrum/sprint-01-<后缀>/SprintBacklog.md`（后缀不限）；④ 标题按模板排：Why（Sprint Goal、DoD）；What（PBI、精化）；How（How、笔记）；Review；⑤ 没改产品日志 |
+| D 冷启动：开设计 | 夹具 | 新版 5 | ① 加载了 design-kernel；② 读了设计日志的模板或约定；③ 建出 `scrum/design-<后缀>/DesignBacklog.md`（后缀不限）；④ 文件头写了来源（PBI-02）和「Now」一行；⑤ 五章标题按模板排 |
+
+- **通过线**：C 新版 ≥4/5，且不低于旧版；R 全部 2/2；P ≥4/5；S 直接说 ≥4/5，从命令进入的 4 次全过；D ≥4/5。
+- **判定**：脚本先按工具调用和写出的文件判；判错的逐条人工看，改判写明理由，验收时摆给 Master 和 PO（CLAUDE.md「回归测试」）。
+- **局限**：每组次数少，模型输出有随机性；用户级 CLAUDE.md 照常加载（作者的环境）；冷启动组在作者机器上跑，不等于陌生人的环境（体验测试归 PBI-30）。
+
 # 三、How
 
 ## 3.1 How
@@ -107,4 +133,5 @@ PO 放行：How 由 Master 审，Master 认可即放行（PO 2026-11-08 授权�
 | 日期 | 做了什么 | 决定与理由 | 证据 | 下一步 |
 | --- | --- | --- | --- | --- |
 | 2026-11-08 | Planning 阶段 1、2（主会话） | PO 定：Sprint Goal、选入 PBI、DoD 全选、精化的各点（2.2.1）；原定 Sprint 11 并进来；Developer 用 fork，不开 worktree；How 交 Master 审即放行。阶段 2 的精化表和对照表 PO 认可，精化由 PO 宣布结束 | 主会话对话 | Developer 开工 |
-| 2026-11-08 | 开工：开分支，建本日志一到三章；产品日志登记 PBI-39，改 1.2 路线与各 PBI 状态，改 PBI-31、37 的 2.1 写法，PBI-32 记下不做三栏卡 | Developer 由 Master fork 出来（16:18 开工） | 本提交 | 写测试判定标准，单独提交 |
+| 2026-11-08 | 开工：开分支，建本日志一到三章；产品日志登记 PBI-39，改 1.2 路线与各 PBI 状态，改 PBI-31、37 的 2.1 写法，PBI-32 记下不做三栏卡 | Developer 由 Master fork 出来（16:18 开工） | `65f49ad` | 写测试判定标准，单独提交 |
+| 2026-11-08 | 测试判定标准（2.2.4） | C、R 沿用 Sprint 08 的题目与判法；新加冷启动 P、S、D 三组，S 组同时验「从角色命令进入、直接说」两条路（PBI-23 验收 ②）；冷启动组允许写文件、禁用 Bash，只在临时目录里写；夹具施工时和模板一起写好，跑之前不再改 | 本提交 | 停下，把 How 和判定标准报给 Master 审 |
