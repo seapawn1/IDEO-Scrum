@@ -2,6 +2,7 @@
 
 > Started: <date> | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: <branch> | Product Owner: <name> | Scrum Master: <who> | Developer: <who>
 > How to write this log: `sprint-log.md` in the scrum-kernel skill's `conventions/` folder.
+> Keep every heading, even the ones filled at close; add none — remarks go in 3.2 Notes (`overview.md`, convention 15).
 
 ## 1. Why
 

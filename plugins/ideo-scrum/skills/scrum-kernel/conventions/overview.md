@@ -85,7 +85,7 @@ flowchart TD
 
 13. **Working conventions** — *Author's practice.* Reference, not law. Each convention has a short name, for use in conversation, and one source label: **Author's practice** — how the author works; **Supplement** — inferred by the author's assistant, not yet confirmed in practice; **Decide on the spot** — no fixed rule, decide when it comes up. The templates carry the flow; the convention files say how, and when a step may be skipped. They describe roles and steps, not the mechanics of any tool.
 14. **Revise them weekly** — *Author's practice.* Note what does not fit, and revise the conventions about once a week; a revision applies from the next Sprint, never in the middle of one.
-15. **Templates record outputs** — *Author's practice.* A template's chapters follow the flow, and its sections hold only what each step produced; how to do a step belongs in the conventions.
+15. **Templates record outputs** — *Author's practice.* A template's chapters follow the flow, and its sections hold only what each step produced; how to do a step belongs in the conventions. A log made from a template keeps all of the template's headings, including the chapters filled in later, and adds no sections of its own; remarks go in the notes.
 
 ## What stays fixed
 
