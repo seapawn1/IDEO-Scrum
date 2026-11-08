@@ -11,7 +11,7 @@
 
 ### 1.2 Product Goal
 
-<!-- Optional first line: the vision, where the product is heading in the long run. Then the current Product Goal, the commitment of this log; if it ever changes, write the date and the reason here. Then the directions after it. -->
+<!-- An optional vision line; the current Product Goal; the directions after it (product-log.md, conventions 4 and 18). -->
 
 ### 1.3 Definition of Done
 
@@ -31,20 +31,20 @@
 
 ### 2.1 Stakeholders
 
-<!-- A short table of who the stakeholders are; add a column if it helps. A Stakeholder subagent is summoned with one row as its identity, and the AI writes whatever details it needs. If nobody is listed yet, ask the Product Owner who belongs here. -->
+<!-- A short table of who the stakeholders are (product-log.md, convention 6). -->
 
 | Who | What they want | When to summon |
 | --- | --- | --- |
 
 ### 2.2 Map
 
-<!-- Actors on top (the stakeholders above, and the AI roles), the ending at the bottom, five to fifteen steps in between. Mermaid, flowchart TD. Add a subsection after the map only for a step that needs more words. No "TBD": an unclear point becomes a product backlog item. -->
+<!-- One map: actors on top, the ending at the bottom, five to fifteen steps in between, as a Mermaid flowchart TD; subsections after it only where a step needs more words (product-log.md, conventions 7 and 8). -->
 
 ## 3. Product Backlog Items
 
 ### 3.1 Current items
 
-<!-- Numbered PBI-001, PBI-002, and so on, counting up: a number counts the item, it does not rank it. The status of an item is written here and nowhere else. What changed in an item, and why, goes in its Notes. -->
+<!-- Numbered PBI-001, PBI-002, and so on (product-log.md, conventions 10 to 13 and 18). -->
 
 | # | Title | User story | Place | Status | Size | Notes |
 | --- | --- | --- | --- | --- | --- | --- |

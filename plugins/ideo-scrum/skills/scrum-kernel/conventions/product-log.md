@@ -5,7 +5,7 @@
 > Source: quotations from The Scrum Guide 2020 (Ken Schwaber & Jeff Sutherland), marked where they appear.
 > License: the quotations are CC BY-SA 4.0 (© 2020 Ken Schwaber and Jeff Sutherland).
 
-The product log is the first layer. Its template is `product-backlog-template.md`; the Scrum Master usually writes it with the Product Owner.
+The product log is the first layer. Its template is `product-backlog-template.md`; the Scrum Master usually writes it with the Product Owner. Paths starting with `../` are relative to the scrum-kernel skill folder.
 
 ## Starting
 
@@ -15,10 +15,10 @@ The product log is the first layer. Its template is `product-backlog-template.md
 
 ## Each part
 
-4. **Product and Product Goal** — *Author's practice.* Section 1.1 says what the product is and its boundary; section 1.2 gives an optional vision line, the current Product Goal, and the directions after it.
+4. **Product and Product Goal** — *Author's practice.* Fill sections 1.1 and 1.2 as the template shows; the vision line is optional.
 5. **Two kinds of Done** — *Author's practice.* Outcome Done covers the value the product delivers to its stakeholders; Output Done covers the quality of every Increment. A Sprint picks the items that matter to it; the whole Definition of Done still applies.
-6. **Stakeholders in a short table** — *Author's practice.* Section 2.1 lists the stakeholders in a short table, not long cards. A Stakeholder subagent gets one row as its identity, and the AI fills in the details. If the table is empty, ask the Product Owner who belongs in it.
-7. **Architecture as a map** — *Author's practice.* Section 2.2 starts with one map, drawn as the design-kernel skill's `define/make-a-map.md` describes: actors on top, AI roles included, the ending at the bottom, five to fifteen steps between, as a Mermaid `flowchart TD`. Add a subsection only for a step that needs more words.
+6. **Stakeholders in a short table** — *Author's practice.* Section 2.1 lists the stakeholders in a short table, not a long profile per person. A Stakeholder subagent gets one row as its identity, and the AI fills in the details. If the table is empty, ask the Product Owner who belongs in it, and add the rows.
+7. **Architecture as a map** — *Author's practice.* Section 2.2 starts with one map, drawn as `../design-kernel/define/make-a-map.md` describes: actors on top, AI roles included, the ending at the bottom, five to fifteen steps between, as a Mermaid `flowchart TD`. Add a subsection only for a step that needs more words.
 8. **No TBD** — *Author's practice.* An unclear point becomes an item, and a Sprint or a design works it out.
 9. **Technical design stays out** — *Author's practice.* Modules and interfaces are the Developer's; they live in the Increment.
 

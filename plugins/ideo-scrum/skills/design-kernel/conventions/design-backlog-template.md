@@ -5,6 +5,7 @@
 > Closes when the design questions are answered or the Product Owner stops the design; then this file is rewritten as a Review document (conventions 19–20 in `design-log.md`).
 > Methods: the stage excerpts in the design-kernel skill (excerpt paths below are relative to that skill's folder); any ideo-kernel method, whenever the work needs it.
 > This log records what each stage produced, not every step taken to get there (convention 7).
+> How to write this log: `design-log.md` in the design-kernel skill's `conventions/` folder.
 
 ## 1. Empathize
 

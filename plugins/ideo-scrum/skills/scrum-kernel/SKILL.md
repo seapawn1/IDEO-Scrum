@@ -15,13 +15,13 @@ Scrum enables Scrum Teams to identify, represent, or measure emergence, embrace 
 
 ## Working with the Design and IDEO Kernels
 
-Research and implementation are divided: a design (design-kernel skill) handles research; Scrum handles implementation. Before a Sprint, judge whether open questions need a pre-study — when the problem or direction is unvalidated, open a design first and treat its findings as key Sprint evidence; a hard point met during refinement can also be opened as a design while the rest of the Sprint goes on. The IDEO methods (ideo-kernel skill) are the plugin's shared toolbox and can be used at any time — when the team gets stuck mid-Sprint (e.g., at the Daily Scrum), they can inspect and research the problem the Sprint is stuck on.
+Research and implementation are divided: a design (design-kernel skill) handles research; Scrum handles implementation. Before a Sprint, judge whether open questions need a pre-study — when the problem or direction is unvalidated, open a design first and treat its findings as key Sprint evidence; a hard point met during refinement can also be opened as a design while the rest of the Sprint goes on. The IDEO methods (ideo-kernel skill) are the plugin's shared toolbox and can be used at any time — when the team gets stuck mid-Sprint (e.g., at a checkpoint), they can inspect and research the problem the Sprint is stuck on.
 
 *(Author's methodology design for solo + AI teams, 2026-08; revised 2026-11-08 — not part of the Scrum Guide or SGEP.)*
 
 ## Conventions
 
-How a solo + AI team keeps its product log and runs its Sprints is in `conventions/`: templates, and working conventions that are not source text — follow what fits, override what doesn't, and note why. Start with the overview.
+How a solo + AI team keeps its product log and runs its Sprints is in `conventions/`: templates, and working conventions that are not source text — follow what fits, override what doesn't, and note why. Start with the overview. When you open, run, or close a Sprint, or write a log, read the matching convention first. The references below are the official texts; the conventions depart from them on purpose in a few places — no Sprint end date, checkpoints instead of the Daily Scrum, a go-ahead before building — and the overview lists them all.
 
 | File | What it covers | Read when |
 | --- | --- | --- |
@@ -56,7 +56,7 @@ Built on three pillars:
 - **Supporter** (a Stakeholder type) – Fosters the climate and environment and participates as requested.
 - **AI** – As a tool or also a possible Product Developer, but not to be entirely trusted yet.
 
-*(Author's methodology design for solo + AI teams, 2026-10-24: only the Product Owner must be human — the Scrum Master, Stakeholder, Designer, and Developer roles may all be taken by AI. This differs from SGEP v2026.1, which says the Product Owner and the Scrum Master must be human and at least one Product Developer should be human.)*
+*(Here only the Product Owner must be human: see `conventions/overview.md`, convention 8.)*
 
 ### 4. Scrum Events & Activities
 

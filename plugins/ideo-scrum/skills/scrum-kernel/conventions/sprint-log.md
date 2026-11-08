@@ -19,7 +19,7 @@ flowchart TD
     B <--> K["Checkpoints"]
     B --> R["Review the work"]
     R -- "not passed" --> B
-    R -- "passed" --> A["Product Owner acceptance, when asked for"]
+    R -- "passed" --> A["Product Owner acceptance, when written"]
     A --> V["Sprint Review: archive the log, refresh the product log"]
     V --> T["Sprint Retrospective"]
     T --> C["Close: one commit, a tag, merge"]
@@ -41,11 +41,12 @@ flowchart TD
 
 ## Building
 
-9. **Notes as you go** — *Author's practice.* Section 3.2 is the full record, so a new session can pick the Sprint up from the log alone. Each row gives the date, what was done, the decision and its reason, the evidence, and the next step.
+9. **Notes as you go** — *Author's practice.* Section 3.2 is the full record, so a new session can pick the Sprint up from the log alone. A session that picks up the Sprint goes by the notes and does not work everything out again.
+   *Supplement:* each row gives the date, what was done, the decision and its reason, the evidence, and the next step.
 10. **Checkpoints, not stand-ups** — *Author's practice.* At no fixed time, the AI stops to ask the Product Owner, or the Product Owner asks how things stand; either way, check the work against the Sprint Goal. *Departs from the Scrum Guide on purpose*, where the Daily Scrum is "a 15-minute event for the Developers": AI works by session, not by day.
 11. **New work gets registered** — *Author's practice.* New work goes into the product log as an item first; the Product Owner decides whether it enters this Sprint. The scope can be renegotiated; the Sprint Goal stays.
 12. **Structure before full text** — *Author's practice.* Show a new template or structure, as a chapter list on its own, to whoever reviews it (convention 8) before writing the full text.
-13. **Full text for review** — *Author's practice.* Put a new lasting document's full text where the Product Owner can annotate it, with the problems you found and a recommendation for each; change the source files only after approval. The version on disk wins: read before you overwrite.
+13. **Full text for review** — *Author's practice.* Put a new lasting document's full text — word for word, not an outline — where the reviewer (convention 8) can annotate it, with the problems you found and a recommendation for each; change the source files only after approval. The version on disk wins: read before you overwrite.
 14. **The log is the handoff** — *Author's practice.* No separate handoff documents: before a session ends or its context is shortened, write what matters into the log, commit, and stop at a complete point.
 15. **Tests: criteria first** — *Author's practice.* Commit the test method and the pass lines in section 2.2 before running; do not change them after seeing results; check a script's wrong calls one by one, and write down why.
 
@@ -57,8 +58,17 @@ flowchart TD
 ## Closing
 
 18. **Review** — *Author's practice.* Prepare the Increment, the Definition of Done and the acceptance criteria item by item, the product log changes, and the input for the Retrospective; delete the working files except `SprintBacklog.md`; compress the log to its key decisions and write chapter 4; rename it `sprint-NN-<suffix>.md` and move it to the document folder; refresh the product log (`product-log.md`, convention 17). For an outside view, the Product Owner or the Scrum Master — never the builder — summons Stakeholders from the product log's table.
-19. **Retrospective** — *Author's practice.* The log has no Retrospective chapter. The Developer writes the lessons into the project's memory or instructions file, as principles: what broke, why, and the rule. An especially good improvement goes into the Definition of Done with the Product Owner's consent. Ask where the Product Owner held up the AI, and whether the product log is still fresh.
-20. **One closing commit** — *Author's practice.* The Review and the Retrospective go into one commit, tagged with the Sprint folder's name and a message saying what the Sprint achieved; then delete the branch of that name. After moving files, search for the old paths. Merge, and close the branch and the working copy. Judge the project's health mainly by `scrum/`, above all the product log; elsewhere, usually only the README needs updating. Pushing and other outward actions need the Product Owner's consent.
+19. **Retrospective** — *Author's practice.* The log has no Retrospective chapter. The Developer writes the lessons into the project's memory or instructions file, as principles — what broke, why, and the rule — so that someone who was not there can use them. An especially good improvement goes into the Definition of Done with the Product Owner's consent. Check whether the product log is still fresh.
+    *Supplement:* ask where the Product Owner held up the AI — waiting for a decision, waiting for a go-ahead.
+20. **One closing commit** — *Author's practice.* Close in this order:
+    1. Before the closing commit, search the whole project for old paths until none remain; the fixes go into that same commit.
+    2. Make one commit holding the Review and the Retrospective.
+    3. Tag it with the Sprint folder's name; the tag's message says what the Sprint achieved.
+    4. Merge into the main branch.
+    5. Close the working copy.
+    6. Delete the branch of the same name.
+
+    Judge the project's health mainly by `scrum/`, above all the product log; elsewhere, usually only the README needs updating. Pushing and other outward actions need the Product Owner's consent.
 
 ## When things change
 
