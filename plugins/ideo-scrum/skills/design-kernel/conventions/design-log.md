@@ -2,6 +2,9 @@
 
 > These are working conventions, v1 — the author's reading of Scrum and design thinking for solo + AI teams. They are less precise than the official guides. Use them as reference: follow what fits, override what doesn't, and note why. Where a convention departs from the official guide on purpose, it says so and gives the reason.
 
+> Source: quotations from The Scrum Guide 2020 (Ken Schwaber & Jeff Sutherland), marked where they appear; the rest is the author's working conventions.
+> License: the quotations are CC BY-SA 4.0 (© 2020 Ken Schwaber and Jeff Sutherland).
+
 Each convention has a short name, so it can be referred to in conversation, and one source label:
 
 - **Author's practice** — how the author works.
@@ -19,7 +22,7 @@ Two terms used below:
 
 ## Where a design sits
 
-1. **Design beside the Sprint** — *Author's practice.* Below the product backlog sit two peer modules: Sprints and designs. A Sprint is the Developer's and delivers an Increment; a design is the Designer's and delivers a prototype and conclusions. Both answer to the product backlog. A design is opened as its own module, not inside a Sprint.
+1. **Design beside the Sprint** — *Author's practice.* Below the product log sit two peer modules: Sprints and designs. A Sprint is the Developer's and delivers an Increment; a design is the Designer's and delivers a prototype and conclusions. Both answer to the product log. A design is opened as its own module, not inside a Sprint.
    *Departs from the Scrum Guide on purpose.* The Scrum Guide says: "All the work necessary to achieve the Product Goal, including Sprint Planning, Daily Scrums, Sprint Review, and Sprint Retrospective, happen within Sprints." Reason: a design's output is a prototype and conclusions, not an Increment; a design lives as long as its design questions are open, which may span several Sprints; and the Designer and the Developer are peers, both accountable to the product.
 2. **Hard point, not the whole item** — *Author's practice.* Open a design when a product backlog item needs design, or when Sprint refinement hits a hard point. From a Sprint, take out only the hard point; the rest of the Sprint goes on.
 3. **Who** — *Author's practice.* The Designer is accountable for the design. The Scrum Master facilitates and records. The Product Owner decides the design goal, the chosen solution, and when the design is done. When one session plays both the Designer and the Scrum Master, write the same name in both fields of the header.
@@ -58,7 +61,7 @@ Two terms used below:
 
 ## Closing
 
-19. **Close as a Review** — *Author's practice.* A design closes when its design questions are answered or the Product Owner stops it. Rewrite the whole design log as one Review document, replacing the log; rename it `design-<suffix>.md` and move it to the project's document folder. Delete the prototypes and the other files in the folder — git keeps them. Then refresh the product backlog: the conclusions flow back to the product backlog items and to the Sprint that asked for the design.
+19. **Close as a Review** — *Author's practice.* A design closes when its design questions are answered or the Product Owner stops it. Rewrite the whole design log as one Review document, replacing the log; rename it `design-<suffix>.md` and move it to the project's document folder. Delete the prototypes and the other files in the folder — git keeps them. Then refresh the product log: the conclusions flow back to the product backlog items and to the Sprint that asked for the design.
     *Supplement:* the Review document holds the challenge and the design questions, the chosen solution, the test conclusion for each design question, where the conclusions flowed back, and the commit that still holds the prototype.
 20. **Retro as in a Sprint** — *Author's practice.* The design log has no Retro chapter. Lessons go to the project's memory or its instructions file, written as principles — what broke, why, and the rule that follows — not as stories.
 

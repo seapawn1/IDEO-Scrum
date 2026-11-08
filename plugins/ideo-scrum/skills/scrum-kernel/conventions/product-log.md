@@ -34,7 +34,7 @@ The product log is the first layer: every Sprint and every design answers to it.
 
     | Column | What goes in it |
     | --- | --- |
-    | # | The item's number |
+    | # | The item's number: PBI- and three digits, counting up — PBI-001, PBI-002, and so on |
     | Title | A short name |
     | User story | "As <someone from section 2.1>, I want …, so that …" |
     | Place | Where the item sits: a step of the map, or a subsection of section 2.2 |

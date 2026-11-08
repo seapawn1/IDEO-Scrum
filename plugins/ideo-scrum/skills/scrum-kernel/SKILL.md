@@ -19,6 +19,18 @@ Research and implementation are divided: a design (design-kernel skill) handles 
 
 *(Author's methodology design for solo + AI teams, 2026-08; revised 2026-11-08 — not part of the Scrum Guide or SGEP.)*
 
+## Conventions
+
+How a solo + AI team keeps its product log and runs its Sprints is in `conventions/`: templates, and working conventions that are not source text — follow what fits, override what doesn't, and note why. Start with the overview.
+
+| File | What it covers | Read when |
+| --- | --- | --- |
+| `conventions/overview.md` | How the product log, Sprints, and designs fit together; folders and the document folder; roles; what stays fixed | Starting a project, or unsure who does what or where a file goes |
+| `conventions/product-log.md` | Writing the product log and refining its items | Writing, refining, or refreshing the product log |
+| `conventions/product-backlog-template.md` | The product log template; the file made from it is `ProductBacklog.md` | Creating a product log |
+| `conventions/sprint-log.md` | Planning, building, reviewing, and closing a Sprint | Opening, running, or closing a Sprint |
+| `conventions/sprint-backlog-template.md` | The sprint log template; the file made from it is `SprintBacklog.md` | Opening a Sprint |
+
 ## Elements of Scrum
 
 ### 1. Scrum Theory

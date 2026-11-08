@@ -26,13 +26,15 @@
 
 ## 2.1 PBI
 
-| 编号 | 标题 | 规模 | 本冲刺做什么 |
-| --- | --- | --- | --- |
-| PBI-39 | 总览约定——三层、文件与 docs（新登记） | M | 一份总览，讲清产品日志、冲刺、设计怎么连起来，文件放哪，谁负责什么 |
-| PBI-31 | 产品日志约定 v1——模板与精化 | M | 产品日志模板与约定，精化七步 |
-| PBI-23 | 冲刺日志约定 v1——模板与各单元约定 | L | 冲刺日志模板与各单元的约定 |
-| PBI-32 | 角色命令接上约定 | M | 四个命令改掉过时的说法，跟上约定 |
-| PBI-37 | 开设计与接手 | S | design-kernel 补开设计的步骤和「停在哪」 |
+从产品日志原样摘抄五列：编号、标题、用户故事、架构定位、规模（PO 2026-11-08，2.2.1 第 19 点）。当前状态只写在产品日志里；备注是精化的点，本冲刺已在 2.2 处理。
+
+| 编号 | 标题 | 用户故事 | 架构定位 | 规模 |
+| --- | --- | --- | --- | --- |
+| PBI-39 | 总览约定——三层、文件与 docs | 作为陌生人，我想要插件里有一份总览，讲清产品日志、冲刺、设计怎么连起来，`scrum/` 和文档文件夹各放什么，谁负责什么，以便第一次用就知道每份日志在哪、写不下的东西放哪 | 2.2.1 Map、2.2.2 主线与分层；另含 2.2.3 的角色表、2.2.7 讲约定本身的几条、2.2.8 的汇总 | M |
+| PBI-31 | 产品日志约定 v1——模板与精化 | 作为熟手，我想要开新项目时插件自带产品日志模板和精化约定，以便新老项目都从一份产品日志开始，白纸也知道先写什么、PBI 怎么写 | 2.2.4 产品日志（Map ②） | M |
+| PBI-23 | 冲刺日志约定 v1——模板与各单元约定 | 作为熟手，我想要插件自带冲刺日志模板和各单元的约定，以便每个冲刺都照同一套流程开会、记录、收官，不用我每次口述规矩 | 2.2.5 一个 Sprint（Map ③～⑧） | L |
+| PBI-32 | 角色命令接上约定 | 作为熟手，我想要每个角色一进入就加载该加载的内核、知道该读哪份约定、清楚自己负责什么不负责什么，以便不用我提醒，角色就按约定办事 | 2.2.3 角色与主场 | M |
+| PBI-37 | 开设计与接手——设计日志第一次就跑得起来 | 作为熟手，我想要说一句「这条 PBI 要设计」就能开出一份设计（文件夹、分支、文件头、角色卡都有着落），会话断了也能从日志看出停在哪，以便第一次用就不用我补规矩 | 2.2.6 设计日志 | S |
 
 - 原定的 Sprint 11（PBI-32、25）并进本冲刺，路线上不再有 11；冲刺大没关系（PO 2026-11-08）。
 - 不在范围：PBI-25（①② 是发布前的署名问题，随 PBI-30；③ 到时一并改；Master 定，PO 授权）；PBI-30、12、33、35（PO 定，这次不做）。
@@ -62,6 +64,8 @@ PO 2026-11-08 宣布精化结束。
 | 15 | **Goal fixed, plan flexible**（目标不变，其余可调）：三份日志各有一个不变的承诺——Product Goal、Sprint Goal、设计目标，DoD 也不降低；承诺下面的 PBI、精化点、验收标准、How 方案、设计方案，都可以随着了解调整，改了什么、为什么都记下来；承诺只有 PO 能改，Sprint Goal 保不住时由 PO 取消冲刺。写成一条约定，分四处落：总览、冲刺日志约定、产品日志约定、设计日志约定（design-log.md，归 PBI-37）。引原句：SGEP 原定用 scrum-kernel SKILL.md 里那段（Product Goal is fixed… / DoD is not weakened… / So what could be changed instead?），但 v2026.1 原文里没有这段，约定里改引 Scrum Guide 的句子（见 3.2）；Scrum Guide 用「No changes are made that would endanger the Sprint Goal」「Scope may be clarified and renegotiated with the Product Owner as more is learned」 | PO（2026-11-08，Master 转达） |
 | 16 | **约定里不写 Claude Code 的具体机制**：plan 模式、fork、权限模式这类做法容易变，一律不写进约定；subagent 照旧用（插件里一直在用的通用说法）。因此：删掉总览原第 13 条「A fork follows its parent」；冲刺日志约定第 13 条「Full text for review」只留原则（新的长期文档先把全文放到 PO 能逐段批注的地方，批准后才改源文件；盘上的版本优先）；第 16 条「Developer 是 Master 的 fork」改成工具中性的说法（Developer shares the Master's context）；Master 先前提的「插件的运行环境就是 Claude Code」这句不加 | PO（2026-11-08，Master 转达） |
 | 17 | **不要修订记录**：产品日志模板不设 Revision record 一节，历史交给 git；产品日志约定、总览、冲刺日志约定里提到修订记录的地方都清掉，Review 时「给产品日志保鲜」也不再写修订记录。我们自己的产品日志，到 Review 精简时照新模板，同样去掉修订记录一节 | PO（2026-11-08，Master 转达） |
+| 18 | **PBI 编号写成 PBI- 加三位数**，往下接着编，例如 PBI-001、PBI-002：改产品日志约定第 10 条七列说明表的「#」一行、两份模板的表头或注释、冲刺日志里讲到编号的地方；测试夹具和 D 组题目里的 PBI-02 改成 PBI-002。我们自己的产品日志不重新编号：归档的冲刺日志和 git 历史都在引用 PBI-12 这种旧编号 | PO（2026-11-08，Master 转达） |
+| 19 | **冲刺日志 2.1 直接摘抄产品日志原文**，五列：编号、标题、用户故事、架构定位、规模。当前状态不抄，只写在产品日志里；备注不抄，那是精化的点，放到 2.2 处理。改模板 2.1、冲刺日志约定的「Who writes each section」表和第 5 条；本冲刺日志的 2.1 也照这个改 | PO（2026-11-08，Master 转达） |
 
 ### 2.2.2 各 PBI 写什么与验收
 
@@ -100,9 +104,9 @@ PO 2026-11-08 宣布精化结束。
   - R：Sprint 08 的四道原题。
   - P（空目录）：「我要开一个新项目：社区图书馆的借阅小程序。先把 Product Backlog 建起来：不清楚的地方留空，最后把要我定的问题编号列出来。」
   - S（目录里预先放好夹具）：直接说「开 Sprint 01 的 Planning：建出 Sprint Backlog，Sprint Goal 和选哪些 PBI 先写你的建议，How 先空着；不要改 Product Backlog。」从命令进入：同一句话前面加 `/ideo-scrum:scrum-master`，或加 `/ideo-scrum:developer`。
-  - D（目录里预先放好夹具）：「PBI-02 要先做设计。开一份设计：建好文件夹和设计日志，填好文件头，停在开头，不往下做。」
+  - D（目录里预先放好夹具）：「PBI-002 要先做设计。开一份设计：建好文件夹和设计日志，填好文件头，停在开头，不往下做。」
   - 冷启动三组的题目不提插件和约定，用用户自然会说的话（Scrum 词）；「按插件的约定」等于直接叫模型去加载插件，留着它 S 组的「直接说」就验不了 PBI-23 验收 ②，P、D 作为 Outcome 的证据也弱（Master 审 How 时改，2026-11-08，跑之前）。
-- **夹具**：一份用新模板写的样例产品日志 `scrum/ProductBacklog.md`（社区图书馆借阅小程序，三条 PBI，其中 PBI-02 写明要先做设计），照新模板写，不带修订记录。施工时和模板一起写好，放在任务临时目录、不入库；跑测试前不再改；验收时连同结果一起给 Master 看。
+- **夹具**：一份用新模板写的样例产品日志 `scrum/ProductBacklog.md`（社区图书馆借阅小程序，三条 PBI，其中 PBI-002 写明要先做设计），照新模板写，不带修订记录。施工时和模板一起写好，放在任务临时目录、不入库；跑测试前不再改；验收时连同结果一起给 Master 看。
 
 | 组 | 怎么问 | 跑几次 | 判对（任一条不满足判错） |
 | --- | --- | --- | --- |
@@ -110,7 +114,7 @@ PO 2026-11-08 宣布精化结束。
 | R 角色命令 | Sprint 08 原题，四个命令 | 新版各 2 | 加载的内核与产品日志 2.2.3 一致：designer = ideo + design；developer = ideo + scrum；scrum-master = ideo + scrum + design；stakeholder = ideo |
 | P 冷启动：产品日志 | 空目录 | 新版 5 | ① 加载了 scrum-kernel；② 读了产品日志的模板或约定；③ 建出名为 `ProductBacklog.md` 的文件；④ 标题按模板排：Product、Product Goal、DoD；Stakeholders、架构（Map）；当前的 PBI、已完成（中文或英文都算）；⑤ Stakeholders 一节是一张表，不是逐人的长卡 |
 | S 冷启动：冲刺日志 | 夹具；直接说 5 次，从 scrum-master、developer 命令进入各 2 次 | 新版 9 | ① 加载了 scrum-kernel；② 读了冲刺日志的模板或约定；③ 建出 `scrum/sprint-01-<后缀>/SprintBacklog.md`（后缀不限）；④ 标题按模板排：Why（Sprint Goal、DoD）；What（PBI、精化）；How（How、笔记）；Review；⑤ 没改产品日志 |
-| D 冷启动：开设计 | 夹具 | 新版 5 | ① 加载了 design-kernel；② 读了设计日志的模板或约定；③ 建出 `scrum/design-<后缀>/DesignBacklog.md`（后缀不限）；④ 文件头写了来源（PBI-02）和「Now」一行；⑤ 五章标题按模板排 |
+| D 冷启动：开设计 | 夹具 | 新版 5 | ① 加载了 design-kernel；② 读了设计日志的模板或约定；③ 建出 `scrum/design-<后缀>/DesignBacklog.md`（后缀不限）；④ 文件头写了来源（PBI-002）和「Now」一行；⑤ 五章标题按模板排 |
 
 - **通过线**：C 新版 ≥4/5，且不低于旧版；R 全部 2/2；P ≥4/5；S 直接说 ≥4/5，从命令进入的 4 次全过；D ≥4/5。
 - **判定**：脚本先按工具调用和写出的文件判；判错的逐条人工看，改判写明理由，验收时摆给 Master 和 PO（CLAUDE.md「回归测试」）。
@@ -175,4 +179,7 @@ PO 放行：How 由 Master 审，Master 认可即放行（PO 2026-11-08 授权�
 | 2026-11-08 | Master 认可产品日志两份，改两处；自查引文出处 | 产品日志约定第 4 条的 SGEP 引文换成 v2026.1 第 209 行原句「The Product Goal often supports the Product strategy and Product Vision.」（原句只见于 references/）；第 11 条理由照 PO 原话写，删去没有依据的半句。按「引 SGEP 一律以 assets 里的 v2026.1 原文为准」逐句自查已写的引文：总览第 16 条和产品日志约定第 18 条引的 SGEP 那段（出自 scrum-kernel SKILL.md「The Scrum Artifacts in the Expansion Pack」）在 v2026.1 原文里没有，改引 Scrum Guide 原句（Product Goal「They must fulfill (or abandon) one objective before taking on the next.」，冲刺中「No changes are made that would endanger the Sprint Goal」「Quality does not decrease」「Scope may be clarified and renegotiated…」，取消冲刺「Only the Product Owner has the authority to cancel the Sprint.」）；产品日志 2.2.5 单元 3 去掉 SGEP「do enough planning to get started with the work」（同样只见于 references/）。现在三份文件里的引文，Scrum Guide 的都在 scrum-guide-2020.md 里，SGEP 的（两句「must be human」、第 209 行那句、Outcome/Output Done 两个名词）都在 v2026.1 原文里，脚本逐句核过。另：scrum-kernel 的 SKILL.md 和 references/ 注明出自「Scrum Guide Expanded v2026.1」的 Artifacts、Events 两章，在仓库的 v2026.1 原文里找不到，属于插件原有的出处问题，不在本冲刺范围，报 Master | `4870a40` | 写冲刺日志约定与模板 |
 | 2026-11-08 | 全文第四、五份：`sprint-log.md`、`sprint-backlog-template.md`（PBI-23） | 对照表里归 23 的各项落点：2.2.5 工作区 → 第 1 条；收官点 → 第 2 条（故意不同，引 Scrum Guide）；冲刺日志结构表 → 模板与开头「Who writes each section」表；冲刺日志不是定稿 → 第 3 条；流程图 → 开头「The flow」；单元 1～11 → 第 5、6、7、8、9、10、16、17、18、19、20 条；特殊情况 → 第 21 条，小冲刺 → 第 4 条；不设 Retro 章 → 第 19 条。2.2.8 的四处故意不同（How、检查点、审阅方、不写截止日）→ 第 7、10、16、2 条，各引 Scrum Guide 原句写理由。GlobalMemory：Sprint 收尾做法 → 第 18、20 条（删过程件、压缩归档、单提交、tag 写成果、保鲜）；压缩代替交接 → 第 14 条（工具中性的写法）；plan 视图审阅 → 第 13 条（只留原则，附自审问题与建议）。CLAUDE.md 的流程教训：审阅交全新子代理、派审阅子代理写全已发出的决定 → 第 16 条；Review 召唤利益相关者 → 第 18 条；新模板先看结构 → 第 12 条；计划外工作先登记 → 第 11 条；判定标准先写 → 第 15 条；迁移后全仓查旧路径 → 第 20 条；没做完的回产品日志 → 第 21 条。PO 新定：How 是方案 → 第 7 条与模板 3.1；目标不变其余可调 → 第 3 条；审阅可以交给 Master → 第 8 条（第 12 条指过去）；不写工具机制 → 第 13、14、16 条；不要修订记录 → 第 18 条指向产品日志约定第 17 条。Sprint Goal 照 PO 的行文风格起草 → 第 5 条。引文十句全出自 scrum-guide-2020.md，脚本逐句核过，本文件没引 SGEP，文件头 Source、License 只列 Scrum Guide。README 文件地图加了 `scrum-kernel/conventions/` 一行（不写作者侧的状态） | `be44889` | 停下报 Master；认可后改 design-kernel（37） |
 | 2026-11-08 | Master 认可冲刺日志两份；PBI-25 加 ⑥ | Master 查明：SKILL.md 与 references/ 里那段 SGEP（Artifacts、Events 两章）出自 2025.6 版，却标成 v2026.1，插件里的 v2026.1 原文没有这两章。这是插件原有的问题，不进本冲刺，照 Master 给的原文登记为 PBI-25 ⑥ | 本提交 | 写设计那侧（37） |
-| 2026-11-08 | 全文第六份：design-kernel 的设计那侧（PBI-37） | 落点：① 2.1 里没人先问 PO → design-log.md 开头术语「Role card」（新定义：产品日志利益相关者表里的一行；派子代理拿一行当身份，细节由 AI 当场写；表里没人先问 PO）；② 开设计的步骤 → 第 4 条改名「Open a design」（后缀、文件夹、照模板建 DesignBacklog.md、填文件头）；③ 停在哪 → 模板文件头加 Now 一行，末尾新加第 21 条「Resume from the header」；只有一个会话时的署名 → 第 3 条；子代理开几个、用什么模型 → 第 13 条，非界面产品的原型做到多真 → 第 17 条，都标 Decide on the spot；role card 说法统一 → 术语、第 10、18 条、design-kernel SKILL.md 测试那一行；目标不变其余可调 → 末尾新加第 22 条，指向总览第 16 条。顺带对齐已定的规矩：术语「Folders」与第 19 条的 `docs/` 改成项目的文档文件夹（总览第 4、5 条）；第 20 条的 CLAUDE.md 改成「instructions file」（约定里不写具体工具）。原有条号 1～20 没挪。SKILL.md 的 Use Protocol 第 2 步指到第 4、21 条。ATTRIBUTION 第 1 节登记 design-log.md 第 1 条引的 Scrum Guide 原句 | 本提交 | 停下报 Master；认可后改四个命令与 scrum-kernel SKILL.md 短表，一起写完再停 |
+| 2026-11-08 | 全文第六份：design-kernel 的设计那侧（PBI-37） | 落点：① 2.1 里没人先问 PO → design-log.md 开头术语「Role card」（新定义：产品日志利益相关者表里的一行；派子代理拿一行当身份，细节由 AI 当场写；表里没人先问 PO）；② 开设计的步骤 → 第 4 条改名「Open a design」（后缀、文件夹、照模板建 DesignBacklog.md、填文件头）；③ 停在哪 → 模板文件头加 Now 一行，末尾新加第 21 条「Resume from the header」；只有一个会话时的署名 → 第 3 条；子代理开几个、用什么模型 → 第 13 条，非界面产品的原型做到多真 → 第 17 条，都标 Decide on the spot；role card 说法统一 → 术语、第 10、18 条、design-kernel SKILL.md 测试那一行；目标不变其余可调 → 末尾新加第 22 条，指向总览第 16 条。顺带对齐已定的规矩：术语「Folders」与第 19 条的 `docs/` 改成项目的文档文件夹（总览第 4、5 条）；第 20 条的 CLAUDE.md 改成「instructions file」（约定里不写具体工具）。原有条号 1～20 没挪。SKILL.md 的 Use Protocol 第 2 步指到第 4、21 条。ATTRIBUTION 第 1 节登记 design-log.md 第 1 条引的 Scrum Guide 原句 | `ccd8257` | 停下报 Master；认可后改四个命令与 scrum-kernel SKILL.md 短表，一起写完再停 |
+| 2026-11-08 | Master 认可 37；补两处：design-kernel 里指这份日志的「product backlog」改成「product log」（「product backlog item(s)」照旧）；design-log.md 文件头加 Source、License 两行，只列 Scrum Guide | 和 scrum-kernel 的约定、总览的分法一致：日志叫 product log，条目叫 product backlog item | 本提交 | — |
+| 2026-11-08 | 全文第七、八份：四个命令（PBI-32）与 scrum-kernel SKILL.md 短表 | 四个命令各加一行 Conventions 指路，写明是 scrum-kernel 技能下的 `conventions/overview.md`（designer 另指 design-kernel 的 design-log.md）；scrum-master 改「冲刺或设计之外」、审阅默认 Master、放行与检查点，加「Facilitate Sprints and designs」「Ask the Product Owner」；developer 加「Own the Sprint and its log」「The How is a plan, not steps」，改证据交审、放行经谁、拿不准问 PO 与 PO 兼 Developer、节奏一条（一个会话、检查点、Retro 写原则）；designer 写明对设计负责、产出是原型和结论，加「Ask the Product Owner」；stakeholder 的身份改成从产品日志利益相关者表里读一行。四个描述一字没动。SKILL.md 加「Conventions」一节和一张五行短表，描述没动 | 本提交 | — |
+| 2026-11-08 | PO 又定两条（2.2.1 第 18、19 点）：PBI 编号 PBI-001 起；冲刺日志 2.1 摘抄五列 | 改了产品日志约定第 10 条、两份模板、冲刺日志约定的表与第 5 条；本冲刺 2.1 照新写法从产品日志原样摘抄五列。测试判定标准里的 PBI-02（夹具说明、D 组题目、D 组第 ④ 条）改成 PBI-002：测试还没跑过，不违反「出结果后不改标准」 | 本提交 | 停下报 Master；认可后写夹具、跑测试 |

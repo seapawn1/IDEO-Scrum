@@ -39,7 +39,7 @@ Who writes each section:
 | --- | --- | --- |
 | 1.1 Sprint Goal | What this Sprint is to achieve | The Product Owner decides |
 | 1.2 Definition of Done | The Definition of Done items that matter to this Sprint | The Product Owner picks |
-| 2.1 Product Backlog Items | The selected items | The Product Owner leads; the Scrum Master and the Developer say when it is too much or too little |
+| 2.1 Product Backlog Items | The selected items, copied word for word from the product log: number, title, user story, place, size | The Product Owner leads; the Scrum Master and the Developer say when it is too much or too little |
 | 2.2 Refinement | Everything refinement settled, with acceptance criteria and tests | The Scrum Master leads |
 | 3.1 How | The plan, and the go-ahead line | The Developer |
 | 3.2 Notes | The running record | Whoever did the thing |
@@ -55,7 +55,7 @@ Who writes each section:
 
 ## Planning
 
-5. **Stage 1: Why and what** — *Author's practice.* The Product Owner leads, usually with the Scrum Master, sometimes with the Developer too. Set the Sprint Goal, select the items, and pick the Definition of Done items that matter (sections 1.1, 1.2, and 2.1). Draft the Sprint Goal in the Product Owner's own style: read the goals the Product Owner wrote before. When nothing can be selected, the IDEO methods in the ideo-kernel skill can guide the choice. When the product log lacks an item, add it there first. When stage 1 is done, show it to the Developer.
+5. **Stage 1: Why and what** — *Author's practice.* The Product Owner leads, usually with the Scrum Master, sometimes with the Developer too. Set the Sprint Goal, select the items, and pick the Definition of Done items that matter (sections 1.1, 1.2, and 2.1). Copy each selected item into section 2.1 word for word, with five of its columns: number, title, user story, place, and size. Its status stays in the product log; its notes are refinement points, handled in section 2.2. Draft the Sprint Goal in the Product Owner's own style: read the goals the Product Owner wrote before. When nothing can be selected, the IDEO methods in the ideo-kernel skill can guide the choice. When the product log lacks an item, add it there first. When stage 1 is done, show it to the Developer.
 6. **Stage 2: Refinement** — *Author's practice.* The Scrum Master leads, with the Product Owner; the Developer joins the discussion. Use the seven steps in `product-log.md`, convention 15. Write into section 2.2 what was settled and who decided each point, the acceptance criteria not already in the product log, and the tests (convention 15). A point that needs research becomes a design (design-kernel skill), and the rest of the Sprint goes on. Last, the Developer checks that nothing is unclear.
 7. **How is a plan, not steps** — *Author's practice.* The Developer leads. Section 3.1 holds three things:
    - the work items, in order, each done within one session, each with its output and how to tell it is done;

@@ -44,14 +44,14 @@
 
 ### 3.1 Current items
 
-<!-- Numbered, not ranked. The status of an item is written here and nowhere else. What changed in an item, and why, goes in its Notes. -->
+<!-- Numbered PBI-001, PBI-002, and so on, counting up: a number counts the item, it does not rank it. The status of an item is written here and nowhere else. What changed in an item, and why, goes in its Notes. -->
 
 | # | Title | User story | Place | Status | Size | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
 
 ### 3.2 Done and closed
 
-<!-- One line per item, with where to read more: usually the archived sprint log in the document folder. -->
+<!-- One line per item, keeping its number, with where to read more: usually the archived sprint log in the document folder. -->
 
 | # | Title | Result | Source |
 | --- | --- | --- | --- |

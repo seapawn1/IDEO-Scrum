@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint <NN> (<short name>)
 
 > Started: <date> | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: <branch> | Product Owner: <name> | Scrum Master: <who> | Developer: <who>
-> Item status lives in the product log; this log names items by number. How to write this log: `sprint-log.md` in the scrum-kernel skill's `conventions/` folder.
+> Item status lives in the product log; this log names items by their number, such as PBI-001. How to write this log: `sprint-log.md` in the scrum-kernel skill's `conventions/` folder.
 
 ## 1. Why
 
@@ -17,10 +17,10 @@
 
 ### 2.1 Product Backlog Items
 
-<!-- The selected items, copied from the product log, and what this Sprint does with each. An item missing from the product log is added there first. -->
+<!-- The selected items, copied word for word from the product log, five columns. Status stays in the product log; an item's notes are refinement points, handled in 2.2. An item missing from the product log is added there first. -->
 
-| # | Title | Size | This Sprint |
-| --- | --- | --- | --- |
+| # | Title | User story | Place | Size |
+| --- | --- | --- | --- | --- |
 
 ### 2.2 Refinement
 

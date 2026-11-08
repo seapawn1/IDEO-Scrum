@@ -35,4 +35,4 @@ How a solo + AI team runs a design — where the design log lives, who decides, 
 4. Read the stage's source excerpts before running it, and treat them as source text. Where an excerpt describes the book's room — whiteboards, sticky notes, dot voting, a team at a table — the conventions say how a solo + AI team does that step, and the conventions apply.
 5. Use the IDEO methods whenever the work needs them — first from the mode the stage maps to, but from any mode if it helps — following the ideo-kernel skill's Use Protocol.
 6. The Product Owner decides the design goal, the chosen solution, and when the design is done.
-7. When the design questions are answered, the conclusions flow back to the product backlog and to the Sprint that asked for the design (scrum-kernel skill); close the design as in conventions 19–20.
+7. When the design questions are answered, the conclusions flow back to the product log and to the Sprint that asked for the design (scrum-kernel skill); close the design as in conventions 19–20.
