@@ -3,6 +3,7 @@
 > 中间文件，Review 时删除。英文是将来插件里的标题和短名，后面是中文说明。每条约定写成：短名（来源标签）：写什么（出处）。出处里的编号指产品日志的小节；「CLAUDE.md」「GlobalMemory」指作者那边现有的规矩，这次转成约定。
 > 来源标签沿用 design-log.md 的三种：Author's practice、Supplement、Decide on the spot。下面没写标签的，都是 Author's practice。
 > **第二版（2026-11-08）改了什么**：带进 PO 新定的三条——① How 是方案、不是步骤（冲刺日志约定第 7 条、冲刺日志模板 3.1、总览汇总表）；② 目标不变、其余可调（总览第 16 条、冲刺日志约定第 3 条、产品日志约定第 18 条、design-log.md 第 22 条）；③ 约定里不写 Claude Code 的具体机制（plan 模式、fork、权限模式），这些做法容易变：删掉总览原第 13 条「A fork follows its parent」，原第 14～17 条前移为 13～16；冲刺日志约定第 13 条只留原则；第 16 条改成工具中性的说法；subagent 照旧用。另照 Master 的补充：冲刺日志约定开头加一张流程图；总览第 13 条（Working conventions）补三处分工、短名；冲刺日志约定第 20 条补「tag 写成果」。
+> **第三版（2026-11-08）改了什么**：PO 定不要修订记录，历史交给 git——产品日志模板去掉 Revision record 一节，产品日志约定第 17、18 条和冲刺日志约定第 18 条清掉修订记录的说法；PO 把结构和全文的审阅交给 Master，冲刺日志约定第 12 条写明 PO 可以这样交。
 
 ## 文件
 
@@ -72,8 +73,9 @@
 ## 3. Product Backlog Items
 ### 3.1 Current items      （七列表）
 ### 3.2 Done and closed    （一行一条，附出处）
-## Revision record         （最近三条）
 ```
+
+不设修订记录，历史交给 git（PO 2026-11-08）。
 
 ## 3. `product-log.md` — Product Log Conventions (v1)
 
@@ -107,11 +109,11 @@
 
 **Keeping it fresh**（保鲜）
 
-17. **Fresh at every Review**：做完的 PBI 移入 3.2，只留一行加出处；删掉过时的架构文字和已解决的开放点；没做完的回 3.1；修订记录只留最近三条（2.2.5 单元 9）。
+17. **Fresh at every Review**：做完的 PBI 移入 3.2，只留一行加出处；删掉过时的架构文字和已解决的开放点；没做完的回 3.1；不设修订记录，历史交给 git（2.2.5 单元 9，PO 2026-11-08 改）。
 
 **What stays fixed**（什么不变）
 
-18. **Goal fixed, plan flexible**：PBI 和验收标准随时可以精化；Product Goal 没有相反的证据就不改，要改只有 PO 能改；改了什么、为什么记进修订记录。指向总览第 16 条（PO 2026-11-08）。
+18. **Goal fixed, plan flexible**：PBI 和验收标准随时可以精化；Product Goal 没有相反的证据就不改，要改只有 PO 能改；改了什么、为什么写在提交说明里，历史交给 git。指向总览第 16 条（PO 2026-11-08）。
 
 ## 4. `sprint-backlog-template.md`
 
@@ -153,7 +155,7 @@
 9. **Notes as you go**：3.2 是全程记录，每行写日期、做了什么、决定与理由、证据、下一步；接手的会话以笔记为准（2.2.5 单元 5）。
 10. **Checkpoints, not stand-ups**：不定时，AI 停下来问 PO，或者 PO 来问进度。故意和每日站会不同，写理由（2.2.5 单元 6、2.2.8）。
 11. **New work gets registered**：冲刺中冒出来的新活，先登记成 PBI，再由 PO 定进不进当前冲刺；Sprint Goal 不变（CLAUDE.md）。
-12. **Structure before full text**：新模板、新结构，先把章节清单单独给 PO 看，PO 点头再写全文（Sprint 09 Retro）。
+12. **Structure before full text**：新模板、新结构，先把章节清单单独给 PO 看，PO 点头再写全文；PO 可以把结构和全文的审阅交给 Master，Master 认可就继续（Sprint 09 Retro；Sprint 10，PO 2026-11-08）。
 13. **Full text for review**：新的长期文档，先把全文放到 PO 能逐段批注的地方，批准后才改源文件；盘上的版本优先（GlobalMemory：plan 视图审阅；只留原则，不写具体工具，PO 2026-11-08）。
 14. **Hand off by compacting**：不写交接文档；压缩前先把该写的写进文件、提交，停在一个完整的点上；压缩时写明要保留什么（GlobalMemory：压缩代替交接）。
 15. **Tests: criteria first**：判定标准先写、单独提交，再跑；出了结果不改标准；判错的逐条人工看，写明理由（CLAUDE.md）。
@@ -165,7 +167,7 @@
 
 **Closing**（收官）
 
-18. **Review**：依次是备料、删掉中间文件、压缩冲刺日志并补上第四章、改名移进文档文件夹、给产品日志保鲜；召唤产品日志表里的利益相关者看增量（2.2.5 单元 9、GlobalMemory：Sprint 收尾做法）。
+18. **Review**：依次是备料、删掉中间文件、压缩冲刺日志并补上第四章、改名移进文档文件夹、照 product-log 第 17 条给产品日志保鲜（不写修订记录）；召唤产品日志表里的利益相关者看增量（2.2.5 单元 9、GlobalMemory：Sprint 收尾做法）。
 19. **Retro**：不设 Retro 章；教训写进项目的记忆或说明文件，写成原则：坏了什么、为什么、得出什么规则；特别好的改进经 PO 同意写进 DoD；问一句 PO 在哪里卡住了 AI（2.2.5 单元 10）。
 20. **One closing commit**：Review 和 Retro 只出一个提交；tag 与冲刺文件夹同名，同名分支随即删除；tag 的说明写这次做成了什么；改名、移动后全仓查旧路径；推送这类对外动作要经 PO 同意（2.2.5 单元 11、GlobalMemory：Sprint 收尾做法）。
 

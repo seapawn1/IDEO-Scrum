@@ -47,13 +47,13 @@ PO 2026-11-08 宣布精化结束。
 | --- | --- | --- |
 | 1 | Sprint Goal 照 Master 的草稿 | PO |
 | 2 | PBI-23、31、32 放进同一个冲刺；冲刺大没关系 | PO |
-| 3 | 精化定下的内容全部写进插件约定；Review 时照对照表（2.2.3）精简产品日志，2.2 只留 Map 和一句「流程见插件 scrum-kernel 的 conventions/」，删掉的原文 git 可查，修订记录写上提交号。PO：「之前想所有都写到产品日志里面，现在想想不太好。」 | PO |
+| 3 | 精化定下的内容全部写进插件约定；Review 时照对照表（2.2.3）精简产品日志，2.2 只留 Map 和一句「流程见插件 scrum-kernel 的 conventions/」，删掉的原文 git 可查；修订记录一节也删掉（第 17 点）。PO：「之前想所有都写到产品日志里面，现在想想不太好。」 | PO |
 | 4 | docs 的地位：日志写不下的东西（Review 归档、精化内容、背景材料、参考资料、专家访谈、深度研究、设计文档）放进项目的文档文件夹，日志里引用，被引用的文件就算 Scrum 的一部分；`scrum/` 只放现状，保持干净。根目录有 `docs/` 就用它；没有就建一个，比如 `scrum/docs/`；约定里不写死位置 | PO |
 | 5 | 产品日志 2.1 用一张小表列出利益相关者，不写长的角色卡模板；派子代理时拿表里的一行当身份，细节由 AI 当场写 | PO |
 | 6 | 总览单列成 PBI-39，放 scrum-kernel 的 `conventions/`；总览里有一张角色表（PO、Master、Developer、Designer、Stakeholder） | PO 同意 Master 的提议 |
 | 7 | GlobalMemory 里五条流程规矩转成约定：Sprint 收尾做法、压缩代替交接、plan 视图审阅、会话角色分层、派活分工（PO：Review、Retro 的方式这些还是很重要的）；删哪些全局记忆，Review 时列给 PO | PO |
 | 8 | Developer 用 fork；不开 worktree；文件夹和分支叫 `sprint-10-conventions` | PO |
-| 9 | How 交 Master 审，Master 认可即放行，PO 不再审 How；施工中的结构和全文停下给 PO 看 | PO |
+| 9 | How、结构和全文的审阅都交给 Master：Master 认可就继续，不用再等 PO（PO 先把审 How 交给 Master，后来又把结构和全文的审阅也交给 Master） | PO（2026-11-08，后一半由 Master 转达） |
 | 10 | PBI-37 进本冲刺，和 31 一起做 | Master（PO 授权 25、37、32 的细节由 Master 定） |
 | 11 | PBI-25 不进：①② 随 PBI-30，③ 到时一并改 | Master（同上） |
 | 12 | PBI-32 不把四个命令改成 Owns / Does not own / Needs approval 三栏卡（命令里已写了边界，产品日志 2.2.3 也定好了主场）；只按 2.2.3 保持新鲜，stakeholder 的身份从产品日志 2.1 读 | Master（同上） |
@@ -61,13 +61,14 @@ PO 2026-11-08 宣布精化结束。
 | 14 | **How 是方案，不是步骤**（改约定）：How 写三样——① 工作项清单，按顺序排，每项一个会话以内做得完，写明产出和怎么算做完；② 关键选择和理由；③ 已知风险和拿不准的地方。不写每份文件里具体写什么，不写操作步骤，也不打磨计划本身。依据：Scrum Guide「decomposing Product Backlog items into smaller work items of one day or less」「enough detail that they can inspect their progress in the Daily Scrum」，SGEP「do enough planning to get started with the work」；「一天」换成「一个会话」，站会换成检查点。取代产品日志 2.2.5 单元 3 的「只写大致方向」和 2.2.8 那一行（已同步改）。本冲刺的 How 也照办 | PO（2026-11-08，Master 转达） |
 | 15 | **Goal fixed, plan flexible**（目标不变，其余可调）：三份日志各有一个不变的承诺——Product Goal、Sprint Goal、设计目标，DoD 也不降低；承诺下面的 PBI、精化点、验收标准、How 方案、设计方案，都可以随着了解调整，改了什么、为什么都记下来；承诺只有 PO 能改，Sprint Goal 保不住时由 PO 取消冲刺。写成一条约定，分四处落：总览、冲刺日志约定、产品日志约定、设计日志约定（design-log.md，归 PBI-37）。引原句：SGEP 用 scrum-kernel SKILL.md 里那段（Product Goal is fixed… / DoD is not weakened… / So what could be changed instead?），Scrum Guide 用「No changes are made that would endanger the Sprint Goal」「Scope may be clarified and renegotiated with the Product Owner as more is learned」 | PO（2026-11-08，Master 转达） |
 | 16 | **约定里不写 Claude Code 的具体机制**：plan 模式、fork、权限模式这类做法容易变，一律不写进约定；subagent 照旧用（插件里一直在用的通用说法）。因此：删掉总览原第 13 条「A fork follows its parent」；冲刺日志约定第 13 条「Full text for review」只留原则（新的长期文档先把全文放到 PO 能逐段批注的地方，批准后才改源文件；盘上的版本优先）；第 16 条「Developer 是 Master 的 fork」改成工具中性的说法（Developer shares the Master's context）；Master 先前提的「插件的运行环境就是 Claude Code」这句不加 | PO（2026-11-08，Master 转达） |
+| 17 | **不要修订记录**：产品日志模板不设 Revision record 一节，历史交给 git；产品日志约定、总览、冲刺日志约定里提到修订记录的地方都清掉，Review 时「给产品日志保鲜」也不再写修订记录。我们自己的产品日志，到 Review 精简时照新模板，同样去掉修订记录一节 | PO（2026-11-08，Master 转达） |
 
 ### 2.2.2 各 PBI 写什么与验收
 
 | PBI | 写什么 | 验收 |
 | --- | --- | --- |
 | 39 总览 | 总图；三层结构与文件布局，含文档文件夹（第 4 点）；角色表：主场、负责什么、加载哪些内核、拿不准就问 PO；约定本身的规矩：身份声明、来源标签、每周集中改一次、模板只记产出、用模板建出来的文件叫 `ProductBacklog.md`、`SprintBacklog.md`、`DesignBacklog.md`；与官方故意不同之处汇总；会话分工：一个项目一个 Master，审阅默认 Master，施工交给新的 Developer，或交给和 Master 共享上下文的 Developer（后者不能审自己的活）；不写具体工具的机制（2.2.1 第 16 点） | ① Master 派一个「陌生人」子代理只读总览，能说出每份日志在哪、写不下的放哪、谁负责什么；② 对照表里归 39 的每一项都在 |
-| 31 产品日志 | 模板：三章加修订记录，节只放产出，2.1 是一张小表；约定：产品日志 2.2.4 的全部内容；精化七步写在这里，冲刺日志约定指过来；保鲜规则 | ① 冷启动 P 组过线；② 对照表里归 31 的每一项都在 |
+| 31 产品日志 | 模板：三章，不设修订记录（第 17 点），节只放产出，2.1 是一张小表；约定：产品日志 2.2.4 的全部内容；精化七步写在这里，冲刺日志约定指过来；保鲜规则 | ① 冷启动 P 组过线；② 对照表里归 31 的每一项都在 |
 | 23 冲刺日志 | 模板：四章；约定：产品日志 2.2.5 的全部单元（含小冲刺）；GlobalMemory 的收尾做法、压缩代替交接、plan 视图审阅；CLAUDE.md 里关于审阅和 Review 的教训 | ① 冷启动 S 组过线：空目录（只有一份产品日志）能开 Planning、建出冲刺日志骨架；② 从角色命令进入和直接说，两条路都找得到约定（S 组两种问法）；③ 技能描述不变，SKILL.md 只多一张短表；④ 全英文、不依赖本仓库，故意和官方不同的地方写明理由；⑤ 对抗审查通过 |
 | 32 命令 | 改掉过时的说法：「冲刺之外不干活」改成「冲刺或设计之外」；审阅默认 Master，Master 兼 Developer、或 Developer 和 Master 共享上下文时交全新子代理；补「拿不准就问 PO」、放行、检查点；scrum-master 提到设计与设计日志；designer 的产出说法对齐设计日志约定第 1 条；stakeholder 的身份从产品日志 2.1 读；每个命令一句指路 | ① 四个命令和总览的角色表一致，没有和约定冲突的句子；② R 组每个命令 2/2；C 组不低于改前 |
 | 37 开设计 | 2.1 里没人时先问 PO，补进小表；开一份设计的步骤：起后缀、建文件夹、开分支、填文件头；文件头加一行「Now」，写停在哪、下一步；只有一个会话时 Designer 与 Scrum Master 的署名写法 | ① 冷启动 D 组过线：新会话只看 design-kernel 就能开出一份设计；② 接手的会话读文件头就知道停在哪 |
@@ -107,7 +108,7 @@ PO 2026-11-08 宣布精化结束。
 | --- | --- | --- | --- |
 | C 直接说 | Sprint 08 原题 | 新、旧各 5 | 加载了 scrum-kernel |
 | R 角色命令 | Sprint 08 原题，四个命令 | 新版各 2 | 加载的内核与产品日志 2.2.3 一致：designer = ideo + design；developer = ideo + scrum；scrum-master = ideo + scrum + design；stakeholder = ideo |
-| P 冷启动：产品日志 | 空目录 | 新版 5 | ① 加载了 scrum-kernel；② 读了产品日志的模板或约定；③ 建出名为 `ProductBacklog.md` 的文件；④ 标题按模板排：Product、Product Goal、DoD；Stakeholders、架构（Map）；当前的 PBI、已完成；修订记录（中文或英文都算）；⑤ Stakeholders 一节是一张表，不是逐人的长卡 |
+| P 冷启动：产品日志 | 空目录 | 新版 5 | ① 加载了 scrum-kernel；② 读了产品日志的模板或约定；③ 建出名为 `ProductBacklog.md` 的文件；④ 标题按模板排：Product、Product Goal、DoD；Stakeholders、架构（Map）；当前的 PBI、已完成（中文或英文都算）；⑤ Stakeholders 一节是一张表，不是逐人的长卡 |
 | S 冷启动：冲刺日志 | 夹具；直接说 5 次，从 scrum-master、developer 命令进入各 2 次 | 新版 9 | ① 加载了 scrum-kernel；② 读了冲刺日志的模板或约定；③ 建出 `scrum/sprint-01-<后缀>/SprintBacklog.md`（后缀不限）；④ 标题按模板排：Why（Sprint Goal、DoD）；What（PBI、精化）；How（How、笔记）；Review；⑤ 没改产品日志 |
 | D 冷启动：开设计 | 夹具 | 新版 5 | ① 加载了 design-kernel；② 读了设计日志的模板或约定；③ 建出 `scrum/design-<后缀>/DesignBacklog.md`（后缀不限）；④ 文件头写了来源（PBI-02）和「Now」一行；⑤ 五章标题按模板排 |
 
@@ -125,12 +126,12 @@ How 是方案，不是步骤（PO 2026-11-08，2.2.1 第 14 点）：工作项�
 
 | # | 工作项 | 产出 | 怎么算做完 |
 | --- | --- | --- | --- |
-| 1 | 结构稿 | `scrum/sprint-10-conventions/structure.md`：五份文件的章节与约定短名，附 37、32、SKILL.md 的改动点 | PO 点头（经 Master 转达） |
-| 2 | 总览（39） | `scrum-kernel/conventions/overview.md` | 对照表里归 39 的每一项都在；停下报 Master，PO 看过 |
-| 3 | 产品日志（31） | `product-log.md`、`product-backlog-template.md` | 对照表里归 31 的每一项都在；PO 看过 |
-| 4 | 冲刺日志（23） | `sprint-log.md`、`sprint-backlog-template.md` | 对照表里归 23 的每一项都在，GlobalMemory 三条有落点；PO 看过 |
-| 5 | 设计那侧（37） | 改 design-kernel 的 `design-log.md` 和模板 | 结构稿附录列的各点都改了，原有条号 1～20 不变；PO 看过 |
-| 6 | 四个命令（32） | 改 `commands/` 下四个文件 | 和总览的角色表一致，没有和约定冲突的句子；PO 看过 |
+| 1 | 结构稿 | `scrum/sprint-10-conventions/structure.md`：五份文件的章节与约定短名，附 37、32、SKILL.md 的改动点 | Master 认可（PO 2026-11-08 把审阅交给 Master） |
+| 2 | 总览（39） | `scrum-kernel/conventions/overview.md` | 对照表里归 39 的每一项都在；停下报 Master，Master 认可 |
+| 3 | 产品日志（31） | `product-log.md`、`product-backlog-template.md` | 对照表里归 31 的每一项都在；Master 认可 |
+| 4 | 冲刺日志（23） | `sprint-log.md`、`sprint-backlog-template.md` | 对照表里归 23 的每一项都在，GlobalMemory 三条有落点；Master 认可 |
+| 5 | 设计那侧（37） | 改 design-kernel 的 `design-log.md` 和模板 | 结构稿附录列的各点都改了，原有条号 1～20 不变；Master 认可 |
+| 6 | 四个命令（32） | 改 `commands/` 下四个文件 | 和总览的角色表一致，没有和约定冲突的句子；Master 认可 |
 | 7 | SKILL.md 短表 | scrum-kernel 的 SKILL.md 加一节 Conventions | 描述一字不动；从 SKILL.md 一跳到每份约定和模板 |
 | 8 | 夹具与测试 | 样例产品日志（任务临时目录）；C、R、P、S、D 五组的结果记进 3.2 | 全部过线（2.2.4）；判错的逐条人工看、写明理由 |
 | 9 | 自检，交审 | 3.2 记下对照表逐项落在哪；全仓 grep 与路径核对 | 无死链；插件里没有本仓库的路径、作者的记忆和配置；停下等 Master 派对抗审查，不做 Review、不合入 main |
@@ -140,12 +141,12 @@ How 是方案，不是步骤（PO 2026-11-08，2.2.1 第 14 点）：工作项�
 - 文件照 design-kernel 的样子拆，约定和模板分开放：两个内核用同一种布局，读的人认一次就会。共用的单元（检查点、审阅、文档文件夹）只写一份，别处指过去，免得两处说法走样。
 - 设计那侧不新建文件，design-log.md 原有条号 1～20 不变，新条接在末尾：SKILL.md 和模板里都引用了这些条号，改号就得跟着改。
 - 按依赖排：总览先写，后面各份照它的说法；四个命令最后改，指路才能指向已经定下的文件名。
-- 先结构、后全文，全文每份停一次（PO：这次要审；CLAUDE.md「模板规约」）。
+- 先结构、后全文，全文每写完一份停一次，由 Master 审，Master 认可再写下一份（PO 2026-11-08 把审阅交给 Master；CLAUDE.md「模板规约」）。
 - 内容照对照表逐项落，对照表就是验收清单；原文优先，Scrum Guide、SGEP 有原句的引原句并在句中写明出处，整段摘录的文件加 Source、License 两行；不是原文的写成约定，标来源标签；全英文、自足；模板只记产出。
 
 **已知风险和拿不准的地方**
 
-- 冲刺日志约定有 21 条，篇幅大，PO 审的量也大：每写完一份就停，不攒着一起交。
+- 冲刺日志约定有 21 条，篇幅大，审的量也大：每写完一份就停，不攒着一起交。
 - 把作者的做法写成通用说法时，容易漏出本仓库的路径、名字或作者的配置：工作项 9 专门 grep 一遍。
 - 三份约定之间互相引用条号（如冲刺日志约定指向产品日志约定的「精化七步」）：结构定稿后条号不再动，改动时同步查引用。
 - 冷启动测试受 Haiku 输出的随机性和作者环境影响（用户级 CLAUDE.md 照常加载），过线不等于陌生人环境里也行（体验测试归 PBI-30）。
@@ -166,3 +167,4 @@ PO 放行：How 由 Master 审，Master 认可即放行（PO 2026-11-08 授权�
 | 2026-11-08 | 结构稿：`structure.md`（中间文件，Review 时删） | 五份文件放 scrum-kernel 的 `conventions/`，命名照 design-kernel（约定 `xxx-log.md`，模板 `xxx-backlog-template.md`）：总览 16 条加汇总表、产品日志约定 17 条、冲刺日志约定 21 条、两份模板只列章节。每条标出处，对照表（2.2.3）各项都有落点。37 不改 design-log.md 的条号 1～20，新条接在末尾，免得 SKILL.md 和模板里的引用跟着改 | `6017ae0` | 停下，交 Master 转 PO；PO 点头后写全文，从总览开始 |
 | 2026-11-08 | 带进 PO 新定的两条（2.2.1 第 14、15 点），照 Master 的补充改结构稿 | How 是方案、不是步骤：冲刺日志约定第 7 条、模板 3.1，本冲刺 3.1 也照这个写法重排（补「怎么算做完」和风险），产品日志 2.2.5 单元 3、2.2.8 那一行，以及 2.2.1 Map、2.2.5 的表与流程图、2.2.7 的短名示例，同步改成「How 是方案」。目标不变、其余可调：总览、冲刺日志约定、产品日志约定、design-log.md 各落一处，新条接在各自末尾，原有条号不挪。补充：冲刺日志约定开头加流程图；总览「Working conventions」补三处分工和短名；冲刺日志约定第 20 条补「tag 写成果」。2.2.3 对照表加一行 | 本提交 | — |
 | 2026-11-08 | PO 定：约定里不写 Claude Code 的具体机制（2.2.1 第 16 点） | 结构稿删掉总览原第 13 条，原第 14～17 条前移为 13～16，引用「总览第 17 条」的几处同步改成第 16 条；冲刺日志约定第 13 条只留原则，第 16 条改成工具中性的说法；总览第 12 条「施工交给谁」也写成工具中性的说法。冲刺日志 2.2.2 的 39、32 两行和产品日志 PBI-39 的备注同步去掉 fork、权限模式的说法。冲刺日志开头关于本冲刺 Developer 是 fork 的记录照留，那是本冲刺的事实，不是约定 | 本提交 | 停下，等 PO 看结构稿 |
+| 2026-11-08 | PO 又定两件（2.2.1 第 9、17 点）：不要修订记录；结构和全文的审阅交给 Master | 结构稿第三版：产品日志模板去掉 Revision record 一节，产品日志约定第 17、18 条、冲刺日志约定第 18 条清掉修订记录，冲刺日志约定第 12 条写明 PO 可以把审阅交给 Master。测试判定标准 P 组第 ④ 条的标题清单去掉「修订记录」：模板已经没有这一节，留着会把照新模板建出的文件判错；还没有跑任何测试，不违反「出结果后不改标准」。3.1 工作项「怎么算做完」里的「PO 看过」改成「Master 认可」 | 本提交 | 停下报 Master，等 Master 审结构 |
