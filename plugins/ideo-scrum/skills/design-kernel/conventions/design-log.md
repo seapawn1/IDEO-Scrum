@@ -45,7 +45,7 @@ Conventions 10 to 18 cover only what differs from the book; for everything else,
 
 ## Resuming
 
-21. **Resume from the header** — *Author's practice.* Keep the header's Now line current: the stage, and the next step. A session that picks up the design reads it first.
+21. **Resume from the header** — *Author's practice.* Keep the header's Now line current: the stage, and the next step. A session that picks up the design reads it first. Before a session ends or its context is shortened, write the half-finished work into the chapter it belongs to, update the Now line, and commit.
 
 ## What stays fixed
 

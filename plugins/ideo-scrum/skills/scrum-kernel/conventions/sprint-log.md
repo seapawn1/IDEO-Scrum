@@ -27,7 +27,7 @@ flowchart TD
 
 ## Opening a Sprint
 
-1. **One branch, one folder** — *Author's practice.* Each Sprint has one branch, with a separate working copy if wanted, and one folder, `scrum/sprint-NN-<suffix>/`: a two-digit number and a suffix saying what the Sprint is about. The folder's name is also the branch's name, and the tag's at close.
+1. **One branch, one folder** — *Author's practice.* Each Sprint has one branch, with a separate working copy if wanted, and one folder, `scrum/sprint-NN-<suffix>/`: a two-digit number — the previous Sprint's plus one, starting at 01 — and a suffix saying what the Sprint is about. The folder's name is also the branch's name, and the tag's at close.
 2. **No end date** — *Author's practice.* A Sprint closes when its goal is met or the Product Owner stops it. *Departs from the Scrum Guide on purpose*, where Sprints are "fixed length events of one month or less": AI works by session, so the Product Owner watches at checkpoints for a Sprint that drags on.
 3. **Goal fixed, plan flexible** — *Author's practice.* The Sprint Goal and the Definition of Done hold. The How may change at any time; refinement points and acceptance criteria may be renegotiated with the Product Owner. Write each change and its reason in the notes, which are only ever added to (`overview.md`, convention 16).
 4. **Small work, small Sprint** — *Author's practice.* Work of half an hour to one session still gets a Sprint, each step shrunk to a line or two; the go-ahead, the review, and the close still happen.
