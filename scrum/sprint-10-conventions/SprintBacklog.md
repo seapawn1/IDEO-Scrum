@@ -66,6 +66,9 @@ PO 2026-11-08 宣布精化结束。
 | 17 | **不要修订记录**：产品日志模板不设 Revision record 一节，历史交给 git；产品日志约定、总览、冲刺日志约定里提到修订记录的地方都清掉，Review 时「给产品日志保鲜」也不再写修订记录。我们自己的产品日志，到 Review 精简时照新模板，同样去掉修订记录一节 | PO（2026-11-08，Master 转达） |
 | 18 | **PBI 编号写成 PBI- 加三位数**，往下接着编，例如 PBI-001、PBI-002：改产品日志约定第 10 条七列说明表的「#」一行、两份模板的表头或注释、冲刺日志里讲到编号的地方；测试夹具和 D 组题目里的 PBI-02 改成 PBI-002。我们自己的产品日志不重新编号：归档的冲刺日志和 git 历史都在引用 PBI-12 这种旧编号 | PO（2026-11-08，Master 转达） |
 | 19 | **冲刺日志 2.1 直接摘抄产品日志原文**，五列：编号、标题、用户故事、架构定位、规模。当前状态不抄，只写在产品日志里；备注不抄，那是精化的点，放到 2.2 处理。改模板 2.1、冲刺日志约定的「Who writes each section」表和第 5 条；本冲刺日志的 2.1 也照这个改 | PO（2026-11-08，Master 转达） |
+| 20 | **stakeholder 命令的描述**：「(not a fork of the conversation)」改成「(not a copy of the current conversation)」，其余一字不动；R 组本来就要重跑 | PO（2026-11-08，Master 转达） |
+| 21 | **PO 指定 Stakeholder 审阅时，它对照 DoD 和验收标准逐条核对**：加在 stakeholder 命令、冲刺日志约定第 16 条、scrum-master 命令「Review the work」那条；产品日志 PBI-32 的这个开放点改成已定 | PO（2026-11-08，Master 转达） |
+| 22 | **约定要短**（取代产品日志 2.2.7「约定文件长度不限」）：砍字，不砍规矩；对照表每一项砍完都还在，不加新内容。方向：① 一条规矩只写一处，别处用短名指过去——「目标不变，其余可调」的完整写法和引文只放总览第 16 条；故意和官方不同的理由写在那条规矩里，一句话加原文关键的半句，总览的汇总表改成索引；design-log 第 1、6 条指向总览；审阅、文档文件夹、文件名各只在一处写全。② 每条先写规矩本身，一到三句；只在故意和官方不同、或不说清楚 AI 会做错时写理由。③ 引文只标故意不同之处，只引关键的半句；和官方一致的不引（sprint-log 第 7 条可留「decomposing … one day or less」）；引文砍光的文件去掉 Source、License 两行。④ 不复述原书和模板：design-log 第 10～18 条只写人机协作和原书不同的地方；sprint-log 的「Who writes each section」表删掉，挪进冲刺日志模板各节的注释。⑤ 文件头：总览保留完整身份声明和来源标签说明，其余三份只留一句身份声明并指向总览第 13 条。⑥ 条号不动，只缩写不合并。⑦ 软目标：总览约 95 行、product-log 约 50、sprint-log 约 75、design-log 约 50，合计约 270 | PO 同意精简，具体方向由 Master 与 Developer 商定（PO 2026-11-08） |
 
 ### 2.2.2 各 PBI 写什么与验收
 
@@ -137,8 +140,9 @@ How 是方案，不是步骤（PO 2026-11-08，2.2.1 第 14 点）：工作项�
 | 5 | 设计那侧（37） | 改 design-kernel 的 `design-log.md` 和模板 | 结构稿附录列的各点都改了，原有条号 1～20 不变；Master 认可 |
 | 6 | 四个命令（32） | 改 `commands/` 下四个文件 | 和总览的角色表一致，没有和约定冲突的句子；Master 认可 |
 | 7 | SKILL.md 短表 | scrum-kernel 的 SKILL.md 加一节 Conventions | 描述一字不动；从 SKILL.md 一跳到每份约定和模板 |
-| 8 | 夹具与测试 | 样例产品日志（任务临时目录）；C、R、P、S、D 五组的结果记进 3.2 | 全部过线（2.2.4）；判错的逐条人工看、写明理由 |
-| 9 | 自检，交审 | 3.2 记下对照表逐项落在哪；全仓 grep 与路径核对 | 无死链；插件里没有本仓库的路径、作者的记忆和配置；停下等 Master 派对抗审查，不做 Review、不合入 main |
+| 8 | 精简四份约定（2.2.1 第 22 点） | 总览、产品日志约定、冲刺日志约定、design-log.md 砍字不砍规矩；冲刺日志模板各节注释写明谁写 | 照对照表逐项重核、结果记进 3.2；全仓条号引用都对得上；留下的引文脚本逐句核过原文；没有新增内容 |
+| 9 | 夹具与测试 | 样例产品日志（任务临时目录）；C、R、P、S、D 五组的结果记进 3.2 | 全部过线（2.2.4）；判错的逐条人工看、写明理由 |
+| 10 | 自检，交审 | 3.2 记下对照表逐项落在哪；全仓 grep 与路径核对 | 无死链；插件里没有本仓库的路径、作者的记忆和配置；停下等 Master 派对抗审查，不做 Review、不合入 main |
 
 **关键选择和理由**
 
@@ -183,4 +187,6 @@ PO 放行：How 由 Master 审，Master 认可即放行（PO 2026-11-08 授权�
 | 2026-11-08 | Master 认可 37；补两处：design-kernel 里指这份日志的「product backlog」改成「product log」（「product backlog item(s)」照旧）；design-log.md 文件头加 Source、License 两行，只列 Scrum Guide | 和 scrum-kernel 的约定、总览的分法一致：日志叫 product log，条目叫 product backlog item | 本提交 | — |
 | 2026-11-08 | 全文第七、八份：四个命令（PBI-32）与 scrum-kernel SKILL.md 短表 | 四个命令各加一行 Conventions 指路，写明是 scrum-kernel 技能下的 `conventions/overview.md`（designer 另指 design-kernel 的 design-log.md）；scrum-master 改「冲刺或设计之外」、审阅默认 Master、放行与检查点，加「Facilitate Sprints and designs」「Ask the Product Owner」；developer 加「Own the Sprint and its log」「The How is a plan, not steps」，改证据交审、放行经谁、拿不准问 PO 与 PO 兼 Developer、节奏一条（一个会话、检查点、Retro 写原则）；designer 写明对设计负责、产出是原型和结论，加「Ask the Product Owner」；stakeholder 的身份改成从产品日志利益相关者表里读一行。四个描述一字没动。SKILL.md 加「Conventions」一节和一张五行短表，描述没动 | 本提交 | — |
 | 2026-11-08 | PO 又定两条（2.2.1 第 18、19 点）：PBI 编号 PBI-001 起；冲刺日志 2.1 摘抄五列 | 改了产品日志约定第 10 条、两份模板、冲刺日志约定的表与第 5 条；本冲刺 2.1 照新写法从产品日志原样摘抄五列。测试判定标准里的 PBI-02（夹具说明、D 组题目、D 组第 ④ 条）改成 PBI-002：测试还没跑过，不违反「出结果后不改标准」 | `63d7c82` | 停下报 Master；认可后写夹具、跑测试 |
-| 2026-11-08 | Master 认可命令与 SKILL.md 这一批；测试暂缓；写好测试夹具 | Master：PO 嫌约定冗长，Master 已提精简方向、等 PO 点头；PO 同意的话先把四份约定精简一遍，测的才是最终文字，所以先不跑测试。模板不在精简范围里，先写夹具。夹具：样例产品日志，照新的产品日志模板写，社区图书馆借阅小程序，三条 PBI（PBI-001 查书、PBI-002 预约取书流程（备注写明要先做设计）、PBI-003 续借提醒），不带修订记录，标题与模板逐行一致；放在任务临时目录 `trig/fixture_s10/scrum/ProductBacklog.md`，不入库，sha256 前 12 位 `7b3dcc980550`，跑测试前不再改。Master 转给 PO 定的两处：stakeholder 描述里的「fork」；Stakeholder 被指定审阅时要不要对照 DoD 核验 | 本提交 | 停下，等 PO 定精简方向 |
+| 2026-11-08 | Master 认可命令与 SKILL.md 这一批；测试暂缓；写好测试夹具 | Master：PO 嫌约定冗长，Master 已提精简方向、等 PO 点头；PO 同意的话先把四份约定精简一遍，测的才是最终文字，所以先不跑测试。模板不在精简范围里，先写夹具。夹具：样例产品日志，照新的产品日志模板写，社区图书馆借阅小程序，三条 PBI（PBI-001 查书、PBI-002 预约取书流程（备注写明要先做设计）、PBI-003 续借提醒），不带修订记录，标题与模板逐行一致；放在任务临时目录 `trig/fixture_s10/scrum/ProductBacklog.md`，不入库，sha256 前 12 位 `7b3dcc980550`，跑测试前不再改。Master 转给 PO 定的两处：stakeholder 描述里的「fork」；Stakeholder 被指定审阅时要不要对照 DoD 核验 | `944100e`、`b881f35` | 停下，等 PO 定精简方向 |
+| 2026-11-08 | PO 定三件（2.2.1 第 20～22 点）；做 A：stakeholder 描述与审阅核对 | stakeholder 描述只把「fork of the conversation」换成「copy of the current conversation」；stakeholder 命令加「Reviewing when named」一条；scrum-master「Review the work」加半句；冲刺日志约定第 16 条在精简时一并写进；产品日志 PBI-32 的开放点改成已定。3.1 加工作项 8「精简四份约定」，原 8、9 顺延为 9、10 | 本提交 | 精简 |
+| 2026-11-08 | 做 B：精简四份约定 | 行数，砍前 → 砍后：总览 146 → 106，产品日志约定 79 → 63，冲刺日志约定 111 → 75，design-log.md 74 → 53，合计 410 → 297（软目标约 270；总览多出的主要是 Map、三张表和故意不同之处索引，都是对照表里的项）。对照表逐项重核，都还在：2.1 → 产品日志约定第 6 条与模板；2.2.1 Map → 总览的图；2.2.2 → 总览第 1～5 条（第 2 条的三点在）；2.2.3 → 总览第 7、9、10 条与四个命令；2.2.4 → 产品日志约定第 1～16 条；2.2.5 → 冲刺日志约定第 1～21 条与流程图，「谁写」挪进冲刺日志模板各节注释；2.2.6 → design-log.md；2.2.7 → 总览第 6、13～15 条；2.2.8 → 各条里的一句理由加总览的索引表；GlobalMemory 五条 → 总览第 11、12 条，冲刺日志约定第 13、14、16、18、20 条；CLAUDE.md 的教训 → 冲刺日志约定第 4、11、12、15、16、18、20、21 条；PO 新定各条 → 总览第 5、16 条，产品日志约定第 6、10、17、18 条，冲刺日志约定第 3、5、7、8、13、14、16 条，design-log.md 第 4、21、22 条。条号：四份文件依次是 16、18、21、22 条，连续，没有合并；插件里 44 处「convention N」引用用脚本逐个对到短名，全部对得上。引文：总览七句、产品日志约定两句、冲刺日志约定五句，脚本逐句核过 scrum-guide-2020.md 和 v2026.1 原文；design-log.md 的引文砍光（第 1 条的理由挪到总览第 2 条，第 18 条原书那句改成转述），去掉 Source、License 两行，ATTRIBUTION 里 design-log.md 那一行也删掉。没有新增内容；为了不砍规矩，design-log.md 第 13、17、19 条在初稿砍过头后补回四处（子代理出方案可用 Mermaid、子代理分做原型部件、Review 文档的内容仍标 Supplement、问专家前先画草图地图） | 本提交 | 提交后照 2.2.4 跑 C、R、P、S、D |
