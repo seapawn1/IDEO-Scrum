@@ -1,6 +1,7 @@
 # Design Backlog — <suffix>
 
 > Opened <date> | From: <the product backlog item, or the Sprint and the hard point that raised it> | Branch: <branch> | Product Owner: <name> | Designer: <who> | Scrum Master: <who>
+> Now: <the stage the design is in, and the next step> — keep it current; a session that picks up the design reads this first (convention 21).
 > Closes when the design questions are answered or the Product Owner stops the design; then this file is rewritten as a Review document (conventions 19–20 in `design-log.md`).
 > Methods: the stage excerpts in the design-kernel skill (excerpt paths below are relative to that skill's folder); any ideo-kernel method, whenever the work needs it.
 > This log records what each stage produced, not every step taken to get there (convention 7).

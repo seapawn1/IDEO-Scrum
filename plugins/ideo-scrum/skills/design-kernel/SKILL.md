@@ -21,7 +21,7 @@ Each stage maps to an IDEO mode. The mode's guide and its methods live in the id
 | **Define** | `../ideo-kernel/IDEO-modes/define.md` | Make a map; turn what you learned into How Might We questions. No target step: the design is already the target; if it is too wide, split it out (convention 11) | `define/make-a-map.md`, `define/how-might-we.md` |
 | **Ideate** | `../ideo-kernel/IDEO-modes/ideate.md` | Reach one solution the Product Owner chooses, with the ideo-kernel's Ideate methods as well as the book's steps: gather existing ideas; each person sketches one solution alone; decide; rumble if two winners conflict; storyboard the winner if it helps (here: conventions 8, 12–16) | `ideate/remix-and-improve.md`, `ideate/sketch.md`, `ideate/decide.md`, `ideate/rumble.md`, `ideate/storyboard.md` |
 | **Prototype** | `../ideo-kernel/IDEO-modes/prototype.md` | Adopt the prototype mindset and build a realistic facade of the chosen solution (and its storyboard, if there is one) — just enough to learn; divide the work, stitch it together, do a trial run | `prototype/fake-it.md`, `prototype/prototype.md` |
-| **Test** | `../ideo-kernel/IDEO-modes/test.md` | Interview the testers one at a time with the Five-Act Interview; watch together, look for patterns, and answer the design questions (here the testers are role-card Stakeholders and the Product Owner: convention 18) | `test/small-data.md`, `test/interview.md`, `test/learn.md` |
+| **Test** | `../ideo-kernel/IDEO-modes/test.md` | Interview the testers one at a time with the Five-Act Interview; watch together, look for patterns, and answer the design questions (here the testers are Stakeholders from the product log's stakeholder table, and the Product Owner: convention 18) | `test/small-data.md`, `test/interview.md`, `test/learn.md` |
 
 ## Conventions
 
@@ -30,7 +30,7 @@ How a solo + AI team runs a design — where the design log lives, who decides, 
 ## Use Protocol
 
 1. If the ideo-kernel skill is not loaded yet, invoke `ideo-scrum:ideo-kernel` first — every stage stands on it.
-2. Work in the design log — `scrum/design-<suffix>/DesignBacklog.md`, started from the template. Read the conventions whenever you open or resume a design.
+2. Work in the design log — `scrum/design-<suffix>/DesignBacklog.md`, started from the template. Read the conventions whenever you open or resume a design: convention 4 says how to open one, convention 21 how to pick one up.
 3. Identify the current stage. Keep to the stage order — Empathize, Define, Ideate, Prototype, Test — and go back when a later stage shows that an earlier answer was wrong.
 4. Read the stage's source excerpts before running it, and treat them as source text. Where an excerpt describes the book's room — whiteboards, sticky notes, dot voting, a team at a table — the conventions say how a solo + AI team does that step, and the conventions apply.
 5. Use the IDEO methods whenever the work needs them — first from the mode the stage maps to, but from any mode if it helps — following the ideo-kernel skill's Use Protocol.
