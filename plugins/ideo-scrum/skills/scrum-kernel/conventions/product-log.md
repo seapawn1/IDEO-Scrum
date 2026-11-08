@@ -10,7 +10,7 @@ The product log is the first layer. Its template is `product-backlog-template.md
 ## Starting
 
 1. **One product log** — *Author's practice.* Every project, new or old, starts by writing one product log from the template.
-2. **Blank page** — *Author's practice.* When neither the product nor its architecture is clear, the IDEO methods alone will not make them clear; run a design (design-kernel skill): the IDEO methods with the design sprint, a prototype, and a test. Until its conclusions flow back, the product log holds less: a challenge in place of the product, questions in place of acceptance criteria, and a provisional roadmap in place of the architecture.
+2. **Blank page** — *Author's practice.* When neither the product nor its architecture is clear, the IDEO methods alone will not make them clear; run a design (design-kernel skill), which adds the design sprint, a prototype, and a test to those methods. Until its conclusions flow back, the product log holds less: a challenge in place of the product, questions in place of acceptance criteria, and a provisional roadmap in place of the architecture.
 3. **Facts first, then questions** — *Supplement.* The Scrum Master looks up the facts itself; what the Product Owner must decide goes into one message, numbered, each question with a recommended answer.
 
 ## Each part
