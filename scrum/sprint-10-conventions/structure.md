@@ -2,6 +2,7 @@
 
 > 中间文件，Review 时删除。英文是将来插件里的标题和短名，后面是中文说明。每条约定写成：短名（来源标签）：写什么（出处）。出处里的编号指产品日志的小节；「CLAUDE.md」「GlobalMemory」指作者那边现有的规矩，这次转成约定。
 > 来源标签沿用 design-log.md 的三种：Author's practice、Supplement、Decide on the spot。下面没写标签的，都是 Author's practice。
+> **第二版（2026-11-08）改了什么**：带进 PO 新定的三条——① How 是方案、不是步骤（冲刺日志约定第 7 条、冲刺日志模板 3.1、总览汇总表）；② 目标不变、其余可调（总览第 16 条、冲刺日志约定第 3 条、产品日志约定第 18 条、design-log.md 第 22 条）；③ 约定里不写 Claude Code 的具体机制（plan 模式、fork、权限模式），这些做法容易变：删掉总览原第 13 条「A fork follows its parent」，原第 14～17 条前移为 13～16；冲刺日志约定第 13 条只留原则；第 16 条改成工具中性的说法；subagent 照旧用。另照 Master 的补充：冲刺日志约定开头加一张流程图；总览第 13 条（Working conventions）补三处分工、短名；冲刺日志约定第 20 条补「tag 写成果」。
 
 ## 文件
 
@@ -42,16 +43,19 @@
 **Sessions**（会话分工，来自 GlobalMemory 两条）
 
 11. **One Master per project**：每个项目一个 Master 会话，带本项目的 Developer、Designer、Stakeholder；同时做几个项目时，另有一个总的会话来汇总（GlobalMemory：会话角色分层）。
-12. **Who gets which work**：一张表，列出审阅、长期维护、小改、施工各交给谁，以及为什么（GlobalMemory：派活分工）。
-13. **A fork follows its parent**：fork 出来的 Developer 跟着主会话的权限模式走，主会话一进 plan 模式，它就写不了文件；fork 继承了主会话的看法，不能审自己的活（2026-11-08，Sprint 09、10）。
+12. **Who gets which work**：一张表，列出审阅、长期维护、小改、施工各交给谁，以及为什么；施工那一行写成工具中性的说法：一段话交代得清的交给新的 Developer，要用大量讨论内容的交给和 Master 共享上下文的 Developer，后者不能审自己的活（GlobalMemory：派活分工）。
 
 **About these conventions**（关于约定本身）
 
-14. **Working conventions**：身份声明的意思，即参考用、可以越过、越过时写明为什么；三个来源标签（2.2.7）。
-15. **Revise them weekly**：用着不顺先记下，大约每周集中改一次，下个冲刺照新的用，冲刺进行中不改（2.2.7）。
-16. **Templates record outputs**：章按流程分，节只放产出，做法写在约定里（2.2.7、Sprint 09）。
+13. **Working conventions**：身份声明的意思，即参考用、可以越过、越过时写明为什么；三个来源标签；三处分工：模板为主，参考为辅，命令里只放一句指路；每条约定起一个短名，方便口头引用（2.2.7）。约定里不写 plan 模式、fork、权限模式这类具体工具的机制，这些做法容易变；subagent 照旧用（PO 2026-11-08）。
+14. **Revise them weekly**：用着不顺先记下，大约每周集中改一次，下个冲刺照新的用，冲刺进行中不改（2.2.7）。
+15. **Templates record outputs**：章按流程分，节只放产出，做法写在约定里（2.2.7、Sprint 09）。
 
-**Where we depart from the official guides**（与官方故意不同之处汇总表）：列出不同之处、官方怎么说、理由、见哪条约定（2.2.8）。
+**What stays fixed**（什么不变）
+
+16. **Goal fixed, plan flexible**：三份日志各有一个不变的承诺，分别是 Product Goal、Sprint Goal、设计目标；DoD 也不降低。承诺下面的东西，包括 PBI、精化点、验收标准、How 方案、设计方案，都可以随着了解调整，改了什么、为什么都记下来。承诺本身只有 PO 能改；Sprint Goal 保不住时，由 PO 取消冲刺。引原句：SGEP 用 scrum-kernel SKILL.md 里那段（Product Goal is fixed… / DoD is not weakened… / So what could be changed instead?）；Scrum Guide 用「No changes are made that would endanger the Sprint Goal」「Scope may be clarified and renegotiated with the Product Owner as more is learned」（PO 2026-11-08）。
+
+**Where we depart from the official guides**（与官方故意不同之处汇总表）：列出不同之处、官方怎么说、理由、见哪条约定；How 那一行写「How 是方案，不是步骤」（2.2.8，PO 2026-11-08 改）。
 
 ## 2. `product-backlog-template.md`
 
@@ -105,6 +109,10 @@
 
 17. **Fresh at every Review**：做完的 PBI 移入 3.2，只留一行加出处；删掉过时的架构文字和已解决的开放点；没做完的回 3.1；修订记录只留最近三条（2.2.5 单元 9）。
 
+**What stays fixed**（什么不变）
+
+18. **Goal fixed, plan flexible**：PBI 和验收标准随时可以精化；Product Goal 没有相反的证据就不改，要改只有 PO 能改；改了什么、为什么记进修订记录。指向总览第 16 条（PO 2026-11-08）。
+
 ## 4. `sprint-backlog-template.md`
 
 ```
@@ -117,25 +125,27 @@
 ### 2.1 Product Backlog Items
 ### 2.2 Refinement          （定下的各点和谁定的；验收标准；测试的方法与判定标准）
 ## 3. How
-### 3.1 How                 （每个点只写方向；最后一行写放行）
+### 3.1 How                 （方案，不是步骤：工作项按顺序排，每项一个会话以内，写明产出和怎么算做完；关键选择和理由；已知风险和拿不准的地方；最后一行写放行）
 ### 3.2 Notes               （只往后加：日期、做了什么、决定与理由、证据、下一步）
 ## 4. Review                （收官时写：增量、DoD 与验收标准的结果、审阅、外部视角、产品日志的调整）
 ```
 
 ## 5. `sprint-log.md` — Sprint Log Conventions (v1)
 
+**The flow**（流程图）：放在开头，Mermaid flowchart TD，由产品日志 2.2.5 那张改写：Planning 三个阶段 → 放行 → 施工与检查点 → 审阅 → 验收 → Review → Retro → 收官；精化碰到难点时开成设计。
+
 **Opening**（开冲刺）
 
 1. **One branch, one folder**：一个冲刺一个分支，worktree 可开可不开；文件夹叫 `scrum/sprint-NN-<后缀>/`，里面一定有 `SprintBacklog.md`（2.2.5）。
 2. **No end date**：收官点是 Sprint Goal 达成，或 PO 叫停。故意和定长冲刺不同，写理由和代价（2.2.5、2.2.8）。
-3. **The log is not final**：一到三章随时可以改，改了什么记进 3.2；3.2 只往后加；Sprint Goal 和 DoD 要守住，引 SGEP 原句（2.2.5）。
+3. **Goal fixed, plan flexible**（原名 The log is not final）：Sprint Goal 和 DoD 守住，引 Scrum Guide「No changes are made that would endanger the Sprint Goal」和 SGEP 原句；How 方案随时可改；精化点、验收标准可以和 PO 重新商量（Scrum Guide「Scope may be clarified and renegotiated with the Product Owner as more is learned」）；一到三章随时可以改，改了什么、为什么记进 3.2；3.2 只往后加；Sprint Goal 保不住时，由 PO 取消冲刺。指向总览第 16 条（2.2.5，PO 2026-11-08）。
 4. **Small work, small Sprint**：半小时到一个会话就能做完的活，也开冲刺，每一步缩到一两行；放行、审阅、收官照做（Sprint 09）。
 
 **Planning**（三个阶段）
 
 5. **Stage 1: Why and what**：PO 主导，和 Master 一起定 Sprint Goal、PBI 和 DoD；Sprint Goal 照 PO 以前写过的风格起草；选不出时用 IDEO 的方法；定完给 Developer 看（2.2.5 单元 1）。
 6. **Stage 2: Refinement**：Master 主导，用精化七步（指向 product-log 第 15 条）；碰到难点开成设计；最后由 Developer 确认没有不明白的点（2.2.5 单元 2）。
-7. **Stage 3: How gives direction only**：Developer 主导，只写方向；写得出具体步骤，就直接去做；Master 和 PO 只看方向对不对。故意和官方不同，写理由（2.2.5 单元 3、2.2.8）。
+7. **How is a plan, not steps**（原名 Stage 3: How gives direction only）：Developer 主导。How 写三样：① 工作项清单，按顺序排，每项一个会话以内做得完，写明产出和怎么算做完；② 关键选择和理由；③ 已知风险和拿不准的地方。不写每份文件里具体写什么，不写操作步骤，也不打磨计划本身。依据：Scrum Guide「decomposing Product Backlog items into smaller work items of one day or less」「enough detail that they can inspect their progress in the Daily Scrum」，SGEP「do enough planning to get started with the work」；这里把「一天」换成「一个会话」，把站会换成检查点（第 10 条）。Master 和 PO 看方案对不对。Master 和 PO 要看过、放行才施工，这一点故意和官方不同，写理由（2.2.5 单元 3、2.2.8，PO 2026-11-08 改）。
 8. **Go-ahead**：How 定了、PO 放行了才施工；放行写成一行，写明授权到哪一步；PO 可以把审 How 交给 Master（2.2.5 单元 4、Sprint 10）。
 
 **Building**（施工）
@@ -144,20 +154,20 @@
 10. **Checkpoints, not stand-ups**：不定时，AI 停下来问 PO，或者 PO 来问进度。故意和每日站会不同，写理由（2.2.5 单元 6、2.2.8）。
 11. **New work gets registered**：冲刺中冒出来的新活，先登记成 PBI，再由 PO 定进不进当前冲刺；Sprint Goal 不变（CLAUDE.md）。
 12. **Structure before full text**：新模板、新结构，先把章节清单单独给 PO 看，PO 点头再写全文（Sprint 09 Retro）。
-13. **Full text for review**：新的长期文档，把全文放到 PO 能逐段批注的地方（在 Claude Code 里就是 plan），批准后才改源文件；盘上的版本优先（GlobalMemory：plan 视图审阅）。
+13. **Full text for review**：新的长期文档，先把全文放到 PO 能逐段批注的地方，批准后才改源文件；盘上的版本优先（GlobalMemory：plan 视图审阅；只留原则，不写具体工具，PO 2026-11-08）。
 14. **Hand off by compacting**：不写交接文档；压缩前先把该写的写进文件、提交，停在一个完整的点上；压缩时写明要保留什么（GlobalMemory：压缩代替交接）。
 15. **Tests: criteria first**：判定标准先写、单独提交，再跑；出了结果不改标准；判错的逐条人工看，写明理由（CLAUDE.md）。
 
 **Review and acceptance**（审阅与验收）
 
-16. **A reviewer is required**：默认由 Master 审；PO 可以指定 Stakeholder 或全新子代理；Master 兼 Developer，或 Developer 是 Master 的 fork 时，交给全新子代理，只核对做得对不对；派审阅子代理时，写全任务、项目规矩和已经发出的决定。故意和官方不同，写理由（2.2.5 单元 7、CLAUDE.md、GlobalMemory：派活分工）。
+16. **A reviewer is required**：默认由 Master 审；PO 可以指定 Stakeholder 或全新子代理；Master 兼 Developer，或 Developer shares the Master's context（和 Master 共享上下文）时，交给全新子代理，只核对做得对不对；派审阅子代理时，写全任务、项目规矩和已经发出的决定。故意和官方不同，写理由（2.2.5 单元 7、CLAUDE.md、GlobalMemory：派活分工）。
 17. **PO acceptance when written**：DoD 或验收标准里写了才做，有时 PO 看一眼就过（2.2.5 单元 8）。
 
 **Closing**（收官）
 
 18. **Review**：依次是备料、删掉中间文件、压缩冲刺日志并补上第四章、改名移进文档文件夹、给产品日志保鲜；召唤产品日志表里的利益相关者看增量（2.2.5 单元 9、GlobalMemory：Sprint 收尾做法）。
 19. **Retro**：不设 Retro 章；教训写进项目的记忆或说明文件，写成原则：坏了什么、为什么、得出什么规则；特别好的改进经 PO 同意写进 DoD；问一句 PO 在哪里卡住了 AI（2.2.5 单元 10）。
-20. **One closing commit**：Review 和 Retro 只出一个提交；tag 与冲刺文件夹同名，同名分支随即删除；改名、移动后全仓查旧路径；推送这类对外动作要经 PO 同意（2.2.5 单元 11、GlobalMemory：Sprint 收尾做法）。
+20. **One closing commit**：Review 和 Retro 只出一个提交；tag 与冲刺文件夹同名，同名分支随即删除；tag 的说明写这次做成了什么；改名、移动后全仓查旧路径；推送这类对外动作要经 PO 同意（2.2.5 单元 11、GlobalMemory：Sprint 收尾做法）。
 
 **When things change**（特殊情况）
 
@@ -170,6 +180,7 @@
   - 第 3 条 **Who** 加上只有一个会话时的署名写法。
   - 开头的两个术语：**Role card** 改成「产品日志利益相关者表里的一行」，表里没人时先问 PO；**Folders** 改成指向总览里的文档文件夹。
   - 末尾新加第 21 条 **Resume from the header**：文件头的 Now 一行随时更新，接手的会话先读它。
+  - 末尾再加第 22 条 **Goal fixed, plan flexible**：设计目标在共情阶段边学边改，定下以后只有 PO 能改；方案可以照测试结果改；改了什么、为什么写进日志。指向总览第 16 条（PO 2026-11-08）。
   - 第 13、17 条各加一句：子代理开几个、用什么模型、原型做到多真，都当场定（Decide on the spot）。
   - 模板的文件头加上 Now 一行。
 - **32，四个命令**：照精化表改；每个命令加一句指路，指向 `conventions/overview.md`。
