@@ -95,6 +95,7 @@ flowchart TD
 | PBI-33 | 方法库改写——解除非商业限制 | 作为陌生人（在商业项目里用），我想要方法库不带非商业限制，以便商业项目里也能用 | 插件：ideo-kernel 方法库 | 待排序（以后再做） | L | d.school Bootleg 是 CC BY-NC-SA，插件因此带非商业限制；PO 定：先接受（README 已写明），以后再做；注意：改写成自己的话与「原文优先」（CLAUDE.md「源材料与授权」）相反，做之前先定还做不做；改写范围、署名怎么处理，实现前定；来源：2026-11-07 精化 |
 | PBI-35 | 看板（Scrum Board） | 作为熟手，我想要一块看板，一眼看到正在进行的冲刺、设计和各自的状态，以便不用翻各份日志就知道全局 | `scrum/` 下（插件约定 overview 第 4 条） | 待排序（以后再设计） | M | 主要对 PO 负责，做记录用；放 `scrum/` 下；（补充）可以交给常驻的 Stakeholder 会话维护，在 2.1 加一张带「负责 / 不负责」的卡（Grok Bot 的看板维护者："Don't prioritise, don't do the work, don't delete cards without asking"）；（补充）可以开成第一份设计日志，试 PBI-28 的模板；来源：2026-11-07 精化第四轮（PO 登记，这次不做） |
 | PBI-40 | 约定 v1 第一次集中修订 | 作为熟手，我想要约定 v1 用过一轮后集中修一次，补上用起来卡手的地方，以便下一个冲刺照着走更顺 | 插件 scrum-kernel、design-kernel 的 `conventions/` | 待排序 | S～M | 「熟手」的意见（2026-11-08 Sprint 10 Review）：① 设计收官没有 Review 模板 ② 「拿不准就问 PO」没有触发清单 ③ 检查点没有固定的触发时机 ④ 越过约定时，没有机制保证记下理由 ⑤ Planning 时要同时开三份约定，跨文件引用读起来累 ⑥ 新项目既没有记忆文件也没有说明文件时，Retro 的教训写到哪里 ⑦ 老项目怎么迁移成产品日志；约定改动照「每周集中改一次」，冲刺进行中不改；来源：2026-11-08 Sprint 10 Review |
+| PBI-41 | 约定 v1 按 PO 审阅修订 | 作为熟手，我想要约定照 PO 逐段审出的意见改过一遍，以便读起来顺、一条规矩只写一处、不该在插件里的不在插件里 | 插件 scrum-kernel、design-kernel 的 `conventions/` | 进行中（Sprint 11） | S | 来源：PO 2026-11-09 逐段审阅（[documents/conventions-review-log.md](documents/conventions-review-log.md)，19 处）；与 PBI-40（熟手的七条意见）分开 |
 
 ## 3.2 已完成 / 已关闭的 PBI
 
