@@ -226,7 +226,7 @@ flowchart TD
    7. 精化结束由 PO 说。
 
    验收标准可以写在产品日志里，也可以在冲刺日志 2.2 补；产品日志已经写全的，冲刺日志 2.2 不再写。精化也可以随时在产品日志里做，那里只是放细，最终在这里做（见 2.2.4）。归为研究任务的难点开成设计（见 2.2.6），冲刺其余部分照常。最后 Developer 审查：没有不明白的点。
-3. **Planning 阶段 3（How）**：Developer 主导。**How 是方案，不是步骤**（PO 2026-11-08，取代原来的「每个点只写大致方向」）：写三样——① 工作项清单，按顺序排，每项一个会话以内做得完，写明产出和怎么算做完；② 关键选择和理由；③ 已知风险和拿不准的地方。不写每份文件里具体写什么，不写操作步骤，也不打磨计划本身；这时还不动增量。依据：Scrum Guide 讲 How 时说「This is often done by decomposing Product Backlog items into smaller work items of one day or less.」，讲 Sprint Backlog 时说「It should have enough detail that they can inspect their progress in the Daily Scrum.」；SGEP 说「do enough planning to get started with the work」。这里把「一天」换成「一个会话」，把站会换成检查点（单元 6）。Master 与 PO 看方案对不对，同意就放行；细审放到做出来的增量上（单元 7）。（PO 2026-11-07：「How 千万不能写成具体计划，具体的计划为什么不直接去干呢」；pstack 也故意不设计划技能，把「打磨抽象计划」列为坑。）
+3. **Planning 阶段 3（How）**：Developer 主导。**How 是方案，不是步骤**（PO 2026-11-08，取代原来的「每个点只写大致方向」）：写三样——① 工作项清单，按顺序排，每项一个会话以内做得完，写明产出和怎么算做完；② 关键选择和理由；③ 已知风险和拿不准的地方。不写每份文件里具体写什么，不写操作步骤，也不打磨计划本身；这时还不动增量。依据：Scrum Guide 讲 How 时说「This is often done by decomposing Product Backlog items into smaller work items of one day or less.」，讲 Sprint Backlog 时说「It should have enough detail that they can inspect their progress in the Daily Scrum.」。这里把「一天」换成「一个会话」，把站会换成检查点（单元 6）。Master 与 PO 看方案对不对，同意就放行；细审放到做出来的增量上（单元 7）。（PO 2026-11-07：「How 千万不能写成具体计划，具体的计划为什么不直接去干呢」；pstack 也故意不设计划技能，把「打磨抽象计划」列为坑。）
 4. **PO 放行**：How 定稿、PO 放行后才能施工——计划批准不等于开工授权（2026-11-06 教训）。放行写成一行，带上这次授权到哪一步，例如「PO 放行：2026-11-08，可提交、可合入 main，不推送」。
 5. **施工与笔记（3.2）**：冲刺日志是全程记录本——会话关了，新会话读日志就能接上；变长没关系。（补充）每行写：日期 · 做了什么 · 决定与理由 · 证据或提交号 · 下一步；接手的会话以笔记为准，不重新推导。
 6. **检查点**（取代每日站会）：不定时。AI 停下来问 PO；或 PO 来问进度，看有没有偏离 Sprint Goal。
