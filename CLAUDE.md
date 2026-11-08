@@ -15,10 +15,10 @@
 
 ## 当前状态（蒸馏锚点，随 Sprint 更新；只留最近三条，更早的见 `git log -p -- CLAUDE.md`）
 
+- **2026-11-09 · Sprint 11 收官（小冲刺），发版 v5.1.1**：Sprint Goal「约定照审阅改定」达成（PBI-41；PO 定 Master 兼 Developer）。PO 对着中文译文逐段审了五份约定，记下 19 处（`scrum/documents/conventions-review-log.md`，每条已标状态）：改了 18 处，overview 第 2 处后半是译文问题、英文不动；几处为守「一条规矩一处」「约定不写工具机制」调了写法或位置（整个 `scrum/` 保鲜只写在 sprint-log 18；不写 fork；不列看板）。规矩上的变化：Developer 只共享 Master 上下文时审阅照常由 Master 做（Sprint 12 起生效）；冲刺日志 3.2 笔记形式不限、不再只增不减；编号不是排名不再算偏离；Review 先写完、移走日志再删中间文件，并把整个 `scrum/` 过一遍；「设计与冲刺并排」提到 design-kernel SKILL.md 开头，design-log 改号为 1–21。全新子代理审阅无必改项，plugin-validator PASS。四份中文译文删除（`git show 6a2fd5e`）。冲刺日志归档 `scrum/documents/sprint-11-conventions-review.md`（含 design-log 读着别扭的五处，留给下次修订）。tag `v5.1.1`、`sprint-11-conventions-review`，未推送。待办同 Sprint 10 一条（全局记忆、推送）；下一个约定修订是 PBI-40（熟手的七条意见），照每周节律攒着改。
 - **2026-11-08 · Sprint 10 收官（流程全部进插件）**：Sprint Goal「流程全部进插件」达成（一天，Master 在主会话，Developer 由 Master 会话 fork 出来，不开 worktree）。PBI-39、31、23：scrum-kernel 新建 `conventions/`（总览 16 条、产品日志约定 18 条与模板、冲刺日志约定 21 条与模板）；PBI-37：design-kernel 补开设计、接手（文件头 Now 一行）与目标不变；PBI-32：四个命令跟上约定。PO 定：约定要短（砍字不砍规矩，一条规矩只写一处，引文只标故意不同之处）；约定不写工具机制；How 是方案不是步骤；目标不变其余可调；不要修订记录；PBI 编号 PBI-001；规模按会话数；文档文件夹 `scrum/documents/`（原根目录的 docs 文件夹迁入）；scrum-kernel 描述补 Product Backlog、Sprint Backlog（729 → 943 字符），描述可以改、重跑触发不变差。三轮测试（Haiku）最终全部过线；插件校验 PASS、对抗审查基本通过、技能审阅 21 项全改；「熟手」「陌生人」能用但有保留 → PBI-40、PBI-30。产品日志 2.2 精简为 Map（原文 `git show 3b24287:scrum/ProductBacklog.md`），修订记录删除。冲刺日志归档 `scrum/documents/sprint-10-conventions.md`。发版 v5.1.0，tag `v5.1.0`、`sprint-10-conventions`，未推送。Product Goal 这次不定（PO：以后可能要重构，下次再定）。待办：全局记忆先不删（Master 定）——推送并更新安装之前，别的项目用的还是已安装的 v4.0.0，现在删就断了规矩；v5.1.0 推送、装好以后，删「Sprint 收尾做法」，其余四条（压缩代替交接、会话角色分层、plan 视图审阅、派活分工）精简到只留 Claude Code 或 SeaPawn 特有的部分，记在 PBI-30 备注里，发布时一并做。下一步：PO 通读插件的约定和文档，提出一些小改动，到时开一个小冲刺来改。
 - **2026-11-08 · Sprint 09 收官（小冲刺），发版 v5.0.1**：PO 发现 Sprint 08 交付的设计日志模板把原书和约定的每一步都开成了一节，与 PO 说的不同，单开小冲刺改正（PBI-38）：日志只记产出（共情 1.1～1.3；定义 Map、HMW；构思 3.1 方案、3.2 故事板可选；原型、测试不分节）；不设选靶（设计本身就是靶，一份装不下就拆出去另开）；构思写明 IDEO 构思的方法同样要用。Planning 并成一份 plan，PO 逐段看过改动全文后批准即放行；Master fork 出 Developer 施工，Master 与 PO 同时在主会话聊下一个冲刺；全新 Haiku 子代理对照 plan 核对，A～D 全部 verified；B 组触发（Haiku）脚本 4/5、人工改判后 5/5。路线顺延：10 冲刺流程进插件（PBI-23、31），11 角色接上约定（PBI-32、25）。冲刺日志归档 `scrum/documents/sprint-09-design-template.md`。tag `v5.0.1`、`sprint-09-design-template`，未推送。
-- **2026-11-08 · Sprint 08 收官，发版 v5.0.0**：Sprint Goal「设计内核独立」达成（一天，Master 兼 Developer，不开 worktree）。PBI-34：新建 design-kernel，按 IDEO 五阶段放《Sprint》原文摘录（只删不改，与人机协作无关的删去，例图改画成 Mermaid 或文字），加设计日志约定 20 条与五章模板（PBI-28）；PBI-29：ideo-kernel 成为整个插件共用的工具箱、各阶段的基础，方法不限当前模式；scrum-kernel 的预研究改为开设计；PBI-36：四个命令都先加载 ideo-kernel。触发回归（Haiku，`claude -p`）A、B、C 5/5，命令全 2/2；validator、skill-reviewer、对抗审查（复核通过）、「熟手」Stakeholder（能用但有保留 → PBI-37）。冲刺日志压缩后归档 `scrum/documents/sprint-08-design-kernel.md`（第一份按新做法归档的冲刺）。产品日志 2.2.3 增「拿不准就问 PO」；DoD 删「≤2 轮进入执行」；路线：09 冲刺流程进插件（PBI-23、31），10 角色接上约定（PBI-32、25）。tag `v5.0.0`、`sprint-08-design-kernel`，未推送；codex 分支未同步（留到 PBI-30）。
-- 更早的状态（2026-08-31 至 11-07：#28 讨论定案各条、Sprint 07 收官、Sprint 08 撤销与产品日志精化出架构 v1）见 `git log -p -- CLAUDE.md`；教训已蒸馏入记忆档 sprint-06-dual-kernel-refactor、sprint-07-roles-kernels。
+- 更早的状态（2026-08-31 至 11-08：#28 讨论定案各条、Sprint 07 收官、Sprint 08 撤销与产品日志精化出架构 v1、Sprint 08 收官发版 v5.0.0）见 `git log -p -- CLAUDE.md`；教训已蒸馏入记忆档 sprint-06-dual-kernel-refactor、sprint-07-roles-kernels。
 - **1.x 已收官蒸馏**：旧目标（两内核结构对等）判定方向性错误，勿延续；教训见 `S:\SeaPawn-Memory\memory\IDEO-Scrum\`（MEMORY.md 索引 + 五期档案）。
 
 ## 维护规约
@@ -64,6 +64,8 @@
 - **PBI 状态只写产品日志**：SprintBacklog 引用 PBI 编号，不复写状态；进展写在 3.2 笔记。
 - **工作区留着别的改动时，`git add` 逐个写文件**，不按目录加（2026-11-08，Sprint 08 误带过一次，撤回重提）。
 - **迁移类改动全仓 grep**：路径、位置、名称迁移时，同一提交内全仓 grep 旧值至零残留（README、CLAUDE.md、日志都算）。
+- **改规矩先找它的其他说法**（2026-11-09，Sprint 11 Retro）：一条规矩改了，精化时就全仓 grep 它在模板、命令、两份 SKILL.md、CLAUDE.md 里的其他说法，列成连带改动一起改（Sprint 11 一处审阅意见牵出五组连带改动；删一条带编号的约定要改号，用脚本把每处「convention N」对到短名）。
+- **对着译文审阅，先分清改哪边**（2026-11-09，Sprint 11 Retro）：PO 对着中文译文提的意见，逐条先判是英文原文的问题还是译文的措辞；只是译文的，英文不动，在审阅记录里写明（Sprint 11：overview 第 2 处后半）。
 
 **插件验证**
 

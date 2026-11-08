@@ -4,6 +4,8 @@ PO 逐份读插件里的英文约定，把不顺、不清楚、觉得不该在�
 
 ## 目录
 
+下面四份译文在 Sprint 11 收官时删掉了（英文改完后就对不上了），原文见 `git show 6a2fd5e:scrum/documents/<文件名>`。
+
 | 文件 | 是什么 |
 |---|---|
 | `conventions-overview-zh.md` | `scrum-kernel/conventions/overview.md` 的中文直译 |

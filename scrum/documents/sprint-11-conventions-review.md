@@ -3,6 +3,7 @@
 > Started: 2026-11-09 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `sprint-11-conventions-review` | Product Owner: SeaPawn | Scrum Master: Claude（主会话）| Developer: Claude（Master 兼任，PO 2026-11-09 定）
 > How to write this log: `sprint-log.md` in the scrum-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled at close; add none — remarks go in 3.2 Notes (`overview.md`, convention 15).
+> 归档：2026-11-09 开工、当天收官（小冲刺），发版 v5.1.1（未推送）。日志本来就短，没有再压缩；改动的英文全文以提交为准。
 
 ## 1. Why
 
@@ -98,4 +99,38 @@ Go-ahead: 2026-11-09，PO（「其他的我就都同意，现在开始干活吧�
 
 ## 4. Review
 
-<!-- Written at close by the Product Owner, the Scrum Master, and the Developer: the Increment; the Definition of Done and the acceptance criteria, item by item; what the review found; the stakeholders' view; changes to the product log and the Product Goal (sprint-log.md, convention 18). -->
+**增量**（PBI-41，v5.1.1）：
+
+- scrum-kernel：overview 改 4 处，并删去偏离表「Items are numbered, not ranked」一行、约定 4 补设计文件夹的工作文件；product-log 改 5 处；sprint-log 改 6 处；冲刺日志模板 3.2 去掉五列表格与「只增不减」。
+- design-kernel：「设计与冲刺并排」提到 SKILL.md 第一段；design-log 删原约定 1 与单列的角色卡，原 2–22 改号为 1–21，补文件夹的工作材料、问过专家后再精化与重画地图；模板与 SKILL.md 的条号跟着改，模板 2.1 补重画一句。
+- 命令：scrum-master、developer 的审阅说法跟上 sprint-log 16。
+- 本仓库：CLAUDE.md 加「约定大约每周集中改一次」（原总览约定 14 的前半句）、fork 那条的审阅说法、收官顺序；审阅记录 19 处逐条标了状态。
+
+**DoD 与验收标准**：
+
+| 项 | 结果 |
+| --- | --- |
+| 内容忠实 | 19 处照 2.2 的结论改；没有新引文 |
+| 可导航 | 路径 93 处都在；design-kernel SKILL.md 一跳到 design-log |
+| 无死链 | 条号引用 64 处都对到正确短名（脚本）；plugin-validator PASS |
+| ① 19 处都改了，不改的写明理由 | 过：18 处改，overview 第 2 处后半不改，理由写在审阅记录 |
+| ② 连带改动做完，没有自相矛盾 | 过：审阅子代理与 validator 都没找到遗留矛盾；validator 指出的 overview 4 已补 |
+| ③ 脚本核条号与路径 | 过 |
+| ④ 约定里没有工具机制 | 过：无 fork、plan mode、permission mode、worktree |
+| ⑤ PO 判过不改的四条原样 | 过：现约定 2、10、16、18 除条号外逐字未变 |
+
+**审阅**：Master 兼 Developer，审阅交全新子代理（Sonnet）：没有必改项，六条建议采纳两条（见 3.2）。外部视角这次没召唤 Stakeholder（PO：小冲刺，别的不需要）。
+
+**design-log 读着别扭的地方**（PO 要求记下，不硬改）：
+
+1. 约定 5（Ask the PO）和 8（Renamed terms）只是指路，与这次提到 SKILL.md 的原约定 1 是同一类；约定 7 前半也只是指路。下次可以照原约定 1 的办法处理。
+2. 「Where a design sits」这个小标题原本贴着原约定 1；它移走后，这一节从 Hard point 开始，讲的是开设计前后的事，小标题不太对得上。
+3. 约定 9（Experts when needed）现在最长：什么时候问、专家是谁、先画草图、日志记什么、问完再精化，一条装了五件事。
+4. 冲刺 Review 现在要把整个 `scrum/` 过一遍，设计收官（约定 18）仍只写「刷新产品日志」，两边差得比以前大（PO 判过两边做法可以不同）。
+5. 模板文件头有六行引用块，接手时要读的 Now 夹在中间。
+
+**产品日志调整**：PBI-41 移入 3.2；1.2 路线补上 11；PBI-40（熟手的七条意见）照旧排着，标题里的「第一次」已不准确，留给下次精化。Product Goal 不动。
+
+**scrum/ 保鲜**：四份中文译文按英文改完就对不上了（条号也变了），删掉，git 留着（`git show 6a2fd5e:scrum/documents/conventions-overview-zh.md` 等）；审阅记录标完状态后留着。
+
+**Retro**（教训写进 CLAUDE.md）：一条规矩改了，牵出的其他说法要一起改（这次一处审阅意见牵出五组连带改动），精化时就全仓 grep；对着译文审阅的意见，先判是改原文还是只是译文的措辞。*Supplement*：PO 这次没有卡住 AI，Planning 一次放行。
