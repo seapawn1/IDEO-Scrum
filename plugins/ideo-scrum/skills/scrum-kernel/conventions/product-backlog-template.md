@@ -1,7 +1,7 @@
 # Product Backlog — <product>
 
 > Product Owner: <name> | Started: <date>
-> How to write this log: `product-log.md` in the scrum-kernel skill's `conventions/` folder. How it fits with sprint and design logs: `overview.md` there.
+> How to write this log: `product-log.md` in the scrum-kernel skill's `conventions/` folder. How it fits with sprint and design logs: `overview.md`, beside the skill's `SKILL.md`.
 
 ## 1. Product
 

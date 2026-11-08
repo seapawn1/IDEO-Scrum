@@ -1,6 +1,6 @@
 # IDEO-Scrum
 
-为 Claude Code 提供 Design Thinking 与 Scrum Sprint 方法论的插件。v5.1.1。
+为 Claude Code 提供 Design Thinking 与 Scrum Sprint 方法论的插件。v5.1.2。
 
 ## 快速开始
 
@@ -58,7 +58,7 @@
 
 | 文件/目录 | 内容 |
 |---|---|
-| `plugins/ideo-scrum/.claude-plugin/plugin.json` | 插件清单 v5.1.1 |
+| `plugins/ideo-scrum/.claude-plugin/plugin.json` | 插件清单 v5.1.2 |
 | `plugins/ideo-scrum/commands/designer.md` | Command `/ideo-scrum:designer` — 设计阶段结对（IDEO 五模式 + 设计冲刺，原型快速验证、拍板前不落地；进入时加载 ideo-kernel 与 design-kernel） |
 | `plugins/ideo-scrum/commands/developer.md` | Command `/ideo-scrum:developer` — Developer 角色（Scrum Guide 2020 原文抄录＋2026 精炼补充；进入时加载 ideo-kernel 与 scrum-kernel） |
 | `plugins/ideo-scrum/commands/scrum-master.md` | Command `/ideo-scrum:scrum-master` — Scrum Master 角色（Scrum Guide 2020 原文抄录＋2026 精炼补充；替 PO 派活、派子代理审阅；进入时加载三个内核） |
@@ -91,7 +91,8 @@
 | `plugins/ideo-scrum/skills/scrum-kernel/assets/scrum-guide-expansion-pack-2026.1.md` | SGEP 完整源文档（Theory / Values-OODA / Roles / 引用列表） |
 | `plugins/ideo-scrum/skills/scrum-kernel/references/scrum-artifact-*.md` | 4 个 Artifact reference：Product / Increment / Product Backlog / Sprint Backlog |
 | `plugins/ideo-scrum/skills/scrum-kernel/references/scrum-event-*.md` | 5 个 Event reference：Sprint / Sprint Planning / Daily Scrum / Sprint Review / Sprint Retrospective |
-| `plugins/ideo-scrum/skills/scrum-kernel/conventions/` | 约定 v1：overview（三层、文件与文档文件夹、角色、会话分工、目标不变其余可调、与官方故意不同之处）；product-log 与 product-backlog-template（产品日志）；sprint-log 与 sprint-backlog-template（冲刺日志） |
+| `plugins/ideo-scrum/skills/scrum-kernel/overview.md` | 约定总览 v1（与 SKILL.md 并列）：三层、文件与文档文件夹、角色、会话分工、目标不变其余可调、与官方故意不同之处 |
+| `plugins/ideo-scrum/skills/scrum-kernel/conventions/` | 约定 v1：product-log 与 product-backlog-template（产品日志）；sprint-log 与 sprint-backlog-template（冲刺日志） |
 
 ### 工作记录（scrum/）
 

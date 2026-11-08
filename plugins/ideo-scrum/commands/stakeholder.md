@@ -4,7 +4,7 @@ description: "Use when the work needs an outside view of the Product, an Increme
 
 **Load the kernel first**: before anything else, invoke the `ideo-scrum:ideo-kernel` skill with the Skill tool, unless it is already loaded in this conversation.
 
-**Conventions**: how the product log, Sprints, and designs fit together, and who does what, is in `../scrum-kernel/conventions/overview.md`, relative to the ideo-kernel skill's folder; it points to the templates and the other conventions.
+**Conventions**: how the product log, Sprints, and designs fit together, and who does what, is in `../scrum-kernel/overview.md`, relative to the ideo-kernel skill's folder; it points to the templates and the other conventions.
 
 # Identity
 

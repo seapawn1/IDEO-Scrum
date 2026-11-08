@@ -21,11 +21,11 @@ Research and implementation are divided: a design (design-kernel skill) handles 
 
 ## Conventions
 
-How a solo + AI team keeps its product log and runs its Sprints is in `conventions/`: templates, and working conventions that are not source text — follow what fits, override what doesn't, and note why. Start with the overview. When you open, run, or close a Sprint, or write a log, read the matching convention first. The references below are the official texts; the conventions depart from them on purpose in a few places — no Sprint end date, checkpoints instead of the Daily Scrum, a go-ahead before building — and the overview lists them all.
+How a solo + AI team keeps its product log and runs its Sprints is in `overview.md`, beside this file, and in `conventions/`: templates, and working conventions that are not source text — follow what fits, override what doesn't, and note why. Start with the overview. When you open, run, or close a Sprint, or write a log, read the matching convention first. The references below are the official texts; the conventions depart from them on purpose in a few places — no Sprint end date, checkpoints instead of the Daily Scrum, a go-ahead before building — and the overview lists them all.
 
 | File | What it covers | Read when |
 | --- | --- | --- |
-| `conventions/overview.md` | How the product log, Sprints, and designs fit together; folders, including `scrum/documents/`; roles; what stays fixed | Starting a project, or unsure who does what or where a file goes |
+| `overview.md` | How the product log, Sprints, and designs fit together; folders, including `scrum/documents/`; roles; what stays fixed | Starting a project, or unsure who does what or where a file goes |
 | `conventions/product-log.md` | Writing the product log and refining its items | Writing, refining, or refreshing the product log |
 | `conventions/product-backlog-template.md` | The product log template; the file made from it is `ProductBacklog.md` | Creating a product log |
 | `conventions/sprint-log.md` | Planning, building, reviewing, and closing a Sprint | Opening, running, or closing a Sprint |
@@ -56,7 +56,7 @@ Built on three pillars:
 - **Supporter** (a Stakeholder type) – Fosters the climate and environment and participates as requested.
 - **AI** – As a tool or also a possible Product Developer, but not to be entirely trusted yet.
 
-*(Here only the Product Owner must be human: see `conventions/overview.md`, convention 8.)*
+*(Here only the Product Owner must be human: see `overview.md`, convention 8.)*
 
 ### 4. Scrum Events & Activities
 

@@ -7,7 +7,7 @@
 
 Source labels and short names are explained in convention 13.
 
-The other files: `product-log.md` and `product-backlog-template.md`; `sprint-log.md` and `sprint-backlog-template.md`; for designs, `../design-kernel/conventions/design-log.md` and `../design-kernel/conventions/design-backlog-template.md` (paths starting with `../` are relative to the scrum-kernel skill folder; the two design files belong to the design-kernel skill — read them when you open or resume a design).
+The other files: `conventions/product-log.md` and `conventions/product-backlog-template.md`; `conventions/sprint-log.md` and `conventions/sprint-backlog-template.md`; for designs, `../design-kernel/conventions/design-log.md` and `../design-kernel/conventions/design-backlog-template.md` (paths are relative to the scrum-kernel skill folder, where this file sits beside `SKILL.md`; the two design files belong to the design-kernel skill — read them when you open or resume a design).
 
 ## The map
 
