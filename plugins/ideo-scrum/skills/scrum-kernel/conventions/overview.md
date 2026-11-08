@@ -52,8 +52,8 @@ flowchart TD
    | 3 | Prototype: kept in the design folder, never in an Increment | Design questions | Designer | — |
 
    The third layer is not a log and has no prescribed method; it relies on the skills of whoever does the work. Increments add up into the product; prototypes are thrown away when the design closes, and only what was learned flows back.
-4. **Folders** — *Author's practice.* `scrum/` holds the current state and nothing else: `ProductBacklog.md`; one `sprint-NN-<suffix>/` folder per Sprint, with its `SprintBacklog.md` and working files; one `design-<suffix>/` folder per design, unnumbered, with its `DesignBacklog.md` and prototypes. A closed log moves to the document folder (convention 5). This is the author's layout; use your project's own places if it has them.
-5. **The document folder** — *Author's practice.* What a log cannot hold goes into the project's document folder, and the log references it: archived sprint logs and design Reviews, refinement and background material, references, expert interviews, research, design documents. A referenced document counts as part of the Scrum record. Use the project's existing folder, such as `docs/` at the root; if there is none, create one, such as `scrum/docs/`.
+4. **Folders** — *Author's practice.* `scrum/` holds all of the Scrum work: `ProductBacklog.md`; one folder for each Sprint or design in progress — `sprint-NN-<suffix>/` with its `SprintBacklog.md` and working files, `design-<suffix>/`, unnumbered, with its `DesignBacklog.md` and prototypes; and `documents/` (convention 5). This is the author's layout; use your project's own places if it has them.
+5. **The documents folder** — *Author's practice.* A file that serves only one Sprint or design stays in its folder and is deleted at close; git keeps it. A file that serves the whole Scrum goes into `scrum/documents/`, and the logs reference it: design documents, background material, long content written for the product log, and the archives made at close — compressed sprint logs and design Reviews. At each Review, glance at `scrum/documents/` and delete what is outdated. The project's own documentation, such as a user manual or API notes, is outside these conventions; keep it where the project keeps it, such as `docs/` at the root.
 6. **Names** — *Author's practice.* The terms used in all the conventions are defined here once:
    - the **product log** is the Product Backlog, kept in `ProductBacklog.md`; the **sprint log** is the Sprint Backlog, kept in `SprintBacklog.md`; the **design log** is kept in `DesignBacklog.md` — a file made from a template takes these names, whatever the template is called;
    - a **product backlog item (PBI)** is one row of the product log's item table;
@@ -106,4 +106,4 @@ Each reason is in the convention named in the last column.
 | Checkpoints replace the Daily Scrum | Scrum Guide: a daily event for the Developers | `sprint-log.md`, convention 10 |
 | A reviewer is required | Scrum Guide: the Developers instill quality | `sprint-log.md`, convention 16 |
 | No Sprint end date | Scrum Guide: fixed length, one month or less | `sprint-log.md`, convention 2 |
-| Closed logs are kept in the document folder | — | Convention 5 |
+| Closed logs are kept in `scrum/documents/` | — | Convention 5 |

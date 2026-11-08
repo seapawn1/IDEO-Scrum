@@ -1,6 +1,6 @@
 ---
 name: scrum-kernel
-description: "Use when work involves Scrum or a Scrum Sprint — Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective, backlog refinement, Sprint Goal, Product Goal, Definition of Done, Scrum roles (Product Owner, Scrum Master, Developers), empirical process control for complex projects. Division of labor: a design handles research, Scrum handles implementation — before starting, check whether open questions need a pre-study: if the problem or solution direction is unvalidated, open a design with the design-kernel skill first and treat its findings as key Sprint evidence; the IDEO methods in the ideo-kernel skill are the plugin's shared toolbox, usable at any time — when stuck mid-Sprint, they can help inspect the problem."
+description: "Use when work involves Scrum or a Scrum Sprint — Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective, backlog refinement, Product Backlog, Sprint Backlog, Sprint Goal, Product Goal, Definition of Done, Scrum roles (Product Owner, Scrum Master, Developers), empirical process control for complex projects. Load it before creating or changing a Product Backlog or Sprint Backlog, even for a draft: this plugin builds them from its own templates, so work from this skill, not from memory. Division of labor: a design handles research, Scrum handles implementation — before starting, check whether open questions need a pre-study: if the problem or solution direction is unvalidated, open a design with the design-kernel skill first and treat its findings as key Sprint evidence; the IDEO methods in the ideo-kernel skill are the plugin's shared toolbox, usable at any time — when stuck mid-Sprint, they can help inspect the problem."
 ---
 
 # Scrum Kernel
@@ -25,7 +25,7 @@ How a solo + AI team keeps its product log and runs its Sprints is in `conventio
 
 | File | What it covers | Read when |
 | --- | --- | --- |
-| `conventions/overview.md` | How the product log, Sprints, and designs fit together; folders and the document folder; roles; what stays fixed | Starting a project, or unsure who does what or where a file goes |
+| `conventions/overview.md` | How the product log, Sprints, and designs fit together; folders, including `scrum/documents/`; roles; what stays fixed | Starting a project, or unsure who does what or where a file goes |
 | `conventions/product-log.md` | Writing the product log and refining its items | Writing, refining, or refreshing the product log |
 | `conventions/product-backlog-template.md` | The product log template; the file made from it is `ProductBacklog.md` | Creating a product log |
 | `conventions/sprint-log.md` | Planning, building, reviewing, and closing a Sprint | Opening, running, or closing a Sprint |

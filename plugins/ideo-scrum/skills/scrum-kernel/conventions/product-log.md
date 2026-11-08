@@ -33,7 +33,7 @@ The product log is the first layer. Its template is `product-backlog-template.md
     | User story | "As <someone from section 2.1>, I want …, so that …" |
     | Place | A step of the map, or a subsection of section 2.2 |
     | Status | Where the item stands: waiting, in Sprint NN, in a design |
-    | Size | S — one or two sessions; M — about half a Sprint; L — a whole Sprint, to be split when refining |
+    | Size | S — one or two sessions; M — three to five sessions; L — more than five sessions, to be split when refining |
     | Notes | Source, open points, draft acceptance criteria, refinement notes |
 11. **Numbers, not ranks** — *Author's practice.* A number counts an item and does not rank it; the Product Owner orders the items when a person needs the order. *Departs from the Scrum Guide on purpose*, which calls the Product Backlog "an emergent, ordered list": the AI roles rarely need the order.
 12. **Items with the Scrum Master** — *Author's practice.* The Product Owner decides the items together with the Scrum Master, who works as a secretary. At Planning the Product Owner leads the selection, and the Scrum Master and the Developer say when it is too much or too little. *Departs from the Scrum Guide on purpose*, where "the Developers select items from the Product Backlog": the Product Owner sets the value direction, and the others say how much fits.
@@ -52,11 +52,11 @@ The product log is the first layer. Its template is `product-backlog-template.md
     7. The Product Owner says when refinement is over.
 
     Acceptance criteria already written in full here are not repeated in the sprint log.
-16. **Where refined content goes** — *Author's practice.* A split-off item becomes a new row; long design content goes into the architecture, and the Place column points to it; short notes go into Notes; large material goes into the document folder (`overview.md`, convention 5), referenced from Notes.
+16. **Where refined content goes** — *Author's practice.* A split-off item becomes a new row; long design content goes into the architecture, and the Place column points to it; short notes go into Notes; large material goes into `scrum/documents/` (`overview.md`, convention 5), referenced from Notes.
 
 ## Keeping it fresh
 
-17. **Fresh at every Review** — *Author's practice.* Done items move to section 3.2, one line each, with the source; outdated architecture text and resolved open points are deleted; unfinished items go back to section 3.1. There is no revision record; version control keeps the history.
+17. **Fresh at every Review** — *Author's practice.* Done items move to section 3.2, one line each, with the source, usually the archived sprint log in `scrum/documents/`; outdated architecture text and resolved open points are deleted; unfinished items go back to section 3.1. There is no revision record; version control keeps the history.
 
 ## What stays fixed
 

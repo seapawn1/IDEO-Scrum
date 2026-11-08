@@ -1,6 +1,6 @@
 # Product Backlog — <product>
 
-> Product Owner: <name> | Started: <date> | Documents: <the project's document folder, such as docs/>
+> Product Owner: <name> | Started: <date>
 > How to write this log: `product-log.md` in the scrum-kernel skill's `conventions/` folder. How it fits with sprint and design logs: `overview.md` there.
 
 ## 1. Product
@@ -51,7 +51,7 @@
 
 ### 3.2 Done and closed
 
-<!-- One line per item, keeping its number, with where to read more: usually the archived sprint log in the document folder. -->
+<!-- One line per item, keeping its number, with where to read more: usually the archived sprint log in `scrum/documents/`. -->
 
 | # | Title | Result | Source |
 | --- | --- | --- | --- |

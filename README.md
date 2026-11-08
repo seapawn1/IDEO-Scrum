@@ -93,17 +93,17 @@
 | `plugins/ideo-scrum/skills/scrum-kernel/references/scrum-event-*.md` | 5 个 Event reference：Sprint / Sprint Planning / Daily Scrum / Sprint Review / Sprint Retrospective |
 | `plugins/ideo-scrum/skills/scrum-kernel/conventions/` | 约定 v1：overview（三层、文件与文档文件夹、角色、会话分工、目标不变其余可调、与官方故意不同之处）；product-log 与 product-backlog-template（产品日志）；sprint-log 与 sprint-backlog-template（冲刺日志） |
 
-### 工作记录（scrum/ + docs/）
+### 工作记录（scrum/）
 
 | 文件/目录 | 内容 |
 |---|---|
 | `scrum/ProductBacklog.md` | 产品日志——一 Product / Vision / Goal / DoD；二 架构 v1（两侧三层、冲刺流程、插件约定载体）；三 PBI（3.1 当前、3.2 已完成附出处） |
-| `docs/ExpertNotes.md` | 客户之声——作者使用流程已口述落盘（项目骨架→IDEO→design 文件→背景研究→target 四阶段，含与 SprintBacklog 同源表、分工原则、未决清单）；将作为方法论分享的素材 |
-| `docs/PBI-27-bot-research.md` | Bot 工作方式研究（PBI-27）：Grok Bot、DeepSeekBot（pstack）、DS-Bot 等的可借鉴机制，带出处 |
-| `docs/five-stage-mapping.svg` | Scrum 三阶段与 IDEO 五模式的对应图（2026-11-06，ExpertNotes 附录用） |
-| `docs/sprint-08-design-kernel.md` | Sprint 08 冲刺日志归档（设计内核独立，v5.0.0）：关键决定、触发回归、审查与 Review |
-| `docs/sprint-09-design-template.md` | Sprint 09 冲刺日志归档（设计日志模板改正，小冲刺，v5.0.1） |
-| **冲刺蒸馏 / 归档** | 1.x 五期与 Sprint 06、07 已蒸馏至 `S:\SeaPawn-Memory\memory\IDEO-Scrum\`（MEMORY.md 索引 + 各期教训档案，含出处指向 git）；Sprint 08 起，冲刺日志压缩后归档进 `docs/` |
+| `scrum/documents/ExpertNotes.md` | 客户之声——作者使用流程已口述落盘（项目骨架→IDEO→design 文件→背景研究→target 四阶段，含与 SprintBacklog 同源表、分工原则、未决清单）；将作为方法论分享的素材 |
+| `scrum/documents/PBI-27-bot-research.md` | Bot 工作方式研究（PBI-27）：Grok Bot、DeepSeekBot（pstack）、DS-Bot 等的可借鉴机制，带出处 |
+| `scrum/documents/five-stage-mapping.svg` | Scrum 三阶段与 IDEO 五模式的对应图（2026-11-06，ExpertNotes 附录用） |
+| `scrum/documents/sprint-08-design-kernel.md` | Sprint 08 冲刺日志归档（设计内核独立，v5.0.0）：关键决定、触发回归、审查与 Review |
+| `scrum/documents/sprint-09-design-template.md` | Sprint 09 冲刺日志归档（设计日志模板改正，小冲刺，v5.0.1） |
+| **冲刺蒸馏 / 归档** | 1.x 五期与 Sprint 06、07 已蒸馏至 `S:\SeaPawn-Memory\memory\IDEO-Scrum\`（MEMORY.md 索引 + 各期教训档案，含出处指向 git）；Sprint 08 起，冲刺日志压缩后归档进 `scrum/documents/` |
 
 ### 源参考
 
@@ -111,7 +111,7 @@
 
 ## 来源与授权
 
-本仓库的**原创部分**（插件结构、skill 组织、工作记录 `scrum/` + `docs/`）以 [MIT](LICENSE) 发布。
+本仓库的**原创部分**（插件结构、skill 组织、工作记录 `scrum/`）以 [MIT](LICENSE) 发布。
 
 插件内的方法论摘录来自四个外部来源，各自的许可条款不同：
 

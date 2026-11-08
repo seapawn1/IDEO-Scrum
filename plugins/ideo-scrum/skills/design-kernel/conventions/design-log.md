@@ -39,7 +39,7 @@ Conventions 10 to 18 cover only what differs from the book; for everything else,
 
 ## Closing
 
-19. **Close as a Review** — *Author's practice.* A design closes when its questions are answered or the Product Owner stops it. Rewrite the log as one Review document, rename it `design-<suffix>.md`, and move it to the document folder. Delete the prototypes and other files; git keeps them. Handle the design's branch as `../scrum-kernel/conventions/sprint-log.md`, convention 20, says: merge it, then delete it. Refresh the product log.
+19. **Close as a Review** — *Author's practice.* A design closes when its questions are answered or the Product Owner stops it. Rewrite the log as one Review document, rename it `design-<suffix>.md`, and move it to `scrum/documents/`. Delete the prototypes and other files; git keeps them. Handle the design's branch as `../scrum-kernel/conventions/sprint-log.md`, convention 20, says: merge it, then delete it. Refresh the product log.
     *Supplement:* the Review holds the challenge and the design questions, the chosen solution, each question's test conclusion, where the conclusions flowed back, and the commit that holds the prototype.
 20. **Retro as in a Sprint** — *Author's practice.* No Retro chapter; lessons are written as in `../scrum-kernel/conventions/sprint-log.md`, convention 19.
 
