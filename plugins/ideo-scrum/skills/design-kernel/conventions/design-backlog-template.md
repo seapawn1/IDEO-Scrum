@@ -1,15 +1,15 @@
 # Design Backlog — <suffix>
 
 > Opened <date> | From: <the product backlog item, or the Sprint and the hard point that raised it> | Branch: <branch> | Product Owner: <name> | Designer: <who> | Scrum Master: <who>
-> Now: <the stage the design is in, and the next step> — keep it current; a session that picks up the design reads this first (convention 21).
-> Closes when the design questions are answered or the Product Owner stops the design; then this file is rewritten as a Review document (conventions 19–20 in `design-log.md`).
+> Now: <the stage the design is in, and the next step> — keep it current; a session that picks up the design reads this first (convention 20).
+> Closes when the design questions are answered or the Product Owner stops the design; then this file is rewritten as a Review document (conventions 18–19 in `design-log.md`).
 > Methods: the stage excerpts in the design-kernel skill (excerpt paths below are relative to that skill's folder); any ideo-kernel method, whenever the work needs it.
-> This log records what each stage produced, not every step taken to get there (convention 7).
+> This log records what each stage produced, not every step taken to get there (convention 6).
 > How to write this log: `design-log.md` in the design-kernel skill's `conventions/` folder.
 
 ## 1. Empathize
 
-<!-- Excerpts: empathize/define-the-challenge.md, empathize/start-at-the-end.md, empathize/ask-the-experts.md. IDEO mode: empathize. Ask the experts and research only when needed (convention 10); write what they change into the sections below and into the map. -->
+<!-- Excerpts: empathize/define-the-challenge.md, empathize/start-at-the-end.md, empathize/ask-the-experts.md. IDEO mode: empathize. Ask the experts and research only when needed (convention 9); write what they change into the sections below and into the map. -->
 
 ### 1.1 Challenge
 
@@ -29,7 +29,7 @@
 
 ### 2.1 Map
 
-<!-- Actors on top, the ending at the bottom, five to fifteen steps between. Mermaid, flowchart TD. If you ask the experts, draft it before you do, then fix it as you learn. -->
+<!-- Actors on top, the ending at the bottom, five to fifteen steps between. Mermaid, flowchart TD. If you ask the experts, draft it before you do, then fix it as you learn; redraw it after the experts or the research (convention 9). -->
 
 ### 2.2 How Might We
 
@@ -37,11 +37,11 @@
 
 ## 3. Ideate
 
-<!-- Excerpts: ideate/remix-and-improve.md, ideate/sketch.md, ideate/decide.md, ideate/rumble.md, ideate/storyboard.md. IDEO mode: ideate. The book's steps are one way to reach a solution, not the only one: use the ideo-kernel's Ideate methods as well (convention 8). -->
+<!-- Excerpts: ideate/remix-and-improve.md, ideate/sketch.md, ideate/decide.md, ideate/rumble.md, ideate/storyboard.md. IDEO mode: ideate. The book's steps are one way to reach a solution, not the only one: use the ideo-kernel's Ideate methods as well (convention 7). -->
 
 ### 3.1 Solution
 
-<!-- The solution the Product Owner chose (both, if two go to a rumble — convention 15): a title, and how it works step by step. -->
+<!-- The solution the Product Owner chose (both, if two go to a rumble — convention 14): a title, and how it works step by step. -->
 
 ### 3.2 Storyboard (optional)
 
