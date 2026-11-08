@@ -15,7 +15,7 @@
 
 ## 当前状态（蒸馏锚点，随 Sprint 更新；只留最近三条，更早的见 `git log -p -- CLAUDE.md`）
 
-- **2026-11-08 · Sprint 10 立项（流程全部进插件）**：Sprint Goal「流程全部进插件」——精化定下的内容都写进 scrum-kernel 的约定，产品日志、冲刺日志有模板，从 Planning 到收官每一步有约定，docs 是 Scrum 的文档库；角色命令跟上约定；Review 时产品日志只留产品本身。选入 PBI-23（冲刺日志约定）、31（产品日志约定）、32（角色命令）、37（开设计与接手），新登记 PBI-39（总览约定）；原定的 Sprint 11 并进 10。Developer 是 Master 会话 fork 出来的，在 `sprint-10-conventions` 分支上进行（不开 worktree）；How 由 Master 审即放行（PO 授权），施工中的结构和全文停下给 PO 看。冲刺日志 `scrum/sprint-10-conventions/SprintBacklog.md`。
+- **2026-11-08 · Sprint 10 收官（流程全部进插件）**：Sprint Goal「流程全部进插件」达成（一天，Master 在主会话，Developer 由 Master 会话 fork 出来，不开 worktree）。PBI-39、31、23：scrum-kernel 新建 `conventions/`（总览 16 条、产品日志约定 18 条与模板、冲刺日志约定 21 条与模板）；PBI-37：design-kernel 补开设计、接手（文件头 Now 一行）与目标不变；PBI-32：四个命令跟上约定。PO 定：约定要短（砍字不砍规矩，一条规矩只写一处，引文只标故意不同之处）；约定不写工具机制；How 是方案不是步骤；目标不变其余可调；不要修订记录；PBI 编号 PBI-001；规模按会话数；文档文件夹 `scrum/documents/`（原根目录的 docs 文件夹迁入）；scrum-kernel 描述补 Product Backlog、Sprint Backlog（729 → 943 字符），描述可以改、重跑触发不变差。三轮测试（Haiku）最终全部过线；插件校验 PASS、对抗审查基本通过、技能审阅 21 项全改；「熟手」「陌生人」能用但有保留 → PBI-40、PBI-30。产品日志 2.2 精简为 Map（原文 `git show 3b24287:scrum/ProductBacklog.md`），修订记录删除。冲刺日志归档 `scrum/documents/sprint-10-conventions.md`。发版 v5.1.0，tag `v5.1.0`、`sprint-10-conventions`，未推送。Product Goal 这次不定（PO：以后可能要重构，下次再定）。待办：全局记忆先不删（Master 定）——推送并更新安装之前，别的项目用的还是已安装的 v4.0.0，现在删就断了规矩；v5.1.0 推送、装好以后，删「Sprint 收尾做法」，其余四条（压缩代替交接、会话角色分层、plan 视图审阅、派活分工）精简到只留 Claude Code 或 SeaPawn 特有的部分，记在 PBI-30 备注里，发布时一并做。下一步：PO 通读插件的约定和文档，提出一些小改动，到时开一个小冲刺来改。
 - **2026-11-08 · Sprint 09 收官（小冲刺），发版 v5.0.1**：PO 发现 Sprint 08 交付的设计日志模板把原书和约定的每一步都开成了一节，与 PO 说的不同，单开小冲刺改正（PBI-38）：日志只记产出（共情 1.1～1.3；定义 Map、HMW；构思 3.1 方案、3.2 故事板可选；原型、测试不分节）；不设选靶（设计本身就是靶，一份装不下就拆出去另开）；构思写明 IDEO 构思的方法同样要用。Planning 并成一份 plan，PO 逐段看过改动全文后批准即放行；Master fork 出 Developer 施工，Master 与 PO 同时在主会话聊下一个冲刺；全新 Haiku 子代理对照 plan 核对，A～D 全部 verified；B 组触发（Haiku）脚本 4/5、人工改判后 5/5。路线顺延：10 冲刺流程进插件（PBI-23、31），11 角色接上约定（PBI-32、25）。冲刺日志归档 `scrum/documents/sprint-09-design-template.md`。tag `v5.0.1`、`sprint-09-design-template`，未推送。
 - **2026-11-08 · Sprint 08 收官，发版 v5.0.0**：Sprint Goal「设计内核独立」达成（一天，Master 兼 Developer，不开 worktree）。PBI-34：新建 design-kernel，按 IDEO 五阶段放《Sprint》原文摘录（只删不改，与人机协作无关的删去，例图改画成 Mermaid 或文字），加设计日志约定 20 条与五章模板（PBI-28）；PBI-29：ideo-kernel 成为整个插件共用的工具箱、各阶段的基础，方法不限当前模式；scrum-kernel 的预研究改为开设计；PBI-36：四个命令都先加载 ideo-kernel。触发回归（Haiku，`claude -p`）A、B、C 5/5，命令全 2/2；validator、skill-reviewer、对抗审查（复核通过）、「熟手」Stakeholder（能用但有保留 → PBI-37）。冲刺日志压缩后归档 `scrum/documents/sprint-08-design-kernel.md`（第一份按新做法归档的冲刺）。产品日志 2.2.3 增「拿不准就问 PO」；DoD 删「≤2 轮进入执行」；路线：09 冲刺流程进插件（PBI-23、31），10 角色接上约定（PBI-32、25）。tag `v5.0.0`、`sprint-08-design-kernel`，未推送；codex 分支未同步（留到 PBI-30）。
 - 更早的状态（2026-08-31 至 11-07：#28 讨论定案各条、Sprint 07 收官、Sprint 08 撤销与产品日志精化出架构 v1）见 `git log -p -- CLAUDE.md`；教训已蒸馏入记忆档 sprint-06-dual-kernel-refactor、sprint-07-roles-kernels。
@@ -38,7 +38,7 @@
 
 **组件描述（attribute description）规约**
 
-写插件组件（skill / command）的 `description` 时：它是**触发条件**，不是自我介绍——用 "Use when..." + 具体场景词；同类组件描述必须有区分度（模板趋同 = embedding 空间互相叠影，系统无法选择）。plugin.json 的 description 是元数据（展示用），非触发主战场。（来源：Sprint 04。）角色命令可以在触发句之后追加一两句边界和相互关系（替谁做事、不做什么、谁召唤谁），让各角色在技能清单里互相知道；触发句保持在最前（2026-10-13，#14）。模型自以为懂的通用词（如 design sprint）容易不加载就直接答：描述里写明这里的版本和常见的不同、要照技能答，不凭记忆（2026-11-08，Sprint 08：B 组 2/5 → 5/5）。触发不足时，写明「什么情况下先加载」，不要只堆关键词（2026-10-25，PBI-22：ideo-kernel 的触发由 1/10 升到 5/5）。
+写插件组件（skill / command）的 `description` 时：它是**触发条件**，不是自我介绍——用 "Use when..." + 具体场景词；同类组件描述必须有区分度（模板趋同 = embedding 空间互相叠影，系统无法选择）。plugin.json 的 description 是元数据（展示用），非触发主战场。（来源：Sprint 04。）角色命令可以在触发句之后追加一两句边界和相互关系（替谁做事、不做什么、谁召唤谁），让各角色在技能清单里互相知道；触发句保持在最前（2026-10-13，#14）。模型自以为懂的通用词（如 design sprint）容易不加载就直接答：描述里写明这里的版本和常见的不同、要照技能答，不凭记忆（2026-11-08，Sprint 08：B 组 2/5 → 5/5）。触发不足时，写明「什么情况下先加载」，不要只堆关键词（2026-10-25，PBI-22：ideo-kernel 的触发由 1/10 升到 5/5）。 描述可以改，改了就重跑触发测试，结果不能比改前差（PO 2026-11-08）。Scrum 的通用词（如 Product Backlog、Sprint Backlog）也要写进描述，并写明什么时候先加载：模型以为自己懂的事，不写就不加载（Sprint 10：P 组 3/5 → 5/5）。
 
 **模板规约**（2026-11-08，Sprint 09 Retro）
 
@@ -51,14 +51,15 @@
 - **收官**：项目健康主要看 `scrum/`（尤其产品日志），其余一般只需同步 README；Review 与 Retro 只出一个提交；tag 与冲刺文件夹同名（同名分支随即删除）；合入 main，关分支与 worktree。
 - **设计收官**（2026-11-07）：设计问题答完或 PO 叫停时，整份设计日志重写成 Review 文档，改名 `design-后缀.md` 移进 `scrum/documents/`，原型等文件删除，产品日志保鲜；Retro 同冲刺。
 
-> 分工：**memory 管教训**（见 `S:\SeaPawn-Memory\memory\IDEO-Scrum\MEMORY.md`），**`scrum/documents/` 管冲刺与设计原文**（压缩后的冲刺日志、设计 Review），**git 管全部历史**，**`scrum/` 其余部分管现状**（产品日志、当期冲刺与设计）。完整流程见产品日志 2.2.5。
+> 分工：**memory 管教训**（见 `S:\SeaPawn-Memory\memory\IDEO-Scrum\MEMORY.md`），**`scrum/documents/` 管冲刺与设计原文**（压缩后的冲刺日志、设计 Review），**git 管全部历史**，**`scrum/` 其余部分管现状**（产品日志、当期冲刺与设计）。完整流程见插件 scrum-kernel 的 `conventions/sprint-log.md`。
 
 **Sprint 节律**（2026-10-24，Sprint 06 Retro；2026-11-07 改）
 
-- **按 Sprint Goal 收官**（2026-11-07 改，原「按时间盒收官」）：Sprint Goal 达成或 PO 叫停时收官，做 Review + Retro（单提交）；冲刺日志不写截止日（AI 按会话工作，日期没有意义；与官方定长不同，理由见产品日志 2.2.8）；期间发版照常，记进当期日志，不结束 Sprint；之后的新工作开新 Sprint、新日志；日志当日记，不事后补录。
+- **按 Sprint Goal 收官**（2026-11-07 改，原「按时间盒收官」）：Sprint Goal 达成或 PO 叫停时收官，做 Review + Retro（单提交）；冲刺日志不写截止日（AI 按会话工作，日期没有意义；与官方定长不同，理由见插件 scrum-kernel 的 `conventions/sprint-log.md` 第 2 条）；期间发版照常，记进当期日志，不结束 Sprint；之后的新工作开新 Sprint、新日志；日志当日记，不事后补录。
 - **没做完的回产品日志**：收官时没做完的 PBI 回产品日志，不顺延。（原「时间盒写在日志头」，2026-11-07 删去截止日。）
 - **计划外工作先登记**：作者待办或对话中定下的新工作，先在产品日志登记 PBI，再由 PO 定是否进当前 Sprint（范围可重谈，Sprint Goal 不变）；不进则等下个 Sprint。
-- **小活单开小冲刺**（PO 2026-11-08，Sprint 09）：半小时到一个会话做得完的活也开冲刺，正常流程照走，每一步缩到一两行；放行、审阅、收官照做（产品日志 2.2.5 特殊情况）。
+- **小活单开小冲刺**（PO 2026-11-08，Sprint 09）：半小时到一个会话做得完的活也开冲刺，正常流程照走，每一步缩到一两行；放行、审阅、收官照做（插件 scrum-kernel 的 `conventions/sprint-log.md` 第 4 条）。
+- **fork 出来的 Developer**（2026-11-08，Sprint 09、10）：它是主会话的子代理，主会话一进 plan 模式，它就停下、写不了文件，Developer 干活时主会话别切 plan 模式；它不能再派子代理，审阅、插件校验、角色召唤都由 Master 派；它带着 Master 的上下文，审阅交全新子代理。
 - **PBI 状态只写产品日志**：SprintBacklog 引用 PBI 编号，不复写状态；进展写在 3.2 笔记。
 - **工作区留着别的改动时，`git add` 逐个写文件**，不按目录加（2026-11-08，Sprint 08 误带过一次，撤回重提）。
 - **迁移类改动全仓 grep**：路径、位置、名称迁移时，同一提交内全仓 grep 旧值至零残留（README、CLAUDE.md、日志都算）。
@@ -76,6 +77,10 @@
 - 比较描述效果，同日同环境对照，带改前基线。
 - 无头测法：`reclaude -p --plugin-dir <插件 Windows 路径>`（顶替已装同名插件；reclaude 不可用时用本机 `claude -p`，参数相同，PO 2026-11-08）；Git Bash 下 `/` 开头的提示加 `MSYS_NO_PATHCONV=1`，路径用 `cygpath -w`。
 - 工具审查员（skill-reviewer 等）的必改项，落盘前先对一遍 PO 的定案；冲突就报 Master，不照改。
+- 测试题不带引导词（如「按插件的约定」）：引导词等于叫模型去加载插件，测不到用户自然的说法；题里也别有会限制它行动的话（「先别看东西」被当成「别读文件」）（2026-11-08，Sprint 10）。
+- 判对不只看加载了哪个技能，还要看读没读该读的约定（Sprint 10：加载了 scrum-kernel 却只读 references，答出两周冲刺）；用 Grep 读到文件内容也算读了。
+- 判定脚本先拿一两份已知结果自测再用（Sprint 10：正则里混进一个退格符，三份对的回答全被判错）。
+- Windows 上无头测试要连 PowerShell 一起禁（只禁 Bash 拦不住）；要写文件的测试不放在 `~/.claude` 下，那里会被权限系统拦写，改用系统临时目录。
 
 ## 源材料与授权
 
@@ -86,7 +91,7 @@
 
 > 例外：命令类组件（`commands/*.md`）的抄录主体不设文件头两行；其署名义务由 ATTRIBUTION.md 的登记承担。
 
-**原文优先**（PO 2026-11-07）：写方法流程时能用原文就用原文；原书例图改画成 Mermaid（flowchart TD）或写成文字，不放图片文件（PO 2026-11-08）；不是原文的写法写进 `conventions/`，标为约定建议。删减的标准：和人机协作无关的删去（日程、周几、零食与休息、白板与用品、线下投票这类；PO 2026-11-08）。只删不改的摘录用脚本按行号从原书取；删完查一遍悬空的句子：指向已删图片的引导句（like this:）、指向原书其他章的句子、没了指代的句子（2026-11-08，Sprint 08 对抗审查查出十几处）。
+**原文优先**（PO 2026-11-07）：写方法流程时能用原文就用原文；原书例图改画成 Mermaid（flowchart TD）或写成文字，不放图片文件（PO 2026-11-08）；不是原文的写法写进 `conventions/`，标为约定建议。删减的标准：和人机协作无关的删去（日程、周几、零食与休息、白板与用品、线下投票这类；PO 2026-11-08）。只删不改的摘录用脚本按行号从原书取；删完查一遍悬空的句子：指向已删图片的引导句（like this:）、指向原书其他章的句子、没了指代的句子（2026-11-08，Sprint 08 对抗审查查出十几处）。 引文以插件里带的原文为准：SGEP 以 `assets/` 里的 v2026.1 为准，references/ 里的句子先核对原文再引（Sprint 10 查出 SKILL.md 与 references/ 把 2025.6 版的内容标成了 v2026.1，见 PBI-25 ⑥）。
 
 **已知的授权约束：**
 
