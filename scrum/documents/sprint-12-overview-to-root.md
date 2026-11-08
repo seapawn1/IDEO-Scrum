@@ -3,6 +3,7 @@
 > Started: 2026-11-09 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `sprint-12-overview-to-root` | Product Owner: SeaPawn | Scrum Master: Claude（主会话）| Developer: Claude（Master 兼任）
 > How to write this log: `sprint-log.md` in the scrum-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled at close; add none — remarks go in 3.2 Notes (`overview.md`, convention 15).
+> 归档：2026-11-09 开工、当天收官（小冲刺），发版 v5.1.2。
 
 ## 1. Why
 
@@ -53,7 +54,14 @@ Go-ahead: 2026-11-09，PO（「我真的想这样做。然后想让你重新再�
 | Date | What was done | Decision and reason | Evidence | Next |
 | --- | --- | --- | --- | --- |
 | 2026-11-09 | 工作项 1：`git mv` 挪文件，改 15 处说法，版本 5.1.2 | 见 2.2 | 路径 85 + 13 处都在；条号 64 处 0 错；全仓无 `conventions/overview` | 工作项 2 |
+| 2026-11-09 | 工作项 2：全新子代理（Sonnet）审 diff | 无必改项；采纳一条：product-log、sprint-log 第一行的 "it" 指代不清，改成括号 | 审阅报告（对话里） | 收官 |
 
 ## 4. Review
 
-<!-- Written at close by the Product Owner, the Scrum Master, and the Developer: the Increment; the Definition of Done and the acceptance criteria, item by item; what the review found; the stakeholders' view; changes to the product log and the Product Goal (sprint-log.md, convention 18). -->
+**增量**（PBI-42，v5.1.2）：`overview.md` 挪到 scrum-kernel 根目录，与 SKILL.md 并列；两份 SKILL.md、四个命令、design-log、两份模板、product-log、sprint-log、README 里说它在哪的地方都改了。
+
+**DoD 与验收**：内容忠实——只改位置说法，约定内容不变；可导航——SKILL.md 零跳看到总览；无死链——路径 98 处都在、条号 64 处 0 错、全仓（归档除外）无 `conventions/overview`。审阅子代理无必改项。
+
+**产品日志**：PBI-42 直接记入 3.2（当天开、当天完成）。
+
+**Retro**：无新教训；Sprint 11 的「改规矩先找它的其他说法」这次照做了，挪文件前先 grep 出全部说法再改。
