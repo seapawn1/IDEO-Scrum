@@ -17,7 +17,7 @@
 | 版权 | © 2020 Ken Schwaber and Jeff Sutherland |
 | 许可 | **CC BY-SA 4.0** — https://creativecommons.org/licenses/by-sa/4.0/legalcode |
 | 原始出处 | https://scrumguides.org/ |
-| 本仓库位置 | `plugins/ideo-scrum/skills/scrum-kernel/scrum-guide-2020.md`（全文）<br>`plugins/ideo-scrum/skills/scrum-kernel/references/`（按 Artifact / Event 拆分的摘录）<br>`plugins/ideo-scrum/commands/scrum-master.md`、`plugins/ideo-scrum/commands/developer.md`（角色命令主体抄录） |
+| 本仓库位置 | `plugins/ideo-scrum/skills/scrum-kernel/scrum-guide-2020.md`（全文）<br>`plugins/ideo-scrum/skills/scrum-kernel/references/`（按 Artifact / Event 拆分的摘录）<br>`plugins/ideo-scrum/commands/scrum-master.md`、`plugins/ideo-scrum/commands/developer.md`（角色命令主体抄录）<br>`plugins/ideo-scrum/skills/scrum-kernel/conventions/`（约定里的嵌入引用，句中注明出处） |
 | 修改说明 | 全文按 Scrum 的 Artifact 与 Event 拆分重排为独立文件，供 agent 按需检索。原文措辞未改动；角色命令主体为原文抄录，署名统一在本档登记（命令不设文件头）。 |
 
 **ShareAlike 提示**：若你基于上述文件制作衍生作品并分发，衍生部分同样须以 CC BY-SA 4.0 发布。
@@ -32,7 +32,7 @@
 | 版权 | © 2025 Ralph Jocham, John Coleman, and Jeff Sutherland |
 | 许可 | **CC BY-SA 4.0** — https://creativecommons.org/licenses/by-sa/4.0/legalcode |
 | 原始出处 | https://scrumexpansion.org/scrum-guide-expanded/ |
-| 本仓库位置 | `plugins/ideo-scrum/skills/scrum-kernel/assets/scrum-guide-expansion-pack-2026.1.md`（全文）<br>`plugins/ideo-scrum/skills/scrum-kernel/SKILL.md`（SGEP 句的嵌入引用）<br>`plugins/ideo-scrum/commands/scrum-master.md`、`plugins/ideo-scrum/commands/developer.md`（角色命令的 2026 精炼补充）<br>`plugins/ideo-scrum/commands/stakeholder.md`（Stakeholder 角色内容——SGEP 角色章精炼改写） |
+| 本仓库位置 | `plugins/ideo-scrum/skills/scrum-kernel/assets/scrum-guide-expansion-pack-2026.1.md`（全文）<br>`plugins/ideo-scrum/skills/scrum-kernel/SKILL.md`（SGEP 句的嵌入引用）<br>`plugins/ideo-scrum/commands/scrum-master.md`、`plugins/ideo-scrum/commands/developer.md`（角色命令的 2026 精炼补充）<br>`plugins/ideo-scrum/commands/stakeholder.md`（Stakeholder 角色内容——SGEP 角色章精炼改写）<br>`plugins/ideo-scrum/skills/scrum-kernel/conventions/`（约定里的嵌入引用，句中注明出处） |
 | 修改说明 | 全文随源文件提供，未作节选；原文措辞未改动。角色命令（scrum-master / developer / stakeholder）中的 SGEP 内容为精炼改写（含原文短语），署名统一在本档登记。 |
 
 **注意**：Scrum Guide Expansion Pack 由上述三位作者编写，托管于 scrumexpansion.org，**并非 Scrum.org 出品**。该站点上另有一份 "AI and Scrum" 文档采用 CC BY-NC-ND 许可，本仓库未使用。
