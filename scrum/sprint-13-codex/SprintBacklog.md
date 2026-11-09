@@ -143,6 +143,7 @@ Go-ahead: 2026-11-09，PO——在 `sprint-13-codex` 上提交；可以在系统
 | 2026-11-09 | 第二轮 5.6terra 模型可用，发现测试权限及调用入口问题；Developer 直接修复后继续第三轮 | 第二轮五题进程退出 0，但读取命令均被 read-only 策略拒绝，不能算过线；CLI 裸文本没有应用的原生 Skill 输入。第三轮使用原生 Skill 选择与可执行命令的临时权限，仍只在临时项目/用户目录运行，不改题、不改判据、不改插件。此属测试环境修复，按 PO 要求直接继续，不再交回等待 | `results/round-2-terra/` 完整保留，含读取拒绝记录、临时目录清理及原安装未变的证据；本机协议 Schema 确认 turn/start 支持 skill name/path | Developer：提交本次环境修复记录后，直接运行第三轮并核对实际角色加载及 sprint-log 内容读取 |
 | 2026-11-09 | 5.6terra 原生调用验证五题全部通过，交 Master 审对外文字 | 四角色实际注入的全文逐字匹配生成包，回答分别遵守 Master、Designer、Developer、Stakeholder 的职责；S1 实际读取新版 sprint-log.md 正文。五道题与 d404a00 原题相同，过线标准未改。第二轮权限拒绝结果及首轮 503 均保留。README 草稿补明用 `$` 技能菜单选角色，避免将裸 CLI 文本当成显式角色选择；交付文件尚未写这些文字 | `results/round-3-terra-native/behaviour-assessment.json`：角色 4/4、S1 正文读取证据及调用 ID；原生输入全文 SHA 匹配；`smoke-summary.json`：5/5 回合完成、临时目录已删、原安装未变；`secret-scan.json`：85 份输出凭据 0 命中 | Master：审下方七段对外文字全文及增量；模型与读取验证已解决，无须再定模型。Developer：本轮提交后停下，等文字审阅结果；不推送、不打 tag、不合入 main |
 | 2026-11-09 | Master 审增量与对外文字（5499dc3） | 包通过（验收 1–5；验收 4 的测法改动验收时摆给 PO）。要改：① 对外文字改英文（PO 定），根 README 仍用中文；② 五处文字改动：根 README 写进 Codex、表里补 Codex 角色、「自动介入」改成只描述设置、给旧 codex 分支用户补改成默认分支的说明、developer 简介重写；③ 原始输出从历史里拿掉（PO 定，同意改写未推送的冲刺分支历史），扫描范围加上提供方地址 | Master 独立 diff：只有登记的 5 句不同；`plugins/`、`.claude-plugin/` 与 main 0 差异；抽查第三轮原始输出：S1 读到 sprint-log 正文，角色注入 Codex 版正文；第一轮 10 个原始输出含提供方地址 | Developer：照①②③改；英文全文写进 3.2；改写历史后复扫 0 命中；提交后停下，交 Master 审文字 |
+| 2026-11-09 | Developer 完成英文全文与五处文字修订，外部备份并改写未推送历史后交审 | 根 README 保留中文，包内 README、manifest 展示文案和四份角色 UI 改为英文，只写入本节待审；内核自动调用仅陈述允许设置，旧分支迁移命令已逐条核对本机 help。72 个原始输出或重复输入文件从 11 个冲刺提交中移除，14 个既有汇总缩减保留；备份 88 文件逐个校验 SHA，两个 Git bundle 均验证。main、其他分支与 tag 未变，插件与根 README 交付文件未改 | `archive-location.json`、`retention.json`、`rewrite-map.json`；`results/privacy-history-scan.json`：全部保留快照、提交信息及 git log -p main..HEAD 的私有值、令牌形态、提供方设置和地址扫描均 0 命中；英文六段 ASCII 与四份 UI 长度检查通过 | Master：审本节中文根 README、英文包 README、manifest interface 和四份 openai.yaml 全文；通过后再由 Developer 落盘、生成与静态检查。Developer：本轮提交后停下，不推送、不打 tag、不合入 main |
 
 **工具适配清单（已实施；仅生成的 Codex 文件变化）**
 
@@ -156,7 +157,7 @@ Go-ahead: 2026-11-09，PO——在 `sprint-13-codex` 上提交；可以在系统
 
 上述相对路径均从各自生成的 skill 目录起算。其余内核文件与角色正文逐字保留，description 不变；`subagent` 是两边都成立的角色分工用语，不做替换。若施工时发现还需适配，先逐条补在本节交 Master 审，不静默扩充例外。
 
-**本轮 DoD 与验收证据（Developer 自检，待 Master 审）**
+**本轮 DoD 与验收证据（Master 已通过 1–5；文字待审）**
 
 | 项 | 结果与证据 |
 | --- | --- |
@@ -166,12 +167,12 @@ Go-ahead: 2026-11-09，PO——在 `sprint-13-codex` 上提交；可以在系统
 | 验收 2 | Developer 对照：Claude 源目录及 marketplace 0 改动；README、CLAUDE.md 也未改。`results/source-and-criteria.json`；正式结论由 Master 核对 |
 | 验收 3 | 干净的已提交副本连续运行同步命令两次，写入和删除均 0、git status 均干净；副本已删除。`results/repeatability.json` |
 | 验收 4 | Developer 自检通过：PO 指定 gpt-5.6-terra，原生 Skill 输入逐字匹配四个角色源文，角色职责验证 4/4；S1 工具记录含新版 sprint-log.md 的正文读取。`results/round-3-terra-native/behaviour-assessment.json`；第一轮 503 与第二轮权限拒绝记录保留 |
-| 验收 6 与对外文字 | 待审：以下七段为全文；根 README、包 README、manifest interface、四份角色 UI 文字均尚未写入交付文件。包 README 的版本替换及展示元数据已用临时样本验证 |
+| 验收 6 与对外文字 | 待审：根 README 中文，包内 README、manifest interface 和四份角色 UI 英文，共七段全文；交付文件仍未落盘。迁移命令已核对本机 help，自动调用仅描述设置；包内 README 的版本生成和展示元数据已用临时样本验证 |
 | 测试纪律与凭据 | 三轮均保留原题与 2.2 判据，第二、三轮按 PO 指定用 gpt-5.6-terra；测试环境修复及旧结果均记录。原配置与旧插件指纹未变，临时目录和凭据已删除；提交前按实际凭据值和令牌形态扫描 85 份输出，0 命中。`results/round-3-terra-native/secret-scan.json` |
 
 **原始输出清单、外部备份与历史清理**
 
-外部归档：`S:\IDEO-Scrum-Archives\sprint-13-codex-20261109-230117`。`workspace/` 是当前冲刺工作文件的完整副本（88 文件，逐个 SHA-256 已校验）；`before-rewrite.bundle` 是已验证的原冲刺历史恢复包。改写前另建 `with-english-draft.bundle`，保留本轮英文稿。历史笔记中提到的逐题原始输出、注入全文和完整回答，此后均到外部归档查；仓库只保留汇总。
+外部归档：`S:\IDEO-Scrum-Archives\sprint-13-codex-20261109-230117`。`workspace/` 是当前冲刺工作文件的完整副本（88 文件，逐个 SHA-256 已校验）；`before-rewrite.bundle` 是已验证的原冲刺历史恢复包。`with-english-draft.bundle` 也已建立并验证，保留改写前的英文稿与全部原始历史。历史笔记中提到的逐题原始输出、注入全文和完整回答，此后均到外部归档查；仓库只保留汇总。
 
 | 内容 | 处理 | 位置或范围 |
 | --- | --- | --- |
@@ -201,6 +202,19 @@ Go-ahead: 2026-11-09，PO——在 `sprint-13-codex` 上提交；可以在系统
 | `results/static.json` | 保留汇总；如含原始回答或命令字段则缩减 |
 
 本轮另保留迁移命令核对和历史隐私扫描的汇总。英文稿及上述操作仍在已获放行的范围内，交付文字尚未写进插件或 README。
+
+**历史改写后的提交号**
+
+完整对应见 [rewrite-map.json](rewrite-map.json)。下表列出变更的六个提交号，另五个提交号未变；本日志先前引用的旧号按此对应到新历史。
+
+| 旧提交 | 新提交 |
+| --- | --- |
+| `825c86f` | `372c41d` |
+| `7dc13dd` | `bcc2283` |
+| `12d6e48` | `3b2e0c3` |
+| `5499dc3` | `b91b383` |
+| `a0f7996` | `e7c238c` |
+| `58d1bde` | `65e4f30` |
 
 **对外文字全文草稿（根 README 中文，其余英文；待 Master 审）**
 

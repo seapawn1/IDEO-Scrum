@@ -1,0 +1,15 @@
+{
+  "branch_commits_checked": 11,
+  "unique_blobs_checked": 149,
+  "raw_outputs_reachable": 0,
+  "private_value_matches": 0,
+  "credential_shape_matches": 0,
+  "serialized_provider_setting_matches": 0,
+  "log_patch_matches": 0,
+  "scope": "All retained snapshots, commit metadata, and git log -p main..HEAD",
+  "public_setting_scope": "Protocol enums, booleans and generic provider labels are checked in configuration key/value context",
+  "removed_raw_files": 72,
+  "rewritten_commits": 11,
+  "other_refs_unchanged": true,
+  "audit_stage": "After history rewrite; the final review-record commit is checked again with --audit-only"
+}

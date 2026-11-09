@@ -78,6 +78,8 @@
     "scrum/sprint-13-codex/results/behaviour-assessment.json",
     "scrum/sprint-13-codex/results/cleanup-self-test.json",
     "scrum/sprint-13-codex/results/interface-render-self-test.json",
+    "scrum/sprint-13-codex/results/migration-help-check.json",
+    "scrum/sprint-13-codex/results/privacy-history-scan.json",
     "scrum/sprint-13-codex/results/provider-models.json",
     "scrum/sprint-13-codex/results/repeatability.json",
     "scrum/sprint-13-codex/results/round-2-terra/smoke-summary.json",
@@ -95,5 +97,8 @@
     "S1_final_answer",
     "command"
   ],
-  "old_results_preserved_outside_repository": true
+  "old_results_preserved_outside_repository": true,
+  "existing_summary_files_at_review": 14,
+  "raw_files_removed_count": 72,
+  "summary_files_kept_count": 16
 }
