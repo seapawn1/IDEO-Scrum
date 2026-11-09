@@ -99,8 +99,11 @@ Output Done 三条：内容忠实、可导航、无死链（产品日志 1.3）�
 - **检查办法**：脚本分别核对源/包的完整文件集合与内容、角色 frontmatter/正文、manifest 和角色元数据；允许差异按 3.2 清单逐处还原后比较，未登记差异一律报错。链接检查覆盖行内与引用式本地链接、文件和锚点，包外目标算失败；不对网络链接发请求。重跑检查在已提交的干净副本运行同步命令两次，两次后 `git status --porcelain` 都须为空。检查脚本先用一份正确样本及人为缺文件、坏链接、改正文的样本自测，再检查包；这些样本放临时目录。
 - **隔离与证据**：五题各开全新 `codex exec` 进程，使用临时项目和仅传给子进程的独立 Codex 用户目录、关闭共享 daemon；通过本机 `codex plugin marketplace add <临时根目录>`、`codex plugin add ideo-scrum@ideo-scrum` 安装生成包。测试目录中有最小产品日志、既有冲刺记录及「陌生人」角色卡，供题目自然使用；不附仓库的全局记忆、CLAUDE.md、测试答案或加载提示。不向当前 `~/.codex` 写插件/配置，不升级旧插件；若认证或环境阻止运行，把原始错误写进 3.2 交 Master，不能算通过。
 - **测法依据**：已核对本机 `codex-cli 0.167.0` 的 `exec`、`plugin add`、`plugin marketplace add` 帮助，以及 [OpenAI 插件打包文档](https://developers.openai.com/plugins/build/plugins)。临时项目及安装细节在施工时验证；不会把本轮查 help 当作验收结果。
+- **对外文字先审（Master 必改 ①）**：README、Codex 包清单 `interface` 的 displayName、shortDescription、longDescription、defaultPrompt，以及四份 `agents/openai.yaml` 的 display_name、short_description、default_prompt，全文写入 3.2，Master 审过再生成到交付文件。项 1–3 先生成无展示 `interface` 的最小 manifest、只含显式调用 policy 的角色 openai.yaml，测试技能加载与方法论行为；展示文字审批后补齐，并重做静态核对。
+- **临时凭据（Master 必改 ②）**：隔离子进程只带当前模型提供方必需的设置与登录凭据，凭据只写系统临时目录；不复制插件、marketplace、hooks、MCP 等用户设置。用完立即删除临时凭据，异常退出也清理；不改当前用户目录。所有原始输出进仓库或提交前，按实际凭据值及密钥/令牌形态检查，有命中先处理，不提交秘密。
+- **本轮停点（采纳 Master 建议）**：项 1–3 和全部对外文字草稿完成后，在 3.2 交证据及全文，提交并停下；Master 审过，再落盘对外文字和改审阅问题。收官时由 Master 将「发版前跑同步命令，Codex 包和版本号一起提交」写进 CLAUDE.md，本轮 Developer 不代办。
 
-**五题与模型（待 Master 审；未运行）**
+**五题与模型（Master 已审；运行结果记 3.2）**
 
 全部用 `gpt-6-luna`、reasoning effort `low`，依据本机 `models_cache.json` 的可用列表与 fast/affordable 描述选便宜档；不自动换模型。每题独立运行一次，记录模型、输入、CLI 事件、读取路径及判定；失败不改题目、模型或判据，不自动重跑。确需另起一轮，先报 Master，另提交新测法再审再测；旧测法及结果原样保留，2.2 的过线标准不变。
 
