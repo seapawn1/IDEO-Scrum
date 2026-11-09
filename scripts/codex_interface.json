@@ -1,0 +1,39 @@
+{
+  "plugin": {
+    "displayName": "IDEO-Scrum",
+    "shortDescription": "Design Thinking and Scrum Sprint guidance",
+    "longDescription": "Three kernels (ideo-kernel, design-kernel, scrum-kernel) and four roles (Scrum Master, Designer, Developer, Stakeholder). IDEO methods form a shared toolbox; designs yield prototypes and findings, while Sprints deliver Increments. Conventions and templates ship with the plugin.",
+    "developerName": "SeaPawn",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive"
+    ],
+    "defaultPrompt": [
+      "Help me plan the next Sprint, including its Sprint Goal and scope.",
+      "Research whether this idea is worth pursuing and test a prototype.",
+      "Help me inspect this Increment and prepare the Sprint Review and Retrospective."
+    ]
+  },
+  "roles": {
+    "scrum-master": {
+      "display_name": "Scrum Master",
+      "short_description": "Guide Scrum, refinement, delegation, tracking, and review",
+      "default_prompt": "$scrum-master Review the project and help me prepare its next Scrum event."
+    },
+    "designer": {
+      "display_name": "Designer",
+      "short_description": "Research problems, explore options, and test prototypes",
+      "default_prompt": "$designer Help me research this problem and test a prototype."
+    },
+    "developer": {
+      "display_name": "Developer",
+      "short_description": "Plan How; build with PO go-ahead; keep Sprint logs and DoD proof",
+      "default_prompt": "$developer Read the project and Sprint log, then propose a plan."
+    },
+    "stakeholder": {
+      "display_name": "Stakeholder",
+      "short_description": "Assess Increments or prototypes as a named stakeholder",
+      "default_prompt": "$stakeholder Assess this Increment as the specified stakeholder from the product log."
+    }
+  }
+}

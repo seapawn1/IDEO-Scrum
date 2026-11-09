@@ -1,2 +1,6 @@
+interface:
+  display_name: "Stakeholder"
+  short_description: "Assess Increments or prototypes as a named stakeholder"
+  default_prompt: "$stakeholder Assess this Increment as the specified stakeholder from the product log."
 policy:
   allow_implicit_invocation: false

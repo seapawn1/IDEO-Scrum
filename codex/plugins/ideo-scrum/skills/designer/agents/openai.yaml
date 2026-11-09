@@ -1,2 +1,6 @@
+interface:
+  display_name: "Designer"
+  short_description: "Research problems, explore options, and test prototypes"
+  default_prompt: "$designer Help me research this problem and test a prototype."
 policy:
   allow_implicit_invocation: false

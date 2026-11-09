@@ -1,0 +1,18 @@
+{
+  "check": "scripts/check_codex.py --self-test",
+  "passed": true,
+  "kernel_files": 80,
+  "roles": 4,
+  "package_files": 92,
+  "local_links_checked": 10,
+  "resources_checked": 77,
+  "content_errors": [],
+  "link_errors": [],
+  "navigation_errors": [],
+  "self_test": {
+    "known_good": true,
+    "missing_file_detected": true,
+    "changed_body_detected": true,
+    "broken_links_detected": true
+  }
+}
