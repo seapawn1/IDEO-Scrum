@@ -103,9 +103,11 @@ Output Done 三条：内容忠实、可导航、无死链（产品日志 1.3）�
 - **临时凭据（Master 必改 ②）**：隔离子进程只带当前模型提供方必需的设置与登录凭据，凭据只写系统临时目录；不复制插件、marketplace、hooks、MCP 等用户设置。用完立即删除临时凭据，异常退出也清理；不改当前用户目录。所有原始输出进仓库或提交前，按实际凭据值及密钥/令牌形态检查，有命中先处理，不提交秘密。
 - **本轮停点（采纳 Master 建议）**：项 1–3 和全部对外文字草稿完成后，在 3.2 交证据及全文，提交并停下；Master 审过，再落盘对外文字和改审阅问题。收官时由 Master 将「发版前跑同步命令，Codex 包和版本号一起提交」写进 CLAUDE.md，本轮 Developer 不代办。
 
-**五题与模型（Master 已审；运行结果记 3.2）**
+**五题与模型（原题和判据不变；PO 已指定 gpt-5.6-terra）**
 
 首轮使用 `gpt-6-luna`、reasoning effort `low`，因提供方无通道失败，原始结果保留在 `results/`。第二轮由 PO 2026-11-09 直接指定 `gpt-5.6-terra` 并放行执行，reasoning effort 仍为 `low`；沿用下列五题与 2.2 的过线标准，结果另存 `results/round-2-terra/`。每轮逐题记录模型、输入、CLI 事件、读取路径、环境修复及判定，不覆盖旧结果，不为过线改题或放宽标准。模型服务和运行环境问题由 Developer 先排查处理，不再把本次已获 PO 授权的模型调整交回 Master 等待。
+
+第三轮修复测试环境：第二轮的模型已正常返回，但 read-only + never 拒绝了所有文件读取；纯文本 CLI 也没有传入应用的显式角色选择。保持模型、五题和判据不变，改用本机 Codex app-server 的原生 Skill 输入（和应用选中角色同样的 name/path 输入，题目文字原样），在各自临时项目内使用可执行命令的权限模式；不触及当前安装。结果另存 `results/round-3-terra-native/`，第二轮也原样保留。协议按本机 0.167.0 导出的 JSON Schema 核对，不添加引导模型加载约定的题目文字。
 
 | # | 输入原文 | 核对 |
 | --- | --- | --- |
@@ -138,6 +140,7 @@ Go-ahead: 2026-11-09，PO——在 `sprint-13-codex` 上提交；可以在系统
 | 2026-11-09 | Developer 补两处必改；完成生成器、检查器和隔离测试脚本，生成初版 Codex 包，静态检查通过 | 采纳 Master 的停点建议；展示文字未审，manifest 暂无 interface，四份 openai.yaml 只有显式调用 policy。本机实查：提供方使用设置内的 bearer 凭据，requires_openai_auth 为 false，且无 auth.json；隔离脚本只取当前提供方设置，不复制插件/marketplace，凭据仍仅进系统临时目录。生成包不改 Claude 源；工具改动限下表五句 | `scripts/sync_codex.py`、`scripts/check_codex.py`、`run_codex_smoke.py`；`results/static.json`：内核 80 文件、角色 4、包 91 文件，内容差异 0、死链 0、导航遗漏 0（77 份），原生 skill 校验 7/7；检查器已用缺文件、改正文、坏链接自测；已保存输出凭据扫描 0 命中 | Developer：在干净副本验证两次重跑，隔离安装后五题各跑一次，写入全部对外文字草稿，再交 Master；此时未跑五题 |
 | 2026-11-09 | Developer 完成项 1、2；临时安装成功，五题均被模型服务阻塞；全部对外文字全文已写在本节，交审停点到达 | 两次干净副本重跑均 0 改动。R1–R4、S1 各执行一次 CLI，提供方均返回 503「gpt-6-luna 无可用通道」，未执行模型工具调用；CLI 内部各重连 5 次，未手动重跑、未改题、未换模型、未改判据。提供方实际模型目录没有 gpt-6-luna。最初临时目录清理遇 WinError 145，已先删凭据再按 Windows 长路径完整清理，并修好清理函数、用长路径样本验证；以后遇共同的提供方错误也停止剩余题。本轮没有再跑题。对外文字仍只在日志，尚未写进产品文件 | `results/repeatability.json`：两次写入/删除 0、status 干净；`install.json`：新版 5.1.2；`behaviour-assessment.json` 与五题原始 JSONL：验收 4 阻塞；`provider-models.json`：实际目录；`smoke-summary.json`：临时目录及凭据已删、原配置与旧插件未变、原始输出凭据 0 命中；`cleanup-self-test.json`、`interface-render-self-test.json`：清理及展示元数据/版本生成样本通过 | Master：① 审下方根 README、包内 README、manifest interface 和四份 openai.yaml 全文；② 从提供方实际目录选定新一轮测试模型，先审并提交测法再跑，保留本轮失败。Developer：本轮提交后停下，等 PO 传话；验收 4、6 未完成，Sprint 未收官 |
 | 2026-11-09 | PO 指定模型 5.6terra；Developer 更新第二轮测法并直接继续 | PO：「模型用5.6terra」。按提供方实际模型 ID 使用 gpt-5.6-terra、low；原五题、原过线标准、临时凭据边界不变，首轮失败保留。测试脚本支持模型及结果目录参数，第二轮不覆盖第一轮。不再等待 Master 重批这次模型调整 | PO 本轮对话；3.1；`run_codex_smoke.py` | Developer：提交本次测法后，直接运行第二轮，处理测试环境问题并交实际结果 |
+| 2026-11-09 | 第二轮 5.6terra 模型可用，发现测试权限及调用入口问题；Developer 直接修复后继续第三轮 | 第二轮五题进程退出 0，但读取命令均被 read-only 策略拒绝，不能算过线；CLI 裸文本没有应用的原生 Skill 输入。第三轮使用原生 Skill 选择与可执行命令的临时权限，仍只在临时项目/用户目录运行，不改题、不改判据、不改插件。此属测试环境修复，按 PO 要求直接继续，不再交回等待 | `results/round-2-terra/` 完整保留，含读取拒绝记录、临时目录清理及原安装未变的证据；本机协议 Schema 确认 turn/start 支持 skill name/path | Developer：提交本次环境修复记录后，直接运行第三轮并核对实际角色加载及 sprint-log 内容读取 |
 
 **工具适配清单（已实施；仅生成的 Codex 文件变化）**
 

@@ -9,11 +9,14 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import queue
 import re
 import shutil
 import stat
 import subprocess
 import tempfile
+import threading
+import time
 import tomllib
 
 
@@ -98,7 +101,7 @@ def setup_home(source: Path, target: Path, provider_id: str, provider: dict, mod
         "model": model,
         "model_reasoning_effort": "low",
         "approval_policy": "never",
-        "sandbox_mode": "read-only",
+        "sandbox_mode": "danger-full-access",
         "cli_auth_credentials_store": "file",
     }
     config = "\n".join(f"{key} = {toml_scalar(value)}" for key, value in top.items())
@@ -156,6 +159,107 @@ def cli(executable: str, args: list[str], env: dict, cwd: Path, prompt: str | No
     )
 
 
+def app_turn(executable: str, env: dict, project: Path, model: str, prompt: str, role: str, skill: Path) -> subprocess.CompletedProcess:
+    """Use the same explicit skill input as the Codex app, without changing the question."""
+    process = subprocess.Popen(
+        [executable, "app-server", "--listen", "stdio://"],
+        cwd=project, env=env, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE, text=True, encoding="utf-8", errors="replace",
+        creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0,
+    )
+    messages: list[dict] = []
+    errors: list[str] = []
+    incoming: queue.Queue = queue.Queue()
+    deadline = time.monotonic() + 300
+
+    def read_stdout():
+        for line in process.stdout:
+            try:
+                incoming.put(json.loads(line))
+            except json.JSONDecodeError:
+                errors.append(line)
+        incoming.put(None)
+
+    def read_stderr():
+        errors.extend(process.stderr.readlines())
+
+    readers = [
+        threading.Thread(target=read_stdout, daemon=True),
+        threading.Thread(target=read_stderr, daemon=True),
+    ]
+    for reader in readers:
+        reader.start()
+
+    def send(value: dict):
+        process.stdin.write(json.dumps(value, ensure_ascii=False) + "\n")
+        process.stdin.flush()
+
+    def receive() -> dict:
+        while time.monotonic() < deadline:
+            try:
+                value = incoming.get(timeout=1)
+            except queue.Empty:
+                continue
+            if value is None:
+                raise RuntimeError("App server closed before the turn completed")
+            messages.append(value)
+            if "method" in value and "id" in value:
+                # No invented user answers or external actions in this evaluation.
+                send({"id": value["id"], "error": {
+                    "code": -32601, "message": "This evaluation has no additional interactive input",
+                }})
+            return value
+        raise TimeoutError("App server turn exceeded the evaluation time limit")
+
+    def request(identifier: int, method: str, params: dict) -> dict:
+        send({"id": identifier, "method": method, "params": params})
+        while True:
+            value = receive()
+            if value.get("id") == identifier and "method" not in value:
+                if "error" in value:
+                    raise RuntimeError(json.dumps(value["error"], ensure_ascii=False))
+                return value["result"]
+
+    code = 1
+    try:
+        request(1, "initialize", {
+            "clientInfo": {"name": "sprint13-evaluation", "version": "1"},
+            "capabilities": {"experimentalApi": True},
+        })
+        send({"method": "initialized", "params": {}})
+        thread = request(2, "thread/start", {
+            "model": model, "cwd": str(project), "approvalPolicy": "never",
+            "sandbox": "danger-full-access", "ephemeral": False,
+        })
+        request(3, "turn/start", {
+            "threadId": thread["thread"]["id"], "effort": "low",
+            "input": [
+                {"type": "text", "text": prompt},
+                {"type": "skill", "name": role, "path": str(skill)},
+            ],
+        })
+        while True:
+            message = receive()
+            if message.get("method") == "turn/completed":
+                code = 0 if message["params"]["turn"]["status"] == "completed" else 1
+                break
+    except (RuntimeError, TimeoutError) as exc:
+        messages.append({"harness_error": str(exc)})
+    finally:
+        process.stdin.close()
+        try:
+            process.wait(timeout=15)
+        except subprocess.TimeoutExpired:
+            process.kill()
+            process.wait()
+        for reader in readers:
+            reader.join(timeout=5)
+        process.stdout.close()
+        process.stderr.close()
+    output = "".join(json.dumps(value, ensure_ascii=False) + "\n" for value in messages)
+    return subprocess.CompletedProcess([executable, "app-server"], code, output, "".join(errors))
+
+
 def audit_outputs(secrets: list[str]) -> dict:
     checked = 0
     for path in RESULTS.rglob("*"):
@@ -197,13 +301,13 @@ def test_directory():
         cleanup_test_directory(directory)
 
 
-def run(model: str) -> dict:
+def run(model: str, transport: str) -> dict:
     executable = shutil.which("codex")
     if not executable:
         raise RuntimeError("Codex CLI not found")
     user_directory, _, provider_id, provider, secrets = source_settings()
     before = snapshot(user_directory)
-    report = {"model": model, "reasoning_effort": "low", "cases": {}}
+    report = {"model": model, "reasoning_effort": "low", "transport": transport, "cases": {}}
     RESULTS.mkdir(parents=True, exist_ok=True)
     if any((RESULTS / f"{case}.jsonl").exists() for case in ROLES):
         raise RuntimeError("Results already exist; reviewed tests must not silently rerun")
@@ -231,16 +335,24 @@ def run(model: str) -> dict:
                 save(RESULTS / f"{label}.stderr.txt", result.stderr, secrets)
                 if result.returncode:
                     raise RuntimeError(f"Isolated {label} failed; see sanitized output")
+                if label == "install":
+                    installed = Path(json.loads(result.stdout)["installedPath"])
             for case, prompt in prompts().items():
                 project = temporary_root / case
                 fixture(project)
                 existing = set((home / "sessions").rglob("*.jsonl"))
                 print(f"Running {case} with {model} (one attempt)", flush=True)
-                result = cli(
-                    executable,
-                    ["exec", "--json", "--skip-git-repo-check", "-m", model, "-C", str(project), "-"],
-                    environment, project, prompt + "\n",
-                )
+                if transport == "app-server":
+                    result = app_turn(
+                        executable, environment, project, model, prompt,
+                        ROLES[case], installed / f"skills/{ROLES[case]}/SKILL.md",
+                    )
+                else:
+                    result = cli(
+                        executable,
+                        ["exec", "--json", "--skip-git-repo-check", "-m", model, "-C", str(project), "-"],
+                        environment, project, prompt + "\n",
+                    )
                 redactions = save(RESULTS / f"{case}.jsonl", result.stdout, secrets)
                 redactions += save(RESULTS / f"{case}.stderr.txt", result.stderr, secrets)
                 save(RESULTS / f"{case}.input.txt", prompt + "\n", secrets)
@@ -274,6 +386,7 @@ def main() -> None:
     parser.add_argument("--audit-only", action="store_true")
     parser.add_argument("--model", default="gpt-5.6-terra")
     parser.add_argument("--results-dir", type=Path)
+    parser.add_argument("--transport", choices=("exec", "app-server"), default="app-server")
     args = parser.parse_args()
     if args.results_dir:
         RESULTS = args.results_dir.resolve()
@@ -282,7 +395,7 @@ def main() -> None:
     if args.audit_only:
         print(json.dumps(audit_outputs(source_settings()[-1]), ensure_ascii=False))
     else:
-        print(json.dumps(run(args.model), ensure_ascii=False, indent=2))
+        print(json.dumps(run(args.model, args.transport), ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":
