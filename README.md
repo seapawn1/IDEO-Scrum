@@ -154,6 +154,7 @@ $stakeholder    # Stakeholder
 | `scrum/documents/conventions-review-log.md` | PO 逐段审阅约定 v1 的记录（2026-11-09，19 处，每条带状态）；当时对照的四份中文译文已删，见 `git show 6a2fd5e` |
 | `scrum/documents/sprint-11-conventions-review.md` | Sprint 11 冲刺日志归档（约定照 PO 审阅改定，小冲刺，v5.1.1）：19 处的结论、审阅、design-log 读着别扭的地方 |
 | `scrum/documents/sprint-12-overview-to-root.md` | Sprint 12 冲刺日志归档（总览挪到 scrum-kernel 根目录，小冲刺，v5.1.2） |
+| `scrum/documents/sprint-13-codex.md` | Sprint 13 冲刺日志归档（Codex 版，版本不动，仍 v5.1.2）：Codex 包并入 main、一条命令生成与核对、五题在 Codex 里过线、原始输出清理 |
 | **冲刺蒸馏 / 归档** | 1.x 五期与 Sprint 06、07 已蒸馏至 `S:\SeaPawn-Memory\memory\IDEO-Scrum\`（MEMORY.md 索引 + 各期教训档案，含出处指向 git）；Sprint 08 起，冲刺日志压缩后归档进 `scrum/documents/` |
 
 ### 源参考
