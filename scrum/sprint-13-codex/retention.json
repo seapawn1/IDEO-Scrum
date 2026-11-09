@@ -77,6 +77,9 @@
   "summary_files_kept": [
     "scrum/sprint-13-codex/results/behaviour-assessment.json",
     "scrum/sprint-13-codex/results/cleanup-self-test.json",
+    "scrum/sprint-13-codex/results/final-repeatability.json",
+    "scrum/sprint-13-codex/results/final-static.json",
+    "scrum/sprint-13-codex/results/final-version-check.json",
     "scrum/sprint-13-codex/results/interface-render-self-test.json",
     "scrum/sprint-13-codex/results/migration-help-check.json",
     "scrum/sprint-13-codex/results/privacy-history-scan.json",
@@ -100,5 +103,5 @@
   "old_results_preserved_outside_repository": true,
   "existing_summary_files_at_review": 14,
   "raw_files_removed_count": 72,
-  "summary_files_kept_count": 16
+  "summary_files_kept_count": 19
 }

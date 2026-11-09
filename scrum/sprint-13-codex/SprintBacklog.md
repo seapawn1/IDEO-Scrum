@@ -146,6 +146,7 @@ Go-ahead: 2026-11-09，PO——在 `sprint-13-codex` 上提交；可以在系统
 | 2026-11-09 | Developer 完成英文全文与五处文字修订，外部备份并改写未推送历史后交审 | 根 README 保留中文，包内 README、manifest 展示文案和四份角色 UI 改为英文，只写入本节待审；内核自动调用仅陈述允许设置，旧分支迁移命令已逐条核对本机 help。72 个原始输出或重复输入文件从 11 个冲刺提交中移除，14 个既有汇总缩减保留；备份 88 文件逐个校验 SHA，两个 Git bundle 均验证。main、其他分支与 tag 未变，插件与根 README 交付文件未改 | `archive-location.json`、`retention.json`、`rewrite-map.json`；`results/privacy-history-scan.json`：全部保留快照、提交信息及 git log -p main..HEAD 的私有值、令牌形态、提供方设置和地址扫描均 0 命中；英文六段 ASCII 与四份 UI 长度检查通过 | Master：审本节中文根 README、英文包 README、manifest interface 和四份 openai.yaml 全文；通过后再由 Developer 落盘、生成与静态检查。Developer：本轮提交后停下，不推送、不打 tag、不合入 main |
 | 2026-11-09 | Master 审英文文字与历史清理（b242dba） | 通过：历史里提供方地址 0 处，没有备份引用，旧提交已无引用；根 README 四处改动和英文文字都可以用。两处可改可不改：包内 README 末句写具体；scrum-master 简介在长度允许时补回「价值由 PO 决定」 | `git log -p main..HEAD` 0 命中；`git for-each-ref` 没有 refs/original；外部归档 95 个文件，含提供方地址，只留本机 | Developer：文字落盘、重新生成、重跑检查（验收 1、3、5、6），3.2 记 Retro 输入；提交后停下，交 Master 做 Review |
 | 2026-11-09 | Developer 将已审文字落盘并重新生成；静态及版本核对通过 | 采纳包内 README 末句的具体写法；scrum-master 简介保留原稿 57 字符，完整补句超过 64 字符限制。新增两份生成源，生成包补齐英文 README、interface 与四份 UI；版本保留 5.1.2，版本与发布留 Master/PO 收官定。角色正文与内核未改，已有行为验收结论不变 | `results/final-static.json`：80 内核文件、4 角色、92 包文件，内容差异/死链/导航遗漏均 0；`results/final-version-check.json`：根 README 两处当前版本、包 README 与两端清单一致；Claude 插件与 marketplace 未改 | Developer：在已提交的干净副本验证重复生成，补最终证据后提交，交 Master 做 Review |
+| 2026-11-09 | Developer 完成本轮 1–4，交 Master 做 Review | 已审文字全部落盘，重新生成与静态检查完成；已提交的干净副本连续同步两次，均写入/删除 0、git status 干净。版本保持 5.1.2，Retro 输入已写在本节；无新增行为或角色正文改动，不重复跑已通过的五题。Review、归档、产品日志与 CLAUDE.md 保鲜、版本和发布由 Master/PO 收官处理 | `results/final-static.json`、`results/final-repeatability.json`、`results/final-version-check.json`；隐私历史复扫 0 命中；Claude 侧文件和 marketplace 未改 | Master：做 Review，按产品日志 2.1 召唤陌生人看 README 和 Codex 入口，再主持收官。Developer：提交后停下，不推送、不打 tag、不合入 main，不改本机安装 |
 
 **工具适配清单（已实施；仅生成的 Codex 文件变化）**
 
@@ -159,17 +160,17 @@ Go-ahead: 2026-11-09，PO——在 `sprint-13-codex` 上提交；可以在系统
 
 上述相对路径均从各自生成的 skill 目录起算。其余内核文件与角色正文逐字保留，description 不变；`subagent` 是两边都成立的角色分工用语，不做替换。若施工时发现还需适配，先逐条补在本节交 Master 审，不静默扩充例外。
 
-**本轮 DoD 与验收证据（Master 已通过 1–5；文字待审）**
+**本轮 DoD 与验收证据（已审文字落盘，交 Master 做 Review）**
 
 | 项 | 结果与证据 |
 | --- | --- |
-| 内容忠实 / 验收 1 | 三内核 80 文件、四角色；除上表五句工具适配外 0 差异。`results/static.json`、`static-after-recovery.json`；七份 skill 原生格式校验 7/7 |
+| 内容忠实 / 验收 1 | 三内核 80 文件、四角色，除五句工具适配外 0 差异；新增的英文 README、manifest interface 和四份 UI 与已审生成源一致。`results/final-static.json` |
 | 可导航 | 三个内核下 77 份参考、方法、约定与模板均在入口两跳内可达，导航遗漏 0 |
-| 无死链 / 验收 5 | 包内显式 Markdown 本地链接检查 1 处，缺文件或锚点 0；其余反引号文件导航另按上一行核对 |
-| 验收 2 | Developer 对照：Claude 源目录及 marketplace 0 改动；README、CLAUDE.md 也未改。`results/source-and-criteria.json`；正式结论由 Master 核对 |
-| 验收 3 | 干净的已提交副本连续运行同步命令两次，写入和删除均 0、git status 均干净；副本已删除。`results/repeatability.json` |
+| 无死链 / 验收 5 | 包内显式 Markdown 本地链接 10 处，缺文件或锚点 0；反引号文件导航另核对 77 份，遗漏 0。`results/final-static.json` |
+| 验收 2 | Master 已核对通过；本轮 Claude 插件源目录与 marketplace 仍 0 改动，CLAUDE.md 未改。根 README 按审批补齐两端说明。`results/final-version-check.json` |
+| 验收 3 | 包含已审文字的已提交副本连续同步两次，写入和删除均 0、git status 均干净；临时副本已删。`results/final-repeatability.json` |
 | 验收 4 | Developer 自检通过：PO 指定 gpt-5.6-terra，原生 Skill 输入逐字匹配四个角色源文，角色职责验证 4/4；S1 工具记录含新版 sprint-log.md 的正文读取。`results/round-3-terra-native/behaviour-assessment.json`；第一轮 503 与第二轮权限拒绝记录保留 |
-| 验收 6 与对外文字 | 待审：根 README 中文，包内 README、manifest interface 和四份角色 UI 英文，共七段全文；交付文件仍未落盘。迁移命令已核对本机 help，自动调用仅描述设置；包内 README 的版本生成和展示元数据已用临时样本验证 |
+| 验收 6 与对外文字 | 已审七段全文已落盘：根 README 中文，其余英文；根 README 两处当前版本、包 README 与两端清单同为 5.1.2。迁移命令经 help 核对，自动调用仅描述设置。`results/final-version-check.json` |
 | 测试纪律与凭据 | 三轮均保留原题与 2.2 判据，第二、三轮按 PO 指定用 gpt-5.6-terra；测试环境修复及旧结果均记录。原配置与旧插件指纹未变，临时目录和凭据已删除；提交前按实际凭据值和令牌形态扫描 85 份输出，0 命中。`results/round-3-terra-native/secret-scan.json` |
 
 **原始输出清单、外部备份与历史清理**
