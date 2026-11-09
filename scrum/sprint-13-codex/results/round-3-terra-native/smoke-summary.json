@@ -1,0 +1,50 @@
+{
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "low",
+  "transport": "app-server",
+  "cases": {
+    "R1": {
+      "role": "scrum-master",
+      "exit_code": 0,
+      "redactions": 0,
+      "rollouts": 1,
+      "assessment": "Passed: original question, native skill injection matches generated content; role behavior verified"
+    },
+    "R2": {
+      "role": "designer",
+      "exit_code": 0,
+      "redactions": 0,
+      "rollouts": 1,
+      "assessment": "Passed: original question, native skill injection matches generated content; role behavior verified"
+    },
+    "R3": {
+      "role": "developer",
+      "exit_code": 0,
+      "redactions": 0,
+      "rollouts": 1,
+      "assessment": "Passed: original question, native skill injection matches generated content; role behavior verified"
+    },
+    "R4": {
+      "role": "stakeholder",
+      "exit_code": 0,
+      "redactions": 0,
+      "rollouts": 1,
+      "assessment": "Passed: original question, native skill injection matches generated content; role behavior verified"
+    },
+    "S1": {
+      "role": "developer",
+      "exit_code": 0,
+      "redactions": 0,
+      "rollouts": 1,
+      "assessment": "Passed: original question; native Developer invoked and sprint-log.md contents read successfully"
+    }
+  },
+  "temporary_directory_removed": true,
+  "current_install_unchanged": true,
+  "secret_scan": {
+    "files_checked": 24,
+    "credential_matches": 0
+  },
+  "roles_passed": 4,
+  "sprint_log_read": true
+}

@@ -141,6 +141,7 @@ Go-ahead: 2026-11-09，PO——在 `sprint-13-codex` 上提交；可以在系统
 | 2026-11-09 | Developer 完成项 1、2；临时安装成功，五题均被模型服务阻塞；全部对外文字全文已写在本节，交审停点到达 | 两次干净副本重跑均 0 改动。R1–R4、S1 各执行一次 CLI，提供方均返回 503「gpt-6-luna 无可用通道」，未执行模型工具调用；CLI 内部各重连 5 次，未手动重跑、未改题、未换模型、未改判据。提供方实际模型目录没有 gpt-6-luna。最初临时目录清理遇 WinError 145，已先删凭据再按 Windows 长路径完整清理，并修好清理函数、用长路径样本验证；以后遇共同的提供方错误也停止剩余题。本轮没有再跑题。对外文字仍只在日志，尚未写进产品文件 | `results/repeatability.json`：两次写入/删除 0、status 干净；`install.json`：新版 5.1.2；`behaviour-assessment.json` 与五题原始 JSONL：验收 4 阻塞；`provider-models.json`：实际目录；`smoke-summary.json`：临时目录及凭据已删、原配置与旧插件未变、原始输出凭据 0 命中；`cleanup-self-test.json`、`interface-render-self-test.json`：清理及展示元数据/版本生成样本通过 | Master：① 审下方根 README、包内 README、manifest interface 和四份 openai.yaml 全文；② 从提供方实际目录选定新一轮测试模型，先审并提交测法再跑，保留本轮失败。Developer：本轮提交后停下，等 PO 传话；验收 4、6 未完成，Sprint 未收官 |
 | 2026-11-09 | PO 指定模型 5.6terra；Developer 更新第二轮测法并直接继续 | PO：「模型用5.6terra」。按提供方实际模型 ID 使用 gpt-5.6-terra、low；原五题、原过线标准、临时凭据边界不变，首轮失败保留。测试脚本支持模型及结果目录参数，第二轮不覆盖第一轮。不再等待 Master 重批这次模型调整 | PO 本轮对话；3.1；`run_codex_smoke.py` | Developer：提交本次测法后，直接运行第二轮，处理测试环境问题并交实际结果 |
 | 2026-11-09 | 第二轮 5.6terra 模型可用，发现测试权限及调用入口问题；Developer 直接修复后继续第三轮 | 第二轮五题进程退出 0，但读取命令均被 read-only 策略拒绝，不能算过线；CLI 裸文本没有应用的原生 Skill 输入。第三轮使用原生 Skill 选择与可执行命令的临时权限，仍只在临时项目/用户目录运行，不改题、不改判据、不改插件。此属测试环境修复，按 PO 要求直接继续，不再交回等待 | `results/round-2-terra/` 完整保留，含读取拒绝记录、临时目录清理及原安装未变的证据；本机协议 Schema 确认 turn/start 支持 skill name/path | Developer：提交本次环境修复记录后，直接运行第三轮并核对实际角色加载及 sprint-log 内容读取 |
+| 2026-11-09 | 5.6terra 原生调用验证五题全部通过，交 Master 审对外文字 | 四角色实际注入的全文逐字匹配生成包，回答分别遵守 Master、Designer、Developer、Stakeholder 的职责；S1 实际读取新版 sprint-log.md 正文。五道题与 d404a00 原题相同，过线标准未改。第二轮权限拒绝结果及首轮 503 均保留。README 草稿补明用 `$` 技能菜单选角色，避免将裸 CLI 文本当成显式角色选择；交付文件尚未写这些文字 | `results/round-3-terra-native/behaviour-assessment.json`：角色 4/4、S1 正文读取证据及调用 ID；原生输入全文 SHA 匹配；`smoke-summary.json`：5/5 回合完成、临时目录已删、原安装未变；`secret-scan.json`：85 份输出凭据 0 命中 | Master：审下方七段对外文字全文及增量；模型与读取验证已解决，无须再定模型。Developer：本轮提交后停下，等文字审阅结果；不推送、不打 tag、不合入 main |
 
 **工具适配清单（已实施；仅生成的 Codex 文件变化）**
 
@@ -163,9 +164,9 @@ Go-ahead: 2026-11-09，PO——在 `sprint-13-codex` 上提交；可以在系统
 | 无死链 / 验收 5 | 包内显式 Markdown 本地链接检查 1 处，缺文件或锚点 0；其余反引号文件导航另按上一行核对 |
 | 验收 2 | Developer 对照：Claude 源目录及 marketplace 0 改动；README、CLAUDE.md 也未改。`results/source-and-criteria.json`；正式结论由 Master 核对 |
 | 验收 3 | 干净的已提交副本连续运行同步命令两次，写入和删除均 0、git status 均干净；副本已删除。`results/repeatability.json` |
-| 验收 4 | 阻塞：新版 5.1.2 在临时目录安装成功，但五题都在模型服务 503 处停止，没有工具执行，不能认作四角色或 sprint-log 读取通过。`results/behaviour-assessment.json` |
+| 验收 4 | Developer 自检通过：PO 指定 gpt-5.6-terra，原生 Skill 输入逐字匹配四个角色源文，角色职责验证 4/4；S1 工具记录含新版 sprint-log.md 的正文读取。`results/round-3-terra-native/behaviour-assessment.json`；第一轮 503 与第二轮权限拒绝记录保留 |
 | 验收 6 与对外文字 | 待审：以下七段为全文；根 README、包 README、manifest interface、四份角色 UI 文字均尚未写入交付文件。包 README 的版本替换及展示元数据已用临时样本验证 |
-| 测试纪律与凭据 | 题目及 2.2 的判据与 d404a00 相同；未换模型或重跑。原配置与旧插件指纹未变，临时目录和凭据已删除；原始输出提交前按实际凭据值和令牌形态扫描，结果另存 `results/secret-scan.json` |
+| 测试纪律与凭据 | 三轮均保留原题与 2.2 判据，第二、三轮按 PO 指定用 gpt-5.6-terra；测试环境修复及旧结果均记录。原配置与旧插件指纹未变，临时目录和凭据已删除；提交前按实际凭据值和令牌形态扫描 85 份输出，0 命中。`results/round-3-terra-native/secret-scan.json` |
 
 **对外文字全文草稿（待 Master 审，未写入交付文件）**
 
@@ -217,7 +218,7 @@ codex plugin marketplace add seapawn1/IDEO-Scrum
 codex plugin add ideo-scrum@ideo-scrum
 ```
 
-随后在新会话里进入角色：
+随后在新会话输入 `$`，从技能菜单选中相应角色；角色简称如下：
 
 ```
 $scrum-master   # Scrum Master
@@ -359,7 +360,7 @@ codex plugin marketplace add seapawn1/IDEO-Scrum
 codex plugin add ideo-scrum@ideo-scrum
 ```
 
-安装后，在新会话中用 `$developer`、`$scrum-master`、`$designer` 或 `$stakeholder` 进入角色。三个内核按任务自动介入；角色需要显式调用。也可用插件命名空间，例如 `$ideo-scrum:developer`。
+安装后，在新会话输入 `$`，从技能菜单选择 Developer、Scrum Master、Designer 或 Stakeholder。它们的角色简称是 `$developer`、`$scrum-master`、`$designer`、`$stakeholder`；也可用插件命名空间，例如 `$ideo-scrum:developer`。三个内核按任务自动介入，角色通过菜单显式调用。
 
 ## 内容
 
