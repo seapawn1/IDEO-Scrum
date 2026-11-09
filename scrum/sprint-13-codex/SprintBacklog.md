@@ -105,7 +105,7 @@ Output Done 三条：内容忠实、可导航、无死链（产品日志 1.3）�
 
 **五题与模型（Master 已审；运行结果记 3.2）**
 
-全部用 `gpt-6-luna`、reasoning effort `low`，依据本机 `models_cache.json` 的可用列表与 fast/affordable 描述选便宜档；不自动换模型。每题独立运行一次，记录模型、输入、CLI 事件、读取路径及判定；失败不改题目、模型或判据，不自动重跑。确需另起一轮，先报 Master，另提交新测法再审再测；旧测法及结果原样保留，2.2 的过线标准不变。
+首轮使用 `gpt-6-luna`、reasoning effort `low`，因提供方无通道失败，原始结果保留在 `results/`。第二轮由 PO 2026-11-09 直接指定 `gpt-5.6-terra` 并放行执行，reasoning effort 仍为 `low`；沿用下列五题与 2.2 的过线标准，结果另存 `results/round-2-terra/`。每轮逐题记录模型、输入、CLI 事件、读取路径、环境修复及判定，不覆盖旧结果，不为过线改题或放宽标准。模型服务和运行环境问题由 Developer 先排查处理，不再把本次已获 PO 授权的模型调整交回 Master 等待。
 
 | # | 输入原文 | 核对 |
 | --- | --- | --- |
@@ -137,6 +137,7 @@ Go-ahead: 2026-11-09，PO——在 `sprint-13-codex` 上提交；可以在系统
 | 2026-11-09 | Master 审 3.1 How（d404a00） | 协作方式调整（PO 2026-11-09）：Master 在 plan 模式里审阅时，意见写在 plan 文件里，PO 转给 Developer，由 Developer 照抄进日志。通过，附两处必改：① 包清单 `interface` 和四份 `openai.yaml` 的对外文字，随 README 一起先审全文；② 隔离测试的凭据只放系统临时目录，测完删；不带插件和 marketplace 设置；原始输出提交前查密钥。建议：项 1–3 和文字草稿做完后停一次交审 | 标题和模板一致，只追加了内容；插件里没有链到插件外的链接；工具说法只在 5 句里出现；描述最长 957 字符 | Developer：先把两处必改补进 3.1，再照放行施工 |
 | 2026-11-09 | Developer 补两处必改；完成生成器、检查器和隔离测试脚本，生成初版 Codex 包，静态检查通过 | 采纳 Master 的停点建议；展示文字未审，manifest 暂无 interface，四份 openai.yaml 只有显式调用 policy。本机实查：提供方使用设置内的 bearer 凭据，requires_openai_auth 为 false，且无 auth.json；隔离脚本只取当前提供方设置，不复制插件/marketplace，凭据仍仅进系统临时目录。生成包不改 Claude 源；工具改动限下表五句 | `scripts/sync_codex.py`、`scripts/check_codex.py`、`run_codex_smoke.py`；`results/static.json`：内核 80 文件、角色 4、包 91 文件，内容差异 0、死链 0、导航遗漏 0（77 份），原生 skill 校验 7/7；检查器已用缺文件、改正文、坏链接自测；已保存输出凭据扫描 0 命中 | Developer：在干净副本验证两次重跑，隔离安装后五题各跑一次，写入全部对外文字草稿，再交 Master；此时未跑五题 |
 | 2026-11-09 | Developer 完成项 1、2；临时安装成功，五题均被模型服务阻塞；全部对外文字全文已写在本节，交审停点到达 | 两次干净副本重跑均 0 改动。R1–R4、S1 各执行一次 CLI，提供方均返回 503「gpt-6-luna 无可用通道」，未执行模型工具调用；CLI 内部各重连 5 次，未手动重跑、未改题、未换模型、未改判据。提供方实际模型目录没有 gpt-6-luna。最初临时目录清理遇 WinError 145，已先删凭据再按 Windows 长路径完整清理，并修好清理函数、用长路径样本验证；以后遇共同的提供方错误也停止剩余题。本轮没有再跑题。对外文字仍只在日志，尚未写进产品文件 | `results/repeatability.json`：两次写入/删除 0、status 干净；`install.json`：新版 5.1.2；`behaviour-assessment.json` 与五题原始 JSONL：验收 4 阻塞；`provider-models.json`：实际目录；`smoke-summary.json`：临时目录及凭据已删、原配置与旧插件未变、原始输出凭据 0 命中；`cleanup-self-test.json`、`interface-render-self-test.json`：清理及展示元数据/版本生成样本通过 | Master：① 审下方根 README、包内 README、manifest interface 和四份 openai.yaml 全文；② 从提供方实际目录选定新一轮测试模型，先审并提交测法再跑，保留本轮失败。Developer：本轮提交后停下，等 PO 传话；验收 4、6 未完成，Sprint 未收官 |
+| 2026-11-09 | PO 指定模型 5.6terra；Developer 更新第二轮测法并直接继续 | PO：「模型用5.6terra」。按提供方实际模型 ID 使用 gpt-5.6-terra、low；原五题、原过线标准、临时凭据边界不变，首轮失败保留。测试脚本支持模型及结果目录参数，第二轮不覆盖第一轮。不再等待 Master 重批这次模型调整 | PO 本轮对话；3.1；`run_codex_smoke.py` | Developer：提交本次测法后，直接运行第二轮，处理测试环境问题并交实际结果 |
 
 **工具适配清单（已实施；仅生成的 Codex 文件变化）**
 

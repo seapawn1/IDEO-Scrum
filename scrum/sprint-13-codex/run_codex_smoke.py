@@ -91,11 +91,11 @@ def snapshot(user_directory: Path) -> dict[str, str]:
     return {str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in files if p.is_file()}
 
 
-def setup_home(source: Path, target: Path, provider_id: str, provider: dict) -> None:
+def setup_home(source: Path, target: Path, provider_id: str, provider: dict, model: str) -> None:
     target.mkdir()
     top = {
         "model_provider": provider_id,
-        "model": "gpt-6-luna",
+        "model": model,
         "model_reasoning_effort": "low",
         "approval_policy": "never",
         "sandbox_mode": "read-only",
@@ -197,14 +197,14 @@ def test_directory():
         cleanup_test_directory(directory)
 
 
-def run() -> dict:
+def run(model: str) -> dict:
     executable = shutil.which("codex")
     if not executable:
         raise RuntimeError("Codex CLI not found")
     user_directory, _, provider_id, provider, secrets = source_settings()
     before = snapshot(user_directory)
-    report = {"model": "gpt-6-luna", "reasoning_effort": "low", "cases": {}}
-    RESULTS.mkdir(exist_ok=True)
+    report = {"model": model, "reasoning_effort": "low", "cases": {}}
+    RESULTS.mkdir(parents=True, exist_ok=True)
     if any((RESULTS / f"{case}.jsonl").exists() for case in ROLES):
         raise RuntimeError("Results already exist; reviewed tests must not silently rerun")
     temporary_root: Path | None = None
@@ -214,7 +214,7 @@ def run() -> dict:
             if not temporary_root.is_relative_to(Path(tempfile.gettempdir()).resolve()):
                 raise ValueError("Test directory escaped the system temporary directory")
             home = temporary_root / "codex-user"
-            setup_home(user_directory, home, provider_id, provider)
+            setup_home(user_directory, home, provider_id, provider, model)
             environment = os.environ.copy()
             environment["CODEX_HOME"] = str(home)
             marketplace = temporary_root / "marketplace"
@@ -235,10 +235,10 @@ def run() -> dict:
                 project = temporary_root / case
                 fixture(project)
                 existing = set((home / "sessions").rglob("*.jsonl"))
-                print(f"Running {case} with gpt-6-luna (one attempt)", flush=True)
+                print(f"Running {case} with {model} (one attempt)", flush=True)
                 result = cli(
                     executable,
-                    ["exec", "--json", "--skip-git-repo-check", "-m", "gpt-6-luna", "-C", str(project), "-"],
+                    ["exec", "--json", "--skip-git-repo-check", "-m", model, "-C", str(project), "-"],
                     environment, project, prompt + "\n",
                 )
                 redactions = save(RESULTS / f"{case}.jsonl", result.stdout, secrets)
@@ -269,13 +269,20 @@ def run() -> dict:
 
 
 def main() -> None:
+    global RESULTS
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--audit-only", action="store_true")
+    parser.add_argument("--model", default="gpt-5.6-terra")
+    parser.add_argument("--results-dir", type=Path)
     args = parser.parse_args()
+    if args.results_dir:
+        RESULTS = args.results_dir.resolve()
+    elif not args.audit_only:
+        RESULTS = RESULTS / "round-2-terra"
     if args.audit_only:
         print(json.dumps(audit_outputs(source_settings()[-1]), ensure_ascii=False))
     else:
-        print(json.dumps(run(), ensure_ascii=False, indent=2))
+        print(json.dumps(run(args.model), ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":
