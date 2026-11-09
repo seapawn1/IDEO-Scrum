@@ -125,7 +125,9 @@ def expected_files(root: Path) -> tuple[dict[Path, bytes], bytes]:
         files[Path(name)] = (root / name).read_bytes()
     readme = root / "scripts/codex_readme.md"
     if readme.is_file():
-        files[Path("README.md")] = readme.read_bytes()
+        files[Path("README.md")] = readme.read_bytes().replace(
+            b"{{version}}", manifest["version"].encode("utf-8")
+        )
 
     marketplace = {
         "name": manifest["name"],

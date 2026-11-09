@@ -1,0 +1,5 @@
+{
+  "windows_long_path_cleanup": true,
+  "temporary_credential_file_removed": true,
+  "model_prompts_rerun": false
+}

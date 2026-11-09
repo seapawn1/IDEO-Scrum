@@ -1,0 +1,49 @@
+{
+  "model": "gpt-6-luna",
+  "reasoning_effort": "low",
+  "cases": {
+    "R1": {
+      "role": "scrum-master",
+      "exit_code": 1,
+      "redactions": 0,
+      "rollouts": 1,
+      "assessment": "Blocked before model response: provider returned 503, no channel for gpt-6-luna"
+    },
+    "R2": {
+      "role": "designer",
+      "exit_code": 1,
+      "redactions": 0,
+      "rollouts": 1,
+      "assessment": "Blocked before model response: provider returned 503, no channel for gpt-6-luna"
+    },
+    "R3": {
+      "role": "developer",
+      "exit_code": 1,
+      "redactions": 0,
+      "rollouts": 1,
+      "assessment": "Blocked before model response: provider returned 503, no channel for gpt-6-luna"
+    },
+    "R4": {
+      "role": "stakeholder",
+      "exit_code": 1,
+      "redactions": 0,
+      "rollouts": 1,
+      "assessment": "Blocked before model response: provider returned 503, no channel for gpt-6-luna"
+    },
+    "S1": {
+      "role": "developer",
+      "exit_code": 1,
+      "redactions": 0,
+      "rollouts": 1,
+      "assessment": "Blocked before model response: provider returned 503, no channel for gpt-6-luna"
+    }
+  },
+  "temporary_directory_removed": true,
+  "current_install_unchanged": true,
+  "secret_scan": {
+    "files_checked": 27,
+    "credential_matches": 0
+  },
+  "temporary_credentials_removed": true,
+  "cleanup_recovery": "Initial WinError 145; credential file removed first, then verified long-path cleanup succeeded"
+}

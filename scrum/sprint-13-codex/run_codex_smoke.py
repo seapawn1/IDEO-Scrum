@@ -4,12 +4,14 @@
 from __future__ import annotations
 
 import argparse
+from contextlib import contextmanager
 import hashlib
 import json
 import os
 from pathlib import Path
 import re
 import shutil
+import stat
 import subprocess
 import tempfile
 import tomllib
@@ -166,6 +168,35 @@ def audit_outputs(secrets: list[str]) -> dict:
     return {"files_checked": checked, "credential_matches": 0}
 
 
+def cleanup_test_directory(directory: Path) -> None:
+    system_temp = Path(tempfile.gettempdir()).resolve()
+    directory = directory.resolve()
+    if directory.parent != system_temp or not directory.name.startswith("ideo-codex-"):
+        raise ValueError("Refusing to remove a directory outside this task's temporary area")
+    for name in ("config.toml", "auth.json"):
+        credential = directory / "codex-user" / name
+        if credential.exists():
+            if not credential.resolve().is_relative_to(directory):
+                raise ValueError("Credential path escaped the temporary directory")
+            credential.unlink()
+    if directory.exists():
+        # Codex's bundled plugins can exceed Windows' traditional MAX_PATH.
+        extended = "\\\\?\\" + str(directory) if os.name == "nt" else str(directory)
+        def writable(function, path, exception):
+            os.chmod(path, stat.S_IWRITE | stat.S_IREAD)
+            function(path)
+        shutil.rmtree(extended, onexc=writable)
+
+
+@contextmanager
+def test_directory():
+    directory = Path(tempfile.mkdtemp(prefix="ideo-codex-smoke-")).resolve()
+    try:
+        yield directory
+    finally:
+        cleanup_test_directory(directory)
+
+
 def run() -> dict:
     executable = shutil.which("codex")
     if not executable:
@@ -178,7 +209,7 @@ def run() -> dict:
         raise RuntimeError("Results already exist; reviewed tests must not silently rerun")
     temporary_root: Path | None = None
     try:
-        with tempfile.TemporaryDirectory(prefix="ideo-codex-smoke-") as directory:
+        with test_directory() as directory:
             temporary_root = Path(directory).resolve()
             if not temporary_root.is_relative_to(Path(tempfile.gettempdir()).resolve()):
                 raise ValueError("Test directory escaped the system temporary directory")
@@ -222,8 +253,13 @@ def run() -> dict:
                     "assessment": "Pending review of loading and file-read evidence",
                 }
                 print(f"Finished {case}: exit {result.returncode}", flush=True)
-                if result.returncode and ("401" in result.stderr or "403" in result.stderr):
-                    raise RuntimeError("Authentication failed; remaining prompts not attempted")
+                provider_error = result.stdout + result.stderr
+                if result.returncode and any(
+                    marker in provider_error for marker in (
+                        "401 Unauthorized", "403 Forbidden", "503 Service Unavailable", "No available channel"
+                    )
+                ):
+                    raise RuntimeError("Provider unavailable; remaining prompts not attempted")
     finally:
         report["temporary_directory_removed"] = temporary_root is None or not temporary_root.exists()
         report["current_install_unchanged"] = snapshot(user_directory) == before

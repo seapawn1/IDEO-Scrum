@@ -135,6 +135,13 @@ def content_errors(root: Path) -> tuple[list[str], dict]:
     for name in ("LICENSE", "ATTRIBUTION.md"):
         if (package / name).is_file() and (root / name).read_bytes() != (package / name).read_bytes():
             errors.append(f"attribution copy differs: {name}")
+    readme_source = root / "scripts/codex_readme.md"
+    if readme_source.is_file() and (package / "README.md").is_file():
+        version = json.loads(text(source / ".claude-plugin/plugin.json"))["version"]
+        if (package / "README.md").read_bytes() != readme_source.read_bytes().replace(
+            b"{{version}}", version.encode("utf-8")
+        ):
+            errors.append("package README differs from approved source")
     marketplace_path = root / ".agents/plugins/marketplace.json"
     if not marketplace_path.is_file():
         errors.append("missing Codex marketplace")
