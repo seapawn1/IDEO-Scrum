@@ -115,4 +115,4 @@ Go-ahead: 2026-11-09，PO——在 `sprint-13-codex` 上提交；可以在系统
 
 **产品日志**：PBI-43 移入 3.2；新增 PBI-46（Codex 版的后续小修）；PBI-30、40、44、45 的备注跟着改；1.1、1.2 补上 Codex。**Product Goal** 不变，Master 已提醒 PO：开下一个冲刺前，下一个冲刺和本目标不合就先定新目标。
 
-**发布**：版本不动（PO：与 Claude 一致）；tag `sprint-13-codex`；推送后，旧 `codex` 分支退役（存档 tag `codex-v3.2.0`）、本机 Codex 改装新版——这两步的结果记入收官后的提交。
+**发布**：版本不动（PO：与 Claude 一致）；tag `sprint-13-codex`；main 与 tag 已推送。旧 `codex` 分支已删，存档 tag `codex-v3.2.0` 已推送：合入 main 后根目录有 `codex/` 目录，与分支同名，旧的 `--ref codex` 装法在 git 里有歧义（退出码 128）、装不上，这也是退役的一个理由。本机 Codex 已改装为 5.1.2：Codex 执行四条迁移命令（Master 先在旧安装的拷贝上演练过），Master 核对——缓存只剩 5.1.2、七个技能齐全、配置里没有 `ref`、内容与仓库里的 Codex 包一致（忽略换行），`claudetocodex` 没动。
