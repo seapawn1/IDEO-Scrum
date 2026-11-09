@@ -127,6 +127,7 @@ Output Done 三条：内容忠实、可导航、无死链（产品日志 1.3）�
 - 版本号、发布、旧 codex 分支退役及本机换装仍按 2.2 留到收官。施工已获 PO 放行；外部模型服务等阻碍据实写入 3.2，由 Master 协调。
 
 Go-ahead: 2026-11-09，PO——在 `sprint-13-codex` 上提交；可以在系统临时目录装插件、跑测试；README 和对外文字要等 Master 审过全文再落盘；不推送，不打 tag，不合入 main，不改 `~/.codex`。合入、tag、发布、推送收官时再定。
+补充放行：2026-11-09，PO 转交本次 Master 审阅并指示执行 1–4；允许备份原始输出后改写 `main..sprint-13-codex` 的未推送历史。英文文字本轮只交全文草稿，提交后停下等 Master 审，不写进交付文件。
 
 ### 3.2 Notes
 
@@ -142,6 +143,7 @@ Go-ahead: 2026-11-09，PO——在 `sprint-13-codex` 上提交；可以在系统
 | 2026-11-09 | PO 指定模型 5.6terra；Developer 更新第二轮测法并直接继续 | PO：「模型用5.6terra」。按提供方实际模型 ID 使用 gpt-5.6-terra、low；原五题、原过线标准、临时凭据边界不变，首轮失败保留。测试脚本支持模型及结果目录参数，第二轮不覆盖第一轮。不再等待 Master 重批这次模型调整 | PO 本轮对话；3.1；`run_codex_smoke.py` | Developer：提交本次测法后，直接运行第二轮，处理测试环境问题并交实际结果 |
 | 2026-11-09 | 第二轮 5.6terra 模型可用，发现测试权限及调用入口问题；Developer 直接修复后继续第三轮 | 第二轮五题进程退出 0，但读取命令均被 read-only 策略拒绝，不能算过线；CLI 裸文本没有应用的原生 Skill 输入。第三轮使用原生 Skill 选择与可执行命令的临时权限，仍只在临时项目/用户目录运行，不改题、不改判据、不改插件。此属测试环境修复，按 PO 要求直接继续，不再交回等待 | `results/round-2-terra/` 完整保留，含读取拒绝记录、临时目录清理及原安装未变的证据；本机协议 Schema 确认 turn/start 支持 skill name/path | Developer：提交本次环境修复记录后，直接运行第三轮并核对实际角色加载及 sprint-log 内容读取 |
 | 2026-11-09 | 5.6terra 原生调用验证五题全部通过，交 Master 审对外文字 | 四角色实际注入的全文逐字匹配生成包，回答分别遵守 Master、Designer、Developer、Stakeholder 的职责；S1 实际读取新版 sprint-log.md 正文。五道题与 d404a00 原题相同，过线标准未改。第二轮权限拒绝结果及首轮 503 均保留。README 草稿补明用 `$` 技能菜单选角色，避免将裸 CLI 文本当成显式角色选择；交付文件尚未写这些文字 | `results/round-3-terra-native/behaviour-assessment.json`：角色 4/4、S1 正文读取证据及调用 ID；原生输入全文 SHA 匹配；`smoke-summary.json`：5/5 回合完成、临时目录已删、原安装未变；`secret-scan.json`：85 份输出凭据 0 命中 | Master：审下方七段对外文字全文及增量；模型与读取验证已解决，无须再定模型。Developer：本轮提交后停下，等文字审阅结果；不推送、不打 tag、不合入 main |
+| 2026-11-09 | Master 审增量与对外文字（5499dc3） | 包通过（验收 1–5；验收 4 的测法改动验收时摆给 PO）。要改：① 对外文字改英文（PO 定），根 README 仍用中文；② 五处文字改动：根 README 写进 Codex、表里补 Codex 角色、「自动介入」改成只描述设置、给旧 codex 分支用户补改成默认分支的说明、developer 简介重写；③ 原始输出从历史里拿掉（PO 定，同意改写未推送的冲刺分支历史），扫描范围加上提供方地址 | Master 独立 diff：只有登记的 5 句不同；`plugins/`、`.claude-plugin/` 与 main 0 差异；抽查第三轮原始输出：S1 读到 sprint-log 正文，角色注入 Codex 版正文；第一轮 10 个原始输出含提供方地址 | Developer：照①②③改；英文全文写进 3.2；改写历史后复扫 0 命中；提交后停下，交 Master 审文字 |
 
 **工具适配清单（已实施；仅生成的 Codex 文件变化）**
 
