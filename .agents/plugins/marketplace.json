@@ -1,0 +1,17 @@
+{
+  "name": "ideo-scrum",
+  "plugins": [
+    {
+      "name": "ideo-scrum",
+      "source": {
+        "source": "local",
+        "path": "./codex/plugins/ideo-scrum"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

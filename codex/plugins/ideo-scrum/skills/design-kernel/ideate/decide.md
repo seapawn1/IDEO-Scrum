@@ -1,0 +1,173 @@
+# Decide
+
+> Source: Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster. Chapter: "Decide."
+> License: All rights reserved (see ATTRIBUTION.md).
+> Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures that explain a method are redrawn as Mermaid diagrams or text; the others are left out. Day names, clock times, and timers are the book's schedule, not an instruction.
+
+You know those meetings. The ones that go on and on, wandering off on tangents, burning up time and energy. The ones that end in a decision nobody’s happy about—or worse, end without any decision at all. We’re not anthropologists, but we have observed (and engaged in) a lot of human behavior in the office environment. Left to our own devices, we humans tend to debate this way:
+
+These discussions are frustrating, because humans have limited short-term memory and limited energy for decision-making. When we jump from option to option, it’s difficult to hold important details in our heads. On the other hand, when we debate one idea for too long, we get worn out—like a judge at a baking contest who fills up on apple pie before tasting anything else.
+
+Normally, if we want the benefit of everyone’s perspective, we’re forced to endure these slogs. But not in a sprint. We’ve structured Wednesday to do one thing at a time—and do it well. We’ll evaluate solutions all at once, critique all at once, and then make a decision all at once.
+
+Your goal for Wednesday morning is to decide which solutions to prototype. Our motto for these decisions is “unnatural but efficient.” Instead of meandering, your team’s conversations will follow a script. This structure is socially awkward, but logical—if you feel like Spock from Star Trek, you’re doing it right. It’s all designed to get the most out of the team’s expertise, accommodate for our human strengths and shortcomings, and make it as easy as possible to come to a great decision.
+
+In the Slack sprint, there were about a dozen different solutions for explaining the product to new customers. Each person believed his or her own idea could work. And each person could have spent an hour explaining why. But if we had spent an hour discussing each idea, the whole day could have gone by without any clear conclusion.
+
+Instead, we used the sprint process to reshape that open-ended discussion into efficient critique and decision-making. By the end of the morning, we knew which ideas we wanted to test.
+
+## The sticky decision
+
+We’ve spent years optimizing our sprint decisions to be as efficient as possible. We ended up with a five-step process—and coincidentally, every step involves something sticky:
+
+- Art museum: Put the solution sketches on the wall with masking tape.
+
+- Heat map: Look at all the solutions in silence, and use dot stickers to mark interesting parts.
+
+- Speed critique: Quickly discuss the highlights of each solution, and use sticky notes to capture big ideas.
+
+- Straw poll: Each person chooses one solution, and votes for it with a dot sticker.
+
+- Supervote: The Decider makes the final decision, with—you guessed it —more stickers.
+
+This sticky stuff isn’t a gimmick. The dot stickers let us form and express our opinions without lengthy debate, and the sticky notes allow us to record big ideas without relying on our short-term memory.
+
+Of course, there are more reasons for all of these steps, but we’ll explain those as we go. Here’s how the Sticky Decision works:
+
+### 1. Art museum
+
+The first step is simple. When you arrive on Wednesday morning, nobody has seen the solution sketches yet. We want everybody to take a good long look at each one, so we stole an idea from the Louvre Museum in Paris: hang them on the wall.
+
+### 2. Heat map
+
+Naturally, every person should have a fair opportunity to present his or her solution and explain the rationale behind it. Well ... that may be natural, but you’re not going to do it.
+
+Explaining ideas has all kinds of downsides. If someone makes a compelling case for his or her idea or is a bit more charismatic, your opinion will be skewed. If you associate the idea with its creator (“Jamie always has great ideas”), your opinion will be skewed. Even just by knowing what the idea is about, your opinion will be skewed.
+
+It’s not hard for creators to make great arguments for their mediocre ideas, or give great explanations for their indecipherable ideas. But in the real world, the creators won’t be there to give sales pitches and clues. In the real world, the ideas will have to stand on their own. If they’re confusing to the experts in a sprint, chances are good they’ll be confusing to customers.
+
+The heat map exercise ensures you make the most of your first, uninformed look at the sketches. So before the team begins looking, hand everyone a bunch of small dot stickers (twenty to thirty dots each). Then each person follows these steps:
+
+Don’t talk.
+
+Look at a solution sketch.
+
+Put dot stickers beside the parts you like (if any).
+
+Put two or three dots on the most exciting ideas.
+
+If you have a concern or question, write it on a sticky note and place it below the sketch.
+
+Move on to the next sketch, and repeat.
+
+There are no limits or rules for these dots. If people want to put dots on their own sketch, they should. If people run out of dots, give them more.
+
+Together, all those dots create a “heat map” on top of the sketches—kind of like a heat map of the weather—showing which ideas the group finds intriguing. It’s a simple activity, but as you’ll see over the coming pages, this heat map forms the foundation for the Sticky Decision.
+
+Because this process is quick, it’s possible to load all of the sketches into short-term memory at once. And since there are unlimited stickers, you and your team won’t use up much of your decision-making energy. The heat map is both a useful way to spot standout ideas and a great way to get your brain warmed up for a decision.
+
+But the heat map has limitations. It can’t tell you why people liked an idea, and if you don’t understand the sketcher’s intent, the heat map can’t explain it to you. To find out, you need to discuss the sketches with the team. Of course, that means talking out loud, something we’ve mostly avoided since Tuesday morning. Hopefully you haven’t forgotten how to do it.
+
+Talking out loud is risky. Humans are social animals, and when our natural impulses to discuss and debate take over, time disappears. We don’t want to tax anyone’s short-term memory, or waste precious sprint time. So in the next step, your team will talk out loud—but you’ll follow a script.
+
+### 3. Speed critique
+
+In the speed critique, you and your team will discuss each solution sketch and make note of standout ideas. The conversation will follow a structure—and a time limit. The first time you do it, it might feel uncomfortable and rushed, and it might be hard to keep track of all the steps. But it won’t take long to get the hang of it. Once you do, your team will have a powerful tool for analyzing ideas, and you may find yourselves using it in other meetings.
+
+During the speed critique, the Facilitator is going to be very busy, so someone needs to volunteer to help by being the Scribe. As you review the sketches on the wall, the Scribe will write down standout ideas on sticky notes. The Scribe’s notes serve several purposes. The notes give everyone a common vocabulary to describe solutions. They help everyone on the team to feel heard, which speeds up the discussion. And they organize the team’s observations, making it easier to place your votes in the next step.
+
+Here’s how the speed critique works:
+
+Gather around a solution sketch.
+
+Set a timer for three minutes.
+
+The Facilitator narrates the sketch. (“Here it looks like a customer is clicking to play a video, and then clicking over to the details page ...”)
+
+The Facilitator calls out standout ideas that have clusters of stickers by them. (“Lots of dots by the animated video ...”)
+
+The team calls out standout ideas that the Facilitator missed.
+
+The Scribe writes standout ideas on sticky notes and sticks them above the sketch. Give each idea a simple name, like “Animated Video” or “One-Step Signup.”
+
+Review concerns and questions.
+
+The creator of the sketch remains silent until the end. (“Creator, reveal your identity and tell us what we missed!”)
+
+The creator explains any missed ideas that the team failed to spot, and answers any questions.
+
+Move to the next sketch and repeat.
+
+That’s right—the proud inventor of the solution in the spotlight doesn’t get to speak up until the end of the critique. This unusual practice saves time, removes redundancy, and allows for the most honest discussion. (If the inventor pitched his or her idea, the rest of the team would have a harder time being critical or negative.)
+
+Try to keep each review to three minutes, but be a little flexible. If a sketch has a lot of good ideas, take a couple of extra minutes to capture them all. On the other hand, if a sketch has very few dots, and the creator doesn’t have a compelling explanation, do everyone a favor and move on quickly. Nothing is gained by tearing apart a sketch nobody likes.
+
+Remember that all you’re trying to accomplish in the speed critique is to create a record of promising ideas. You don’t need to debate whether something should be included in the prototype; that will come later. You shouldn’t try to come up with new ideas on the spot. Just write down what stands out about each solution.
+
+By the end of the speed critique, everyone will understand all of the promising ideas and details.
+
+If you’re the Facilitator, the speed critique will require you to think on your feet and keep the group moving. You’re both narrator and referee, but the process should be fun. After all, the solutions will be interesting, and since the discussion focuses on the best ideas, the tone will be positive.
+
+### 4. Straw poll
+
+In case you’re not a politics nerd, a straw poll is a nonbinding vote used to gauge a group’s opinion (like holding up a piece of straw to see which way the wind is blowing). In your sprint, the straw poll serves the same purpose. It’s a quick way for the whole team to express their opinions. These votes aren’t binding. Instead, think of the straw poll as a way to give your Decider some advice. It’s a straightforward exercise:
+
+Give everyone one vote (represented by a big dot sticker—we like pink).
+
+Remind everyone of the long-term goal and sprint questions.
+
+Remind everyone to err on the side of risky ideas with big potential.
+
+Set a timer for ten minutes.
+
+Each person privately writes down his or her choice. It could be a whole sketch, or just one idea in a sketch.
+
+When time is up, or when everyone is finished, place the votes on the sketches.
+
+Each person briefly explains his or her vote (only spend about one minute per person).
+
+There are plenty of clues to assist your voting. In the last chapter, we asked you to give a catchy name to each solution. During the straw poll, those names— along with the heat map and the sticky notes from the speed critique—make it easier to compare and weigh the options.
+
+We’ve talked a lot about human limitations, but this kind of decision is one place where the brain shines. Each person in the room has special expertise and years of accumulated wisdom. With the speed critique loaded into short-term memory, those sophisticated brains can focus on just one task. No managing a conversation, no articulating your opinions, no trying to remember what that sketch was all about. Just apply your expertise and make an informed decision. Brains are great at that.
+
+For a few minutes, the team silently will consider where to vote. And then ... that’s it: The stickers go up.
+
+Afterward, each person will give a brief explanation of his or her vote. The Decider should listen to these explanations—because all decision-making authority is about to be turned over to her.
+
+## Make honest decisions
+
+Sometimes when people work together in groups, they start to worry about consensus and try to make decisions that everybody will approve—mostly out of good nature and a desire for group cohesion, and perhaps in part because democracy feels good. Well, democracy is a fine system for governing nations, but it has no place in your sprint.
+
+Earlier in the book, we told you about our mistake with SquidCo: not including the Decider in the sprint. A few weeks later, we had a sprint with a company we’ll call OstrichCo. We had learned our lesson about Deciders, so OstrichCo’s founder and CEO, Oscar, joined us for the entire sprint.
+
+On Wednesday, it came time for OstrichCo to choose ideas. “You know, this is something we should all decide together,” said Oscar. “We’re a team.” Everybody felt great, and everybody voted. The solution the team chose wasn’t Oscar’s favorite, but it performed well in Friday’s test. The sprint was a success. Or so we thought, until we talked to Oscar a couple of weeks later.
+
+“Yeah ...” Oscar rubbed the back of his head. He looked bashful. “I thought about it some more and, uh ... decided to go in another direction.”
+
+“Let me guess,” said John. “You went with your favorite idea from the sprint.” “Well,” said Oscar. “Yeah.”
+
+During the sprint, Oscar had succumbed to camaraderie. He wanted to let the team make the decision. But the idea the team chose wasn’t the idea Oscar was most excited about. Later, after the prototyping and testing were over, he reverted to his normal method of decision-making—and now OstrichCo was committed to Oscar’s untested idea.
+
+So who screwed up here? It wasn’t just Oscar. It was all of us in the sprint, because we let him cede his authority. The lesson of OstrichCo is to make honest decisions. You brought your Decider into the sprint room for a reason, and right now, more than at any other moment, you need the Decider to do her job.
+
+Of course, being the Decider isn’t easy. Many of the startup CEOs we talk to feel the pressure of having to make the right decisions for their companies and teams. In the sprint, those Deciders get plenty of decision-making assistance. Between the detailed sketches, the collective notes, and the just-completed straw poll, the Deciders should have everything they need.
+
+### 5. Supervote
+
+The supervote is the ultimate decision. Each Decider will get three special votes (with the Decider’s initials on them!), and whatever they vote for is what your team will prototype and test.
+
+Deciders can choose ideas that were popular in the straw poll. Or they can choose to ignore the straw poll. They can spread out their votes, or put them all in one place. Basically, the Deciders can do whatever the heck they want.
+
+All the same, it’s a good idea to remind the Decider of the long-term goal and the sprint questions (which should still be on one of your whiteboards!). Finally, when the Decider has placed her votes, the hardest choice of the week is complete.
+
+The sketches with supervotes on them (even just one!) are the winners. You’ll plan your prototype around those ideas and put them to the test on Friday.
+
+The sketches that didn’t get any supervotes aren’t winners, but they aren’t losers either. They’re “maybe-laters.” You might incorporate them when you plan your prototype on Wednesday afternoon, or perhaps you’ll use them in your next sprint.
+
+It’s important to note that this decision-making process isn’t perfect. Sometimes, Deciders screw up. Sometimes, good ideas don’t get selected (at least, not in the first sprint). But the “sticky decision”—if not perfect—is pretty good and very speedy. That speed helps with the sprint’s larger goal: getting real world data from Friday’s test. Ultimately, it will be that data that leads to the best decisions of all.
+
+---
+
+After your team has organized the winning solutions, everyone will probably feel relieved—after all, the biggest decision of the sprint has been made. Everyone will have had a chance to be heard, and everyone will understand how the decision was reached. On top of that relief, it’s exciting to identify and see the building blocks of your prototype.
+
+But there is one more hitch. Since each Decider gets three votes, and there are sometimes two Deciders, there is bound to be more than one winning sketch. So what do you do if those winning sketches conflict with one another? What do you do if those ideas can’t coexist in the same prototype?
