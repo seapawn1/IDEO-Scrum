@@ -18,6 +18,7 @@ import tempfile
 import threading
 import time
 import tomllib
+from urllib.parse import urlsplit
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -71,12 +72,48 @@ def toml_scalar(value: object) -> str:
     raise ValueError("Unsupported provider setting type")
 
 
+def provider_privacy(provider_id: str, provider: dict) -> tuple[list[str], list[tuple[str, re.Pattern]]]:
+    """Check private values globally; check public enums in configuration context."""
+    literal: list[str] = []
+    contexts: list[tuple[str, re.Pattern]] = []
+    public_labels = {"openai", "custom", "default", "api"}
+
+    def context(key: str, value: object):
+        rendered = str(value).lower() if isinstance(value, bool) else str(value)
+        pattern = (
+            r"(?i)(?<![\w])(?:[\"']?" + re.escape(key) + r"[\"']?)\s*[:=]\s*"
+            r"(?:[\"']" + re.escape(rendered) + r"[\"']|" + re.escape(rendered) + r")(?![\w])"
+        )
+        contexts.append((key, re.compile(pattern)))
+
+    context("model_provider", provider_id)
+    if provider_id.casefold() not in public_labels:
+        literal.append(provider_id)
+    for key, value in provider.items():
+        if isinstance(value, bool) or key == "wire_api":
+            context(key, value)
+        elif isinstance(value, str):
+            if key == "name" and value.casefold() in public_labels:
+                context(key, value)
+            elif value:
+                literal.append(value)
+        elif isinstance(value, dict):
+            literal.extend(str(v) for v in value.values() if isinstance(v, str) and v)
+    base = provider.get("base_url", "")
+    if base:
+        host = urlsplit(base).hostname
+        if host:
+            literal.append(host)
+    return list(dict.fromkeys(literal)), contexts
+
+
 def source_settings() -> tuple[Path, dict, str, dict, list[str]]:
     user_directory = Path(os.environ.get("CODEX_HOME", str(Path.home() / ".codex"))).resolve()
     config = tomllib.loads((user_directory / "config.toml").read_text(encoding="utf-8-sig"))
     provider_id = config["model_provider"]
     provider = config["model_providers"][provider_id]
     secrets = secret_values(provider)
+    secrets.extend(provider_privacy(provider_id, provider)[0])
     auth = user_directory / "auth.json"
     if auth.is_file():
         secrets.extend(secret_values(json.loads(auth.read_text(encoding="utf-8-sig")), True))
@@ -262,14 +299,23 @@ def app_turn(executable: str, env: dict, project: Path, model: str, prompt: str,
 
 def audit_outputs(secrets: list[str]) -> dict:
     checked = 0
+    _, _, provider_id, provider, _ = source_settings()
+    contexts = provider_privacy(provider_id, provider)[1]
     for path in RESULTS.rglob("*"):
         if not path.is_file():
             continue
-        cleaned, hits = scrub(path.read_text(encoding="utf-8-sig"), secrets)
+        value = path.read_text(encoding="utf-8-sig")
+        cleaned, hits = scrub(value, secrets)
         if hits:
-            raise ValueError(f"Credential pattern found in saved output: {path.name}")
+            raise ValueError(f"Private provider value or credential found in saved output: {path.name}")
+        if any(pattern.search(value) for _, pattern in contexts):
+            raise ValueError(f"Provider configuration found in saved output: {path.name}")
         checked += 1
-    return {"files_checked": checked, "credential_matches": 0}
+    return {
+        "files_checked": checked, "credential_matches": 0,
+        "provider_value_matches": 0,
+        "scope": "Credentials, provider URL and host, private setting values, serialized public setting values",
+    }
 
 
 def cleanup_test_directory(directory: Path) -> None:

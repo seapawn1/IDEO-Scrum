@@ -126,8 +126,7 @@ Output Done 三条：内容忠实、可导航、无死链（产品日志 1.3）�
 - CLI 的身份认证、插件发现或事件格式可能影响隔离测试：以实际加载、读取证据验收，不能拿本机已装 3.2.0 的结果代替；环境失败单列，不临时改过线标准。
 - 版本号、发布、旧 codex 分支退役及本机换装仍按 2.2 留到收官。施工已获 PO 放行；外部模型服务等阻碍据实写入 3.2，由 Master 协调。
 
-Go-ahead: 2026-11-09，PO——在 `sprint-13-codex` 上提交；可以在系统临时目录装插件、跑测试；README 和对外文字要等 Master 审过全文再落盘；不推送，不打 tag，不合入 main，不改 `~/.codex`。合入、tag、发布、推送收官时再定。
-补充放行：2026-11-09，PO 转交本次 Master 审阅并指示执行 1–4；允许备份原始输出后改写 `main..sprint-13-codex` 的未推送历史。英文文字本轮只交全文草稿，提交后停下等 Master 审，不写进交付文件。
+Go-ahead: 2026-11-09，PO——在 `sprint-13-codex` 上提交；可以在系统临时目录装插件、跑测试；README 和对外文字要等 Master 审过全文再落盘；不推送，不打 tag，不合入 main，不改 `~/.codex`。合入、tag、发布、推送收官时再定。 补充放行：2026-11-09，PO 转交本次 Master 审阅并指示执行 1–4；允许备份原始输出后改写 `main..sprint-13-codex` 的未推送历史。英文文字本轮只交全文草稿，提交后停下等 Master 审，不写进交付文件。
 
 ### 3.2 Notes
 
@@ -170,9 +169,42 @@ Go-ahead: 2026-11-09，PO——在 `sprint-13-codex` 上提交；可以在系统
 | 验收 6 与对外文字 | 待审：以下七段为全文；根 README、包 README、manifest interface、四份角色 UI 文字均尚未写入交付文件。包 README 的版本替换及展示元数据已用临时样本验证 |
 | 测试纪律与凭据 | 三轮均保留原题与 2.2 判据，第二、三轮按 PO 指定用 gpt-5.6-terra；测试环境修复及旧结果均记录。原配置与旧插件指纹未变，临时目录和凭据已删除；提交前按实际凭据值和令牌形态扫描 85 份输出，0 命中。`results/round-3-terra-native/secret-scan.json` |
 
-**对外文字全文草稿（待 Master 审，未写入交付文件）**
+**原始输出清单、外部备份与历史清理**
 
-以下是将落盘的全文；根 README 保留既有内容，只加 Codex 入口、文件地图及同步说明。包内 README 显示版本由清单生成；源模板中的版本位置使用占位符，生成后呈现为这里的 5.1.2。以下 JSON 的 interface 和四份 YAML 审过后，才进入生成源。
+外部归档：`S:\IDEO-Scrum-Archives\sprint-13-codex-20261109-230117`。`workspace/` 是当前冲刺工作文件的完整副本（88 文件，逐个 SHA-256 已校验）；`before-rewrite.bundle` 是已验证的原冲刺历史恢复包。改写前另建 `with-english-draft.bundle`，保留本轮英文稿。历史笔记中提到的逐题原始输出、注入全文和完整回答，此后均到外部归档查；仓库只保留汇总。
+
+| 内容 | 处理 | 位置或范围 |
+| --- | --- | --- |
+| 三轮原始记录及重复题目文件 | 从该冲刺分支的每个提交删除，仓库外完整保留 | `results/**/` 下全部 `*.jsonl`、`*.txt`、`install.json`、`marketplace.json`，合计 72 文件 |
+| 汇总里的原始回答和命令全文 | 从历史中删除这些字段，保留判定、正文标记、调用 ID 和内容哈希 | `final_answer`、`S1_final_answer`、`command`；安装文件位置改为包内相对位置 |
+| 精确文件清单 | 保留 | `retention.json` 列出全部删除路径及既有汇总路径 |
+| 提交号对应 | 改写后保留 | `rewrite-map.json`；日志中的旧号按此映射到新号，不把旧号当作新历史的引用 |
+| 扫描规则 | 扩大并记录结果 | 凭据、令牌形态、提供方完整地址和域名、其他专用设置值按值扫描；协议枚举、布尔值及通用提供方标签按配置键值上下文扫描，避免把源材料的普通单词当作泄漏 |
+
+既有汇总保留清单（14 文件）：
+
+| 文件 | 处理 |
+| --- | --- |
+| `results/behaviour-assessment.json` | 保留汇总；如含原始回答或命令字段则缩减 |
+| `results/cleanup-self-test.json` | 保留汇总；如含原始回答或命令字段则缩减 |
+| `results/interface-render-self-test.json` | 保留汇总；如含原始回答或命令字段则缩减 |
+| `results/provider-models.json` | 保留汇总；如含原始回答或命令字段则缩减 |
+| `results/repeatability.json` | 保留汇总；如含原始回答或命令字段则缩减 |
+| `results/round-2-terra/smoke-summary.json` | 保留汇总；如含原始回答或命令字段则缩减 |
+| `results/round-3-terra-native/behaviour-assessment.json` | 保留汇总；如含原始回答或命令字段则缩减 |
+| `results/round-3-terra-native/secret-scan.json` | 保留汇总；如含原始回答或命令字段则缩减 |
+| `results/round-3-terra-native/smoke-summary.json` | 保留汇总；如含原始回答或命令字段则缩减 |
+| `results/secret-scan.json` | 保留汇总；如含原始回答或命令字段则缩减 |
+| `results/smoke-summary.json` | 保留汇总；如含原始回答或命令字段则缩减 |
+| `results/source-and-criteria.json` | 保留汇总；如含原始回答或命令字段则缩减 |
+| `results/static-after-recovery.json` | 保留汇总；如含原始回答或命令字段则缩减 |
+| `results/static.json` | 保留汇总；如含原始回答或命令字段则缩减 |
+
+本轮另保留迁移命令核对和历史隐私扫描的汇总。英文稿及上述操作仍在已获放行的范围内，交付文字尚未写进插件或 README。
+
+**对外文字全文草稿（根 README 中文，其余英文；待 Master 审）**
+
+以下是将落盘的全文；根 README 仍用中文，已补 Codex 入口、旧分支迁移、两端的组件形式及调用设置；包内 README 和展示文字改为英文。包内 README 显示版本由清单生成；源模板中的版本位置使用占位符，生成后呈现为这里的 5.1.2。以下 JSON 的 interface 和四份 YAML 审过后，才进入生成源。
 
 **README.md（全文）**
 
@@ -220,6 +252,15 @@ codex plugin marketplace add seapawn1/IDEO-Scrum
 codex plugin add ideo-scrum@ideo-scrum
 ```
 
+如果以前通过 `--ref codex` 从旧 `codex` 分支安装过 3.2.0，先移除旧插件和 marketplace 注册，再按默认分支重新注册并安装：
+
+```
+codex plugin remove ideo-scrum@ideo-scrum
+codex plugin marketplace remove ideo-scrum
+codex plugin marketplace add seapawn1/IDEO-Scrum
+codex plugin add ideo-scrum@ideo-scrum
+```
+
 随后在新会话输入 `$`，从技能菜单选中相应角色；角色简称如下：
 
 ```
@@ -229,7 +270,7 @@ $developer      # Developer
 $stakeholder    # Stakeholder
 ```
 
-四个角色需要显式调用，三个方法论内核按任务自动介入；它们和 Claude Code 版使用同一份源内容。需要区分同名技能时，可用插件命名空间，例如 `$ideo-scrum:developer`。
+三个内核的设置允许 Codex 自动调用；四个角色的设置要求显式选择。它们和 Claude Code 版使用同一份源内容。需要区分同名技能时，可用插件命名空间，例如 `$ideo-scrum:developer`。
 
 **插件提供什么**
 
@@ -238,11 +279,11 @@ $stakeholder    # Stakeholder
 | `ideo-kernel` skill | IDEO / d.school 五模式（Empathize → Test）、~40 个设计方法——整个插件共用的工具箱，也是设计各阶段的基础 |
 | `design-kernel` skill | 设计冲刺：按 IDEO 五阶段（共情、定义、构思、原型、测试）组织的《Sprint》原文摘录，加设计日志约定与模板；设计与冲刺平级，结论回流产品日志 |
 | `scrum-kernel` skill | Scrum Guide 2020 全文、SGEP 扩展包全文（含角色章）、Artifact / Event 分项引用 |
-| 4 个 Claude Code command | Scrum Master / Designer / Developer / Stakeholder 四种角色视角，用 `/ideo-scrum:scrum-master` 等手动进入；进入时自动加载对应内核（都先加载 ideo-kernel） |
+| 4 个角色 | Scrum Master / Designer / Developer / Stakeholder。Claude Code 用四个 command（如 `/ideo-scrum:scrum-master`）；Codex 用四个角色 skill，从 `$` 菜单显式选择。角色入口要求先加载对应内核（都先加载 ideo-kernel） |
 
 ## 这里是什么
 
-本插件将 Design Thinking（设计思维）和 Scrum Sprint（敏捷冲刺）两套方法论集成到 Claude Code 中，通过技能（skills）和斜杠命令（commands）提供结构化的协作流程。不做项目管理工具本身，不做 JIRA/Linear 集成，也不做团队协作平台——只提供方法论引导和流程框架。
+本插件将 Design Thinking（设计思维）和 Scrum Sprint（敏捷冲刺）两套方法论提供给 Claude Code 与 Codex：Claude Code 使用技能（skills）和斜杠命令（commands），Codex 中全部是技能（skills），共同提供结构化的协作流程。不做项目管理工具本身，不做 JIRA/Linear 集成，也不做团队协作平台——只提供方法论引导和流程框架。
 
 ## 文件地图
 
@@ -353,99 +394,102 @@ $stakeholder    # Stakeholder
 ````markdown
 # IDEO-Scrum for Codex
 
-v5.1.2。Design Thinking 与 Scrum Sprint 方法论插件，与 Claude Code 版共用源内容。
+v5.1.2. Design Thinking and Scrum Sprint guidance, sharing its source content with the Claude Code edition.
 
-## 安装
+## Install
 
 ```
 codex plugin marketplace add seapawn1/IDEO-Scrum
 codex plugin add ideo-scrum@ideo-scrum
 ```
 
-安装后，在新会话输入 `$`，从技能菜单选择 Developer、Scrum Master、Designer 或 Stakeholder。它们的角色简称是 `$developer`、`$scrum-master`、`$designer`、`$stakeholder`；也可用插件命名空间，例如 `$ideo-scrum:developer`。三个内核按任务自动介入，角色通过菜单显式调用。
+In a new session, type `$` and select Developer, Scrum Master, Designer, or Stakeholder from the skill menu. Their short names are `$developer`, `$scrum-master`, `$designer`, and `$stakeholder`; a qualified name such as `$ideo-scrum:developer` identifies the plugin explicitly.
 
-## 内容
+The three kernel skills are configured to allow automatic invocation. The four role skills require explicit selection.
 
-| 入口 | 内容 |
+## Contents
+
+| Entry | Purpose |
 | --- | --- |
-| [ideo-kernel](skills/ideo-kernel/SKILL.md) | 共用的 IDEO 五模式与方法库 |
-| [design-kernel](skills/design-kernel/SKILL.md) | 从挑战到经测试的原型和结论 |
-| [scrum-kernel](skills/scrum-kernel/SKILL.md) | 规划、交付与审阅增量，附约定和模板 |
-| [Scrum Master](skills/scrum-master/SKILL.md) | 协助 PO 精化、派活、跟踪与审阅 |
-| [Designer](skills/designer/SKILL.md) | 研究问题、制作原型并验证 |
-| [Developer](skills/developer/SKILL.md) | 制定 How、维护冲刺日志并交付增量 |
-| [Stakeholder](skills/stakeholder/SKILL.md) | 按产品日志中的身份提供外部视角 |
+| [ideo-kernel](skills/ideo-kernel/SKILL.md) | Shared IDEO five modes and method toolbox |
+| [design-kernel](skills/design-kernel/SKILL.md) | Research from a challenge to a tested prototype and findings |
+| [scrum-kernel](skills/scrum-kernel/SKILL.md) | Plan, deliver, and review Increments, with conventions and templates |
+| [Scrum Master](skills/scrum-master/SKILL.md) | Help the PO refine work, delegate, track progress, and review |
+| [Designer](skills/designer/SKILL.md) | Research problems, build prototypes, and test them |
+| [Developer](skills/developer/SKILL.md) | Plan the How, maintain the Sprint log, and deliver Increments |
+| [Stakeholder](skills/stakeholder/SKILL.md) | Assess work from the identity defined in the product log |
 
-## 来源与授权
+## Sources and licenses
 
-原创部分见 [LICENSE](LICENSE)；第三方内容见 [ATTRIBUTION.md](ATTRIBUTION.md)。d.school 材料含非商业限制，《Sprint》摘录保留全版权条款。
+Original work is covered by [LICENSE](LICENSE). Third-party material has its own terms in [ATTRIBUTION.md](ATTRIBUTION.md). The d.school material has a noncommercial restriction; excerpts from _Sprint_ remain subject to all-rights-reserved terms.
 
-本包由仓库的 `python scripts/sync_codex.py` 生成。工具用语适配之外，方法论内容与 Claude Code 版一致。
+This package is generated by `python scripts/sync_codex.py` in the repository. Methodology content matches the Claude Code edition, apart from the documented tool wording adaptations.
 ````
 
-**codex/plugins/ideo-scrum/.codex-plugin/plugin.json 的 interface（全部）**
+**codex/plugins/ideo-scrum/.codex-plugin/plugin.json 的 interface（全部；英文）**
 
 ```json
 {
   "displayName": "IDEO-Scrum",
-  "shortDescription": "Design Thinking 与 Scrum Sprint 方法论",
-  "longDescription": "提供 ideo-kernel、design-kernel、scrum-kernel 三个方法论 skill，以及 Scrum Master、Designer、Developer、Stakeholder 四个角色。IDEO 方法共用；设计交付原型与结论，冲刺交付增量；约定与模板随插件安装。",
+  "shortDescription": "Design Thinking and Scrum Sprint guidance",
+  "longDescription": "Three kernels (ideo-kernel, design-kernel, scrum-kernel) and four roles (Scrum Master, Designer, Developer, Stakeholder). IDEO methods form a shared toolbox; designs yield prototypes and findings, while Sprints deliver Increments. Conventions and templates ship with the plugin.",
   "developerName": "SeaPawn",
   "category": "Productivity",
   "capabilities": [
     "Interactive"
   ],
   "defaultPrompt": [
-    "帮我规划下个 Sprint，明确 Sprint Goal 和交付范围。",
-    "这个想法值不值得做，先研究并验证原型。",
-    "帮我检查本次增量，准备 Sprint Review 和 Retrospective。"
+    "Help me plan the next Sprint, including its Sprint Goal and scope.",
+    "Research whether this idea is worth pursuing and test a prototype.",
+    "Help me inspect this Increment and prepare the Sprint Review and Retrospective."
   ]
 }
 ```
 
-**skills/scrum-master/agents/openai.yaml（全文）**
+**skills/scrum-master/agents/openai.yaml（全文；英文）**
 
 ```yaml
 interface:
   display_name: "Scrum Master"
-  short_description: "守护 Scrum 流程，协助精化、派活、跟踪与审阅，价值取舍由 PO 决定"
-  default_prompt: "$scrum-master 帮我了解项目现状，并准备下一次 Scrum 活动。"
+  short_description: "Guide Scrum, refinement, delegation, tracking, and review"
+  default_prompt: "$scrum-master Review the project and help me prepare its next Scrum event."
 policy:
   allow_implicit_invocation: false
 ```
 
-**skills/designer/agents/openai.yaml（全文）**
+**skills/designer/agents/openai.yaml（全文；英文）**
 
 ```yaml
 interface:
   display_name: "Designer"
-  short_description: "结对研究问题、探索方案与测试原型，将结论交回产品日志，由 PO 定方向"
-  default_prompt: "$designer 帮我研究这个问题，做出原型并验证方案。"
+  short_description: "Research problems, explore options, and test prototypes"
+  default_prompt: "$designer Help me research this problem and test a prototype."
 policy:
   allow_implicit_invocation: false
 ```
 
-**skills/developer/agents/openai.yaml（全文）**
+**skills/developer/agents/openai.yaml（全文；英文）**
 
 ```yaml
 interface:
   display_name: "Developer"
-  short_description: "制定冲刺方案、维护冲刺日志、实现增量并交付 DoD 证据，等待 PO 放行"
-  default_prompt: "$developer 先了解项目和冲刺日志，再提出实现方案。"
+  short_description: "Plan How; build with PO go-ahead; keep Sprint logs and DoD proof"
+  default_prompt: "$developer Read the project and Sprint log, then propose a plan."
 policy:
   allow_implicit_invocation: false
 ```
 
-**skills/stakeholder/agents/openai.yaml（全文）**
+**skills/stakeholder/agents/openai.yaml（全文；英文）**
 
 ```yaml
 interface:
   display_name: "Stakeholder"
-  short_description: "按产品日志中的身份评价增量或原型，指出期望与现状的差距，反馈交 PO"
-  default_prompt: "$stakeholder 请按产品日志中的指定身份评价本次增量。"
+  short_description: "Assess Increments or prototypes as a named stakeholder"
+  default_prompt: "$stakeholder Assess this Increment as the specified stakeholder from the product log."
 policy:
   allow_implicit_invocation: false
 ```
+
 
 ## 4. Review
 
