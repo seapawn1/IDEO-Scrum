@@ -58,6 +58,6 @@
 
 ## 5. Test
 
-<!-- Excerpts: test/small-data.md, test/interview.md, test/learn.md. IDEO mode: test. Write the criteria here before the test (convention 17). The chapter ends with the Product Owner's decision: end the design, or go back to the stage whose answer was wrong (convention 25). -->
+<!-- Excerpts: test/small-data.md, test/interview.md, test/learn.md. IDEO mode: test. Write the criteria here before the test (convention 17). The chapter ends with the Product Owner's decision: end the design, or go back to the stage whose answer was wrong (convention 25). Next to it, a line or two on what the design taught about how to work, kept for the Retrospective of the Sprint that archives this log (convention 18). -->
 
 <!-- Who tested and what showed up, and what the trial run found; then answer each design question in 1.3 — yes, no, or not yet, with the evidence — and say where each conclusion flows back. -->

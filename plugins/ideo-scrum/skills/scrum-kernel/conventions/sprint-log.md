@@ -56,7 +56,7 @@ Conventions 20–25 hold at every step; see Throughout, below. At each "PO decid
 
 9. **Notes as you go** — Keep chapter 4, Increment notes, as the full record, so a new session can pick the Sprint up from the log alone. A session that picks up the Sprint goes by the notes and does not work everything out again. The notes take whatever form helps; they need not be a running account of what was done. The How in chapter 3 is a note too, and chapter 4 may refine it.
 10. **Checkpoints, not stand-ups** — Stop and check the work against the Sprint Goal at the end of each stage (convention 24), whenever the AI is stuck, and whenever the Product Owner asks how things stand. This departs from the Scrum Guide's Daily Scrum: see the Departures section of `overview.md`.
-11. **Structure before full text** — Show a new template or structure, as a chapter list on its own, to whoever reviews it (convention 8) before writing the full text.
+11. **Outline before full text** — Before writing a new lasting document or a new template, show its outline to whoever reviews it (convention 8): the headings at every level, each with one line on what its part will hold. Write the full text once the reviewer agrees; for a new template, the outline is its chapter list.
 12. **Full text for review** — Put a new lasting document's full text — word for word, not an outline — where the reviewer (convention 8) can annotate it, with the problems you found and a recommendation for each; change the source files only after approval. The version on disk wins: read before you overwrite.
 
 ### Test
