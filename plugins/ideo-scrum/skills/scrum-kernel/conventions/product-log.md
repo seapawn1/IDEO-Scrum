@@ -72,7 +72,7 @@ Convention 18 holds at every step; see Throughout, below.
 
 ## Keeping it fresh
 
-17. **Fresh at every Review** — At every Review, move done items to section 3.2, one line each, with the source, usually the archived sprint log in `scrum/documents/`; delete outdated architecture text and resolved open points; send unfinished items back to section 3.1. Keep no revision record; version control keeps the history. Fresh means more than the items: keep all of `scrum/` fresh, `scrum/documents/` included (`overview.md`, convention 5).
+17. **Fresh at every Review** — At every Review, move done items to section 3.2, one line each, with the source, usually the archived sprint log in `scrum/documents/`; delete outdated architecture text and resolved open points; send unfinished items back to section 3.1. Keep no revision record; version control keeps the history. Fresh means more than the items: the same Review goes through the whole `scrum/` folder, `scrum/documents/` included (`sprint-log.md`, convention 17).
 
 ## Throughout
 

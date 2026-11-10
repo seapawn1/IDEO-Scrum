@@ -177,6 +177,7 @@ Go-ahead: 2026-11-10，Master 放行，PO 授权（「让他继续往下走」�
 | 2026-11-10 | Developer 抄入第四轮：产品日志登记 PBI-51；2.2 加 PO 的新决定、做法变化和 Master 对设计日志的七条提议，改「Master 定」那条规矩，验收改第 1、3 条并加第 8 条；3.1 重写第 2–8 项的产出与怎么算完、风险、Go-ahead；3.2 抄入 Master 的一行与样板的结论 | 验收第 3 条的「定了的点」顺带改成「有依据的改动」，与「没有依据的文字不动」一致（我多改的一处，请 Master 看）；本冲刺自己的日志不改成五章 | 产品日志 PBI-51；本日志 | 做设计这块：design-log、设计日志模板、`SKILL.md` 五阶段表，做完发消息给 Master 审 |
 | 2026-11-10 | Developer 做完设计这块的修订稿（提交 `7e3e5b6`）：design-log、设计日志模板、design-kernel `SKILL.md` 的五阶段表；清单里设计这块各行写明改了什么和依据；PO 补的几点（插件文件不做标记、阶段之间是 PO 拍板、Review 和 Retro 不设章）和「两个入口」都按新写法落进去了 | design-log：新增 22–29，原编号未动；首句改祈使的 11 条（2、4、6、7、11、12、13、15、18、19、21），去「Author's practice」标签的 19 条；约定 5 补触发清单；约定 18 改成压缩日志归档、按产品日志约定 2 回流；图上标出 PO 拍板的点。模板：补 1.4 Findings、2.2 Point of View、3.1 Idea pool、4.1 Parts、5.1 Criteria，不加 Review 章，节号顺延。五阶段表各加一句重心。我自己拿主意的几处请 Master 看：29「小设计」对话里的表只有三个字，我照 sprint-log 约定 4 类推；25 的「发散够」取「池里有做法不同的点子」；28 的「检查」一栏取 PBI-48 的重心；约定 5 的触发清单取自本文件已有的「PO 决定」处；`SKILL.md` 的 Use Protocol 第 6 步没动（记在清单第二张表，待定） | `checklist.md` 设计这块各行与第二张表；脚本核对：没动的条逐字不变，改了的条都有依据，插件文件里没有标记 | 停点 1：Master 审设计这块；审过再做 scrum 这边（overview → product-log → sprint-log → 两份模板 → scrum-kernel `SKILL.md` 的分工一节）；模板的章节清单请 Master 先单独给 PO 看 |
 | 2026-11-10 | Developer 照 Master 转述的 PO 决定改设计这块：设计日志模板去掉发现、POV、点子池三节，原型和测试两章不分小节，节号回到改前；约定 24（POV）整条去掉，新增条改号为 22–27；约定 24（原 25）改成给子代理下任务时要它先发散；约定 10、门表、五阶段表的定义一行不再提 POV；IDEO 写成必须（SKILL.md 序言段改成「IDEO is required in every stage」，五阶段表改成「IDEO 模式和重心｜书的步骤」，不列方法名，约定 7 指向 SKILL.md）；冲刺日志模板第 3 章用 plan、Test 一章不分小节 | 先要列方法名、后改为只写原则，以后一次为准；POV 去掉后，约定 10 补一句「HMW 对着地图写、参考第 1 章」；约定 12 的草图依据去掉「或」（IDEO 与书两样一起用）；模板各章注释不列方法名 | 清单设计这块各行；冲刺日志模板 | 做 scrum 这边：overview → product-log → sprint-log → `SKILL.md` 分工一节，再连带改动与改号；做完交 Master 审（停点 2） |
+| 2026-11-10 | Developer 做完 scrum 这边和连带改动（提交 `46bdccf`、`a8095ef`、`c861574` 和本次）：overview（图重画：加「白纸」入口、冲刺五个阶段；新条 Product Owner decides between stages；Departures 表加「Why」列）、product-log（图；约定 1 加老项目；约定 2 加对照表；七步挪到 sprint-log）、sprint-log（五阶段图；七步并入 6；How 用 plan；新增 Test 与阶段结束 PO 拍板；特殊情况表删五行）、冲刺日志模板（五章）、scrum `SKILL.md` 的分工一段；四份约定按文件里的顺序重排条号，131 处引用逐处对到短名，0 错；`commands/developer.md` 一行；清单加「现号」栏，scrum 各行写了结论，连带改动、改号对照、核对写在清单末 | 每处改动的依据在清单「结论」栏。起草时做了几个判断，请 Master 看，见下面「停点 2 的不清楚的地方」。核对时发现并改了一处：product-log 17 起草时误改成指向 overview 5（那里只写了 documents/），改回指向 sprint-log 的 Review，Review 里写全「把整个 scrum/ 过一遍」；改号脚本只保证改前改后一致，不保证指针指对，这条记为 Retro 输入 | `checklist.md`（96 行：95 已改、1 已核；连带改动；改号对照；核对）；脚本核对：条号连续、引用 131 处 0 错、图的范围与小标题逐项对上、插件里没有标记；敏感信息扫描全过 | 停点 2：Master 审 scrum 这边与连带改动，并核停点 1 的三项必改；审过再做第 8 项（`plugin-validator`、Haiku 流程题，题目与过线标准先提交），然后交 PO 强审 |
 
 **样板的结论（Master 第四轮，2026-11-10）**
 - PO 接受样板的结构（PO：「之前提的那几个点确实都改了，没问题，很好。」）。
@@ -201,6 +202,20 @@ Go-ahead: 2026-11-10，Master 放行，PO 授权（「让他继续往下走」�
 - a. 「登记的连带改动」登记在哪：我打算记在本 3.2 里（每项写：哪条规矩、哪些文件），收官时据此核 diff；想放进清单另开一张表的话，请说。**答**：登记在 `checklist.md` 的第二张表，栏目「规矩｜涉及的文件｜状态」，收官时和第一张表一样逐行核对；3.2 只指向它。
 - b. 「全仓」的范围：我按 `plugins/ideo-scrum/`、README、CLAUDE.md、`scrum/` 现行文件算；`scrum/documents/` 的归档是历史，不改（与 Sprint 12 一致）；`codex/` 是生成物，同步时随之更新。是否这样。**答**：同意；仓库外两条全局记忆（plan-view-review、compact-instead-of-handoff）引用「sprint-log 约定 13、14」，不归 Developer 改，收官 Retro 时由 Master 经 PO 同意处理。
 - c. 验收 6 与样板那三道题：题目与过线标准我这轮不写，等 PO 定测法（sprint-log 约定 15：先提交、后跑）。**答**：样板的三道题现在起草，写进 2.2 的「测试」，每题写清题目、给哪份文件、过线标准，不带引导词；收官用的流程题（验收 6）收官前再定。
+
+**停点 2 的不清楚的地方（Developer 提给 Master，2026-11-10；编号用改号前的号，对照表在 `checklist.md` 末）**
+- d. PBI-40 ②（「拿不准就问 PO」的触发清单）：设计这边有一份（design-log 5，现 21）；Scrum 这边没另列——overview 9 只去了标签，PO 要决定的事分写在 overview 7 的 PO 一行、新条（阶段结束的决定）和 sprint-log 24。要不要在 overview 9 或 sprint-log 24 汇成一份？
+- e. PBI-40 ⑧（Developer 在别的工具里，如 Codex）：本冲刺没动（PO 定这次只做 Claude 版）。留在 PBI-40 的备注里，还是挪到新 PBI？
+- f. overview 1 与 product-log 1 重叠：「Every project … starts from one product log」和「Start every project … by writing one product log from the template」。我两条都留了（前者是总规矩，后者带怎么写和老项目）；合并的话删 product-log 1 的前半句。
+- g. sprint-log 4（小 Sprint）里「PO 仍在每个阶段结束时拍板」，是照 design-log 27（Master 提议 4）类推的，冲刺这边没有直接依据；留不留？
+- h. 短名里的「Stage N」：sprint-log 的 Why、选条目、Refinement、Test 带阶段号（Stage 1、2、2、5），How 和 Increment 两组不带，「Stage 2」还出现了两次。要不要改成都不带（小标题已经是阶段名）？
+- i. Departures 表里「Closed logs are kept in scrum/documents/」一行，官方没有对应说法，两栏都是「—」；它不是「与官方不同」，留在表里还是挪出去？
+- j. overview 的图画整个流程，节点不标条号（另三份的图标了）；要标吗？
+- k. sprint-log 23（特殊情况）我删去五行，因为各有别的条覆盖（见清单该行）；同意删吗？
+- l. `commands/developer.md` 一行改了（阶段结束请 PO「拍板并决定进不进下一段」，原为「看一眼结果」），这是连带改动里唯一动命令的地方，请核。
+- m. 仓库外和 CLAUDE.md 的引用（全局记忆的「sprint-log 约定 13、14」现为 12 和 22；CLAUDE.md 的「约定 16」现为 14；「冲刺收官与归档」里的「补上 Review 章」与新结构冲突）我没动，收官时由你们处理，清单第二张表有明细。
+
+**Retro 输入（续）**：改号脚本只保证改前改后一致，不保证指针指对；把规矩挪到别处之后，要逐处读指针所指的条是不是真有那句话（本冲刺核出 product-log 17 一处）。
 
 ## 4. Review
 
