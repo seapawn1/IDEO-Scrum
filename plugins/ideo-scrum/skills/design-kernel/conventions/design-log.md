@@ -41,7 +41,7 @@ The conventions under Stages cover only what differs from the book or adds what 
 
 ### Ideate: diverge
 
-9. **IDEO always in play** — Run the book's steps and the stage's IDEO mode together in every stage, as `SKILL.md` requires. Above all in Ideate, use the ideo-kernel's Ideate methods — How Might We Questions, Brainstorming, Analogous Empathy, Yes, And! Brainstorm, Brainstorm selection — alongside the book's steps.
+9. **IDEO always in play** — Run the book's steps and the stage's IDEO mode together in every stage, as `SKILL.md` requires. Above all in Ideate, use the ideo-kernel's Ideate methods alongside the book's steps.
 10. **Lightning Demos** — Have subagents search for existing ideas in parallel; keep the list as working material, not part of the log.
 11. **Diverge before you converge** — When you brief each subagent that sketches a solution (convention 12), have it diverge first — use at least two methods, the ideo-kernel's Ideate methods (convention 9) or the first steps of the book's sketch (`ideate/sketch.md`: notes, ideas, Crazy 8s), go for quantity, and hold judgment back — and only then converge into its own sketch. The ideas are working material; they do not go into the log.
 

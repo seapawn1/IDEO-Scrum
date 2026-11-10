@@ -42,7 +42,7 @@ flowchart TD
 
 ### Where things live
 
-1. **One product log** — Every project, new or old, starts from one product log.
+1. **One product log** — Start every project, new or old, from one product log.
 2. **Sprints and designs side by side** — Treat Sprints and designs as peers under the product log: a Sprint, the Developer's, delivers an Increment; a design, the Designer's, delivers a prototype and conclusions. Open a design when an item needs design, when Sprint refinement hits a hard point, or when the product and its Product Goal cannot yet be written (a blank page: `conventions/product-log.md`, convention 2); it is not part of a Sprint. Decide item by item whether design is needed; a design's conclusions still land through a Sprint; an Increment need not be code — the Definition of Done says what it is. This departs from the Scrum Guide: see Departures.
 3. **Three layers**
 
@@ -109,4 +109,3 @@ Each departure is stated here once, with its reason; the convention named in the
 | Checkpoints replace the Daily Scrum | Scrum Guide: the Daily Scrum is "a 15-minute event for the Developers" | AI works by session, not by day | `sprint-log.md`, convention 10 |
 | A reviewer is required | Scrum Guide: the Developers are accountable for "Instilling quality by adhering to a Definition of Done" | A Developer may drift, and a second look catches it | `sprint-log.md`, convention 14 |
 | No Sprint end date | Scrum Guide: Sprints are "fixed length events of one month or less" | AI works by session, so the Product Owner watches at checkpoints for a Sprint that drags on | `sprint-log.md`, convention 2 |
-| Closed logs are kept in `scrum/documents/` | — | — | Convention 5 |

@@ -21,7 +21,7 @@ flowchart TD
     T -. "PO decides: go back" .-> I
 ```
 
-Conventions 20–24 hold at every step; see Throughout, below. At each "PO decides" the Product Owner decides as convention 24 says.
+Conventions 20–25 hold at every step; see Throughout, below. At each "PO decides" the Product Owner decides as convention 24 says.
 
 ## Opening
 
@@ -33,12 +33,12 @@ Conventions 20–24 hold at every step; see Throughout, below. At each "PO decid
 
 ### Why
 
-4. **Stage 1: Why** — Set the Sprint Goal, drafted in the Product Owner's own style, and pick the Definition of Done items that matter; the Product Owner leads, usually with the Scrum Master. When even the Sprint Goal cannot be set, IDEO methods can help set it, as they can help at any hard point: they underlie every stage (`overview.md`, convention 7). Share the result with the Scrum Master and the Developer.
+4. **Set the Sprint Goal** — Set the Sprint Goal, drafted in the Product Owner's own style, and pick the Definition of Done items that matter; the Product Owner leads, usually with the Scrum Master. When even the Sprint Goal cannot be set, IDEO methods can help set it, as they can help at any hard point: they underlie every stage (`overview.md`, convention 7). Share the result with the Scrum Master and the Developer.
 
 ### What
 
-5. **Stage 2: What — select the items** — Select the items and copy each into section 2.1 word for word, five columns — number, title, user story, place, size. Add a missing item to the product log first.
-6. **Stage 2: Refinement** — Refine the items one at a time, led by the Scrum Master with the Product Owner; the Developer joins. Write into section 2.2 what was settled and who decided it, the acceptance criteria, and the tests. Take these seven steps:
+5. **Select the items** — Select the items and copy each into section 2.1 word for word, five columns — number, title, user story, place, size. Add a missing item to the product log first.
+6. **Refine in seven steps** — Refine the items one at a time, led by the Scrum Master with the Product Owner; the Developer joins. Write into section 2.2 what was settled and who decided it, the acceptance criteria, and the tests. Take these seven steps:
     1. Take one item; it is the point of view.
     2. Confirm the point of view, copied from the goal or the item without change.
     3. Open the item into How Might We questions and unclear points.
@@ -64,7 +64,7 @@ Conventions 20–24 hold at every step; see Throughout, below. At each "PO decid
 13. **Tests: criteria first** — Commit the test method and the pass lines in section 2.2 before running; do not change them after seeing results; check a script's wrong calls one by one, and write down why.
 14. **A reviewer is required** — Have someone other than the builder review: the Scrum Master by default, or a Stakeholder or a fresh subagent when the Product Owner names one. A Stakeholder named as reviewer checks the work item by item against the Definition of Done and the acceptance criteria. When the Scrum Master also built the work, a fresh subagent reviews, checking only whether the work was done right. When the Developer only shares the Scrum Master's context, the Scrum Master still reviews: a shared context does not make it the builder. Brief a review subagent with the task, the project's rules, and the decisions already issued. The Scrum Master may send a subagent to do the review or to read a long diff, and still owns the conclusion. This departs from the Scrum Guide: see the Departures section of `overview.md`.
 15. **Product Owner acceptance when written** — Ask for formal acceptance only when the Definition of Done or the acceptance criteria call for it; sometimes a glance is enough.
-16. **Stage 5: Test** — Record in chapter 5 the Developer's tests, the reviewer's check (by default the Scrum Master), the Product Owner's end-to-end test, and the result of each Definition of Done item and acceptance criterion. Fix a problem on the spot and test again.
+16. **Record the tests** — Record in chapter 5 the Developer's tests, the reviewer's check (by default the Scrum Master), the Product Owner's end-to-end test, and the result of each Definition of Done item and acceptance criterion. Fix a problem on the spot and test again.
 
 ## Closing
 
@@ -93,3 +93,4 @@ Conventions 20–24 hold at every step; see Throughout, below. At each "PO decid
     | Something outside the team blocks the work | The Scrum Master tells the Product Owner at once |
     | A release is ready mid-Sprint | Release it; the Sprint does not end |
 24. **The Product Owner decides at the end of each stage** — At the end of each stage the Product Owner decides, as `overview.md`, *Product Owner decides between stages*, says: Why — the Sprint Goal; What — that refinement ends here; How — the go-ahead; Increment — that it can go into testing; Test — to close (then the Review and the Retrospective) or to go back. Write the decision as the last line of the stage's chapter.
+25. **Ask the PO** — Ask the Product Owner whenever you are unsure (`overview.md`, convention 9), and in any case to: set the Sprint Goal (convention 4); select the items (`product-log.md`, convention 12); say when refinement is over (convention 6); give the go-ahead (convention 8); decide at the end of each stage (convention 24); renegotiate the acceptance criteria (convention 20); decide whether new work enters the Sprint, and renegotiate the scope (convention 21); give formal acceptance, when it is written (convention 15); consent to outward actions such as a push (convention 19); and cancel a Sprint whose goal can no longer be met (`overview.md`, convention 17).

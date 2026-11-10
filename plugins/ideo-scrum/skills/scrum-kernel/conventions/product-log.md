@@ -23,7 +23,7 @@ Convention 18 holds at every step; see Throughout, below.
 
 ## Starting
 
-1. **One product log** — Start every project, new or old, by writing one product log from the template. For an old project, write it from what already exists — the README, the open issues, the old plans — and leave the history in version control; what cannot be written yet follows convention 2.
+1. **One product log** — Write the product log from the template (`overview.md`, convention 1). For an old project, write it from what already exists — the README, the open issues, the old plans — and leave the history in version control; what cannot be written yet follows convention 2.
 2. **Blank page** — Write into the product log what you can define; replace what you cannot with the matching item of a design, and let the design answer it. When neither the product nor its architecture is clear, the IDEO methods alone will not make them clear; start from a design (design-kernel skill), which adds the design sprint, a prototype, and a test to those methods. The design's items stand in for the product log's like this:
 
     | Design (the Empathize and Define chapters) | Product log |
