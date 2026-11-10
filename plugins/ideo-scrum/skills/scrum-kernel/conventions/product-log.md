@@ -1,6 +1,6 @@
-# Product Log Conventions (v1)
+# Product Log Conventions
 
-> Working conventions, v1: reference, not law — follow what fits, override what doesn't, note why. Source labels and the rest: `overview.md` (in the skill folder, beside `SKILL.md`), convention 15. A convention with no label is the author's practice.
+> Working conventions: reference, not law — follow what fits, override what doesn't, note why. Source labels and the rest: `overview.md` (in the skill folder, beside `SKILL.md`), convention 15. A convention with no label is the author's practice.
 
 > Source: quotations from The Scrum Guide 2020 (Ken Schwaber & Jeff Sutherland), marked where they appear.
 > License: the quotations are CC BY-SA 4.0 (© 2020 Ken Schwaber and Jeff Sutherland).
@@ -33,7 +33,7 @@ Convention 18 holds at every step; see Throughout, below.
     | The design questions, once the test has answered them | 1.3 Definition of Done (the Outcome Done measures); the ones not answered become items |
     | The people at the top of the map | 2.1 Stakeholders |
     | The map | 2.2 Map |
-    | The steps of the map | 3 Product Backlog Items, each placed on a step of the map |
+    | The target (`../design-kernel/define/pick-a-target.md`) | 3 Product Backlog Items, each placed on a step of the map |
 
     In a section a design is answering, say which design answers it and link to it; do not copy the design log. The stakeholder table can be written first, because a design uses role cards from its first stage.
 3. **Facts first, then questions** — *Supplement.* Have the Scrum Master look up the facts itself; what the Product Owner must decide goes into one message, numbered, each question with a recommended answer.

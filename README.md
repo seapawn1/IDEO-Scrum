@@ -118,7 +118,7 @@ $stakeholder    # Stakeholder
 |---|---|
 | `plugins/ideo-scrum/skills/design-kernel/SKILL.md` | Design Kernel 入口（设计冲刺按 IDEO 五阶段组织：每个阶段对应的 IDEO 模式、原书摘录、Use Protocol） |
 | `plugins/ideo-scrum/skills/design-kernel/` 下 `empathize/`、`define/`、`ideate/`、`prototype/`、`test/` | 设计冲刺原书摘录（Knapp，原文只删不改，例图改画成 Mermaid 或文字）：共情 define-the-challenge / start-at-the-end / ask-the-experts；定义 make-a-map / how-might-we / pick-a-target；构思 remix-and-improve / sketch / decide / rumble / storyboard；原型 fake-it / prototype；测试 small-data / interview / learn |
-| `plugins/ideo-scrum/skills/design-kernel/conventions/` | 设计日志约定 v1（design-log：设计放哪、谁定、各阶段怎么用子代理与角色卡、设计结束时的处理）与设计日志模板（design-backlog-template，五章） |
+| `plugins/ideo-scrum/skills/design-kernel/conventions/` | 设计日志约定（design-log：设计放哪、谁定、各阶段怎么用子代理与角色卡、设计结束时的处理）与设计日志模板（design-backlog-template，五章） |
 
 ### ideo-kernel skill
 
@@ -137,8 +137,8 @@ $stakeholder    # Stakeholder
 | `plugins/ideo-scrum/skills/scrum-kernel/assets/scrum-guide-expansion-pack-2026.1.md` | SGEP 完整源文档（Theory / Values-OODA / Roles / 引用列表） |
 | `plugins/ideo-scrum/skills/scrum-kernel/references/scrum-artifact-*.md` | 4 个 Artifact reference：Product / Increment / Product Backlog / Sprint Backlog |
 | `plugins/ideo-scrum/skills/scrum-kernel/references/scrum-event-*.md` | 5 个 Event reference：Sprint / Sprint Planning / Daily Scrum / Sprint Review / Sprint Retrospective |
-| `plugins/ideo-scrum/skills/scrum-kernel/overview.md` | 约定总览 v1（与 SKILL.md 并列）：三层、文件与文档文件夹、角色、会话分工、目标不变其余可调、与官方故意不同之处 |
-| `plugins/ideo-scrum/skills/scrum-kernel/conventions/` | 约定 v1：product-log 与 product-backlog-template（产品日志）；sprint-log 与 sprint-backlog-template（冲刺日志） |
+| `plugins/ideo-scrum/skills/scrum-kernel/overview.md` | 约定总览（与 SKILL.md 并列）：三层、文件与文档文件夹、角色、会话分工、目标不变其余可调、与官方故意不同之处 |
+| `plugins/ideo-scrum/skills/scrum-kernel/conventions/` | 约定：product-log 与 product-backlog-template（产品日志）；sprint-log 与 sprint-backlog-template（冲刺日志） |
 
 ### 工作记录（scrum/）
 
@@ -151,7 +151,7 @@ $stakeholder    # Stakeholder
 | `scrum/documents/sprint-08-design-kernel.md` | Sprint 08 冲刺日志归档（设计内核独立，v5.0.0）：关键决定、触发回归、审查与 Review |
 | `scrum/documents/sprint-09-design-template.md` | Sprint 09 冲刺日志归档（设计日志模板改正，小冲刺，v5.0.1） |
 | `scrum/documents/sprint-10-conventions.md` | Sprint 10 冲刺日志归档（流程全部进插件，v5.1.0）：关键决定、三轮测试、审查与 Review |
-| `scrum/documents/conventions-review-log.md` | PO 逐段审阅约定 v1 的记录（2026-11-09，19 处，每条带状态）；当时对照的四份中文译文已删，见 `git show 6a2fd5e` |
+| `scrum/documents/conventions-review-log.md` | PO 逐段审阅约定的记录（2026-11-09，19 处，每条带状态）；当时对照的四份中文译文已删，见 `git show 6a2fd5e` |
 | `scrum/documents/sprint-11-conventions-review.md` | Sprint 11 冲刺日志归档（约定照 PO 审阅改定，小冲刺，v5.1.1）：19 处的结论、审阅、design-log 读着别扭的地方 |
 | `scrum/documents/sprint-12-overview-to-root.md` | Sprint 12 冲刺日志归档（总览挪到 scrum-kernel 根目录，小冲刺，v5.1.2） |
 | `scrum/documents/sprint-13-codex.md` | Sprint 13 冲刺日志归档（Codex 版，版本不动，仍 v5.1.2）：Codex 包并入 main、一条命令生成与核对、五题在 Codex 里过线、原始输出清理 |

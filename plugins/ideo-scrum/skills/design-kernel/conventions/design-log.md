@@ -1,6 +1,6 @@
-# Design Log Conventions (v1)
+# Design Log Conventions
 
-> Working conventions, v1: reference, not law — follow what fits, override what doesn't, note why. Source labels and the rest: `../scrum-kernel/overview.md`, convention 15. A convention with no label is the author's practice.
+> Working conventions: reference, not law — follow what fits, override what doesn't, note why. Source labels and the rest: `../scrum-kernel/overview.md`, convention 15. A convention with no label is the author's practice.
 
 The design log template is `design-backlog-template.md` in this folder. Paths here are relative to the design-kernel skill folder; the stages, the book's excerpts, and the methods are listed in this skill's `SKILL.md`. Where an excerpt describes the book's room — whiteboards, sticky notes, dot voting, a team at a table — these conventions say how a solo + AI team does that step, and they apply.
 
@@ -37,7 +37,7 @@ The conventions under Stages cover only what differs from the book or adds what 
 
 ### Define
 
-8. **Map and questions in the log** — Draw the map as a Mermaid `flowchart TD`, actors at the top and the ending at the bottom. Write the How Might We questions against the map, with the challenge, the design goal, and the design questions of chapter 1 beside it. The map, together with the challenge, the design goal, and the design questions, is the point of view here; do not write a separate one. The Product Owner picks the How Might We questions that matter — no dot voting. There is no target step: if the map holds more than one design's worth of work, split the rest out into another design or into items (`define/pick-a-target.md` shows how the book narrows a map).
+8. **Map and questions in the log** — Draw the map as a Mermaid `flowchart TD`, actors at the top and the ending at the bottom. Write the How Might We questions against the map, with the challenge, the design goal, and the design questions of chapter 1 beside it. The map, together with the challenge, the design goal, and the design questions, is the point of view here; do not write a separate one. The Product Owner picks the How Might We questions that matter — no dot voting. There is no target step while the design runs; a design that began from a blank page picks its target when it ends (convention 18). If the map holds more than one design's worth of work, split the rest out into another design or into items (`define/pick-a-target.md` shows how the book narrows a map).
 
 ### Ideate: diverge
 
@@ -64,7 +64,7 @@ The conventions under Stages cover only what differs from the book or adds what 
 
 ## Ending
 
-18. **When the design ends** — End the design when its questions are answered or the Product Owner stops it. Write the conclusions into the product log as `../scrum-kernel/conventions/product-log.md`, convention 2, says, and pass them on to the Sprint that asked for the design; when the design began from a blank page, split the steps of the map into items, and let the Product Owner order which come first. Delete the prototypes and the other files in the design folder, but not the log; git keeps them. Handle the design's branch as `../scrum-kernel/conventions/sprint-log.md`, convention 19, says: merge it, then delete it. A design has no Review or Retro of its own: the first Sprint Review after the design ends archives its log (`../scrum-kernel/conventions/sprint-log.md`, convention 17), and the lessons from the design go into that Sprint's Retrospective.
+18. **When the design ends** — End the design when its questions are answered or the Product Owner stops it. Write the conclusions into the product log as `../scrum-kernel/conventions/product-log.md`, convention 2, says, and pass them on to the Sprint that asked for the design; when the design began from a blank page, pick the target (`define/pick-a-target.md`) — the steps of the map to build — and split it into items, and let the Product Owner order which come first. Delete the prototypes and the other files in the design folder, but not the log; git keeps them. Handle the design's branch as `../scrum-kernel/conventions/sprint-log.md`, convention 19, says: merge it, then delete it. A design has no Review or Retro of its own: the first Sprint Review after the design ends archives its log (`../scrum-kernel/conventions/sprint-log.md`, convention 17), and the lessons from the design go into that Sprint's Retrospective.
 
 ## Throughout
 

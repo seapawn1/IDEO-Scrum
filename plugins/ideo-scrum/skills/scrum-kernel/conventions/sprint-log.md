@@ -1,6 +1,6 @@
-# Sprint Log Conventions (v1)
+# Sprint Log Conventions
 
-> Working conventions, v1: reference, not law — follow what fits, override what doesn't, note why. Source labels and the rest: `overview.md` (in the skill folder, beside `SKILL.md`), convention 15. A convention with no label is the author's practice.
+> Working conventions: reference, not law — follow what fits, override what doesn't, note why. Source labels and the rest: `overview.md` (in the skill folder, beside `SKILL.md`), convention 15. A convention with no label is the author's practice.
 
 > Source: quotations from The Scrum Guide 2020 (Ken Schwaber & Jeff Sutherland), marked where they appear.
 > License: the quotations are CC BY-SA 4.0 (© 2020 Ken Schwaber and Jeff Sutherland).
