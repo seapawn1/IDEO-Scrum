@@ -1,6 +1,6 @@
 # Product Log Conventions (v1)
 
-> Working conventions, v1: reference, not law — follow what fits, override what doesn't, note why. Source labels and the rest: `overview.md` (in the skill folder, beside `SKILL.md`), convention 13. A convention with no label is the author's practice.
+> Working conventions, v1: reference, not law — follow what fits, override what doesn't, note why. Source labels and the rest: `overview.md` (in the skill folder, beside `SKILL.md`), convention 14. A convention with no label is the author's practice.
 
 > Source: quotations from The Scrum Guide 2020 (Ken Schwaber & Jeff Sutherland), marked where they appear.
 > License: the quotations are CC BY-SA 4.0 (© 2020 Ken Schwaber and Jeff Sutherland).
@@ -35,7 +35,7 @@ Convention 18 holds at every step; see Throughout, below.
     | The map | 2.2 Architecture |
     | The steps of the map | 3 Product Backlog Items, each placed on a step of the map |
 
-    In a section a design is answering, say which design answers it and link to it; do not copy the design log. The stakeholder table can be written first, because a design uses role cards from its first stage. Whether to start from a design is the judgment of `../design-kernel/conventions/design-log.md`, convention 22: if what you know is not enough to write the product and its Product Goal, start there.
+    In a section a design is answering, say which design answers it and link to it; do not copy the design log. The stakeholder table can be written first, because a design uses role cards from its first stage. Whether to start from a design is the judgment of `../design-kernel/conventions/design-log.md`, convention 1: if what you know is not enough to write the product and its Product Goal, start there.
 3. **Facts first, then questions** — *Supplement.* Have the Scrum Master look up the facts itself; what the Product Owner must decide goes into one message, numbered, each question with a recommended answer.
 
 ## Each part
@@ -76,4 +76,4 @@ Convention 18 holds at every step; see Throughout, below.
 
 ## Throughout
 
-18. **Goal fixed, plan flexible** — Refine items and acceptance criteria at any time; let only the Product Owner change the Product Goal, and only on evidence against it. Write an item's change and its reason in its Notes, and a Product Goal change with its date and reason in section 1.2 (`overview.md`, convention 16).
+18. **Goal fixed, plan flexible** — Refine items and acceptance criteria at any time; let only the Product Owner change the Product Goal, and only on evidence against it. Write an item's change and its reason in its Notes, and a Product Goal change with its date and reason in section 1.2 (`overview.md`, convention 17).
