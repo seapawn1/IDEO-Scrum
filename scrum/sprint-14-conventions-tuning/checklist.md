@@ -24,13 +24,13 @@ PO 逐行看；结论填「改 / 不改 / 挪到 PBI-xx」；状态填「待看 
 | design-log.md | 15 | Storyboard | PBI-47 |  |  | 待看 |
 | design-log.md | 16 | Just enough prototype | PBI-48（原型） |  |  | 待看 |
 | design-log.md | 17 | Role-card test | PBI-48（测试） |  |  | 待看 |
-| design-log.md | 18 | Close as a Review | PBI-40 ① |  |  | 待看 |
+| design-log.md | 18 | Close as a Review | PBI-40 ①；两个入口（见 2.2）：结论按对照表回流产品日志，白纸设计收官时地图上的步骤拆成 PBI |  |  | 待看 |
 | design-log.md | 19 | Retro as in a Sprint | 可能与 sprint-log 19 重复 |  |  | 待看 |
 | design-log.md | 20 | Resume from the header | — |  |  | 待看 |
 | design-log.md | 21 | Goal fixed, plan flexible | 可能与 overview 16 重复 |  |  | 待看 |
 | design-backlog-template.md | 模板 | Design log template | PBI-40 ①（设计 Review 的规格）；PBI-48 |  |  | 待看 |
 | design-kernel/SKILL.md | 表 | Five Stages | PBI-47、48 |  |  | 待看 |
-| overview.md | §1 | 架构图（新） | 现有「The map」 |  |  | 待看 |
+| overview.md | §1 | 架构图（新） | 现有「The map」；两个入口（见 2.2）：图加「白纸」入口 |  |  | 待看 |
 | overview.md | 1 | One product log | 可能与 product-log 1 重复 |  |  | 待看 |
 | overview.md | 2 | Sprints and designs side by side | — |  |  | 待看 |
 | overview.md | 3 | Three layers | — |  |  | 待看 |
@@ -51,7 +51,7 @@ PO 逐行看；结论填「改 / 不改 / 挪到 PBI-xx」；状态填「待看 
 | overview.md | §3 | 与官方不同（新） | 现有 Departures 表；各条里的 Departs 句（overview 2、8；product-log 12；sprint-log 2、7、10、16） |  |  | 待看 |
 | product-log.md | §1 | 架构图（新） | — |  |  | 待看 |
 | product-log.md | 1 | One product log | PBI-40 ⑦ |  |  | 待看 |
-| product-log.md | 2 | Blank page | PBI-50 |  |  | 待看 |
+| product-log.md | 2 | Blank page | PBI-50；两个入口（见 2.2）：对照表只写在这一条 |  |  | 待看 |
 | product-log.md | 3 | Facts first, then questions | — |  |  | 待看 |
 | product-log.md | 4 | Product and Product Goal | — |  |  | 待看 |
 | product-log.md | 5 | Two kinds of Done | — |  |  | 待看 |
