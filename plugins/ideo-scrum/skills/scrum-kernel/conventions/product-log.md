@@ -76,4 +76,4 @@ Convention 18 holds at every step; see Throughout, below.
 
 ## Throughout
 
-18. **Goal fixed, plan flexible** — Refine items and acceptance criteria at any time; let only the Product Owner change the Product Goal, and only on evidence against it. Write an item's change and its reason in its Notes, and a Product Goal change with its date and reason in section 1.2 (`overview.md`, convention 18).
+18. **Goal fixed, plan flexible** — Refine items and acceptance criteria at any time; let only the Product Owner change the Product Goal, and only on evidence against it. Write an item's change and its reason in its Notes, and a Product Goal change with its date and reason in section 1.2 (`overview.md`, convention 17).

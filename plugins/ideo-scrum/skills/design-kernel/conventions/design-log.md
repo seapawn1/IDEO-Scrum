@@ -73,7 +73,7 @@ The conventions under Stages cover only what differs from the book or adds what 
 21. **Five chapters, not five days** — Write one chapter per stage — Empathize, Define, Ideate, Prototype, Test — not the book's Monday to Friday, and no notes section. Each chapter records what its stage produced, not the steps taken.
 22. **Renamed terms** — See the first paragraph of `SKILL.md`.
 23. **Resume from the header** — Keep the header's Now line current: the stage, and the next step. A session that picks up the design reads it first. Before a session ends or its context is shortened, write the half-finished work into the chapter it belongs to, update the Now line, and commit.
-24. **Goal fixed, plan flexible** — Sharpen the design goal during Empathize; once it is set, only the Product Owner changes it. The questions, the map, and the solution may change with what the work shows; write what changed and why in the chapter it belongs to (`../scrum-kernel/overview.md`, convention 18).
+24. **Goal fixed, plan flexible** — Sharpen the design goal during Empathize; once it is set, only the Product Owner changes it. The questions, the map, and the solution may change with what the work shows; write what changed and why in the chapter it belongs to (`../scrum-kernel/overview.md`, convention 17).
 25. **Gates between stages** — At the end of each stage, check the log against the gate below; then the Product Owner decides (`../scrum-kernel/overview.md`, *Product Owner decides between stages*). After the Test, the decision is to end the design or to go back to the stage whose answer was wrong.
 
     | Stage | The log holds | The check |
