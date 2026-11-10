@@ -93,3 +93,10 @@ PO 逐行看；结论填「改 / 不改 / 挪到 PBI-xx」；状态填「待看 
 | sprint-log.md | 21 | Special cases | 可能与 sprint-log 4、6，product-log 17，overview 16 重复 |  |  | 待看 |
 | sprint-backlog-template.md | 模板 | Sprint log template | — |  |  | 待看 |
 | scrum-kernel/SKILL.md | 节 | Working with the Design and IDEO Kernels | PBI-50 |  |  | 待看 |
+
+## 连带改动
+
+改一条规矩时，这条规矩在别处的说法（模板、命令、两份 SKILL.md、CLAUDE.md、README）一起改，每项登记在这里。状态填「待改 / 已改 / 已核」。
+
+| 规矩 | 涉及的文件 | 状态 |
+| --- | --- | --- |
