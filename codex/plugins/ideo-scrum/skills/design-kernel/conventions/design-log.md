@@ -1,49 +1,88 @@
-# Design Log Conventions (v1)
+# Design Log Conventions
 
-> Working conventions, v1: reference, not law — follow what fits, override what doesn't, note why. Source labels and the rest: `../scrum-kernel/overview.md`, convention 13.
+> Working conventions: reference, not law — follow what fits, override what doesn't, note why. Source labels and the rest: `../scrum-kernel/overview.md`, convention 15. A convention with no label is the author's practice.
 
 The design log template is `design-backlog-template.md` in this folder. Paths here are relative to the design-kernel skill folder; the stages, the book's excerpts, and the methods are listed in this skill's `SKILL.md`. Where an excerpt describes the book's room — whiteboards, sticky notes, dot voting, a team at a table — these conventions say how a solo + AI team does that step, and they apply.
 
-## Where a design sits
+```mermaid
+flowchart TD
+    A["Opening<br/>conventions 1–5"] --> B["Empathize<br/>conventions 6–7"]
+    B -- "PO decides" --> C["Define<br/>convention 8"]
+    C -- "PO decides" --> D["Ideate: diverge<br/>conventions 9–10"]
+    D --> E["Ideate: converge<br/>conventions 11–14"]
+    E -- "PO decides" --> F["Prototype<br/>convention 15"]
+    F -- "PO decides" --> G["Test<br/>conventions 16–17"]
+    G -- "PO decides" --> H["Ending<br/>convention 18"]
+    G -. "or back to the stage whose answer was wrong" .-> B
+```
 
-1. **Hard point, not the whole item** — *Author's practice.* From a Sprint, take out only the hard point that needs design; the rest of the Sprint goes on.
-2. **Who** — *Author's practice.* The Designer is accountable for the design, and the Scrum Master facilitates and records; what the Product Owner decides is in `SKILL.md`, Use Protocol step 6. When one session plays both the Designer and the Scrum Master, write the same name in both fields of the header.
-3. **Open a design** — *Author's practice.* Pick a suffix that says what the design is about, with no number; create `scrum/design-<suffix>/`; copy the template into it as `DesignBacklog.md`; fill in the header: where the design came from, the branch (convention 4), the Product Owner, the Designer, the Scrum Master, and the Now line (convention 20). The folder holds the log, the prototypes, and the working material — sketches, gathered ideas, a grid of reactions; prototypes and working material never go into an Increment.
-4. **Branch** — *Decide on the spot.* Whether the design branches from the Sprint branch or from `main` is decided when it opens. Do not name it `<sprint-branch>/<name>`: git cannot hold both `a` and `a/b` as branch names.
-5. **Ask the PO** — *Author's practice.* See `../scrum-kernel/overview.md`, convention 9.
+Conventions 19–26 hold at every step; see Throughout, below. At each "PO decides" the Product Owner decides, as convention 25 says.
 
-## How the log is written
+## Opening
 
-6. **Five chapters, not five days** — *Author's practice.* One chapter per stage — Empathize, Define, Ideate, Prototype, Test — not the book's Monday to Friday, and no notes section. Each chapter records what its stage produced, not the steps taken.
-7. **IDEO always in play** — *Author's practice.* The rule is in `SKILL.md`. Above all in Ideate, use the ideo-kernel's Ideate methods — How Might We Questions, Brainstorming, Analogous Empathy, Yes, And! Brainstorm, Brainstorm selection — alongside the book's steps or in their place.
-8. **Renamed terms** — *Author's practice.* See the first paragraph of `SKILL.md`.
+1. **Open a design for a question with no ready answer** — When a question asks what people want or what counts as good, ask first whether a ready answer exists; if not, open a design and start with Empathize, not with solutions. A blank page is a case of this: see `../scrum-kernel/conventions/product-log.md`, convention 2.
+2. **Hard point, not the whole item** — From a Sprint, take out only the hard point that needs design; the rest of the Sprint goes on.
+3. **Who** — The Designer is accountable for the design, and the Scrum Master facilitates and records; what the Product Owner decides is listed in convention 20. When one session plays both the Designer and the Scrum Master, write the same name in both fields of the header.
+4. **Branch** — *Decide on the spot.* Decide when the design opens whether it branches from the Sprint branch or from `main`. Do not name it `<sprint-branch>/<name>`: git cannot hold both `a` and `a/b` as branch names.
+5. **Open a design** — Pick a suffix that says what the design is about, with no number; create `scrum/design-<suffix>/`; copy the template into it as `DesignBacklog.md`; fill in the header: where the design came from, the branch (convention 4), the Product Owner, the Designer, the Scrum Master, and the Now line (convention 23). The folder holds the log, the prototypes, and the working material — sketches, gathered ideas, a grid of reactions; prototypes and working material never go into an Increment.
 
-## Where a solo + AI team departs from the book
+## Stages
 
-Conventions 9 to 17 cover only what differs from the book; for everything else, follow the excerpts.
+The conventions under Stages cover only what differs from the book or adds what it leaves out; for everything else, follow the excerpts.
 
-9. **Experts when needed** — *Author's practice.* Write the challenge, the design goal, and the design questions first; ask experts and do research only when these are still unclear. The experts are the Product Owner, in the conversation, and the role cards (`../scrum-kernel/overview.md`, convention 6), each played by a fresh subagent. Before asking experts, draft a rough map (`define/make-a-map.md`); the log keeps what changed, not each interview. After asking the experts or doing research, refine the challenge, the design goal, the design questions, and above all the map once more: fill the gaps and redraw the map.
-10. **Map and questions in the log** — *Author's practice.* Draw the map as a Mermaid `flowchart TD`, actors at the top and the ending at the bottom. The Product Owner picks the How Might We questions that matter — no dot voting. There is no target step: if the map holds more than one design's worth of work, split the rest out into another design or into items (`define/pick-a-target.md` shows how the book narrows a map).
-11. **Lightning Demos** — *Author's practice.* Subagents can search for existing ideas in parallel; the list is working material, not part of the log.
-12. **Isolated solutions** — *Author's practice.* Several fresh subagents, unable to see one another, each produce one complete solution sketch, in words or Mermaid, from chapters 1 and 2, the gathered ideas, and `ideate/sketch.md`, or from an ideo-kernel Ideate method.
+### Empathize
+
+6. **Start from the people** — Start Empathize with the people concerned. When the Product Owner is the person concerned, ask first for concrete experiences — what happened, what they did, what they said — and only then ask for the Product Owner's call on what it means; otherwise start with users the Product Owner can bring. Documents and role cards come after. Write each finding where it belongs — in the challenge, the design goal, or the design questions — with its source, and say whether it is first-hand (what a person said or did) or second-hand (a record made for another purpose, or a role card's reading).
+7. **Experts when needed** — Once you have heard the people concerned (convention 6), write the challenge, the design goal, and the design questions; ask experts and do research only when these are still unclear. The experts are the Product Owner, in the conversation, and the role cards (`../scrum-kernel/overview.md`, convention 7), each played by a fresh subagent. Before asking experts, draft a rough map (`define/make-a-map.md`); the log keeps what changed, not each interview. After asking the experts or doing research, refine the challenge, the design goal, the design questions, and above all the map once more: fill the gaps and redraw the map.
+
+### Define
+
+8. **Map and questions in the log** — Draw the map as a Mermaid `flowchart TD`, actors at the top and the ending at the bottom. Write the How Might We questions against the map, with the challenge, the design goal, and the design questions of chapter 1 beside it. The map, together with the challenge, the design goal, and the design questions, is the point of view here; do not write a separate one. The Product Owner picks the How Might We questions that matter — no dot voting. There is no target step while the design runs; a design that began from a blank page picks its target when it ends (convention 18). If the map holds more than one design's worth of work, split the rest out into another design or into items (`define/pick-a-target.md` shows how the book narrows a map).
+
+### Ideate: diverge
+
+9. **Lightning Demos** — Have subagents search for existing ideas in parallel; keep the list as working material, not part of the log.
+10. **Diverge before you converge** — When you brief each subagent that sketches a solution (convention 11), have it diverge first — use at least two methods, at least one of them from the ideo-kernel's Ideate methods, as `SKILL.md` requires (the first steps of the book's sketch, `ideate/sketch.md` — notes, ideas, Crazy 8s — may be used alongside), go for quantity, and hold judgment back — and only then converge into its own sketch. The ideas are working material; they do not go into the log.
+
+### Ideate: converge
+
+11. **Isolated solutions** — Have several fresh subagents, unable to see one another, each diverge first (convention 10) and then produce one complete solution sketch, in words or Mermaid, from chapters 1 and 2, the gathered ideas, `ideate/sketch.md`, and the ideo-kernel Ideate methods.
     *Decide on the spot:* how many subagents to run, and on which model.
-13. **Choosing is the key step** — *Author's practice.* The Scrum Master runs the book's decision (`ideate/decide.md`) in the conversation; role-card Stakeholders give a straw poll if the Product Owner wants one; the Product Owner makes the final call, with no search for consensus. Only the chosen solution goes into section 3.1.
-14. **Combine or rumble** — *Author's practice.* Combine winners that fit together; when two conflict, prototype both and let the test decide (`ideate/rumble.md`). The Product Owner decides which.
-15. **Storyboard** — *Author's practice.* Optional: when the solution needs it before the prototype, the Designer writes a storyboard of about fifteen steps in section 3.2 (`ideate/storyboard.md`).
-16. **Just enough prototype** — *Supplement.* Build in the design folder, following the chosen solution, real enough for honest reactions (`prototype/fake-it.md`): made quickly and thrown away after, while the surface the tester sees appears real. Subagents can build the parts while one session stitches them together; do a trial run against the solution and the design questions before testing.
+12. **Choosing is the key step** — Run the book's decision (`ideate/decide.md`) in the conversation, led by the Scrum Master; have role-card Stakeholders give a straw poll if the Product Owner wants one. The Product Owner makes the final call, with no search for consensus. Put only the chosen solution into section 3.1.
+13. **Combine or rumble** — Combine winners that fit together; when two conflict, prototype both and let the test decide (`ideate/rumble.md`). The Product Owner decides which.
+14. **Storyboard** — Write a storyboard of about fifteen steps in section 3.2 (`ideate/storyboard.md`) only when the solution needs one before the prototype; the Designer writes it.
+
+### Prototype
+
+15. **Just enough prototype** — *Supplement.* Build in the design folder, following the chosen solution, real enough for honest reactions (`prototype/fake-it.md`): made quickly and thrown away after, while the surface the tester sees appears real. Subagents can build the parts while one session stitches them together; do a trial run against the solution and the design questions before testing, and write what it found in chapter 5. List each part of the prototype in chapter 4 with the design question it tests.
     *Decide on the spot:* how real the prototype must be when the product has no screen — a document, a service, a process; agree it with the Product Owner.
-17. **Role-card test** — *Author's practice.* Test with role cards, each a fresh subagent given only its card, the prototype, and the tasks; the Product Owner tests too. The Designer runs the Five-Act Interview (`test/interview.md`); a grid of reactions is working material; chapter 5 keeps who tested, what showed up, and the answer to each design question. The book tests five customers; here, test every role card the design touches, and add runs while the patterns are unclear.
 
-## Closing
+### Test
 
-18. **Close as a Review** — *Author's practice.* A design closes when its questions are answered or the Product Owner stops it. Rewrite the log as one Review document, rename it `design-<suffix>.md`, and move it to `scrum/documents/`. Delete the prototypes and other files; git keeps them. Handle the design's branch as `../scrum-kernel/conventions/sprint-log.md`, convention 20, says: merge it, then delete it. Refresh the product log.
-    *Supplement:* the Review holds the challenge and the design questions, the chosen solution, each question's test conclusion, where the conclusions flowed back, and the commit that holds the prototype.
-19. **Retro as in a Sprint** — *Author's practice.* No Retro chapter; lessons are written as in `../scrum-kernel/conventions/sprint-log.md`, convention 19.
+16. **Role-card test** — Test with role cards, each a fresh subagent given only its card, the prototype, and the tasks; the Product Owner tests too. The Designer runs the Five-Act Interview (`test/interview.md`); a grid of reactions is working material; chapter 5 keeps who tested, what showed up, and the answer to each design question. The book tests five customers; here, test every role card the design touches, and add runs while the patterns are unclear.
+17. **Write the criteria before the test** — Before testing, write down in chapter 5 what would count as a yes, a no, or a not yet for each design question, and what role cards cannot show: they are subagents reading a card, not real people.
 
-## Resuming
+## Ending
 
-20. **Resume from the header** — *Author's practice.* Keep the header's Now line current: the stage, and the next step. A session that picks up the design reads it first. Before a session ends or its context is shortened, write the half-finished work into the chapter it belongs to, update the Now line, and commit.
+18. **When the design ends** — End the design when its questions are answered or the Product Owner stops it. Write the conclusions into the product log as `../scrum-kernel/conventions/product-log.md`, convention 2, says, and pass them on to the Sprint that asked for the design; when the design began from a blank page, pick the target (`define/pick-a-target.md`) — the steps of the map to build — and split it into items, and let the Product Owner order which come first. Delete the prototypes and the other files in the design folder, but not the log; git keeps them. Handle the design's branch as `../scrum-kernel/conventions/sprint-log.md`, convention 19, says: merge it, then delete it. A design has no Review or Retro of its own: the first Sprint Review after the design ends archives its log (`../scrum-kernel/conventions/sprint-log.md`, convention 17), and the lessons from the design go into that Sprint's Retrospective. At the end of chapter 5, next to the Product Owner's decision, write a line or two on what the design taught about how to work, to keep for that Retrospective.
 
-## What stays fixed
+## Throughout
 
-21. **Goal fixed, plan flexible** — *Author's practice.* The design goal is sharpened during Empathize; once set, only the Product Owner changes it. The questions, the map, and the solution may change with what the work shows; write what changed and why in the chapter it belongs to (`../scrum-kernel/overview.md`, convention 16).
+19. **IDEO in every stage** — Run the design sprint as the IDEO five-stage method: in every stage, take the methodology from the IDEO mode the stage maps to, as `SKILL.md` requires.
+20. **Ask the PO** — Ask the Product Owner whenever you are unsure (`../scrum-kernel/overview.md`, convention 10), and in any case to: decide at the end of each stage, and after the test whether to end the design or go back (convention 25); set or change the design goal (convention 24); pick the How Might We questions that matter (convention 8); choose the solution and decide between combining and a rumble (conventions 12–13); agree how real the prototype must be (convention 15); and decide that the design ends (convention 18).
+21. **Five chapters, not five days** — Write one chapter per stage — Empathize, Define, Ideate, Prototype, Test — not the book's Monday to Friday, and no notes section. Each chapter records what its stage produced, not the steps taken.
+22. **Renamed terms** — See the first paragraph of `SKILL.md`.
+23. **Resume from the header** — Keep the header's Now line current: the stage, and the next step. A session that picks up the design reads it first. Before a session ends or its context is shortened, write the half-finished work into the chapter it belongs to, update the Now line, and commit.
+24. **Goal fixed, plan flexible** — Sharpen the design goal during Empathize; once it is set, only the Product Owner changes it. The questions, the map, and the solution may change with what the work shows; write what changed and why in the chapter it belongs to (`../scrum-kernel/overview.md`, convention 17).
+25. **Gates between stages** — At the end of each stage, check the log against the gate below; then the Product Owner decides (`../scrum-kernel/overview.md`, *Product Owner decides between stages*). After the Test, the decision is to end the design or to go back to the stage whose answer was wrong.
+
+    | Stage | The log holds | The check |
+    | --- | --- | --- |
+    | Empathize | the challenge, the design goal, and the design questions, with the source of each finding | The findings come from the people concerned — what they did, what they said, where the two differ — not from a pile of facts |
+    | Define | the map and the How Might We questions the Product Owner picked | The How Might We questions were written against the map and the challenge, the goal, and the questions of chapter 1 |
+    | Ideate | the chosen solution, and the storyboard if one was written | Each sketch diverged before it converged, and the sketches differ in approach, not only in detail |
+    | Prototype | the parts of the prototype, each with the design question it tests | It is rough, quick, and thrown away after: built to learn, not to deliver |
+    | Test | the criteria written beforehand, what the trial run found, who tested and what showed up, and an answer to each design question with where it flows back | The answers come from real reactions, and "we were wrong" counts as an answer |
+
+    At each gate ask: would someone who never learned design have produced the same thing? If so, the stage missed its focus.
+26. **A small design is still a design** — When a design is small — about one session of work — still keep the log, shrink each stage to a line or two, and still have the Product Owner decide at the end of each stage. Skip no stage, least of all Empathize and divergence (convention 10).

@@ -1,6 +1,6 @@
 # IDEO-Scrum
 
-为 Claude Code 与 Codex 提供 Design Thinking 与 Scrum Sprint 方法论的插件。v5.1.2。
+为 Claude Code 与 Codex 提供 Design Thinking 与 Scrum Sprint 方法论的插件。v5.2.0。
 
 ## 快速开始
 
@@ -92,7 +92,7 @@ $stakeholder    # Stakeholder
 
 | 文件/目录 | 内容 |
 |---|---|
-| `plugins/ideo-scrum/.claude-plugin/plugin.json` | 插件清单 v5.1.2 |
+| `plugins/ideo-scrum/.claude-plugin/plugin.json` | 插件清单 v5.2.0 |
 | `plugins/ideo-scrum/commands/designer.md` | Command `/ideo-scrum:designer` — 设计阶段结对（IDEO 五模式 + 设计冲刺，原型快速验证、拍板前不落地；进入时加载 ideo-kernel 与 design-kernel） |
 | `plugins/ideo-scrum/commands/developer.md` | Command `/ideo-scrum:developer` — Developer 角色（Scrum Guide 2020 原文抄录＋2026 精炼补充；进入时加载 ideo-kernel 与 scrum-kernel） |
 | `plugins/ideo-scrum/commands/scrum-master.md` | Command `/ideo-scrum:scrum-master` — Scrum Master 角色（Scrum Guide 2020 原文抄录＋2026 精炼补充；替 PO 派活、派子代理审阅；进入时加载三个内核） |
@@ -137,7 +137,7 @@ $stakeholder    # Stakeholder
 | `plugins/ideo-scrum/skills/scrum-kernel/assets/scrum-guide-expansion-pack-2026.1.md` | SGEP 完整源文档（Theory / Values-OODA / Roles / 引用列表） |
 | `plugins/ideo-scrum/skills/scrum-kernel/references/scrum-artifact-*.md` | 4 个 Artifact reference：Product / Increment / Product Backlog / Sprint Backlog |
 | `plugins/ideo-scrum/skills/scrum-kernel/references/scrum-event-*.md` | 5 个 Event reference：Sprint / Sprint Planning / Daily Scrum / Sprint Review / Sprint Retrospective |
-| `plugins/ideo-scrum/skills/scrum-kernel/overview.md` | 约定总览（与 SKILL.md 并列）：三层、文件与文档文件夹、角色、会话分工、目标不变其余可调、与官方故意不同之处 |
+| `plugins/ideo-scrum/skills/scrum-kernel/overview.md` | 约定总览（与 SKILL.md 并列）：整个流程的图、三层、文件与文档文件夹、角色、阶段之间由 PO 决定、会话分工、目标不变其余可调、与官方故意不同之处 |
 | `plugins/ideo-scrum/skills/scrum-kernel/conventions/` | 约定：product-log 与 product-backlog-template（产品日志）；sprint-log 与 sprint-backlog-template（冲刺日志） |
 
 ### 工作记录（scrum/）
@@ -155,6 +155,7 @@ $stakeholder    # Stakeholder
 | `scrum/documents/sprint-11-conventions-review.md` | Sprint 11 冲刺日志归档（约定照 PO 审阅改定，小冲刺，v5.1.1）：19 处的结论、审阅、design-log 读着别扭的地方 |
 | `scrum/documents/sprint-12-overview-to-root.md` | Sprint 12 冲刺日志归档（总览挪到 scrum-kernel 根目录，小冲刺，v5.1.2） |
 | `scrum/documents/sprint-13-codex.md` | Sprint 13 冲刺日志归档（Codex 版，版本不动，仍 v5.1.2）：Codex 包并入 main、一条命令生成与核对、五题在 Codex 里过线、原始输出清理 |
+| `scrum/documents/sprint-14-conventions-tuning.md` | Sprint 14 冲刺日志归档（约定精调，v5.2.0）：PO 逐份强审四份约定与两份模板、冲刺日志五章、设计不做 Review 和 Retro、白纸入口、四轮流程测试、熟手的看法 |
 | **冲刺蒸馏 / 归档** | 1.x 五期与 Sprint 06、07 已蒸馏至 `S:\SeaPawn-Memory\memory\IDEO-Scrum\`（MEMORY.md 索引 + 各期教训档案，含出处指向 git）；Sprint 08 起，冲刺日志压缩后归档进 `scrum/documents/` |
 
 ### 源参考

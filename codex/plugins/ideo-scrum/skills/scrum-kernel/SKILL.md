@@ -15,20 +15,20 @@ Scrum enables Scrum Teams to identify, represent, or measure emergence, embrace 
 
 ## Working with the Design and IDEO Kernels
 
-Research and implementation are divided: a design (design-kernel skill) handles research; Scrum handles implementation. Before a Sprint, judge whether open questions need a pre-study — when the problem or direction is unvalidated, open a design first and treat its findings as key Sprint evidence; a hard point met during refinement can also be opened as a design while the rest of the Sprint goes on. The IDEO methods (ideo-kernel skill) are the plugin's shared toolbox and can be used at any time — when the team gets stuck mid-Sprint (e.g., at a checkpoint), they can inspect and research the problem the Sprint is stuck on.
+Research and implementation are divided: a design (design-kernel skill) handles research; Scrum handles implementation. Before a Sprint, judge whether open questions need a pre-study — when the problem or direction is unvalidated, open a design first and treat its findings as key Sprint evidence; a hard point met during refinement can also be opened as a design while the rest of the Sprint goes on. Before writing the product log, judge the same way: a new project whose product and Product Goal cannot yet be written starts from a design, which fills the product log (`conventions/product-log.md`, convention 2). A question about what people want or what counts as good, with no ready answer, always goes to a design first (`../design-kernel/conventions/design-log.md`, convention 1). The IDEO methods (ideo-kernel skill) are the plugin's shared toolbox and can be used at any time — when the team gets stuck mid-Sprint (e.g., at a checkpoint), they can inspect and research the problem the Sprint is stuck on.
 
 *(Author's methodology design for solo + AI teams, 2026-08; revised 2026-11-08 — not part of the Scrum Guide or SGEP.)*
 
 ## Conventions
 
-How a solo + AI team keeps its product log and runs its Sprints is in `overview.md`, beside this file, and in `conventions/`: templates, and working conventions that are not source text — follow what fits, override what doesn't, and note why. Start with the overview. When you open, run, or close a Sprint, or write a log, read the matching convention first. The references below are the official texts; the conventions depart from them on purpose in a few places — no Sprint end date, checkpoints instead of the Daily Scrum, a go-ahead before building — and the overview lists them all.
+How a solo + AI team keeps its product log and runs its Sprints is in `overview.md`, beside this file, and in `conventions/`: templates, and working conventions that are not source text — follow what fits, override what doesn't, and note why. Start with the overview. When you open, run, or close a Sprint, write a log, or answer a question about how to do any of these, read the matching convention first, even for a rough answer. The references below are the official texts; the conventions depart from them on purpose in a few places — no Sprint end date, checkpoints instead of the Daily Scrum, a go-ahead before building — and the overview lists them all.
 
 | File | What it covers | Read when |
 | --- | --- | --- |
 | `overview.md` | How the product log, Sprints, and designs fit together; folders, including `scrum/documents/`; roles; what stays fixed | Starting a project, or unsure who does what or where a file goes |
 | `conventions/product-log.md` | Writing the product log and refining its items | Writing, refining, or refreshing the product log |
 | `conventions/product-backlog-template.md` | The product log template; the file made from it is `ProductBacklog.md` | Creating a product log |
-| `conventions/sprint-log.md` | Planning, building, reviewing, and closing a Sprint | Opening, running, or closing a Sprint |
+| `conventions/sprint-log.md` | The five stages of a Sprint — Why, What, How, Increment, Test — and its close | Opening, running, or closing a Sprint |
 | `conventions/sprint-backlog-template.md` | The sprint log template; the file made from it is `SprintBacklog.md` | Opening a Sprint |
 
 ## Elements of Scrum
@@ -56,7 +56,7 @@ Built on three pillars:
 - **Supporter** (a Stakeholder type) – Fosters the climate and environment and participates as requested.
 - **AI** – As a tool or also a possible Product Developer, but not to be entirely trusted yet.
 
-*(Here only the Product Owner must be human: see `overview.md`, convention 8.)*
+*(Here only the Product Owner must be human: see `overview.md`, convention 9.)*
 
 ### 4. Scrum Events & Activities
 

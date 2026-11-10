@@ -12,14 +12,14 @@
 | **Codex 分发包** | `codex/plugins/ideo-scrum/` | 生成物，不手改：由 `scripts/sync_codex.py` 从插件本体生成（2026-11-10，Sprint 13） |
 | **工作记录** | `scrum/`（含 `scrum/documents/`） | 用本插件的方法论开发本插件的过程记录 |
 
-`scrum/` 放 Scrum 的全部工作（产品日志 + `sprint-NN-后缀/` 冲刺 + `design-后缀/` 设计 + `documents/`）；`scrum/documents/` 放为整个 Scrum 服务的文档（ExpertNotes 客户之声、研究稿、收官归档的冲刺日志与设计 Review），日志里引用（2026-11-08，Sprint 10 从根目录的 docs 文件夹迁入）。1.x 的 sprint 日志是**历史记录**，教训已蒸馏入 `S:\SeaPawn-Memory\memory\IDEO-Scrum\`（原文 git 历史可追溯），不回改。除非发现事实错误，否则不要回头修改已完成 sprint 的内容。
+`scrum/` 放 Scrum 的全部工作（产品日志 + `sprint-NN-后缀/` 冲刺 + `design-后缀/` 设计 + `documents/`）；`scrum/documents/` 放为整个 Scrum 服务的文档（ExpertNotes 客户之声、研究稿、收官归档的冲刺日志与设计日志），日志里引用（2026-11-08，Sprint 10 从根目录的 docs 文件夹迁入）。1.x 的 sprint 日志是**历史记录**，教训已蒸馏入 `S:\SeaPawn-Memory\memory\IDEO-Scrum\`（原文 git 历史可追溯），不回改。除非发现事实错误，否则不要回头修改已完成 sprint 的内容。
 
 ## 当前状态（蒸馏锚点，随 Sprint 更新；只留最近三条，更早的见 `git log -p -- CLAUDE.md`）
 
+- **2026-11-10 · Sprint 14 收官，发版 v5.2.0**：Sprint Goal「约定精调」达成（PBI-49，连同 47、48、50、40；当天开工当天收官）。Developer 是从 Master 会话 `/fork` 出的独立会话，在 worktree 里干活，与 Master 用跨会话消息直接通讯。PO 逐份强审四份约定（overview 17 条、product-log 18 条、sprint-log 25 条、design-log 26 条）和冲刺、设计两份模板，只改 Claude 侧：每份约定先一张图再一批约定，一条规矩只写一处；冲刺日志改成五章（Why、What、How、Increment、Test），设计日志同样五章；阶段之间由 PO 决定；Review 和 Retro 是收官动作、不设章，设计不单做 Review 和 Retro（设计日志由设计结束后的第一个冲刺 Review 归档，教训进那个冲刺的 Retro）；产品日志有「白纸」入口，从设计开始、结论回流；IDEO 在设计每个阶段都要用；约定不带版本标记。本冲刺自己的日志仍按 5.1.2 的四章写，新结构从 Sprint 15 起生效。验收：四轮 Haiku 流程测试，题 1、4、5 每轮 3/3，题 2 第二轮起 2/3 过线，题 3（白纸项目）四轮 0/3——缺口在触发和先读约定，登记 PBI-52；样板测试 14 对 15 没过线，PO 让往下走；对抗审查（全新子代理）7 处必改；plugin-validator 四次 PASS；「熟手」卡愿意照新版走，缺口登记 PBI-54，PBI-40 ⑧ 拆成 PBI-53。冲刺日志归档 `scrum/documents/sprint-14-conventions-tuning.md`；tag `v5.2.0`、`sprint-14-conventions-tuning`；PO 2026-11-10 同意收官后推送 main 与两个 tag，并更新本机 Claude Code 的插件；Codex 包已同步到 5.2.0，本机 Codex 的安装不动。
 - **2026-11-10 · Sprint 13 收官（Codex 版），版本不动，仍 5.1.2**：Sprint Goal「Codex 版跟上」达成（PBI-43；2026-11-09 开工）。Developer 是 Codex（GPT），Master 在 Claude Code，只靠冲刺日志通讯，PO 传话。Codex 包 `codex/plugins/ideo-scrum/` 并入 main（不再单靠 `codex` 分支），由 `scripts/sync_codex.py` 从 `plugins/ideo-scrum/` 一条命令生成，`scripts/check_codex.py` 核对：三个内核逐字相同，四个角色由命令生成，只改加载内核的 5 句工具说法；Claude 侧文件零改动。验收 4 的五题在 Codex 里 5/5（gpt-5.6-terra，隔离安装）；测法因环境改过两次，题目和过线标准没改。对外文字用英文，根 README 仍中文，给旧 `codex` 分支的用户补了迁移命令。原始输出带了模型服务地址：备份到仓库外 `S:\IDEO-Scrum-Archives\`，改写了未推送的冲刺历史（PO 同意）。PO 定：版本与 Claude 一致。推送后旧 `codex` 分支已删（存档 tag `codex-v3.2.0`）：合入 main 后根目录有 `codex/` 目录，与分支同名，旧的 `--ref codex` 装法在 git 里有歧义、装不上；本机 Codex 已改装为 5.1.2（Codex 执行迁移命令，Master 核对）。冲刺日志归档 `scrum/documents/sprint-13-codex.md`；tag `sprint-13-codex`；main 与两个 tag 已推送。后续小修登记为 PBI-46；开下一个冲刺前核对 Product Goal（产品日志 1.2）。
 - **2026-11-09 · Sprint 12 收官（小冲刺），发版 v5.1.2**：PO 定把 scrum-kernel 的 `overview.md` 从 `conventions/` 挪到技能根目录，与 SKILL.md 并列（PBI-42）；两份 SKILL.md、四个命令、design-log、两份模板、product-log、sprint-log、README 的位置说法都改了，按名字引用的「`overview.md`, convention N」不改。全新子代理审阅无必改项。冲刺日志归档 `scrum/documents/sprint-12-overview-to-root.md`。tag `v5.1.2`、`sprint-12-overview-to-root`，已推送，本机插件已更新。
-- **2026-11-09 · Sprint 11 收官（小冲刺），发版 v5.1.1**：Sprint Goal「约定照审阅改定」达成（PBI-41；PO 定 Master 兼 Developer）。PO 对着中文译文逐段审了五份约定，记下 19 处（`scrum/documents/conventions-review-log.md`，每条已标状态）：改了 18 处，overview 第 2 处后半是译文问题、英文不动；几处为守「一条规矩一处」「约定不写工具机制」调了写法或位置（整个 `scrum/` 保鲜只写在 sprint-log 18；不写 fork；不列看板）。规矩上的变化：Developer 只共享 Master 上下文时审阅照常由 Master 做（Sprint 12 起生效）；冲刺日志 3.2 笔记形式不限、不再只增不减；编号不是排名不再算偏离；Review 先写完、移走日志再删中间文件，并把整个 `scrum/` 过一遍；「设计与冲刺并排」提到 design-kernel SKILL.md 开头，design-log 改号为 1–21。全新子代理审阅无必改项，plugin-validator PASS。四份中文译文删除（`git show 6a2fd5e`）。冲刺日志归档 `scrum/documents/sprint-11-conventions-review.md`（含 design-log 读着别扭的五处，留给下次修订）。tag `v5.1.1`、`sprint-11-conventions-review`。PO 定这次发布：main 与全部 tag 已推送，本机插件已更新到 5.1.1；全局记忆照 Sprint 10 定的方案精简（删「Sprint 收尾做法」，另四条只留 Claude Code、SeaPawn 特有的部分，SeaPawn-Memory 提交 `e7e34f3`）。下一个约定修订是 PBI-40（熟手的七条意见），照每周节律攒着改。
-- 更早的状态（2026-08-31 至 11-08：#28 讨论定案各条、Sprint 07 收官、Sprint 08 撤销与产品日志精化出架构 v1、Sprint 08 收官发版 v5.0.0、Sprint 09 收官发版 v5.0.1、Sprint 10 收官发版 v5.1.0：流程全部进插件）见 `git log -p -- CLAUDE.md`；教训已蒸馏入记忆档 sprint-06-dual-kernel-refactor、sprint-07-roles-kernels。
+- 更早的状态（2026-08-31 至 11-09：#28 讨论定案各条、Sprint 07 收官、Sprint 08 撤销与产品日志精化出架构 v1、Sprint 08 收官发版 v5.0.0、Sprint 09 收官发版 v5.0.1、Sprint 10 收官发版 v5.1.0：流程全部进插件、Sprint 11 收官发版 v5.1.1：约定照 PO 审阅改定）见 `git log -p -- CLAUDE.md`；教训已蒸馏入记忆档 sprint-06-dual-kernel-refactor、sprint-07-roles-kernels。
 - **1.x 已收官蒸馏**：旧目标（两内核结构对等）判定方向性错误，勿延续；教训见 `S:\SeaPawn-Memory\memory\IDEO-Scrum\`（MEMORY.md 索引 + 五期档案）。
 
 ## 维护规约
@@ -45,35 +45,35 @@
 
 **模板规约**（2026-11-08，Sprint 09 Retro）
 
-模板的章按流程分，节只放产出；做法写在约定里，不在模板里一步开一节。交付新模板或新结构时，验收前把结构（章节清单）单独摆给 PO 看，不混在整份审阅里。（Sprint 08 的设计日志模板照产品日志 2.2.6 表里的每个活动各开一节，把做法写成了要记的东西；验收时没单独看结构，PO 第二天才发现。）
+模板的章按流程分，节只放产出；做法写在约定里，不在模板里一步开一节。交付新模板或新结构时，验收前把结构（章节清单）单独摆给 PO 看，不混在整份审阅里。（Sprint 08 的设计日志模板照产品日志 2.2.6 表里的每个活动各开一节，把做法写成了要记的东西；验收时没单独看结构，PO 第二天才发现。）约定的条同理按执行顺序排，被依赖的排前面（Sprint 14 样板测试：定分支排在填表头之后，模型照条号走，先填了表头）。
 
-**冲刺收官与归档**（2026-11-07 改，原「冲刺蒸馏闭环」；Sprint 01–07 按旧做法蒸馏为记忆档，不回改）
+**冲刺收官与归档**（2026-11-07 改，原「冲刺蒸馏闭环」；2026-11-10 Sprint 14 改成新结构；Sprint 01–07 按旧做法蒸馏为记忆档，不回改）
 
-- **Review**：备料（Master 兼 Developer 时，对抗审查交全新子代理，只核对做得对不对；另照产品日志 2.1 召唤角色卡看增量，回答好不好用——2026-11-08）→ 冲刺日志压缩成关键决定、补上 Review 章 → 改名为冲刺文件夹名（`sprint-NN-后缀.md`）移进 `scrum/documents/` → 删除冲刺目录里其余的中间文件 → 更新产品日志并保鲜（做完的 PBI 移入 3.2 并引用该文件，删掉过时内容；没做完的回 3.1）→ 整个 `scrum/` 过一遍，`documents/` 里过时的删掉（2026-11-09 改顺序：先写完 Review 再删中间文件）。
-- **Retro**：教训写进记忆（`S:\SeaPawn-Memory\memory\IDEO-Scrum\`，路径以 `.claude/settings.json` 的 `autoMemoryDirectory` 为准）或本文件；写原则、不写故事；特别好的改进经 PO 同意写进 DoD。冲刺日志不设 Retro 章。
+- **Review 和 Retro 是收官时的动作，日志里不设章**（PO 2026-11-10，Sprint 14；新结构从 Sprint 15 起生效，Sprint 14 自己的日志仍按 5.1.2 写，有第 4 章 Review）。Review：备料（Master 兼 Developer 时，对抗审查交全新子代理，只核对做得对不对；另照产品日志 2.1 召唤角色卡看增量，回答好不好用——2026-11-08）→ 冲刺日志压缩成关键决定 → 改名为冲刺文件夹名（`sprint-NN-后缀.md`）移进 `scrum/documents/` → 删除冲刺目录里其余的中间文件 → 更新产品日志并保鲜（做完的 PBI 移入 3.2 并引用该文件，删掉过时内容；没做完的回 3.1；利益相关者的看法和 Product Goal 的变化写进产品日志）→ 整个 `scrum/` 过一遍，`documents/` 里过时的删掉（2026-11-09 改顺序：先写完再删中间文件）。已经结束、还在自己文件夹里的设计，它的日志同样压缩、改名 `design-后缀.md` 移进 `scrum/documents/`。
+- **Retro**：教训写进记忆（`S:\SeaPawn-Memory\memory\IDEO-Scrum\`，路径以 `.claude/settings.json` 的 `autoMemoryDirectory` 为准）或本文件；写原则、不写故事；特别好的改进经 PO 同意写进 DoD。冲刺日志不设 Retro 章；设计不单做 Retro，设计结束时记在设计日志第 5 章末尾的一两句做法教训，由归档那份日志的冲刺的 Retro 整理。
 - **收官**：项目健康看 `scrum/` 就够，其余一般只需同步 README；Review 与 Retro 只出一个提交；tag 与冲刺文件夹同名（同名分支随即删除）；合入 main，关分支与 worktree。
-- **设计收官**（2026-11-07）：设计问题答完或 PO 叫停时，整份设计日志重写成 Review 文档，改名 `design-后缀.md` 移进 `scrum/documents/`，原型等文件删除，产品日志保鲜；Retro 同冲刺。
 
-> 分工：**memory 管教训**（见 `S:\SeaPawn-Memory\memory\IDEO-Scrum\MEMORY.md`），**`scrum/documents/` 管冲刺与设计原文**（压缩后的冲刺日志、设计 Review），**git 管全部历史**，**`scrum/` 其余部分管现状**（产品日志、当期冲刺与设计）。完整流程见插件 scrum-kernel 的 `conventions/sprint-log.md`。
+> 分工：**memory 管教训**（见 `S:\SeaPawn-Memory\memory\IDEO-Scrum\MEMORY.md`），**`scrum/documents/` 管冲刺与设计原文**（压缩后的冲刺日志与设计日志），**git 管全部历史**，**`scrum/` 其余部分管现状**（产品日志、当期冲刺与设计）。完整流程见插件 scrum-kernel 的 `conventions/sprint-log.md`。
 
 **Sprint 节律**（2026-10-24，Sprint 06 Retro；2026-11-07 改）
 
-- **按 Sprint Goal 收官**（2026-11-07 改，原「按时间盒收官」）：Sprint Goal 达成或 PO 叫停时收官，做 Review + Retro（单提交）；冲刺日志不写截止日（AI 按会话工作，日期没有意义；与官方定长不同，理由见插件 scrum-kernel 的 `conventions/sprint-log.md` 第 2 条）；期间发版照常，记进当期日志，不结束 Sprint；之后的新工作开新 Sprint、新日志；日志当日记，不事后补录。
+- **按 Sprint Goal 收官**（2026-11-07 改，原「按时间盒收官」）：Sprint Goal 达成或 PO 叫停时收官，做 Review + Retro（单提交）；冲刺日志不写截止日（AI 按会话工作，日期没有意义；与官方定长不同，理由见插件 scrum-kernel 的 `conventions/sprint-log.md` 的 No end date）；期间发版照常，记进当期日志，不结束 Sprint；之后的新工作开新 Sprint、新日志；日志当日记，不事后补录。
 - **没做完的回产品日志**：收官时没做完的 PBI 回产品日志，不顺延。（原「时间盒写在日志头」，2026-11-07 删去截止日。）
 - **计划外工作先登记**：作者待办或对话中定下的新工作，先在产品日志登记 PBI，再由 PO 定是否进当前 Sprint（范围可重谈，Sprint Goal 不变）；不进则等下个 Sprint。
-- **小活单开小冲刺**（PO 2026-11-08，Sprint 09）：半小时到一个会话做得完的活也开冲刺，正常流程照走，每一步缩到一两行；放行、审阅、收官照做（插件 scrum-kernel 的 `conventions/sprint-log.md` 第 4 条）。
-- **fork 出来的 Developer**（2026-11-08，Sprint 09、10）：它是主会话的子代理，主会话一进 plan 模式，它就停下、写不了文件，Developer 干活时主会话别切 plan 模式；它不能再派子代理，审阅、插件校验、角色召唤都由 Master 派；它带着 Master 的上下文，但活是它干的：审阅照常由 Master 做，也可以派全新子代理（PO 2026-11-09，插件 sprint-log 约定 16；Sprint 12 起生效）。Master 自己兼 Developer 时，审阅仍交全新子代理。
+- **小活单开小冲刺**（PO 2026-11-08，Sprint 09）：半小时到一个会话做得完的活也开冲刺，正常流程照走，每一步缩到一两行；放行、审阅、收官照做（插件 scrum-kernel 的 `conventions/sprint-log.md` 的 Small work, small Sprint）。
+- **fork 出来的 Developer**（2026-11-08，Sprint 09、10；2026-11-10 Sprint 14 补）：有两种 fork，别混。① Agent 工具派出的 fork 子代理（Sprint 09、10）：它是主会话的子代理，主会话一进 plan 模式，它就停下、写不了文件，Developer 干活时主会话别切 plan 模式；它不能再派子代理，审阅、插件校验、角色召唤都由 Master 派。② `/fork` 复制出的会话（Sprint 14）：它是独立会话，能派子代理，不受主会话 plan 模式影响；Master 与它用跨会话消息直接通讯，不经 PO 转，长的审阅写在 plan 文件里、消息里给路径。两种都带着 Master 的上下文，但活是 Developer 干的：审阅照常由 Master 做，也可以派全新子代理（PO 2026-11-09，插件 sprint-log 的 A reviewer is required；Sprint 12 起生效）。Master 自己兼 Developer 时，审阅仍交全新子代理。派子代理一律显式写 `model`（Haiku），见用户级 CLAUDE.md（Sprint 14：四次 plugin-validator 没写 model，继承了主会话的 Sonnet，每次约 22 到 27 万 token）。
 - **Developer 在别的工具里（Codex，Sprint 13）**：通道只有冲刺日志；两边共用一个工作目录，轮流动手：每轮提交、在 3.2 记一行并在 Next 写明轮到谁，然后停下；PO 只传一句「轮到你了，读冲刺日志」。Master 的审阅意见写在 plan 文件里，PO 把路径转给 Developer，由它抄进日志（日志才是记录）。放行要写明能做到哪一步：Codex 在 `approval_policy = never`、完全访问下，能自己推送、打 tag、改本机配置。停点要少：把彼此独立的活一次做完再交审，PO 的传话和等待是主要耗时。
-- **约定大约每周集中改一次**（PO 2026-11-09，原插件总览约定 14 的前半句；那是作者维护插件的节奏，不是用户的规矩，挪到这里）：平时记下约定不合适的地方，攒着集中改，登记成 PBI、开冲刺改；改动从下一个冲刺起生效，冲刺进行中不改。
+- **约定大约每周集中改一次**（PO 2026-11-09，原插件总览的一条约定；那是作者维护插件的节奏，不是用户的规矩，挪到这里，Sprint 14 强审时 PO 又把插件里的那条删了）：平时记下约定不合适的地方，攒着集中改，登记成 PBI、开冲刺改；改动从下一个冲刺起生效，冲刺进行中不改。约定不带版本标记，PBI 标题也不带版本号（PO 2026-11-10：以后更新都是重构，不要版本这种标志）；下一次集中修订是 PBI-54。
 - **PBI 状态只写产品日志**：SprintBacklog 引用 PBI 编号，不复写状态；进展写在 3.2 笔记。
 - **工作区留着别的改动时，`git add` 逐个写文件**，不按目录加（2026-11-08，Sprint 08 误带过一次，撤回重提）。
 - **迁移类改动全仓 grep**：路径、位置、名称迁移时，同一提交内全仓 grep 旧值至零残留（README、CLAUDE.md、日志都算）。
-- **改规矩先找它的其他说法**（2026-11-09，Sprint 11 Retro）：一条规矩改了，精化时就全仓 grep 它在模板、命令、两份 SKILL.md、CLAUDE.md 里的其他说法，列成连带改动一起改（Sprint 11 一处审阅意见牵出五组连带改动；删一条带编号的约定要改号，用脚本把每处「convention N」对到短名）。
+- **改规矩先找它的其他说法**（2026-11-09，Sprint 11 Retro）：一条规矩改了，精化时就全仓 grep 它在模板、命令、两份 SKILL.md、CLAUDE.md 里的其他说法，列成连带改动一起改（Sprint 11 一处审阅意见牵出五组连带改动；删一条带编号的约定要改号，用脚本把每处「convention N」对到短名；Sprint 14：内容改动与改号分开提交，改号后把引用换成短名、去掉条号，改号前后逐行相同才算对，三次改号都是 0 错；脚本只保证引用的条存在，不保证指得对，要逐处读所指的条是不是真有那句话，product-log 17 曾误指向 overview 5；对抗审查的七处必改，多数是同一条规矩在别处的另一种说法）。
 - **对着译文审阅，先分清改哪边**（2026-11-09，Sprint 11 Retro）：PO 对着中文译文提的意见，逐条先判是英文原文的问题还是译文的措辞；只是译文的，英文不动，在审阅记录里写明（Sprint 11：overview 第 2 处后半）。
+- **大改约定的审阅顺序**（2026-11-10，Sprint 14 Retro）：Developer 起草 → Master 审 → 对抗审查（全新子代理，只核对做得对不对）→ PO 强审 → 最后一轮流程测试 → 收官。对抗审查放在 PO 强审之前，先清掉重复、错指和前后矛盾（Sprint 14：七处必改），PO 的强审才用在方向和口味上（两批共五处）；插件文字改了，流程测试整轮重跑，所以会改文字的审阅都排在最后一轮测试之前，PO 的意见攒齐了再跑（Sprint 14 跑了四轮）。
 
 **插件验证**
 
-Claude 插件无 build/test；Codex 包由 `scripts/sync_codex.py` 生成、`scripts/check_codex.py` 核对（内容与源逐字相同、链接、导航、可重复生成）。改动插件后，用 Agent 类型 `plugin-dev:plugin-validator` 校验插件结构/plugin.json；涉及 skill 质量时用 `plugin-dev:skill-reviewer`（两者经 Agent 工具调用，非 slash command）。marketplace 清单在 `.claude-plugin/marketplace.json`。
+Claude 插件无 build/test；Codex 包由 `scripts/sync_codex.py` 生成、`scripts/check_codex.py` 核对（内容与源逐字相同、链接、导航、可重复生成）。改动插件后：官方命令能做的先用命令，不派子代理（PO 2026-11-10）——收官改完版本号后跑一次 `claude plugin validate --strict plugins/ideo-scrum`；只改了文字、结构没变时，它没报问题就够了；它报问题，或改了结构、清单、frontmatter，才派 Agent 类型 `plugin-dev:plugin-validator`，并显式写 `model`（Haiku）。涉及 skill 质量时用 `plugin-dev:skill-reviewer`（两者经 Agent 工具调用，非 slash command）。marketplace 清单在 `.claude-plugin/marketplace.json`；对它跑 `--strict` 会因缺顶层 description 退出 1（警告，Sprint 14 之前就有，见产品日志 PBI-25 ⑦）。
 
 **回归测试**（2026-10-25，Sprint 07 Retro）
 
@@ -87,6 +87,8 @@ Claude 插件无 build/test；Codex 包由 `scripts/sync_codex.py` 生成、`scr
 - 测试题不带引导词（如「按插件的约定」）：引导词等于叫模型去加载插件，测不到用户自然的说法；题里也别有会限制它行动的话（「先别看东西」被当成「别读文件」）（2026-11-08，Sprint 10）。
 - 判对不只看加载了哪个技能，还要看读没读该读的约定（Sprint 10：加载了 scrum-kernel 却只读 references，答出两周冲刺）；用 Grep 读到文件内容也算读了。
 - 判定脚本先拿一两份已知结果自测再用（Sprint 10：正则里混进一个退格符，三份对的回答全被判错）。
+- 「不少于改前」这类过线，改前可能满分时要留余量或加次数，并且在跑之前定（Sprint 14 样板：改前 15/15，改后 14，少 1 次就没过线，也测不出结构的好处）。
+- 汇总里把行为（有没有触发、读没读约定）和内容（答得对不对）分两栏列，别混成一个分数；缺口出在哪一栏，改法才对得上（Sprint 14：题 3 的内容渐渐答对，缺的一直是触发和先读约定，登记 PBI-52）。
 - Windows 上无头测试要连 PowerShell 一起禁（只禁 Bash 拦不住）；要写文件的测试不放在 `~/.claude` 下，那里会被权限系统拦写，改用系统临时目录。
 - 测试的原始输出放仓库外，仓库里只留判定汇总；提交前按提供方地址、凭据值、令牌形态、设置值扫一遍（Sprint 13：原始输出带了模型服务地址，只好改写未推送的冲刺历史）。
 - 正式测之前先冒烟：一次最简单的调用，确认模型在提供方的实际目录里（不看本地模型缓存）、读文件的权限正常（Sprint 13：第一轮模型无通道，第二轮只读权限拒读，各白跑一轮）。
