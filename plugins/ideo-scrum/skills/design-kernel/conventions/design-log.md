@@ -7,16 +7,16 @@ The design log template is `design-backlog-template.md` in this folder. Paths he
 ```mermaid
 flowchart TD
     A["Opening<br/>conventions 1–4, 22"] --> B["Empathize<br/>conventions 9, 23"]
-    B -- "PO decides" --> C["Define<br/>conventions 10, 24"]
-    C -- "PO decides" --> D["Ideate: diverge<br/>conventions 7, 11, 25"]
+    B -- "PO decides" --> C["Define<br/>convention 10"]
+    C -- "PO decides" --> D["Ideate: diverge<br/>conventions 7, 11, 24"]
     D --> E["Ideate: converge<br/>conventions 12–15"]
     E -- "PO decides" --> F["Prototype<br/>convention 16"]
-    F -- "PO decides" --> G["Test<br/>conventions 17, 26"]
+    F -- "PO decides" --> G["Test<br/>conventions 17, 25"]
     G -- "PO decides" --> H["Closing<br/>conventions 18–19"]
     G -. "or back to an earlier stage" .-> B
 ```
 
-Conventions 5, 6, 8, 20, 21, 27, and 28 hold at every step; see Throughout, below. At each "PO decides" the Product Owner settles the result of the stage and decides whether to move on (convention 27).
+Conventions 5, 6, 8, 20, 21, 26, and 27 hold at every step; see Throughout, below. At each "PO decides" the Product Owner settles the result of the stage and decides whether to move on (convention 26).
 
 ## Opening
 
@@ -37,11 +37,11 @@ Conventions 5, 6, 8, 20, 21, 27, and 28 hold at every step; see Throughout, belo
 
 ## Stages
 
-Conventions 9 to 17 cover only what differs from the book; conventions 23 to 26 add what the book leaves out; for everything else, follow the excerpts.
+Conventions 9 to 17 cover only what differs from the book; conventions 23 to 25 add what the book leaves out; for everything else, follow the excerpts.
 
 ### Empathize
 
-23. **Start from the people** — Start Empathize with the people concerned. When the Product Owner is the person concerned, ask first for concrete experiences — what happened, what they did, what they said — and only then ask for the Product Owner's call on what it means; otherwise start with users the Product Owner can bring. Documents and role cards come after. Give every finding its source, and say whether it is first-hand (what a person said or did) or second-hand (a record made for another purpose, or a role card's reading).
+23. **Start from the people** — Start Empathize with the people concerned. When the Product Owner is the person concerned, ask first for concrete experiences — what happened, what they did, what they said — and only then ask for the Product Owner's call on what it means; otherwise start with users the Product Owner can bring. Documents and role cards come after. Write each finding where it belongs — in the challenge, the design goal, or the design questions — with its source, and say whether it is first-hand (what a person said or did) or second-hand (a record made for another purpose, or a role card's reading).
 
 <!-- -->
 
@@ -49,15 +49,11 @@ Conventions 9 to 17 cover only what differs from the book; conventions 23 to 26 
 
 ### Define
 
-10. **Map and questions in the log** — Draw the map as a Mermaid `flowchart TD`, actors at the top and the ending at the bottom. The Product Owner picks the How Might We questions that matter — no dot voting. There is no target step: if the map holds more than one design's worth of work, split the rest out into another design or into items (`define/pick-a-target.md` shows how the book narrows a map).
-
-<!-- -->
-
-24. **Say it as a Point of View** — Write a Point of View — the user, what they need, and the insight — from what Empathize found, and write the How Might We questions from it. The map shows the flow; it does not replace the Point of View.
+10. **Map and questions in the log** — Draw the map as a Mermaid `flowchart TD`, actors at the top and the ending at the bottom. Write the How Might We questions against the map, with the challenge, the design goal, and the design questions of chapter 1 beside it. The Product Owner picks the How Might We questions that matter — no dot voting. There is no target step: if the map holds more than one design's worth of work, split the rest out into another design or into items (`define/pick-a-target.md` shows how the book narrows a map).
 
 ### Ideate: diverge
 
-7. **IDEO always in play** — Use the ideo-kernel's methods whenever the work needs them (the rule is in `SKILL.md`), above all in Ideate: its Ideate methods — How Might We Questions, Brainstorming, Analogous Empathy, Yes, And! Brainstorm, Brainstorm selection — alongside the book's steps or in their place.
+7. **IDEO always in play** — Run the book's steps and the stage's IDEO mode together in every stage, as `SKILL.md` requires. Above all in Ideate, use the ideo-kernel's Ideate methods — How Might We Questions, Brainstorming, Analogous Empathy, Yes, And! Brainstorm, Brainstorm selection — alongside the book's steps.
 
 <!-- -->
 
@@ -65,19 +61,19 @@ Conventions 9 to 17 cover only what differs from the book; conventions 23 to 26 
 
 <!-- -->
 
-25. **Diverge before you converge** — Fill an idea pool before any solution sketch: use at least two methods — the ideo-kernel's Ideate methods (convention 7) or the first steps of the book's sketch (`ideate/sketch.md`: notes, ideas, Crazy 8s) — go for quantity, and hold judgment back. Stop diverging only when the pool holds ideas that differ in approach, not only in detail; then run the isolated sketches (convention 12).
+24. **Diverge before you converge** — When you brief each subagent that sketches a solution (convention 12), have it diverge first — use at least two methods, the ideo-kernel's Ideate methods (convention 7) or the first steps of the book's sketch (`ideate/sketch.md`: notes, ideas, Crazy 8s), go for quantity, and hold judgment back — and only then converge into its own sketch. The ideas are working material; they do not go into the log.
 
 ### Ideate: converge
 
-12. **Isolated solutions** — Once the idea pool exists (convention 25), have several fresh subagents, unable to see one another, each produce one complete solution sketch, in words or Mermaid, from chapters 1 and 2, the gathered ideas, and `ideate/sketch.md`, or from an ideo-kernel Ideate method.
+12. **Isolated solutions** — Have several fresh subagents, unable to see one another, each diverge first (convention 24) and then produce one complete solution sketch, in words or Mermaid, from chapters 1 and 2, the gathered ideas, `ideate/sketch.md`, and the ideo-kernel Ideate methods.
     *Decide on the spot:* how many subagents to run, and on which model.
-13. **Choosing is the key step** — Run the book's decision (`ideate/decide.md`) in the conversation, led by the Scrum Master; have role-card Stakeholders give a straw poll if the Product Owner wants one. The Product Owner makes the final call, with no search for consensus. Put only the chosen solution into section 3.2.
+13. **Choosing is the key step** — Run the book's decision (`ideate/decide.md`) in the conversation, led by the Scrum Master; have role-card Stakeholders give a straw poll if the Product Owner wants one. The Product Owner makes the final call, with no search for consensus. Put only the chosen solution into section 3.1.
 14. **Combine or rumble** — Combine winners that fit together; when two conflict, prototype both and let the test decide (`ideate/rumble.md`). The Product Owner decides which.
-15. **Storyboard** — Write a storyboard of about fifteen steps in section 3.3 (`ideate/storyboard.md`) only when the solution needs one before the prototype; the Designer writes it.
+15. **Storyboard** — Write a storyboard of about fifteen steps in section 3.2 (`ideate/storyboard.md`) only when the solution needs one before the prototype; the Designer writes it.
 
 ### Prototype
 
-16. **Just enough prototype** — *Supplement.* Build in the design folder, following the chosen solution, real enough for honest reactions (`prototype/fake-it.md`): made quickly and thrown away after, while the surface the tester sees appears real. Subagents can build the parts while one session stitches them together; do a trial run against the solution and the design questions before testing. Name the design question each part of the prototype tests.
+16. **Just enough prototype** — *Supplement.* Build in the design folder, following the chosen solution, real enough for honest reactions (`prototype/fake-it.md`): made quickly and thrown away after, while the surface the tester sees appears real. Subagents can build the parts while one session stitches them together; do a trial run against the solution and the design questions before testing, and write what it found in chapter 5. List each part of the prototype in chapter 4 with the design question it tests.
     *Decide on the spot:* how real the prototype must be when the product has no screen — a document, a service, a process; agree it with the Product Owner.
 
 ### Test
@@ -86,7 +82,7 @@ Conventions 9 to 17 cover only what differs from the book; conventions 23 to 26 
 
 <!-- -->
 
-26. **Write the criteria before the test** — Before testing, write down what would count as a yes, a no, or a not yet for each design question, and what role cards cannot show: they are subagents reading a card, not real people.
+25. **Write the criteria before the test** — Before testing, write down in chapter 5 what would count as a yes, a no, or a not yet for each design question, and what role cards cannot show: they are subagents reading a card, not real people.
 
 ## Closing
 
@@ -95,7 +91,7 @@ Conventions 9 to 17 cover only what differs from the book; conventions 23 to 26 
 
 ## Throughout
 
-5. **Ask the PO** — Ask the Product Owner whenever you are unsure (`../scrum-kernel/overview.md`, convention 9), and in any case to: decide at the end of each stage, and after the test whether to close or go back (convention 27); set or change the design goal (convention 21); pick the How Might We questions that matter (convention 10); choose the solution and decide between combining and a rumble (conventions 13, 14); agree how real the prototype must be (convention 16); and decide that the design is done (convention 18).
+5. **Ask the PO** — Ask the Product Owner whenever you are unsure (`../scrum-kernel/overview.md`, convention 9), and in any case to: decide at the end of each stage, and after the test whether to close or go back (convention 26); set or change the design goal (convention 21); pick the How Might We questions that matter (convention 10); choose the solution and decide between combining and a rumble (conventions 13, 14); agree how real the prototype must be (convention 16); and decide that the design is done (convention 18).
 6. **Five chapters, not five days** — Write one chapter per stage — Empathize, Define, Ideate, Prototype, Test — not the book's Monday to Friday, and no notes section. Each chapter records what its stage produced, not the steps taken.
 
 <!-- -->
@@ -109,15 +105,15 @@ Conventions 9 to 17 cover only what differs from the book; conventions 23 to 26 
 
 <!-- -->
 
-27. **Gates between stages** — At the end of each stage, check the log against the gate below; then the Product Owner settles the result of the stage and decides whether to move on (`../scrum-kernel/overview.md`, *Product Owner decides between stages*). The Scrum Master checks that the work was done right; the Product Owner decides. Write the decision as the last line of the stage's chapter. After the Test, the decision is to close the design or to go back to the stage whose answer was wrong.
+26. **Gates between stages** — At the end of each stage, check the log against the gate below; then the Product Owner settles the result of the stage and decides whether to move on (`../scrum-kernel/overview.md`, *Product Owner decides between stages*). The Scrum Master checks that the work was done right; the Product Owner decides. Write the decision as the last line of the stage's chapter. After the Test, the decision is to close the design or to go back to the stage whose answer was wrong.
 
     | Stage | The log holds | The check |
     | --- | --- | --- |
-    | Empathize | the findings, each with its source, and the challenge, the design goal, and the design questions | The findings come from the people concerned — what they did, what they said, where the two differ — not from a pile of facts |
-    | Define | the map, the Point of View, and the How Might We questions the Product Owner picked | The problem is framed as user, need, and insight, not only drawn as a flow |
-    | Ideate | the idea pool, the chosen solution, and the storyboard if one was written | The ideas diverged before they converged, and the pool holds more than one approach |
-    | Prototype | what was built, each part tied to the design question it tests, and what the trial run found | It is rough, quick, and thrown away after: built to learn, not to deliver |
-    | Test | the criteria written beforehand, who tested, what showed up, and an answer to each design question | The answers come from real reactions, and "we were wrong" counts as an answer |
+    | Empathize | the challenge, the design goal, and the design questions, with the source of each finding | The findings come from the people concerned — what they did, what they said, where the two differ — not from a pile of facts |
+    | Define | the map and the How Might We questions the Product Owner picked | The How Might We questions were written against the map and the challenge, the goal, and the questions of chapter 1 |
+    | Ideate | the chosen solution, and the storyboard if one was written | Each sketch diverged before it converged, and the sketches differ in approach, not only in detail |
+    | Prototype | the parts of the prototype, each with the design question it tests | It is rough, quick, and thrown away after: built to learn, not to deliver |
+    | Test | the criteria written beforehand, what the trial run found, who tested and what showed up, and an answer to each design question with where it flows back | The answers come from real reactions, and "we were wrong" counts as an answer |
 
     At each gate ask: would someone who never learned design have produced the same thing? If so, the stage missed its focus.
-28. **A small design is still a design** — When a design is small — about one session of work — still keep the log, shrink each stage to a line or two, and still have the Product Owner decide at the end of each stage. Skip no stage, least of all Empathize and divergence (convention 25).
+27. **A small design is still a design** — When a design is small — about one session of work — still keep the log, shrink each stage to a line or two, and still have the Product Owner decide at the end of each stage. Skip no stage, least of all Empathize and divergence (convention 24).
