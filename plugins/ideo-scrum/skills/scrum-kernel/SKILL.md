@@ -56,7 +56,7 @@ Built on three pillars:
 - **Supporter** (a Stakeholder type) – Fosters the climate and environment and participates as requested.
 - **AI** – As a tool or also a possible Product Developer, but not to be entirely trusted yet.
 
-*(Here only the Product Owner must be human: see `overview.md`, convention 8.)*
+*(Here only the Product Owner must be human: see `overview.md`, convention 9.)*
 
 ### 4. Scrum Events & Activities
 

@@ -1,6 +1,6 @@
 # Sprint Log Conventions (v1)
 
-> Working conventions, v1: reference, not law — follow what fits, override what doesn't, note why. Source labels and the rest: `overview.md` (in the skill folder, beside `SKILL.md`), convention 14. A convention with no label is the author's practice.
+> Working conventions, v1: reference, not law — follow what fits, override what doesn't, note why. Source labels and the rest: `overview.md` (in the skill folder, beside `SKILL.md`), convention 15. A convention with no label is the author's practice.
 
 > Source: quotations from The Scrum Guide 2020 (Ken Schwaber & Jeff Sutherland), marked where they appear.
 > License: the quotations are CC BY-SA 4.0 (© 2020 Ken Schwaber and Jeff Sutherland).
@@ -83,7 +83,7 @@ Conventions 20–25 hold at every step; see Throughout, below. At each "PO decid
 
 ## Throughout
 
-20. **Goal fixed, plan flexible** — Hold the Sprint Goal and the Definition of Done (`overview.md`, convention 17). The How may change at any time; refinement points and acceptance criteria may be renegotiated with the Product Owner, or with the Scrum Master as the Product Owner's secretary. Write each change and its reason in chapter 4, Increment notes.
+20. **Goal fixed, plan flexible** — Hold the Sprint Goal and the Definition of Done (`overview.md`, convention 18). The How may change at any time; refinement points and acceptance criteria may be renegotiated with the Product Owner, or with the Scrum Master as the Product Owner's secretary. Write each change and its reason in chapter 4, Increment notes.
 21. **New work gets registered** — New work goes into the product log as an item first; the Product Owner decides whether it enters this Sprint. The scope can be renegotiated; the Sprint Goal stays.
 22. **The log is the handoff** — Write no separate handoff documents: before a session ends or its context is shortened, write what matters into the log, commit, and stop at a complete point.
 23. **Special cases** — Two cases need a rule of their own:
@@ -93,4 +93,4 @@ Conventions 20–25 hold at every step; see Throughout, below. At each "PO decid
     | Something outside the team blocks the work | The Scrum Master tells the Product Owner at once |
     | A release is ready mid-Sprint | Release it; the Sprint does not end |
 24. **The Product Owner decides at the end of each stage** — At the end of each stage the Product Owner decides, as `overview.md`, *Product Owner decides between stages*, says: Why — the Sprint Goal; What — that refinement ends here; How — the go-ahead; Increment — that it can go into testing; Test — to close (then the Review and the Retrospective) or to go back.
-25. **Ask the PO** — Ask the Product Owner whenever you are unsure (`overview.md`, convention 9), and in any case to: set the Sprint Goal (convention 4); select the items (`product-log.md`, convention 12); say when refinement is over (convention 6); give the go-ahead (convention 8); decide at the end of each stage (convention 24); renegotiate the acceptance criteria (convention 20); decide whether new work enters the Sprint, and renegotiate the scope (convention 21); give formal acceptance, when it is written (convention 15); consent to outward actions such as a push (convention 19); and cancel a Sprint whose goal can no longer be met (`overview.md`, convention 17).
+25. **Ask the PO** — Ask the Product Owner whenever you are unsure (`overview.md`, convention 10), and in any case to: set the Sprint Goal (convention 4); select the items (`product-log.md`, convention 12); say when refinement is over (convention 6); give the go-ahead (convention 8); decide at the end of each stage (convention 24); renegotiate the acceptance criteria (convention 20); decide whether new work enters the Sprint, and renegotiate the scope (convention 21); give formal acceptance, when it is written (convention 15); consent to outward actions such as a push (convention 19); and cancel a Sprint whose goal can no longer be met (`overview.md`, convention 18).
