@@ -216,6 +216,8 @@ Go-ahead: 2026-11-10，Master 放行，PO 授权（「让他继续往下走」�
 | 2026-11-10 | Master 派全新子代理对 `2aad30f..87bd0db` 的插件改动做对抗审查，清单在 plan 文件 | 7 处必改（构思的发散必含 IDEO 方法、删 design-log 9、sprint-log 4 指向错误、阶段拍板与 scrum/ 保鲜与白纸判断各只留一处、冲刺模板第 1 章补决定）、6 处小改，overview 4 一处不改（那是做法的说明，不是标签残留）；题 2、题 3 没过线，Master 选 (a)：design-kernel 的 `SKILL.md` 加一句指向 product-log 2，两份 `SKILL.md` 都写明「回答怎么做的问题之前也要先读对应的约定」，不改技能描述；改完把流程测试原样重跑一轮，两轮结果都留 | Master 的清单（plan 文件，第 1–17 条） | Developer 改，重跑测试，交 Master，再交 PO 强审 |
 | 2026-11-10 | Developer 照清单改插件：内容改动提交 `94a6758`，重排条号提交 `c35c4df`（design-log 26 条、overview 18 条，引用 140 处对到短名，0 错）；清单补上这一轮的结论、「现号」栏重算、改号对照改成旧→现一张；`plugin-validator` 第一次（跑在 `87bd0db` 上）回来：PASS，无必改，建议 5 条 | 每处改动的依据在清单「结论」栏。我定的几处：overview 的工作材料那句单列一条（Master 让我在单列和挪到段首里选，因为一条只讲一件事）；plugin-validator 的建议采纳 2 条（sprint-log 开头写明 `../` 路径从技能文件夹算起；product-log 对照表里 2.2 改称 Map，与模板标题一致），其余不动：product-log 开头「引文标在出处」是无害的残留，版本号和 `plugin.json` 的可选字段留到收官。它还查出仓库外和 CLAUDE.md 里按旧号引的地方，已记进清单第二张表 | `checklist.md`（98 行：97 已改、1 已核；第二张表 13 行）；脚本核对：条号连续、引用 0 错、图的范围与 Throughout 对上 | 第二轮流程测试和第二次 `plugin-validator` |
 | 2026-11-10 | 流程测试第二轮：原样重跑在 `c35c4df` 上（脚本先核对了插件文件与提交一致、2.2「流程测试」那一块与第一轮提交逐字相同），15 次都在第一次调用成功 | 题 1、4、5 各 3/3；题 2 为 2/3，过线（第一轮 1/3）；**题 3 仍是 0/3，不过线**：记成已知缺口，留给 PO 强审时看，PO 要做就登记成新 PBI。两轮六次都没加载 scrum-kernel；design-kernel 的 `SKILL.md` 新加的那一句让 3-1 说出「设计的结论会成为项目的第一份产品日志」，但它没读约定，也没讲为什么现在写不出产品和 Product Goal；3-3 读了 design-log，没有顺着指向去读 product-log 2。第一轮的结果不改，两轮并列写在汇总里 | `flow-test-summary.md` | 交 Master：汇总、`plugin-validator` 第二次的结果；Master 再交 PO 强审 |
+| 2026-11-10 | Master 转述 PO 看过设计约定后又定的两点（plan 文件 A、B 两节，必改第 2 条同时改了）；Developer 照改，提交 `f495298` | A. 设计不做 Review 和 Retro（设计是整个 Scrum 工作里的一个子集，不单独收尾）：design-log 原 19 删，原 18 改名 When the design ends，只留结论流回产品日志和提出它的冲刺、白纸时拆 PBI、删原型和设计文件夹里除日志以外的文件、分支合并后删除；设计日志由它服务的冲刺在 Review 时归档，教训进那个冲刺的 Retro；图上的 Closing 改 Ending；设计模板头部、两处 close 的说法、design-kernel 的 `SKILL.md`、overview 的大图与第 5 条、README 里设计日志约定一行跟着改。B. 贯穿全程加一条 IDEO in every stage（原 9 挪来改写，不列方法名，指向 `SKILL.md`），放在 Throughout 开头，条号仍是 26 条、没有动。CLAUDE.md「设计收官」一段和产品日志 PBI-40 ① 与 A 冲突，我没动，记进清单第二张表，收官时由 Master 和 PO 处理 | 清单（98 行；第二张表 14 行）；脚本核对：条号连续、引用 139 处都解析到存在的条、短名变化只有预期的两处、结构检查全过 | 第三轮流程测试和第三次 `plugin-validator` |
+| 2026-11-10 | 流程测试第三轮：原样重跑在 `f495298` 上（脚本先核对插件文件与提交一致、2.2「流程测试」那一块与第一轮提交逐字相同），15 次都在第一次调用成功；`plugin-validator` 第二次（跑在 `c35c4df`）：PASS，无必改，5 条小建议我都没采纳（都不影响读懂，多数是本冲刺之前就有的：design-kernel 的 `SKILL.md` 与设计模板里的裸条号默认指 design-log；`overview.md` 路径的写法；设计摘录文件头的 ATTRIBUTION.md 在插件外；两处引用与句子贴合得宽松）；第三次（跑在 `f495298`，另用官方的 `claude plugin validate` 加 `--strict` 核了插件、skills、commands 和 marketplace 清单，也过）：PASS，无必改；建议 5 条，其中两条与上面的问题 n、o 是同一件事——sprint-log 17 没提设计日志的归档、归档后叫什么没有规定，「它服务的冲刺」在白纸设计和服务多个冲刺时没有对象——不改，等 Master 定；另三条是老问题（设计摘录文件头的 ATTRIBUTION.md 在插件外；三处引用与条名贴合得宽松；可选的元数据警告），不采纳。它还查出 CLAUDE.md 第 15、55、57 行仍写着旧的设计收官，已记进清单第二张表 | 第三轮：题 1、4、5 各 3/3；题 2 为 2/3，过线；**题 3 仍是 0/3**，三轮共 9 次一次没过，记成已知缺口，留给 PO 强审时看，PO 要做就登记成新 PBI。9 次里 4 次没加载任何技能，5 次加载了 design-kernel，scrum-kernel 一次也没加载，product-log 一次也没读。题 5 的两次回答还主动指出这台机器全局记忆索引里的「sprint-log 约定 14」已过时，正是清单第二张表记着的外部引用。三轮并列写在汇总里 | `flow-test-summary.md` | 交 Master：汇总和两次 `plugin-validator` 的结果；Master 再交 PO 强审 |
 
 **样板的结论（Master 第四轮，2026-11-10）**
 - PO 接受样板的结构（PO：「之前提的那几个点确实都改了，没问题，很好。」）。
@@ -254,6 +256,10 @@ Go-ahead: 2026-11-10，Master 放行，PO 授权（「让他继续往下走」�
 - m. 仓库外和 CLAUDE.md 的引用（全局记忆的「sprint-log 约定 13、14」现为 12 和 22；CLAUDE.md 的「约定 16」现为 14；「冲刺收官与归档」里的「补上 Review 章」与新结构冲突）我没动，收官时由你们处理，清单第二张表有明细。**答**：同意；CLAUDE.md 收官时在收官提交里改；仓库外的全局记忆由 Master 收官时经 PO 同意处理。
 
 **Retro 输入（续）**：改号脚本只保证改前改后一致，不保证指针指对；把规矩挪到别处之后，要逐处读指针所指的条是不是真有那句话（本冲刺核出 product-log 17 一处）。
+
+**对抗审查之后的不清楚的地方（Developer 提给 Master，2026-11-10）**
+- n. 设计日志由「它服务的冲刺」在 Review 时归档（design-log 18）：白纸设计没有提出它的冲刺，由哪一个冲刺归档？我写成「the Sprint it served」，没有往下规定；要不要写明（例如：接着用它的结论的第一个冲刺）？
+- o. 设计模板头部原来写「压缩、归档」，现在改成「Ends … the Review of the Sprint it served archives this file」，归档的责任放在冲刺那边；sprint-log 17 我没动（它本来就要把整个 `scrum/` 过一遍），overview 5 的归档清单写成了「冲刺日志，和这个冲刺服务过的设计的日志」。要不要在 sprint-log 17 里也点一句设计日志？
 
 ## 4. Review
 
