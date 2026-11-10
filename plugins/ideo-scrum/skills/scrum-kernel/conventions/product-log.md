@@ -24,18 +24,18 @@ Convention 18 holds at every step; see Throughout, below.
 ## Starting
 
 1. **One product log** — Write the product log from the template (`overview.md`, convention 1). For an old project, write it from what already exists — the README, the open issues, the old plans — and leave the history in version control; what cannot be written yet follows convention 2.
-2. **Blank page** — Write into the product log what you can define; replace what you cannot with the matching item of a design, and let the design answer it. When neither the product nor its architecture is clear, the IDEO methods alone will not make them clear; start from a design (design-kernel skill), which adds the design sprint, a prototype, and a test to those methods. The design's items stand in for the product log's like this:
+2. **Blank page** — Write into the product log what you can define; replace what you cannot with the matching item of a design, and let the design answer it. When the product and its Product Goal cannot be written, the IDEO methods alone will not make them clear; start from a design (design-kernel skill), which adds the design sprint, a prototype, and a test to those methods. The design's items stand in for the product log's like this:
 
-    | Design (the Empathize and Define chapters) | Product log |
+    | The design log | Product log |
     | --- | --- |
     | The challenge | 1.1 Product |
     | The design goal | 1.2 Product Goal |
     | The design questions, once the test has answered them | 1.3 Definition of Done (the Outcome Done measures); the ones not answered become items |
     | The people at the top of the map | 2.1 Stakeholders |
-    | The map | 2.2 Architecture |
+    | The map | 2.2 Map |
     | The steps of the map | 3 Product Backlog Items, each placed on a step of the map |
 
-    In a section a design is answering, say which design answers it and link to it; do not copy the design log. The stakeholder table can be written first, because a design uses role cards from its first stage. Whether to start from a design is the judgment of `../design-kernel/conventions/design-log.md`, convention 1: if what you know is not enough to write the product and its Product Goal, start there.
+    In a section a design is answering, say which design answers it and link to it; do not copy the design log. The stakeholder table can be written first, because a design uses role cards from its first stage.
 3. **Facts first, then questions** — *Supplement.* Have the Scrum Master look up the facts itself; what the Product Owner must decide goes into one message, numbered, each question with a recommended answer.
 
 ## Each part
@@ -72,7 +72,7 @@ Convention 18 holds at every step; see Throughout, below.
 
 ## Keeping it fresh
 
-17. **Fresh at every Review** — At every Review, move done items to section 3.2, one line each, with the source, usually the archived sprint log in `scrum/documents/`; delete outdated architecture text and resolved open points; send unfinished items back to section 3.1. Keep no revision record; version control keeps the history. Fresh means more than the items: the same Review goes through the whole `scrum/` folder, `scrum/documents/` included (`sprint-log.md`, convention 17).
+17. **Fresh at every Review** — At every Review, move done items to section 3.2, one line each, with the source, usually the archived sprint log in `scrum/documents/`; delete outdated architecture text and resolved open points; send unfinished items back to section 3.1. Keep no revision record; version control keeps the history. Fresh means more than the items: the Review keeps the rest of `scrum/` fresh too (`sprint-log.md`, convention 17).
 
 ## Throughout
 

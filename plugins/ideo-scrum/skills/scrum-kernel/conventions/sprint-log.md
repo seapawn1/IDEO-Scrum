@@ -5,7 +5,7 @@
 > Source: quotations from The Scrum Guide 2020 (Ken Schwaber & Jeff Sutherland), marked where they appear.
 > License: the quotations are CC BY-SA 4.0 (© 2020 Ken Schwaber and Jeff Sutherland).
 
-A Sprint turns selected items into an Increment. Its template is `sprint-backlog-template.md`; each section's comment says who writes it.
+A Sprint turns selected items into an Increment. Its template is `sprint-backlog-template.md`; each section's comment says who writes it. Paths starting with `../` are relative to the scrum-kernel skill folder.
 
 ```mermaid
 flowchart TD
@@ -33,7 +33,7 @@ Conventions 20–25 hold at every step; see Throughout, below. At each "PO decid
 
 ### Why
 
-4. **Set the Sprint Goal** — Set the Sprint Goal, drafted in the Product Owner's own style, and pick the Definition of Done items that matter; the Product Owner leads, usually with the Scrum Master. When even the Sprint Goal cannot be set, IDEO methods can help set it, as they can help at any hard point: they underlie every stage (`overview.md`, convention 7). Share the result with the Scrum Master and the Developer.
+4. **Set the Sprint Goal** — Set the Sprint Goal, drafted in the Product Owner's own style, and pick the Definition of Done items that matter; the Product Owner leads, usually with the Scrum Master. When even the Sprint Goal cannot be set, IDEO methods can help set it, as they can help at any hard point: the ideo-kernel is the shared toolbox (`SKILL.md`, in the skill folder). Share the result with the Scrum Master and the Developer.
 
 ### What
 
@@ -68,7 +68,7 @@ Conventions 20–25 hold at every step; see Throughout, below. At each "PO decid
 
 ## Closing
 
-17. **Review** — Close with a Review: compress the log to its key decisions, rename it `sprint-NN-<suffix>.md`, and move it to `scrum/documents/`; then delete the other working files. Write the Stakeholders' views and the changes to the product log and the Product Goal into the product log, and refresh it (`product-log.md`, convention 17); go through the whole `scrum/` folder, so that all of it stays fresh, `scrum/documents/` included (`overview.md`, convention 5). For an outside view, the Product Owner or the Scrum Master — never the builder — summons Stakeholders from the product log's table.
+17. **Review** — Close with a Review: compress the log to its key decisions, rename it `sprint-NN-<suffix>.md`, and move it to `scrum/documents/`; then delete the other working files. Write the Stakeholders' views and the changes to the product log and the Product Goal into the product log, and refresh it (`product-log.md`, convention 17); go through the whole `scrum/` folder, `scrum/documents/` included, and delete what is outdated, so that all of it stays fresh. For an outside view, the Product Owner or the Scrum Master — never the builder — summons Stakeholders from the product log's table.
 18. **Retrospective** — Hold the Retrospective as an action at close, with no chapter in the log: the Developer writes the lessons into the project's memory or instructions file (starting an instructions file if there is neither), as principles — what broke, why, and the rule — so that someone who was not there can use them. An especially good improvement goes into the Definition of Done with the Product Owner's consent. Check whether the product log is still fresh.
     *Supplement:* ask where the Product Owner held up the AI — waiting for a decision, waiting for a go-ahead.
 19. **One closing commit** — Close in this order:
@@ -92,5 +92,5 @@ Conventions 20–25 hold at every step; see Throughout, below. At each "PO decid
     | --- | --- |
     | Something outside the team blocks the work | The Scrum Master tells the Product Owner at once |
     | A release is ready mid-Sprint | Release it; the Sprint does not end |
-24. **The Product Owner decides at the end of each stage** — At the end of each stage the Product Owner decides, as `overview.md`, *Product Owner decides between stages*, says: Why — the Sprint Goal; What — that refinement ends here; How — the go-ahead; Increment — that it can go into testing; Test — to close (then the Review and the Retrospective) or to go back. Write the decision as the last line of the stage's chapter.
+24. **The Product Owner decides at the end of each stage** — At the end of each stage the Product Owner decides, as `overview.md`, *Product Owner decides between stages*, says: Why — the Sprint Goal; What — that refinement ends here; How — the go-ahead; Increment — that it can go into testing; Test — to close (then the Review and the Retrospective) or to go back.
 25. **Ask the PO** — Ask the Product Owner whenever you are unsure (`overview.md`, convention 9), and in any case to: set the Sprint Goal (convention 4); select the items (`product-log.md`, convention 12); say when refinement is over (convention 6); give the go-ahead (convention 8); decide at the end of each stage (convention 24); renegotiate the acceptance criteria (convention 20); decide whether new work enters the Sprint, and renegotiate the scope (convention 21); give formal acceptance, when it is written (convention 15); consent to outward actions such as a push (convention 19); and cancel a Sprint whose goal can no longer be met (`overview.md`, convention 17).

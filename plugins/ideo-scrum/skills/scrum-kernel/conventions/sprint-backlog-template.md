@@ -12,7 +12,7 @@
 
 ### 1.2 Definition of Done
 
-<!-- The Product Owner picks them: the Definition of Done items that matter to this Sprint (product-log.md, convention 5). -->
+<!-- The Product Owner picks them: the Definition of Done items that matter to this Sprint (product-log.md, convention 5). The chapter ends with the Product Owner's decision on the Sprint Goal (sprint-log.md, convention 24). -->
 
 ## 2. What
 

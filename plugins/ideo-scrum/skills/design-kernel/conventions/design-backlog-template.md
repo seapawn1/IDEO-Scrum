@@ -37,7 +37,7 @@
 
 ## 3. Ideate
 
-<!-- Excerpts: ideate/remix-and-improve.md, ideate/sketch.md, ideate/decide.md, ideate/rumble.md, ideate/storyboard.md. IDEO mode: ideate. The book's steps are one way to reach a solution, not the only one: use the ideo-kernel's Ideate methods as well (convention 9), and have each sketch diverge before it converges (convention 11). The chapter ends with the Product Owner's decision on its result (convention 26). -->
+<!-- Excerpts: ideate/remix-and-improve.md, ideate/sketch.md, ideate/decide.md, ideate/rumble.md, ideate/storyboard.md. IDEO mode: ideate. The book's steps are one way to reach a solution, not the only one: use the ideo-kernel's Ideate methods as `SKILL.md` requires, and have each sketch diverge before it converges (convention 11). The chapter ends with the Product Owner's decision on its result (convention 26). -->
 
 ### 3.1 Solution
 

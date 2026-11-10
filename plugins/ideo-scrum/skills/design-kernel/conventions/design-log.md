@@ -8,19 +8,19 @@ The design log template is `design-backlog-template.md` in this folder. Paths he
 flowchart TD
     A["Opening<br/>conventions 1–5"] --> B["Empathize<br/>conventions 6–7"]
     B -- "PO decides" --> C["Define<br/>convention 8"]
-    C -- "PO decides" --> D["Ideate: diverge<br/>conventions 9–11"]
+    C -- "PO decides" --> D["Ideate: diverge<br/>conventions 10–11"]
     D --> E["Ideate: converge<br/>conventions 12–15"]
     E -- "PO decides" --> F["Prototype<br/>convention 16"]
     F -- "PO decides" --> G["Test<br/>conventions 17–18"]
     G -- "PO decides" --> H["Closing<br/>conventions 19–20"]
-    G -. "or back to an earlier stage" .-> B
+    G -. "or back to the stage whose answer was wrong" .-> B
 ```
 
-Conventions 21–27 hold at every step; see Throughout, below. At each "PO decides" the Product Owner settles the result of the stage and decides whether to move on (convention 26).
+Conventions 21–27 hold at every step; see Throughout, below. At each "PO decides" the Product Owner decides, as convention 26 says.
 
 ## Opening
 
-1. **Open a design for a question with no ready answer** — When a question asks what people want or what counts as good, ask first whether a ready answer exists; if not, open a design and start with Empathize, not with solutions. If what you know is not enough to write the product and its Product Goal, start from a design and let it fill the product log (`../scrum-kernel/conventions/product-log.md`, convention 2).
+1. **Open a design for a question with no ready answer** — When a question asks what people want or what counts as good, ask first whether a ready answer exists; if not, open a design and start with Empathize, not with solutions. A blank page is a case of this: see `../scrum-kernel/conventions/product-log.md`, convention 2.
 2. **Hard point, not the whole item** — From a Sprint, take out only the hard point that needs design; the rest of the Sprint goes on.
 3. **Who** — The Designer is accountable for the design, and the Scrum Master facilitates and records; what the Product Owner decides is listed in convention 21. When one session plays both the Designer and the Scrum Master, write the same name in both fields of the header.
 4. **Branch** — *Decide on the spot.* Decide when the design opens whether it branches from the Sprint branch or from `main`. Do not name it `<sprint-branch>/<name>`: git cannot hold both `a` and `a/b` as branch names.
@@ -37,13 +37,12 @@ The conventions under Stages cover only what differs from the book or adds what 
 
 ### Define
 
-8. **Map and questions in the log** — Draw the map as a Mermaid `flowchart TD`, actors at the top and the ending at the bottom. Write the How Might We questions against the map, with the challenge, the design goal, and the design questions of chapter 1 beside it. The Product Owner picks the How Might We questions that matter — no dot voting. There is no target step: if the map holds more than one design's worth of work, split the rest out into another design or into items (`define/pick-a-target.md` shows how the book narrows a map).
+8. **Map and questions in the log** — Draw the map as a Mermaid `flowchart TD`, actors at the top and the ending at the bottom. Write the How Might We questions against the map, with the challenge, the design goal, and the design questions of chapter 1 beside it. The map, together with the challenge, the design goal, and the design questions, is the point of view here; do not write a separate one. The Product Owner picks the How Might We questions that matter — no dot voting. There is no target step: if the map holds more than one design's worth of work, split the rest out into another design or into items (`define/pick-a-target.md` shows how the book narrows a map).
 
 ### Ideate: diverge
 
-9. **IDEO always in play** — Run the book's steps and the stage's IDEO mode together in every stage, as `SKILL.md` requires. Above all in Ideate, use the ideo-kernel's Ideate methods alongside the book's steps.
 10. **Lightning Demos** — Have subagents search for existing ideas in parallel; keep the list as working material, not part of the log.
-11. **Diverge before you converge** — When you brief each subagent that sketches a solution (convention 12), have it diverge first — use at least two methods, the ideo-kernel's Ideate methods (convention 9) or the first steps of the book's sketch (`ideate/sketch.md`: notes, ideas, Crazy 8s), go for quantity, and hold judgment back — and only then converge into its own sketch. The ideas are working material; they do not go into the log.
+11. **Diverge before you converge** — When you brief each subagent that sketches a solution (convention 12), have it diverge first — use at least two methods, at least one of them from the ideo-kernel's Ideate methods, as `SKILL.md` requires (the first steps of the book's sketch, `ideate/sketch.md` — notes, ideas, Crazy 8s — may be used alongside), go for quantity, and hold judgment back — and only then converge into its own sketch. The ideas are working material; they do not go into the log.
 
 ### Ideate: converge
 
@@ -75,7 +74,7 @@ The conventions under Stages cover only what differs from the book or adds what 
 23. **Renamed terms** — See the first paragraph of `SKILL.md`.
 24. **Resume from the header** — Keep the header's Now line current: the stage, and the next step. A session that picks up the design reads it first. Before a session ends or its context is shortened, write the half-finished work into the chapter it belongs to, update the Now line, and commit.
 25. **Goal fixed, plan flexible** — Sharpen the design goal during Empathize; once it is set, only the Product Owner changes it. The questions, the map, and the solution may change with what the work shows; write what changed and why in the chapter it belongs to (`../scrum-kernel/overview.md`, convention 17).
-26. **Gates between stages** — At the end of each stage, check the log against the gate below; then the Product Owner settles the result of the stage and decides whether to move on (`../scrum-kernel/overview.md`, *Product Owner decides between stages*). The Scrum Master checks that the work was done right; the Product Owner decides. Write the decision as the last line of the stage's chapter. After the Test, the decision is to close the design or to go back to the stage whose answer was wrong.
+26. **Gates between stages** — At the end of each stage, check the log against the gate below; then the Product Owner decides (`../scrum-kernel/overview.md`, *Product Owner decides between stages*). After the Test, the decision is to close the design or to go back to the stage whose answer was wrong.
 
     | Stage | The log holds | The check |
     | --- | --- | --- |

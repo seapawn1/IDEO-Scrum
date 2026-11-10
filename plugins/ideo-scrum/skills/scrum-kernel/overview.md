@@ -18,19 +18,19 @@ flowchart TD
     DEV["Developer"]
     DES["Designer"]
     SH["Stakeholders"]
-    PO --> A["1. Write the product log: product, architecture, items"]
+    PO --> A["Write the product log: product, architecture, items<br/>product-log.md"]
     SM --> A
-    A -- "an item needs design" --> X["Design: Empathize, Define, Ideate, Prototype, Test"]
-    BP["A blank page: the product cannot be written yet"] --> X
-    A --> S1["2. Sprint, stage 1 Why: the Sprint Goal"]
-    S1 -- "PO decides" --> S2["Stage 2 What: the items, refined"]
+    A -- "an item needs design" --> X["Design: Empathize, Define, Ideate, Prototype, Test<br/>design-log.md"]
+    BP["A blank page<br/>product-log.md"] --> X
+    A --> S1["Why: the Sprint Goal<br/>sprint-log.md"]
+    S1 -- "PO decides" --> S2["What: the items, refined<br/>sprint-log.md"]
     S2 -- "refinement hits a hard point" --> X
-    S2 -- "PO decides" --> S3["Stage 3 How: a plan"]
-    S3 -- "PO gives the go-ahead" --> S4["Stage 4 Increment: build, with notes"]
+    S2 -- "PO decides" --> S3["How: a plan<br/>sprint-log.md"]
+    S3 -- "PO gives the go-ahead" --> S4["Increment: build, with notes<br/>sprint-log.md"]
     DEV --> S4
-    S4 -- "PO decides" --> S5["Stage 5 Test: tests, review, the PO's end-to-end test"]
+    S4 -- "PO decides" --> S5["Test: tests, review, the PO's end-to-end test<br/>sprint-log.md"]
     S5 -. "PO decides: go back" .-> S4
-    S5 -- "PO decides: close" --> V["Close: Review (archive, refresh the product log) and Retro"]
+    S5 -- "PO decides: close" --> V["Close: Review (archive, refresh the product log) and Retro<br/>sprint-log.md"]
     DES --> X
     SH --> X
     SH --> V
@@ -43,7 +43,7 @@ flowchart TD
 ### Where things live
 
 1. **One product log** — Start every project, new or old, from one product log.
-2. **Sprints and designs side by side** — Treat Sprints and designs as peers under the product log: a Sprint, the Developer's, delivers an Increment; a design, the Designer's, delivers a prototype and conclusions. Open a design when an item needs design, when Sprint refinement hits a hard point, or when the product and its Product Goal cannot yet be written (a blank page: `conventions/product-log.md`, convention 2); it is not part of a Sprint. Decide item by item whether design is needed; a design's conclusions still land through a Sprint; an Increment need not be code — the Definition of Done says what it is. This departs from the Scrum Guide: see Departures.
+2. **Sprints and designs side by side** — Treat Sprints and designs as peers under the product log: a Sprint, the Developer's, delivers an Increment; a design, the Designer's, delivers a prototype and conclusions. Open a design when an item needs design, when Sprint refinement hits a hard point, or for a blank page (`conventions/product-log.md`, convention 2); it is not part of a Sprint. Decide item by item whether design is needed; a design's conclusions still land through a Sprint; an Increment need not be code — the Definition of Done says what it is. This departs from the Scrum Guide: see Departures.
 3. **Three layers**
 
    | Layer | File | Commitment | Accountable | Facilitates |
@@ -56,7 +56,8 @@ flowchart TD
 
    The third layer is not a log and has no prescribed method; it relies on the skills of whoever does the work. Increments add up into the product; prototypes are thrown away when the design closes, and only what was learned flows back.
 4. **Folders** — `scrum/` holds all of the Scrum work: `ProductBacklog.md`; one folder for each Sprint or design in progress — `sprint-NN-<suffix>/` with its `SprintBacklog.md` and working files, `design-<suffix>/`, unnumbered, with its `DesignBacklog.md`, prototypes, and working files; and `documents/` (convention 5). This is the author's layout; use your project's own places if it has them.
-5. **Where files go** — A file that serves only one Sprint or design stays in its folder and is deleted at close; git keeps it. A file that serves the whole Scrum goes into `scrum/documents/`, and the logs reference it: design documents, background material, long content written for the product log, and the archives made at close — compressed sprint logs and compressed design logs. At each Review, glance at `scrum/documents/` and delete what is outdated. The project's own documentation, such as a user manual or API notes, is outside these conventions; keep it where the project keeps it, such as `docs/` at the root. Working material does not go into a log; what is truly key can go into the project's memory or instructions file, and a large important file goes into `scrum/documents/`.
+5. **Where files go** — A file that serves only one Sprint or design stays in its folder and is deleted at close; git keeps it. A file that serves the whole Scrum goes into `scrum/documents/`, and the logs reference it: design documents, background material, long content written for the product log, and the archives made at close — compressed sprint logs and compressed design logs. Keeping it fresh is part of the Review (`conventions/sprint-log.md`, convention 17). The project's own documentation, such as a user manual or API notes, is outside these conventions; keep it where the project keeps it, such as `docs/` at the root.
+18. **Working material** — Keep working material out of the logs; what is truly key can go into the project's memory or instructions file, and a large important file goes into `scrum/documents/`.
 6. **Names** — The terms used in all the conventions are defined here once:
    - the **product log** is the Product Backlog, kept in `ProductBacklog.md`; the **sprint log** is the Sprint Backlog, kept in `SprintBacklog.md`; the **design log** is kept in `DesignBacklog.md` — a file made from a template takes these names, whatever the template is called;
    - a **product backlog item (PBI)** is one row of the product log's item table;
@@ -78,12 +79,12 @@ flowchart TD
 8. **Only the Product Owner must be human** — The other roles may all be AI. This departs from the Scrum Guide Expansion Pack: see Departures.
 9. **Ask the Product Owner** — Whoever is unsure asks the Product Owner, unless the Product Owner has sent that kind of question elsewhere.
 10. **Product Owner as Developer** — When the Product Owner builds, they take part as a Developer, and the How is worked out with them.
-11. **Product Owner decides between stages** — At the end of each stage of a Sprint or a design, the Product Owner decides: they settle the result of the stage and decide whether to move on to the next one, unless the Product Owner has handed this to the Scrum Master. It is a decision, not a review or an acceptance: checking that the work was done right is the Scrum Master's job. It reaches the level of the stage, not each step inside it. A Sprint has five stages (`conventions/sprint-log.md`, convention 24) and a design has five (`../design-kernel/conventions/design-log.md`, convention 26).
+11. **Product Owner decides between stages** — At the end of each stage of a Sprint or a design, the Product Owner decides: they settle the result of the stage and decide whether to move on to the next one, unless the Product Owner has handed this to the Scrum Master. It is a decision, not a review or an acceptance: checking that the work was done right is the Scrum Master's job. It reaches the level of the stage, not each step inside it. Write the decision as the last line of the stage's chapter. A Sprint has five stages (`conventions/sprint-log.md`, convention 24) and a design has five (`../design-kernel/conventions/design-log.md`, convention 26).
 
 ### Sessions
 
 12. **One Scrum Master per project** — Each project has one session as its Scrum Master, leading its Developer, Designer, and Stakeholders. A session above several projects only summarizes; each project's facts stay in its own logs.
-13. **Who gets which work** — Review goes to the Scrum Master by default (`sprint-log.md`, convention 14). Long-running upkeep — the board, summaries, tracking — goes to a standing Stakeholder session with a working identity the project writes down. A small edit to one or two files the Scrum Master makes itself. Building goes to a new Developer session when a paragraph can brief it, or to a Developer that shares the Scrum Master's context when the work needs much of the discussion; such a Developer cannot review its own work.
+13. **Who gets which work** — Reviewing the work goes to the Scrum Master by default (`sprint-log.md`, convention 14). Long-running upkeep — the board, summaries, tracking — goes to a standing Stakeholder session with a working identity the project writes down. A small edit to one or two files the Scrum Master makes itself. Building goes to a new Developer session when a paragraph can brief it, or to a Developer that shares the Scrum Master's context when the work needs much of the discussion; such a Developer cannot review its own work.
 
 ### About these conventions
 
