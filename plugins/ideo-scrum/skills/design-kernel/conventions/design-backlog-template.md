@@ -9,30 +9,30 @@
 
 ## 1. Empathize
 
-<!-- Excerpts: empathize/define-the-challenge.md, empathize/start-at-the-end.md, empathize/ask-the-experts.md. IDEO mode: empathize. Ask the experts and research only when needed (convention 9); write what they change into the sections below and into the map. The chapter ends with the Product Owner's decision on its result (convention 28). -->
+<!-- Excerpts: empathize/define-the-challenge.md, empathize/start-at-the-end.md, empathize/ask-the-experts.md. IDEO mode: empathize. Start with the people concerned (convention 23); write the challenge, the design goal, and the design questions from what they told you; ask the experts and research only when needed (convention 9); write what they change into the sections below and into the map. The chapter ends with the Product Owner's decision on its result (convention 27). -->
 
-### 1.1 Challenge
-
-<!-- The big challenge, in a sentence or two. Why now: high stakes, not enough time, or just plain stuck. -->
-
-### 1.2 Design goal
-
-<!-- Optimistic: why are we doing this, and where do we want to be? The Product Owner decides. -->
-
-### 1.3 Design questions
-
-<!-- Pessimistic: how could this fail? Turn each fear and assumption into a question this design can answer. -->
-
-### 1.4 Findings
+### 1.1 Findings
 
 <!-- What the people concerned did and said, one row per finding: the finding, its source, and whether it is first-hand (what a person said or did) or second-hand (a record made for another purpose, or a role card's reading) (convention 23). -->
 
 | Finding | Source | First-hand or second-hand |
 | --- | --- | --- |
 
+### 1.2 Challenge
+
+<!-- The big challenge, in a sentence or two. Why now: high stakes, not enough time, or just plain stuck. -->
+
+### 1.3 Design goal
+
+<!-- Optimistic: why are we doing this, and where do we want to be? The Product Owner decides. -->
+
+### 1.4 Design questions
+
+<!-- Pessimistic: how could this fail? Turn each fear and assumption into a question this design can answer. -->
+
 ## 2. Define
 
-<!-- Excerpts: define/make-a-map.md, define/how-might-we.md. IDEO mode: define. The chapter ends with the Product Owner's decision on its result (convention 28). -->
+<!-- Excerpts: define/make-a-map.md, define/how-might-we.md. IDEO mode: define. The chapter ends with the Product Owner's decision on its result (convention 27). -->
 
 ### 2.1 Map
 
@@ -40,7 +40,7 @@
 
 ### 2.2 Point of View
 
-<!-- The user, what they need, and the insight, drawn from the findings in 1.4 (convention 24). -->
+<!-- The user, what they need, and the insight, drawn from the findings in 1.1 (convention 24). -->
 
 ### 2.3 How Might We
 
@@ -48,7 +48,7 @@
 
 ## 3. Ideate
 
-<!-- Excerpts: ideate/remix-and-improve.md, ideate/sketch.md, ideate/decide.md, ideate/rumble.md, ideate/storyboard.md. IDEO mode: ideate. The book's steps are one way to reach a solution, not the only one: use the ideo-kernel's Ideate methods as well (convention 7). The chapter ends with the Product Owner's decision on its result (convention 28). -->
+<!-- Excerpts: ideate/remix-and-improve.md, ideate/sketch.md, ideate/decide.md, ideate/rumble.md, ideate/storyboard.md. IDEO mode: ideate. The book's steps are one way to reach a solution, not the only one: use the ideo-kernel's Ideate methods as well (convention 7), and diverge before you converge (convention 25). The chapter ends with the Product Owner's decision on its result (convention 27). -->
 
 ### 3.1 Idea pool
 
@@ -64,7 +64,7 @@
 
 ## 4. Prototype
 
-<!-- Excerpts: prototype/fake-it.md, prototype/prototype.md. IDEO mode: prototype. The chapter ends with the Product Owner's decision on its result (convention 28). -->
+<!-- Excerpts: prototype/fake-it.md, prototype/prototype.md. IDEO mode: prototype. The chapter ends with the Product Owner's decision on its result (convention 27). -->
 
 ### 4.1 Parts
 
@@ -79,11 +79,11 @@
 
 ## 5. Test
 
-<!-- Excerpts: test/small-data.md, test/interview.md, test/learn.md. IDEO mode: test. The chapter ends with the Product Owner's decision: close, or go back (conventions 27 and 28). -->
+<!-- Excerpts: test/small-data.md, test/interview.md, test/learn.md. IDEO mode: test. The chapter ends with the Product Owner's decision: close, or go back to an earlier stage (convention 27). -->
 
 ### 5.1 Criteria
 
-<!-- Written before the test: for each design question in 1.3, what would count as a yes, a no, or a not yet, and what role cards cannot show (convention 26). -->
+<!-- Written before the test: for each design question in 1.4, what would count as a yes, a no, or a not yet, and what role cards cannot show (convention 26). -->
 
 ### 5.2 What showed up
 
@@ -91,4 +91,4 @@
 
 ### 5.3 Answers
 
-<!-- Answer each design question in 1.3 — yes, no, or not yet, with the evidence — and say where each conclusion flows back. -->
+<!-- Answer each design question in 1.4 — yes, no, or not yet, with the evidence — and say where each conclusion flows back. -->

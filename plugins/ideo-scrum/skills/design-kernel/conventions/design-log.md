@@ -11,12 +11,12 @@ flowchart TD
     C -- "PO decides" --> D["Ideate: diverge<br/>conventions 7, 11, 25"]
     D --> E["Ideate: converge<br/>conventions 12–15"]
     E -- "PO decides" --> F["Prototype<br/>convention 16"]
-    F -- "PO decides" --> G["Test<br/>conventions 17, 26–27"]
+    F -- "PO decides" --> G["Test<br/>conventions 17, 26"]
     G -- "PO decides" --> H["Closing<br/>conventions 18–19"]
-    G -. "or back to the stage that was wrong" .-> B
+    G -. "or back to an earlier stage" .-> B
 ```
 
-Conventions 5, 6, 8, 20, 21, 28, and 29 hold at every step; see Throughout, below. At each "PO decides" the Product Owner settles the result of the stage and decides whether to move on (conventions 27 and 28).
+Conventions 5, 6, 8, 20, 21, 27, and 28 hold at every step; see Throughout, below. At each "PO decides" the Product Owner settles the result of the stage and decides whether to move on (convention 27).
 
 ## Opening
 
@@ -25,7 +25,7 @@ Conventions 5, 6, 8, 20, 21, 28, and 29 hold at every step; see Throughout, belo
 <!-- -->
 
 1. **Hard point, not the whole item** — From a Sprint, take out only the hard point that needs design; the rest of the Sprint goes on.
-2. **Who** — Make the Designer accountable for the design, and the Scrum Master the one who facilitates and records; what the Product Owner decides is in `SKILL.md`, Use Protocol step 6. When one session plays both the Designer and the Scrum Master, write the same name in both fields of the header.
+2. **Who** — The Designer is accountable for the design, and the Scrum Master facilitates and records; what the Product Owner decides is listed in convention 5. When one session plays both the Designer and the Scrum Master, write the same name in both fields of the header.
 
 <!-- -->
 
@@ -37,15 +37,15 @@ Conventions 5, 6, 8, 20, 21, 28, and 29 hold at every step; see Throughout, belo
 
 ## Stages
 
-Conventions 9 to 17 cover only what differs from the book; conventions 23 to 27 add what the book leaves out; for everything else, follow the excerpts.
+Conventions 9 to 17 cover only what differs from the book; conventions 23 to 26 add what the book leaves out; for everything else, follow the excerpts.
 
 ### Empathize
 
-9. **Experts when needed** — Write the challenge, the design goal, and the design questions first; ask experts and do research only when these are still unclear. The experts are the Product Owner, in the conversation, and the role cards (`../scrum-kernel/overview.md`, convention 6), each played by a fresh subagent. Before asking experts, draft a rough map (`define/make-a-map.md`); the log keeps what changed, not each interview. After asking the experts or doing research, refine the challenge, the design goal, the design questions, and above all the map once more: fill the gaps and redraw the map.
+23. **Start from the people** — Start Empathize with the people concerned. When the Product Owner is the person concerned, ask first for concrete experiences — what happened, what they did, what they said — and only then ask for the Product Owner's call on what it means; otherwise start with users the Product Owner can bring. Documents and role cards come after. Give every finding its source, and say whether it is first-hand (what a person said or did) or second-hand (a record made for another purpose, or a role card's reading).
 
 <!-- -->
 
-23. **Start from the people** — Start Empathize with the people concerned — the Product Owner in the conversation, or users the Product Owner can bring — and only then documents and role cards. Give every finding its source, and say whether it is first-hand (what a person said or did) or second-hand (a record made for another purpose, or a role card's reading).
+9. **Experts when needed** — Once you have heard the people concerned (convention 23), write the challenge, the design goal, and the design questions; ask experts and do research only when these are still unclear. The experts are the Product Owner, in the conversation, and the role cards (`../scrum-kernel/overview.md`, convention 6), each played by a fresh subagent. Before asking experts, draft a rough map (`define/make-a-map.md`); the log keeps what changed, not each interview. After asking the experts or doing research, refine the challenge, the design goal, the design questions, and above all the map once more: fill the gaps and redraw the map.
 
 ### Define
 
@@ -87,7 +87,6 @@ Conventions 9 to 17 cover only what differs from the book; conventions 23 to 27 
 <!-- -->
 
 26. **Write the criteria before the test** — Before testing, write down what would count as a yes, a no, or a not yet for each design question, and what role cards cannot show: they are subagents reading a card, not real people.
-27. **The Product Owner decides after the test** — After the test, let the Product Owner decide whether to close the design or go back to the stage whose answer was wrong.
 
 ## Closing
 
@@ -96,7 +95,7 @@ Conventions 9 to 17 cover only what differs from the book; conventions 23 to 27 
 
 ## Throughout
 
-5. **Ask the PO** — Ask the Product Owner whenever you are unsure (`../scrum-kernel/overview.md`, convention 9), and in any case to: decide at the end of each stage (convention 28); set or change the design goal (convention 21); pick the How Might We questions that matter (convention 10); choose the solution and decide between combining and a rumble (conventions 13, 14); agree how real the prototype must be (convention 16); decide, after the test, whether to close or go back (convention 27); and decide that the design is done (convention 18).
+5. **Ask the PO** — Ask the Product Owner whenever you are unsure (`../scrum-kernel/overview.md`, convention 9), and in any case to: decide at the end of each stage, and after the test whether to close or go back (convention 27); set or change the design goal (convention 21); pick the How Might We questions that matter (convention 10); choose the solution and decide between combining and a rumble (conventions 13, 14); agree how real the prototype must be (convention 16); and decide that the design is done (convention 18).
 6. **Five chapters, not five days** — Write one chapter per stage — Empathize, Define, Ideate, Prototype, Test — not the book's Monday to Friday, and no notes section. Each chapter records what its stage produced, not the steps taken.
 
 <!-- -->
@@ -110,15 +109,15 @@ Conventions 9 to 17 cover only what differs from the book; conventions 23 to 27 
 
 <!-- -->
 
-28. **Gates between stages** — At the end of each stage, check the log against the gate below; then the Product Owner settles the result of the stage and decides whether to move on (`../scrum-kernel/overview.md`, *Product Owner decides between stages*). The Scrum Master checks that the work was done right; the Product Owner decides. Write the decision as the last line of the stage's chapter.
+27. **Gates between stages** — At the end of each stage, check the log against the gate below; then the Product Owner settles the result of the stage and decides whether to move on (`../scrum-kernel/overview.md`, *Product Owner decides between stages*). The Scrum Master checks that the work was done right; the Product Owner decides. Write the decision as the last line of the stage's chapter. After the Test, the decision is to close the design or to go back to the stage whose answer was wrong.
 
     | Stage | The log holds | The check |
     | --- | --- | --- |
-    | Empathize | the challenge, the design goal, the design questions, and the findings, each with its source | The findings come from the people concerned — what they did, what they said, where the two differ — not from a pile of facts |
+    | Empathize | the findings, each with its source, and the challenge, the design goal, and the design questions | The findings come from the people concerned — what they did, what they said, where the two differ — not from a pile of facts |
     | Define | the map, the Point of View, and the How Might We questions the Product Owner picked | The problem is framed as user, need, and insight, not only drawn as a flow |
     | Ideate | the idea pool, the chosen solution, and the storyboard if one was written | The ideas diverged before they converged, and the pool holds more than one approach |
     | Prototype | what was built, each part tied to the design question it tests, and what the trial run found | It is rough, quick, and thrown away after: built to learn, not to deliver |
     | Test | the criteria written beforehand, who tested, what showed up, and an answer to each design question | The answers come from real reactions, and "we were wrong" counts as an answer |
 
     At each gate ask: would someone who never learned design have produced the same thing? If so, the stage missed its focus.
-29. **A small design is still a design** — When a design is small — about one session of work — still keep the log, shrink each stage to a line or two, and still have the Product Owner decide at the end of each stage.
+28. **A small design is still a design** — When a design is small — about one session of work — still keep the log, shrink each stage to a line or two, and still have the Product Owner decide at the end of each stage. Skip no stage, least of all Empathize and divergence (convention 25).
