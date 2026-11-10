@@ -25,7 +25,7 @@ Each stage maps to an IDEO mode. The mode's guide and its methods live in the id
 
 ## Conventions
 
-How a solo + AI team runs a design — where the design log lives, who decides, how each stage works with subagents and role cards, and how a design closes — is in `conventions/design-log.md`. The design log template is `conventions/design-backlog-template.md`. These are working conventions, not source text: follow what fits, override what doesn't, and note why.
+How a solo + AI team runs a design — where the design log lives, who decides, how each stage works with subagents and role cards, and how a design ends — is in `conventions/design-log.md`. The design log template is `conventions/design-backlog-template.md`. These are working conventions, not source text: follow what fits, override what doesn't, and note why.
 
 ## Use Protocol
 
@@ -35,4 +35,4 @@ How a solo + AI team runs a design — where the design log lives, who decides, 
 4. Read the stage's source excerpts before running it, and treat them as source text. Where an excerpt describes the book's room — whiteboards, sticky notes, dot voting, a team at a table — the conventions say how a solo + AI team does that step, and the conventions apply.
 5. Use the IDEO methods in every stage — first from the mode the stage maps to, but from any mode if it helps — following the ideo-kernel skill's Use Protocol.
 6. The Product Owner decides at the end of each stage (`../scrum-kernel/overview.md`, *Product Owner decides between stages*), and on the rest of what convention 20 lists.
-7. When the design questions are answered, the conclusions flow back to the product log and to the Sprint that asked for the design (scrum-kernel skill); close the design as in conventions 18–19.
+7. When the design questions are answered, the conclusions flow back to the product log and to the Sprint that asked for the design (scrum-kernel skill); end the design as in convention 18.

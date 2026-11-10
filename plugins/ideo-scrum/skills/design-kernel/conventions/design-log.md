@@ -12,11 +12,11 @@ flowchart TD
     D --> E["Ideate: converge<br/>conventions 11–14"]
     E -- "PO decides" --> F["Prototype<br/>convention 15"]
     F -- "PO decides" --> G["Test<br/>conventions 16–17"]
-    G -- "PO decides" --> H["Closing<br/>conventions 18–19"]
+    G -- "PO decides" --> H["Ending<br/>convention 18"]
     G -. "or back to the stage whose answer was wrong" .-> B
 ```
 
-Conventions 20–26 hold at every step; see Throughout, below. At each "PO decides" the Product Owner decides, as convention 25 says.
+Conventions 19–26 hold at every step; see Throughout, below. At each "PO decides" the Product Owner decides, as convention 25 says.
 
 ## Opening
 
@@ -62,19 +62,19 @@ The conventions under Stages cover only what differs from the book or adds what 
 16. **Role-card test** — Test with role cards, each a fresh subagent given only its card, the prototype, and the tasks; the Product Owner tests too. The Designer runs the Five-Act Interview (`test/interview.md`); a grid of reactions is working material; chapter 5 keeps who tested, what showed up, and the answer to each design question. The book tests five customers; here, test every role card the design touches, and add runs while the patterns are unclear.
 17. **Write the criteria before the test** — Before testing, write down in chapter 5 what would count as a yes, a no, or a not yet for each design question, and what role cards cannot show: they are subagents reading a card, not real people.
 
-## Closing
+## Ending
 
-18. **Close as a Review** — Close the design when its questions are answered or the Product Owner stops it. Compress the log to its key decisions, rename it `design-<suffix>.md`, and move it to `scrum/documents/`; it keeps the challenge and the design questions (chapter 1), the chosen solution (chapter 3), the commit that holds the prototype (chapter 4), and each question's test conclusion and where it flowed back (chapter 5). Write the conclusions into the product log as `../scrum-kernel/conventions/product-log.md`, convention 2, says; when the design began from a blank page, split the steps of the map into items, and let the Product Owner order which come first. Delete the prototypes and other files; git keeps them. Handle the design's branch as `../scrum-kernel/conventions/sprint-log.md`, convention 19, says: merge it, then delete it. Refresh the product log.
-19. **Retro as in a Sprint** — Write no Retro chapter; write the lessons as in `../scrum-kernel/conventions/sprint-log.md`, convention 18.
+18. **When the design ends** — End the design when its questions are answered or the Product Owner stops it. Write the conclusions into the product log as `../scrum-kernel/conventions/product-log.md`, convention 2, says, and pass them on to the Sprint that asked for the design; when the design began from a blank page, split the steps of the map into items, and let the Product Owner order which come first. Delete the prototypes and the other files in the design folder, but not the log; git keeps them. Handle the design's branch as `../scrum-kernel/conventions/sprint-log.md`, convention 19, says: merge it, then delete it. A design has no Review or Retro of its own: the Review of the Sprint it served archives the design log, and the lessons from the design go into that Sprint's Retro.
 
 ## Throughout
 
-20. **Ask the PO** — Ask the Product Owner whenever you are unsure (`../scrum-kernel/overview.md`, convention 10), and in any case to: decide at the end of each stage, and after the test whether to close or go back (convention 25); set or change the design goal (convention 24); pick the How Might We questions that matter (convention 8); choose the solution and decide between combining and a rumble (conventions 12–13); agree how real the prototype must be (convention 15); and decide that the design is done (convention 18).
+19. **IDEO in every stage** — Run the design sprint as the IDEO five-stage method: in every stage, take the methodology from the IDEO mode the stage maps to, as `SKILL.md` requires.
+20. **Ask the PO** — Ask the Product Owner whenever you are unsure (`../scrum-kernel/overview.md`, convention 10), and in any case to: decide at the end of each stage, and after the test whether to end the design or go back (convention 25); set or change the design goal (convention 24); pick the How Might We questions that matter (convention 8); choose the solution and decide between combining and a rumble (conventions 12–13); agree how real the prototype must be (convention 15); and decide that the design ends (convention 18).
 21. **Five chapters, not five days** — Write one chapter per stage — Empathize, Define, Ideate, Prototype, Test — not the book's Monday to Friday, and no notes section. Each chapter records what its stage produced, not the steps taken.
 22. **Renamed terms** — See the first paragraph of `SKILL.md`.
 23. **Resume from the header** — Keep the header's Now line current: the stage, and the next step. A session that picks up the design reads it first. Before a session ends or its context is shortened, write the half-finished work into the chapter it belongs to, update the Now line, and commit.
 24. **Goal fixed, plan flexible** — Sharpen the design goal during Empathize; once it is set, only the Product Owner changes it. The questions, the map, and the solution may change with what the work shows; write what changed and why in the chapter it belongs to (`../scrum-kernel/overview.md`, convention 18).
-25. **Gates between stages** — At the end of each stage, check the log against the gate below; then the Product Owner decides (`../scrum-kernel/overview.md`, *Product Owner decides between stages*). After the Test, the decision is to close the design or to go back to the stage whose answer was wrong.
+25. **Gates between stages** — At the end of each stage, check the log against the gate below; then the Product Owner decides (`../scrum-kernel/overview.md`, *Product Owner decides between stages*). After the Test, the decision is to end the design or to go back to the stage whose answer was wrong.
 
     | Stage | The log holds | The check |
     | --- | --- | --- |

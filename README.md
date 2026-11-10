@@ -118,7 +118,7 @@ $stakeholder    # Stakeholder
 |---|---|
 | `plugins/ideo-scrum/skills/design-kernel/SKILL.md` | Design Kernel 入口（设计冲刺按 IDEO 五阶段组织：每个阶段对应的 IDEO 模式、原书摘录、Use Protocol） |
 | `plugins/ideo-scrum/skills/design-kernel/` 下 `empathize/`、`define/`、`ideate/`、`prototype/`、`test/` | 设计冲刺原书摘录（Knapp，原文只删不改，例图改画成 Mermaid 或文字）：共情 define-the-challenge / start-at-the-end / ask-the-experts；定义 make-a-map / how-might-we / pick-a-target；构思 remix-and-improve / sketch / decide / rumble / storyboard；原型 fake-it / prototype；测试 small-data / interview / learn |
-| `plugins/ideo-scrum/skills/design-kernel/conventions/` | 设计日志约定 v1（design-log：设计放哪、谁定、各阶段怎么用子代理与角色卡、收官）与设计日志模板（design-backlog-template，五章） |
+| `plugins/ideo-scrum/skills/design-kernel/conventions/` | 设计日志约定 v1（design-log：设计放哪、谁定、各阶段怎么用子代理与角色卡、设计结束时的处理）与设计日志模板（design-backlog-template，五章） |
 
 ### ideo-kernel skill
 
