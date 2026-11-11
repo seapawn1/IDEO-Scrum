@@ -1,7 +1,7 @@
 # Design Backlog — feedback-loop
 
 > Opened 2026-11-11 | From: PBI-55（PO 2026-11-11 口述：用插件时冒出很多想法，很快就忘掉；想要一个自我反馈机制，产品才能越来越适合自己） | Branch: design-feedback-loop（从 main 开） | Product Owner: SeaPawn | Designer: IDEO # [master]-[main]-[研究反馈机制]（主对话，兼 Scrum Master；PO 2026-11-11 定）；辅助：IDEO # [designer]-[main]-[辅助设计]（Stakeholder 身份：落盘、发散、原型、测试） | Scrum Master: IDEO # [master]-[main]-[研究反馈机制]
-> Now: Test — 第二轮：原型第二版，33 次整轮重跑
+> Now: Test — 问题 6 两轮都是「不是」，等 PO 定：结束设计照装，还是回到构思
 > Ends when the design questions are answered or the Product Owner stops the design (convention 18 in `design-log.md`); the first Sprint Review after that archives this file (convention 17 in `sprint-log.md`, in the scrum-kernel skill's `conventions/` folder).
 > Methods: 各阶段的原文见 design-kernel skill；每个阶段同时用 ideo-kernel 的 IDEO 模式与方法（design-kernel `SKILL.md` 的要求）。
 > This log records what each stage produced, not every step taken to get there (convention 21).
@@ -124,3 +124,16 @@ Master 2026-11-11（PO 说原型和测试交给辅助会话自动做，中间不
 | 6. 产品改之前能照着做吗 | C10 1/3：只有第 1 次照「设计地图要粗」画了 6 个框、一个环，并说明了分支为什么不画；另两次画了 17、18 个框，各 4 个判断分支，也没提到这一行 | 不是 |
 
 Master 2026-11-11（PO 全部放权）：问题 2、6 回答「不是」，回到原型改第二版：回执只许一行；Feedback 行写明是马上生效的规矩，用到哪个产品或它的方法时都照做，并点名照了哪一行（PO 要的就是「用着验证」，点名了他才看得见）；把安装时要加的细化（标 PBI 号、产品改完才删）也放进原型，让测的就是要装的。判定标准不改，33 次整轮重跑。
+
+### 第二轮（2026-11-12，原型第二版，Haiku，33 次）
+
+| 设计问题 | 结果 | 回答 |
+| --- | --- | --- |
+| 1. 找得回来吗 | 21/21：C3 进待认领；C9 没进 Feedback（一次写成普通记忆） | 是 |
+| 2. 一句话就完吗 | 21 次都只有回执一行，0 次提问；C7 3/3 不写 | 是 |
+| 3. 靠得住、看得懂吗 | 五项都齐；Feedback 行都以产品名开头；C11 3/3 不重复记 | 是 |
+| 4. 更新时找全吗 | C6 3/3：先读再按主题列，不列 ClaudeDream，不写产品日志。C6.1 对待认领那条只给了标题、日期和场景，说它不属于 IDEO-Scrum、没列进清单；算列出：PO 看得见它，还能认领（Master 判） | 是 |
+| 5. 换产品能用吗 | C3、C8 6/6 | 是 |
+| 6. 产品改之前能照着做吗 | C10 0/3：三张地图 10、7、9 个框，各有 2、1、2 处判断分支；第二、三次点名了「照 Feedback：设计地图要粗」。比第一轮小得多（第一轮没做到的两次是 17、18 个框，各 4 处分支），但没收到「五六个框、没有分支」 | 不是 |
+
+Master 2026-11-12：问题 6 两轮都是「不是」。第二版让这一行被查到、被点名，地图也小了很多，但没有完全照做；C10 的提示本身列了一串分支，模型在用户的话和这一行之间折中（Master 的看法）。选全局记忆的理由就是点能马上用上，这是方向上的事，停下等 PO 定。
