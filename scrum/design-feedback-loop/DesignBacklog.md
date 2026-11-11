@@ -1,7 +1,7 @@
 # Design Backlog — feedback-loop
 
 > Opened 2026-11-11 | From: PBI-55（PO 2026-11-11 口述：用插件时冒出很多想法，很快就忘掉；想要一个自我反馈机制，产品才能越来越适合自己） | Branch: design-feedback-loop（从 main 开） | Product Owner: SeaPawn | Designer: IDEO # [master]-[main]-[研究反馈机制]（主对话，兼 Scrum Master；PO 2026-11-11 定）；辅助：IDEO # [designer]-[main]-[辅助设计]（Stakeholder 身份：落盘、发散、原型、测试） | Scrum Master: IDEO # [master]-[main]-[研究反馈机制]
-> Now: Prototype — 辅助会话照 plan 搭原型、建测试环境
+> Now: Test — 判定标准已写，辅助会话跑 33 次测试
 > Ends when the design questions are answered or the Product Owner stops the design (convention 18 in `design-log.md`); the first Sprint Review after that archives this file (convention 17 in `sprint-log.md`, in the scrum-kernel skill's `conventions/` folder).
 > Methods: 各阶段的原文见 design-kernel skill；每个阶段同时用 ideo-kernel 的 IDEO 模式与方法（design-kernel `SKILL.md` 的要求）。
 > This log records what each stage produced, not every step taken to get there (convention 21).
@@ -85,5 +85,12 @@ PO 2026-11-11：方案定为 3.1——反馈进全局记忆（MEMORY.md 加 Feed
 
 | 部件 | 检验哪个设计问题 | 在哪 |
 | --- | --- | --- |
+| 「Feedback」一节的草稿，含产品表 | 1、2、3、5、6 | 设计文件夹 `prototype/feedback-section.md` |
+| 测试用的全局记忆（Feedback 一节和五个种子） | 4、6 | 测试时建在系统临时目录；说明见 `prototype/sandbox.md` |
+| 十一个测试场景 | 1–6 | `prototype/cases.md` |
+
+原型只在测试里用：草稿和测试用的全局记忆通过临时项目的 CLAUDE.md 加载，路径换成系统临时目录；真的 SEAPAWN.md 和 S:\SeaPawn-Memory 不动（design-log 第 15 条）。
+
+Master 2026-11-11（PO 说原型和测试交给辅助会话自动做，中间不参与）：原型定；进 Test。
 
 ## 5. 测试（Test）
