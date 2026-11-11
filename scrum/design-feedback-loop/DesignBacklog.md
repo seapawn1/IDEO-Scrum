@@ -1,7 +1,7 @@
 # Design Backlog — feedback-loop
 
 > Opened 2026-11-11 | From: PBI-55（PO 2026-11-11 口述：用插件时冒出很多想法，很快就忘掉；想要一个自我反馈机制，产品才能越来越适合自己） | Branch: design-feedback-loop（从 main 开） | Product Owner: SeaPawn | Designer: IDEO # [master]-[main]-[研究反馈机制]（主对话，兼 Scrum Master；PO 2026-11-11 定）；辅助：IDEO # [designer]-[main]-[辅助设计]（Stakeholder 身份：落盘、发散、原型、测试） | Scrum Master: IDEO # [master]-[main]-[研究反馈机制]
-> Now: Test — 问题 6 两轮都是「不是」，等 PO 定：结束设计照装，还是回到构思
+> Now: Test — 第三轮：原型第三版，33 次整轮重跑，加干净的 P2 对照
 > Ends when the design questions are answered or the Product Owner stops the design (convention 18 in `design-log.md`); the first Sprint Review after that archives this file (convention 17 in `sprint-log.md`, in the scrum-kernel skill's `conventions/` folder).
 > Methods: 各阶段的原文见 design-kernel skill；每个阶段同时用 ideo-kernel 的 IDEO 模式与方法（design-kernel `SKILL.md` 的要求）。
 > This log records what each stage produced, not every step taken to get there (convention 21).
@@ -93,6 +93,8 @@ PO 2026-11-11：方案定为 3.1——反馈进全局记忆（MEMORY.md 加 Feed
 
 第二版（2026-11-11，第一轮测试后）：回执只许一行，不带路径和说明；Feedback 行是马上生效的规矩，用到那个产品或它的方法时都照做，并点名照了哪一行；点进产品日志后标 PBI 号，产品改完才删。
 
+第三版（2026-11-12，第二轮之后）：「Use them now」的例子换成不指名的占位。第二版拿「设计地图要粗」当例子，等于在机制说明里把这个点又写了一遍；要装的说明里不能写死哪一个点（辅助会话在旁测 P2 里发现）。
+
 Master 2026-11-11（PO 说原型和测试交给辅助会话自动做，中间不参与）：原型定；进 Test。
 
 ## 5. 测试（Test）
@@ -137,3 +139,5 @@ Master 2026-11-11（PO 全部放权）：问题 2、6 回答「不是」，回�
 | 6. 产品改之前能照着做吗 | C10 0/3：三张地图 10、7、9 个框，各有 2、1、2 处判断分支；第二、三次点名了「照 Feedback：设计地图要粗」。比第一轮小得多（第一轮没做到的两次是 17、18 个框，各 4 处分支），但没收到「五六个框、没有分支」 | 不是 |
 
 Master 2026-11-12：问题 6 两轮都是「不是」。第二版让这一行被查到、被点名，地图也小了很多，但没有完全照做；C10 的提示本身列了一串分支，模型在用户的话和这一行之间折中（Master 的看法）。选全局记忆的理由就是点能马上用上，这是方向上的事，停下等 PO 定。
+
+Master 2026-11-12：第二轮 C10 的点名和旁测 P2 的对照，都被原型第二版里那个例子带了，不能算记忆里那一行自己的作用（例子是 Master 写的，辅助会话发现）；第二轮各题的回答不改。原型改第三版，33 次整轮重跑，再做一次干净的 P2 对照。
