@@ -62,6 +62,10 @@ Go-ahead: 2026-11-12，Master（PO 全部放权）；范围：改 `S:\SeaPawn-Me
 - 审阅（全新子代理，Haiku）：逐条核对；必改 1 项——F7、F8 没有 PO 原话，与 1.2 的 DoD「迁进去的点引 PO 的原话」冲突。处理：两行标题后加「（设计中发现）」，SeaPawn-Memory 再提交 e4bb8d1；DoD 的措辞（或这两条要不要移作普通全局记忆）报 Master 定。
 - 审阅必改的处理（Master 2026-11-12 定，替换上一条的临时处理）：Feedback 只放 PO 自己的点——机制本来就是「用户说记一下」；F7、F8 是 Master 在设计里的发现，移到产品日志 PBI-54 的 ⑦⑧，SeaPawn-Memory 删掉这两个文件和两行（提交 11757c1），e4bb8d1 加的「（设计中发现）」随之没了。DoD 不改；验收 ② 从 8 行改为 6 行（sprint-log 的 Goal fixed, plan flexible）。F3 文件里提到 F7、F8 的半句改成泛指；MEMORY.md、SEAPAWN.md 末尾补了换行（审阅建议 5）。其余建议不改：待认领目录要用时由机制建；name 和五项标签的写法不统一，不影响用。
 - F3–F6 的「原话」是 Master 照 PO 在设计会话里的语音整理的：意思不变，去掉了口头语和识别错误。
+- PO 检查（2026-11-12）：PO 看过装好的内容，亲手改了一版——产品表先只写 IDEO-Scrum；全写英文（「待认领」改 `unsorted`，回执改 `Noted · <product>`，去掉中文例子）；整节压缩；「Global memory」一条加半句，写明全局记忆照 auto memory 的做法写（SeaPawn-Memory 提交 ebde142）。PO 说不再测试，所以 DoD「与测过的原型第三版逐字一致」由 PO 改掉：改后的文字没测过（回执、`unsorted` 这几处是新的）。
+- 收官前按 Master 定（PO：「其他的按照你的定」）：6 个反馈文件除 PO 原话外改成英文；PO 说「看晚了，原型出来就该看」，补进「设计分三环」那条（提交 4bc3138）。
+
+PO 2026-11-12：增量可以进测试——PO 看过后改了一版，不再另测。
 
 ## 5. Test
 
@@ -75,3 +79,7 @@ Go-ahead: 2026-11-12，Master（PO 全部放权）；范围：改 `S:\SeaPawn-Me
 | F6 | 记下了 · IDEO-Scrum · 可改 | `feedback/IDEO-Scrum/2026-11-12-design-single-designer.md` | 有 | 齐 |
 
 审阅（验收 ④）：第 1–4 条对；第 5 条的例外是 F7、F8 没有 PO 原话（记在必改 1）。必改 1 项已按上面的办法处理；DoD 的措辞或这两条的归属要 Master（和 PO）定。其余 5 条建议没有改：`待认领/` 目录未建；`name` 前缀不统一；五项标签写法不统一；Explore/Plan 的「不加载 CLAUDE.md」可补半句说明；文件不以换行结尾。
+
+- PO 的端到端检查（2026-11-12）：PO 看了装好的 SEAPAWN.md 与全局记忆的 Feedback 一节，改了一版（见第 4 章），说不再测试。验收 ①（与第三版逐字一致）由 PO 改掉；②③④ 过。
+
+PO 2026-11-12：收官，推送 main、tag 和 SeaPawn-Memory；Sprint Goal 照 Master 代拟的认，PBI-55 算在现在的 Product Goal 里（PO：「其他的按照你的定」）。
