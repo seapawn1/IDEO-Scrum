@@ -60,6 +60,8 @@ Go-ahead: 2026-11-12，Master（PO 全部放权）；范围：改 `S:\SeaPawn-Me
 - 冒烟（用装好的办法交 F3–F6）：`claude -p --model haiku`，禁 Bash 和 PowerShell，守卫只许写 `memory/GlobalMemory/`；四次各 1 次，全部落进 `feedback/IDEO-Scrum/` 并各加一行；回执都只有一行；五项都齐。没有手工改。原始输出在 `S:\IDEO-Scrum-Archives\sprint-15-feedback-loop\`。
 - F5 那一行末尾加 ` → PBI-56`。
 - 审阅（全新子代理，Haiku）：逐条核对；必改 1 项——F7、F8 没有 PO 原话，与 1.2 的 DoD「迁进去的点引 PO 的原话」冲突。处理：两行标题后加「（设计中发现）」，SeaPawn-Memory 再提交 e4bb8d1；DoD 的措辞（或这两条要不要移作普通全局记忆）报 Master 定。
+- 审阅必改的处理（Master 2026-11-12 定，替换上一条的临时处理）：Feedback 只放 PO 自己的点——机制本来就是「用户说记一下」；F7、F8 是 Master 在设计里的发现，移到产品日志 PBI-54 的 ⑦⑧，SeaPawn-Memory 删掉这两个文件和两行（提交 11757c1），e4bb8d1 加的「（设计中发现）」随之没了。DoD 不改；验收 ② 从 8 行改为 6 行（sprint-log 的 Goal fixed, plan flexible）。F3 文件里提到 F7、F8 的半句改成泛指；MEMORY.md、SEAPAWN.md 末尾补了换行（审阅建议 5）。其余建议不改：待认领目录要用时由机制建；name 和五项标签的写法不统一，不影响用。
+- F3–F6 的「原话」是 Master 照 PO 在设计会话里的语音整理的：意思不变，去掉了口头语和识别错误。
 
 ## 5. Test
 
@@ -73,5 +75,3 @@ Go-ahead: 2026-11-12，Master（PO 全部放权）；范围：改 `S:\SeaPawn-Me
 | F6 | 记下了 · IDEO-Scrum · 可改 | `feedback/IDEO-Scrum/2026-11-12-design-single-designer.md` | 有 | 齐 |
 
 审阅（验收 ④）：第 1–4 条对；第 5 条的例外是 F7、F8 没有 PO 原话（记在必改 1）。必改 1 项已按上面的办法处理；DoD 的措辞或这两条的归属要 Master（和 PO）定。其余 5 条建议没有改：`待认领/` 目录未建；`name` 前缀不统一；五项标签写法不统一；Explore/Plan 的「不加载 CLAUDE.md」可补半句说明；文件不以换行结尾。
-
-（本章的决定行留空，等 Master 核对后补。）
