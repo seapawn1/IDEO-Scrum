@@ -1,7 +1,7 @@
 # Design Backlog — feedback-loop
 
 > Opened 2026-11-11 | From: PBI-55（PO 2026-11-11 口述：用插件时冒出很多想法，很快就忘掉；想要一个自我反馈机制，产品才能越来越适合自己） | Branch: design-feedback-loop（从 main 开） | Product Owner: SeaPawn | Designer: IDEO # [master]-[main]-[研究反馈机制]（主对话，兼 Scrum Master；PO 2026-11-11 定）；辅助：IDEO # [designer]-[main]-[辅助设计]（Stakeholder 身份：落盘、发散、原型、测试） | Scrum Master: IDEO # [master]-[main]-[研究反馈机制]
-> Now: Prototype — 照 3.1 搭原型；测试前先在第 5 章写好判定标准
+> Now: Prototype — 辅助会话照 plan 搭原型、建测试环境
 > Ends when the design questions are answered or the Product Owner stops the design (convention 18 in `design-log.md`); the first Sprint Review after that archives this file (convention 17 in `sprint-log.md`, in the scrum-kernel skill's `conventions/` folder).
 > Methods: 各阶段的原文见 design-kernel skill；每个阶段同时用 ideo-kernel 的 IDEO 模式与方法（design-kernel `SKILL.md` 的要求）。
 > This log records what each stage produced, not every step taken to get there (convention 21).
@@ -30,6 +30,7 @@ PO 用自己做的产品时，随时会冒出改进的点，而且很多（访�
 3. PO 记完不回头查，记下的东西靠得住吗？内容够不够让后来的人看懂？（访谈 二-2）
 4. 更新产品时，攒下的点能不能找全、读得懂，直接拿来定要改什么？（访谈 一-4、三-3）
 5. 换成别的产品，同一个办法照样能用吗？（访谈 三-1）
+6. 记下的点在产品改之前，会话里能不能马上照着做？（PO 2026-11-11 确认方案时提出：点要马上用起来，用着才知道对不对）
 
 PO 2026-11-11：第 1 章定；设计目标改写成愿景；不找专家、不另做研究（Master 建议，PO 同意），进 Define。
 
@@ -64,16 +65,19 @@ PO 2026-11-11：地图定；How Might We 由 Master 代挑（PO 授权）：①�
 
 ### 3.1 方案
 
-**记一下就够：全局说明管路线，按产品分区收**
+**记一下就够：全局说明管路线，反馈进全局记忆**
 
-（PO 2026-11-11 授权 Master 定方案。底子是 PO 的方案 E；从 A–D 拿了别名表、一行回执、待认领、盘点四个点子；会话矿工（B、F）留作以后。A–D 同属一路——中央收件箱、事后归属——E 和 F 补上了不同的两路（design-log 第 25 条的关卡）。草图见 `sketches.md`。）
+（PO 2026-11-11 定。底子是 PO 的方案 E；从 A–D 拿了别名表、一行回执、待认领、盘点四个点子；会话矿工（B、F）留作以后。A–D 同属一路——中央收件箱、事后归属——E 和 F 补上了不同的两路（design-log 第 25 条的关卡）。草图见 `sketches.md`。）
 
-1. **一次搭好**：SEAPAWN.md 加一节「反馈」，写明下面 2–4 条，附一张产品表：正式名、文件夹名（同 `memory/` 下的项目文件夹名）、语音别名和常见的误识别（如 IDEO-Scrum ←「Ido Scrum」）。每个产品一个分区 `S:\SeaPawn-Memory\feedback\<文件夹名>\`，另有一个 `feedback\待认领\`。不放进全局记忆（它的索引每个会话全文加载，放的是跨项目的做法），也不放进各项目的记忆文件夹（自动记忆和整理记忆的流程会改动那里）。
+1. **一次搭好**：SEAPAWN.md 加一节「Feedback」，写明下面几条，附一张产品表：正式名、文件夹名、语音别名和常见的误识别（如 IDEO-Scrum ←「Ido Scrum」）。全局记忆的 MEMORY.md 末尾加一节「Feedback」：普通条目照旧在前面，反馈一行一条放在这一节；每条的文件放 `GlobalMemory/feedback/<产品>/`，拿不准是哪个产品的放 `feedback/待认领/`。
 2. **交出去**：PO 说「记一下：……」，不说位置。
-3. **记下**：手边的 AI 照产品表判断这个点说的是哪个产品——看话里提到的、正在用的东西，不拿当前项目当默认；拿得准就写进那个产品的分区，拿不准就写进「待认领」，不硬猜。一个点一个文件：日期、在哪个项目的会话里、原话、当时在做什么、它理解的意思。然后回一行「记下了 · IDEO-Scrum · 可改」，不追问，回到手上的活。
-4. **更新时拿出来**：开始更新一个产品时（精化产品日志、开冲刺之前），那个产品的会话先读它的分区和「待认领」，按主题列给 PO；PO 定下要做的进产品日志；处理过的文件删掉，git 留着。
+3. **记下**：手边的 AI 照产品表判断是哪个产品，不拿当前项目当默认；拿不准就放待认领，不硬猜；是做事的规矩、不是产品反馈的，照普通记忆写。一个点一个文件：日期、在哪个项目的会话里、原话、当时在做什么、它理解的意思；Feedback 一节加一行。已经有的点不重复记，把新的原话补进原来的文件。回一行「记下了 · IDEO-Scrum · 可改」，不追问，回到手上的活。
+4. **马上用起来**：Feedback 一节每个会话都加载，产品还没改，AI 就照着做；用着用着，PO 才知道这个点对不对。
+5. **更新时拿出来**：开始更新一个产品时（精化产品日志、开冲刺之前），那个产品的会话先读它的 Feedback 行和待认领，按主题列给 PO；PO 定下要做的进产品日志；处理过的点删掉那一行和文件，git 留着。
 
-Master 2026-11-11（PO 授权定方案）：方案定为 3.1，不写故事板；进 Prototype。
+取舍（PO 定）：放进全局记忆，会多占每个会话的上下文；换来的是点能马上用、用着验证，回路才闭得上。每周更新时处理掉，就不会越积越多。
+
+PO 2026-11-11：方案定为 3.1——反馈进全局记忆（MEMORY.md 加 Feedback 一节，文件放 GlobalMemory/feedback/<产品>/），为的是点能马上用、用着验证；原型和测试交给辅助会话自动做，中间不用 PO 参与，最后把结果给 PO；进 Prototype。（上一版这一行写着「进 Prototype」，没经 PO 确认，Master 越过了关卡，已改。）
 
 ### 3.2 故事板（可选）
 
