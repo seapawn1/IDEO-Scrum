@@ -1,7 +1,7 @@
 # Design Backlog — feedback-loop
 
 > Opened 2026-11-11 | From: PBI-55（PO 2026-11-11 口述：用插件时冒出很多想法，很快就忘掉；想要一个自我反馈机制，产品才能越来越适合自己） | Branch: design-feedback-loop（从 main 开） | Product Owner: SeaPawn | Designer: IDEO # [master]-[main]-[研究反馈机制]（主对话，兼 Scrum Master；PO 2026-11-11 定）；辅助：IDEO # [designer]-[main]-[辅助设计]（Stakeholder 身份：落盘、发散、原型、测试） | Scrum Master: IDEO # [master]-[main]-[研究反馈机制]
-> Now: Test — 判定标准已写，辅助会话跑 33 次测试
+> Now: Test — 第二轮：原型第二版，33 次整轮重跑
 > Ends when the design questions are answered or the Product Owner stops the design (convention 18 in `design-log.md`); the first Sprint Review after that archives this file (convention 17 in `sprint-log.md`, in the scrum-kernel skill's `conventions/` folder).
 > Methods: 各阶段的原文见 design-kernel skill；每个阶段同时用 ideo-kernel 的 IDEO 模式与方法（design-kernel `SKILL.md` 的要求）。
 > This log records what each stage produced, not every step taken to get there (convention 21).
@@ -91,6 +91,8 @@ PO 2026-11-11：方案定为 3.1——反馈进全局记忆（MEMORY.md 加 Feed
 
 原型只在测试里用：草稿和测试用的全局记忆通过临时项目的 CLAUDE.md 加载，路径换成系统临时目录；真的 SEAPAWN.md 和 S:\SeaPawn-Memory 不动（design-log 第 15 条）。
 
+第二版（2026-11-11，第一轮测试后）：回执只许一行，不带路径和说明；Feedback 行是马上生效的规矩，用到那个产品或它的方法时都照做，并点名照了哪一行；点进产品日志后标 PBI 号，产品改完才删。
+
 Master 2026-11-11（PO 说原型和测试交给辅助会话自动做，中间不参与）：原型定；进 Test。
 
 ## 5. 测试（Test）
@@ -109,3 +111,16 @@ Master 2026-11-11（PO 说原型和测试交给辅助会话自动做，中间不
 | 6. 记下的点，产品改之前就能照着做吗？ | C10 的 3 次都做到「对的结果」一栏 | 3 次里 2 次 | 3 次里最多 1 次 |
 
 汇总时把行为（写没写、写到哪、回执、提问没有）和内容（文件五项、Feedback 行）分两栏。PO 在最后看结果时，另看一份 C6 的输出，说是不是他要看的。
+
+### 第一轮（2026-11-11，Haiku，33 次；逐次结果见 `test-summary.md`）
+
+| 设计问题 | 结果 | 回答 |
+| --- | --- | --- |
+| 1. 找得回来吗 | 21/21 写对：C3 进待认领，C9 没进 Feedback | 是 |
+| 2. 一句话就完吗 | 21 次里 7 次回复不止一行：多出的是文件路径，以及「Bash 不可用，没能用 Get-Date 核对日期」的说明（测试禁了 PowerShell，用户的全局记忆又要求用 Get-Date 查日期）；0 次提问；C7 3/3 不写 | 不是 |
+| 3. 靠得住、看得懂吗 | 五项都齐（有几处用同义的标签）；Feedback 行都以产品名开头；C11 3/3 不重复记 | 是 |
+| 4. 更新时找全吗 | C6 3/3：先读再按主题列 3 + 1，不列 ClaudeDream，不写产品日志 | 是 |
+| 5. 换产品能用吗 | C3、C8 6/6 | 是 |
+| 6. 产品改之前能照着做吗 | C10 1/3：只有第 1 次照「设计地图要粗」画了 6 个框、一个环，并说明了分支为什么不画；另两次画了 17、18 个框，各 4 个判断分支，也没提到这一行 | 不是 |
+
+Master 2026-11-11（PO 全部放权）：问题 2、6 回答「不是」，回到原型改第二版：回执只许一行；Feedback 行写明是马上生效的规矩，用到哪个产品或它的方法时都照做，并点名照了哪一行（PO 要的就是「用着验证」，点名了他才看得见）；把安装时要加的细化（标 PBI 号、产品改完才删）也放进原型，让测的就是要装的。判定标准不改，33 次整轮重跑。
