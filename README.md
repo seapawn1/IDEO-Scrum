@@ -156,6 +156,8 @@ $stakeholder    # Stakeholder
 | `scrum/documents/sprint-12-overview-to-root.md` | Sprint 12 冲刺日志归档（总览挪到 scrum-kernel 根目录，小冲刺，v5.1.2） |
 | `scrum/documents/sprint-13-codex.md` | Sprint 13 冲刺日志归档（Codex 版，版本不动，仍 v5.1.2）：Codex 包并入 main、一条命令生成与核对、五题在 Codex 里过线、原始输出清理 |
 | `scrum/documents/sprint-14-conventions-tuning.md` | Sprint 14 冲刺日志归档（约定精调，v5.2.0）：PO 逐份强审四份约定与两份模板、冲刺日志五章、设计不做 Review 和 Retro、白纸入口、四轮流程测试、熟手的看法 |
+| `scrum/documents/design-feedback-loop.md` | 设计日志归档（自我反馈，PBI-55）：PO 用自己的产品时冒出的点怎么落盘；定「反馈进全局记忆」，三轮测试 |
+| `scrum/documents/sprint-15-feedback-loop.md` | Sprint 15 冲刺日志归档（自我反馈落地，小冲刺，版本不动）：装进 SEAPAWN.md 与全局记忆，PO 改成全英文 |
 | **冲刺蒸馏 / 归档** | 1.x 五期与 Sprint 06、07 已蒸馏至 `S:\SeaPawn-Memory\memory\IDEO-Scrum\`（MEMORY.md 索引 + 各期教训档案，含出处指向 git）；Sprint 08 起，冲刺日志压缩后归档进 `scrum/documents/` |
 
 ### 源参考

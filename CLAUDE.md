@@ -16,10 +16,10 @@
 
 ## 当前状态（蒸馏锚点，随 Sprint 更新；只留最近三条，更早的见 `git log -p -- CLAUDE.md`）
 
+- **2026-11-12 · Sprint 15 收官（小冲刺），版本不动，仍 5.2.0**：Sprint Goal「反馈落地」达成（PBI-55）。先开设计 design-feedback-loop（2026-11-11）：PO 用自己的产品时冒出的点，想到就交给手边的 AI，卡在每次要报一长串位置；PO 定反馈进全局记忆，用着就能验证。Master 兼 Designer 和 Scrum Master，另开的辅助会话在设计里用 Stakeholder 身份、在冲刺里当 Developer，落盘、发散、搭原型、跑测试，Master 写 plan 文件、用跨会话消息派活。三轮 Haiku 测试（各 33 次）问题 1–5 是，问题 6（产品改之前就照着做）还没有（2/3）；干净对照里那一行把地图从 16–23 个框收到 5–6 个。装在 S:\SeaPawn-Memory：SEAPAWN.md 加 Feedback 一节，全局记忆 MEMORY.md 末尾加 Feedback 一节，迁入 PO 的 6 个点；PO 看后改成全英文、产品表先只写 IDEO-Scrum，不再测试；Master 自己的两条发现进 PBI-54 ⑦⑧；登记 PBI-56（设计冲刺与 IDEO 五阶段法分清）。PO 事后说看晚了：原型出来、测试之前就该看。日志归档 scrum/documents/design-feedback-loop.md、sprint-15-feedback-loop.md；tag sprint-15-feedback-loop；PO 2026-11-12 同意推送 main、tag 和 SeaPawn-Memory。
 - **2026-11-10 · Sprint 14 收官，发版 v5.2.0**：Sprint Goal「约定精调」达成（PBI-49，连同 47、48、50、40；当天开工当天收官）。Developer 是从 Master 会话 `/fork` 出的独立会话，在 worktree 里干活，与 Master 用跨会话消息直接通讯。PO 逐份强审四份约定（overview 17 条、product-log 18 条、sprint-log 25 条、design-log 26 条）和冲刺、设计两份模板，只改 Claude 侧：每份约定先一张图再一批约定，一条规矩只写一处；冲刺日志改成五章（Why、What、How、Increment、Test），设计日志同样五章；阶段之间由 PO 决定；Review 和 Retro 是收官动作、不设章，设计不单做 Review 和 Retro（设计日志由设计结束后的第一个冲刺 Review 归档，教训进那个冲刺的 Retro）；产品日志有「白纸」入口，从设计开始、结论回流；IDEO 在设计每个阶段都要用；约定不带版本标记。本冲刺自己的日志仍按 5.1.2 的四章写，新结构从 Sprint 15 起生效。验收：四轮 Haiku 流程测试，题 1、4、5 每轮 3/3，题 2 第二轮起 2/3 过线，题 3（白纸项目）四轮 0/3——缺口在触发和先读约定，登记 PBI-52；样板测试 14 对 15 没过线，PO 让往下走；对抗审查（全新子代理）7 处必改；plugin-validator 四次 PASS；「熟手」卡愿意照新版走，缺口登记 PBI-54，PBI-40 ⑧ 拆成 PBI-53。冲刺日志归档 `scrum/documents/sprint-14-conventions-tuning.md`；tag `v5.2.0`、`sprint-14-conventions-tuning`；PO 2026-11-10 同意收官后推送 main 与两个 tag，并更新本机 Claude Code 的插件；Codex 包已同步到 5.2.0，本机 Codex 的安装不动。
 - **2026-11-10 · Sprint 13 收官（Codex 版），版本不动，仍 5.1.2**：Sprint Goal「Codex 版跟上」达成（PBI-43；2026-11-09 开工）。Developer 是 Codex（GPT），Master 在 Claude Code，只靠冲刺日志通讯，PO 传话。Codex 包 `codex/plugins/ideo-scrum/` 并入 main（不再单靠 `codex` 分支），由 `scripts/sync_codex.py` 从 `plugins/ideo-scrum/` 一条命令生成，`scripts/check_codex.py` 核对：三个内核逐字相同，四个角色由命令生成，只改加载内核的 5 句工具说法；Claude 侧文件零改动。验收 4 的五题在 Codex 里 5/5（gpt-5.6-terra，隔离安装）；测法因环境改过两次，题目和过线标准没改。对外文字用英文，根 README 仍中文，给旧 `codex` 分支的用户补了迁移命令。原始输出带了模型服务地址：备份到仓库外 `S:\IDEO-Scrum-Archives\`，改写了未推送的冲刺历史（PO 同意）。PO 定：版本与 Claude 一致。推送后旧 `codex` 分支已删（存档 tag `codex-v3.2.0`）：合入 main 后根目录有 `codex/` 目录，与分支同名，旧的 `--ref codex` 装法在 git 里有歧义、装不上；本机 Codex 已改装为 5.1.2（Codex 执行迁移命令，Master 核对）。冲刺日志归档 `scrum/documents/sprint-13-codex.md`；tag `sprint-13-codex`；main 与两个 tag 已推送。后续小修登记为 PBI-46；开下一个冲刺前核对 Product Goal（产品日志 1.2）。
-- **2026-11-09 · Sprint 12 收官（小冲刺），发版 v5.1.2**：PO 定把 scrum-kernel 的 `overview.md` 从 `conventions/` 挪到技能根目录，与 SKILL.md 并列（PBI-42）；两份 SKILL.md、四个命令、design-log、两份模板、product-log、sprint-log、README 的位置说法都改了，按名字引用的「`overview.md`, convention N」不改。全新子代理审阅无必改项。冲刺日志归档 `scrum/documents/sprint-12-overview-to-root.md`。tag `v5.1.2`、`sprint-12-overview-to-root`，已推送，本机插件已更新。
-- 更早的状态（2026-08-31 至 11-09：#28 讨论定案各条、Sprint 07 收官、Sprint 08 撤销与产品日志精化出架构 v1、Sprint 08 收官发版 v5.0.0、Sprint 09 收官发版 v5.0.1、Sprint 10 收官发版 v5.1.0：流程全部进插件、Sprint 11 收官发版 v5.1.1：约定照 PO 审阅改定）见 `git log -p -- CLAUDE.md`；教训已蒸馏入记忆档 sprint-06-dual-kernel-refactor、sprint-07-roles-kernels。
+- 更早的状态（2026-08-31 至 11-09：#28 讨论定案各条、Sprint 07 收官、Sprint 08 撤销与产品日志精化出架构 v1、Sprint 08 收官发版 v5.0.0、Sprint 09 收官发版 v5.0.1、Sprint 10 收官发版 v5.1.0：流程全部进插件、Sprint 11 收官发版 v5.1.1：约定照 PO 审阅改定、Sprint 12 收官发版 v5.1.2：overview 挪到 scrum-kernel 根目录）见 `git log -p -- CLAUDE.md`；教训已蒸馏入记忆档 sprint-06-dual-kernel-refactor、sprint-07-roles-kernels。
 - **1.x 已收官蒸馏**：旧目标（两内核结构对等）判定方向性错误，勿延续；教训见 `S:\SeaPawn-Memory\memory\IDEO-Scrum\`（MEMORY.md 索引 + 五期档案）。
 
 ## 维护规约
@@ -93,6 +93,9 @@ Claude 插件无 build/test；Codex 包由 `scripts/sync_codex.py` 生成、`scr
 - 测试的原始输出放仓库外，仓库里只留判定汇总；提交前按提供方地址、凭据值、令牌形态、设置值扫一遍（Sprint 13：原始输出带了模型服务地址，只好改写未推送的冲刺历史）。
 - 正式测之前先冒烟：一次最简单的调用，确认模型在提供方的实际目录里（不看本地模型缓存）、读文件的权限正常（Sprint 13：第一轮模型无通道，第二轮只读权限拒读，各白跑一轮）。
 - 在 Codex 里测角色：`codex exec` 里裸打 `$角色` 挂不上角色，要用 app-server 的原生 Skill 输入；隔离安装用独立的用户目录，不动本机 `~/.codex`。当时的脚本在 `git show sprint-13-codex~1:scrum/sprint-13-codex/run_codex_smoke.py`（Sprint 13）。
+- 原型说明里举例，别用正在测的那个点：它等于把那个点又写了一遍，会混进对照（Sprint 15 设计第二轮）。
+- 对照组跑之前先确认真的去掉了那样东西：检查最终喂给模型的文件，不只看源文件（Sprint 15：脚本先内联后删行，第一次对照没隔开）。
+- 判定标准照被测的那句话写，别比它更严：被测那一行允许「一个环」，标准写成「没有判断分支」，第三轮就有一次卡在这里（Sprint 15）。
 
 ## 源材料与授权
 
