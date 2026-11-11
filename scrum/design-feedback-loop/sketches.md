@@ -491,3 +491,11 @@ flowchart TD
 - S:\IDEO-Scrum\.claude\worktrees\design-feedback-loop\plugins\ideo-scrum\skills\design-kernel\ideate\sketch.md
 - S:\IDEO-Scrum\.claude\worktrees\design-feedback-loop\plugins\ideo-scrum\skills\ideo-kernel\methods\why-how-laddering.md
 - S:\IDEO-Scrum\.claude\worktrees\design-feedback-loop\plugins\ideo-scrum\skills\ideo-kernel\methods\i-like-i-wish-what-if.md
+
+## 草图 E（PO）：全局记忆里按产品分区
+
+PO 2026-11-11 在主对话里口述。在全局记忆里按产品分区（例如给 IDEO-Scrum 建一个文件夹）；在每个会话都加载的全局说明（SEAPAWN.md）里写明这套机制。PO 只说「记一下」，手边的 AI 照全局说明，把这个点写进对应产品的分区；更新那个产品时，读它的分区。
+
+## 草图 F（Master）：会话记录就是收件箱
+
+Master 2026-11-11 起草；Master 知道现在的做法，所以给自己加了一条限制：交出去时不新建任何存储。PO 照常说话，什么都不用加；Claude Code 本来就留着每个会话的记录（桌面版的会话默认一直保留）。更新产品时，派一个子代理翻这段时间的会话记录，把关于这个产品的话（纠正、抱怨、「这其实就是一个反馈」）连原话捞出来，按主题列给 PO。好处：交出去时零动作，没说出口的也接得住。风险：翻记录费 token；记录是 Claude Code 的内部格式，会随版本变；可能漏。
