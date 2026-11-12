@@ -1,0 +1,97 @@
+# Sprint Backlog — Sprint 17 (conventions-rewrite)
+
+> Started: 2026-11-12 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `sprint-17-conventions-rewrite`（Developer 的原生 worktree） | Product Owner: SeaPawn | Scrum Master: IDEO # [master]-[main]-[start sprint] | Developer: IDEO # [developer]-[sprint-17]-[执行冲刺]
+> How to write this log: `sprint-log.md` in the scrum-kernel skill's `conventions/` folder.
+> Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md`, convention 16).
+
+**委托**（sprint-log 第 8 条）：PO 2026-11-12 把 Sprint 16、17 全权交给 Master：审 How、审新结构、审全文，以及各阶段结束时的决定，都由 Master 做；只在三处停下等 PO——① 两个冲刺的 How 都审过后，PO 一起放行（放行范围可以到推送和更新本机插件，PO 已同意）；② PO 整份读本冲刺的约定审阅稿，排在最后一轮流程测试之前；③ 最后 PO 亲手试一次，之后 Master 发版 v6.0.0、推送、更新本机插件。改 Sprint Goal 或 Product Goal、取消冲刺，仍由 PO 定。平时只在卡住时报告 PO。
+
+**两个冲刺并行**：Sprint 16（`sprint-16-kernel-structure`）改结构和加载，本冲刺改约定内容，各有一个 Developer 会话。Sprint 16 先合入 main；本冲刺先在本文件夹里按新布局写全文审阅稿、不碰 `plugins/`，等 Sprint 16 合入后从新的 main 搬进插件，再跑最后一轮流程测试。两个冲刺各自收官、打 tag；v6.0.0 在本冲刺收官时发。Master 与 Developer 用跨会话消息联系，长的审阅写在 plan 文件里、消息里只给路径；派子代理一律显式写 `model: haiku`。
+
+## 1. Why
+
+### 1.1 Sprint Goal
+
+**约定改顺**：攒下的反馈都改进约定；设计冲刺和五阶段法分清；熟手照着就能走。
+
+（Master 照 PO 的写法代拟；PO 2026-11-12 看过拆分表里的这句草稿，说没问题。开冲刺前核对了 Product Goal「优化现有插件」：在目标之内——只改约定，不加新功能。）
+
+### 1.2 Definition of Done
+
+- 内容忠实：PO 的原话、已批准的命令 Identity 和原书摘录逐字不变；约定是作者的写法，可以大改，不在原文上打补丁（PO 2026-11-12）。
+- 可导航：从每个技能的 SKILL.md 入口 ≤2 跳到达它的任意文件。
+- 无死链：所有内部链接、路径和「convention N」都解析得到，并且指对。
+
+Master 2026-11-12（PO 委托）：Sprint Goal 定。
+
+## 2. What
+
+### 2.1 Product Backlog Items
+
+| # | Title | User story | Place | Size |
+| --- | --- | --- | --- | --- |
+| PBI-54 | 产品日志与冲刺约定修订 | 作为熟手，我想要产品日志和冲刺的约定用过一轮后再集中修一次，补上用起来卡手的地方 | 插件：scrum-kernel 的 `conventions/` | S |
+| PBI-58 | 设计约定修订——PO 用设计时攒下的点 | 作为熟手，我想要设计约定补上用过一轮后攒下的点，以便下一个设计照着走更顺 | 插件：design-kernel 的 `conventions/` | M |
+| PBI-56 | 设计冲刺与 IDEO 五阶段法分清 | 作为熟手，我想要插件分清设计冲刺和 IDEO 五阶段法：小问题就地用五阶段法，大问题才开设计冲刺，由 PO 指定，以便不为小问题兴师动众 | 插件：ideo-kernel（新 `conventions/`）、design-kernel（design-log 第 1、26 条） | M |
+| PBI-53 | 约定写明 Developer 在别的工具里时怎么协作 | 作为熟手，我想要约定写明 Developer 在别的工具（如 Codex）里干活时，它和 Master 怎么协作，以便不用口述 Sprint 13 的做法，换工具也能照着走 | Map ③～⑧ | S |
+| PBI-46 | Codex 版后续小修 | 作为熟手，我想要 Codex 包的同步和说明再顺一点，以便以后每次发版重跑同步都不用多想，陌生人在 Codex 里也能起步 | Map ①（装插件，开会话） | S |
+
+### 2.2 Refinement
+
+**选入**（照抄产品日志 3.1，对照 Sprint Goal 查过够不够——PO 2026-11-12，PBI-54 ④）：54、58 是攒下的反馈；56 是目标第二句；53 和 46 ③ 让换了工具也照着走；46 只带 ③，①④ 在 Sprint 16，②⑤⑥ 留在产品日志。产品日志与冲刺的约定在 Sprint 16 之后分在两个技能里（product-log 留在 scrum-kernel，sprint-log 挪到 sprint-kernel），54 两份都改。
+
+**定案**
+
+- PBI-54（PO 2026-11-12 收进）：① 冲刺日志模板头部加一行 Now，断线后一眼看到最后一个 PO 的决定；② Checkpoints 写明什么算卡住；③ Review 写明怎么判过时；④ sprint-log 第 5 条写明：照抄进 2.1 时对照 Sprint Goal 查够不够，缺就增、多就减。「Why 不写 PBI」不用改，也不另加一句：插件里本来就没有 Why 写 PBI 的说法（PO）。
+- PBI-58（PO 2026-11-12 收进）：①–⑧ 照产品日志的备注；「测试前 PO 先看原型」不进插件，原型和测试之间不加 PO 关卡；Designer 和 Master 兼不兼由 PO 定（PO）。
+- PBI-56（PO 2026-11-12）：用设计冲刺还是 IDEO 五阶段法由 PO 指定；PO 没指定时，要先做原型、拿角色卡测过才敢动手的，开设计冲刺，其余就地用五阶段法，按方法记录；设计冲刺重，五阶段法是基础、规矩少，所以 ideo-kernel 的约定写得轻；从聊天里开的设计，聊天算作共情材料。写进 ideo-kernel 新的 `conventions/`（一份简短约定）；design-log 第 1、26 条改成指向它。
+- PBI-53：写明 Developer 在别的工具（如 Codex）里时怎么和 Master 协作（Sprint 13 的做法见产品日志的备注），连同 `/fork` 出的独立会话用跨会话消息直接通讯（Sprint 14）。
+- PBI-46 ③：核对「派全新子代理」在 Codex 里怎么做，结果写进约定或 Codex 包的说法。
+- 约定可以大改（PO 2026-11-12）：重写，不在原文上打补丁；PO 的原话、已批准的命令 Identity、原书摘录逐字不动。
+- 来源：PO 的原话在全局记忆 Feedback（`S:\SeaPawn-Memory\memory\FeedBack\MEMORY.md` 里标了 PBI-54、56、58 的行，和各自的文件）；Sprint 14 Review 的熟手意见在 `scrum/documents/sprint-14-conventions-tuning.md`。
+- 先写稿、后搬（Master 定，PO 同意的拆分）：先在本文件夹里按新布局写全文审阅稿，不碰 `plugins/`；文件的新路径照 Sprint 16 How 里的文件清单。Sprint 16 合入 main 后，从新的 main 出发搬进插件；搬之前对照 Sprint 16 对这几份文件的改动（应当只有路径），并进定稿。
+- 改规矩先找它的其他说法（CLAUDE.md）：模板、命令、四个 SKILL.md、overview、CLAUDE.md、README 里同一条规矩的说法，列成连带改动，一起写进审阅稿。
+- 审阅顺序（CLAUDE.md「大改约定的审阅顺序」）：每份新写或重写的约定，先给 Master 看大纲（图和每条一行，sprint-log 第 11 条），同意了再写全文，全文附找到的问题和每处的建议（第 12 条）→ Master 审 → 对抗审查（全新子代理，Haiku）→ 停点 ②：PO 整份读——结构清单单独摆在前面，再给全文；PO 读完说行，不逐行勾 → 搬进插件 → 最后一轮流程测试 → 停点 ③：PO 亲手试 → 收官、发 v6.0.0。
+- 改号：内容改动与改号分开提交；每处「convention N」用脚本对到短名，再逐处读所指的条是不是真有那句话。
+- 改了技能或命令的描述，就照 Sprint 16 的触发测试重跑：基线是 Sprint 16 合入后的 main，同日同环境，过线同 Sprint 16。
+- 发版（PO 同意）：v6.0.0 在本冲刺收官时发——`plugin.json` 的版本号、README 两处、Codex 包同步；推送 main、tag 和 SeaPawn-Memory；更新本机 Claude Code 的插件。
+
+**验收**
+
+1. 收进的每一点都写进了约定：一张对照表，PBI-54 ①–④、PBI-58 ①–⑧、PBI-56、PBI-53、PBI-46 ③，每点对到约定文件和条。
+2. 一条规矩只写一处：同一条规矩的其他说法都改了或删了；对抗审查的必改项清零。
+3. 引用：每处「convention N」和路径都指得到，并且指对（脚本核对，再逐处读）。
+4. 停点 ②：PO 整份读审阅稿，说行。
+5. 最后一轮流程测试过线（见下）。
+6. `claude plugin validate --strict plugins/ideo-scrum` 通过；结构或 frontmatter 改了，再派 `plugin-dev:plugin-validator`（`model: haiku`）；Codex 同步与核对通过。
+7. 停点 ③：PO 亲手试一次。
+
+**测试**（跑之前写定，跑后不改；Master 定，PO 委托）
+
+- 判定标准和题目先写、Master 审过、单独提交，再跑；跑后不改标准、不改判；脚本判错的逐条人工看，改判写明理由。
+- 测法同 Sprint 16（无头、Haiku、只开 Read、Grep、Glob、Skill、连 PowerShell 一起禁、空项目、每次一个全新会话、先冒烟），跑在搬进插件后的版本上。
+- 题目：Sprint 14 流程测试的题 1–5（见 `git show a87bd1c:scrum/sprint-14-conventions-tuning/SprintBacklog.md` 的 2.2），加上覆盖本冲刺改动的题：断线后接手一个冲刺（54 ①）、什么时候算卡住（54 ②）、选条目写 2.1（54 ④）、一个小问题该用五阶段法还是开设计冲刺（56）、设计的地图和设计目标怎么写（58 ①②）、Developer 在 Codex 里时怎么协作（53）。用自然的说法，不带引导词。
+- 一次回答算过：读到该读的约定、必答项全中、没有「不能」项（Sprint 14 的判定）。每题 3 次，过线：每题至少 2 次过。
+- 汇总分两栏：行为（加载了哪些技能、读没读该读的约定）、内容（必答项中没中）。
+- 原始输出放 `S:\IDEO-Scrum-Archives\sprint-17-conventions-rewrite\`，仓库里只留汇总；提交前按提供方地址、凭据值、令牌形态扫一遍。
+
+## 3. How
+
+<!-- The Developer writes this chapter as a plan for making the selected items, short and not in detail (sprint-log.md, convention 7): the work items in order, each with its output and how to tell it is done; the key choices and why; the risks and open points. The last line is the go-ahead (sprint-log.md, convention 8). -->
+
+| # | Work item | Output | Done when |
+| --- | --- | --- | --- |
+
+**Key choices**
+
+**Risks and open points**
+
+Go-ahead: （待 PO：停点 ①，两个冲刺的 How 都审过后一起放行）
+
+## 4. Increment notes
+
+<!-- Whoever does the work writes the notes, in whatever form helps: each change and its reason, and what a new session needs to pick the Sprint up; they may refine the How (sprint-log.md, conventions 9 and 20). A session that picks up the Sprint reads these first. The chapter ends with the Product Owner's decision that the Increment can go into testing (sprint-log.md, convention 24). -->
+
+## 5. Test
+
+<!-- Record here the Developer's tests, the reviewer's check (by default the Scrum Master), the Product Owner's end-to-end test, and the result of each Definition of Done item and acceptance criterion. Fix a problem on the spot and test again (sprint-log.md, convention 16). The chapter ends with the Product Owner's decision: close, or go back (sprint-log.md, convention 24). -->
