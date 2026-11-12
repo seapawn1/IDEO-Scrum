@@ -24,7 +24,7 @@ Convention 18 holds at every step; see Throughout, below.
 ## Starting
 
 1. **One product log** — Write the product log from the template (`overview.md`, convention 1). For an old project, write it from what already exists — the README, the open issues, the old plans — and leave the history in version control; what cannot be written yet follows convention 2.
-2. **Blank page** — Write into the product log what you can define; replace what you cannot with the matching item of a design, and let the design answer it. When the product and its Product Goal cannot be written, the IDEO methods alone will not make them clear; start from a design (design-kernel skill), which adds the design sprint, a prototype, and a test to those methods. The design's items stand in for the product log's like this:
+2. **Blank page** — Write into the product log what you can define; replace what you cannot with the matching item of a design, and let the design answer it. When the product and its Product Goal cannot be written, the IDEO methods alone will not make them clear; start from a design (design-kernel skill), which adds the design sprint, a prototype, and a test to those methods (the boundary between the design sprint and the five modes: `../ideo-kernel/conventions/design-sprint-or-five-modes.md`, convention 1). The design's items stand in for the product log's like this:
 
     | The design log | Product log |
     | --- | --- |
@@ -61,7 +61,7 @@ Convention 18 holds at every step; see Throughout, below.
     | Size | S — one or two sessions; M — three to five sessions; L — more than five sessions, to be split when refining |
     | Notes | Source, open points, draft acceptance criteria, refinement notes |
 11. **Numbers, not ranks** — Number items to count them, and keep every number unique; ranking is another matter — moving an item up the list — and the Product Owner does it when an order is needed.
-12. **Items with the Scrum Master** — Let the Product Owner decide the items together with the Scrum Master, who works as a secretary. At Planning the Product Owner leads the selection, and the Scrum Master and the Developer say when it is too much or too little. The measure is the Sprint Goal: every selected item serves it, and an item the goal still needs is added — never one just to fill the Sprint. This departs from the Scrum Guide: see the Departures section of `overview.md`.
+12. **Items with the Scrum Master** — Let the Product Owner decide the items together with the Scrum Master, who works as a secretary. At Planning the Product Owner leads the selection, and the Scrum Master and the Developer say when it is too much or too little; the measure is the Sprint Goal, and the check when the rows are written is `../sprint-kernel/conventions/sprint-log.md`, convention 5. This departs from the Scrum Guide: see the Departures section of `overview.md`.
 13. **Status lives here** — Write an item's status in the product log only; a sprint log names items by number.
 
 ## Refinement
@@ -72,7 +72,7 @@ Convention 18 holds at every step; see Throughout, below.
 
 ## Keeping it fresh
 
-17. **Fresh at every Review** — At every Review, move done items to section 3.2, one line each, with the source, usually the archived sprint log in `scrum/documents/`; delete outdated architecture text and resolved open points; send unfinished items back to section 3.1. Keep no revision record; version control keeps the history. Fresh means more than the items: the Review keeps the rest of `scrum/` fresh too (`../sprint-kernel/conventions/sprint-log.md`, convention 17).
+17. **Fresh at every Review** — At every Review, move done items to section 3.2, one line each, with the source, usually the archived sprint log in `scrum/documents/`; delete outdated architecture text and resolved open points — what counts as outdated is `../sprint-kernel/conventions/sprint-log.md`, convention 17; send unfinished items back to section 3.1. Keep no revision record; version control keeps the history. Fresh means more than the items: the Review keeps the rest of `scrum/` fresh too (`../sprint-kernel/conventions/sprint-log.md`, convention 17).
 
 ## Throughout
 
