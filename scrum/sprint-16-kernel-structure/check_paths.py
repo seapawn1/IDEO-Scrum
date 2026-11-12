@@ -12,6 +12,7 @@ from pathlib import Path
 
 
 PLUGIN = Path("plugins/ideo-scrum")
+PROJECT_FILES = {"ProductBacklog.md", "SprintBacklog.md", "DesignBacklog.md"}
 PATH_RE = re.compile(r"`([^`\n]+?\.md)`")
 LINK_RE = re.compile(r"!?\[[^\]\n]*\]\(\s*(<[^>]+>|[^\s]+?)(?:\s+[\"'][^\n]*?[\"'])?\s*\)")
 NAMED_CONV_RE = re.compile(
@@ -65,7 +66,7 @@ def scan(root: Path) -> tuple[list[str], dict]:
             if "<" in raw or ">" in raw:
                 continue
             if not resolve(path, raw):
-                if "/" not in raw:
+                if "/" not in raw and (raw in PROJECT_FILES or path.name.endswith("-template.md")):
                     name_mentions += 1
                     continue
                 errors.append(f"{path.relative_to(root)}: path {raw}")

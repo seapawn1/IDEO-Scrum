@@ -65,7 +65,7 @@ flowchart TD
 
 ### Who does what
 
-8. **Roles** — Every AI role loads the ideo-kernel skill first, the shared toolbox.
+8. **Roles** — Every AI role loads the ideo-kernel skill, the shared toolbox, and the scrum-kernel skill first.
 
    | Role | Home turf | Accountable for | Kernels |
    | --- | --- | --- | --- |
