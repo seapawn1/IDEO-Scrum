@@ -121,7 +121,7 @@ Master 2026-11-12（PO 委托）：精化到此（Developer 复述，没有疑�
 - 流程测试题多（Sprint 14 的 5 题加覆盖本冲刺的 6 题，33 次），先冒烟；判定脚本先自测。
 - 新规矩容易在别处重复（56 的分界、58 的三个环、53 的协作）：各归一处，其余只指向，对抗审查专查这一项。
 
-Go-ahead: （待 PO：停点 ①，两个冲刺的 How 都审过后一起放行）
+Go-ahead: 2026-11-12，PO（停点 ①，两个冲刺一起放行，原话「全部放行」）；范围：在冲刺分支上提交；Sprint 16 合入 main 后，从新的 main 搬进插件；停点 ②（PO 整份读审阅稿）和停点 ③（PO 亲手试）仍然要停；③ 之后由 Master 收官——打 tag、合入 main、发 v6.0.0（版本号、README、Codex 包）、推送 main、tag 和 SeaPawn-Memory、更新本机 Claude Code 的插件。
 
 ## 4. Increment notes
 
