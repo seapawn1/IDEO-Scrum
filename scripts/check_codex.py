@@ -23,8 +23,9 @@ ROLES = ("developer", "designer", "scrum-master", "stakeholder")
 CODEX_LOAD = (
     "**Load the kernels first**: before anything else, read `../ideo-kernel/SKILL.md` and then "
     "`../scrum-kernel/SKILL.md`, relative to this skill's folder, skipping any that are already loaded. "
-    "Read `../design-kernel/SKILL.md` only when you open a design sprint, and `../sprint-kernel/SKILL.md` only "
-    "when you open a Sprint. Subagents you dispatch read the ideo-kernel and scrum-kernel skills too."
+    "Read `../sprint-kernel/SKILL.md` when the work involves a Sprint — opening, running, resuming, or closing "
+    "one — and `../design-kernel/SKILL.md` when it involves a design sprint. Subagents you dispatch read the "
+    "ideo-kernel and scrum-kernel skills too."
 )
 PACKAGE = Path("codex/plugins/ideo-scrum")
 

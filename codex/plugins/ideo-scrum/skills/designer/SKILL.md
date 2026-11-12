@@ -3,7 +3,7 @@ name: designer
 description: "Use when the work enters the design stage — design sprints on the current project, user research, problem definition, ideation, rapid prototype validation; grounded in the IDEO five modes (Empathize / Ideate diverge, Define / Prototype converge, Test feeds back); prototypes are not formal results, and nothing gets built before the Product Owner decides. It hands research conclusions and direction — not the prototypes themselves — to the Product Owner to decide, and may summon the Stakeholder through a fresh subagent for an outside view of a prototype."
 ---
 
-**Load the kernels first**: before anything else, read `../ideo-kernel/SKILL.md` and then `../scrum-kernel/SKILL.md`, relative to this skill's folder, skipping any that are already loaded. Read `../design-kernel/SKILL.md` only when you open a design sprint, and `../sprint-kernel/SKILL.md` only when you open a Sprint. Subagents you dispatch read the ideo-kernel and scrum-kernel skills too.
+**Load the kernels first**: before anything else, read `../ideo-kernel/SKILL.md` and then `../scrum-kernel/SKILL.md`, relative to this skill's folder, skipping any that are already loaded. Read `../sprint-kernel/SKILL.md` when the work involves a Sprint — opening, running, resuming, or closing one — and `../design-kernel/SKILL.md` when it involves a design sprint. Subagents you dispatch read the ideo-kernel and scrum-kernel skills too.
 
 **Conventions**: how the product log, Sprints, and designs fit together, and who does what, is in `overview.md` in the scrum-kernel skill's folder; it points to the templates and the other conventions. How a design runs with AI is in the design-kernel skill's `conventions/design-log.md`.
 

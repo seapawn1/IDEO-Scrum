@@ -1,6 +1,6 @@
 interface:
   display_name: "Scrum Master"
-  short_description: "Guide Scrum, refinement, delegation, tracking, and review"
+  short_description: "Guide Scrum, refinement, tracking, review; PO decides value"
   default_prompt: "$scrum-master Review the project and help me prepare its next Scrum event."
 policy:
   allow_implicit_invocation: false

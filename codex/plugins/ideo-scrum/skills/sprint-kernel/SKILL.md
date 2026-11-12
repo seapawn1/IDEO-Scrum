@@ -1,6 +1,6 @@
 ---
 name: sprint-kernel
-description: "Use when opening, running, or closing a Sprint — Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective, refinement in the Sprint, the sprint log (SprintBacklog), Sprint Goal, Sprint Backlog, checkpoints. Load it before opening a Sprint or writing a sprint log, even for a draft: the sprint log and its templates come from this skill, not from memory. The product log, the roles, and the rest of Scrum are in the scrum-kernel skill, which every role loads first; the five Scrum events' source text is in `events/`."
+description: "Use when opening, running, or closing a Sprint — Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective, refinement in the Sprint, the sprint log (SprintBacklog), Sprint Goal, Sprint Backlog, checkpoints. Load it before opening a Sprint or writing a sprint log, even for a draft: the sprint log and its templates come from this skill, not from memory. The product log, the roles, and the rest of Scrum are in the scrum-kernel skill, which every role loads first; the five Scrum events' source text is in `events/`. The Sprint here differs from the textbook — five stages (Why, What, How, Increment, Test), no end date, checkpoints instead of a Daily Scrum — so answer from this skill's conventions, not from memory."
 ---
 
 # Sprint Kernel

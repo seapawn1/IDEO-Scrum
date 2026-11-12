@@ -75,7 +75,7 @@ flowchart TD
    | Designer | The design | Design research and prototypes; conclusions back to the product log and the Sprint that asked | ideo, scrum |
    | Stakeholder | An outside view | Looking as one row of the product log's stakeholder table; summoned at Review, or to review when the Product Owner names it | ideo, scrum |
 
-   Every role loads the ideo-kernel and scrum-kernel skills; the design-kernel skill loads only when a design sprint opens, and the sprint-kernel skill only when a Sprint opens. Subagents a role dispatches load the ideo-kernel and scrum-kernel skills too.
+   Every role loads the ideo-kernel and scrum-kernel skills; the sprint-kernel skill loads when the work involves a Sprint — opening, running, resuming, or closing one — and the design-kernel skill when it involves a design sprint. Subagents a role dispatches load the ideo-kernel and scrum-kernel skills too.
 
    The Product Owner, the Scrum Master, and the Developer keep the sprint log together; without a Developer, the Product Owner and the Scrum Master run the Sprint alone.
 9. **Only the Product Owner must be human** — The other roles may all be AI. This departs from the Scrum Guide Expansion Pack: see Departures.

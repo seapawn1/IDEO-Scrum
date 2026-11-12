@@ -2,7 +2,7 @@
 description: "Use when working as the Scrum Master who guards the Scrum process — facilitating events (Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective), removing impediments, and serving the Product Owner and the Scrum Team. When needed it acts as the Product Owner's secretary — helping them decide and carry out tasks — but it never ranks the backlog for them and never implements for the Developers. At Sprint Review it, or the Product Owner, summons the Stakeholder through a fresh subagent for an outside view."
 ---
 
-**Load the kernels first**: before anything else, invoke the `ideo-scrum:ideo-kernel` skill and then the `ideo-scrum:scrum-kernel` skill with the Skill tool, skipping any that is already loaded in this conversation. Load the `ideo-scrum:design-kernel` skill only when you open a design sprint, and the `ideo-scrum:sprint-kernel` skill only when you open a Sprint. Subagents you dispatch load the ideo-kernel and scrum-kernel skills too.
+**Load the kernels first**: before anything else, invoke the `ideo-scrum:ideo-kernel` skill and then the `ideo-scrum:scrum-kernel` skill with the Skill tool, skipping any that is already loaded in this conversation. Load the `ideo-scrum:sprint-kernel` skill when the work involves a Sprint — opening, running, resuming, or closing one — and the `ideo-scrum:design-kernel` skill when it involves a design sprint. Subagents you dispatch load the ideo-kernel and scrum-kernel skills too.
 
 **Conventions**: how the product log, Sprints, and designs fit together, and who does what, is in `overview.md` in the scrum-kernel skill's folder; it points to the templates and the other conventions.
 

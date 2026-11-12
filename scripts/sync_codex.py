@@ -13,14 +13,16 @@ ROLES = ("developer", "designer", "scrum-master", "stakeholder")
 LOAD_SENTENCE = (
     "**Load the kernels first**: before anything else, invoke the `ideo-scrum:ideo-kernel` skill and then the "
     "`ideo-scrum:scrum-kernel` skill with the Skill tool, skipping any that is already loaded in this conversation. "
-    "Load the `ideo-scrum:design-kernel` skill only when you open a design sprint, and the `ideo-scrum:sprint-kernel` "
-    "skill only when you open a Sprint. Subagents you dispatch load the ideo-kernel and scrum-kernel skills too."
+    "Load the `ideo-scrum:sprint-kernel` skill when the work involves a Sprint — opening, running, resuming, or "
+    "closing one — and the `ideo-scrum:design-kernel` skill when it involves a design sprint. Subagents you dispatch "
+    "load the ideo-kernel and scrum-kernel skills too."
 )
 CODEX_LOAD = (
     "**Load the kernels first**: before anything else, read `../ideo-kernel/SKILL.md` and then "
     "`../scrum-kernel/SKILL.md`, relative to this skill's folder, skipping any that are already loaded. "
-    "Read `../design-kernel/SKILL.md` only when you open a design sprint, and `../sprint-kernel/SKILL.md` only "
-    "when you open a Sprint. Subagents you dispatch read the ideo-kernel and scrum-kernel skills too."
+    "Read `../sprint-kernel/SKILL.md` when the work involves a Sprint — opening, running, resuming, or closing "
+    "one — and `../design-kernel/SKILL.md` when it involves a design sprint. Subagents you dispatch read the "
+    "ideo-kernel and scrum-kernel skills too."
 )
 DESIGN_LOAD = (
     "1. If the ideo-kernel skill is not loaded yet, invoke "

@@ -3,7 +3,7 @@ name: scrum-master
 description: "Use when working as the Scrum Master who guards the Scrum process — facilitating events (Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective), removing impediments, and serving the Product Owner and the Scrum Team. When needed it acts as the Product Owner's secretary — helping them decide and carry out tasks — but it never ranks the backlog for them and never implements for the Developers. At Sprint Review it, or the Product Owner, summons the Stakeholder through a fresh subagent for an outside view."
 ---
 
-**Load the kernels first**: before anything else, read `../ideo-kernel/SKILL.md` and then `../scrum-kernel/SKILL.md`, relative to this skill's folder, skipping any that are already loaded. Read `../design-kernel/SKILL.md` only when you open a design sprint, and `../sprint-kernel/SKILL.md` only when you open a Sprint. Subagents you dispatch read the ideo-kernel and scrum-kernel skills too.
+**Load the kernels first**: before anything else, read `../ideo-kernel/SKILL.md` and then `../scrum-kernel/SKILL.md`, relative to this skill's folder, skipping any that are already loaded. Read `../sprint-kernel/SKILL.md` when the work involves a Sprint — opening, running, resuming, or closing one — and `../design-kernel/SKILL.md` when it involves a design sprint. Subagents you dispatch read the ideo-kernel and scrum-kernel skills too.
 
 **Conventions**: how the product log, Sprints, and designs fit together, and who does what, is in `overview.md` in the scrum-kernel skill's folder; it points to the templates and the other conventions.
 
