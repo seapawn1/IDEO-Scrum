@@ -1,7 +1,7 @@
 # Sprint 16 测试题与判定
 
 > 2.2「测试」一节的执行稿。先经 Master 审，单独一个提交，再跑；跑后不改题目、不改判定、不改判。
-> 基线：5.2.0（main 的 `9769bd6`，插件在 `S:\IDEO-Scrum\plugins\ideo-scrum`）。新版：本分支的插件（`S:\IDEO-Scrum\.claude\worktrees\wizardly-almeida-5485e1\plugins\ideo-scrum`）。两轮同日、连着跑。
+> 基线固定在 `9769bd6`：用 `git archive 9769bd6 plugins/ideo-scrum` 解到仓库外的临时目录（如 `%TEMP%\ideo-s16-baseline\plugins\ideo-scrum`），从那里跑，不指向主检出。新版：本分支的插件（`S:\IDEO-Scrum\.claude\worktrees\wizardly-almeida-5485e1\plugins\ideo-scrum`）。两轮同日、连着跑。
 
 ## 测法
 
@@ -53,7 +53,7 @@
 ### 题 3 白纸项目
 
 - 题目：我有个想法：给一家社区图书馆做一个帮读者找书的工具。现在手上只有这一句话，没有产品日志，也不知道读者具体要什么。我想把这件事正式做起来，第一步该做什么？
-- 角色命令：`/ideo-scrum:designer`
+- 角色命令：`/ideo-scrum:scrum-master`
 - 要读：两版相同——`scrum-kernel/conventions/product-log.md` 或 `scrum-kernel/overview.md`，或 `design-kernel/conventions/design-log.md`。
 - 必答（三条）：① 从设计开始，产品和 Product Goal 交给设计去回答；可以先写能写的部分（如利益相关者表，或一条指向这个设计的 PBI），但不先把产品日志写完；② 说明原因：现在写不出产品和 Product Goal，要靠设计去回答；③ 设计的结论会流回产品日志（让设计去填产品日志），之后再用 Sprint 去做。
 - 不能：先把产品日志写完再开始（能写的部分可以先写，见必答 ①）；先出方案或直接做。
@@ -79,15 +79,15 @@
 - 题目：我们项目的产品日志要重写一遍：产品是什么、Product Goal 怎么写、待办事项怎么列，还有这些该由谁来决定。这份日志应该写成什么样？
 - 角色命令：`/ideo-scrum:scrum-master`
 - 要读：两版相同——`scrum-kernel/conventions/product-log.md` 或 `scrum-kernel/overview.md`。
-- 必答（三条）：① 一份产品日志，文件 `ProductBacklog.md`，从模板建；分三块：Product（含 Product Goal 与 Definition of Done）、架构（利益相关者表与 Map）、PBI 表；② PBI 用七列写：#、标题、用户故事、位置、状态、规模、备注；编号只用来计数，不是优先级；③ PBI 由 PO 与 Master 一起定（Master 做秘书）；Product Goal 只有 PO 能改。
-- 不能：把技术设计（模块、接口）写进产品日志；把 PBI 编号当优先级。
+- 必答（三条）：① 从模板建一份产品日志（文件 `ProductBacklog.md`），分 Product、架构、PBI 三块；② PBI 用七列写，至少说出五列；编号只用来计数，不是优先级；③ PBI 由 PO 与 Master 一起定；Product Goal 只有 PO 能改。
+- 不能：把技术设计（模块、接口）写进产品日志。
 
 ### 题 7 冲刺日志
 
 - 题目：项目要开下一个 Sprint 了，我们准备把冲刺日志建起来。这个日志放在哪里、叫什么名字？里面要有哪几章？开头要写些什么？
 - 角色命令：`/ideo-scrum:developer`
 - 要读：基线 `scrum-kernel/conventions/sprint-log.md` 或 `scrum-kernel/conventions/sprint-backlog-template.md`；新版 `sprint-kernel/conventions/sprint-log.md` 或 `sprint-kernel/conventions/sprint-backlog-template.md`。
-- 必答（三条）：① 一个冲刺一个文件夹 `scrum/sprint-NN-<后缀>/`：编号是上一个冲刺加一（两位数，从 01 起），后缀说这个冲刺讲什么；文件夹名同时是分支名，收官时也是 tag 名；② 日志从冲刺日志模板建，命名 `SprintBacklog.md`；表头写开始日期、分支、PO、Scrum Master、Developer；③ 五章：Why、What、How、Increment、Test。
+- 必答（三条）：① 一个冲刺一个文件夹 `scrum/sprint-NN-<后缀>/`（编号是上一个冲刺加一），和分支同名，收官时也是 tag 名；② 从模板建，文件名 `SprintBacklog.md`，表头至少说出三项（开始日期、分支、PO、Scrum Master、Developer）；③ 五章按先后说全：Why、What、How、Increment、Test。
 - 不能：给冲刺写截止日；在日志里另加章。
 
 ## 加载冒烟（新版，验收 ④）

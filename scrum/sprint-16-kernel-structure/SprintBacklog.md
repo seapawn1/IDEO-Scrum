@@ -194,6 +194,8 @@ Go-ahead: 2026-11-12，PO（停点 ①，两个冲刺一起放行，原话「全
   6. 写新 SKILL.md 与改描述之前先用 plugin-dev 的 skill-development 查格式与描述写法；sprint-kernel 写完可派 `plugin-dev:skill-reviewer`（`model: haiku`），必改项先对 PO 的定案，冲突报 Master。→ Key choices。
   7. PBI-52 按场景写（没有产品日志、产品和 Product Goal 都写不出来），不用题 3 的具体例子；例子不要用正在测的那个点（Sprint 15 的教训）。→ Key choices。
   8. 时间：2026-11-12 18:30（PowerShell `Get-Date`，台北时间）。
+- **Master 2026-11-12 审测试题（`a504b96`）**：两处必改——题 3 的角色命令改 `/ideo-scrum:scrum-master`（陌生人带着想法来，默认从 scrum-master 进；从 designer 进等于已经知道要先做设计）；基线固定在 `9769bd6`，用 `git archive` 解到仓库外跑，不指向主检出（main 在合入前可能被别的提交动到）。一处建议——题 6、7 的必答按要点判，不比约定原文更严。都改了。
+- **冒烟（2026-11-12 18:5x）**：`reclaude` 两次回「账号暂不可用」（`status --check` 显示线路与登录可连接，但调用被拒），`claude -p` 回「Not logged in」。测试通道暂缺；先做第 3–9 项，跑测前再试，不通就报 Master。
 
 ## 5. Test
 
