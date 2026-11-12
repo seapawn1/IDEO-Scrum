@@ -63,3 +63,12 @@
 
 - 草稿里：改过的规矩（分界、卡住、过时、Now、跨工具、全新子代理、地图要粗、设计目标是愿景、每份草图拿不同点子）的旧说法 **0 处**（grep 特征句逐一核过）。
 - 现行插件里还是旧文本：Sprint 17 没碰 `plugins/`，搬运时整份替换。
+
+## 五、搬运结果（2026-11-12）
+
+- 从 main（`72d398f`）合入冲刺分支：`18f9202`。
+- **内容提交** `9ffb765`：sprint-log、冲刺模板、product-log、overview（第 2、7、14 条；第 12 条暂用旧号）、scrum-kernel `SKILL.md` 一段、ideo-kernel `SKILL.md` 一行、ideo 新约定、design-log（旧条号，新条暂排 27）、设计模板（旧条号）、scrum-master 命令第 48 行。
+- **改号提交** `d5c0e6a`：design-log 新条 12、原 12–26 顺延 13–27；设计模板、overview 第 12 条、design-kernel `SKILL.md` 的条号跟上。
+- **Codex 包** `4212a2a`（`sync_codex.py` 写 11 个文件）。
+- Sprint 16 改过的地方都保留了：冲刺模板 1.1 的「conventions 4 and 20」、1.2 的文字定位、overview 第 8 条、四个命令的加载说法、scrum-kernel `SKILL.md` 的约定表与描述。
+- 引用核对（插件）：**189 处 0 缺**；`check_codex.py` 0 不一致；`claude plugin validate --strict` 通过（只有图标警告，PBI-25 ⑦）。
