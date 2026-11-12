@@ -1,7 +1,7 @@
 # Interview
 
 > Source: Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster. Chapter: "Interview."
-> License: All rights reserved (see ATTRIBUTION.md).
+> License: All rights reserved (© Jake Knapp, John Zeratsky, and Braden Kowitz; Simon & Schuster, 2016).
 > Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures that explain a method are redrawn as Mermaid diagrams or text; the others are left out. Day names, clock times, and timers are the book's schedule, not an instruction.
 
 Michael’s friendliness and curiosity are genuine, but his conversational skills aren’t just a natural gift. Michael is a research partner at GV, and when you watch him interviewing customers—which we’ve seen him do hundreds of times —you realize it’s a practiced art. Everything from the structure of his questions to his body language helps people think aloud and express themselves honestly.

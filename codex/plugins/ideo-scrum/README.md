@@ -11,7 +11,7 @@ codex plugin add ideo-scrum@ideo-scrum
 
 In a new session, type `$` and select Developer, Scrum Master, Designer, or Stakeholder from the skill menu. Their short names are `$developer`, `$scrum-master`, `$designer`, and `$stakeholder`; a qualified name such as `$ideo-scrum:developer` identifies the plugin explicitly.
 
-The three kernel skills are configured to allow automatic invocation. The four role skills require explicit selection.
+The four kernel skills are configured to allow automatic invocation. The four role skills require explicit selection.
 
 ## Contents
 
@@ -19,7 +19,8 @@ The three kernel skills are configured to allow automatic invocation. The four r
 | --- | --- |
 | [ideo-kernel](skills/ideo-kernel/SKILL.md) | Shared IDEO five modes and method toolbox |
 | [design-kernel](skills/design-kernel/SKILL.md) | Research from a challenge to a tested prototype and findings |
-| [scrum-kernel](skills/scrum-kernel/SKILL.md) | Plan, deliver, and review Increments, with conventions and templates |
+| [scrum-kernel](skills/scrum-kernel/SKILL.md) | The product log, Scrum roles and artifacts, with conventions and templates |
+| [sprint-kernel](skills/sprint-kernel/SKILL.md) | Running a Sprint: the sprint log conventions and the five Scrum events |
 | [Scrum Master](skills/scrum-master/SKILL.md) | Help the PO refine work, delegate, track progress, and review |
 | [Designer](skills/designer/SKILL.md) | Research problems, build prototypes, and test them |
 | [Developer](skills/developer/SKILL.md) | Plan the How, maintain the Sprint log, and deliver Increments |

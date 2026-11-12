@@ -1,7 +1,7 @@
 # Learn
 
 > Source: Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster. Chapter: "Learn."
-> License: All rights reserved (see ATTRIBUTION.md).
+> License: All rights reserved (© Jake Knapp, John Zeratsky, and Braden Kowitz; Simon & Schuster, 2016).
 > Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures that explain a method are redrawn as Mermaid diagrams or text; the others are left out. Day names, clock times, and timers are the book's schedule, not an instruction.
 
 Friday feels like one long mystery. Throughout the day, you’ll collect clues. Some of those clues help you crack the case, but some lead you in the wrong direction. It’s only at the end—around 5 p.m.—that everything ties together and the answers become clear.

@@ -1,7 +1,7 @@
 # Decide
 
 > Source: Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster. Chapter: "Decide."
-> License: All rights reserved (see ATTRIBUTION.md).
+> License: All rights reserved (© Jake Knapp, John Zeratsky, and Braden Kowitz; Simon & Schuster, 2016).
 > Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures that explain a method are redrawn as Mermaid diagrams or text; the others are left out. Day names, clock times, and timers are the book's schedule, not an instruction.
 
 You know those meetings. The ones that go on and on, wandering off on tangents, burning up time and energy. The ones that end in a decision nobody’s happy about—or worse, end without any decision at all. We’re not anthropologists, but we have observed (and engaged in) a lot of human behavior in the office environment. Left to our own devices, we humans tend to debate this way:

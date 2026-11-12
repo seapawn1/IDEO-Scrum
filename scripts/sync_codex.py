@@ -8,13 +8,20 @@ import json
 from pathlib import Path
 
 
-KERNELS = ("ideo-kernel", "scrum-kernel", "design-kernel")
-ROLE_KERNELS = {
-    "developer": ("ideo-kernel", "scrum-kernel"),
-    "designer": ("ideo-kernel", "design-kernel"),
-    "scrum-master": KERNELS,
-    "stakeholder": ("ideo-kernel",),
-}
+KERNELS = ("ideo-kernel", "scrum-kernel", "sprint-kernel", "design-kernel")
+ROLES = ("developer", "designer", "scrum-master", "stakeholder")
+LOAD_SENTENCE = (
+    "**Load the kernels first**: before anything else, invoke the `ideo-scrum:ideo-kernel` skill and then the "
+    "`ideo-scrum:scrum-kernel` skill with the Skill tool, skipping any that is already loaded in this conversation. "
+    "Load the `ideo-scrum:design-kernel` skill only when you open a design sprint, and the `ideo-scrum:sprint-kernel` "
+    "skill only when you open a Sprint. Subagents you dispatch load the ideo-kernel and scrum-kernel skills too."
+)
+CODEX_LOAD = (
+    "**Load the kernels first**: before anything else, read `../ideo-kernel/SKILL.md` and then "
+    "`../scrum-kernel/SKILL.md`, relative to this skill's folder, skipping any that are already loaded. "
+    "Read `../design-kernel/SKILL.md` only when you open a design sprint, and `../sprint-kernel/SKILL.md` only "
+    "when you open a Sprint. Subagents you dispatch read the ideo-kernel and scrum-kernel skills too."
+)
 DESIGN_LOAD = (
     "1. If the ideo-kernel skill is not loaded yet, invoke "
     "`ideo-scrum:ideo-kernel` first — every stage stands on it.",
@@ -41,38 +48,7 @@ def role_skill(command: bytes, role: str) -> bytes:
     newline = b"\r\n" if command.startswith(b"---\r\n") else b"\n"
     if not command.startswith(b"---" + newline):
         raise ValueError(f"{role}: command has no YAML frontmatter")
-    kernels = ROLE_KERNELS[role]
-    names = [f"`ideo-scrum:{name}`" for name in kernels]
-    paths = [f"`../{name}/SKILL.md`" for name in kernels]
-    if len(kernels) == 1:
-        old = (
-            "**Load the kernel first**: before anything else, invoke the "
-            f"{names[0]} skill with the Skill tool, unless it is already loaded "
-            "in this conversation."
-        )
-        new = (
-            "**Load the kernel first**: before anything else, read "
-            f"{paths[0]}, relative to this skill's folder, unless it is already "
-            "loaded in this conversation."
-        )
-    else:
-        if len(kernels) == 2:
-            original = f"the {names[0]} skill and then the {names[1]} skill"
-            target = f"{paths[0]} and then {paths[1]}"
-        else:
-            original = ", then ".join(f"the {name} skill" for name in names)
-            target = ", then ".join(paths)
-        old = (
-            "**Load the kernels first**: before anything else, invoke "
-            f"{original} with the Skill tool, skipping any that is already "
-            "loaded in this conversation."
-        )
-        new = (
-            "**Load the kernels first**: before anything else, read "
-            f"{target}, resolving these paths relative to this skill's folder, "
-            "skipping any that is already loaded in this conversation."
-        )
-    converted = replace_once(command, old, new, role)
+    converted = replace_once(command, LOAD_SENTENCE, CODEX_LOAD, role)
     return converted.replace(
         b"---" + newline,
         b"---" + newline + f"name: {role}".encode("utf-8") + newline,
@@ -102,7 +78,7 @@ def expected_files(root: Path) -> tuple[dict[Path, bytes], bytes]:
         json.loads(interface_path.read_text(encoding="utf-8"))
         if interface_path.is_file() else {}
     )
-    for role in ROLE_KERNELS:
+    for role in ROLES:
         files[Path(f"skills/{role}/SKILL.md")] = role_skill(
             (source / f"commands/{role}.md").read_bytes(), role
         )
@@ -144,7 +120,7 @@ def expected_files(root: Path) -> tuple[dict[Path, bytes], bytes]:
 def write_if_changed(path: Path, data: bytes) -> bool:
     if path.is_symlink():
         raise ValueError(f"Refusing to overwrite a symlink: {path}")
-    if path.is_file() and path.read_bytes() == data:
+    if path.is_file() and path.read_bytes().replace(b"\r\n", b"\n") == data.replace(b"\r\n", b"\n"):
         return False
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_bytes(data)

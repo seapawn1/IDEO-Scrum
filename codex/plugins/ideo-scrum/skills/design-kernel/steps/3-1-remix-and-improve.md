@@ -1,7 +1,7 @@
 # Remix and Improve
 
 > Source: Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster. Chapter: "Remix and Improve."
-> License: All rights reserved (see ATTRIBUTION.md).
+> License: All rights reserved (© Jake Knapp, John Zeratsky, and Braden Kowitz; Simon & Schuster, 2016).
 > Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures that explain a method are redrawn as Mermaid diagrams or text; the others are left out. Day names, clock times, and timers are the book's schedule, not an instruction.
 
 Imagine it’s the early 1900s. You’re drinking a nice hot cup of coffee. Only ... it’s not so nice. Coffee grounds stick in your teeth, and the liquid is so bitter your mouth puckers. If it weren’t for the caffeine, you probably wouldn’t bother. Back in those days, coffee was brewed like tea, by dunking a pouch of ground beans into boiling water. There was a lot of room for error: over-brewing, underbrewing, and plenty of grit at the bottom of the cup. Some people strained their coffee through filters made of cloth, but the material was overly porous and a mess to clean up.
