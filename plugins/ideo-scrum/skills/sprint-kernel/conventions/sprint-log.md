@@ -5,7 +5,7 @@
 > Source: quotations from The Scrum Guide 2020 (Ken Schwaber & Jeff Sutherland), marked where they appear.
 > License: the quotations are CC BY-SA 4.0 (© 2020 Ken Schwaber and Jeff Sutherland).
 
-A Sprint turns selected items into an Increment. Its template is `sprint-backlog-template.md`; each section's comment says who writes it. Paths starting with `../` are relative to the scrum-kernel skill folder.
+A Sprint turns selected items into an Increment. Its template is `sprint-backlog-template.md`; each section's comment says who writes it. Paths starting with `../` are relative to the sprint-kernel skill folder.
 
 ```mermaid
 flowchart TD
