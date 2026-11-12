@@ -209,4 +209,17 @@ Go-ahead: 2026-11-12，PO（停点 ①，两个冲刺一起放行，原话「全
 
 ## 5. Test
 
+<!--Record here the Developer's tests, the reviewer's check (by default the Scrum Master), the Product Owner's end-to-end test, and the result of each Definition of Done item and acceptance criterion. Fix a problem on the spot and test again (sprint-log.md, convention 16). The chapter ends with the Product Owner's decision: close, or go back (sprint-log.md, convention 24).-->
+
+**测试（2026-11-12，同日跑基线与新版）**：各 42 次（7 题 × 2 路径 × 3），加新版的加载冒烟 8 次。判定与题目见 `test-questions.md`（先提交，后跑，跑后未改）；汇总见 `baseline-summary.md`、`new-summary.md`；原始输出在 `S:\IDEO-Scrum-Archives\sprint-16-kernel-structure\`。
+
+- **过线 ①** ✓：行为栏 路径一 20/21（≥18）、路径二 18/21（≥18）。
+- **过线 ②** ✗：题 3 路径二从基线 2/3（过线）跌到新版 1/3（不过线）。
+- **过线 ③** ✗：白纸题新版 路径一 2/3、路径二 1/3（要求两条都 ≥2/3）。
+- **过线 ④** ✓：加载冒烟 8/8（四个命令各 2 次，都只加载 ideo 与 scrum；脚本第一次误判 0/8 是比对时没去插件前缀，逐条看过原始输出后改判，理由写在 `new-summary.md`）。
+- **一次回答算过**：路径一 19/21（基线 17/21），路径二 16/21（基线 18/21）。
+- **缺口**：题 3 路径二两次回答没写必答 ③「设计的结论会流回产品日志」，只写「现在不写产品日志」；内容其余两项都中。题 2 路径二三次都没读约定（基线该题路径二本来 1/3，未触发 ②）。
+
+（本章最后一行待 Master/PO 的决定：收官或回去。）
+
 <!-- Record here the Developer's tests, the reviewer's check (by default the Scrum Master), the Product Owner's end-to-end test, and the result of each Definition of Done item and acceptance criterion. Fix a problem on the spot and test again (sprint-log.md, convention 16). The chapter ends with the Product Owner's decision: close, or go back (sprint-log.md, convention 24). -->

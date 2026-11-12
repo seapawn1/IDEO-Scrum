@@ -51,7 +51,8 @@ def main() -> None:
                     for block in (o.get("message") or {}).get("content") or []:
                         if block.get("type") == "tool_use" and block.get("name") == "Skill":
                             skills.append((block.get("input") or {}).get("skill", "?"))
-            ok = "ideo-kernel" in skills and "scrum-kernel" in skills and "design-kernel" not in skills and "sprint-kernel" not in skills
+            short = [s.split(":")[-1] for s in skills]
+            ok = "ideo-kernel" in short and "scrum-kernel" in short and "design-kernel" not in short and "sprint-kernel" not in short
             results.append({"role": role, "n": n, "skills": skills, "ok": ok})
     print(json.dumps(results, ensure_ascii=False, indent=2))
     ok_count = sum(1 for r in results if r["ok"])
