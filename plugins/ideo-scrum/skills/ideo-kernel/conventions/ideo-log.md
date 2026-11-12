@@ -1,0 +1,30 @@
+# IDEO Log Conventions
+
+> Working conventions: reference, not law — follow what fits, override what doesn't, note why. Source labels and the rest: `../scrum-kernel/overview.md`, convention 15. A convention with no label is the author's practice.
+
+Paths here are relative to the ideo-kernel skill folder. The five modes and the method catalog are this skill's; the design sprint is the design-kernel skill's.
+
+```mermaid
+flowchart TD
+    Q["A question comes up"] --> P{"Design sprint or the five modes?<br/>(convention 1)"}
+    P -- "a design sprint" --> DS["Design sprint:<br/>five stages, each standing on one mode<br/>(design-kernel, DesignBacklog.md)"]
+    P -- "the five modes" --> FM["The five modes"]
+    FM --> SEQ["Run in sequence:<br/>an IDEO log<br/>(IdeoBacklog.md, five chapters, no gates)"]
+    FM --> SPOT["On the spot:<br/>one or two methods,<br/>recorded in the log they serve"]
+    DS --> R["Conclusions flow back to<br/>the log that asked"]
+    SEQ --> R
+    SPOT --> R
+```
+
+## The Boundary
+
+1. **Design sprint or the five modes** — The Product Owner says which one a question gets. When they do not, the default split is: open a design sprint when a prototype must be tested with role cards before anyone dares to act; otherwise use the five modes on the spot and record by method (convention 3). When a chat turns up something to research, you can open the design there and then: the chat counts as empathize material, and the Empathize stage still runs.
+
+## The Two Together
+
+2. **The five modes and the design sprint** — They share five names and are two different things. The five modes are modes, not steps: no fixed order, you can go back and forth, and they are the plugin's base and shared toolbox. The design sprint's five stages each stand on one mode, and add the book's steps, a Product Owner decision between stages, and a prototype tested with role cards — a heavy research module beside the Sprint. What a user calls "the IDEO five-stage method" is the five modes themselves, not the design sprint. Do not mix them: an IDEO log does not run the design sprint's steps, and a design sprint does not open an IDEO log — its own log already has five chapters. If an IDEO log shows that a prototype must be tested with role cards before anyone dares to act, switch to a design sprint; the IDEO log counts as empathize material, and the Empathize stage still runs.
+
+## The IDEO Log
+
+3. **When to open an IDEO log** — Use one or two methods on the spot when that is enough; their output goes into the log they serve — a Sprint's Increment notes, the product log's Notes. When the five modes run in sequence — more than one or two methods, or more than one session — open an IDEO log: `scrum/ideo-<suffix>/IdeoBacklog.md`, five chapters, one per mode, with no Product Owner gate between them and free movement back and forth. It is not a design sprint: it does not use the design-kernel stages or steps (no map, Lightning Demos, or storyboard). Before a mode, read its file in `IDEO-modes/`; before a method, read the method's file, as this skill's Use Protocol says.
+4. **Where it lives and how it ends** — The log, the prototypes, and the working material live in `scrum/ideo-<suffix>/`. The conclusions flow back to the log that asked for it — the product log or the sprint log — and the Product Owner decides what changes. When the work is done, keep the log: the first Sprint Review after that archives it as a design log is archived — compress it, rename it `ideo-<suffix>.md`, and move it to `scrum/documents/` (`../sprint-kernel/conventions/sprint-log.md`, convention 17).

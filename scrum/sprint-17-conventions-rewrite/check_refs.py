@@ -1,24 +1,25 @@
 #!/usr/bin/env python3
-"""Sprint 17 引用核对：每处「convention N」指到存在的条，并印出所指的短名，供逐处读。"""
+"""Sprint 17 引用核对（插件版）：每处「convention N」指到存在的条，并印出所指的短名，供逐处读。"""
 import re, sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
-D = ROOT / "drafts"
+ROOT = Path(__file__).resolve().parents[2]      # 仓库根
+S = ROOT / "plugins/ideo-scrum/skills"
 
 FILES = {
-    "sprint-log.md": D / "sprint-kernel/conventions/sprint-log.md",
-    "sprint-backlog-template.md": D / "sprint-kernel/conventions/sprint-backlog-template.md",
-    "product-log.md": D / "scrum-kernel/conventions/product-log.md",
-    "overview.md": D / "scrum-kernel/overview.md",
-    "design-log.md": D / "design-kernel/conventions/design-log.md",
-    "design-backlog-template.md": D / "design-kernel/conventions/design-backlog-template.md",
-    "design-sprint-or-five-modes.md": D / "ideo-kernel/conventions/design-sprint-or-five-modes.md",
-    "scrum-kernel-SKILL.md": D / "scrum-kernel/SKILL.md",
-    "ideo-kernel-SKILL.md": D / "ideo-kernel/SKILL.md",
+    "sprint-log.md": S / "sprint-kernel/conventions/sprint-log.md",
+    "sprint-backlog-template.md": S / "sprint-kernel/conventions/sprint-backlog-template.md",
+    "product-log.md": S / "scrum-kernel/conventions/product-log.md",
+    "overview.md": S / "scrum-kernel/overview.md",
+    "design-log.md": S / "design-kernel/conventions/design-log.md",
+    "design-backlog-template.md": S / "design-kernel/conventions/design-backlog-template.md",
+    "ideo-log.md": S / "ideo-kernel/conventions/ideo-log.md",
+    "ideo-backlog-template.md": S / "ideo-kernel/conventions/ideo-backlog-template.md",
+    "scrum-kernel-SKILL.md": S / "scrum-kernel/SKILL.md",
+    "ideo-kernel-SKILL.md": S / "ideo-kernel/SKILL.md",
+    "design-kernel-SKILL.md": S / "design-kernel/SKILL.md",
 }
 
-# 同名文件 → 唯一的约定文件；模板默认找同文件夹的约定文件
 CONV_FILE = {
     "sprint-log.md": "sprint-log.md",
     "sprint-backlog-template.md": "sprint-log.md",
@@ -26,14 +27,14 @@ CONV_FILE = {
     "overview.md": "overview.md",
     "design-log.md": "design-log.md",
     "design-backlog-template.md": "design-log.md",
-    "design-sprint-or-five-modes.md": "design-sprint-or-five-modes.md",
-    "SKILL.md": None,
+    "ideo-log.md": "ideo-log.md",
+    "ideo-backlog-template.md": "ideo-log.md",
+    "design-kernel-SKILL.md": "design-log.md",
 }
 
 def conventions(path):
-    text = path.read_text(encoding="utf-8")
     return {int(m.group(1)): m.group(2)
-            for m in re.finditer(r"^\s*(\d+)\.\s+\*\*(.+?)\*\*", text, re.M)}
+            for m in re.finditer(r"^\s*(\d+)\.\s+\*\*(.+?)\*\*", path.read_text(encoding="utf-8"), re.M)}
 
 CONV = {name: conventions(p) for name, p in FILES.items()}
 
@@ -69,20 +70,13 @@ for name, path in FILES.items():
         apaths = [p for p in re.findall(r"in\s+`([^`\n]+\.md)`", after)
                   if Path(p).name in CONV_FILE]
         ref = apaths[0] if apaths else (bpaths[-1] if bpaths else None)
-        if ref:
-            ref = Path(ref).name
-        tgt = CONV_FILE.get(ref, ref) if ref else None
-        if tgt is None:
-            tgt = CONV_FILE.get(name, name)
+        tgt = CONV_FILE.get(Path(ref).name, Path(ref).name) if ref else CONV_FILE.get(name, name)
         if tgt not in CONV:
-            rows.append((name, tgt or "?", nums, "!! 目标未知"))
-            problems += 1
-            continue
+            rows.append((name, tgt or "?", nums, "!! 目标未知")); problems += 1; continue
         for n in nums:
             short = CONV[tgt].get(n)
             if short is None:
-                rows.append((name, tgt, [n], "!! 条不存在"))
-                problems += 1
+                rows.append((name, tgt, [n], "!! 条不存在")); problems += 1
             else:
                 rows.append((name, tgt, [n], short))
 

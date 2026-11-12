@@ -128,6 +128,7 @@ $stakeholder    # Stakeholder
 | `plugins/ideo-scrum/skills/ideo-kernel/SKILL.md` | IDEO Kernel 入口（整个插件共用的工具箱：IDEO 五模式表 + Method Catalog：按模式索引与合表 + Use Protocol） |
 | `plugins/ideo-scrum/skills/ideo-kernel/IDEO-modes/` | IDEO Design Thinking 五模式 reference（Empathize / Define / Ideate / Prototype / Test，各含 WHAT/WHY/HOW + Transition） |
 | `plugins/ideo-scrum/skills/ideo-kernel/methods/` | Design Thinking 方法库（~40 个方法，含 Use Before / Use Notes / Do Not Use When） |
+| `plugins/ideo-scrum/skills/ideo-kernel/conventions/` | IDEO 日志约定（ideo-log：五模式与设计冲刺的分界和关系、什么时候开 IDEO 日志、放哪、怎么结束）与 IDEO 日志模板（ideo-backlog-template，五章） |
 
 ### scrum-kernel skill
 

@@ -22,7 +22,7 @@ Conventions 20–27 hold at every step; see Throughout, below. At each "PO decid
 
 ## Opening
 
-1. **Open a design for a question with no ready answer** — When a question asks what people want or what counts as good, ask first whether a ready answer exists; if not, settle whether it needs a design sprint or the five modes on the spot (`../ideo-kernel/conventions/design-sprint-or-five-modes.md`, convention 1); when it needs a design sprint, open a design and start with Empathize, not with solutions. A blank page is a case of this: see `../scrum-kernel/conventions/product-log.md`, convention 2.
+1. **Open a design for a question with no ready answer** — When a question asks what people want or what counts as good, ask first whether a ready answer exists; if not, settle whether it needs a design sprint or the five modes on the spot (`../ideo-kernel/conventions/ideo-log.md`, convention 1); when it needs a design sprint, open a design and start with Empathize, not with solutions. A blank page is a case of this: see `../scrum-kernel/conventions/product-log.md`, convention 2.
 2. **Hard point, not the whole item** — From a Sprint, take out only the hard point that needs design; the rest of the Sprint goes on.
 3. **Who** — The Designer is accountable for the design, and the Scrum Master facilitates and records; what the Product Owner decides is listed in convention 21. A design often needs only one Designer session; whether that session also plays the Scrum Master, or a separate Scrum Master session runs, is the Product Owner's call. When one session plays both roles, write the same name in both fields of the header.
 4. **Branch** — A design opens its own branch when it opens; the on-the-spot decision is only its base — the Sprint branch or `main`. Do not name it `<sprint-branch>/<name>`: git cannot hold both `a` and `a/b` as branch names.
@@ -71,7 +71,7 @@ The conventions under Stages cover only what differs from the book or adds what 
 
 ## Throughout
 
-20. **IDEO in every stage** — Run the design sprint as the IDEO five-stage method: in every stage, take the methodology from the IDEO mode the stage maps to, as `SKILL.md` requires.
+20. **IDEO in every stage** — Each stage of the design sprint stands on one IDEO mode: take the methodology from the mode the stage maps to, as `SKILL.md` requires. (The five modes are not the design sprint: `../ideo-kernel/conventions/ideo-log.md`, convention 2.)
 21. **Ask the PO** — Ask the Product Owner whenever you are unsure (`../scrum-kernel/overview.md`, convention 10), and in any case to: decide at the end of each stage, and after the test whether to end the design or go back (convention 26); set or change the design goal (convention 25); pick the How Might We questions that matter (convention 8); choose the solution and decide between combining and a rumble (conventions 13–14); agree how real the prototype must be (convention 16); and decide that the design ends (convention 19).
 22. **Five chapters, not five days** — Write one chapter per stage — Empathize, Define, Ideate, Prototype, Test — not the book's Monday to Friday, and no notes section. Each chapter records what its stage produced, not the steps taken.
 23. **Renamed terms** — See the first paragraph of `SKILL.md`.
@@ -88,4 +88,4 @@ The conventions under Stages cover only what differs from the book or adds what 
     | Test | the criteria written beforehand, what the trial run found, who tested and what showed up, and an answer to each design question with where it flows back | The answers come from real reactions, and "we were wrong" counts as an answer |
 
     At each gate ask: would someone who never learned design have produced the same thing? If so, the stage missed its focus.
-27. **A small design is still a design** — Whether a question opens a design at all is settled by `../ideo-kernel/conventions/design-sprint-or-five-modes.md`, convention 1. When the Product Owner opens a design that is small — about one session of work — still keep the log, shrink each stage to a line or two, and still have the Product Owner decide at the end of each stage. Skip no stage, least of all Empathize and divergence (convention 10).
+27. **A small design is still a design** — Whether a question opens a design at all is settled by `../ideo-kernel/conventions/ideo-log.md`, convention 1. When the Product Owner opens a design that is small — about one session of work — still keep the log, shrink each stage to a line or two, and still have the Product Owner decide at the end of each stage. Skip no stage, least of all Empathize and divergence (convention 10).
