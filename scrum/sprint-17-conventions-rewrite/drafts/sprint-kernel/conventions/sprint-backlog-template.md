@@ -3,7 +3,7 @@
 > Started: <date> | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: <branch> | Product Owner: <name> | Scrum Master: <who> | Developer: <who>
 > Now: <the stage the Sprint is in, and the last decision the Product Owner made> — keep it current; a session that picks up the Sprint reads it first (sprint-log.md, convention 22).
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
-> Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`../scrum-kernel/overview.md`, convention 16).
+> Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (convention 16 in `overview.md`, in the scrum-kernel skill's folder).
 
 ## 1. Why
 
@@ -13,7 +13,7 @@
 
 ### 1.2 Definition of Done
 
-<!-- The Product Owner picks them: the Definition of Done items that matter to this Sprint (`../scrum-kernel/conventions/product-log.md`, convention 5). The chapter ends with the Product Owner's decision on the Sprint Goal (sprint-log.md, convention 24). -->
+<!-- The Product Owner picks them: the Definition of Done items that matter to this Sprint (convention 5 in `product-log.md`, in the scrum-kernel skill's `conventions/` folder). The chapter ends with the Product Owner's decision on the Sprint Goal (sprint-log.md, convention 24). -->
 
 ## 2. What
 
