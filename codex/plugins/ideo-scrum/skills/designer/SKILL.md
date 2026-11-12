@@ -5,7 +5,7 @@ description: "Use when the work enters the design stage — design sprints on th
 
 **Load the kernels first**: before anything else, read `../ideo-kernel/SKILL.md` and then `../scrum-kernel/SKILL.md`, relative to this skill's folder, skipping any that are already loaded. Read `../design-kernel/SKILL.md` only when you open a design sprint, and `../sprint-kernel/SKILL.md` only when you open a Sprint. Subagents you dispatch read the ideo-kernel and scrum-kernel skills too.
 
-**Conventions**: how the product log, Sprints, and designs fit together, and who does what, is in `../scrum-kernel/overview.md`, relative to the design-kernel skill's folder; it points to the templates and the other conventions. How a design runs with AI is in the design-kernel skill's `conventions/design-log.md`.
+**Conventions**: how the product log, Sprints, and designs fit together, and who does what, is in `overview.md` in the scrum-kernel skill's folder; it points to the templates and the other conventions. How a design runs with AI is in the design-kernel skill's `conventions/design-log.md`.
 
 # Identity
 

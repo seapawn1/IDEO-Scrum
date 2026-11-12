@@ -17,8 +17,8 @@
 | 版权 | © 2020 Ken Schwaber and Jeff Sutherland |
 | 许可 | **CC BY-SA 4.0** — https://creativecommons.org/licenses/by-sa/4.0/legalcode |
 | 原始出处 | https://scrumguides.org/ |
-| 本仓库位置 | `plugins/ideo-scrum/skills/scrum-kernel/assets/scrum-guide-2020.md`（全文）<br>`plugins/ideo-scrum/skills/scrum-kernel/references/`（按 Artifact 拆分的摘录）<br>`plugins/ideo-scrum/skills/sprint-kernel/events/`（按 Event 拆分的摘录）<br>`plugins/ideo-scrum/commands/scrum-master.md`、`plugins/ideo-scrum/commands/developer.md`（角色命令主体抄录）<br>`plugins/ideo-scrum/skills/scrum-kernel/conventions/`（约定里的嵌入引用，句中注明出处） |
-| 修改说明 | 全文按 Scrum 的 Artifact 与 Event 拆分重排为独立文件，供 agent 按需检索。原文措辞未改动；角色命令主体为原文抄录，署名统一在本档登记（命令不设文件头）。 |
+| 本仓库位置 | `plugins/ideo-scrum/skills/scrum-kernel/assets/scrum-guide-2020.md`（全文）<br>`plugins/ideo-scrum/commands/scrum-master.md`、`plugins/ideo-scrum/commands/developer.md`（角色命令主体抄录）<br>`plugins/ideo-scrum/skills/scrum-kernel/conventions/`（约定里的嵌入引用，句中注明出处） |
+| 修改说明 | 2020 版全文随源文件提供，未作节选；Artifact 与 Event 的分项摘录来自 SGEP，登记在本档第 2 节。角色命令主体为原文抄录，署名统一在本档登记（命令不设文件头）。 |
 
 **ShareAlike 提示**：若你基于上述文件制作衍生作品并分发，衍生部分同样须以 CC BY-SA 4.0 发布。
 

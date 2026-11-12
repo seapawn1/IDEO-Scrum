@@ -33,9 +33,6 @@ def targets(path: Path) -> list[Path]:
     root = skill_root(path)
     if root:
         roots.append(root)
-    if "skills" in path.parts:
-        skills = Path(*path.parts[: path.parts.index("skills") + 1])
-        roots.extend(sorted(p for p in skills.iterdir() if p.is_dir()))
     if path.parent.name == "commands":
         skills = path.parent.parent / "skills"
         roots.extend(sorted(p for p in skills.iterdir() if p.is_dir()))

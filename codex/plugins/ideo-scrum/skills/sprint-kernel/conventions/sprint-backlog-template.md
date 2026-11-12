@@ -2,13 +2,13 @@
 
 > Started: <date> | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: <branch> | Product Owner: <name> | Scrum Master: <who> | Developer: <who>
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
-> Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md`, convention 16).
+> Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
 
 ## 1. Why
 
 ### 1.1 Sprint Goal
 
-<!-- The Product Owner decides it: this Sprint's one commitment (sprint-log.md, convention 20). -->
+<!-- The Product Owner decides it: this Sprint's one commitment (sprint-log.md, conventions 4 and 20). -->
 
 ### 1.2 Definition of Done
 

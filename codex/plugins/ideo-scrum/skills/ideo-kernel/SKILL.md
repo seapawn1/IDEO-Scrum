@@ -18,7 +18,7 @@ This kernel is the plugin's shared toolbox and the foundation of every stage: th
 
 Design Thinking is a **human-centered approach to innovation** that integrates the needs of people, the possibilities of technology, and the requirements for business success. Originating from IDEO and formalized at Stanford's Hasso Plattner Institute of Design (the d.school, founded by David Kelley), it is an iterative, non-linear methodology for tackling complex, ill-defined problems. Its core ethos is **bias toward action** — learning by doing rather than analysis alone.
 
-**Bias toward fast prototype validation.** The design work optimizes for speed of learning, not polish: a prototype must feel like a prototype — rough, quick, and disposable — built to learn, never a formal result. In a design sprint test, this describes how the prototype is made and treated — quickly, and thrown away after; the surface the tester sees should still appear real enough for honest reactions (design-kernel skill, `steps/4-1-fake-it.md`).
+**Bias toward fast prototype validation.** The design work optimizes for speed of learning, not polish: a prototype must feel like a prototype — rough, quick, and disposable — built to learn, never a formal result. In a design sprint test, this describes how the prototype is made and treated — quickly, and thrown away after; the surface the tester sees should still appear real enough for honest reactions (design-kernel skill, `../design-kernel/steps/4-1-fake-it.md`).
 
 IDEO's five-mode model:
 
