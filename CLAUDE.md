@@ -30,12 +30,13 @@
 - 提交前确认 README 是否需要同步更新——尤其是新增/删除/重命名文件、改动插件版本号时
 - 若发现 README 已过期、可能误导新会话的 LLM，必须显式提醒用户更新，不要默默放过
 - 追溯旧决策、文件演变、阶段状态时，放手查阅 Git 历史
+- 多会话并行时，会话开头的 CLAUDE.md 只是快照：动手前先看 `git log --oneline -5` 和磁盘上的产品日志，差一个冲刺就按磁盘来；子代理核对现状时给路径让它读文件（2026-11-13：开头停在 Sprint 15，磁盘已是 16 收官、17 在 worktree）
 
 **版本号与 tag**
 
 - 主干分支是 `main`，永远指向最新状态
 - 版本号用 tag 标记，不写进分支名
-- 插件版本号在 `plugins/ideo-scrum/.claude-plugin/plugin.json`，改动时 README 的两处版本号需同步
+- 插件版本号在 `plugins/ideo-scrum/.claude-plugin/plugin.json`，改动时 README 的两处版本号需同步（首行与文件地图的插件清单行；归档行里的旧版本号不动）
 - **Codex 包随版本一起提交**（PO 2026-11-09：版本与 Claude 一致）：改了 `plugins/ideo-scrum/` 或版本号，同一提交里跑 `python scripts/sync_codex.py`，再跑 `python scripts/check_codex.py`（需要 PyYAML）；Codex 清单的版本由脚本取自 Claude 清单，包内 README 的版本由清单生成。（Sprint 13：旧 `codex` 分支靠手工同步，落后六次发版。）
 - Windows 上 `core.autocrlf=true` 时，新克隆后第一次跑同步，会把生成的 JSON/YAML 的换行从 CRLF 改成 LF，内容与已提交的一样：看 `git diff`，或 `git add -A` 后有没有暂存，别只看 `git status` 的 M。
 
@@ -45,7 +46,7 @@
 
 **模板规约**（2026-11-08，Sprint 09 Retro）
 
-模板的章按流程分，节只放产出；做法写在约定里，不在模板里一步开一节。交付新模板或新结构时，验收前把结构（章节清单）单独摆给 PO 看，不混在整份审阅里。（Sprint 08 的设计日志模板照产品日志 2.2.6 表里的每个活动各开一节，把做法写成了要记的东西；验收时没单独看结构，PO 第二天才发现。）约定的条同理按执行顺序排，被依赖的排前面（Sprint 14 样板测试：定分支排在填表头之后，模型照条号走，先填了表头）。
+模板的章按流程分，节只放产出；做法写在约定里，不在模板里一步开一节。交付新模板或新结构时，验收前把结构（章节清单）单独摆给 PO 看，不混在整份审阅里。（Sprint 08 的设计日志模板照当时产品日志模板里的活动表每个活动各开一节，把做法写成了要记的东西；验收时没单独看结构，PO 第二天才发现。）约定的条同理按执行顺序排，被依赖的排前面（Sprint 14 样板测试：定分支排在填表头之后，模型照条号走，先填了表头）。
 
 **冲刺收官与归档**（2026-11-07 改，原「冲刺蒸馏闭环」；2026-11-10 Sprint 14 改成新结构；Sprint 01–07 按旧做法蒸馏为记忆档，不回改）
 
@@ -62,6 +63,7 @@
 - **计划外工作先登记**：作者待办或对话中定下的新工作，先在产品日志登记 PBI，再由 PO 定是否进当前 Sprint（范围可重谈，Sprint Goal 不变）；不进则等下个 Sprint。
 - **小活单开小冲刺**（PO 2026-11-08，Sprint 09）：半小时到一个会话做得完的活也开冲刺，正常流程照走，每一步缩到一两行；放行、审阅、收官照做（插件 sprint-kernel 的 `conventions/sprint-log.md` 的 Small work, small Sprint）。
 - **fork 出来的 Developer**（2026-11-08，Sprint 09、10；2026-11-10 Sprint 14 补）：有两种 fork，别混。① Agent 工具派出的 fork 子代理（Sprint 09、10）：它是主会话的子代理，主会话一进 plan 模式，它就停下、写不了文件，Developer 干活时主会话别切 plan 模式；它不能再派子代理，审阅、插件校验、角色召唤都由 Master 派。② `/fork` 复制出的会话（Sprint 14）：它是独立会话，能派子代理，不受主会话 plan 模式影响；Master 与它用跨会话消息直接通讯，不经 PO 转，长的审阅写在 plan 文件里、消息里给路径。两种都带着 Master 的上下文，但活是 Developer 干的：审阅照常由 Master 做，也可以派全新子代理（PO 2026-11-09，插件 sprint-log 的 A reviewer is required；Sprint 12 起生效）。Master 自己兼 Developer 时，审阅仍交全新子代理。派子代理一律显式写 `model`（Haiku），见用户级 CLAUDE.md（Sprint 14：四次 plugin-validator 没写 model，继承了主会话的 Sonnet，每次约 22 到 27 万 token）。
+- **worktree**：用原生方式建（`.claude/worktrees/`），不裸跑 `git worktree add`；根目录 `.worktreeinclude` 决定带过去的文件。
 - **Developer 在别的工具里（Codex，Sprint 13）**：通道只有冲刺日志；两边共用一个工作目录，轮流动手：每轮提交、在 3.2 记一行并在 Next 写明轮到谁，然后停下；PO 只传一句「轮到你了，读冲刺日志」。Master 的审阅意见写在 plan 文件里，PO 把路径转给 Developer，由它抄进日志（日志才是记录）。放行要写明能做到哪一步：Codex 在 `approval_policy = never`、完全访问下，能自己推送、打 tag、改本机配置。停点要少：把彼此独立的活一次做完再交审，PO 的传话和等待是主要耗时。
 - **约定大约每周集中改一次**（PO 2026-11-09，原插件总览的一条约定；那是作者维护插件的节奏，不是用户的规矩，挪到这里，Sprint 14 强审时 PO 又把插件里的那条删了）：平时记下约定不合适的地方，攒着集中改，登记成 PBI、开冲刺改；改动从下一个冲刺起生效，冲刺进行中不改。约定不带版本标记，PBI 标题也不带版本号（PO 2026-11-10：以后更新都是重构，不要版本这种标志）；下一次集中修订是 PBI-54（产品日志与冲刺）、PBI-58（设计）（2026-11-12 分拆）。
 - **PBI 状态只写产品日志**：SprintBacklog 引用 PBI 编号，不复写状态；进展写在 3.2 笔记。
@@ -73,7 +75,7 @@
 
 **插件验证**
 
-Claude 插件无 build/test；Codex 包由 `scripts/sync_codex.py` 生成、`scripts/check_codex.py` 核对（内容与源逐字相同、链接、导航、可重复生成）。改动插件后：官方命令能做的先用命令，不派子代理（PO 2026-11-10）——收官改完版本号后跑一次 `claude plugin validate --strict plugins/ideo-scrum`；只改了文字、结构没变时，它没报问题就够了；它报问题，或改了结构、清单、frontmatter，才派 Agent 类型 `plugin-dev:plugin-validator`，并显式写 `model`（Haiku）。涉及 skill 质量时用 `plugin-dev:skill-reviewer`（两者经 Agent 工具调用，非 slash command）。marketplace 清单在 `.claude-plugin/marketplace.json`；对它跑 `--strict` 会因缺顶层 description 退出 1（警告，Sprint 14 之前就有，见产品日志 PBI-25 ⑦）。
+Claude 插件无 build/test；Codex 包由 `scripts/sync_codex.py` 生成、`scripts/check_codex.py` 核对（内容与源逐字相同、链接、导航、可重复生成）。改动插件后：官方命令能做的先用命令，不派子代理（PO 2026-11-10）——收官改完版本号后跑一次 `claude plugin validate --strict plugins/ideo-scrum`；只改了文字、结构没变时，它没报问题就够了；它报问题，或改了结构、清单、frontmatter，才派 Agent 类型 `plugin-dev:plugin-validator`，并显式写 `model`（Haiku）。涉及 skill 质量时用 `plugin-dev:skill-reviewer`（两者经 Agent 工具调用，非 slash command）。marketplace 清单在 `.claude-plugin/marketplace.json`（Sprint 16 补了顶层 description，`--strict` 现在通过，PBI-25 ⑧）。
 
 **回归测试**（2026-10-25，Sprint 07 Retro）
 
@@ -96,6 +98,8 @@ Claude 插件无 build/test；Codex 包由 `scripts/sync_codex.py` 生成、`scr
 - 原型说明里举例，别用正在测的那个点：它等于把那个点又写了一遍，会混进对照（Sprint 15 设计第二轮）。
 - 对照组跑之前先确认真的去掉了那样东西：检查最终喂给模型的文件，不只看源文件（Sprint 15：脚本先内联后删行，第一次对照没隔开）。
 - 判定标准照被测的那句话写，别比它更严：被测那一行允许「一个环」，标准写成「没有判断分支」，第三轮就有一次卡在这里（Sprint 15）。
+- 调 `claude -p` 的测试通道：去掉 `CLAUDE_CODE_HOST_AUTH_ENV_VAR`、`CLAUDE_CODE_PROVIDER_MANAGED_BY_HOST`、`ANTHROPIC_BASE_URL`，工具限 Read/Grep/Glob/Skill，每次给全新的空 TEMP/TMP；比对技能名时去掉 `ideo-scrum:` 前缀（Sprint 16）。
+- 描述有 1024 字符上限（plugin-validator 会报）；现在最长 987，改描述时留意（Sprint 16）。
 
 ## 源材料与授权
 
@@ -114,10 +118,10 @@ Claude 插件无 build/test；Codex 包由 `scripts/sync_codex.py` 生成、`scr
 - Stanford d.school Bootleg —— CC BY-**NC**-SA 4.0，含非商业限制
 - 《Sprint》(Knapp) —— 全版权；版权由 PO 负责，发布前声明（PO 2026-11-07）。写流程原文优先、例图改画成 Mermaid 或文字（见上）
 
-`references/` 是源材料原件，**不入库**（`.gitignore` 已拦截），仅存于作者本地。
+根目录的 `references/` 是源材料原件，**不入库**（`.gitignore` 已拦截），仅存于作者本地；插件里 `skills/*/references/` 的工件摘录照常入库。
 
 ## 插件内容的自足性
 
 插件会运行在别人的 Claude Code 或 Codex 里，那里没有本仓库的上下文，也没有作者的全局配置。
 
-**写插件内容时，不要依赖任何未在插件内言明的约定。** 例如「用 mermaid 画图」必须同时说明方向（`flowchart TD`），否则在他人环境中行为不一致。
+**写插件内容时，不要依赖任何未在插件内言明的约定。** 例如「用 mermaid 画图」必须同时说明方向（`flowchart TD`），否则在他人环境中行为不一致。引用别的技能的文件写 `../<kernel>/file.md`，不裸写文件名：裸文件名只在同一技能里解析得到（模板里用文字定位；Sprint 16）。
