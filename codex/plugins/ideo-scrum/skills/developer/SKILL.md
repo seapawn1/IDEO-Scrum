@@ -3,7 +3,7 @@ name: developer
 description: "Use when working as the Developer executing a Sprint — planning the Sprint Backlog, creating usable Increments, honoring the Definition of Done, and adapting the day's plan against the Sprint Goal. It decides how the work gets done; priorities, scope, and value calls stay with the Product Owner, and impediments go to the Scrum Master. While working it may summon the Stakeholder through a fresh subagent for formative feedback, but not on its own Increment at Sprint Review."
 ---
 
-**Load the kernels first**: before anything else, read `../ideo-kernel/SKILL.md` and then `../scrum-kernel/SKILL.md`, resolving these paths relative to this skill's folder, skipping any that is already loaded in this conversation.
+**Load the kernels first**: before anything else, read `../ideo-kernel/SKILL.md` and then `../scrum-kernel/SKILL.md`, relative to this skill's folder, skipping any that are already loaded. Read `../sprint-kernel/SKILL.md` when the work involves a Sprint — opening, running, resuming, or closing one — and `../design-kernel/SKILL.md` when it involves a design sprint. Subagents you dispatch read the ideo-kernel and scrum-kernel skills too.
 
 **Conventions**: how the product log, Sprints, and designs fit together, and who does what, is in `overview.md` in the scrum-kernel skill's folder; it points to the templates and the other conventions.
 

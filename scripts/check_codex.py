@@ -18,13 +18,15 @@ from urllib.parse import unquote, urlsplit
 import yaml
 
 
-KERNELS = ("ideo-kernel", "scrum-kernel", "design-kernel")
-ROLES = {
-    "developer": ("ideo-kernel", "scrum-kernel"),
-    "designer": ("ideo-kernel", "design-kernel"),
-    "scrum-master": KERNELS,
-    "stakeholder": ("ideo-kernel",),
-}
+KERNELS = ("ideo-kernel", "scrum-kernel", "sprint-kernel", "design-kernel")
+ROLES = ("developer", "designer", "scrum-master", "stakeholder")
+CODEX_LOAD = (
+    "**Load the kernels first**: before anything else, read `../ideo-kernel/SKILL.md` and then "
+    "`../scrum-kernel/SKILL.md`, relative to this skill's folder, skipping any that are already loaded. "
+    "Read `../sprint-kernel/SKILL.md` when the work involves a Sprint — opening, running, resuming, or closing "
+    "one — and `../design-kernel/SKILL.md` when it involves a design sprint. Subagents you dispatch read the "
+    "ideo-kernel and scrum-kernel skills too."
+)
 PACKAGE = Path("codex/plugins/ideo-scrum")
 
 
@@ -39,7 +41,7 @@ def frontmatter(value: str) -> tuple[dict, str]:
     return yaml.safe_load(match[1]), value[match.end():]
 
 
-def approved_body(source: str, target: str, kernels: tuple[str, ...]) -> bool:
+def approved_body(source: str, target: str) -> bool:
     original = source.splitlines(keepends=True)
     generated = target.splitlines(keepends=True)
     prefix = "**Load the kernel"
@@ -47,22 +49,7 @@ def approved_body(source: str, target: str, kernels: tuple[str, ...]) -> bool:
     b = [i for i, line in enumerate(generated) if line.startswith(prefix)]
     if len(a) != 1 or a != b:
         return False
-    line = generated[b[0]]
-    paths = [f"`../{kernel}/SKILL.md`" for kernel in kernels]
-    if len(paths) == 1:
-        expected = (
-            "**Load the kernel first**: before anything else, read "
-            f"{paths[0]}, relative to this skill's folder, unless it is already "
-            "loaded in this conversation.\n"
-        )
-    else:
-        target = f"{paths[0]} and then {paths[1]}" if len(paths) == 2 else ", then ".join(paths)
-        expected = (
-            "**Load the kernels first**: before anything else, read "
-            f"{target}, resolving these paths relative to this skill's folder, "
-            "skipping any that is already loaded in this conversation.\n"
-        )
-    if line != expected:
+    if generated[b[0]] != CODEX_LOAD + "\n":
         return False
     original[a[0]] = generated[b[0]] = "<approved loader>\n"
     return original == generated
@@ -106,7 +93,7 @@ def content_errors(root: Path) -> tuple[list[str], dict]:
                 errors.append(f"unapproved difference: {relative}")
         elif before.read_bytes() != after.read_bytes():
             errors.append(f"unapproved difference: {relative}")
-    for role, kernels in ROLES.items():
+    for role in ROLES:
         target = package / f"skills/{role}/SKILL.md"
         if not target.is_file():
             continue
@@ -114,7 +101,7 @@ def content_errors(root: Path) -> tuple[list[str], dict]:
         after_meta, after_body = frontmatter(text(target))
         if after_meta != {"name": role, **before_meta}:
             errors.append(f"role frontmatter: {role}")
-        if not approved_body(before_body, after_body, kernels):
+        if not approved_body(before_body, after_body):
             errors.append(f"role body: {role}")
         policy_path = package / f"skills/{role}/agents/openai.yaml"
         if policy_path.is_file():
@@ -272,8 +259,8 @@ def self_test(root: Path) -> dict:
 
 def idempotency(root: Path) -> dict:
     branch = subprocess.check_output(["git", "branch", "--show-current"], cwd=root, text=True).strip()
-    if branch != "sprint-13-codex":
-        raise ValueError("Repeatability check expects the Sprint 13 branch")
+    if not branch:
+        raise ValueError("Repeatability check needs the current branch")
     with tempfile.TemporaryDirectory(prefix="ideo-codex-repeat-") as directory:
         temporary = Path(directory).resolve()
         if not temporary.is_relative_to(Path(tempfile.gettempdir()).resolve()):

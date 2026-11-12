@@ -2,7 +2,7 @@
   "plugin": {
     "displayName": "IDEO-Scrum",
     "shortDescription": "Design Thinking and Scrum Sprint guidance",
-    "longDescription": "Three kernels (ideo-kernel, design-kernel, scrum-kernel) and four roles (Scrum Master, Designer, Developer, Stakeholder). IDEO methods form a shared toolbox; designs yield prototypes and findings, while Sprints deliver Increments. Conventions and templates ship with the plugin.",
+    "longDescription": "Four kernels (ideo-kernel, scrum-kernel, sprint-kernel, design-kernel) and four roles (Scrum Master, Designer, Developer, Stakeholder). Every role loads the IDEO and Scrum kernels; the sprint and design kernels load when the work involves a Sprint or a design sprint. IDEO methods form a shared toolbox; designs yield prototypes and findings, while Sprints deliver Increments. Conventions and templates ship with the plugin.",
     "developerName": "SeaPawn",
     "category": "Productivity",
     "capabilities": [
@@ -17,7 +17,7 @@
   "roles": {
     "scrum-master": {
       "display_name": "Scrum Master",
-      "short_description": "Guide Scrum, refinement, delegation, tracking, and review",
+      "short_description": "Guide Scrum, refinement, tracking, review; PO decides value",
       "default_prompt": "$scrum-master Review the project and help me prepare its next Scrum event."
     },
     "designer": {

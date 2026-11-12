@@ -1,5 +1,6 @@
 {
   "name": "ideo-scrum",
+  "description": "IDEO Design Thinking and Scrum Sprint methodology",
   "owner": { "name": "SeaPawn" },
   "plugins": [
     {

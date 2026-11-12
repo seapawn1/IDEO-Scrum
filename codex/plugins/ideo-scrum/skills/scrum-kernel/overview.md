@@ -7,7 +7,7 @@
 
 Source labels and short names are explained in convention 15.
 
-The other files: `conventions/product-log.md` and `conventions/product-backlog-template.md`; `conventions/sprint-log.md` and `conventions/sprint-backlog-template.md`; for designs, `../design-kernel/conventions/design-log.md` and `../design-kernel/conventions/design-backlog-template.md` (paths are relative to the scrum-kernel skill folder, where this file sits beside `SKILL.md`; the two design files belong to the design-kernel skill — read them when you open or resume a design).
+The other files: `conventions/product-log.md` and `conventions/product-backlog-template.md`; `../sprint-kernel/conventions/sprint-log.md` and `../sprint-kernel/conventions/sprint-backlog-template.md`; for designs, `../design-kernel/conventions/design-log.md` and `../design-kernel/conventions/design-backlog-template.md` (paths are relative to the scrum-kernel skill folder, where this file sits beside `SKILL.md`; the two design files belong to the design-kernel skill — read them when you open or resume a design).
 
 ## The map
 
@@ -56,7 +56,7 @@ flowchart TD
 
    The third layer is not a log and has no prescribed method; it relies on the skills of whoever does the work. Increments add up into the product; prototypes are thrown away when the design ends, and only what was learned flows back.
 4. **Folders** — `scrum/` holds all of the Scrum work: `ProductBacklog.md`; one folder for each Sprint or design in progress — `sprint-NN-<suffix>/` with its `SprintBacklog.md` and working files, `design-<suffix>/`, unnumbered, with its `DesignBacklog.md`, prototypes, and working files; and `documents/` (convention 5). This is the author's layout; use your project's own places if it has them.
-5. **Where files go** — A file that serves only one Sprint or design stays in its folder and is deleted when that Sprint or design ends; git keeps it. A file that serves the whole Scrum goes into `scrum/documents/`, and the logs reference it: design documents, background material, long content written for the product log, and the archives made at each Review — compressed sprint logs and compressed design logs. The Review makes those archives and keeps `scrum/documents/` fresh (`conventions/sprint-log.md`, convention 17). The project's own documentation, such as a user manual or API notes, is outside these conventions; keep it where the project keeps it, such as `docs/` at the root.
+5. **Where files go** — A file that serves only one Sprint or design stays in its folder and is deleted when that Sprint or design ends; git keeps it. A file that serves the whole Scrum goes into `scrum/documents/`, and the logs reference it: design documents, background material, long content written for the product log, and the archives made at each Review — compressed sprint logs and compressed design logs. The Review makes those archives and keeps `scrum/documents/` fresh (`../sprint-kernel/conventions/sprint-log.md`, convention 17). The project's own documentation, such as a user manual or API notes, is outside these conventions; keep it where the project keeps it, such as `docs/` at the root.
 6. **Working material** — Keep working material out of the logs; what is truly key can go into the project's memory or instructions file, and a large important file goes into `scrum/documents/`.
 7. **Names** — The terms used in all the conventions are defined here once:
    - the **product log** is the Product Backlog, kept in `ProductBacklog.md`; the **sprint log** is the Sprint Backlog, kept in `SprintBacklog.md`; the **design log** is kept in `DesignBacklog.md` — a file made from a template takes these names, whatever the template is called;
@@ -65,26 +65,28 @@ flowchart TD
 
 ### Who does what
 
-8. **Roles** — Every AI role loads the ideo-kernel skill first, the shared toolbox.
+8. **Roles** — Every AI role loads the ideo-kernel skill, the shared toolbox, and the scrum-kernel skill first.
 
    | Role | Home turf | Accountable for | Kernels |
    | --- | --- | --- | --- |
    | Product Owner | The product log and its handoffs | Value direction; the Product Goal and Sprint Goals; which items enter a Sprint; the go-ahead; the items, decided with the Scrum Master; the decision at the end of each stage (convention 12) | — (a person) |
-   | Scrum Master | Sprint logs and design logs | Facilitating Planning and refinement; recording; tracking; reviewing the How and the Increment; the Product Owner's secretary | ideo, scrum, design |
+   | Scrum Master | Sprint logs and design logs | Facilitating Planning and refinement; recording; tracking; reviewing the How and the Increment; the Product Owner's secretary | ideo, scrum |
    | Developer | The Sprint | The sprint log, the How, the Increment; the last check that nothing in refinement is unclear | ideo, scrum |
-   | Designer | The design | Design research and prototypes; conclusions back to the product log and the Sprint that asked | ideo, design |
-   | Stakeholder | An outside view | Looking as one row of the product log's stakeholder table; summoned at Review, or to review when the Product Owner names it | ideo |
+   | Designer | The design | Design research and prototypes; conclusions back to the product log and the Sprint that asked | ideo, scrum |
+   | Stakeholder | An outside view | Looking as one row of the product log's stakeholder table; summoned at Review, or to review when the Product Owner names it | ideo, scrum |
+
+   Every role loads the ideo-kernel and scrum-kernel skills; the sprint-kernel skill loads when the work involves a Sprint — opening, running, resuming, or closing one — and the design-kernel skill when it involves a design sprint. Subagents a role dispatches load the ideo-kernel and scrum-kernel skills too.
 
    The Product Owner, the Scrum Master, and the Developer keep the sprint log together; without a Developer, the Product Owner and the Scrum Master run the Sprint alone.
 9. **Only the Product Owner must be human** — The other roles may all be AI. This departs from the Scrum Guide Expansion Pack: see Departures.
 10. **Ask the Product Owner** — Whoever is unsure asks the Product Owner, unless the Product Owner has sent that kind of question elsewhere.
 11. **Product Owner as Developer** — When the Product Owner builds, they take part as a Developer, and the How is worked out with them.
-12. **Product Owner decides between stages** — At the end of each stage of a Sprint or a design, the Product Owner decides: they settle the result of the stage and decide whether to move on to the next one, unless the Product Owner has handed this to the Scrum Master. It is a decision, not a review or an acceptance: checking that the work was done right is the Scrum Master's job. It reaches the level of the stage, not each step inside it. Write the decision as the last line of the stage's chapter. A Sprint has five stages (`conventions/sprint-log.md`, convention 24) and a design has five (`../design-kernel/conventions/design-log.md`, convention 25).
+12. **Product Owner decides between stages** — At the end of each stage of a Sprint or a design, the Product Owner decides: they settle the result of the stage and decide whether to move on to the next one, unless the Product Owner has handed this to the Scrum Master. It is a decision, not a review or an acceptance: checking that the work was done right is the Scrum Master's job. It reaches the level of the stage, not each step inside it. Write the decision as the last line of the stage's chapter. A Sprint has five stages (`../sprint-kernel/conventions/sprint-log.md`, convention 24) and a design has five (`../design-kernel/conventions/design-log.md`, convention 25).
 
 ### Sessions
 
 13. **One Scrum Master per project** — Each project has one session as its Scrum Master, leading its Developer, Designer, and Stakeholders. A session above several projects only summarizes; each project's facts stay in its own logs.
-14. **Who gets which work** — Reviewing the work goes to the Scrum Master by default (`sprint-log.md`, convention 14). Long-running upkeep — the board, summaries, tracking — goes to a standing Stakeholder session with a working identity the project writes down. A small edit to one or two files the Scrum Master makes itself. Building goes to a new Developer session when a paragraph can brief it, or to a Developer that shares the Scrum Master's context when the work needs much of the discussion; such a Developer cannot review its own work.
+14. **Who gets which work** — Reviewing the work goes to the Scrum Master by default (`../sprint-kernel/conventions/sprint-log.md`, convention 14). Long-running upkeep — the board, summaries, tracking — goes to a standing Stakeholder session with a working identity the project writes down. A small edit to one or two files the Scrum Master makes itself. Building goes to a new Developer session when a paragraph can brief it, or to a Developer that shares the Scrum Master's context when the work needs much of the discussion; such a Developer cannot review its own work.
 
 ### About these conventions
 
@@ -104,8 +106,8 @@ Each departure is stated here once, with its reason; the convention named in the
 | --- | --- | --- | --- |
 | Only the Product Owner must be human | SGEP: the Product Owner and the Scrum Master "must be human", and "At least one Product Developer should be human" | One person works with AI and keeps the value decisions | Convention 9 |
 | Designs sit beside Sprints | Scrum Guide: all the work "happen within Sprints" | A design delivers no Increment, may span several Sprints, and the Designer and the Developer are peers | Convention 2 |
-| The Product Owner decides the items with the Scrum Master | Scrum Guide: "the Developers select items from the Product Backlog" | The Product Owner sets the value direction, and the others say how much fits | `product-log.md`, convention 12 |
-| The How is a plan, and building waits for the go-ahead | Scrum Guide: how to build is "at the sole discretion of the Developers" | The Scrum Master and the Product Owner check the plan, because AI may drift | `sprint-log.md`, conventions 7 and 8 |
-| Checkpoints replace the Daily Scrum | Scrum Guide: the Daily Scrum is "a 15-minute event for the Developers" | AI works by session, not by day | `sprint-log.md`, convention 10 |
-| A reviewer is required | Scrum Guide: the Developers are accountable for "Instilling quality by adhering to a Definition of Done" | A Developer may drift, and a second look catches it | `sprint-log.md`, convention 14 |
-| No Sprint end date | Scrum Guide: Sprints are "fixed length events of one month or less" | AI works by session, so the Product Owner watches at checkpoints for a Sprint that drags on | `sprint-log.md`, convention 2 |
+| The Product Owner decides the items with the Scrum Master | Scrum Guide: "the Developers select items from the Product Backlog" | The Product Owner sets the value direction, and the others say how much fits | `conventions/product-log.md`, convention 12 |
+| The How is a plan, and building waits for the go-ahead | Scrum Guide: how to build is "at the sole discretion of the Developers" | The Scrum Master and the Product Owner check the plan, because AI may drift | `../sprint-kernel/conventions/sprint-log.md`, conventions 7 and 8 |
+| Checkpoints replace the Daily Scrum | Scrum Guide: the Daily Scrum is "a 15-minute event for the Developers" | AI works by session, not by day | `../sprint-kernel/conventions/sprint-log.md`, convention 10 |
+| A reviewer is required | Scrum Guide: the Developers are accountable for "Instilling quality by adhering to a Definition of Done" | A Developer may drift, and a second look catches it | `../sprint-kernel/conventions/sprint-log.md`, convention 14 |
+| No Sprint end date | Scrum Guide: Sprints are "fixed length events of one month or less" | AI works by session, so the Product Owner watches at checkpoints for a Sprint that drags on | `../sprint-kernel/conventions/sprint-log.md`, convention 2 |

@@ -17,8 +17,8 @@
 | 版权 | © 2020 Ken Schwaber and Jeff Sutherland |
 | 许可 | **CC BY-SA 4.0** — https://creativecommons.org/licenses/by-sa/4.0/legalcode |
 | 原始出处 | https://scrumguides.org/ |
-| 本仓库位置 | `plugins/ideo-scrum/skills/scrum-kernel/scrum-guide-2020.md`（全文）<br>`plugins/ideo-scrum/skills/scrum-kernel/references/`（按 Artifact / Event 拆分的摘录）<br>`plugins/ideo-scrum/commands/scrum-master.md`、`plugins/ideo-scrum/commands/developer.md`（角色命令主体抄录）<br>`plugins/ideo-scrum/skills/scrum-kernel/conventions/`（约定里的嵌入引用，句中注明出处） |
-| 修改说明 | 全文按 Scrum 的 Artifact 与 Event 拆分重排为独立文件，供 agent 按需检索。原文措辞未改动；角色命令主体为原文抄录，署名统一在本档登记（命令不设文件头）。 |
+| 本仓库位置 | `plugins/ideo-scrum/skills/scrum-kernel/assets/scrum-guide-2020.md`（全文）<br>`plugins/ideo-scrum/commands/scrum-master.md`、`plugins/ideo-scrum/commands/developer.md`（角色命令主体抄录）<br>`plugins/ideo-scrum/skills/scrum-kernel/conventions/`（约定里的嵌入引用，句中注明出处） |
+| 修改说明 | 2020 版全文随源文件提供，未作节选；Artifact 与 Event 的分项摘录来自 SGEP，登记在本档第 2 节。角色命令主体为原文抄录，署名统一在本档登记（命令不设文件头）。 |
 
 **ShareAlike 提示**：若你基于上述文件制作衍生作品并分发，衍生部分同样须以 CC BY-SA 4.0 发布。
 
@@ -32,8 +32,8 @@
 | 版权 | © 2025 Ralph Jocham, John Coleman, and Jeff Sutherland |
 | 许可 | **CC BY-SA 4.0** — https://creativecommons.org/licenses/by-sa/4.0/legalcode |
 | 原始出处 | https://scrumexpansion.org/scrum-guide-expanded/ |
-| 本仓库位置 | `plugins/ideo-scrum/skills/scrum-kernel/assets/scrum-guide-expansion-pack-2026.1.md`（全文）<br>`plugins/ideo-scrum/skills/scrum-kernel/SKILL.md`（SGEP 句的嵌入引用）<br>`plugins/ideo-scrum/commands/scrum-master.md`、`plugins/ideo-scrum/commands/developer.md`（角色命令的 2026 精炼补充）<br>`plugins/ideo-scrum/commands/stakeholder.md`（Stakeholder 角色内容——SGEP 角色章精炼改写）<br>`plugins/ideo-scrum/skills/scrum-kernel/conventions/`（约定里的嵌入引用，句中注明出处） |
-| 修改说明 | 全文随源文件提供，未作节选；原文措辞未改动。角色命令（scrum-master / developer / stakeholder）中的 SGEP 内容为精炼改写（含原文短语），署名统一在本档登记。 |
+| 本仓库位置 | `plugins/ideo-scrum/skills/scrum-kernel/assets/scrum-guide-expansion-pack-2026.1.md`（v2026.1 除 Artifacts、Events 两章以外的部分）<br>`plugins/ideo-scrum/skills/scrum-kernel/references/`（Artifacts 两章拆成的 4 份摘录）<br>`plugins/ideo-scrum/skills/sprint-kernel/events/`（Events 两章拆成的 5 份摘录）<br>`plugins/ideo-scrum/skills/scrum-kernel/SKILL.md`、`plugins/ideo-scrum/skills/sprint-kernel/SKILL.md`（SGEP 句的嵌入引用）<br>`plugins/ideo-scrum/commands/scrum-master.md`、`plugins/ideo-scrum/commands/developer.md`（角色命令的 2026 精炼补充）<br>`plugins/ideo-scrum/commands/stakeholder.md`（Stakeholder 角色内容——SGEP 角色章精炼改写）<br>`plugins/ideo-scrum/skills/scrum-kernel/conventions/`（约定里的嵌入引用，句中注明出处） |
+| 修改说明 | v2026.1 的 Artifacts、Events 两章抽成 `references/` 与 `events/` 的单份文件，`assets/` 里是其余部分；原文措辞未改动。角色命令（scrum-master / developer / stakeholder）中的 SGEP 内容为精炼改写（含原文短语），署名统一在本档登记。 |
 
 **注意**：Scrum Guide Expansion Pack 由上述三位作者编写，托管于 scrumexpansion.org，**并非 Scrum.org 出品**。该站点上另有一份 "AI and Scrum" 文档采用 CC BY-NC-ND 许可，本仓库未使用。
 
@@ -65,7 +65,7 @@
 | 出版 | Simon & Schuster, 2016 |
 | 许可 | **全版权保护**（All Rights Reserved），无开放许可 |
 | 官方网站 | https://www.thesprintbook.com/ |
-| 本仓库位置 | `plugins/ideo-scrum/skills/design-kernel/`（设计冲刺原书摘录，按 IDEO 五阶段放：`empathize/` define-the-challenge、start-at-the-end、ask-the-experts；`define/` make-a-map、how-might-we、pick-a-target；`ideate/` remix-and-improve、sketch、decide、rumble、storyboard；`prototype/` fake-it、prototype；`test/` small-data、interview、learn；例图改画成 Mermaid 或文字） |
+| 本仓库位置 | `plugins/ideo-scrum/skills/design-kernel/steps/`（设计冲刺原书摘录，按 IDEO 五阶段编号：`1-1`～`1-3` 共情 define-the-challenge、start-at-the-end、ask-the-experts；`2-1`～`2-3` 定义 make-a-map、how-might-we、pick-a-target；`3-1`～`3-5` 构思 remix-and-improve、sketch、decide、rumble、storyboard；`4-1`～`4-2` 原型 fake-it、prototype；`5-1`～`5-3` 测试 small-data、interview、learn；例图改画成 Mermaid 或文字） |
 | 使用范围 | 设计冲刺各章的**原文摘录**：只删不改，删去与 solo + AI 团队无关的段落（日程、场地与用品、部分长例子）；各文件标注章节出处。原书例图改画成 Mermaid 或文字，不含图片文件。术语保留原文（Decider、Facilitator 等）；对应到本插件角色的写法、作者的做法另放 `design-kernel/conventions/`，标为约定。 |
 
 > **请支持正版**

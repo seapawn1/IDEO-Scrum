@@ -1,13 +1,16 @@
 ---
 name: scrum-kernel
-description: "Use when work involves Scrum or a Scrum Sprint — Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective, backlog refinement, Product Backlog, Sprint Backlog, Sprint Goal, Product Goal, Definition of Done, Scrum roles (Product Owner, Scrum Master, Developers), empirical process control for complex projects. Load it before creating or changing a Product Backlog or Sprint Backlog, even for a draft: this plugin builds them from its own templates, so work from this skill, not from memory. Division of labor: a design handles research, Scrum handles implementation — before starting, check whether open questions need a pre-study: if the problem or solution direction is unvalidated, open a design with the design-kernel skill first and treat its findings as key Sprint evidence; the IDEO methods in the ideo-kernel skill are the plugin's shared toolbox, usable at any time — when stuck mid-Sprint, they can help inspect the problem."
+description: "Use when work involves Scrum — the Product Backlog, Product Goal, Definition of Done, Scrum roles (Product Owner, Scrum Master, Developers), empirical process control for complex projects, or the plugin's product log and its conventions. Load it before creating or changing the Product Backlog, even for a draft: the product log and its template come from this skill, not from memory. Every role loads this skill and the ideo-kernel skill first. Running a Sprint is the sprint-kernel skill, loaded when the work involves one. A new project with no product log yet — an idea on a blank page — starts from a design (design-kernel skill) that fills the product log. A design handles research, Scrum handles implementation: when a problem or direction is unvalidated, open a design first and treat its findings as Sprint evidence; the ideo-kernel methods can help at any time, e.g. when stuck mid-Sprint."
 ---
 
 # Scrum Kernel
 
+> Source: quoted and summarized from The Scrum Guide 2020 (Ken Schwaber & Jeff Sutherland) and the Scrum Guide Expansion Pack (Ralph Jocham, John Coleman, Jeff Sutherland); the artifact chapter comes from the Expansion Pack.
+> License: the quotations are CC BY-SA 4.0 (© 2020 Ken Schwaber and Jeff Sutherland; © 2025 Ralph Jocham, John Coleman, and Jeff Sutherland); the plugin's own text is MIT.
+
 ## The Scrum Guide
 
-Scrum is described in `scrum-guide-2020.md`, the definitive 2020 Scrum Guide by Ken Schwaber & Jeff Sutherland. Scrum is a lightweight framework for addressing complex work, particularly in Product discovery, development, delivery, and value realization. Scrum is based on empirical process control (decisions informed by evidence) and lean thinking (reducing waste and focusing on the flow of value). Scrum is purposefully incomplete, guiding interactions rather than prescribing detailed recipes.
+Scrum is described in `assets/scrum-guide-2020.md`, the definitive 2020 Scrum Guide by Ken Schwaber & Jeff Sutherland. Scrum is a lightweight framework for addressing complex work, particularly in Product discovery, development, delivery, and value realization. Scrum is based on empirical process control (decisions informed by evidence) and lean thinking (reducing waste and focusing on the flow of value). Scrum is purposefully incomplete, guiding interactions rather than prescribing detailed recipes.
 
 ## Why Use Scrum?
 
@@ -21,15 +24,13 @@ Research and implementation are divided: a design (design-kernel skill) handles 
 
 ## Conventions
 
-How a solo + AI team keeps its product log and runs its Sprints is in `overview.md`, beside this file, and in `conventions/`: templates, and working conventions that are not source text — follow what fits, override what doesn't, and note why. Start with the overview. When you open, run, or close a Sprint, write a log, or answer a question about how to do any of these, read the matching convention first, even for a rough answer. The references below are the official texts; the conventions depart from them on purpose in a few places — no Sprint end date, checkpoints instead of the Daily Scrum, a go-ahead before building — and the overview lists them all.
+How a solo + AI team keeps its product log and runs its Sprints is in `overview.md`, beside this file, and in the conventions: `conventions/` here for the product log, and the sprint-kernel skill's `conventions/` for running a Sprint. Start with the overview. When you write the product log or answer a question about how to do it, read the matching convention first, even for a rough answer. The references below are the official texts; the conventions depart from them on purpose in a few places — no Sprint end date, checkpoints instead of the Daily Scrum, a go-ahead before building — and the overview lists them all. Running a Sprint is the sprint-kernel skill's work: `../sprint-kernel/conventions/sprint-log.md` has the five stages and the close, and its `events/` holds the five Scrum events.
 
 | File | What it covers | Read when |
 | --- | --- | --- |
 | `overview.md` | How the product log, Sprints, and designs fit together; folders, including `scrum/documents/`; roles; what stays fixed | Starting a project, or unsure who does what or where a file goes |
 | `conventions/product-log.md` | Writing the product log and refining its items | Writing, refining, or refreshing the product log |
 | `conventions/product-backlog-template.md` | The product log template; the file made from it is `ProductBacklog.md` | Creating a product log |
-| `conventions/sprint-log.md` | The five stages of a Sprint — Why, What, How, Increment, Test — and its close | Opening, running, or closing a Sprint |
-| `conventions/sprint-backlog-template.md` | The sprint log template; the file made from it is `SprintBacklog.md` | Opening a Sprint |
 
 ## Elements of Scrum
 
@@ -103,31 +104,9 @@ If the Product Goal shifts often, it could indicate that something is off, perha
 
 ---
 
-## The Scrum Events in the Expansion Pack
-
-Scrum combines four timeboxed events for Inspection and Adaptation within a containing fifth event of determinate consistent length, the Sprint. These events support the Scrum pillars of Transparency, Inspection, and Adaptation. Releases enable value, ideally, continuously. Infrequent releases lead to delayed result feedback.
-
-A timebox is a stipulated maximum amount of elapsed time from beginning to end for a defined event, not to be confused with an expectation to use that full amount of time. The purpose of a timebox in Scrum is to foster the selection of essential work, creating Focus to achieve desired results quickly.
-
-Events create cadence and minimize the need for other meetings not part of Scrum. Ideally, each event is held at the same time and place to reduce complexity [12-17] and foster the formation of habits. Skilled facilitation improves effectiveness. Ineffective events risk losing emphasis on the Sprint Goal, Product Goal, Transparency, Inspection, Adaptation, and Scrum Values.
-
-Each event has its own purpose and should include deep, meaningful work. Together, the Scrum events provide a scaffold of Transparency to inspect and adapt, pause, and reflect. The Scrum events support structured thinking and working, effectiveness, and a balanced workload. (SGEP is influenced by Cynefin and Evidence-Based Management)
-
-Communication is key to ensuring the Scrum Team and Supporters Focus on the right thing. Apart from the Sprint, events may consume less time as long as coherence is not lost.
-
-| Event | Reference | Purpose | Read when |
-| --- | --- | --- | --- |
-| The Sprint | `references/scrum-event-sprint.md` | Container event that turns ideas into value through an iteration of determinate length. Provides Focus, stability, and a cadence for Inspection and Adaptation toward the Product Goal. | The team needs to understand Sprint rules: what cannot change during a Sprint, when cancellation is appropriate, how shorter Sprints affect learning cycles and risk, or why frequent releasing matters for result feedback. |
-| Sprint Planning | `references/scrum-event-sprint-planning.md` | Initiate the Sprint by defining the Sprint Goal (Why), selecting Product Backlog Items (What), and creating an actionable plan (How). Where the Scrum Team gives Focus and creates commitment. | A new Sprint is about to begin. The Product Owner proposes value-increasing ideas, the Developers select and decompose PBIs, and the team must craft a Sprint Goal covering Why / What / How. Also when the team chronically overloads Sprints — consult the SGEP guidance on buffers and slack. |
-| Daily Scrum | `references/scrum-event-daily-scrum.md` | Product Developers inspect progress toward the Sprint Goal and adapt the Sprint Backlog for the next day. Provides Focus, cohesion, urgency, and fosters self-management. | The Developers need to inspect progress toward the Sprint Goal, adapt the Sprint Backlog, identify impediments, or decide whether to pivot toward the Product Goal when the Sprint Goal is already met. Also when the team is starting too many items instead of finishing work in progress. |
-| Sprint Review | `references/scrum-event-sprint-review.md` | Inspect the Sprint outcome with Stakeholders and collaboratively determine future adaptations. Inspects the Increment, Product Goal, Product Backlog, market, and Definition of Outcome Done. | The Sprint outcome is ready for Stakeholder inspection. The team presents the Increment, Definition of Output Done, and Definition of Outcome Done measures; Stakeholders and the Scrum Team collaborate on what to do next; the Product Backlog (and possibly Product Goal) may adapt. Also when incomplete PBIs need to be returned to the backlog. |
-| Sprint Retrospective | `references/scrum-event-sprint-retrospective.md` | Plan ways to increase quality and effectiveness. The Scrum Team inspects how the last Sprint went and identifies the most helpful changes to improve. | The Sprint is ending. The Scrum Team inspects how the last Sprint went — individuals, interactions, processes, tools, Definition of Done — identifies bad assumptions, and agrees on the most impactful improvements. Also when improvement actions from prior Retros were not followed through. |
-
----
-
 ## Reference Catalog
 
 | Category | Reference | Contains | Read when |
 | --- | --- | --- | --- |
-| **Foundation** | `scrum-guide-2020.md` | The definitive 2020 Scrum Guide by Ken Schwaber & Jeff Sutherland | The team is new to Scrum, needs the canonical definitions of roles/events/artifacts, or a dispute about "what Scrum says" must be settled by the source. |
-| **SGEP Source** | `assets/scrum-guide-expansion-pack-2026.1.md` | The full Scrum Guide Expansion Pack (SGEP) v2026.1 — the canonical source from which all reference files are derived. Contains content not yet extracted to references: supporting Theory (complexity, emergence, empiricism, lean thinking, cadence), Scrum Values through the OODA lens, Product/Systems/Discovery/Leadership theory, People & Change guidance, and the complete academic reference list (resolves inline citations like `[12-17]` found throughout reference files). | Specific artifact/event/role content should be looked up in the corresponding reference file first. Read the SGEP source directly when the reference file doesn't cover a topic, when the full theoretical underpinnings are needed, or to look up the full citation for an inline reference marker. |
+| **Foundation** | `assets/scrum-guide-2020.md` | The definitive 2020 Scrum Guide by Ken Schwaber & Jeff Sutherland | The team is new to Scrum, needs the canonical definitions of roles/events/artifacts, or a dispute about "what Scrum says" must be settled by the source. |
+| **SGEP Source** | `assets/scrum-guide-expansion-pack-2026.1.md` | The Scrum Guide Expansion Pack (SGEP) v2026.1, minus its Artifacts and Events chapters — the Artifacts chapters are in `references/`, the Events chapters in the sprint-kernel skill's `events/`. Holds supporting Theory (complexity, emergence, empiricism, lean thinking, cadence), Scrum Values through the OODA lens, Product/Systems/Discovery/Leadership theory, People & Change guidance, and the complete academic reference list (resolves inline citations like `[12-17]` found throughout the reference files). | Specific artifact/event/role content should be looked up in the corresponding reference file first. Read the SGEP source directly when the reference file doesn't cover a topic, when the full theoretical underpinnings are needed, or to look up the full citation for an inline reference marker. |

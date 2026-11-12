@@ -1,0 +1,49 @@
+# Small Data
+
+> Source: Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster. Chapter: "Small Data."
+> License: All rights reserved (© Jake Knapp, John Zeratsky, and Braden Kowitz; Simon & Schuster, 2016).
+> Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures that explain a method are redrawn as Mermaid diagrams or text; the others are left out. Day names, clock times, and timers are the book's schedule, not an instruction.
+
+One August evening in 1996, a publisher named Nigel Newton left his office in London’s Soho district and headed home, carrying a stack of papers. Among them were fifty sample pages from a book he needed to review, but Newton didn’t have high hopes for it. The manuscript had already been rejected by eight other publishers.
+
+Newton didn’t read the sample pages that evening. Instead, he handed them over to his eight-year-old daughter, Alice.
+
+Alice read them. About an hour later, she returned from her room, her face glowing with excitement. “Dad,” she said, “this is so much better than anything else.”
+
+She wouldn’t stop talking about the book. She wanted to finish reading it, and she pestered her father—for months—until he tracked down the rest.
+
+Eventually, spurred by his daughter’s insistence, Newton signed the author to a modest contract and printed five hundred copies. That book, which barely made it to the public, was Harry Potter and the Philosopher’s Stone.
+
+You know the rest of the story. Today, there are hundreds of millions of Harry Potter books in print worldwide. How did publishers get it so wrong?
+
+Eight experts in children’s publishing turned Harry Potter down—and the ninth, Newton, only printed five hundred copies. But Alice, an eight-year-old, knew right away that it was “so much better than anything else.”
+
+Alice didn’t analyze Harry Potter’s potential. She didn’t think about cover art, distribution, movie rights, or a theme park. She just reacted to what she read. Those grown-ups tried to predict what children would think, and they were wrong. Alice got it right because she actually was a kid. And her father was smart enough to listen.
+
+---
+
+When Nigel Newton showed Alice the Harry Potter manuscript, he got a glimpse into the future. He saw a target reader react to the book before he’d committed to printing a single copy. On Friday of your sprint, you and your team will experience that same kind of time warp. You’ll watch target customers react to your new ideas—before you’ve made the expensive commitment to launch them.
+
+Here’s how Friday works: One person from your team acts as Interviewer. He’ll interview five of your target customers, one at a time. He’ll let each of them try to complete a task with the prototype and ask a few questions to understand what they’re thinking as they interact with it. Meanwhile, in another room, the rest of the team will watch a video stream of the interview and make note of the customers’ reactions.
+
+These interviews are an emotional roller coaster. When customers get confused by your prototype, you’ll be frustrated. If they don’t care about your new ideas, you’ll be disappointed. But when they complete a difficult task, understand something you’ve been trying to explain for months, or if they pick your solution over the competition—you will be elated. After five interviews, the patterns will be easy to spot.
+
+Now, we know that the idea of testing with such a small sample is unsettling to some folks. Is talking to just five customers worthwhile? Will the findings be meaningful?
+
+Earlier in the week, you recruited and carefully selected participants for your test who match the profile of your target customer. Because you’ll be talking to the right people, we’re convinced you can trust what they say. And we’re also convinced that you can learn plenty from just five of them.
+
+## Five is the magic number
+
+Jakob Nielsen is a user research expert. Back in the 1990s, he pioneered the field of website usability (the study of how to design websites that make sense to people). Over the course of his career, Nielsen has overseen thousands of customer interviews, and at some point he wondered: How many interviews does it take to spot the most important patterns?
+
+So Nielsen analyzed eighty-three of his own product studies. He plotted how many problems were discovered after ten interviews, twenty interviews, and so on. The results were both consistent and surprising: 85 percent of the problems were observed after just five people.
+
+Testing with more people didn’t lead to many more insights—just a lot more work. “The number of findings quickly reaches the point of diminishing returns,” Nielsen concluded. “There’s little additional benefit to running more than five people through the same study; ROI drops like a stone.” Instead of investing a great deal more time to find the last 15 percent, Nielsen realized he could just fix the 85 percent and test again.
+
+We’ve seen the same phenomenon in our own tests. By the time we observe the fifth customer, we’re just confirming patterns that showed up in the first four interviews. We tried testing with more customers, but as Nielsen says, it just wasn’t worth it.
+
+One-on-one interviews are a remarkable shortcut. They allow you to test a façade of your product, long before you’ve built the real thing—and fallen in love with it. They deliver meaningful results in a single day. But they also offer an important insight that’s nearly impossible to get with large-scale quantitative data: why things work or don’t work.
+
+That “why” is critical. If you don’t know why a product or service isn’t working, it’s hard to fix it. When all you have is statistics, you have to guess what your customers are thinking. When you’re doing an interview, you can just ... ask.
+
+These interviews are easy to do. They don’t require special expertise or equipment. You won’t need a behavioral psychologist or a laser eye-tracker—just a friendly demeanor, a sense of curiosity, and a willingness to have your assumptions proven wrong.
