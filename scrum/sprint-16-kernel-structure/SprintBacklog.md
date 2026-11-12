@@ -178,7 +178,7 @@ design-kernel：`steps/` 按 SKILL.md 五阶段表的摘录顺序编号；`pick-
 - **耗时**：基线与新版放最后、同一天连着跑；跨会话时按第 4 章笔记接上。
 - **合入 main 的时机**：验收与审阅过后本冲刺先合，Sprint 17 才搬稿；tag、合入、关 worktree、删分支由 Master 做；版本号不动。
 
-Go-ahead: （待 PO：停点 ①，两个冲刺的 How 都审过后一起放行）
+Go-ahead: 2026-11-12，PO（停点 ①，两个冲刺一起放行，原话「全部放行」）；范围：在冲刺分支上提交；验收和审阅过后由 Master 收官——打 tag、合入 main、关 worktree、删分支；版本号不动；推送在停点 ③ 之后，随 v6.0.0 一起由 Master 做。
 
 ## 4. Increment notes
 
