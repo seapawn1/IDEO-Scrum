@@ -3,8 +3,8 @@
 import json, re, sys
 from pathlib import Path
 
-ARCH = Path(r"S:/IDEO-Scrum-Archives/sprint-17-conventions-rewrite")
-OUT = Path(r"S:/IDEO-Scrum/.claude/worktrees/awesome-pare-fb64d7/scrum/sprint-17-conventions-rewrite/test-results")
+ARCH = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(r"S:/IDEO-Scrum-Archives/sprint-17-conventions-rewrite/round2")
+OUT = Path(r"S:/IDEO-Scrum-Archives/sprint-17-conventions-rewrite/answers") / ARCH.name
 
 def parse(p):
     skills, reads, greps, result = [], [], [], ""
