@@ -57,7 +57,7 @@
 
 ## 2.2 架构
 
-> 照 Make a Map 画：上面是人，下面是结局，中间是步骤。流程见插件 scrum-kernel 的 conventions/。
+> 照 Make a Map 画：上面是人，下面是结局，中间是步骤。流程见插件 scrum-kernel 的 `overview.md`，与各内核的 `conventions/`。
 
 ```mermaid
 flowchart TD
@@ -70,17 +70,20 @@ flowchart TD
     A --> B["② 写产品日志：Product · 架构 · PBI（product-log）"]
     M --> B
     B --> C["③ Planning：Why → What（精化）→ How（计划，不是步骤）（sprint-log）"]
-    B -- "某条 PBI 要设计" --> X["设计：共情 → 定义 → 构思 → 原型 → 测试（design-log）"]
+    B -- "某条 PBI 要设计" --> X0{"设计冲刺还是五模式？（ideo-log）"}
+    X0 -- "设计冲刺" --> X["设计冲刺：五个阶段，各站在一个 IDEO 模式上（design-log）"]
+    X0 -- "五模式" --> I["五模式：一两个方法就地用，或开 IDEO 日志（ideo-log）"]
     B -- "白纸：产品和 Product Goal 写不出来" --> X
-    C -- "精化碰到难点" --> X
+    C -- "精化碰到难点" --> X0
     G --> X
     S --> X
     X -- "结论回流" --> B
+    I -- "结论回流" --> B
     C --> P["④ PO 放行"]
     P --> W["⑤ 施工（sprint-log）"]
     D --> W
     W --> R["⑥ Test：测试 · 审阅 · PO 决定收官或回去"]
-    R --> V["⑦ Review：冲刺日志和已结束的设计日志归档 · 产品日志保鲜"]
+    R --> V["⑦ Review：冲刺日志、已结束的设计日志与 IDEO 日志归档 · 产品日志保鲜"]
     S --> V
     V --> T["⑧ Retro"]
     T --> E["结局：Sprint Goal 达成，增量交付，Product Goal 向前一步"]
@@ -94,16 +97,12 @@ flowchart TD
 
 | 编号 | 标题 | 用户故事 | 架构定位 | 当前状态 | 规模 | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
-| PBI-56 | 设计冲刺与 IDEO 五阶段法分清 | 作为熟手，我想要插件分清设计冲刺和 IDEO 五阶段法：小问题就地用五阶段法，大问题才开设计冲刺，由 PO 指定，以便不为小问题兴师动众 | 插件：ideo-kernel（新 `conventions/`）、design-kernel（design-log 第 1、26 条） | 待开始（本目标） | M | 定案（PO 2026-11-12）：用哪种由 PO 指定；PO 没指定时按默认分——要先做原型、拿角色卡测过才敢动手的，开设计冲刺，其余就地用五阶段法，按方法记录。设计冲刺重；五阶段法是基础，规矩少，所以 IDEO 的 conventions 写得轻。从聊天里开的设计，聊天已算作共情材料。写进 ideo-kernel 新的 `conventions/` 一份简短约定；design-log 第 1、26 条改成指向它。来源：PO 2026-11-11（design-feedback-loop 的 Retro）；旁测 P1（2026-11-11，3 次）说五阶段法时都只在对话里走五模式、没开设计——缺的不是触发，是分界；相关 PBI-54、PBI-52。补（PO 2026-11-12，停点 ②）：ideo-kernel 的 `conventions/` 照另三个内核放日志约定和模板——`ideo-log.md`（分界并入作第 1 条）与 `ideo-backlog-template.md`（做出 `IdeoBacklog.md`，标准五节、不拆分，基本用不到）；这时一般不加载 design-kernel，要分清是 IDEO 方法论还是设计冲刺 |
-| PBI-58 | 设计约定修订——PO 用设计时攒下的点 | 作为熟手，我想要设计约定补上用过一轮后攒下的点，以便下一个设计照着走更顺 | 插件：design-kernel 的 `conventions/` | 待开始（本目标） | M | 收进（PO 2026-11-12 定）：① 地图要粗——只有现在发生的事，五六个框、一个环，分支和方案不进地图；② 设计目标写成愿景，不写怎么做；③ 子代理发散时，主对话陪 PO 聊，PO 没想法就替他画一份，全部合并后再收敛；④ 三个环作为导读——共情和定义人进 AI 出，发散与收敛 AI 做、人选，原型和测试可以自动跑（「测试前 PO 先看原型」不进插件，PO 2026-11-12 定）；⑤ 一个 Designer 常常就够，有时也要 Master，兼不兼由 PO 定；⑥ 设计一开就开分支，现场定的只是从哪里开（原 PBI-54 ⑤）；⑦ 隔离草图的子代理不加载用户的 CLAUDE.md，简报里不给现状（原 PBI-54 ⑦）；⑧ Lightning Demos 给每份草图不同的一部分，或先画再看（原 PBI-54 ⑧）。约定可以大改，不在原文上打补丁。来源：2026-11-11、11-12 全局记忆 Feedback；Sprint 14 Review 的熟手意见 ⑤–⑧ |
-| PBI-54 | 产品日志与冲刺约定修订 | 作为熟手，我想要产品日志和冲刺的约定用过一轮后再集中修一次，补上用起来卡手的地方 | 插件：scrum-kernel 的 `conventions/` | 待开始（本目标） | S | 收进：① 冲刺日志模板头部加一行 Now，断线后一眼看到最后一个 PO 的决定；② sprint-log 的 Checkpoints 写明什么算卡住；③ sprint-log 的 Review 写明怎么判「过时」；④ sprint-log 第 5 条写明：落盘条目时对照 Sprint Goal 查够不够，缺就增、多就减（PO 2026-11-12）；⑤ 约定可以大改，不在原文上打补丁。设计部分（原 ⑤–⑧）拆到 PBI-58。「Why 不写 PBI」不用改：插件里已是这样（模板 1.1、1.2 与 sprint-log 第 4 条都没有 PBI 条目）。来源：Sprint 14 Review 的熟手意见；SEAPAWN Feedback（Why 不写 PBI） |
-| PBI-53 | 约定写明 Developer 在别的工具里时怎么协作 | 作为熟手，我想要约定写明 Developer 在别的工具（如 Codex）里干活时，它和 Master 怎么协作，以便不用口述 Sprint 13 的做法，换工具也能照着走 | Map ③～⑧ | 待开始（本目标） | S | 来源：PBI-40 ⑧（熟手意见，2026-11-08 Sprint 10 Review），Sprint 14 收官时从 PBI-40 拆出；Sprint 13 的做法：通道只有冲刺日志，两边共用一个工作目录、轮流动手，每轮提交、在笔记里记一行并写明轮到谁，Master 的审阅写在 plan 文件里由 PO 转交；Sprint 14 的 Developer 是 `/fork` 出的独立会话，与 Master 用跨会话消息直接通讯（PO 2026-11-10），约定里也还没写，改约定时一并定；改完要重跑 `scripts/sync_codex.py`；与 PBI-46 ③（并入 PBI-54）相关 |
-| PBI-52 | 白纸入口——新想法、还没有产品日志时带到设计 | 作为陌生人，我想要说出「我有个想法、还没有产品日志」时，插件就把我带到先开设计、由设计结论去填产品日志这条路上，以便不会一上来就硬写产品日志或直接出方案 | Map ①（装插件，开会话） | Sprint 17 | S～M | 测试结论（Sprint 16，路径一 0/3→2/3，两条路径的行为栏都 3/3：都加载了设计、读了约定；内容缺必答 ③「设计的结论会流回产品日志」，路径二 1/3）。Master 2026-11-12（PO 委托）定：不补跑，移 Sprint 17 接着做，Sprint 17 的流程测试跑题 3 两条路径与题 2 两条路径。Sprint 14 四轮 12 次 0 次过线（缺口在触发和先读约定）。与 PBI-30、PBI-44 相关 |
+| PBI-59 | 分界题的直接路径——没说关键词也先走分界 | 作为熟手，我想要问「这个要不要做、用户会怎么想」这类没有现成答案的问题时，即使没进角色命令、没说出 IDEO 或设计这些词，AI 也先照分界定用设计冲刺还是五模式，用五模式时照 IDEO 日志的约定跑，以便它不直接替我拍板 | 插件：四个内核的描述，ideo-kernel 的 `conventions/` | 待开始 | S～M | 来源：Sprint 17 最后一轮流程测试第 2 轮（2026-11-13，Haiku，直接路径，空项目）：题 9（问题里没有关键词，PO 没指定方法）三次里两次一个技能都不加载、一次加载了没读约定，都直接定成做验证或做原型；题 10（「用 IDEO 五阶段法跑一遍」）三份都用五模式、开 `IdeoBacklog.md`、写了结论回流，只缺必答 ②（模式之间没有 PO 关卡、不按固定顺序、先读模式和方法文件，任一）。第 2 轮已给 ideo-kernel 的描述加上「没有现成答案」的触发，题 9 的行为仍是 0/3。Review 熟手（2026-11-13）：默认分界靠判断（要不要先拿角色卡测原型），PO 不点名时 AI 可能选错。与 PBI-52 是同一类触发缺口（白纸题从 Sprint 14 到 17 才过线）；原始输出在 `S:\IDEO-Scrum-Archives\sprint-17-conventions-rewrite\round2\` |
 | PBI-25 | 插件小修集合 | 作为陌生人，我想要单独装上的插件里链接、署名、触发句和标题层级都对，以便不被死链和过时的说法误导 | 插件文件 | 待开始（本目标） | S | Sprint 16 已做：①（16 份设计摘录的许可行改成自足）、②（三个 SKILL.md 加 Source/License 头）、⑥（查明 v2026.1 标签本来就对，assets 是全文除 Artifacts、Events 两章，已改「全文」说法）、⑦（括号与裸路径、三处引用、命令说法都改；图标这次不做，留在本条）、⑧（marketplace 顶层说明，--strict 通过）。③ 留着。原记录：① IDEO-modes 五份文件的许可行指向仓库根 ATTRIBUTION.md，插件单独分发后失效（design-kernel 16 份摘录的文件头同样如此）；② ideo-kernel、scrum-kernel 两个 SKILL.md 没有 Source/License 头（先判定哪些段落属摘录）；③ Brainstorming 的触发句「Use after an HMW is clear」（HMW 已是可选方法；新文字由 PO 定）；⑥ scrum-kernel 的 Artifacts、Events 两章注明出自 SGEP v2026.1，但插件里 v2026.1 原文没有这两章，内容与 2025.6 版一致，先查清楚再定出处；⑦ plugin-validator 的小建议（Sprint 14）：开头括号的位置、overview 里裸写的路径、三处引用贴合得宽松、plugin.json 没有图标——跟着 PBI-44 一起改；⑧ marketplace.json 缺顶层 description，`claude plugin validate --strict` 会报错（不加 --strict 只是警告）；来源：2026-10-25 Sprint 07 Review；⑦⑧ 2026-11-10 登记 |
-| PBI-46 | Codex 版后续小修 | 作为熟手，我想要 Codex 包的同步和说明再顺一点，以便以后每次发版重跑同步都不用多想，陌生人在 Codex 里也能起步 | Map ①（装插件，开会话） | 待开始（本目标） | S | Sprint 16 已做 ①（只差换行不算差异）④（简介用「Guide Scrum, refinement, tracking, review; PO decides value」）；③ 在 Sprint 17；②⑤⑥ 留着。原记录：① 同步脚本比较生成文件时忽略换行差异（Windows `autocrlf=true` 的新克隆第一次会重写 6 个文件，内容不变，`git status` 显示 M）——在 PBI-44 重新同步之前先做；② Codex 里内核的自动触发没测过；③ 约定里「派全新子代理」在 Codex 里怎么做没核对——并入 PBI-54；④ scrum-master 简介补回「价值由 PO 决定」（现有 64 字符上限）；⑤ 「陌生人」对 Codex 入口的意见（Sprint 13 Review）：Codex 段加首句示例、写明你就是 PO、术语链到说明、迁移说明教怎么确认旧装的名字（`codex plugin list`）、README 写明测过的 Codex 版本（0.167.0）；⑥ 测 Codex 的脚本要不要整理成可重跑的工具；来源：Sprint 13 Review |
+| PBI-46 | Codex 版后续小修 | 作为熟手，我想要 Codex 包的同步和说明再顺一点，以便以后每次发版重跑同步都不用多想，陌生人在 Codex 里也能起步 | Map ①（装插件，开会话） | 待开始（本目标） | S | Sprint 16 已做 ①（只差换行不算差异）④（简介用「Guide Scrum, refinement, tracking, review; PO decides value」）；Sprint 17 做了 ③（`codex-cli 0.167.0` 没有子代理：「全新子代理」定义成只从简报起步，fork、复制都不算，没有子代理的工具开一个只给简报的新会话——overview 第 7 条）；②⑤⑥ 留着。原记录：① 同步脚本比较生成文件时忽略换行差异（Windows `autocrlf=true` 的新克隆第一次会重写 6 个文件，内容不变，`git status` 显示 M）——在 PBI-44 重新同步之前先做；② Codex 里内核的自动触发没测过；③ 约定里「派全新子代理」在 Codex 里怎么做没核对——并入 PBI-54；④ scrum-master 简介补回「价值由 PO 决定」（现有 64 字符上限）；⑤ 「陌生人」对 Codex 入口的意见（Sprint 13 Review）：Codex 段加首句示例、写明你就是 PO、术语链到说明、迁移说明教怎么确认旧装的名字（`codex plugin list`）、README 写明测过的 Codex 版本（0.167.0）；⑥ 测 Codex 的脚本要不要整理成可重跑的工具；来源：Sprint 13 Review |
 | PBI-45 | 流程命令——关键步骤各有入口 | 作为熟手，我想要 Planning、Review、构思这些关键步骤各有一个命令或 skill，以便到了那一步直接调用，不用口述该读哪份约定 | Map ③～⑧ | 以后 | M | 来源：原同名文件两条（关键步骤写成命令或 skill；多加命令，比如 Planning，看好不好用；文件 2026-11-12 清空），PO 原话「也可以成熟成熟」；Codex 没有 command，Codex 端只能做成 skill；冲刺分五个阶段（Why、What、How、Increment、Test），入口可以按阶段设；Review 和 Retro 是收官动作，不是日志里的章 |
 | PBI-51 | 技能做成 index 引领的记忆系统 | 作为熟手，我想要每个技能由一个 index 引领——像记忆系统那样每行一条规矩，链到细节文件，按名字互相引用，以便不用整份加载，一条规矩只写一处，增删约定不用改号 | 插件：四个内核 | 以后 | L | 来源：Sprint 14（2026-11-10）Stakeholder 的提议；PO：「真的想把它设成 index 那种引领的」；PO 2026-11-12：以后要做，这次不做；引用写法（`convention N`、`../` 路径）这次也不改。Master 的看法：index 按流程排、最上面放图，一行说得清的不另开文件，用普通相对链接；好处在按名字引用（不再改号）、一条规矩只写一处、index 一页就是全部规矩；省加载的作用不大。同日 PO 另开会话讨论过「做插件还是做全局记忆系统」，PO 定：做插件 |
-| PBI-30 | 产品化——从作者能用到陌生人好用 | 作为陌生人，我想要装上插件就知道第一句说什么、术语有解释、会话断了能接上，以便不读作者的仓库也能顺利走完第一个冲刺 | Map ①（装插件，开会话） | 以后 | L | 范围：入口（没有产品日志就按模板建；白纸、连产品都写不出时从设计开始，见 PBI-52）、由浅入深（默认 PO + Master 一个会话走完，需要时再加 Developer、审阅、worktree）、说人话（术语第一次出现时解释，附词汇表）、接手不丢、体验测试、发布包装（用户 README、样例、CHANGELOG 与升级提示、发布渠道、授权说明、反馈渠道）；体验测试：Stakeholder 扮「陌生人」（只给 README、身份、任务），Developer 搭环境、跑、记卡点，Master 监督，跑之前先写好什么算卡住；每版都跑，发成熟版前 PO 和至少一个真人各走一遍；开放点：测试环境与测法（PO：到时候再说）、发布渠道、成熟版版本号；Codex 版已做完（PBI-43），体验测试要连 Codex 入口一起测；与 PBI-12 的区别：12 是内容分享，30 是产品本身；「陌生人」的意见（2026-11-08 Sprint 10 Review）：① 一页「5 分钟上手」② 明说「你就是 PO，开一个会话就够」③ 术语表 ④ 不熟 git 的人怎么收官 ⑤ 哪些约定必须守；Codex 入口的意见（Sprint 13 Review）见 PBI-46 ⑤；来源：2026-11-06 PO 口述，2026-11-07 改写 |
+| PBI-30 | 产品化——从作者能用到陌生人好用 | 作为陌生人，我想要装上插件就知道第一句说什么、术语有解释、会话断了能接上，以便不读作者的仓库也能顺利走完第一个冲刺 | Map ①（装插件，开会话） | 以后 | L | 范围：入口（没有产品日志就按模板建；白纸、连产品都写不出时从设计开始，见 PBI-52）、由浅入深（默认 PO + Master 一个会话走完，需要时再加 Developer、审阅、worktree）、说人话（术语第一次出现时解释，附词汇表）、接手不丢、体验测试、发布包装（用户 README、样例、CHANGELOG 与升级提示、发布渠道、授权说明、反馈渠道）；体验测试：Stakeholder 扮「陌生人」（只给 README、身份、任务），Developer 搭环境、跑、记卡点，Master 监督，跑之前先写好什么算卡住；每版都跑，发成熟版前 PO 和至少一个真人各走一遍；开放点：测试环境与测法（PO：到时候再说）、发布渠道、成熟版版本号；Codex 版已做完（PBI-43），体验测试要连 Codex 入口一起测；与 PBI-12 的区别：12 是内容分享，30 是产品本身；「陌生人」的意见（2026-11-08 Sprint 10 Review）：① 一页「5 分钟上手」② 明说「你就是 PO，开一个会话就够」③ 术语表 ④ 不熟 git 的人怎么收官 ⑤ 哪些约定必须守；Codex 入口的意见（Sprint 13 Review）见 PBI-46 ⑤；「陌生人」的意见（2026-11-13 Sprint 17 Review）：五模式与设计冲刺同名，要读两遍才分清；role cards、Five-Act Interview、rumble、Lightning Demos 找不到解释；来源：2026-11-06 PO 口述，2026-11-07 改写 |
 | PBI-12 | 方法论分享——公开系列（原「专家笔记完善」） | 作为读者，我想要一套公开的方法论分享（系列文章、网页或视频），讲清 solo + AI 怎么用 Scrum 和设计思维，以便不装插件也能学会、用到自己的项目里 | 产品之外：分享线（1.2「之后的方向」） | 以后 | L | 作者自己也借此梳理一遍；素材：[ExpertNotes.md](documents/ExpertNotes.md) 里的使用方法，和附录图 `documents/five-stage-mapping.svg`（图里冲刺还是旧的三段，用前要改成五个阶段，Sprint 14 Review）；公开发布前过一遍授权（d.school 非商业；版权声明由 PO 负责）；发布是对外动作，发前经 PO 确认；来源：原同名文件的待办（文件 2026-11-12 清空），2026-10-24 PO 改为方法论分享 |
 | PBI-33 | 方法库改写——解除非商业限制 | 作为陌生人（在商业项目里用），我想要方法库不带非商业限制，以便商业项目里也能用 | 插件：ideo-kernel 方法库 | 以后 | L | d.school Bootleg 是 CC BY-NC-SA，插件因此带非商业限制；PO 定：先接受（README 已写明），以后再做；注意：改写成自己的话与「原文优先」相反——写进 CLAUDE.md 的规约是能用原文就用原文，做之前先定还做不做；改写范围、署名怎么处理，实现前定；来源：2026-11-07 精化 |
 | PBI-35 | 看板（Scrum Board） | 作为熟手，我想要一块看板，一眼看到正在进行的冲刺、设计和各自的状态，以便不用翻各份日志就知道全局 | `scrum/` 下（overview 第 4 条） | 以后 | M | 主要对 PO 负责，做记录用；可以交给常驻的 Stakeholder 会话维护，在 2.1 加一张带「负责 / 不负责」的卡；可以开成第一份设计日志，试设计模板；来源：2026-11-07 精化第四轮（PO 登记，这次不做） |
@@ -149,3 +148,8 @@ flowchart TD
 | PBI-55 | 自我反馈——用自己的产品时冒出的想法，更新时都用得上 | 完成（2026-11-12，版本不动）：设计 design-feedback-loop 定「反馈进全局记忆」，三轮 Haiku 测试问题 1–5 是、6 还没有；Sprint 15 装进 S:\SeaPawn-Memory——SEAPAWN.md 与全局记忆各加 Feedback 一节，迁入 PO 的 6 个点；PO 看后改成全英文、产品表先只写 IDEO-Scrum | [documents/design-feedback-loop.md](documents/design-feedback-loop.md)、[documents/sprint-15-feedback-loop.md](documents/sprint-15-feedback-loop.md) |
 | PBI-44 | 内核结构统一——四个技能形状一致 | 完成（2026-11-12，版本不动）：scrum-kernel 留 SKILL.md 与 overview.md，assets/ 放两份源材料，conventions/ 放产品日志，references/ 放四个工件；新建 sprint-kernel（conventions/ 冲刺日志、events/ 五个事件）；design-kernel 16 份进 steps/（阶段-步骤序号）；ideo-kernel 的 conventions/ 由 Sprint 17 建 | [documents/sprint-16-kernel-structure.md](documents/sprint-16-kernel-structure.md) |
 | PBI-57 | 加载分层——角色全加载 IDEO 和 Scrum，按需加载设计冲刺与 Sprint | 完成（2026-11-12，版本不动）：四个命令与 overview 第 8 条——ideo 与 scrum 全加载，design 与 sprint 在工作涉及时加载（接手、进行中、收官都算），派出的子代理同 | [documents/sprint-16-kernel-structure.md](documents/sprint-16-kernel-structure.md) |
+| PBI-54 | 产品日志与冲刺约定修订 | 完成（2026-11-13，v6.0.0）：冲刺模板头部加 Now 行（sprint-log 第 22 条）；sprint-log 写明什么算卡住（第 10 条，四种）、Review 怎么判过时（第 17 条）、照抄 2.1 时对照 Sprint Goal 查够不够（第 5 条）；product-log 第 12、17 条改成指向 | [documents/sprint-17-conventions-rewrite.md](documents/sprint-17-conventions-rewrite.md) |
+| PBI-58 | 设计约定修订——PO 用设计时攒下的点 | 完成（2026-11-13，v6.0.0）：①–⑧ 进 design-log 与设计模板——地图要粗（第 8 条）、设计目标写愿景（第 6 条）、主线程陪 PO 聊（新第 12 条，原 12–26 顺延）、三个环作图下导读、一个 Designer 常常就够（第 3 条）、一开就开分支（第 4 条）、草图简报不给现状（第 11 条）、点子分给各份草图（第 9、11 条） | [documents/sprint-17-conventions-rewrite.md](documents/sprint-17-conventions-rewrite.md) |
+| PBI-56 | 设计冲刺与 IDEO 五阶段法分清 | 完成（2026-11-13，v6.0.0）：ideo-kernel 新 `conventions/`——`ideo-log.md`（1 分界、2 五模式与设计冲刺的关系、3 什么时候开 IDEO 日志、4 放哪与结束）与 IDEO 日志模板（`IdeoBacklog.md`，五章不分节，PO 停点 ② 追加）；overview 的图加分界节点；三份描述写明「IDEO 五阶段法」就是五模式。最后一轮流程测试：题 10 内容三份都对、缺必答 ②，题 9 直接路径不触发——进 PBI-59 | [documents/sprint-17-conventions-rewrite.md](documents/sprint-17-conventions-rewrite.md) |
+| PBI-53 | 约定写明 Developer 在别的工具里时怎么协作 | 完成（2026-11-13，v6.0.0）：sprint-log 第 26 条 Developer in another session or tool（能直接通话的、只能靠日志的两种情况，工具做法只当例子）；overview 第 14 条指向 | [documents/sprint-17-conventions-rewrite.md](documents/sprint-17-conventions-rewrite.md) |
+| PBI-52 | 白纸入口——新想法、还没有产品日志时带到设计 | 完成（2026-11-13，v6.0.0）：overview 的图里白纸直连设计冲刺，design-log 第 1 条与设计模板头部带上「写不出产品」「设计的结论去填产品日志」；最后一轮流程测试题 3 两条路径 2/3、3/3 过线（Sprint 14 四轮、Sprint 16 都没过） | [documents/sprint-17-conventions-rewrite.md](documents/sprint-17-conventions-rewrite.md) |

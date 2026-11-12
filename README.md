@@ -1,6 +1,6 @@
 # IDEO-Scrum
 
-为 Claude Code 与 Codex 提供 Design Thinking 与 Scrum Sprint 方法论的插件。v5.2.0。
+为 Claude Code 与 Codex 提供 Design Thinking 与 Scrum Sprint 方法论的插件。v6.0.0。
 
 ## 快速开始
 
@@ -65,9 +65,9 @@ $stakeholder    # Stakeholder
 
 | 组件 | 内容 |
 |---|---|
-| `ideo-kernel` skill | IDEO / d.school 五模式（Empathize → Test）、~40 个设计方法——整个插件共用的工具箱，也是设计各阶段的基础 |
-| `design-kernel` skill | 设计冲刺：按 IDEO 五阶段（共情、定义、构思、原型、测试）组织的《Sprint》原文摘录，加设计日志约定与模板；设计与冲刺平级，结论回流产品日志 |
-| `scrum-kernel` skill | 产品日志与 Scrum 框架：Scrum Guide 2020 全文、SGEP v2026.1（除 Artifacts、Events 两章）、Artifact 分项引用、产品日志约定与模板 |
+| `ideo-kernel` skill | IDEO / d.school 五模式（Empathize、Define、Ideate、Prototype、Test；用户说的「IDEO 五阶段法」就是它）、~40 个设计方法、IDEO 日志约定与模板——整个插件共用的工具箱，也是设计各阶段的基础 |
+| `design-kernel` skill | 设计冲刺（不是 IDEO 五阶段法）：五个阶段，各站在一个 IDEO 模式上，配《Sprint》原文摘录，加设计日志约定与模板；设计与冲刺平级，结论回流产品日志 |
+| `scrum-kernel` skill | 产品日志与 Scrum 框架：Scrum Guide 2020 全文、Scrum Guide Expansion Pack（SGEP）v2026.1（除 Artifacts、Events 两章）、Artifact 分项引用、产品日志约定与模板 |
 | `sprint-kernel` skill | 跑冲刺：冲刺日志约定与模板、五个 Scrum 事件（Event 分项引用） |
 | 4 个角色 | Scrum Master / Designer / Developer / Stakeholder。Claude Code 用四个 command（如 `/ideo-scrum:scrum-master`）；Codex 用四个角色 skill，从 `$` 菜单显式选择。每个角色都先加载 ideo-kernel 与 scrum-kernel；design-kernel 与 sprint-kernel 在工作涉及设计冲刺或冲刺时加载（开、进行中、接手、收官都算）；派出的子代理也加载 ideo-kernel 与 scrum-kernel |
 
@@ -93,7 +93,7 @@ $stakeholder    # Stakeholder
 
 | 文件/目录 | 内容 |
 |---|---|
-| `plugins/ideo-scrum/.claude-plugin/plugin.json` | 插件清单 v5.2.0 |
+| `plugins/ideo-scrum/.claude-plugin/plugin.json` | 插件清单 v6.0.0 |
 | `plugins/ideo-scrum/commands/designer.md` | Command `/ideo-scrum:designer` — 设计阶段结对（IDEO 五模式 + 设计冲刺，原型快速验证、拍板前不落地；进入时加载 ideo-kernel 与 scrum-kernel，工作涉及设计冲刺时再加 design-kernel） |
 | `plugins/ideo-scrum/commands/developer.md` | Command `/ideo-scrum:developer` — Developer 角色（Scrum Guide 2020 原文抄录＋2026 精炼补充；进入时加载 ideo-kernel 与 scrum-kernel，工作涉及冲刺时再加 sprint-kernel） |
 | `plugins/ideo-scrum/commands/scrum-master.md` | Command `/ideo-scrum:scrum-master` — Scrum Master 角色（Scrum Guide 2020 原文抄录＋2026 精炼补充；替 PO 派活、派子代理审阅；进入时加载 ideo-kernel 与 scrum-kernel，工作涉及设计或冲刺时分别再加 design-kernel、sprint-kernel） |
@@ -117,7 +117,7 @@ $stakeholder    # Stakeholder
 
 | 文件/目录 | 内容 |
 |---|---|
-| `plugins/ideo-scrum/skills/design-kernel/SKILL.md` | Design Kernel 入口（设计冲刺按 IDEO 五阶段组织：每个阶段对应的 IDEO 模式、原书摘录、Use Protocol） |
+| `plugins/ideo-scrum/skills/design-kernel/SKILL.md` | Design Kernel 入口（设计冲刺的五个阶段，各站在一个 IDEO 模式上：对应的模式、原书摘录、Use Protocol；开头一句指向 ideo-kernel 的五模式） |
 | `plugins/ideo-scrum/skills/design-kernel/steps/` | 设计冲刺原书摘录（Knapp，原文只删不改，例图改画成 Mermaid 或文字），16 份文件名带「阶段-步骤」序号：共情 `1-1`～`1-3` define-the-challenge / start-at-the-end / ask-the-experts；定义 `2-1`～`2-3` make-a-map / how-might-we / pick-a-target；构思 `3-1`～`3-5` remix-and-improve / sketch / decide / rumble / storyboard；原型 `4-1`～`4-2` fake-it / prototype；测试 `5-1`～`5-3` small-data / interview / learn |
 | `plugins/ideo-scrum/skills/design-kernel/conventions/` | 设计日志约定（design-log：设计放哪、谁定、各阶段怎么用子代理与角色卡、设计结束时的处理）与设计日志模板（design-backlog-template，五章） |
 
@@ -169,6 +169,7 @@ $stakeholder    # Stakeholder
 | `scrum/documents/design-feedback-loop.md` | 设计日志归档（自我反馈，PBI-55）：PO 用自己的产品时冒出的点怎么落盘；定「反馈进全局记忆」，三轮测试 |
 | `scrum/documents/sprint-15-feedback-loop.md` | Sprint 15 冲刺日志归档（自我反馈落地，小冲刺，版本不动）：装进 SEAPAWN.md 与全局记忆，PO 改成全英文 |
 | `scrum/documents/sprint-16-kernel-structure.md` | Sprint 16 冲刺日志归档（四个内核、按需加载，版本不动，仍 v5.2.0）：拆出 sprint-kernel、design-kernel 16 份进 steps/、加载分层、Codex 四内核、两轮流程测试与缺口 |
+| `scrum/documents/sprint-17-conventions-rewrite.md` | Sprint 17 冲刺日志归档（约定改顺，发版 v6.0.0）：Now 行与卡住、设计约定八点、Developer 在别的工具里、ideo-kernel 的 IDEO 日志与分界、两轮流程测试与缺口（PBI-59） |
 | **冲刺蒸馏 / 归档** | 1.x 五期与 Sprint 06、07 已蒸馏至 `S:\SeaPawn-Memory\memory\IDEO-Scrum\`（MEMORY.md 索引 + 各期教训档案，含出处指向 git）；Sprint 08 起，冲刺日志压缩后归档进 `scrum/documents/` |
 
 ### 源参考
