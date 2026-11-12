@@ -48,6 +48,7 @@
 | 56 | `ideo-kernel/conventions/design-sprint-or-five-modes.md`（新，第 1 条，分界只写这里）；`design-log.md` 第 1、26 条指向；`ideo-kernel/SKILL.md` 一行（工具箱）；`scrum-kernel/SKILL.md` 两处；`sprint-log.md` 第 6 条第 4 步；`overview.md` 第 2 条；`product-log.md` 第 2 条 | 分界写一次，其余只指向，不重复、不冲突；聊天算共情材料的原话保留 |
 | 53 | `sprint-log.md` 第 26 条（新）；`overview.md` 第 14 条指向 | 写成角色和步骤；工具做法只当例子（overview 第 15 条） |
 | 46 ③ | `overview.md` 第 7 条（Names） | 定义「全新子代理」：只从简报起步；fork 出来的、复制出来的都不算；工具没有子代理时，开一个只给简报的新会话。工具版本与依据不进约定，记笔记，收官写进 PBI-46 |
+| PBI-52（并入） | 题 3 的缺口：设计的结论流回产品日志 | 现有三处已写：`product-log.md` 第 2 条、`design-log.md` 第 19 条、design-kernel `SKILL.md` 开头；草稿先不动，看最后一轮流程测试；要改措辞再和 PO 的意见同批改 |
 
 ## 三、连带改动扫描范围
 

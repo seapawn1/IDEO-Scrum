@@ -35,6 +35,7 @@ Master 2026-11-12（PO 委托）：Sprint Goal 定。
 | PBI-56 | 设计冲刺与 IDEO 五阶段法分清 | 作为熟手，我想要插件分清设计冲刺和 IDEO 五阶段法：小问题就地用五阶段法，大问题才开设计冲刺，由 PO 指定，以便不为小问题兴师动众 | 插件：ideo-kernel（新 `conventions/`）、design-kernel（design-log 第 1、26 条） | M |
 | PBI-53 | 约定写明 Developer 在别的工具里时怎么协作 | 作为熟手，我想要约定写明 Developer 在别的工具（如 Codex）里干活时，它和 Master 怎么协作，以便不用口述 Sprint 13 的做法，换工具也能照着走 | Map ③～⑧ | S |
 | PBI-46 | Codex 版后续小修 | 作为熟手，我想要 Codex 包的同步和说明再顺一点，以便以后每次发版重跑同步都不用多想，陌生人在 Codex 里也能起步 | Map ①（装插件，开会话） | S |
+| PBI-52 | 白纸入口——新想法、还没有产品日志时带到设计 | 作为陌生人，我想要说出「我有个想法、还没有产品日志」时，插件就把我带到先开设计、由设计结论去填产品日志这条路上，以便不会一上来就硬写产品日志或直接出方案 | Map ①（装插件，开会话） | S～M |
 
 ### 2.2 Refinement
 
@@ -56,6 +57,8 @@ Master 2026-11-12（PO 委托）：Sprint Goal 定。
 - 改了技能或命令的描述，就照 Sprint 16 的触发测试重跑：基线是 Sprint 16 合入后的 main，同日同环境，过线同 Sprint 16。
 - 发版（PO 同意）：v6.0.0 在本冲刺收官时发——`plugin.json` 的版本号、README 两处、Codex 包同步；推送 main、tag 和 SeaPawn-Memory；更新本机 Claude Code 的插件。
 
+**PBI-52 并入**（Master 2026-11-12，PO 委托；范围调整，Sprint Goal 不变）：Sprint 16 改了描述之后，题 3 两条路径的行为栏都到了 3/3，触发问题解决了；剩下的缺口在内容上——从 `/ideo-scrum:scrum-master` 进的那条路径，3 次里有 2 次没说「设计的结论会流回产品日志」。这是约定写法的事，归本冲刺；草稿先不动，看最后一轮流程测试的结果，要改措辞再和 PO 的意见同批改。
+
 **验收**
 
 1. 收进的每一点都写进了约定：一张对照表，PBI-54 ①–④、PBI-58 ①–⑧、PBI-56、PBI-53、PBI-46 ③，每点对到约定文件和条。
@@ -65,13 +68,15 @@ Master 2026-11-12（PO 委托）：Sprint Goal 定。
 5. 最后一轮流程测试过线（见下）。
 6. `claude plugin validate --strict plugins/ideo-scrum` 通过；结构或 frontmatter 改了，再派 `plugin-dev:plugin-validator`（`model: haiku`）；Codex 同步与核对通过。
 7. 停点 ③：PO 亲手试一次。
+8. PBI-52：最后一轮流程测试里，题 3 两条路径各至少 2/3 过。
 
 **测试**（跑之前写定，跑后不改；Master 定，PO 委托）
 
 - 判定标准和题目先写、Master 审过、单独提交，再跑；跑后不改标准、不改判；脚本判错的逐条人工看，改判写明理由。
 - 测法同 Sprint 16（无头、Haiku、只开 Read、Grep、Glob、Skill、连 PowerShell 一起禁、空项目、每次一个全新会话、先冒烟），跑在搬进插件后的版本上。
-- 题目：Sprint 14 流程测试的题 1–5（见 `git show a87bd1c:scrum/sprint-14-conventions-tuning/SprintBacklog.md` 的 2.2），加上覆盖本冲刺改动的题：断线后接手一个冲刺（54 ①）、什么时候算卡住（54 ②）、选条目写 2.1（54 ④）、一个小问题该用五阶段法还是开设计冲刺（56）、设计的地图和设计目标怎么写（58 ①②）、Developer 在 Codex 里时怎么协作（53）。用自然的说法，不带引导词。
-- 一次回答算过：读到该读的约定、必答项全中、没有「不能」项（Sprint 14 的判定）。每题 3 次，过线：每题至少 2 次过。
+- 题目：Sprint 14 流程测试的题 1–5（见 `git show a87bd1c:scrum/sprint-14-conventions-tuning/SprintBacklog.md` 的 2.2；题 3 是白纸，PBI-52），加上覆盖本冲刺改动的题：断线后接手一个冲刺（54 ①）、什么时候算卡住（54 ②）、选条目写 2.1（54 ④）、一个小问题该用五阶段法还是开设计冲刺（56）、设计的地图和设计目标怎么写（58 ①②）、Developer 在 Codex 里时怎么协作（53）。用自然的说法，不带引导词。
+- 路径：所有题走直接说；题 2、题 3 另外再走一遍角色命令（`/ideo-scrum:scrum-master`）。每条路径 3 次，各自都要过线（每题至少 2/3）。
+- 一次回答算过：读到该读的约定、必答项全中、没有「不能」项（Sprint 14 的判定，不放宽）。
 - 汇总分两栏：行为（加载了哪些技能、读没读该读的约定）、内容（必答项中没中）。
 - 原始输出放 `S:\IDEO-Scrum-Archives\sprint-17-conventions-rewrite\`，仓库里只留汇总；提交前按提供方地址、凭据值、令牌形态扫一遍。
 
@@ -141,6 +146,7 @@ Go-ahead: 2026-11-12，PO（停点 ①，两个冲刺一起放行，原话「全
 | 2026-11-12 | 对抗审查已派出（审 `7426b3d` 的快照）；等结果期间不改 `drafts/`。备好停点 ② 的材料 | Master 同意改 scrum-master 命令那一行：只改正文、不动描述、不用跑触发测试，搬运时在 Sprint 16 的版本上加；停点 ② 的材料：结构清单在前、全文在后，两处请 PO 看（三个环与关卡、ideo 约定 (b) 的举例） | `checks.md`（命令一行改成「已同意」）、`stop2.md` | 等对抗审查结果；之后搬运 |
 | 2026-11-12 | 对抗审查（`7426b3d` 快照，Haiku 全新子代理；Master 逐条核过）：收下 5 处、其余不改 | 改：sprint-log 5 补回「every item serves it」「never one just to fill the Sprint」；design-log 11 改成「不给今天怎么解——现有设计、规则、代码」（不和第 2 章的地图读混）；design-log 19 改成「merge it into its base (convention 4), then delete it」；sprint-log 的图节点改成「Settle it: a design sprint or the five modes (ideo-kernel)」；sprint-log 26 末尾改「(These are examples, not rules.)」。checklist 同步：58 ⑧ 落在第 9 条一句、改法在第 11 条；ideo `SKILL.md` 只留工具箱一处指向。不改的：design-kernel `SKILL.md` 的旧条号在搬运时做（checks.md 已列）；scrum-kernel `SKILL.md` 取 Sprint 16 版本；白纸开设计冲刺不冲突（PBI-52 的路）；overview 2 各管各的；design-log 10 的 at least two methods 是 Sprint 14 PO 强审定下的；模板 1.1 注释、overview 7 的例外、19 的指向不改 | `drafts/`、`checklist.md`、`stop2.md`；复查 172 处引用 0 缺 | 提交后进停点 ② |
 | 2026-11-12 | Master 备忘：Sprint 16 在搬运前改了冲刺模板 1.1、1.2 的注释（validator 说 1.1 的引用太松），以及 overview 第 8 条和四个命令的加载说法 | 搬运时先取 Sprint 16 的版本，保留它改过的地方，别被我的稿覆盖；我的 overview 稿只套用第 2、7、12、14 条与路径，第 8 条用它的 | `checks.md` 的「搬运时要做的」 | 停点 ② 等 PO |
+| 2026-11-12 | Master 转：PBI-52（白纸入口）并入本冲刺——范围调整，Sprint Goal 不变（Master，PO 委托） | 来由：Sprint 16 改描述后，题 3 两条路径的行为栏都到 3/3，触发问题解决了；剩下的缺口在内容——从 `/ideo-scrum:scrum-master` 进的路径，3 次里有 2 次没说「设计的结论会流回产品日志」。2.1 加 PBI-52 一行；2.2 记并入理由与决定；验收加第 8 项（题 3 两条路径各至少 2/3 过）；测试改成所有题走直接说、题 2 与题 3 另走角色命令、每条路径 3 次各自过线；草稿先不动，等 PO 停点 ② 的意见和测试结果 | 本日志 2.1、2.2、验收、测试；`checklist.md` | 等 PO 意见与 Sprint 16 合入 |
 
 ## 5. Test
 
