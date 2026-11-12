@@ -14,7 +14,7 @@
 | `scrum-kernel/conventions/product-log.md` | 原位 | `drafts/scrum-kernel/conventions/product-log.md` | 第 2（56 连带）、12、17 条 |
 | `scrum-kernel/overview.md` | 原位 | `drafts/scrum-kernel/overview.md` | 第 2（56 连带）、7（46 ③）、14（53）条 |
 | `scrum-kernel/SKILL.md` | 原位 | `drafts/scrum-kernel/SKILL.md` | 56 连带：把「always goes to a design first」等改成指向（Master 补） |
-| `ideo-kernel/SKILL.md` | 原位 | `drafts/ideo-kernel/SKILL.md` | 加一行指向新约定；Use Protocol 第 6 条加指向 |
+| `ideo-kernel/SKILL.md` | 原位 | `drafts/ideo-kernel/SKILL.md` | 加一行指向新约定（只这一处，Use Protocol 不动） |
 | —（新建） | `ideo-kernel/conventions/design-sprint-or-five-modes.md` | `drafts/ideo-kernel/conventions/design-sprint-or-five-modes.md` | 56 |
 | `design-kernel/conventions/design-log.md` | 原位 | `drafts/design-kernel/conventions/design-log.md` | 第 1、3、4、6、8、9、11（重写）、26 条；新增第 12 条；导读；改号后顺延 |
 | `design-kernel/conventions/design-backlog-template.md` | 原位 | `drafts/design-kernel/conventions/design-backlog-template.md` | 1.2、2.1 注释各加几个字和条号 |
@@ -44,8 +44,8 @@
 | 58 ⑤ | `design-log.md` 第 3 条 | 一个 Designer 常常就够；兼不兼 Master 由 PO 定 |
 | 58 ⑥ | `design-log.md` 第 4 条 | 设计一开就开分支；现场定的只是从哪里开 |
 | 58 ⑦ | `design-log.md` 第 11 条（整条重写） | 全新、非 fork 的子代理；简报只给第 1、2 章和收集的点子，叫它不要读项目里的文件；局限用通用说法 |
-| 58 ⑧ | `design-log.md` 第 9 条 | 每份草图给不同的一部分，或先画再看 |
-| 56 | `ideo-kernel/conventions/design-sprint-or-five-modes.md`（新，第 1 条，分界只写这里）；`design-log.md` 第 1、26 条指向；`ideo-kernel/SKILL.md` 一行与 Use Protocol 第 6 条；`scrum-kernel/SKILL.md` 两处；`sprint-log.md` 第 6 条第 4 步；`overview.md` 第 2 条；`product-log.md` 第 2 条 | 分界写一次，其余只指向，不重复、不冲突；聊天算共情材料的原话保留 |
+| 58 ⑧ | `design-log.md` 第 9 条一句、改法在第 11 条 | 点子清单之后分给各份草图：每份拿不同的一部分，或先画后看 |
+| 56 | `ideo-kernel/conventions/design-sprint-or-five-modes.md`（新，第 1 条，分界只写这里）；`design-log.md` 第 1、26 条指向；`ideo-kernel/SKILL.md` 一行（工具箱）；`scrum-kernel/SKILL.md` 两处；`sprint-log.md` 第 6 条第 4 步；`overview.md` 第 2 条；`product-log.md` 第 2 条 | 分界写一次，其余只指向，不重复、不冲突；聊天算共情材料的原话保留 |
 | 53 | `sprint-log.md` 第 26 条（新）；`overview.md` 第 14 条指向 | 写成角色和步骤；工具做法只当例子（overview 第 15 条） |
 | 46 ③ | `overview.md` 第 7 条（Names） | 定义「全新子代理」：只从简报起步；fork 出来的、复制出来的都不算；工具没有子代理时，开一个只给简报的新会话。工具版本与依据不进约定，记笔记，收官写进 PBI-46 |
 

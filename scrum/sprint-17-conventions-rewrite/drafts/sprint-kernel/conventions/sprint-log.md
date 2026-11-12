@@ -11,7 +11,7 @@ A Sprint turns selected items into an Increment. Its template is `sprint-backlog
 flowchart TD
     A["Opening<br/>conventions 1–3"] --> W["Why<br/>convention 4"]
     W -- "PO decides: the Sprint Goal" --> H["What<br/>conventions 5–6"]
-    H -- "a hard point" --> D["Open a design for it (design-kernel skill)"]
+    H -- "a hard point" --> D["Settle it: a design sprint or the five modes (ideo-kernel)"]
     D -. "what was learned" .-> H
     H -- "PO decides: refinement is over" --> P["How<br/>conventions 7, 8"]
     P -- "PO gives the go-ahead" --> I["Increment<br/>conventions 9–12"]
@@ -37,7 +37,7 @@ Conventions 20–26 hold at every step; see Throughout, below. At each "PO decid
 
 ### What
 
-5. **Select the items** — Select the items and copy each into section 2.1 word for word, five columns — number, title, user story, place, size. As you write the rows, check the set against the Sprint Goal: add what is missing and drop what is too much. Add a missing item to the product log first.
+5. **Select the items** — Select the items and copy each into section 2.1 word for word, five columns — number, title, user story, place, size. As you write the rows, check the set against the Sprint Goal: every item serves it; add what it still needs, drop what does not serve it — never one just to fill the Sprint. Add a missing item to the product log first.
 6. **Refine in seven steps** — Refine the items one at a time, led by the Scrum Master with the Product Owner; the Developer joins. Write into section 2.2 what was settled and who decided it, the acceptance criteria, and the tests. Take these seven steps:
     1. Take one item; it is the point of view.
     2. Confirm the point of view, copied from the goal or the item without change.
@@ -94,4 +94,4 @@ Conventions 20–26 hold at every step; see Throughout, below. At each "PO decid
     | A release is ready mid-Sprint | Release it; the Sprint does not end |
 24. **The Product Owner decides at the end of each stage** — At the end of each stage the Product Owner decides, as `../scrum-kernel/overview.md`, *Product Owner decides between stages*, says: Why — the Sprint Goal; What — that refinement ends here; How — the go-ahead; Increment — that it can go into testing; Test — to close (then the Review and the Retrospective) or to go back.
 25. **Ask the PO** — Ask the Product Owner whenever you are unsure (`../scrum-kernel/overview.md`, convention 10), and in any case to: set the Sprint Goal (convention 4); select the items (`../scrum-kernel/conventions/product-log.md`, convention 12); say when refinement is over (convention 6); give the go-ahead (convention 8); decide at the end of each stage (convention 24); renegotiate the acceptance criteria (convention 20); decide whether new work enters the Sprint, and renegotiate the scope (convention 21); give formal acceptance, when it is written (convention 15); consent to outward actions such as a push (convention 19); and cancel a Sprint whose goal can no longer be met (`../scrum-kernel/overview.md`, convention 17).
-26. **Developer in another session or tool** — The Developer may work in another session or another tool. When the two sessions can talk directly — another session in the same tool, or a Developer forked from the Scrum Master's session — they talk directly; a long review is written as a file and the message gives its path; the sprint log is still the record. When they cannot — the Developer is in another tool — the sprint log is the only channel: the two keep one working copy and take turns; whoever holds the turn commits, writes in the notes what was done, and says whose turn is next; what the reviewer finds goes to the Developer as a file the Product Owner passes on, and the Developer copies it into the log; the Product Owner carries only the word that it is the other side's turn. (The tools named are examples, not rules.)
+26. **Developer in another session or tool** — The Developer may work in another session or another tool. When the two sessions can talk directly — another session in the same tool, or a Developer forked from the Scrum Master's session — they talk directly; a long review is written as a file and the message gives its path; the sprint log is still the record. When they cannot — the Developer is in another tool — the sprint log is the only channel: the two keep one working copy and take turns; whoever holds the turn commits, writes in the notes what was done, and says whose turn is next; what the reviewer finds goes to the Developer as a file the Product Owner passes on, and the Developer copies it into the log; the Product Owner carries only the word that it is the other side's turn. (These are examples, not rules.)

@@ -1,7 +1,7 @@
 # 停点 ②：Sprint 17 约定审阅稿
 
 > 给 PO 读的。**先看结构清单，再看全文**；全文是英文原文（在 `drafts/` 里），译文由 Master 安排。读完说行即可，不用逐行勾；要改的地方指出来就行。
-> 审查快照是 `7426b3d`；对抗审查正在进行，结果出来若有改动，会另附。
+> 本稿已按对抗审查（`7426b3d` 快照）的 5 处改过。
 
 ## 一、结构清单
 
@@ -11,7 +11,7 @@
 flowchart TD
     A["Opening 1–3"] --> W["Why 4"]
     W -- "PO decides: the Sprint Goal" --> H["What 5–6"]
-    H -- "a hard point" --> D["Open a design for it (design-kernel skill)"]
+    H -- "a hard point" --> D["Settle it: a design sprint or the five modes (ideo-kernel)"]
     D -. "what was learned" .-> H
     H -- "PO decides: refinement is over" --> P["How 7–8"]
     P -- "PO gives the go-ahead" --> I["Increment 9–12"]
@@ -97,10 +97,10 @@ flowchart TD
 | 8 | Map and questions in the log（**改**：地图要粗，五六个框、一个环） |
 | 9 | Lightning Demos（**改**：点子清单之后分给各份草图） |
 | 10 | Diverge before you converge |
-| 11 | Isolated solutions（**改**：每份草图拿点子的一部分或先画后看；简报只给第 1、2 章和点子、不给现状、叫它别读项目文件） |
+| 11 | Isolated solutions（**改**：每份草图拿点子的一部分或先画后看；简报只给第 1、2 章和点子，不给今天怎么解——现有设计、规则、代码，叫它别读项目文件） |
 | 12 | While they sketch, talk with the Product Owner（**新**：主对话陪 PO 聊、没想法就替他画一份、全部合并后再收敛） |
 | 13–18 | Choosing is the key step；Combine or rumble；Storyboard；Just enough prototype；Role-card test；Write the criteria before the test |
-| 19 | When the design ends |
+| 19 | When the design ends（**改**：分支合进它的基准分支（第 4 条）再删） |
 | 20–25 | IDEO in every stage；Ask the PO；Five chapters, not five days；Renamed terms；Resume from the header；Goal fixed, plan flexible |
 | 26 | Gates between stages |
 | 27 | A small design is still a design（**改**：只指向 ideo 约定第 1 条） |
