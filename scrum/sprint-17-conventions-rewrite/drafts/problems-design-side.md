@@ -24,3 +24,22 @@
 8. **路径写法**：design-log 与模板里的摘录路径相对 design-kernel 技能文件夹（文件开头已说明），写 `steps/…`；跨技能写 `../ideo-kernel/conventions/…`、`../sprint-kernel/conventions/sprint-log.md`、`../scrum-kernel/overview.md`。已按此写。
 9. **ideo 约定只有一条**：图里 PO 先定；PO 不说时按默认分。没有编号到第二条。建议：保持一条，短。
 10. **「聊着聊着碰到要研究的事，当场开设计」**是 PO 原话，保留在 ideo 约定第 1 条末尾。
+
+## Master 审阅（2026-11-12，8 处必改 + 3 条建议）与处理
+
+| # | 必改 | 处理 |
+| --- | --- | --- |
+| 1 | 第 10 条的引用应仍是 convention 11（画草图的子代理在 Isolated solutions；第 11 条没动） | 已改回 11 |
+| 2 | 58 ⑧ 读错了：要分开的是发给各份草图的点子，不是搜点子的子代理的问题 | 第 9 条改成「点子清单之后分给各份草图（convention 11）」；改法落在第 11 条 |
+| 3 | 第 11 条整条重写：每份草图拿点子的一部分或先画后看；简报只给第 1、2 章和点子、不给现状、叫它别读项目文件；局限用通用说法；去掉「starting from its brief alone」 | 已整条重写 |
+| 4 | 第 1 条丢了「没有现成答案」这个条件；「the sprint」改成「a design sprint」 | 已补回、已改 |
+| 5 | 第 3 条贴着 PO 的话改：一个 Designer 会话常常就够，兼不兼 Master、要不要另开 Master 会话由 PO 定 | 已改 |
+| 6 | 第 27 条多出一条「大小」判据；只指向 ideo 约定第 1 条，后半照旧 | 已改 |
+| 7 | ideo 第 1 条：(a)「聊天算作共情材料」，共情阶段照走，写「can open」不写祈使句；(b)「record by method」写明记在哪里 | 已改；(b) 的举例（冲刺日志的 Increment notes、产品日志的 Notes）拿不准，**停点 ② 请 PO 看** |
+| 8 | scrum-kernel SKILL.md 最后一句丢了 PBI-50 的要点：这类问题不能先出方案 | 已改成「never gets a solution first: it goes to a design sprint or the five modes」 |
+
+建议的处理：
+
+- ideo-kernel `SKILL.md` 的两处指向留一处：留工具箱一节末尾那句，Use Protocol 第 6 条恢复原文。
+- 第 9 项写流程测试时，题 2 的必答 ① 按新分界判（设计冲刺或五模式；PO 指定，没指定按默认分），照被测的那句话写、不比它严。
+- 改号牵到的草稿外引用，搬运时放进改号提交：`design-kernel/SKILL.md` 五阶段表的 conventions 6–7、8、9 and 11–14、15、16–17、18、20（改为 6–7、8、9 and 11–15、16、17–18、19、21），以及第 33、37、38 条的 convention 23、20、18（改为 24、21、19）；`overview.md` 第 12 条的 design-log convention 25（改为 26）；两份模板与命令里的条号（命令里只有 product-log 第 6 条，不受影响）。先用脚本对到短名，再逐处读。

@@ -93,4 +93,4 @@ In the table, each method is listed once; **Modes** names the modes it serves.
 3. Before using the method, read its document under `methods/`. Never invoke a method only by name — state which method you are using and why it fits the current mode.
 4. Treat the `Cleaned Transcription` section as source text.
 5. Treat `Use Before`, `Use Notes`, and `Do Not Use When` as project-specific notes, not source text.
-6. When the work needs a full design — from a challenge to a tested prototype — use the design-kernel skill; when findings must become planned, executable work, hand off to the scrum-kernel skill. Whether the work needs a full design or the five modes on the spot is settled in `conventions/design-sprint-or-five-modes.md`, convention 1.
+6. When the work needs a full design — from a challenge to a tested prototype — use the design-kernel skill; when findings must become planned, executable work, hand off to the scrum-kernel skill.
