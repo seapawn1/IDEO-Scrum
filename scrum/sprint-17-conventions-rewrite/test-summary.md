@@ -1,0 +1,55 @@
+# Sprint 17 最后一轮流程测试：汇总
+
+> 被测：本分支最新提交（搬运后的插件）。冒烟已核对：Skill 的 base directory 指向 worktree 的 `plugins/ideo-scrum/skills/…`，不是缓存 5.2.0；读得到 `ideo-kernel/conventions/ideo-log.md`。
+> 测法：无头 `claude -p`、Haiku、只开 Read/Grep/Glob/Skill、空项目、每次全新会话；通道用本机 `claude -p`，起子进程时去掉网关与认证变量（`ANTHROPIC_BASE_URL`、`CLAUDE_CODE_USE_GATEWAY`、`CLAUDE_CODE_HOST_AUTH_ENV_VAR` 等）；reclaude 不可用。
+> 原始输出：`S:\IDEO-Scrum-Archives\sprint-17-conventions-rewrite\`（42 份 jsonl）。标准与判定见 `test-questions.md`，先提交、后跑，跑后未改。
+> 题 1–12 走直接说；题 2、题 3 另走 `/ideo-scrum:scrum-master`。每条路径 3 次，各自至少 2/3 过。
+
+## 一、行为栏（加载了哪些技能、读没读该读的约定）
+
+| 题 · 路径 | 加载的技能 | 读到的约定 | 行为判 |
+| --- | --- | --- | --- |
+| 1 直接 ×3 | sprint-kernel（+scrum/ideo） | sprint-log、overview 或 sprint SKILL | 3/3 |
+| 2 直接 ×3 | r1 只 design-kernel；r2 四个；r3 sprint+design+ideo | r1、r2 没读约定；r3 读了 sprint-log、design-log（**没读 ideo-log**） | 1/3 |
+| 2 命令 ×3 | scrum-master + 三个内核 | r1 没读；r2、r3 读了 ideo-log、sprint-log | 2/3 |
+| 3 直接 ×3 | design-kernel（+ideo） | r1、r2 没读；r3 读了 design-log、模板 | 1/3 |
+| 3 命令 ×3 | scrum-master + 三个内核 | 三份都读了 design-log、模板、overview | 3/3 |
+| 4 直接 ×3 | design-kernel（+ideo） | design-log | 3/3 |
+| 5 直接 ×3 | sprint-kernel（+scrum/ideo） | sprint-log（+overview/模板） | 3/3 |
+| 6 直接 ×3 | sprint-kernel | sprint-log、模板 | 3/3 |
+| 7 直接 ×3 | developer + 三个内核 | r1、r2 读了 sprint-log；**r3 没读** | 2/3 |
+| 8 直接 ×3 | sprint-kernel | sprint-log、模板 | 3/3 |
+| 9 直接 ×3 | **一个都没加载** | **没读任何约定** | 0/3 |
+| 10 直接 ×3 | r1 design-kernel；r2 design+ideo；r3 没加载 | **0 份读 ideo-log**（r2 读的是 design-log） | 0/3 |
+| 11 直接 ×3 | design-kernel | design-log | 3/3 |
+| 12 直接 ×3 | scrum-master + 三个内核 | r1 没读；r2、r3 读了 overview、sprint-log | 2/3 |
+
+## 二、内容栏（必答项中没中；判定照 test-questions.md）
+
+| 题 · 路径 | 过 | 没过的必答 | 备注 |
+| --- | --- | --- | --- |
+| 1 直接 | 3/3 | — | 五阶段、PO 拍板、三处决定都对 |
+| 2 直接 | **0/3** | ① 先定方法（PO 指定或默认分界）三份都没答；r3 只写「按 ideo-kernel 的边界规则」，没答出内容 | 三份都直接开设计，没提五模式 |
+| 2 命令 | 2/3 | r1 的 ① | r2、r3 答出 PO 定与默认分界 |
+| 3 直接 | **1/3** | r1 缺 ②；r3 缺 ②③ | 只有 r2 三条全中 |
+| 3 命令 | **1/3** | r1、r2 缺 ②③ | 只有 r3 提到「空白页、结论写进产品日志」 |
+| 4 直接 | 3/3 | — | 发散再收敛、IDEO 方法、隔离子代理、PO 选定都对 |
+| 5 直接 | 3/3 | — | Review、产品日志、Retro 都对 |
+| 6 直接 | 3/3 | — | Now 行 + 第 4 章接续 |
+| 7 直接 | 2/3 | r3 的 ① 只说出一种 | r1、r2 四种都说全 |
+| 8 直接 | 3/3 | — | 逐字照抄、对照目标、先加产品日志 |
+| 9 直接 | **0/3** | ① 三份都没答出「PO 指定或默认分界」 | 都直接定成做设计/做原型验证 |
+| 10 直接 | **0/3** | ① 三份都没开 IDEO 日志 | 都把「IDEO 五阶段法」当成设计冲刺（design-kernel / DesignBacklog） |
+| 11 直接 | 3/3 | — | 目标写愿景、地图五六个框 |
+| 12 直接 | 2/3 | r1 的 ②（四点里只沾到一点） | r2、r3 四点齐 |
+
+## 三、过线判定
+
+- 过线：每题每条路径至少 2/3。**过线 9 题；没过 3 题（题 2 直接、题 3 两条路径、题 9、题 10）。**
+- 题 3 两条路径都不过 → 验收第 8 项（PBI-52）不满足。
+- 题 10 不过 → 验收第 9 项（IDEO 日志）不满足。
+- 缺口集中在行为栏：题 9 三份一个技能都没加载；题 10 三份都没读 `ideo-log.md`；题 2 直接三份里两份没读任何约定。题 2、题 3 的失败还叠加内容栏：没答出「PO 指定或默认分界」「空白页与结论回流」。
+
+## 四、结论
+
+标准没改、判定没改。按现在的稿子，最后一轮流程测试**没有全部过线**：9 题过，题 2 直接、题 3 两条路径、题 9、题 10 不过。缺口与 PBI-52、PBI-56（含新增的 IDEO 日志题）直接相关，出在触发与读约定（行为栏）和分界措辞（内容栏）两处。改法（例如改描述、在描述里点明「IDEO 五阶段法指五模式」、加强白纸的结论回流）由 PO 与 Master 定；本轮结果照实记录，不重跑、不改判。
