@@ -5,6 +5,9 @@ description: "Use when opening, running, or closing a Sprint — Sprint Planning
 
 # Sprint Kernel
 
+> Source: the events chapter is quoted from the Scrum Guide Expansion Pack (Ralph Jocham, John Coleman, Jeff Sutherland); the rest is the plugin author's.
+> License: the quotations are CC BY-SA 4.0 (© 2025 Ralph Jocham, John Coleman, and Jeff Sutherland); the plugin's own text is MIT.
+
 A Sprint turns selected items into an Increment. This kernel holds what running one takes: the sprint log conventions in `conventions/`, and the five Scrum events in `events/`. The product log, the roles, and the rest of Scrum stay in the scrum-kernel skill (`../scrum-kernel/SKILL.md`, `../scrum-kernel/overview.md`); read it first if it is not loaded yet.
 
 *(Author's methodology design for solo + AI teams, 2026-11-12 — not part of the Scrum Guide or SGEP.)*

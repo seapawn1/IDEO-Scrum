@@ -1,7 +1,7 @@
 # How Might We
 
 > Source: Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster. Chapter: "Ask the Experts."
-> License: All rights reserved (see ATTRIBUTION.md).
+> License: All rights reserved (© Jake Knapp, John Zeratsky, and Braden Kowitz; Simon & Schuster, 2016).
 > Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures that explain a method are redrawn as Mermaid diagrams or text; the others are left out. Day names, clock times, and timers are the book's schedule, not an instruction.
 
 Your experts will provide a ton of information. So how are you going to keep track of it all? By tomorrow, when the team sketches solutions, a lot of the interesting details will have faded from your short-term memory. The whiteboards will be helpful, but they’re not enough. You’re going to need some additional notes.

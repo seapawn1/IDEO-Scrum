@@ -5,6 +5,9 @@ description: "Use when the user mentions IDEO, the five modes, design thinking, 
 
 # IDEO Kernel
 
+> Source: the five-mode summaries and the method catalog come from the Stanford d.school Design Thinking Bootleg and IDEO's Design Guides; the surrounding text is the plugin author's.
+> License: the d.school material is CC BY-NC-SA 4.0 (© Stanford d.school) — https://dschool.stanford.edu/tools/design-thinking-bootleg; the plugin's own text is MIT.
+
 ## The Shared Toolbox
 
 This kernel is the plugin's shared toolbox and the foundation of every stage: the IDEO five modes and the method catalog. Every role loads it first. Each stage of a design (design-kernel skill) stands on one of the five modes, and a design must use the modes and methods in every stage (the rule is in the design-kernel skill's `SKILL.md`) — the design sprint's own techniques are added on top of these, not in place of them. A Scrum Sprint (sprint-kernel skill) uses the methods whenever the work calls for them — for example, when the team is stuck mid-Sprint.

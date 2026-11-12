@@ -1,7 +1,7 @@
 # Storyboard
 
 > Source: Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster. Chapter: "Storyboard."
-> License: All rights reserved (see ATTRIBUTION.md).
+> License: All rights reserved (© Jake Knapp, John Zeratsky, and Braden Kowitz; Simon & Schuster, 2016).
 > Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures that explain a method are redrawn as Mermaid diagrams or text; the others are left out. Day names, clock times, and timers are the book's schedule, not an instruction.
 
 By Wednesday afternoon, you’ll be able to feel Friday’s test with customers looming ahead. Because of the short timeline, it’s tempting to jump into prototyping as soon as you’ve selected your winning ideas. But if you start prototyping without a plan, you’ll get bogged down by small, unanswered questions. Pieces won’t fit together, and your prototype could fall apart.

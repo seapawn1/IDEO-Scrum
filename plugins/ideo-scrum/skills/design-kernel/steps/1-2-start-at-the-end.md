@@ -1,7 +1,7 @@
 # Start at the End
 
 > Source: Knapp, J., Zeratsky, J., & Kowitz, B. (2016). *Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days.* Simon & Schuster. Chapter: "Start at the End."
-> License: All rights reserved (see ATTRIBUTION.md).
+> License: All rights reserved (© Jake Knapp, John Zeratsky, and Braden Kowitz; Simon & Schuster, 2016).
 > Excerpt: the book's own text, with parts that do not apply to a solo + AI team removed; nothing reworded. Figures that explain a method are redrawn as Mermaid diagrams or text; the others are left out. Day names, clock times, and timers are the book's schedule, not an instruction.
 
 Everybody knows the story of Apollo 13, but just in case, it goes like this: Astronauts head to moon, explosion on spacecraft, nail-biting return to earth. In Ron Howard’s 1995 movie version, there’s a scene where the team at Mission Control gathers around a blackboard to form a plan.
