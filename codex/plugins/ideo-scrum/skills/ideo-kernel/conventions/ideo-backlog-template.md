@@ -2,7 +2,7 @@
 
 > Opened <date> | Question: <the question this log answers> | For: <the product log, or the Sprint log it serves> | Product Owner: <name> | Who runs it: <who> | Now: <the mode it is in, and the next step>
 > This is the IDEO five-modes log, not the design sprint log (that is the design-kernel skill's `DesignBacklog.md`); how the two differ is convention 2 in `ideo-log.md`, in the ideo-kernel skill's `conventions/` folder.
-> Keep all five headings, even a mode that was not used; add none — remarks go in the chapter of the mode they belong to.
+> Keep all five headings, even a mode that was not used; add none — remarks go in the chapter of the mode they belong to. The chapter numbers are just chapter numbers, not the order of work (convention 2 in `ideo-log.md`).
 > This log records what each mode produced, not every step taken (convention 3 in `ideo-log.md`).
 > How to write this log: `ideo-log.md` in the ideo-kernel skill's `conventions/` folder.
 

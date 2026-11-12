@@ -35,7 +35,7 @@ flowchart TD
     SH --> X
     SH --> V
     X0 -- "a design sprint" --> X["Design sprint: five stages, each standing on one IDEO mode<br/>design-log.md"]
-    X0 -- "the five modes: one or two methods, or an IDEO log" --> X2["IDEO log: a run of the five modes<br/>IdeoBacklog.md"]
+    X0 -- "the five modes" --> X2["The five modes: one or two methods, recorded in the log they serve;<br/>or an IDEO log for a run of its own<br/>ideo-log.md"]
     X -- "conclusions flow back" --> A
     X2 -- "conclusions flow back" --> A
     V --> E["End: Sprint Goal met, Increment delivered, Product Goal one step closer"]
@@ -55,9 +55,9 @@ flowchart TD
    | 2 | Sprint log | Sprint Goal | Developer | Scrum Master |
    | 2 | Design log | Design goal | Designer | Scrum Master |
    | 3 | Increment: code or documents, as the Definition of Done says | Definition of Done | Developer | — |
-   | 3 | Prototype: kept in the design folder, never in an Increment | Design questions | Designer | — |
+   | 3 | Prototype: kept in the design or IDEO log folder, never in an Increment | Design questions | Designer | — |
 
-   The third layer is not a log and has no prescribed method; it relies on the skills of whoever does the work. Increments add up into the product; prototypes are thrown away when the design ends, and only what was learned flows back.
+   The third layer is not a log and has no prescribed method; it relies on the skills of whoever does the work. Increments add up into the product; prototypes are thrown away when the design or IDEO log ends, and only what was learned flows back.
 4. **Folders** — `scrum/` holds all of the Scrum work: `ProductBacklog.md`; one folder for each Sprint, design, or IDEO log in progress — `sprint-NN-<suffix>/` with its `SprintBacklog.md` and working files, `design-<suffix>/`, unnumbered, with its `DesignBacklog.md`, prototypes, and working files, `ideo-<suffix>/`, unnumbered, with its `IdeoBacklog.md`, prototypes, and working files; and `documents/` (convention 5). This is the author's layout; use your project's own places if it has them.
 5. **Where files go** — A file that serves only one Sprint, design, or IDEO log stays in its folder and is deleted when that Sprint, design, or IDEO log ends; git keeps it. A file that serves the whole Scrum goes into `scrum/documents/`, and the logs reference it: design documents, background material, long content written for the product log, and the archives made at each Review — compressed sprint logs, design logs, and IDEO logs. The Review makes those archives and keeps `scrum/documents/` fresh (`../sprint-kernel/conventions/sprint-log.md`, convention 17). The project's own documentation, such as a user manual or API notes, is outside these conventions; keep it where the project keeps it, such as `docs/` at the root.
 6. **Working material** — Keep working material out of the logs; what is truly key can go into the project's memory or instructions file, and a large important file goes into `scrum/documents/`.
