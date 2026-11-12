@@ -45,7 +45,7 @@
 **搬运时（Sprint 16 合入后）要做的：**
 
 - `design-kernel/SKILL.md` 五阶段表的条号：conventions 6–7、8、9 and 11–14、15、16–17、18、20 → 6–7、8、9 and 11–15、16、17–18、19、21；Use Protocol 第 2 条的 convention 5、23 → 5、24；第 6 条的 convention 20 → 21；第 7 条的 convention 18 → 19。
-- `commands/scrum-master.md` 第 48 行「When refinement hits a hard point that needs research, open a design for it (design-kernel skill)」——56 之后这里也是「什么时候开设计」的另一种说法。建议改成「…settle whether it needs a design sprint or the five modes (the ideo-kernel's conventions, convention 1)」。**这条是命令正文，Sprint 16 也改这个文件（加载行），搬运时在它的版本上加一行，不整份替换。**
+- `commands/scrum-master.md` 第 48 行「When refinement hits a hard point that needs research, open a design for it (design-kernel skill)」——56 之后这里也是「什么时候开设计」的另一种说法。**Master 2026-11-12 同意改**：改成「…settle whether it needs a design sprint or the five modes (the ideo-kernel's conventions, convention 1)」。只改正文、不动描述，不用跑触发测试。这一行在 Code of Conduct 里，不属于定稿的 Identity。**搬运时在 Sprint 16 的版本上加这一行，不整份替换。**
 - `README.md` 的 ideo-kernel 一节（文件表）加一行 `plugins/ideo-scrum/skills/ideo-kernel/conventions/`（新约定）；README 由 Sprint 16 主改，搬运时加。
 - `CLAUDE.md` 的「当前状态」与「下一次集中修订是 PBI-54、PBI-58」——收官时更新。
 
