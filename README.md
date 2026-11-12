@@ -59,7 +59,7 @@ $developer      # Developer
 $stakeholder    # Stakeholder
 ```
 
-三个内核的设置允许 Codex 自动调用；四个角色的设置要求显式选择。它们和 Claude Code 版使用同一份源内容。需要区分同名技能时，可用插件命名空间，例如 `$ideo-scrum:developer`。
+四个内核的设置允许 Codex 自动调用；四个角色的设置要求显式选择。它们和 Claude Code 版使用同一份源内容。需要区分同名技能时，可用插件命名空间，例如 `$ideo-scrum:developer`。
 
 **插件提供什么**
 
@@ -67,8 +67,9 @@ $stakeholder    # Stakeholder
 |---|---|
 | `ideo-kernel` skill | IDEO / d.school 五模式（Empathize → Test）、~40 个设计方法——整个插件共用的工具箱，也是设计各阶段的基础 |
 | `design-kernel` skill | 设计冲刺：按 IDEO 五阶段（共情、定义、构思、原型、测试）组织的《Sprint》原文摘录，加设计日志约定与模板；设计与冲刺平级，结论回流产品日志 |
-| `scrum-kernel` skill | Scrum Guide 2020 全文、SGEP 扩展包全文（含角色章）、Artifact / Event 分项引用 |
-| 4 个角色 | Scrum Master / Designer / Developer / Stakeholder。Claude Code 用四个 command（如 `/ideo-scrum:scrum-master`）；Codex 用四个角色 skill，从 `$` 菜单显式选择。角色入口要求先加载对应内核（都先加载 ideo-kernel） |
+| `scrum-kernel` skill | 产品日志与 Scrum 框架：Scrum Guide 2020 全文、SGEP v2026.1（除 Artifacts、Events 两章）、Artifact 分项引用、产品日志约定与模板 |
+| `sprint-kernel` skill | 跑冲刺：冲刺日志约定与模板、五个 Scrum 事件（Event 分项引用） |
+| 4 个角色 | Scrum Master / Designer / Developer / Stakeholder。Claude Code 用四个 command（如 `/ideo-scrum:scrum-master`）；Codex 用四个角色 skill，从 `$` 菜单显式选择。每个角色都先加载 ideo-kernel 与 scrum-kernel；design-kernel 只在开设计冲刺时加载，sprint-kernel 只在开冲刺时加载；派出的子代理也加载 ideo-kernel 与 scrum-kernel |
 
 ## 这里是什么
 
@@ -93,19 +94,19 @@ $stakeholder    # Stakeholder
 | 文件/目录 | 内容 |
 |---|---|
 | `plugins/ideo-scrum/.claude-plugin/plugin.json` | 插件清单 v5.2.0 |
-| `plugins/ideo-scrum/commands/designer.md` | Command `/ideo-scrum:designer` — 设计阶段结对（IDEO 五模式 + 设计冲刺，原型快速验证、拍板前不落地；进入时加载 ideo-kernel 与 design-kernel） |
-| `plugins/ideo-scrum/commands/developer.md` | Command `/ideo-scrum:developer` — Developer 角色（Scrum Guide 2020 原文抄录＋2026 精炼补充；进入时加载 ideo-kernel 与 scrum-kernel） |
-| `plugins/ideo-scrum/commands/scrum-master.md` | Command `/ideo-scrum:scrum-master` — Scrum Master 角色（Scrum Guide 2020 原文抄录＋2026 精炼补充；替 PO 派活、派子代理审阅；进入时加载三个内核） |
-| `plugins/ideo-scrum/commands/stakeholder.md` | Command `/ideo-scrum:stakeholder` — Stakeholder（SGEP 角色章为底；一个命令多种身份：外部视角——按项目写定的身份看产品和增量，说出期望与现状的差距，反馈交 PO，独立评价由全新子代理给；也可作常驻会话做非源码杂务，如维护看板；源码归 Developer；进入时加载 ideo-kernel） |
+| `plugins/ideo-scrum/commands/designer.md` | Command `/ideo-scrum:designer` — 设计阶段结对（IDEO 五模式 + 设计冲刺，原型快速验证、拍板前不落地；进入时加载 ideo-kernel 与 scrum-kernel，开设计冲刺时再加 design-kernel） |
+| `plugins/ideo-scrum/commands/developer.md` | Command `/ideo-scrum:developer` — Developer 角色（Scrum Guide 2020 原文抄录＋2026 精炼补充；进入时加载 ideo-kernel 与 scrum-kernel，开冲刺时再加 sprint-kernel） |
+| `plugins/ideo-scrum/commands/scrum-master.md` | Command `/ideo-scrum:scrum-master` — Scrum Master 角色（Scrum Guide 2020 原文抄录＋2026 精炼补充；替 PO 派活、派子代理审阅；进入时加载 ideo-kernel 与 scrum-kernel，开设计或开冲刺时分别再加 design-kernel、sprint-kernel） |
+| `plugins/ideo-scrum/commands/stakeholder.md` | Command `/ideo-scrum:stakeholder` — Stakeholder（SGEP 角色章为底；一个命令多种身份：外部视角——按项目写定的身份看产品和增量，说出期望与现状的差距，反馈交 PO，独立评价由全新子代理给；也可作常驻会话做非源码杂务，如维护看板；源码归 Developer；进入时加载 ideo-kernel 与 scrum-kernel） |
 
 ### Codex 分发包
 
-`codex/plugins/ideo-scrum/` 由 `python scripts/sync_codex.py` 生成，版本取 Claude Code 插件清单。修改三个内核或角色时，先改 `plugins/ideo-scrum/`，再运行同步命令；生成包中的工具用语适配由脚本统一处理。
+`codex/plugins/ideo-scrum/` 由 `python scripts/sync_codex.py` 生成，版本取 Claude Code 插件清单。修改内核或角色时，先改 `plugins/ideo-scrum/`，再运行同步命令；生成包中的工具用语适配由脚本统一处理。
 
 | 文件/目录 | 内容 |
 |---|---|
 | `codex/plugins/ideo-scrum/.codex-plugin/plugin.json` | Codex 插件清单 |
-| `codex/plugins/ideo-scrum/skills/ideo-kernel/`、`design-kernel/`、`scrum-kernel/` | 三个内核的全部文件，含约定、模板和源材料 |
+| `codex/plugins/ideo-scrum/skills/ideo-kernel/`、`scrum-kernel/`、`sprint-kernel/`、`design-kernel/` | 四个内核的全部文件，含约定、模板和源材料 |
 | `codex/plugins/ideo-scrum/skills/scrum-master/`、`designer/`、`developer/`、`stakeholder/` | 四个原生角色 skill；各有 SKILL.md 和 agents/openai.yaml |
 | `codex/plugins/ideo-scrum/README.md`、`LICENSE`、`ATTRIBUTION.md` | 包内说明及来源授权 |
 | `scripts/codex_interface.json`、`scripts/codex_readme.md` | Codex 展示文字与包内 README 的生成源 |
@@ -117,7 +118,7 @@ $stakeholder    # Stakeholder
 | 文件/目录 | 内容 |
 |---|---|
 | `plugins/ideo-scrum/skills/design-kernel/SKILL.md` | Design Kernel 入口（设计冲刺按 IDEO 五阶段组织：每个阶段对应的 IDEO 模式、原书摘录、Use Protocol） |
-| `plugins/ideo-scrum/skills/design-kernel/` 下 `empathize/`、`define/`、`ideate/`、`prototype/`、`test/` | 设计冲刺原书摘录（Knapp，原文只删不改，例图改画成 Mermaid 或文字）：共情 define-the-challenge / start-at-the-end / ask-the-experts；定义 make-a-map / how-might-we / pick-a-target；构思 remix-and-improve / sketch / decide / rumble / storyboard；原型 fake-it / prototype；测试 small-data / interview / learn |
+| `plugins/ideo-scrum/skills/design-kernel/steps/` | 设计冲刺原书摘录（Knapp，原文只删不改，例图改画成 Mermaid 或文字），16 份文件名带「阶段-步骤」序号：共情 `1-1`～`1-3` define-the-challenge / start-at-the-end / ask-the-experts；定义 `2-1`～`2-3` make-a-map / how-might-we / pick-a-target；构思 `3-1`～`3-5` remix-and-improve / sketch / decide / rumble / storyboard；原型 `4-1`～`4-2` fake-it / prototype；测试 `5-1`～`5-3` small-data / interview / learn |
 | `plugins/ideo-scrum/skills/design-kernel/conventions/` | 设计日志约定（design-log：设计放哪、谁定、各阶段怎么用子代理与角色卡、设计结束时的处理）与设计日志模板（design-backlog-template，五章） |
 
 ### ideo-kernel skill
@@ -132,13 +133,21 @@ $stakeholder    # Stakeholder
 
 | 文件/目录 | 内容 |
 |---|---|
-| `plugins/ideo-scrum/skills/scrum-kernel/SKILL.md` | Scrum Sprint 技能内核（Scrum Guide 概述 + Artifact / Event / Reference 目录表） |
-| `plugins/ideo-scrum/skills/scrum-kernel/scrum-guide-2020.md` | Scrum Guide 2020 官方全文 |
-| `plugins/ideo-scrum/skills/scrum-kernel/assets/scrum-guide-expansion-pack-2026.1.md` | SGEP 完整源文档（Theory / Values-OODA / Roles / 引用列表） |
+| `plugins/ideo-scrum/skills/scrum-kernel/SKILL.md` | Scrum 技能内核（Scrum Guide 概述、产品日志约定表、Artifact 目录表、Reference 目录） |
+| `plugins/ideo-scrum/skills/scrum-kernel/assets/scrum-guide-2020.md` | Scrum Guide 2020 官方全文 |
+| `plugins/ideo-scrum/skills/scrum-kernel/assets/scrum-guide-expansion-pack-2026.1.md` | SGEP v2026.1 除 Artifacts、Events 两章以外的部分（Theory / Values-OODA / Roles / 引用列表）；那两章在 `references/`、`sprint-kernel/events/` 与两份 SKILL.md 里 |
 | `plugins/ideo-scrum/skills/scrum-kernel/references/scrum-artifact-*.md` | 4 个 Artifact reference：Product / Increment / Product Backlog / Sprint Backlog |
-| `plugins/ideo-scrum/skills/scrum-kernel/references/scrum-event-*.md` | 5 个 Event reference：Sprint / Sprint Planning / Daily Scrum / Sprint Review / Sprint Retrospective |
+| `plugins/ideo-scrum/skills/sprint-kernel/events/scrum-event-*.md` | 5 个 Event reference：Sprint / Sprint Planning / Daily Scrum / Sprint Review / Sprint Retrospective |
 | `plugins/ideo-scrum/skills/scrum-kernel/overview.md` | 约定总览（与 SKILL.md 并列）：整个流程的图、三层、文件与文档文件夹、角色、阶段之间由 PO 决定、会话分工、目标不变其余可调、与官方故意不同之处 |
-| `plugins/ideo-scrum/skills/scrum-kernel/conventions/` | 约定：product-log 与 product-backlog-template（产品日志）；sprint-log 与 sprint-backlog-template（冲刺日志） |
+| `plugins/ideo-scrum/skills/scrum-kernel/conventions/` | 约定：product-log 与 product-backlog-template（产品日志） |
+
+### sprint-kernel skill
+
+| 文件/目录 | 内容 |
+|---|---|
+| `plugins/ideo-scrum/skills/sprint-kernel/SKILL.md` | Sprint Kernel 入口（冲刺日志约定表 + 五个事件表 + 指向 scrum-kernel） |
+| `plugins/ideo-scrum/skills/sprint-kernel/conventions/` | 约定：sprint-log 与 sprint-backlog-template（冲刺日志） |
+| `plugins/ideo-scrum/skills/sprint-kernel/events/` | 5 个 Event reference（从 scrum-kernel 的 references 移入） |
 
 ### 工作记录（scrum/）
 
