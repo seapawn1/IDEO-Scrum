@@ -7,7 +7,7 @@ description: "Use when the user mentions IDEO, the five modes, design thinking, 
 
 ## The Shared Toolbox
 
-This kernel is the plugin's shared toolbox and the foundation of every stage: the IDEO five modes and the method catalog. Every role loads it first. Each stage of a design (design-kernel skill) stands on one of the five modes, and a design must use the modes and methods in every stage (the rule is in the design-kernel skill's `SKILL.md`) — the design sprint's own techniques are added on top of these, not in place of them. A Scrum Sprint (scrum-kernel skill) uses the methods whenever the work calls for them — for example, when the team is stuck mid-Sprint.
+This kernel is the plugin's shared toolbox and the foundation of every stage: the IDEO five modes and the method catalog. Every role loads it first. Each stage of a design (design-kernel skill) stands on one of the five modes, and a design must use the modes and methods in every stage (the rule is in the design-kernel skill's `SKILL.md`) — the design sprint's own techniques are added on top of these, not in place of them. A Scrum Sprint (sprint-kernel skill) uses the methods whenever the work calls for them — for example, when the team is stuck mid-Sprint.
 
 *(Author's methodology design for solo + AI teams, 2026-11-08.)*
 
@@ -15,7 +15,7 @@ This kernel is the plugin's shared toolbox and the foundation of every stage: th
 
 Design Thinking is a **human-centered approach to innovation** that integrates the needs of people, the possibilities of technology, and the requirements for business success. Originating from IDEO and formalized at Stanford's Hasso Plattner Institute of Design (the d.school, founded by David Kelley), it is an iterative, non-linear methodology for tackling complex, ill-defined problems. Its core ethos is **bias toward action** — learning by doing rather than analysis alone.
 
-**Bias toward fast prototype validation.** The design work optimizes for speed of learning, not polish: a prototype must feel like a prototype — rough, quick, and disposable — built to learn, never a formal result. In a design sprint test, this describes how the prototype is made and treated — quickly, and thrown away after; the surface the tester sees should still appear real enough for honest reactions (design-kernel skill, `prototype/fake-it.md`).
+**Bias toward fast prototype validation.** The design work optimizes for speed of learning, not polish: a prototype must feel like a prototype — rough, quick, and disposable — built to learn, never a formal result. In a design sprint test, this describes how the prototype is made and treated — quickly, and thrown away after; the surface the tester sees should still appear real enough for honest reactions (design-kernel skill, `steps/4-1-fake-it.md`).
 
 IDEO's five-mode model:
 
@@ -93,4 +93,4 @@ In the table, each method is listed once; **Modes** names the modes it serves.
 3. Before using the method, read its document under `methods/`. Never invoke a method only by name — state which method you are using and why it fits the current mode.
 4. Treat the `Cleaned Transcription` section as source text.
 5. Treat `Use Before`, `Use Notes`, and `Do Not Use When` as project-specific notes, not source text.
-6. When the work needs a full design — from a challenge to a tested prototype — use the design-kernel skill; when findings must become planned, executable work, hand off to the scrum-kernel skill.
+6. When the work needs a full design — from a challenge to a tested prototype — use the design-kernel skill; when findings must become planned, executable work, hand off to the sprint-kernel skill.

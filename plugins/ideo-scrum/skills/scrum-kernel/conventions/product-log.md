@@ -33,7 +33,7 @@ Convention 18 holds at every step; see Throughout, below.
     | The design questions, once the test has answered them | 1.3 Definition of Done (the Outcome Done measures); the ones not answered become items |
     | The people at the top of the map | 2.1 Stakeholders |
     | The map | 2.2 Map |
-    | The target (`../design-kernel/define/pick-a-target.md`) | 3 Product Backlog Items, each placed on a step of the map |
+    | The target (`../design-kernel/steps/2-3-pick-a-target.md`) | 3 Product Backlog Items, each placed on a step of the map |
 
     In a section a design is answering, say which design answers it and link to it; do not copy the design log. The stakeholder table can be written first, because a design uses role cards from its first stage.
 3. **Facts first, then questions** — *Supplement.* Have the Scrum Master look up the facts itself; what the Product Owner must decide goes into one message, numbered, each question with a recommended answer.
@@ -43,7 +43,7 @@ Convention 18 holds at every step; see Throughout, below.
 4. **Product and Product Goal** — Fill sections 1.1 and 1.2 as the template shows; the vision line is optional.
 5. **Two kinds of Done** — Outcome Done covers the value the product delivers to its stakeholders; Output Done covers the quality of every Increment. A Sprint picks the items that matter to it; the whole Definition of Done still applies. Write the Definition of Done precisely: add an item only when it holds in every case you can foresee, not just because it came up; one you are unsure of goes into the acceptance criteria instead.
 6. **Stakeholders in a short table** — List the stakeholders in section 2.1 in a short table, not a long profile per person. A Stakeholder subagent gets one row as its identity, and the AI fills in the details. If the table is empty, ask the Product Owner who belongs in it, and add the rows.
-7. **Architecture as a map** — Start section 2.2 with one map, drawn as `../design-kernel/define/make-a-map.md` describes: actors on top, AI roles included, the ending at the bottom, five to fifteen steps between, as a Mermaid `flowchart TD`. Add a subsection only for a step that needs more words.
+7. **Architecture as a map** — Start section 2.2 with one map, drawn as `../design-kernel/steps/2-1-make-a-map.md` describes: actors on top, AI roles included, the ending at the bottom, five to fifteen steps between, as a Mermaid `flowchart TD`. Add a subsection only for a step that needs more words.
 8. **No TBD** — Turn an unclear point into an item; a Sprint or a design works it out.
 9. **Technical design stays out** — Keep technical design out: modules and interfaces are the Developer's; they live in the Increment.
 
@@ -66,13 +66,13 @@ Convention 18 holds at every step; see Throughout, below.
 
 ## Refinement
 
-14. **Refine any time, finish in the Sprint** — Refine in the product log only to add detail; finish the refinement in the sprint log's section 2.2 (`sprint-log.md`, convention 6). The product log has no refinement section.
-15. **Seven steps** — Refine one item at a time in the seven steps of `sprint-log.md`, convention 6. Acceptance criteria already written in full here are not repeated in the sprint log.
+14. **Refine any time, finish in the Sprint** — Refine in the product log only to add detail; finish the refinement in the sprint log's section 2.2 (`../sprint-kernel/conventions/sprint-log.md`, convention 6). The product log has no refinement section.
+15. **Seven steps** — Refine one item at a time in the seven steps of `../sprint-kernel/conventions/sprint-log.md`, convention 6. Acceptance criteria already written in full here are not repeated in the sprint log.
 16. **Where refined content goes** — Put refined content where it belongs: a split-off item becomes a new row; long design content goes into the architecture, and the Place column points to it; short notes go into Notes; large material goes into `scrum/documents/` (`overview.md`, convention 5), referenced from Notes.
 
 ## Keeping it fresh
 
-17. **Fresh at every Review** — At every Review, move done items to section 3.2, one line each, with the source, usually the archived sprint log in `scrum/documents/`; delete outdated architecture text and resolved open points; send unfinished items back to section 3.1. Keep no revision record; version control keeps the history. Fresh means more than the items: the Review keeps the rest of `scrum/` fresh too (`sprint-log.md`, convention 17).
+17. **Fresh at every Review** — At every Review, move done items to section 3.2, one line each, with the source, usually the archived sprint log in `scrum/documents/`; delete outdated architecture text and resolved open points; send unfinished items back to section 3.1. Keep no revision record; version control keeps the history. Fresh means more than the items: the Review keeps the rest of `scrum/` fresh too (`../sprint-kernel/conventions/sprint-log.md`, convention 17).
 
 ## Throughout
 
