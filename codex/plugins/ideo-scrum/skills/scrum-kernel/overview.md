@@ -21,7 +21,7 @@ flowchart TD
     PO --> A["Write the product log: product, architecture, items<br/>product-log.md"]
     SM --> A
     A -- "an item needs design" --> X0["A design question: design sprint or the five modes?<br/>ideo-log.md"]
-    BP["A blank page<br/>product-log.md"] --> X0
+    BP["A blank page<br/>product-log.md"] --> X
     A --> S1["Why: the Sprint Goal<br/>sprint-log.md"]
     S1 -- "PO decides" --> S2["What: the items, refined<br/>sprint-log.md"]
     S2 -- "refinement hits a hard point" --> X0
@@ -36,7 +36,7 @@ flowchart TD
     SH --> V
     X0 -- "a design sprint" --> X["Design sprint: five stages, each standing on one IDEO mode<br/>design-log.md"]
     X0 -- "the five modes" --> X2["The five modes: one or two methods, recorded in the log they serve;<br/>or an IDEO log for a run of its own<br/>ideo-log.md"]
-    X -- "conclusions flow back" --> A
+    X -- "conclusions flow back — a blank page's design fills the product log" --> A
     X2 -- "conclusions flow back" --> A
     V --> E["End: Sprint Goal met, Increment delivered, Product Goal one step closer"]
 ```

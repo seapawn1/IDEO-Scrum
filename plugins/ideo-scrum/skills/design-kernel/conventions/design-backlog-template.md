@@ -2,7 +2,7 @@
 
 > Opened <date> | From: <the product backlog item, the Sprint and the hard point that raised it, or the blank page> | Branch: <branch> | Product Owner: <name> | Designer: <who> | Scrum Master: <who>
 > Now: <the stage the design is in, and the next step> — keep it current; a session that picks up the design reads this first (convention 24).
-> Ends when the design questions are answered or the Product Owner stops the design (convention 19 in `design-log.md`); the first Sprint Review after that archives this file (convention 17 in `sprint-log.md`, in the sprint-kernel skill's `conventions/` folder).
+> Ends when the design questions are answered or the Product Owner stops the design (convention 19 in `design-log.md`); its conclusions flow back to the product log — a blank page's design fills it — and the first Sprint Review after that archives this file (convention 17 in `sprint-log.md`, in the sprint-kernel skill's `conventions/` folder).
 > Methods: the stage excerpts in the design-kernel skill (excerpt paths below are relative to that skill's folder), and in every stage the ideo-kernel's IDEO mode and methods, as the design-kernel `SKILL.md` requires.
 > This log records what each stage produced, not every step taken to get there (convention 22 in `design-log.md`).
 > How to write this log: `design-log.md` in the design-kernel skill's `conventions/` folder.

@@ -42,7 +42,7 @@ Conventions 20–26 hold at every step; see Throughout, below. At each "PO decid
     1. Take one item; it is the point of view.
     2. Confirm the point of view, copied from the goal or the item without change.
     3. Open the item into How Might We questions and unclear points.
-    4. Place each point: the Product Owner decides it, the Developer proposes a solution, or it needs research — a question about what people want or what counts as good, with no ready answer — which the boundary in the ideo-kernel's conventions settles (`../ideo-kernel/conventions/ideo-log.md`, convention 1): a design sprint, or the five modes.
+    4. Place each point: the Product Owner decides it, the Developer proposes a solution, or it needs research — a question about what people want or what counts as good, with no ready answer — which the Product Owner settles by the boundary in the ideo-kernel's conventions (`../ideo-kernel/conventions/ideo-log.md`, convention 1): a design sprint, or the five modes.
     5. Cut the item into items of a few sessions at most, with acceptance criteria.
     6. Check that no questions are left — the Developer's about what is meant, the Product Owner's about what will be built: the Developer restates each point, and the Product Owner agrees.
     7. The Product Owner says when refinement is over.
