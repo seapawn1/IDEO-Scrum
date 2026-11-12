@@ -32,7 +32,7 @@ Master 2026-11-12（PO 委托）：Sprint Goal 定。
 | --- | --- | --- | --- | --- |
 | PBI-54 | 产品日志与冲刺约定修订 | 作为熟手，我想要产品日志和冲刺的约定用过一轮后再集中修一次，补上用起来卡手的地方 | 插件：scrum-kernel 的 `conventions/` | S |
 | PBI-58 | 设计约定修订——PO 用设计时攒下的点 | 作为熟手，我想要设计约定补上用过一轮后攒下的点，以便下一个设计照着走更顺 | 插件：design-kernel 的 `conventions/` | M |
-| PBI-56 | 设计冲刺与 IDEO 五阶段法分清 | 作为熟手，我想要插件分清设计冲刺和 IDEO 五阶段法：小问题就地用五阶段法，大问题才开设计冲刺，由 PO 指定，以便不为小问题兴师动众 | 插件：ideo-kernel（新 `conventions/`）、design-kernel（design-log 第 1、26 条） | M |
+| PBI-56 | 设计冲刺与 IDEO 五阶段法分清（＋IDEO 日志与模板） | 作为熟手，我想要插件分清设计冲刺和 IDEO 五阶段法：小问题就地用五阶段法，大问题才开设计冲刺，由 PO 指定，以便不为小问题兴师动众 | 插件：ideo-kernel（新 `conventions/`）、design-kernel（design-log 第 1、26 条） | M |
 | PBI-53 | 约定写明 Developer 在别的工具里时怎么协作 | 作为熟手，我想要约定写明 Developer 在别的工具（如 Codex）里干活时，它和 Master 怎么协作，以便不用口述 Sprint 13 的做法，换工具也能照着走 | Map ③～⑧ | S |
 | PBI-46 | Codex 版后续小修 | 作为熟手，我想要 Codex 包的同步和说明再顺一点，以便以后每次发版重跑同步都不用多想，陌生人在 Codex 里也能起步 | Map ①（装插件，开会话） | S |
 | PBI-52 | 白纸入口——新想法、还没有产品日志时带到设计 | 作为陌生人，我想要说出「我有个想法、还没有产品日志」时，插件就把我带到先开设计、由设计结论去填产品日志这条路上，以便不会一上来就硬写产品日志或直接出方案 | Map ①（装插件，开会话） | S～M |
@@ -59,6 +59,28 @@ Master 2026-11-12（PO 委托）：Sprint Goal 定。
 
 **PBI-52 并入**（Master 2026-11-12，PO 委托；范围调整，Sprint Goal 不变）：Sprint 16 改了描述之后，题 3 两条路径的行为栏都到了 3/3，触发问题解决了；剩下的缺口在内容上——从 `/ideo-scrum:scrum-master` 进的那条路径，3 次里有 2 次没说「设计的结论会流回产品日志」。这是约定写法的事，归本冲刺；草稿先不动，看最后一轮流程测试的结果，要改措辞再和 PO 的意见同批改。
 
+**IDEO 日志与模板并入 PBI-56**（PO 2026-11-12 停点 ②，Master 转；范围调整，Sprint Goal 不变）。PO 原话：
+
+> OK，相当好，但是差了一件事情，我不知道有没有补充完毕，什么呢，就是说ideo-kernel，没有出现模板，我希望可以出一个文件IdeoBacklog.md，虽然我觉得基本不会用到，然后里面就是标准得五节，没有什么拆分（这时候一般是不上design-kernel得，所以一般不会读哪个kernel，所以要注意区分，是ideo方法论还是design sprint），然后conventions得log，你看着稍微写一写就好，我估计很少，主要是区分一下就可以，对然后就可以了，也就是说差一个文件夹conventios，里面得log和模板。你看sprint17好不好补充，这样最好，，思考一下这个问题。应该如何更好的处理
+
+**架构与关系**（PO 2026-11-13，Master 定）。PO 原话：
+
+> 是的，冲刺16没问题，其余你都自己决定住就可以了。是的，但是这个log也需要一个架构也要补充上去。其余的我觉得没啥问题了，但是还是那句话，要说明ideo五阶段法和设计冲刺之间得关系，不能乱，这个东西很容易乱得。其余得我觉得都没啥问题。
+
+定案：
+- ideo-kernel 的 `conventions/` 照另三个内核放两份：`ideo-log.md`（分界第 1 条、关系第 2 条、什么时候开 IDEO 日志第 3 条、放哪与结束第 4 条）和 `ideo-backlog-template.md`（做出 `IdeoBacklog.md`，五章、不分节）。
+- 8 处指向改成 `ideo-log.md`；改名同一提交全仓 grep 旧名到零。
+- overview 的图加一个分界节点，两支：设计冲刺（design-log）与五模式（就地用或开 IDEO 日志）；`ideo-log.md` 的图画清五模式的三种用法；两边的结论都流回。
+- 关系只写 `ideo-log.md` 第 2 条；design-kernel `SKILL.md` 的「five IDEO stages」与 design-log 第 20 条的「Run the design sprint as the IDEO five-stage method」改掉。
+- overview 第 4、5、7 条与 sprint-log 第 17 条带上 IDEO 日志；README 加 ideo-kernel `conventions/` 一行。
+- 不改任何 description；Codex 同步；引用核对、check_codex、validate 照跑。
+
+**停点 ③ 取消**（PO 2026-11-13，Master 转）。PO 原话：
+
+> OK，最后全部完成即可，我就不进行审阅了，全部完成，推送更新先不做，到时候我给辅助对话去做。你只需要监督全部完成，做完review retro，然后你直接相关得活全部完成即可。最后我审阅后没问题，我会推送更新，不会找你，会直接归档掉你，如果有问题，我再会找你。ok，权限全部交给你
+
+定案：停点 ③ 取消；收官（Review、Retro）与 v6.0.0 的本地发版（版本号、README、Codex 包、tag）由 Master 做；main、tag、记忆库都不推送；推送和更新本机插件交 PO 的辅助会话。
+
 **验收**
 
 1. 收进的每一点都写进了约定：一张对照表，PBI-54 ①–④、PBI-58 ①–⑧、PBI-56、PBI-53、PBI-46 ③，每点对到约定文件和条。
@@ -67,8 +89,9 @@ Master 2026-11-12（PO 委托）：Sprint Goal 定。
 4. 停点 ②：PO 整份读审阅稿，说行。
 5. 最后一轮流程测试过线（见下）。
 6. `claude plugin validate --strict plugins/ideo-scrum` 通过；结构或 frontmatter 改了，再派 `plugin-dev:plugin-validator`（`model: haiku`）；Codex 同步与核对通过。
-7. 停点 ③：PO 亲手试一次。
+7. 停点 ③：PO 2026-11-13 取消，改为收官后 PO 自己看。推送和更新本机插件交 PO 的辅助会话。
 8. PBI-52：最后一轮流程测试里，题 3 两条路径各至少 2/3 过。
+9. IDEO 日志：ideo-kernel 的 `conventions/` 有 `ideo-log.md` 和模板，分界并入第 1 条；最后一轮流程测试里的五模式题过线。
 
 **测试**（跑之前写定，跑后不改；Master 定，PO 委托）
 
@@ -101,6 +124,7 @@ Master 2026-11-12（PO 委托）：精化到此（Developer 复述，没有疑�
 | 11 | 校验 | `claude plugin validate --strict plugins/ideo-scrum`；结构或 frontmatter 变了派 `plugin-dev:plugin-validator`（`model: haiku`）；Codex 同步与核对 | 通过；无必改；0 不一致 |
 | 12 | 停点 ③：PO 亲手试 | PO 试一次 | PO 说行 |
 | 13 | 收官准备交 Master | Review（压缩日志、归档 `scrum/documents/`、产品日志保鲜）、Retro（教训进记忆或 CLAUDE.md）、一个提交；v6.0.0、tag、合入、推送、更新本机插件由 Master 做 | Master 接受 |
+| 14 | 补 IDEO 日志与模板（PBI-56 补充，停点 ② 之后） | `ideo-kernel/conventions/ideo-log.md`（4 条）与 `ideo-backlog-template.md`；8 处指向改名；overview 的图与第 4、5、7 条；sprint-log 第 17 条；README；Codex 同步 | 旧名 0 残留；引用核对 0 缺；check_codex 0 不一致；validate 通过 |
 
 **Key choices**
 
@@ -127,6 +151,7 @@ Master 2026-11-12（PO 委托）：精化到此（Developer 复述，没有疑�
 - 新规矩容易在别处重复（56 的分界、58 的三个环、53 的协作）：各归一处，其余只指向，对抗审查专查这一项。
 
 Go-ahead: 2026-11-12，PO（停点 ①，两个冲刺一起放行，原话「全部放行」）；范围：在冲刺分支上提交；Sprint 16 合入 main 后，从新的 main 搬进插件；停点 ②（PO 整份读审阅稿）和停点 ③（PO 亲手试）仍然要停；③ 之后由 Master 收官——打 tag、合入 main、发 v6.0.0（版本号、README、Codex 包）、推送 main、tag 和 SeaPawn-Memory、更新本机 Claude Code 的插件。
+2026-11-13 变更（PO 原话见 2.2）：停点 ③ 取消，改为收官后 PO 自己看；收官与 v6.0.0 的本地发版由 Master 做；main、tag、记忆库都不推送；推送和更新本机插件交 PO 的辅助会话。
 
 ## 4. Increment notes
 
@@ -148,6 +173,7 @@ Go-ahead: 2026-11-12，PO（停点 ①，两个冲刺一起放行，原话「全
 | 2026-11-12 | Master 备忘：Sprint 16 在搬运前改了冲刺模板 1.1、1.2 的注释（validator 说 1.1 的引用太松），以及 overview 第 8 条和四个命令的加载说法 | 搬运时先取 Sprint 16 的版本，保留它改过的地方，别被我的稿覆盖；我的 overview 稿只套用第 2、7、12、14 条与路径，第 8 条用它的 | `checks.md` 的「搬运时要做的」 | 停点 ② 等 PO |
 | 2026-11-12 | Master 转：PBI-52（白纸入口）并入本冲刺——范围调整，Sprint Goal 不变（Master，PO 委托） | 来由：Sprint 16 改描述后，题 3 两条路径的行为栏都到 3/3，触发问题解决了；剩下的缺口在内容——从 `/ideo-scrum:scrum-master` 进的路径，3 次里有 2 次没说「设计的结论会流回产品日志」。2.1 加 PBI-52 一行；2.2 记并入理由与决定；验收加第 8 项（题 3 两条路径各至少 2/3 过）；测试改成所有题走直接说、题 2 与题 3 另走角色命令、每条路径 3 次各自过线；草稿先不动，等 PO 停点 ② 的意见和测试结果 | 本日志 2.1、2.2、验收、测试；`checklist.md` | 等 PO 意见与 Sprint 16 合入 |
 | 2026-11-12 | 第 8 项搬运：main（`72d398f`）合入（`18f9202`）；内容提交 `9ffb765`、改号提交 `d5c0e6a`、Codex 包 `4212a2a` | Sprint 16 改过的地方都保留（冲刺模板 1.1 的「conventions 4 and 20」、1.2 的文字定位、overview 第 8 条、四个命令的加载说法、scrum-kernel `SKILL.md` 的约定表与描述）；scrum-master 第 48 行照同意改；design-kernel `SKILL.md` 的条号跟上；内容与改号分两个提交（内容版 design-log 新条暂排 27） | 引用核对 189 处 0 缺；`sync_codex.py` 写 11 个文件、`check_codex.py` 0 不一致；`claude plugin validate --strict` 通过（只有图标警告，PBI-25 ⑦）；`checks.md` 第五节 | 等 PO 停点 ② 意见；第 9 项写测试题交 Master 审 |
+| 2026-11-13 | Master 转：PO 停点 ② 说行；补 IDEO 日志与模板并入 PBI-56（范围调整，Sprint Goal 不变）；PO 取消停点 ③、权限全交 Master | 定案见 2.2；批次提交 `3d823bd`（ideo-log 四条、IdeoBacklog 模板、8 处指向、overview 的图与第 4/5/7 条、sprint-log 第 17 条、README、Codex 同步）；必改 `3a69305`（设计模板第 7 行补回 in design-log.md）；停点 ③ 改为收官后 PO 自己看；推送与更新本机插件交 PO 的辅助会话 | 本日志 2.2、验收、How 第 14 项；`check_refs.py` 改为插件版（196 处 0 缺） | 交 Master 审这一批；之后第 9 项测试题 |
 
 ## 5. Test
 
