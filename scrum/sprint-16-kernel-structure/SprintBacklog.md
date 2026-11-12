@@ -84,15 +84,18 @@ Master 2026-11-12（PO 委托）：精化到此（Developer 复述，没有疑�
 | # | Work item | Output | Done when |
 | --- | --- | --- | --- |
 | 1 | 测试题与判定写定，送 Master 审 | `scrum/sprint-16-kernel-structure/test-questions.md`：题 1–5 照 `git show a87bd1c:scrum/sprint-14-conventions-tuning/SprintBacklog.md` 的 2.2 取回（必答、不能项照抄；「读到约定」按两版各自的路径写），另写两题（产品日志、冲刺），每题写两条路径的进入说法与判定 | Master 说行；标准单独一个提交，跑后不改；题面不带引导词 |
-| 2 | 拆出 sprint-kernel，两个 SKILL.md 写定 | 新技能 `skills/sprint-kernel/`：`SKILL.md`、`conventions/`（sprint-log、sprint-backlog-template）、`events/`（五个事件）；scrum-kernel 的 `SKILL.md` 去掉冲刺日志两行与事件章、留下一句指向 sprint-kernel；`scrum-guide-2020.md` 挪进 `assets/` | `git diff -M` 把挪动的文件认作改名；scrum-kernel 里没有指向已移文件的路径；sprint-kernel 的描述照组件描述规约写；每个技能从 SKILL.md 入口 ≤2 跳到达自己的全部文件 |
-| 3 | design-kernel 合成 `steps/`，全插件路径改对 | 16 份按 `阶段-步骤-原名.md` 改名；design-kernel 的 `SKILL.md`、`design-log.md`、`design-backlog-template.md` 里的摘录路径；`product-log.md` 两处 design 路径；`ideo-kernel/SKILL.md` 的 `prototype/fake-it.md`；跨技能的 sprint-log 路径 | `git diff -M` 全认作改名；插件里旧路径 0 处；`convention N` 全部指得到条（脚本核） |
-| 4 | 加载分层：四个命令 + overview 第 8 条 | 四个命令同一段加载说明：ideo、scrum 全加载；design 只在开设计冲刺时、sprint 只在开冲刺时；派子代理也加载 ideo 和 scrum。overview 第 8 条 Roles 表同改；sprint-kernel 的 SKILL.md 写「开冲刺前 scrum-kernel 未加载就先读它」一句 | 四个命令说法一致；overview 与命令一致；加载说法不再散在别处 |
-| 5 | 描述与 PBI-25、46 ④ 的小修 | 各技能描述：新写 sprint-kernel 的，scrum-kernel 让出冲刺用词，PBI-52 的白纸说法进 scrum-kernel 与 design-kernel；25 ① 16 份摘录的许可行改成自足；25 ② 两个 SKILL.md 加 Source/License 头；25 ⑥ 两章与 9 份 reference 的出处；25 ⑦；25 ⑧ marketplace 顶层说明；46 ④ scrum-master 简介 | 25 与 46 ④ 逐条落；`claude plugin validate --strict plugins/ideo-scrum` 通过；marketplace 加 `--strict` 也通过 |
-| 6 | Codex 脚本与包适配 | `scripts/sync_codex.py`、`scripts/check_codex.py`：四个内核、新的加载句子、只差换行不算差异（46 ①）、idempotency 不再写死 `sprint-13-codex` 分支；`codex_interface.json` 的「Three kernels」与 `codex_readme.md` 的文件表；重生成 Codex 包 | `python scripts/sync_codex.py` 后 `check_codex.py` 通过；紧接着再同步 0 变化；只差换行不再算差异 |
-| 7 | 文档同步与全仓 grep | README 的文件地图与版本说法；CLAUDE.md 里指向插件的路径；ATTRIBUTION 的位置表（含新 sprint-kernel、`assets/`、`steps/`） | 全仓 grep 旧路径，现行的说法 0 处（插件、Codex 包、README、CLAUDE.md、产品日志 3.1；历史归档与 3.2 不动；Sprint 17 的日志由它自己改） |
-| 8 | 自检与校验 | 路径与 `convention N` 的核对脚本及结果；插件内部链接核对；两处 `plugin validate --strict`；`plugin-dev:plugin-validator`（`model: haiku`）；`sync_codex.py`／`check_codex.py` | 脚本 0 缺；validator 没有必改项；结果抄进第 5 章 |
-| 9 | 基线：5.2.0 冒烟并跑测 | 冒烟；题 1–7 各走直接说、角色命令两条路径，每条 3 次，共 42 次；原始输出进 `S:\IDEO-Scrum-Archives\sprint-16-kernel-structure\baseline\`；`baseline-summary.md` 两栏汇总 | 冒烟确认模型、空目录、读文件权限、角色命令入口；42 次都有原始输出；扫描无提供方地址、凭据、令牌 |
-| 10 | 新版冒烟并跑测、汇总与过线判定 | 新版同样 42 次；四个命令的加载冒烟各 2 次；`new-summary.md`；对照基线的过线 ①–④ 判定 | 过线四条全过，或缺口逐条写明；原始输出进归档、仓库只留汇总；扫描干净 |
+| 2 | 冒烟：测试工具先跑通 | 冒烟记录（第 4 章）：无头调用成功，模型、空目录、读文件权限都对；四个角色命令各进 1 次 | 冒烟通过；角色命令进不去，就在跑任何正式测试之前把测法定下来并写进第 4 章（这时改不算违规）；`reclaude` 不可用就用 `claude -p` |
+| 3 | 拆出 sprint-kernel，两个 SKILL.md 写定 | 新技能 `skills/sprint-kernel/`：`SKILL.md`、`conventions/`（sprint-log、sprint-backlog-template）、`events/`（五个事件）；scrum-kernel 的 `SKILL.md` 去掉冲刺日志两行与事件章、留下一句指向 sprint-kernel；`scrum-guide-2020.md` 挪进 `assets/` | `git diff -M` 把挪动的文件认作改名；scrum-kernel 里没有指向已移文件的路径；sprint-kernel 的描述照组件描述规约写；每个技能从 SKILL.md 入口 ≤2 跳到达自己的全部文件 |
+| 4 | design-kernel 合成 `steps/`，全插件路径改对 | 16 份按 `阶段-步骤-原名.md` 改名；design-kernel 的 `SKILL.md`、`design-log.md`、`design-backlog-template.md` 里的摘录路径；`product-log.md` 两处 design 路径；`ideo-kernel/SKILL.md` 的 `prototype/fake-it.md`；跨技能的 sprint-log 路径 | `git diff -M` 全认作改名；插件里旧路径 0 处；`convention N` 全部指得到条（脚本核） |
+| 5 | 加载分层：四个命令 + overview 第 8 条 | 四个命令同一段加载说明：ideo、scrum 全加载；design 只在开设计冲刺时、sprint 只在开冲刺时；派子代理也加载 ideo 和 scrum。overview 第 8 条 Roles 表同改；sprint-kernel 的 SKILL.md 写「开冲刺前 scrum-kernel 未加载就先读它」一句 | 四个命令说法一致；overview 与命令一致；加载说法不再散在别处 |
+| 6 | 描述与 PBI-25、46 ④ 的小修 | 各技能描述：新写 sprint-kernel 的，scrum-kernel 让出冲刺用词，PBI-52 的白纸说法进 scrum-kernel 与 design-kernel（按场景写，不用题 3 的例子）；25 ① 16 份摘录的许可行改成自足；25 ② **三个** SKILL.md（ideo、scrum、sprint）加 Source/License 头；25 ⑥ 两章与 9 份 reference 先对 `references/scrum-guide-expanded-2025.6.md` 逐句核，再改标；25 ⑧ marketplace 顶层说明；46 ④ scrum-master 简介 | 25 与 46 ④ 逐条落；25 ⑥ 的核对结果写进第 4 章；`claude plugin validate --strict plugins/ideo-scrum` 与 marketplace 的 `--strict` 都通过 |
+| 7 | Codex 脚本与包适配 | `scripts/sync_codex.py`、`scripts/check_codex.py`：四个内核、新的加载句子、只差换行不算差异（46 ①）、idempotency 不再写死 `sprint-13-codex` 分支；`codex_interface.json` 的「Three kernels」与 `codex_readme.md` 的文件表；重生成 Codex 包 | `python scripts/sync_codex.py` 后 `check_codex.py` 通过；紧接着再同步 0 变化；只差换行不再算差异 |
+| 8 | 文档同步与全仓 grep | README 的文件地图与版本说法；CLAUDE.md 里指向插件的路径；ATTRIBUTION 的位置表（含新 sprint-kernel、`assets/`、`steps/`），并登记 2025.6（原文不收进插件） | 全仓 grep 旧路径，现行的说法 0 处（插件、Codex 包、README、CLAUDE.md、产品日志 3.1；历史归档与 3.2 不动；Sprint 17 的日志由它自己改） |
+| 9 | 自检与校验 | 路径与 `convention N` 的核对脚本及结果；插件内部链接核对；两处 `plugin validate --strict`；`plugin-dev:plugin-validator`（`model: haiku`）；`sync_codex.py`／`check_codex.py` | 脚本 0 缺；validator 没有必改项；结果抄进第 5 章 |
+| 10 | 审阅 | 交 Master 审；Master 另派全新 Haiku 子代理做对抗审查（验收 9）；必改项清单 | 必改项清零、我的修改已提交；验收 9 写进第 5 章 |
+| 11 | 基线：5.2.0 冒烟并跑测 | 冒烟；题 1–7 各走直接说、角色命令两条路径，每条 3 次，共 42 次；原始输出进 `S:\IDEO-Scrum-Archives\sprint-16-kernel-structure\baseline\`；`baseline-summary.md` 两栏汇总 | 冒烟确认模型、空目录、读权限正常；42 次都有原始输出；扫描无提供方地址、凭据、令牌；与第 12 项同一天连着跑（日期用 PowerShell `Get-Date` 看台北时间） |
+| 12 | 新版冒烟并跑测、汇总与过线判定 | 新版同样 42 次；四个命令的加载冒烟各 2 次；`new-summary.md`；对照基线的过线 ①–④ 判定 | 过线四条全过，或缺口逐条写明；原始输出进归档、仓库只留汇总；扫描干净；与第 11 项同一天 |
+| 13 | 收官准备：Review 与 Retro | 一个提交：日志压缩改名 `sprint-16-kernel-structure.md` 移进 `scrum/documents/`、删中间文件；产品日志保鲜（做完的 44、57、52 移进 3.2，25、46 没做的几项留在 3.1）；Retro 教训写进记忆或 CLAUDE.md | 一个提交；之后由 Master 打 tag、合入 main、关 worktree、删分支；PO 亲手试在停点 ③、两个冲刺一起试，本冲刺不等它 |
 
 **Key choices**
 
@@ -153,22 +156,27 @@ design-kernel：`steps/` 按 SKILL.md 五阶段表的摘录顺序编号；`pick-
 
 **描述怎么分**：scrum-kernel 让出「冲刺怎么跑」的用词（事件名、冲刺日志），留住产品日志、角色、Scrum 框架、DoD；sprint-kernel 拿事件名与冲刺日志的词。裁决线：产品日志题触发 scrum-kernel，冲刺题触发 sprint-kernel，旧题行为不塌（过线 ①②）。
 
-**PBI-52 的改法**：白纸说法进 scrum-kernel 与 design-kernel 的描述（「有个想法、还没有产品日志」这类自然说法），design-kernel 的 SKILL.md 写明白纸先读 product-log 第 2 条。
+**PBI-52 的改法**：白纸说法进 scrum-kernel 与 design-kernel 的描述，按场景写（没有产品日志，产品和 Product Goal 都还写不出来），不用题 3 的具体例子（社区图书馆、帮读者找书）——例子不要用正在测的那个点（Sprint 15 的教训）；design-kernel 的 SKILL.md 写明白纸先读 product-log 第 2 条。
 
-**25 ⑥ 的出处**：查过 `assets/` 的 v2026.1，只有理论、价值观、角色三块，没有 Artifacts、Events 两章（特征句 0 处）。照 Sprint 10 的核对记录（内容与 2025.6 一致），两章与 9 份 reference 的文件头改标「Scrum Guide Expanded（2025.6）」，ATTRIBUTION 注明插件里带的是 v2026.1、这两章不在其中。
+**写 SKILL.md 与描述之前**（Master 建议）：先用 plugin-dev 的 skill-development（或 skill-creator）查格式与描述写法；sprint-kernel 写完可派 `plugin-dev:skill-reviewer`（`model: haiku`）看一遍，它提的必改项先对一遍 PO 的定案，有冲突报 Master。
 
-**测试口径**：题 1–5 与判定照 `a87bd1c` 取回；「读到约定的路径」按两版各自判；新两题的判定照必答/不能的格式自写，先给 Master 看。
+**25 ② 的头**：三个 SKILL.md（ideo、scrum、sprint）都加 Source/License 头，先判定各份里哪些段落属摘录。
+
+**25 ⑥ 的出处**：查过 `assets/` 的 v2026.1，只有理论、价值观、角色三块，没有 Artifacts、Events 两章（特征句 0 处）。2025.6 原文在本地 `references/scrum-guide-expanded-2025.6.md`（worktree 里也有，`.worktreeinclude` 带过来的）；两章与 9 份 reference 先逐句对它核，核过再改标「Scrum Guide Expanded（2025.6）」；ATTRIBUTION 登记 2025.6，原文不收进插件。
+
+**25 ⑦ 的图标**（Master 2026-11-12 定）：这次不加图标；查 schema 只回答「支不支持」；第 4 章记一笔，PBI 留在产品日志。
+
+**测试口径**：题 1–5 与判定照 `a87bd1c` 取回；「读到约定的路径」按两版各自判；新两题的判定照必答/不能的格式自写，先给 Master 看。基线和新版放最后、同一天连着跑，日期用 PowerShell `Get-Date` 看台北时间。
 
 **Risks and open points**
 
 - **描述挪动是最大风险**：冲刺用词从 scrum-kernel 挪走后，题 1、2、5 的触发可能变差；过线 ① 只留 1 次余量、② 不许跌，若不过不动标准，把行为栏摆给 Master。
 - **白纸题（过线 ③）**：四轮 0/3 的历史说明光改描述未必够；两条路径各 2/3 是硬线，缺口记进第 5 章。
-- **无头下的角色命令入口没验过**：先冒烟确认 `-p` 能进 `/ideo-scrum:<role>`；进不去就报 Master 再定，不改标准。
-- **25 ⑦ 的图标**：plugin.json 的图标先查插件 schema（docs MCP）；若要图片文件，加不加由 Master 与 PO 定。
-- **25 ⑥ 的 2025.6 标签没有仓库原文可核**，依据是 Sprint 10 的记录与 PBI-25 ⑥。
+- **无头下的角色命令入口**：冒烟提到第 2 项；进不去就在跑任何正式测试之前把测法定下来写进第 4 章（Master 说这时改不算违规）。
+- **25 ⑥ 的核对**：两章与 9 份 reference 要逐句对 2025.6；若有句子对不上 2025.6，改标前先报 Master。
 - **check_codex 的 idempotency 写死了 `sprint-13-codex` 分支**：只改分支判断，内容核对不变。
-- **耗时**：两轮各 42 次无头调用；基线与新版同日跑；跨会话时按第 4 章笔记接上。
-- **合入 main 的时机**：验收与审阅过后本冲刺先合，Sprint 17 才搬稿；版本号不动。
+- **耗时**：基线与新版放最后、同一天连着跑；跨会话时按第 4 章笔记接上。
+- **合入 main 的时机**：验收与审阅过后本冲刺先合，Sprint 17 才搬稿；tag、合入、关 worktree、删分支由 Master 做；版本号不动。
 
 Go-ahead: （待 PO：停点 ①，两个冲刺的 How 都审过后一起放行）
 
@@ -177,6 +185,15 @@ Go-ahead: （待 PO：停点 ①，两个冲刺的 How 都审过后一起放行�
 <!-- Whoever does the work writes the notes, in whatever form helps: each change and its reason, and what a new session needs to pick the Sprint up; they may refine the How (sprint-log.md, conventions 9 and 20). A session that picks up the Sprint reads these first. The chapter ends with the Product Owner's decision that the Increment can go into testing (sprint-log.md, convention 24). -->
 
 - **工作区**（2026-11-12）：Developer 的原生 worktree `S:\IDEO-Scrum\.claude\worktrees\wizardly-almeida-5485e1`，分支 `sprint-16-kernel-structure`；原自动分支 `claude/wizardly-almeida-5485e1` 已删。所有命令都在这个 worktree 里跑，不 `cd` 到主检出。
+- **Master 2026-11-12 审 How（`d9a1123`）**：方案与文件清单可用，补了几处；处理如下，全部写进第 3 章。
+  1. 加两个工作项——审阅（Master 审＋全新 Haiku 子代理对抗审查，必改项我改完）与收官准备（Review＋Retro 一个提交；之后 Master 打 tag、合入 main、关 worktree、删分支；PO 亲手试在停点 ③、两个冲刺一起，本冲刺不等）。→ 第 10、13 项。
+  2. 25 ②：sprint-kernel 的 SKILL.md 也带 SGEP 事件章，头要加三个 SKILL.md（ideo、scrum、sprint）。→ 第 6 项与 Key choices。
+  3. 25 ⑥：2025.6 原文在本地，先拿两章与 9 份 reference 逐句核，再改标；ATTRIBUTION 登记 2025.6，原文不收进插件。→ 已确认 worktree 的 `references/scrum-guide-expanded-2025.6.md`（`.worktreeinclude` 带过来）；第 6、8 项与 Key choices。
+  4. 冒烟提前到第 1 项之后，先确认测试工具，尤其无头下从角色命令进入；进不去就在跑任何正式测试之前定测法（那时改不算违规）。→ 第 2 项。
+  5. 25 ⑦ 的图标：这次不加（Master 定）；查 schema 只回答「支不支持」，记一笔，PBI 留在产品日志 3.1。→ Key choices。
+  6. 写新 SKILL.md 与改描述之前先用 plugin-dev 的 skill-development 查格式与描述写法；sprint-kernel 写完可派 `plugin-dev:skill-reviewer`（`model: haiku`），必改项先对 PO 的定案，冲突报 Master。→ Key choices。
+  7. PBI-52 按场景写（没有产品日志、产品和 Product Goal 都写不出来），不用题 3 的具体例子；例子不要用正在测的那个点（Sprint 15 的教训）。→ Key choices。
+  8. 时间：2026-11-12 18:30（PowerShell `Get-Date`，台北时间）。
 
 ## 5. Test
 
