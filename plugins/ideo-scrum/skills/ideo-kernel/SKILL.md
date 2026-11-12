@@ -10,7 +10,7 @@ description: "Use when the user mentions IDEO, the five modes, design thinking, 
 
 ## The Shared Toolbox
 
-This kernel is the plugin's shared toolbox and the foundation of every stage: the IDEO five modes and the method catalog. Every role loads it first. Each stage of a design (design-kernel skill) stands on one of the five modes, and a design must use the modes and methods in every stage (the rule is in the design-kernel skill's `SKILL.md`) — the design sprint's own techniques are added on top of these, not in place of them. A Scrum Sprint (sprint-kernel skill) uses the methods whenever the work calls for them — for example, when the team is stuck mid-Sprint.
+This kernel is the plugin's shared toolbox and the foundation of every stage: the IDEO five modes and the method catalog. Every role loads it first. Each stage of a design (design-kernel skill) stands on one of the five modes, and a design must use the modes and methods in every stage (the rule is in the design-kernel skill's `SKILL.md`) — the design sprint's own techniques are added on top of these, not in place of them. A Scrum Sprint (sprint-kernel skill) uses the methods whenever the work calls for them — for example, when the team is stuck mid-Sprint. Whether a question needs a design sprint or the five modes on the spot is settled once, in `conventions/design-sprint-or-five-modes.md`.
 
 *(Author's methodology design for solo + AI teams, 2026-11-08.)*
 

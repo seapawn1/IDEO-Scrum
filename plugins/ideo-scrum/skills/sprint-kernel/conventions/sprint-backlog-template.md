@@ -1,6 +1,7 @@
 # Sprint Backlog — Sprint <NN> (<short name>)
 
 > Started: <date> | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: <branch> | Product Owner: <name> | Scrum Master: <who> | Developer: <who>
+> Now: <the stage the Sprint is in, and the last decision the Product Owner made> — keep it current; a session that picks up the Sprint reads it first (sprint-log.md, convention 22).
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
 
