@@ -7,7 +7,7 @@
 
 Source labels and short names are explained in convention 15.
 
-The other files: `conventions/product-log.md` and `conventions/product-backlog-template.md`; `../sprint-kernel/conventions/sprint-log.md` and `../sprint-kernel/conventions/sprint-backlog-template.md`; for designs, `../design-kernel/conventions/design-log.md` and `../design-kernel/conventions/design-backlog-template.md` (paths are relative to the scrum-kernel skill folder, where this file sits beside `SKILL.md`; the Sprint files belong to the sprint-kernel skill, the design files to the design-kernel skill — read them when you open or resume a design or a Sprint).
+The other files: `conventions/product-log.md` and `conventions/product-backlog-template.md`; `../sprint-kernel/conventions/sprint-log.md` and `../sprint-kernel/conventions/sprint-backlog-template.md`; for designs, `../design-kernel/conventions/design-log.md` and `../design-kernel/conventions/design-backlog-template.md`; for the five modes, `../ideo-kernel/conventions/ideo-log.md` and `../ideo-kernel/conventions/ideo-backlog-template.md` (paths are relative to the scrum-kernel skill folder, where this file sits beside `SKILL.md`; the Sprint files belong to the sprint-kernel skill, the design files to the design-kernel skill, the IDEO files to the ideo-kernel skill — read them when you open or resume a design, a Sprint, or a run of the five modes).
 
 ## The map
 
@@ -31,11 +31,11 @@ flowchart TD
     S4 -- "PO decides" --> S5["Test: tests, review, the PO's end-to-end test<br/>sprint-log.md"]
     S5 -. "PO decides: go back" .-> S4
     S5 -- "PO decides: close" --> V["Close: Review (archive the logs, refresh the product log) and Retro<br/>sprint-log.md"]
-    DES --> X0
-    SH --> X0
+    DES --> X
+    SH --> X
     SH --> V
     X0 -- "a design sprint" --> X["Design sprint: five stages, each standing on one IDEO mode<br/>design-log.md"]
-    X0 -- "the five modes: on the spot, or an IDEO log" --> X2["IDEO log: the five modes run in sequence<br/>IdeoBacklog.md"]
+    X0 -- "the five modes: one or two methods, or an IDEO log" --> X2["IDEO log: a run of the five modes<br/>IdeoBacklog.md"]
     X -- "conclusions flow back" --> A
     X2 -- "conclusions flow back" --> A
     V --> E["End: Sprint Goal met, Increment delivered, Product Goal one step closer"]
@@ -46,7 +46,7 @@ flowchart TD
 ### Where things live
 
 1. **One product log** — Start every project, new or old, from one product log.
-2. **Sprints and designs side by side** — Treat Sprints and designs as peers under the product log: a Sprint, the Developer's, delivers an Increment; a design, the Designer's, delivers a prototype and conclusions. Open a design when an item needs design, when Sprint refinement hits a hard point, or for a blank page (`conventions/product-log.md`, convention 2); it is not part of a Sprint. Whether a question needs a design sprint or the five modes on the spot is `../ideo-kernel/conventions/ideo-log.md`, convention 1. Decide item by item whether design is needed; a design's conclusions still land through a Sprint; an Increment need not be code — the Definition of Done says what it is. This departs from the Scrum Guide: see Departures.
+2. **Sprints and designs side by side** — Treat Sprints and designs as peers under the product log: a Sprint, the Developer's, delivers an Increment; a design, the Designer's, delivers a prototype and conclusions. Open a design when an item needs design, when Sprint refinement hits a hard point, or for a blank page (`conventions/product-log.md`, convention 2); it is not part of a Sprint. Whether a question needs a design sprint or the five modes is `../ideo-kernel/conventions/ideo-log.md`, convention 1. Decide item by item whether design is needed; a design's conclusions still land through a Sprint; an Increment need not be code — the Definition of Done says what it is. This departs from the Scrum Guide: see Departures.
 3. **Three layers**
 
    | Layer | File | Commitment | Accountable | Facilitates |
@@ -59,7 +59,7 @@ flowchart TD
 
    The third layer is not a log and has no prescribed method; it relies on the skills of whoever does the work. Increments add up into the product; prototypes are thrown away when the design ends, and only what was learned flows back.
 4. **Folders** — `scrum/` holds all of the Scrum work: `ProductBacklog.md`; one folder for each Sprint, design, or IDEO log in progress — `sprint-NN-<suffix>/` with its `SprintBacklog.md` and working files, `design-<suffix>/`, unnumbered, with its `DesignBacklog.md`, prototypes, and working files, `ideo-<suffix>/`, unnumbered, with its `IdeoBacklog.md`, prototypes, and working files; and `documents/` (convention 5). This is the author's layout; use your project's own places if it has them.
-5. **Where files go** — A file that serves only one Sprint, design, or IDEO log stays in its folder and is deleted when that Sprint, design, or IDEO log ends; git keeps it. A file that serves the whole Scrum goes into `scrum/documents/`, and the logs reference it: design documents, background material, long content written for the product log, and the archives made at each Review — compressed sprint logs and compressed design logs. The Review makes those archives and keeps `scrum/documents/` fresh (`../sprint-kernel/conventions/sprint-log.md`, convention 17). The project's own documentation, such as a user manual or API notes, is outside these conventions; keep it where the project keeps it, such as `docs/` at the root.
+5. **Where files go** — A file that serves only one Sprint, design, or IDEO log stays in its folder and is deleted when that Sprint, design, or IDEO log ends; git keeps it. A file that serves the whole Scrum goes into `scrum/documents/`, and the logs reference it: design documents, background material, long content written for the product log, and the archives made at each Review — compressed sprint logs, design logs, and IDEO logs. The Review makes those archives and keeps `scrum/documents/` fresh (`../sprint-kernel/conventions/sprint-log.md`, convention 17). The project's own documentation, such as a user manual or API notes, is outside these conventions; keep it where the project keeps it, such as `docs/` at the root.
 6. **Working material** — Keep working material out of the logs; what is truly key can go into the project's memory or instructions file, and a large important file goes into `scrum/documents/`.
 7. **Names** — The terms used in all the conventions are defined here once:
    - the **product log** is the Product Backlog, kept in `ProductBacklog.md`; the **sprint log** is the Sprint Backlog, kept in `SprintBacklog.md`; the **design log** is kept in `DesignBacklog.md` — a file made from a template takes these names, whatever the template is called;
