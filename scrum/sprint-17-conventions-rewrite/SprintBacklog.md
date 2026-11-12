@@ -75,22 +75,59 @@ Master 2026-11-12（PO 委托）：Sprint Goal 定。
 - 汇总分两栏：行为（加载了哪些技能、读没读该读的约定）、内容（必答项中没中）。
 - 原始输出放 `S:\IDEO-Scrum-Archives\sprint-17-conventions-rewrite\`，仓库里只留汇总；提交前按提供方地址、凭据值、令牌形态扫一遍。
 
+Master 2026-11-12（PO 委托）：精化到此（Developer 复述，没有疑问）。
+
 ## 3. How
 
 <!-- The Developer writes this chapter as a plan for making the selected items, short and not in detail (sprint-log.md, convention 7): the work items in order, each with its output and how to tell it is done; the key choices and why; the risks and open points. The last line is the go-ahead (sprint-log.md, convention 8). -->
 
 | # | Work item | Output | Done when |
 | --- | --- | --- | --- |
+| 1 | 改动点清单与新路径表 | 本文件夹 `checklist.md`：① 现行文件 → 新布局路径（照 Sprint 16 的 How 文件清单；它未提交时照它 2.2 的布局四条，标「待核」）；② 改动点表：54 ①–④、58 ①–⑧、56、53、46 ③ 每点对到文件与条；③ 连带改动的扫描范围（三份模板、四个命令、四个 `SKILL.md`、overview、CLAUDE.md、README、`scripts/codex_readme.md`） | 每点都有落点；路径表与 Sprint 16 的清单核对过或标明待核；随大纲交 Master |
+| 2 | 大纲 | 每份要改的文件：一张 `flowchart TD`（节点标条号）+ 一条一行；两份模板另给章节清单；ideo-kernel 的新约定给短清单；overview、product-log 只列要动的那条 | Master 同意大纲（不同意的改到同意） |
+| 3 | 设计侧全文审阅稿 | `drafts/` 里 design-log（58 ①–⑧、56 的第 1、26 条改指向）、设计日志模板（58 ①② 的注释）、ideo-kernel 的新约定（56），附找到的问题和每处的建议 | 全文逐字可读；问题清单齐；自查「convention N」与路径 0 缺 |
+| 4 | 冲刺侧全文审阅稿 | `drafts/` 里 sprint-log（54 ②③④、53、46 ③）、冲刺日志模板（54 ①）、product-log 第 12 条收成指向、overview 第 14 条的指向（若大纲定了），附问题与建议 | 同 3 |
+| 5 | 连带改动与引用核对 | 同一条规矩在模板、命令、四个 `SKILL.md`、overview、CLAUDE.md、README、`codex_readme.md` 里的其他说法改齐；每处「convention N」对到短名并逐处读所指的条；路径逐条查 | 旧说法 0 残留；引用 0 错（脚本先拿已知结果自测） |
+| 6 | Master 审与对抗审查 | Master 的必改改完；全新子代理（`model: haiku`，只核对做得对不对）对抗审查，必改清零 | 必改 0；Master 说交 PO |
+| 7 | 停点 ②：PO 整份读审阅稿 | 结构清单在前、全文在后，交 PO | PO 说行 |
+| 8 | 搬运（Sprint 16 合入 main 之后） | 从新的 main 更新冲刺分支；`drafts/` 按新路径搬进 `plugins/ideo-scrum/`；对照 Sprint 16 对这几份文件的改动（应当只有路径）并进定稿；跑 `sync_codex.py`、`check_codex.py` | 插件里是新文本；Codex 0 不一致；diff 只剩预期 |
+| 9 | 题目与过线标准先写、单独提交 | 2.2 的题与判定落成文件：题面、必答项、不能项、每题该读的约定；Master 审过 | 单独提交在跑之前 |
+| 10 | 最后一轮流程测试（描述改了则加触发测试） | 2.2 的题各 3 次；汇总进仓库，原始输出放 `S:\IDEO-Scrum-Archives\sprint-17-conventions-rewrite\`；判错的逐条人工看并写明理由。描述若改，照 Sprint 16 的触发测试跑基线对照 | 每题至少 2/3 过；触发测试过线同 Sprint 16 |
+| 11 | 校验 | `claude plugin validate --strict plugins/ideo-scrum`；结构或 frontmatter 变了派 `plugin-dev:plugin-validator`（`model: haiku`）；Codex 同步与核对 | 通过；无必改；0 不一致 |
+| 12 | 停点 ③：PO 亲手试 | PO 试一次 | PO 说行 |
+| 13 | 收官准备交 Master | Review（压缩日志、归档 `scrum/documents/`、产品日志保鲜）、Retro（教训进记忆或 CLAUDE.md）、一个提交；v6.0.0、tag、合入、推送、更新本机插件由 Master 做 | Master 接受 |
 
 **Key choices**
 
+- **先写稿、后搬**：正文全部先在 `drafts/` 里写、审、PO 读，`plugins/` 在 Sprint 16 合入 main 之前不动；搬家从新的 main 出发，对照 Sprint 16 的改动（应当只有路径）并进定稿。
+- **路径不等清单**：Sprint 16 的 How 未提交前，照它 2.2 的布局四条推出新路径（scrum-kernel：`SKILL.md`、`overview.md` 在根，`assets/`、`conventions/`、`references/`；sprint-kernel：`conventions/`、`events/`；ideo-kernel：`conventions/`、`IDEO-modes/`、`methods/`；design-kernel：`conventions/`、`steps/`）；它的清单提交后逐条核对，以它的为准，差异只改路径表。
+- **54 两份都改**：54 的正文落在 sprint-log 与冲刺模板；「照抄进 2.1 时查够不够」写进 sprint-log 第 5 条，product-log 第 12 条的同一条规矩收成指向——一条规矩只写一处。
+- **53 的落点**（拟，大纲里定）：sprint-log 新增一条（Developer 在别的工具里：通道只有日志、两边共用一个工作目录轮流动手、每轮提交并写明轮到谁、Master 的审阅写 plan 文件由 PO 转；`/fork` 会话用跨会话消息直接通讯）；overview 第 14 条加一句指向。
+- **46 ③ 先查再写**：先查 Codex 有没有「全新子代理」，没有就写等价做法（新会话或新 `exec`，只给角色卡和要看的件），并写明实测到哪一步；结论只写进约定，不动 Codex 包的说法（那属 46 ⑤）。
+- **描述改不改在大纲里定**：56 的分界若进 ideo-kernel 或 design-kernel 的 `description`，触发测试排进第 10 项，基线是 Sprint 16 合入后的 main，同日同环境。
+- **一份文件定完再改**（Sprint 14 的做法）：大纲一次给全；全文分设计侧、冲刺侧两批，Master 每批审一次。
+- **测试先写后跑**：题目与判定标准单独提交，跑后不改；原始输出不进仓库。
+- **改号与内容分开提交**（若有改号）：每处「convention N」脚本对到短名，再逐处读所指的条。
+
 **Risks and open points**
+
+- Sprint 16 的清单可能和路径表不同（`steps/`、`events/` 的文件名）；以它的为准，搬时再核，返工只在路径。
+- 冲刺分支现在落后于 Sprint 16 的路径改动；搬家用 rebase 或 merge，冲突应集中在路径行。
+- 描述若改，触发测试是整轮（Sprint 16 的 7 题 × 2 路径 × 3 次 × 两版），成本高；大纲时就要定，避免跑第二轮。
+- 58 ⑦（隔离草图的子代理不加载用户的 CLAUDE.md）：Claude Code 的子代理默认会加载，约定只能写成「简报不给现状、叫它别读项目说明」；做不到就在约定里写清局限。
+- 46 ③ 取决于 Codex 的实际能力，Sprint 13 当时没核对成；查不到实测就在约定里标明。
+- 流程测试题多（Sprint 14 的 5 题加覆盖本冲刺的 6 题，33 次），先冒烟；判定脚本先自测。
+- 新规矩容易在别处重复（56 的分界、58 的三个环、53 的协作）：各归一处，其余只指向，对抗审查专查这一项。
 
 Go-ahead: （待 PO：停点 ①，两个冲刺的 How 都审过后一起放行）
 
 ## 4. Increment notes
 
 <!-- Whoever does the work writes the notes, in whatever form helps: each change and its reason, and what a new session needs to pick the Sprint up; they may refine the How (sprint-log.md, conventions 9 and 20). A session that picks up the Sprint reads these first. The chapter ends with the Product Owner's decision that the Increment can go into testing (sprint-log.md, convention 24). -->
+
+| Date | What was done | Decision and reason | Evidence | Next |
+| --- | --- | --- | --- | --- |
+| 2026-11-12 | 接手 Sprint 17：在 Developer 的原生 worktree 切到 `sprint-17-conventions-rewrite`（路径 `S:\IDEO-Scrum\.claude\worktrees\awesome-pare-fb64d7`，分支自带开冲刺提交 `5f4dc72`），删掉自动分支 `claude/awesome-pare-fb64d7`；读日志、反馈文件（54、56、58 各行与原文）、Sprint 14 Review、Sprint 16 日志；精化复述；写 How | 2.2 没有疑问；54 的「两份都改」按 54 ④ 落成 sprint-log 第 5 条写、product-log 第 12 条收成指向 | 本日志 2.2、3 章 | 交 Master 审 How；等停点 ① 放行后做第 1 项 |
 
 ## 5. Test
 
