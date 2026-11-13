@@ -1,7 +1,8 @@
 # Sprint Backlog — Sprint 18 (rules-first)
 
-> Started: 2026-11-13 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: claude/youthful-payne-b1e139 | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[support sprint] | Developer: Claude Code（本会话，youthful-payne-b1e139）
-> Now: What：精化 · PO 2026-11-13 定 Sprint Goal
+> Started: 2026-11-13 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: claude/youthful-payne-b1e139 | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[support sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-18]-[do sprint 18]，youthful-payne-b1e139）
+> Now: How：Developer 起草施工方案 · Master 2026-11-13 定精化结束（PO 授权，见第 4 章）
+> Waiting for PO: None
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
 
@@ -37,120 +38,86 @@ PO 2026-11-13 定 Sprint Goal
 
 ### 2.2 Refinement
 
-**草稿，待 PO 定。** 当前只做七步的第 1–5 步；未完成复述确认（第 6 步），PO 未宣布精化结束（第 7 步）。PBI-62 不在本冲刺。
+> 精化由 Master 主持并定案（PO 2026-11-13 授权，原话见第 4 章）。Developer 先写的 66 头部提案见提交 `2561224`；下面的定案在它的基础上改了一处：承诺不挪到文件头。
 
-采用 IDEO Define 模式的 How Might We Questions：从各条用户故事拆出可讨论的小问题，不把方案藏进问题里。已读 ideo-kernel 的 `methods/how-might-we-questions.md`；产出记在本节，不另开设计或 IDEO 日志。
+**PBI-66 日志头部**——观点：照抄 2.1。
 
-**PBI-66：先定给 Sprint 19 读的接口**
-
-**1. 条目**：PBI-66；先于 PBI-65、60 定头部格式，供主线 PBI-35、61 使用。
-
-**2. 观点原文**：作为熟手（也是 PO），我想要每份日志的头部有固定的一块——承诺一行小表、Now 行、等 PO 的事——阶段决定前先引用目标原文，以便 hook 和看板读得到，AI 做决定时不丢目标
-
-**3–4. HMW、不清楚的点与归属（草稿）**
-
-| 编号 | HMW / 不清楚的点 | 归谁 | Developer 建议，尚非决定 |
-| --- | --- | --- | --- |
-| 66-1 | HMW 让人和两个读取方找到同一份承诺，不各抄一份？小表留在原章节，还是集中在文件头？ | PO 定；Developer 提接口 | 建议集中在文件头；原有章节标题保留，正文不再复写承诺。Now 与 Waiting for PO 各一行；不加 YAML 或另一份状态文件。四种确切样式见下文 |
-| 66-2 | HMW 让 IDEO 日志也能报现状，而不把五模式变成另一个设计冲刺？IDEO 日志没有自己的目标承诺，小表写什么？ | PO 定；Developer 核对现有约定 | 建议 IDEO 日志不造第五种承诺；保留 Question、For，并统一 Now、Waiting for PO。读取方沿 For 找所服务日志的承诺，不复制父日志原文 |
-| 66-3 | HMW 在阶段决定前看见正在兑现的目标？是只引当前目标，还是每次连 Product Goal 一起引？ | PO 定 | 建议 Sprint 决定引本 Sprint Goal，设计冲刺决定引本设计目标，涉及产品方向时另引 Product Goal；IDEO 模式之间不添关卡。引用不出来就先补读，不能编造引用或把决定记成有效 |
-| 66-4 | HMW 让头部显示事实，而不是另一份待办？Now、Waiting for PO 在哪里更新，等不到决定时怎么写？ | Developer 提方案 | 建议同一次日志提交更新两行：阶段 / 模式变化、PO 决定、出现或解除待拍板点时更新；Waiting for PO 只写事项编号与短句，无事写 None。具体选项、证据仍只写正文 |
-| 66-5 | 既有日志与新模板如何交接，怎样让主线不猜字段？ | Developer 提方案 | 建议 PO 定下接口后先把确切格式交 Master，再改四份模板与相应约定；新写日志使用。已归档日志不回改，进行中的 Sprint 18 不整份迁移；主线据已定格式准备读取方 |
-
-**66 的头部具体提案（草稿，待 PO 定）**
-
-以下是未来模板的候选头部，不是本冲刺已施行的约定。每块接回原模板的全部章节，章节标题不增删。字段名是固定的 `Now`、`Waiting for PO`；承诺小表左格固定「承诺」，右格逐字放原文，不加粗。`Product:`、`Product Goal:`、`Sprint Goal:`、`Design goal:` 是表的类型标签，不是新章节；目标原文保留自己的短名。承诺在头部只存一份，原有目标节只保留说明和头部指引。英文模板里的「承诺」是否保留为中文，包含在 66-1 的接口审定中；建议本轮先沿用 PO 已定的字面值，不擅译成另一个读取键。
-
-产品日志：
-
-```markdown
-# Product Backlog — <product>
-
-> Product Owner: <name> | Started: <date>
-> Now: <当前工作；最近一次 PO 决定>
-> Waiting for PO: <待拍板事项编号与短句；无则 None>
-
-Product:
-| 承诺 | <Product 原文> |
-| --- | --- |
-
-Product Goal:
-| 承诺 | <Product Goal 原文> |
-| --- | --- |
-```
-
-冲刺日志：
-
-```markdown
-# Sprint Backlog — Sprint <NN> (<short name>)
-
-> Started: <date> | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: <branch> | Product Owner: <name> | Scrum Master: <who> | Developer: <who>
-> Now: <当前阶段；最近一次 PO 决定>
-> Waiting for PO: <待拍板事项编号与短句；无则 None>
-
-Sprint Goal:
-| 承诺 | <Sprint Goal 原文> |
-| --- | --- |
-```
-
-设计日志：
-
-```markdown
-# Design Backlog — <suffix>
-
-> Opened <date> | From: <来源> | Branch: <branch> | Product Owner: <name> | Designer: <who> | Scrum Master: <who>
-> Now: <当前阶段；最近一次 PO 决定；下一步>
-> Waiting for PO: <待拍板事项编号与短句；无则 None>
-
-Design goal:
-| 承诺 | <设计目标原文> |
-| --- | --- |
-```
-
-IDEO 日志：
-
-```markdown
-# IDEO Backlog — <suffix>
-
-> Opened <date> | Question: <本日志回答的问题> | For: <所服务日志的相对路径> | Product Owner: <name> | Who runs it: <who>
-> Now: <当前模式；下一步>
-> Waiting for PO: <待拍板事项编号与短句；无则 None>
-```
-
-IDEO 的例外待 66-2 决定：现行 `ideo-log.md` 只给它 Question、For，没有第五个目标或模式间关卡。建议不为表面一致而编一张本级承诺表。四块之后保留各模板原有的写法 / 来源 / 结束说明；上面只列共享读取接口，不删那些说明。
-
-**5. 切块与验收草稿**
-
-| 块 | 产出 | 验收草稿 |
+| # | 点 | 定案（谁定） |
 | --- | --- | --- |
-| 66-A（一个会话） | PO 定下的四种头部接口；四份模板与对应约定的修改稿；发给 Master 的接口位置 | 四个现有承诺各有一个明确的原文位置；四种日志的 Now / Waiting for PO 能定位；不另存状态，不新增 IDEO 目标；主线按已定稿而非猜测准备读取方 |
-| 66-B（一个会话） | 决定前引用目标的约定稿与场景测试汇总 | Sprint 与设计冲刺的阶段决定前引出相应目标原文；没读到先补读，不伪造有效决定；IDEO 日志不增加模式间关卡；全仓相关说法一致，历史日志不回改 |
+| 66-1 | 承诺放哪 | 留在各自的节里，不挪到文件头：产品日志 1.1 Product、1.2 Product Goal；冲刺日志 1.1 Sprint Goal；设计日志 1.2 Design goal。每处一张一行小表，只存一份；种类由小表所在的节标题定，不加 `Product:` 一类标签。理由：这几节本来就在文件最上面；挪到头部要改四份模板的结构，原节还得变成指引，PO 不要大改内核；产品日志和 Sprint 18、19 的日志已经是这个样子，不用迁移。（Master） |
+| 66-2 | 小表的键 | 模板写 `\| Commitment \| <原文> \|`，插件是英文的；中文日志写 `\| 承诺 \| <原文> \|`，两者是同一个键。右格逐字放原文，不加粗。（Master） |
+| 66-3 | 头部两行 | 冲刺、设计、IDEO 三种日志的头部各有 `> Now: …` 和 `> Waiting for PO: …` 两行，后者紧跟 Now。Now 沿用各模板原来的写法；IDEO 模板把 Now 从第一行里拆出来，单独成行。产品日志不加这两行：它没有阶段，等 PO 的事由看板从各日志汇总。（Master） |
+| 66-4 | IDEO 日志的承诺 | 不另设承诺，读取方沿 For 找它服务的日志（同意 Developer 的建议）。（Master） |
+| 66-5 | 决定前引用 | 冲刺的阶段决定引本 Sprint Goal，设计的阶段决定引本设计目标，涉及产品方向时另引 Product Goal；IDEO 的模式之间不加关卡；引不出原文就先补读，不编造，这时的决定不算数。写进 sprint-log 第 24 条、design-log 第 26 条。（Master） |
+| 66-6 | 什么时候更新 | Now、Waiting for PO 跟引起变化的那次日志提交一起更新；Waiting for PO 写编号加短句，多项用「；」隔开，没有就写 None。（Master） |
+| 66-7 | 旧日志 | 已归档的日志不回改；Sprint 18、19 的日志现在就加上 Waiting for PO 一行，由 Master 在精化时加。（Master） |
 
-**测试方法与过线草稿**：测试题、样本和判定标准先写在本节，PO 定后单独提交，再运行。静态样本至少覆盖四种日志、Waiting for PO 为 None / 多事项、目标未定；逐项核对读取位置与原文，不用另写 hook 或看板来替代接口验收。动态样本包括 Sprint 阶段决定、设计阶段决定、目标没读到、IDEO 模式切换四种场景，各跑 3 次 Haiku；行为（读目标 / 不加 IDEO 关卡）与内容（原文引用 / 正确停下）分栏，建议每题各 3/3。通过与否由冻结标准判，不因看到结果而改门槛。具体题干在精化定案时补齐。
+**读取规则（给 Sprint 19 的看板和 hook，也是接口验收的依据）**
+- 开着的日志：`scrum/sprint-*/SprintBacklog.md`、`scrum/design-*/DesignBacklog.md`、`scrum/ideo-*/IdeoBacklog.md`，不含 `scrum/documents/`；产品日志是 `scrum/ProductBacklog.md`。
+- 承诺：表头行的首格是 `Commitment` 或 `承诺`，第二格就是原文；它是哪种承诺，看上方最近的节标题。
+- 现状：以 `> Now:` 开头的行。等 PO 的事：以 `> Waiting for PO:` 开头的行，`None` 表示没有。
 
-**PBI-65 / PBI-60**：待补精化草稿；尚无决定。
+**验收标准（66）**
+1. 四份模板照 66-1～66-3 改好：产品日志的 1.1、1.2，冲刺日志的 1.1，设计日志的 1.2 各留一个承诺小表的占位；冲刺、设计、IDEO 三份模板的头部各有 Now 与 Waiting for PO 两行；产品日志模板不加这两行。
+2. 约定里讲到头部、Now 行、目标所在节的地方都跟着改，例如 sprint-log 第 22 条、design-log 的 Now 一条、ideo-log、product-log 第 4 条、overview 第 17 条。全仓 grep「Now」「Commitment」「goal」，凡是说法冲突的都改掉（CLAUDE.md：改规矩先找它的其他说法）。
+3. 66-5 写进 sprint-log 第 24 条和 design-log 第 26 条；IDEO 不加关卡。
+4. 静态核对：用四份模板各填一份样本日志，照上面的读取规则用脚本读，每个承诺、Now、Waiting for PO 都读得到，读出的原文与填入的一致（4/4）。脚本只用来核对，不进插件。
+5. 已归档的日志一行没动（git diff `scrum/documents/` 为空）。
+
+**PBI-65 加载边界**——观点：照抄 2.1。
+
+| # | 点 | 定案（谁定） |
+| --- | --- | --- |
+| 65-1 | 用什么办法 | 只改描述。`disable-model-invocation: true` 会把技能从模型的上下文里整个拿掉，角色命令和子代理就没法用 Skill 工具加载内核（claude-code-docs：skills#restrict-claudes-skill-access）；`user-invocable: false` 挡的是用户，挡不住模型，与本条无关。（Master 查文档定，2026-11-13） |
+| 65-2 | 什么算召唤 | 三种：① 用了 ideo-scrum 的角色命令，命令里叫它加载；② 用户点名本插件或某个内核；③ 用户要建、改本插件的日志——ProductBacklog.md、SprintBacklog.md、DesignBacklog.md，或说「产品日志、冲刺日志、设计日志」。除此以外，泛问 Scrum、Sprint、设计冲刺都不加载，照常回答。（Master） |
+| 65-3 | ideo 放开到哪 | 发散、定义问题、做原型、做测试、用户研究这类请求，没说 IDEO 或设计思维这些词也加载；现有的触发保留：五模式、方法名、没有现成答案的问题。（Master，照 PO 2026-11-13） |
+| 65-4 | 描述怎么写 | 描述仍是触发条件（CLAUDE.md 描述规约）。三个内核写成「只在召唤时加载」，并列出 65-2 的三种召唤；删掉「Load it before answering, even for a quick outline」这类强触发句；四个内核之间保持区分度；每条不超过 1024 字符。（Master） |
+| 65-5 | 连带改动 | CLAUDE.md「组件描述规约」里与新方向相反的两句要改：「模型自以为懂的通用词……写明要照技能答」「Scrum 的通用词也要写进描述，并写明什么时候先加载」。改成新方向，注明「PO 2026-11-13 改方向」，和描述放在同一个提交。SKILL.md 正文只有加载以后才读得到，不影响触发，不改。（Master） |
+| 65-6 | Codex | 描述由脚本同步进 Codex 包；不在 Codex 里测，Codex 不是核心。（Master，照 PO 2026-11-13） |
+
+**PBI-60 角色说明**——观点：照抄 2.1。
+
+| # | 点 | 定案（谁定） |
+| --- | --- | --- |
+| 60-1 | PO 助手 | stakeholder 命令的描述已经写了「常驻会话……例如维护看板」；描述和正文再补上「PO 助手」这个身份，写明负责：整理产品日志、汇总进度、照 PO 或 Master 已定的事派活、维护看板；不负责：排序、拍板、审阅、改插件文件。描述仍以触发句开头。（Master） |
+| 60-2 | 派活边界 | PO 助手只转达 PO 或 Master 已经定下的事；凡是改范围、改条目、要放行的，都经 Master。派给哪个会话，由 Master 定。（Master，按产品日志 PBI-60 备注由 Master 定） |
+| 60-3 | Master 的说法 | 插件里所有「secretary」都换掉，共 5 处：scrum-master 命令的描述和正文、overview 第 8 条的表、product-log 第 12 条、sprint-log 第 20 条。改成「serves the Product Owner; acts for them within a written handover, and the accountability stays with the Product Owner; decisions made under it are recorded」，不写「替身」。overview 第 12 条已有「unless the Product Owner has handed this to the Scrum Master」，留着并与新说法对上。（Master） |
+| 60-4 | 看板放哪 | 原定由 60 在 overview 第 4 条写一句看板放哪，改由 Sprint 19（PBI-35）来写：那一句由看板的定案决定；第 4 条和 60 要改的第 8、12、14 条不相邻，合并时不会冲突。（Master） |
+
+**验收标准（65、60）**
+1. 插件里 grep「secretary」为 0；scrum-master、stakeholder 两个命令的描述与正文写明 60-1～60-3。
+2. 三个内核的描述写明 65-2 的三种召唤，不再有强触发句；ideo 的描述写明 65-3；每条不超过 1024 字符（DoD「描述长度」）。
+3. CLAUDE.md 那两句照 65-5 改好，和描述在同一个提交。
+4. 触发测试过线（见下）。
+5. DoD 全部通过：插件校验、无死链、可导航、Codex 同步并核对通过。
+
+**测试（65、60 同一轮；标准先写、单独提交，再跑；看到结果后不改）**
+- 通道照 CLAUDE.md「回归测试」：Haiku，`claude -p --plugin-dir <本分支插件的 Windows 路径>`，去掉网关与宿主认证变量；工具只给 Read、Grep、Glob、Skill；每次调用用全新的空 TEMP 和空工作目录；比对技能名时去掉 `ideo-scrum:` 前缀；Windows 上连 PowerShell 一起禁；正式跑之前先冒烟一次。
+- 基线：同一天、同一条通道，先用 main 上的插件跑一遍。
+- 题组，每题 3 次；题目不带「按插件的约定」这类引导词：
+  - **A 泛问**：3 题，例如「Product Backlog 是什么」「Sprint Review 一般怎么开」「设计冲刺一般几天」，在空目录里问。scrum、sprint、design 三个内核都不该加载。
+  - **B 召唤**：3 题，三种召唤各一题——角色命令；点名「用 ideo-scrum……」；在有产品日志的样本项目里说「改一下 Product Goal」。该加载对应的内核。
+  - **C ideo 放开**：3 题，发散、定义问题、做原型测反应各一题。ideo-kernel 该加载。
+  - **D 角色**：2 题，「我想要一个助手帮我整理产品日志、汇总进度」应选 stakeholder；「帮我主持 Sprint Planning」应选 scrum-master。
+- 过线：A 九次里三个内核加载不超过 1 次；B 对的内核不少于 8/9；C ideo 不少于 7/9，且不比基线少；D 每题不比基线少。汇总把行为（加载了哪个技能、读没读约定）和内容（答得对不对）分两栏列。
+
+精化结束：Master 2026-11-13 定（PO 授权，见第 4 章）。Developer 起草 How 时如有不清楚的点，先问 Master；没有疑问，就在第 4 章写一行「Developer 复述无疑问」。
 
 ## 3. How
 
-待 PO 宣布精化结束后由 Developer 起草；当前不先写施工方案。
+待 Developer 起草。
 
 | # | Work item | Output | Done when |
 | --- | --- | --- | --- |
 
 **Key choices**
 
-待 How 阶段。
-
 **Risks and open points**
 
-待 How 阶段；2.2 的未定点不在此复写。
-
-Go-ahead: 尚未施工放行；Master 2026-11-13 仅交代开日志、起草精化、在本分支提交，不改插件。
+Go-ahead: 尚未放行。
 
 ## 4. Increment notes
 
 - 分支名没照约定 1，因为是原生 worktree 生成的名字；收官时 tag 用文件夹名 `sprint-18-rules-first`。
-
-## 5. Test
-
-尚未运行测试；2.2 中都是待 PO 定的测试草稿，不能当作已冻结标准或测试结果。
+- **PO 授权（2026-11-13，原话）**：「其实精化我一般让你做的，你的上下文最多，其实你可以详细的告诉他们得，怎么写精化啥得对不对，我把整个权限全放开了，也就是告诉你，后面你的权限拉满，除非必要，我来做决定，否则你都可以直接决定」。所以本冲刺的精化定案、精化结束、How 的审阅和放行都由 Master 做（overview 第 12 条：PO 可以把阶段决定交给 Master）。下面这些仍回到 PO：改 Product Goal；推送、发布等对外动作；取消冲刺；推翻 PO 已经说过的话。
+- 精化由 Master 接手：Developer 的 65、60 草稿没有写完，就停下了；66 的提案以提交 `2561224` 为准。
