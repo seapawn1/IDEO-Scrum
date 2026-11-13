@@ -43,7 +43,7 @@ PO 2026-11-14 定 Sprint Goal（「可以，我觉得目标可以的」）；DoD
 | PBI-64 | 发布包装 | 作为懂 Scrum 的陌生人，我想要插件有版本记录、发布渠道、授权说明、反馈渠道和图标，以便放心装、知道怎么升级和反馈 | Map ① | S～M |
 | PBI-62 | 教学——README、快速上手、词汇表、示例项目 | 作为懂 Scrum 的陌生人，我想要一份讲清本插件规矩的 README、一页快速上手、一张词汇表和一个真实的示例，以便不读作者的仓库也能走完第一个冲刺 | Map ① | M |
 | PBI-63 | 体验测试——陌生人从装插件走到看板 | 作为懂 Scrum 的陌生人，我想要每版都有人替我从头走一遍，以便我装上就能用、不被卡住 | Map ①～⑨ 全程 | M |
-| PBI-70 | 约定小修——设计和冲刺里六处不贴合的约定 | 作为用插件做设计和冲刺的熟手（也是 PO），我想要设计和冲刺的约定去掉多余的步骤、贴着我实际的做法，以便设计冲刺不被约定拖着走 | Map「设计冲刺」「④ Planning」 | S～M |
+| PBI-70 | 约定小修——设计和冲刺里七处不贴合的约定 | 作为用插件做设计和冲刺的熟手（也是 PO），我想要设计和冲刺的约定去掉多余的步骤、贴着我实际的做法，以便设计冲刺不被约定拖着走 | Map「设计冲刺」「④ Planning」 | S～M |
 
 ### 2.2 Refinement
 
@@ -318,7 +318,7 @@ PO 2026-11-14 定精化结束（第 7 步）：「OK，可行。嗯，现在精�
 
 **①② 立足点**（照抄用户故事）：「作为用插件做设计和冲刺的熟手（也是 PO），我想要设计和冲刺的约定去掉多余的步骤、贴着我实际的做法，以便设计冲刺不被约定拖着走」
 
-**PO 的六点**（2026-11-14，Master 转来，原话；Master 把各点归到约定的条款。第 5、6 点 PO 说「你看情况吧」，Master 定都做）
+**PO 的七点**（2026-11-14，Master 转来，原话；Master 把各点归到约定的条款。第 5、6 点 PO 说「你看情况吧」，Master 定都做；第 7 点是登记之后又转来的，写在最后）
 
 | # | PO 的原话 | 改什么 | 动哪些条 |
 | --- | --- | --- | --- |
@@ -328,6 +328,7 @@ PO 2026-11-14 定精化结束（第 7 步）：「OK，可行。嗯，现在精�
 | 4 | 「你画现在的有什么意义呢」 | 地图画想达到的体验（愿景），现状和痛点写在第 1 章 | design-log 第 8 条和设计日志模板 2.1 的注释（书的摘录不动） |
 | 5 | 「测试必须每张都要测？没必要吧？相关得来测不就好了吗？」 | 测试只请相关的角色卡；东西只给 PO 用时，PO 本人测就够 | design-log 第 17 条、design-kernel 的 SKILL.md 里 Test 那一行 |
 | 6 | 「设计冲刺，闪电演示和子代理出方案，都改为可选好吧」 | 闪电演示、子代理各画方案改成可选；要用时，材料连汇总一起分开给，免得方案趋同（看板的设计里两个子代理拿到同一份「模式小结」，都画成了地铁图） | design-log 第 9、11、12 条，第 26 条构思那一行的检查，design-kernel 的 SKILL.md |
+| 7 | 「还有一点，补进去就是retro不要修改claude.md。只说记忆相关，这个应该非常简单，让developer去做好吧」（Master 后来转来，2026-11-14） | Retro 的教训只写进项目的记忆，不写进指令文件（CLAUDE.md 一类）；分条存、只存要点是 PBI-69，这次不碰 | sprint-log 第 18 条；一并找：overview 第 6 条、design-log 第 19 条、两个角色命令、README、快速上手第 5 步、词汇表 Review / Retro 一行 |
 
 **③④ 要回答的问题和不清楚的点，各归谁**（PO 全权交 Developer：能定的我定，Master 审）
 
@@ -341,6 +342,7 @@ PO 2026-11-14 定精化结束（第 7 步）：「OK，可行。嗯，现在精�
 | f | 第 6 条「可选」写成什么样？ | 第 9 条闪电演示改成「可以用」；第 11 条隔离的方案改成「要几个互相看不见的方案时用」，用时每个子代理拿不同的材料（或都不拿），连汇总也分开给；不用子代理时，由主线程和 PO 当面先发散（至少两个方法，一个出自 ideo-kernel 的 Ideate），再收敛：第 10 条的原则对任何画方案的人都成立，不能跟着子代理一起丢；第 12 条相应改，第 26 条构思那一行的检查改成「先发散再收敛；画了几个方案的话，思路要不同」（Master 2026-11-14 审时补） |
 | g | 描述要不要动，要不要重跑触发测试？ | 不动三份描述（ideo-kernel 已顶着 1024 字符线）；只改文字不改结构：跑 `--strict`，不派 plugin-validator；描述没动，不重跑触发测试（CLAUDE.md 规约） |
 | h | 冲刺进行中改约定，不违反「约定大约每周集中改一次，冲刺进行中不改」吗？ | PO 破例，记在第 4 章；收官时 Master 酌情在 CLAUDE.md 记这次破例 |
+| j | 第 7 条：工具没有记忆功能时，Retro 的教训写哪里？ | 提议的写法：「写进项目的记忆；工具没有记忆功能时，写进仓库里项目自己留的一个笔记文件」，不提指令文件，也不指定文件名；Master 审 |
 | i | 改条会牵连引用吗？ | 尽量不删条、不改号，只改条里的话；万一删条或改号，照 CLAUDE.md：内容改动与改号分开提交，引用换成短名，改号前后逐行相同，用脚本逐处核，再逐处读所指的条是不是真有那句话 |
 
 **⑤ 切成三块**（第 3 章的 16～18）：70-a 找全：六条规矩在全仓的其他说法，列清单；70-b 改约定与模板（英文，插件内）；70-c 文档、同步与审阅。
@@ -355,7 +357,8 @@ PO 2026-11-14 定精化结束（第 7 步）：「OK，可行。嗯，现在精�
 - 70-6 闪电演示和子代理出方案：design-log 第 9、11、12 条和第 26 条 Ideate 行的检查、SKILL.md 的相应处：可选，用时材料连汇总一起分开给；不用子代理时，主线程和 PO 当面先发散（至少两个方法，一个出自 ideo-kernel 的 Ideate）再收敛，第 10 条的原则保留；第 26 条构思那一行的检查改成「先发散再收敛；画了几个方案的话，思路要不同」；
 - 70-7 全仓：清单里的每一处都改到一致（约定、模板、两份 SKILL.md、命令、README 中英、快速上手、词汇表、overview 的 Departures 表如有涉及）；英文为准，中文对得上；
 - 70-8 校验：`sync_codex.py`、`check_codex.py`、`check_docs.py`、`--strict` 通过；改号时引用逐处核过；全新子代理对照清单审过，意见处理完；
-- 70-9 破例记录：第 4 章写明这次冲刺进行中改约定是 PO 破例。
+- 70-9 破例记录：第 4 章写明这次冲刺进行中改约定是 PO 破例；
+- 70-10 Retro：sprint-log 第 18 条和它的其他说法（`commands/developer.md`、快速上手第 5 步中英、词汇表 Review / Retro 一行中英，README 如有）都写成：教训写进项目的记忆，不写进指令文件；工具没有记忆功能时怎么办，在第 18 条里写一个办法（Master 审）；PBI-69（分条存、只存要点）不碰。
 
 **第 6 步 · Developer 的复述**（2026-11-14）
 
@@ -365,6 +368,7 @@ PO 2026-11-14 定精化结束（第 7 步）：「OK，可行。嗯，现在精�
 - **4 地图**：地图画想要的样子，现在的样子和痛点放在第 1 章。
 - **5 测试**：只请跟这次设计有关的角色卡；只有 PO 用的东西，PO 自己测。
 - **6 可选**：闪电演示和子代理各画方案都是可选的；用的时候材料连汇总一起分开给，免得方案趋同。
+- **7 Retro**：Retro 的教训只写进项目的记忆，不再改 CLAUDE.md 一类指令文件；分条存、只存要点是 PBI-69，不在这里。
 
 **第 7 步**：PO 把登记和精化全权交给 Developer，Master 审过即精化结束；放行这一块，仍请 PO 点头。
 
@@ -503,6 +507,16 @@ Go-ahead: 2026-11-14，PO（「可以，那就放行吧」，Master 转来）。
 - **PBI-70 约定小修：登记和精化**（2026-11-14，Master 转来；PO 的原话在 2.2 的表里和下面）：PO 加了六点约定小修，进 Sprint 20（「进sprint20」），冲刺目标不变、范围加这一条。这是 PO 的破例：CLAUDE.md 写着约定平时攒着、冲刺进行中不改。登记和精化 PO 全权交给我（原话：「感觉登记精化全权交给developer处理吧，我们不处理了」），Master 审，PO 放行这一块。Master 起先要我在它登记前别动产品日志和冲刺日志，随后因 PO 的这句话作废。做了：产品日志 3.1 加 PBI-70 一行（状态 Sprint 20 第 5 条，规模 S～M）；本日志 2.1 加一行；2.2 写完精化（PO 的六点原话、问题表、验收 70-1～70-9、复述）；第 3 章加块 16～18、执行顺序（9 → 10 → 11 → 16 → 17 → 18 → 12 → 13 → 14 → 15）、三条关键选择和一条风险。精化第 7 步照实写：PO 交给 Master 审，Master 审过即精化结束；放行仍请 PO 点头。收官时 CLAUDE.md 那条「冲刺进行中不改约定」要不要记这次破例，由 Master 定。
 - **块 10 做完，等 Master 审**（2026-11-14）：**`board-log.md` 重写**（`plugins/ideo-scrum/skills/scrum-kernel/conventions/`，英文，19 条，分五节）：看板是什么（一个页面、一眼看、只读日志、谁写、何时写）；读什么（日志从哪找、从日志取哪几样、地图的节点标签怎么认）；页面画什么（总览流向图、三层卡片、页面自己算的、链接和来源）；数据（一块 JSON 和字段表、哪些照抄哪些概括、分组和顺序、工作块怎样算属于某条条目、`<` 的转义、故意不画什么）；怎么写（步骤：复制模板、写数据、替换占位行；自检）。和旧的 `board.md` 比：不再有「在等 PO」和五阶段；地图不再照抄 Mermaid 源，改成概括；第 13 条逐字抄只管 ★ 的字段，长文（如 Now 行）要用命令或脚本拷；模板由命令复制、不手抄；加了完成数、分组、顺序、`here`、工作块归属的规则（Master 审块 9 时提的几条）。**检查脚本** `scripts/board_check/check.py`：`check --project DIR [--page] [--render]` 读页面里的数据块，对着项目的日志逐项核：照抄的字段逐字相同（产品、目标、Now、条目的编号标题状态规模、冲刺的条目与工作块、设计的 `for`），条目的集合和顺序，分组与冲刺、设计的关系，`closed` 等于 3.2 的行数，来源（工作区，或「branch 名 @ 提交」，从日志所在的分支用 `git show` 读），地图的每个节点能在日志的地图里找到（按「 → 」拆开逐段找，去掉编号和 `<br/>`），`note` 的编号在地图里，`here` 的 id 存在，IDEO 日志挂在它 For 字段指的那个冲刺或设计下面，数据块里没有裸的 `</script`；再把页面和模板在数据块以外逐字比，抓抄丢的字；`--render` 用无头 Edge 打开，核画出的条目、节点、卡片数，页面没有退成一条出错信息。`selftest`：三份参照页（Acme 工作区、同一个项目但一个冲刺的日志只在别的分支上、白纸）过，26 种弄坏的页（改一个字、少一条或多一条、顺序换了、分组错、工作块的 ✓ 错、Now 截短、编出来的节点、不存在的 id、来源错、模板丢字、裸 `</script`、没有数据块、JSON 不合法）各被对的检查抓到。夹具在 `scripts/board_check/fixtures/`（`acme`、`blank`；分支那份在自测时用 git 现建）。**真仓库的状态**：用完美写手（事实用脚本从本仓库的日志取，概括照 `board-data/now.json`）写成页面，`check --render` 通过：9 条条目、2 个节点、3 张卡片。**查不了的**：概括的好坏——节点只验「能在日志的地图里找到」，`story` 只验形状，`here` 放得对不对、主干选得对不对，脚本不知道，靠 `board-log.md` 的规矩和 PO 看真实看板（68-6）。**做的时候撞到的两处**：数据块的正则一开始到第一个 `</script>` 就停，数据里混进去的裸 `</script>` 把自己藏住了，改成读到下一个脚本为止；页面的 `<noscript>` 里有 `class="fail"`，不能拿它判出错，要看 `#app` 里有没有顶替看板的出错信息。**没沿用** Sprint 19 的 `board_check.py`（`1bf5a94`）：它按 `data-fact` 标记读 HTML，数据的形状不一样，只借了夹具的做法。
 - **要 Master 定：看板改了以后，63-a 的第 5 条产出和陌生人的任务**（2026-11-14，块 10 时发现）：① 产出 5 的检查已经接上（`stranger_test/verify.py` 默认用 `board_check`），页面和数据对日志一致才过——这对便宜的模型是严的，正式跑时「看板过不过」可能常出模型的失误，记进报告；② **过线第 5 条的后半句**（S 据看板的可见文字说出「在等 PO 的事」，和日志里的 Waiting for PO 一致）和 S 的任务原话（「take a look at the project's board and say what is waiting for you now」）都建立在看板上有「在等 PO」，而 PO 2026-11-14 定第一版不上页面；③ **驱动怎么让 S 「看」看板**：新页面靠脚本画，静态 HTML 里几乎没有文字，驱动现在拿「去掉标签、脚本、样式后的文字」转给 S 就什么也看不到，要改成无头 Edge 取画完的页面（`--dump-dom`）再去标签，或者由数据块生成一段文字。我的提议：S 的任务改成「看看项目的看板，说说项目现在走到哪了」（不带引导）；过线第 5 条改成「看板过 68-4 的检查；S 据看板的可见文字说出的没做完的条目和开着的冲刺，和日志一致」，一致由人读记录判，不做自动判；驱动取画完的页面的文字。63-a 说「第一次正式跑之前不改」，这条改动是 PO 的设计决定带来的，请 Master 定，改了单独提交，正式跑之前。
+- **块 16（70-a）清单：六条规矩在全仓的说法**（2026-11-14；用 grep 在插件、README 中英、快速上手、词汇表里按关键词找，书的摘录 `steps/`、`IDEO-modes/`、`methods/`、`assets/`、`references/`、`events/` 不动；下面的行号是动手前的行号，按文字认）。**改**（✎）和**核过不动**（＝）分开写：
+  - **1 原型跟着结论走**：✎ `design-log.md` 第 19 条（「Delete the prototypes and the other files in the design folder」：改成要施工的原型交给施工的冲刺、不施工的删）；✎ `overview.md` 第 3 条的表第 3 层一行（「kept in the design or IDEO log folder」）和表下一段（「prototypes are thrown away when the design or IDEO log ends」）；✎ `ideo-log.md` 第 4 条（「The log, the prototypes, and the working material live in…」，补结束时原型的去向）；✎ `sprint-log.md` 第 17 条（「then delete the other working files」：写明交来的原型算工作文件，随冲刺收官删）；✎ `design-backlog-template.md` 第 4 章的注释（「where it is: the design folder, and, once the files are deleted when the design ends…」）。＝ `design-log.md` 第 5 条、第 16 条、第 26 条 Prototype 行（原型粗、快、用完即弃、不进增量：仍然对）；＝ `commands/designer.md`「A prototype is not an Increment」；＝ `overview.md` 第 4 条的文件夹（设计文件夹里放原型：仍然对）；＝ 两份 SKILL.md 里的「thrown away after」（说的是原型的性质）。
+  - **2 过关卡不当面念原文**：✎ `sprint-log.md` 第 24 条（「Before the decision, quote this Sprint's exact Sprint Goal…」）；✎ `design-log.md` 第 26 条（同一句，设计目标）。＝ README 示意对话 Why 一步（那一步正是在定 Sprint Goal，目标是被决定的对象，所以摆出来）；＝ `overview.md` 第 12 条（PO 在每个阶段末尾定：不变）；＝ 快速上手第 1 节写的「Commitment 行逐字写着你的目标」（说的是日志）。
+  - **3 共情、定义由 PO 和担任 Scrum Master 的会话定**：✎ `design-log.md` 第 3 条和开头的「The three loops」一段；✎ `design-log.md` 开头图和第 21 条（「Ask the PO」列的清单，如需补「共情、定义由 PO 和 Master 定」）；✎ `commands/designer.md` 开头的角色定位（第 11 行附近）；核 `commands/scrum-master.md`、`commands/stakeholder.md` 里提到设计的几行；✎ `overview.md` 第 3 条的表（Design log 一行：Accountable Designer / Facilitates Scrum Master）和角色表里 Designer 一行（「Design research and prototypes」）；✎ `design-kernel/SKILL.md` 里阶段表的 Empathize、Define 行；✎ `design-backlog-template.md` 头部注释；✎ `docs/glossary.md` 的 Designer 一行（「research and prototypes」，中英）；✎ README 英文和中文的角色命令清单（「research and prototypes」）；核快速上手的「想弄清人要什么，叫 Designer」（可能要改成和 Scrum Master 一起弄清）。
+  - **4 地图画想达到的体验**：✎ `design-log.md` 第 8 条（「keep it rough: only what happens now」，只换「only what happens now」）；✎ `design-backlog-template.md` 2.1 的注释；核 `design-kernel/SKILL.md` Define 行；＝ `steps/2-1-make-a-map.md`（书的摘录，不动）；＝ `product-log.md` 第 7 条（产品日志的架构图，画的是产品，不是设计的地图）。
+  - **5 测试只请相关的角色**：✎ `design-log.md` 第 17 条（「test every role card the design touches」，已是「相关」，补「只给 PO 用就 PO 本人测」）和第 18 条要先写这次请哪些卡；✎ `design-kernel/SKILL.md` 的 Test 行；核 `design-backlog-template.md` 第 5 章注释。＝ `ideo-log.md` 第 2 条和 `glossary.md` 里「a prototype tested with role cards」（说的是设计冲刺的特点，仍然对）；＝ `design-kernel/SKILL.md` 的 description 里「role-card tests」（description 不动）。
+  - **6 闪电演示、子代理方案可选**：✎ `design-log.md` 第 9、11、12 条，第 26 条 Ideate 行的检查；第 10 条（先发散再收敛）保留，并写明不用子代理时由主线程和 PO 当面做；✎ `design-kernel/SKILL.md` 的 Ideate 行（「gather existing ideas; each person sketches one solution alone」）；✎ `design-backlog-template.md` 第 3 章注释（「have each sketch diverge before it converges」）；＝ `glossary.md` 的 Lightning Demos（书里的定义）；＝ `ideo-log.md` 第 2 条说设计冲刺有「no map, Lightning Demos, or storyboard」（说的是两者怎么分，仍然对）。
+  - **7 Retro 的教训只写进记忆**（Master 登记后转来）：✎ `sprint-log.md` 第 18 条（「into the project's memory or instructions file (starting an instructions file if there is neither)」：改成只写项目的记忆；工具没有记忆功能时的写法见 2.2 问题表 j）；✎ `commands/developer.md` 第 36 行（「Retro writes its lessons, as principles, into the project's memory or instructions file」）；✎ `docs/quick-start.md` 和中文版的第 5 步（「written into the project's memory or instructions file」）；✎ `docs/glossary.md` Review / Retro 一行（「Retro writes the lessons into the project's memory or instructions」，中英两格）；核 `overview.md` 第 6 条（Working material：「what is truly key can go into the project's memory or instructions file」说的是工作材料，不是 Retro 的教训，我倾向不动，请 Master 定）；＝ `design-log.md` 第 19 条（「the lessons from the design go into that Sprint's Retrospective」：没提写在哪，不变）；＝ README 中英（没有这句）；＝ `commands/scrum-master.md`（只说主持 Retro，没说写哪）。
+  - **没动的**：三份 description（不重跑触发测试）；条号（只改条里的话，不删条不改号，所以引用不用核，改完仍用 `board-log.md` 式的脚本式扫一遍「第 N 条」的指向）；`CLAUDE.md`（Master 收官时改）。**碰到的别的毛病**：无（按块 16 的范围，不顺手扩）。块 16 做完，等 Master 看清单。
+- **块 11 第 1 次生成**（2026-11-14，对 ed53e1c；脚本 `board-data/generate.py`：拉一份提交好的仓库副本，在体验测试那套一次性的 home 里，用 magpie 的便宜模型，一句普通的话让它照 `board-log.md` 写看板；原始输出 `S:\IDEO-Scrum-Archives\sprint-20-presentable\board-gen\gen-20261114-074223\`）：**过检查**：220 秒、38 个助手回合（读 7、Bash 12、Grep 2、写 1），一次成；`check --render` 通过：9 条条目、2 个节点、3 张卡片，没有动别的文件；工作块 10 / 18 做完（块 16～18 已在表里）。**但概括的部分不合格**：模型把地图的节点标签整条抄了下来——带着「①」、括号里的编号和文件名、冒号后的解释，架构一路 9 个停站、最长 62 个字，设计的地图把 7 个节点全抄了，包括最上面的人；设计冲刺那一站没填 `here`。页面能画，但产品卡的架构不「简练」（PO：「一定要简练」）。原因：`board-log.md` 第 12 条只写了「可以截短、主干五到八站」，没写怎么截。**已改**：第 12 条写明怎么截（去掉编号、括号里的东西、冒号后的解释，每站不超过二十个字上下，去掉最上面的人和结局，冲刺的一串步骤并成一站，设计冲刺单列一站并填 `here`），给了例子；`story` 写成「照一个人遇到它的顺序讲」；检查脚本加了三条提醒（太长、还带编号、还带括号；设计开着却没有哪一站填它），自测 38 条过。下一步：照新约定再生成一次，比较。
 - **各块现状与坑**（原为「交接给 Master」，2026-11-14 写；那份交接随分工改回而作废，内容留作每一块的现状和坑，压缩后照着接）：当天 PO 先说过：「等他做完，就直接把 developer 合并到我们这里就行了。他做完就是把它删掉……我待会直接把你当成 developer 你去施工所有的东西。就是你去结束我们的冲刺20」（Master 转来），我据此写了下面的交接，PO 随后改回原分工（见上条）。放行范围没变：在本分支提交，含合并设计线的分支；合并 main、tag、发 6.0.3、推送都等收官时 PO 点头。Master 兼 Developer 时审阅要交全新子代理的规矩（sprint-log 第 14 条）现在用不上，审阅照旧由 Master 做、也可派全新子代理。
   - **现状**：块 1～8 ✓（块 8 见「冒烟第 3 次」，块 2 见「看板设计结束」）；块 9～15 没动。最新提交看 `git log --oneline` 的第一条，没推送。
   - **块 8，体验测试脚本**（`scripts/stranger_test/`）：`driver.py`（跑、重评、自测）、`verify.py`（五个产出、隔离、卫生、卡住的信号）、`stranger_card.md`、`task.md`、`channel.md`（S 的通道说明）。都用 `python -X utf8 -I`：`driver.py selftest`；`driver.py run --kind smoke|formal [--n 3]`（不加 `--parallel` 就一个一个跑）；`driver.py report 运行目录 [--commit SHA]`（从存下的文件重评：评估出错或检查脚本改了时用）；`driver.py verify 运行目录`（只重判五个产出）。原始输出在 `S:\IDEO-Scrum-Archives\sprint-20-presentable\stranger-test\运行编号\`：`result.json`（`outputs` 五个产出、`isolation` 过线第 4 条、`leaks` 卫生、`stuck` 卡住的信号、`concessions`、`cost_usd_estimate`）、`transcript.md`（可读）、`conversation.jsonl`、`p.jsonl`、`s.jsonl`、`run.json`、`project/`；仓库里只留判定汇总。测的是 `git archive HEAD` 的 `.claude-plugin`、`plugins` 加 README.md、docs/quick-start.md、docs/glossary.md：**先提交再跑**，没提交的改动测不到，`result.json` 的 `commit` 写着测的哪一版。判法照 2.2 的 63-a（卡住四条、过线五条）；「文档的卡点还是模型的失误」要读 `transcript.md` 判，P 用中文答算模型的噪声（Master 定）。运行上限在 `driver.py` 顶部 `LIMITS`（60 个来回、P 单条 20 分钟、一次 120 分钟），第 2 次冒烟用了 12 个来回、最长 569 秒、1960 秒，不用校准。过线第 5 条的 68-4 检查：`verify.check_outputs(..., board_check=)` 留了接口 `board_check(board_path, proj) -> (ok, detail)`，`driver.py` 的 `evaluate()` 里还没传；块 10 的检查脚本写好后接上，现在 `5_board` 只验文件在。

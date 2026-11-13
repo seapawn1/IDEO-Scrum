@@ -245,6 +245,18 @@ def in_map(text, labels):
     return bool(parts) and all(any(p in f for f in flat) for p in parts)
 
 
+def stop_warnings(text):
+    """A map stop is a few words (board-log.md, convention 12): flag a label copied whole."""
+    out = []
+    if len(text) > 30:
+        out.append("is %d characters long; cut it to a few words" % len(text))
+    if re.search(r"[①②③④⑤⑥⑦⑧⑨⑩]", text):
+        out.append("still has the step number")
+    if re.search(r"[（(]", text):
+        out.append("still has a bracket")
+    return out
+
+
 def check_data(D, P, errors, warnings):
     if not isinstance(D, dict):
         errors.append("the data is not an object")
@@ -304,12 +316,19 @@ def check_data(D, P, errors, warnings):
             continue
         if not in_map(stop["text"], pp["map_labels"]):
             errors.append("product.map[%d] %r is not found in the product log's map" % (i, stop["text"]))
+        for w in stop_warnings(str(stop["text"])):
+            warnings.append("product.map[%d] %s" % (i, w))
         for num in re.findall(r"\d+", str(stop.get("note", ""))):
             if not any(num in l for l in pp["map_labels"]):
                 errors.append("product.map[%d] note %r: %s is not in the map" % (i, stop.get("note"), num))
         for h in stop.get("here") or []:
             if h not in ids:
                 errors.append("product.map[%d] here %r is not an open Sprint or design" % (i, h))
+
+    listed = {h for stop in stops if isinstance(stop, dict) for h in (stop.get("here") or [])}
+    for d in D["designs"]:
+        if isinstance(d, dict) and stops and d.get("id") not in listed:
+            warnings.append("design %s is open but no stop of product.map lists it in here" % d.get("id"))
 
     # Sprints
     sdata = {s.get("id"): s for s in D["sprints"] if isinstance(s, dict)}
@@ -345,6 +364,8 @@ def check_data(D, P, errors, warnings):
         for i, node in enumerate(d.get("map") or []):
             if not in_map(str(node), w["map_labels"]):
                 errors.append("design %s map[%d] %r is not found in the design log's map" % (ident, i, node))
+            for wn in stop_warnings(str(node)):
+                warnings.append("design %s map[%d] %s" % (ident, i, wn))
         story = d.get("story") or []
         if len(story) > 5 or any(not isinstance(x, dict) or not x.get("title") or not x.get("text") for x in story):
             errors.append("design %s story: at most five frames, each with a title and a text" % ident)
@@ -413,7 +434,7 @@ def make_page(data, template_text):
     return template_text.replace(PLACEHOLDER, block)
 
 
-ACME_SUMM = {"map": [{"text": "下单"}, {"text": "发货"}],
+ACME_SUMM = {"map": [{"text": "下单", "here": ["sprint-01-alpha"]}, {"text": "发货", "here": ["sprint-02-beta", "design-gamma"]}],
              "designs": {"design-gamma": {"map": ["单子失败", "重试", "成功或放弃"],
                                           "story": [{"title": "分批重试流程", "text": "失败的批次单独重试，成功的批次不动。"}]}}}
 
@@ -461,6 +482,14 @@ def selftest():
         acme = build_fixture("acme", tmp)
         ref = reference_data(acme, ACME_SUMM)
         check("acme reference passes", ref, project=acme)
+        cases += 3
+        if len(stop_warnings("① 写产品日志：Product · 架构 · PBI（product-log）")) < 3:
+            failures.append("a stop copied whole is not flagged")
+        if stop_warnings("写产品日志"):
+            failures.append("a clean stop is flagged")
+        _, warns = check_page(make_page(ref, tpl), acme, tpl)
+        if warns:
+            failures.append("the reference page has warnings: %s" % warns[:2])
         blank = build_fixture("blank", tmp)
         check("blank reference passes", reference_data(blank, {}), project=blank)
         br_dir = pathlib.Path(tmp) / "branchcase"
