@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 20 (presentable)
 
 > Started: 2026-11-14 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: worktree-sprint-20-presentable | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[management sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-20]-[do presentable]，原生 worktree sprint-20-presentable）
-> Now: Increment：块 1～8 已完成，等 Master 审块 8 的证据：冒烟第 3 次过线（五个产出都在，隔离和卫生检查都是 0，没问作者）；设计线结束（PO 2026-11-14 定，原型是故事板第 3 版，设计日志在分支 `worktree-design-board`），块 2 标 ✓；分工仍是 PO 和 Master 监督、我做 Developer（当天说过的「交接给 Master」PO 已作废）；快速上手第 3 步已按 Master 对冒烟的改判补一句（中英）；下一步：提交日志，合并设计分支，改 PBI-68 的用户故事和 2.2 的 68-2、68-4，然后做块 9（68-b 的模板） · 最近一次 PO 决定：2026-11-14 看板设计结束、分工改回原样
+> Now: Increment：块 1～8 已完成，等 Master 审块 8 的证据：冒烟第 3 次过线（五个产出都在，隔离和卫生检查都是 0，没问作者）；设计线结束（PO 2026-11-14 定，原型是故事板第 3 版，设计日志在分支 `worktree-design-board`），块 2 标 ✓；分工仍是 PO 和 Master 监督、我做 Developer（当天说过的「交接给 Master」PO 已作废）；快速上手第 3 步已按 Master 对冒烟的改判补一句（中英）；设计分支已合进来（c268bd8），PBI-68 的用户故事和 2.2 的 68-2、68-4 已改，一并等 Master 审；下一步：块 9（68-b 的模板） · 最近一次 PO 决定：2026-11-14 看板设计结束、分工改回原样
 > Waiting for PO: 无（等 Master：块 8 的证据）
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
@@ -50,7 +50,7 @@ PO 2026-11-14 定 Sprint Goal（「可以，我觉得目标可以的」）；DoD
 
 **PBI-68 看板改版**
 
-**①② 立足点**（照抄用户故事）：「作为熟手（也是 PO），我想要看板好看、好读，电脑全屏和手机上都能看，并且亲自参与原型，以便打开就一眼看清进度、拿它拍板」
+**①② 立足点**（照抄用户故事；「以便」一句 2026-11-14 设计结束后改了，见第 4 章，产品日志里是新的）：「作为熟手（也是 PO），我想要看板好看、好读，电脑全屏和手机上都能看，并且亲自参与原型，以便打开就一眼看清进度、拿它拍板」
 
 **③④ 要回答的问题和不清楚的点，各归谁**
 
@@ -71,9 +71,9 @@ PO 2026-11-14 定 Sprint Goal（「可以，我觉得目标可以的」）；DoD
 **验收标准（草稿）**
 
 - 68-1 样子是 PO 在原型轮里选定的；
-- 68-2 电脑全屏和 375px 宽各截图、各验收一遍，不横向溢出，窄屏时卡片排成一列；
+- 68-2 电脑 1440、竖屏 1080×1920、手机 375 三档各截图验收，不横向溢出、读得顺（2026-11-14 设计结束后改，原为：电脑全屏和 375px 宽各截图、各验收一遍，不横向溢出，窄屏时卡片排成一列；见第 4 章）；
 - 68-3 架构图、路线图是重新组织的概括，不照抄日志里的图；
-- 68-4 承诺原文、编号、状态和日志一致。核对方法（Developer 提，Master 2026-11-14 同意；68-② 定了照抄的范围后写成这样）：新模板保留 `data-fact` 标记；检查脚本把标记里的文字（承诺原文、编号、标题、状态、日期、Now、Waiting）逐条对回日志，不许有一条出入；每个链接逐个点开，都要打得开；重新组织过的地图，每个节点名要能在日志的地图里找到（产品日志 2.2、设计日志 2.1）；路线图的每个条目编号和标题要能在产品日志 3.1 里找到。概括的文字有没有加日志里没有的事实，脚本查不了，靠生成时的约定和 PO 看（68-6）。脚本沿用 Sprint 19 的 `board_check.py`（`git show 1bf5a94:scrum/sprint-19-board-hook/tests/board_check.py`），改成读新模板的标记；先拿真仓库的状态和夹具过一遍，再用它核对生成的页面。过线：照抄项全部一致，链接全部打得开，节点名和条目全部找得到；
+- 68-4 承诺原文、编号、状态和日志一致。核对方法（Developer 提，Master 2026-11-14 同意；68-② 定了照抄的范围后写成这样）：新模板保留 `data-fact` 标记；检查脚本把标记里的文字（承诺原文、编号、标题、状态、日期、Now）逐条对回日志，不许有一条出入（2026-11-14 设计结束后去掉 Waiting for PO：第一版不上页面，见第 4 章）；每个链接逐个点开，都要打得开；重新组织过的地图，每个节点名要能在日志的地图里找到（产品日志 2.2、设计日志 2.1）；路线图的每个条目编号和标题要能在产品日志 3.1 里找到。概括的文字有没有加日志里没有的事实，脚本查不了，靠生成时的约定和 PO 看（68-6）。脚本沿用 Sprint 19 的 `board_check.py`（`git show 1bf5a94:scrum/sprint-19-board-hook/tests/board_check.py`），改成读新模板的标记；先拿真仓库的状态和夹具过一遍，再用它核对生成的页面。过线：照抄项全部一致，链接全部打得开，节点名和条目全部找得到；
 - 68-5 守住只读日志、不存状态；
 - 68-6 PO 看过本仓库现状生成的真实看板，说行。
 
@@ -429,6 +429,7 @@ Go-ahead: 2026-11-14，PO（「可以，那就放行吧」，Master 转来）。
   - **r7～r10 那一处，先判后改判**：63-a 卡住第 1 条（同一步卡两轮以上）字面上命中：r6 里 P 把 Developer 派成后台子代理（`p.jsonl` 里唯一一次 `run_in_background`），r7～r10 四个来回 S 都在等计划，一轮结束时结果没回来，r11 S 说「别等了，自己写，或者派一个新的」，P 才写完 §3。我先判成模型的做法加驱动方式（一轮一轮发消息）的毛病，不算文档的卡点。**Master 改判**（2026-11-14）：不完全是模型的毛病：S 卡在「Scrum Master 把写计划交给后台的 Developer 了，我现在该干什么」，快速上手只写了「Developer 会话来做，或者 Scrum Master 来做」，没说派到后台以后用户怎么办（等多久、怎么问进度、能不能叫它自己写）；照 63-a 的判定「文档里本该有、只出现一次的卡点也算」（2.2 精化表 d 和 63-a 的判定段），算文档的线索。冒烟不计分，不影响过线；这一处便宜，照 63-a 块 14「修」的做法提前修了：快速上手第 3 步（中英两份）在「看过计划，再说放行」后加一句：Scrum Master 可能把写计划或施工交给后台的 Developer；等得久了问「计划好了吗？」，或者叫 Scrum Master 自己来写。这不算改标准。`check_docs.py` 0 错，两份仍是 80 行。
   - **冒烟里看到的，记给 68-b**：r17～r19 S 读了看板的可见文字，说「没有在等我定的事」，和 P 写的看板一致；它指出看板标题「Nothing is waiting for the Product Owner」和条目区 `Waiting · 2` 的 waiting 是两个意思（前者是待 PO 的决定，后者是条目状态），读得懂、没当成问题。新页面第一版不上「在等 PO」（见下条），条目状态词照产品日志；68-4 的检查还没接进 `evaluate()`，冒烟只验了看板文件在。
 - **看板设计结束，分工改回原样**（2026-11-14，Master 转来；PO 当天先后说了两次）：① 看板设计结束：设计日志在分支 `worktree-design-board` 的 `scrum/design-board/DesignBacklog.md`（最新提交 33986ad，设计是 PO 自己定的方案）；68-b 照它第 5 章的「结论流向」做；要做成的样子是故事板第 3 版（`git show 8f19e04:scrum/design-board/prototype/storyboard-v3.html`，八帧，有 PNG；v1、v2 和草图在同一提交，只作历史）：总览是竖着的流向图（产品圆圈 → 没做完的条目 → 流进冲刺或设计），点产品、冲刺、设计跳到三层卡片（承诺 · 路线 · 条目 / How / 方案）；路线不画五个阶段；「在等 PO」第一版不上页面；仍是「固定页面 + 一份数据」，只读，离线。② 交接包和原来约定的不一样：原型是静态故事板、不是能填数据的页面；「照抄 / 概括」表还没写，在 68-b 里写进 `board.md`；截图就是故事板的 PNG；Master 核过，块 2 标 ✓。③ 合并：照第 3 章的放行，我从本分支合并 `worktree-design-board`（它基于 main，会带进 main 上本分支没有的 fa7258c 调研材料）；Master 之后删那个工作树，我不管。④ 合并后我在本分支上改两处：产品日志 PBI-68 的用户故事和备注，2.2 的 68-2、68-4（Master 在 plan 模式里写不了，请我代改；出处写在下面）。⑤ 分工：PO 先说过要把块 9～15 和收官交给 Master（原话见下条），随后改回，原话（Master 转来）：「他那边就继续做，我们继续作为监督者……我们继续作为 master 他那边还是 developer。回头等他那边搞完，我们就把我们的给合并过去吧」。我继续当 Developer 做完块 9～15，Master 继续审阅；做完一块发 Master 审，照旧。
+- **合并设计分支，改产品日志 PBI-68 和 2.2 的 68-2、68-4**（2026-11-14，Master 转来；出处：设计日志第 5 章，PO 2026-11-14）：合并提交 c268bd8，进来三个文件：`scrum/design-board/DesignBacklog.md`、`scrum/documents/PBI-68-board-references.md`、`scrum/documents/PBI-68-board-research.md`，没有冲突。改了四处：① 产品日志 PBI-68 的用户故事：「以便打开就一眼看清进度、拿它拍板」→「以便隔一阵瞄一眼就找回方位，知道项目走到哪、每条线在做什么」；备注里加：PO 在设计里说拍板跟看板关系不大（Master 转的话：「拍板确实跟看板关系没有那么大」；设计日志 1.3 记的原话：「但是确实是一般，关系不是很大」），以及设计结束、结论在设计日志第 5 章；② 2.2 的 68-2：电脑 1440、竖屏 1080×1920、手机 375 三档各截图验收，不横向溢出、读得顺（原为电脑全屏和 375px 宽，窄屏卡片排成一列）；③ 2.2 的 68-4：照抄清单去掉 Waiting for PO，因为第一版不上页面（PO，设计日志 1.3：「如果是要显示这个的话，那就说明其他的点也要去更新看板，那其实我就不是那么喜欢……第一版可以先不写，因为只有 stakeholder 才会更新看板呀」）；④ 2.2「①② 立足点」那一行加了一句注，历史的原文不动。**还没改的**：68-4 核对方法里的「`data-fact` 标记」要随「固定页面 + 数据块」改成读数据块，等块 9 定了数据的形状再改，到时报 Master。**两处以 Master 最新交代为准**：设计日志末尾说本分支接着做、收官时合进 main（覆盖第 19 条），已被分工改回覆盖：我把它合进冲刺分支，Master 删设计工作树；设计日志里的反馈区三条看板反馈，在 68-b 做完后照 SEAPAWN 的规矩删（在记忆仓库，Master 和 PO 管，我不动）。
 - **各块现状与坑**（原为「交接给 Master」，2026-11-14 写；那份交接随分工改回而作废，内容留作每一块的现状和坑，压缩后照着接）：当天 PO 先说过：「等他做完，就直接把 developer 合并到我们这里就行了。他做完就是把它删掉……我待会直接把你当成 developer 你去施工所有的东西。就是你去结束我们的冲刺20」（Master 转来），我据此写了下面的交接，PO 随后改回原分工（见上条）。放行范围没变：在本分支提交，含合并设计线的分支；合并 main、tag、发 6.0.3、推送都等收官时 PO 点头。Master 兼 Developer 时审阅要交全新子代理的规矩（sprint-log 第 14 条）现在用不上，审阅照旧由 Master 做、也可派全新子代理。
   - **现状**：块 1～8 ✓（块 8 见「冒烟第 3 次」，块 2 见「看板设计结束」）；块 9～15 没动。最新提交看 `git log --oneline` 的第一条，没推送。
   - **块 8，体验测试脚本**（`scripts/stranger_test/`）：`driver.py`（跑、重评、自测）、`verify.py`（五个产出、隔离、卫生、卡住的信号）、`stranger_card.md`、`task.md`、`channel.md`（S 的通道说明）。都用 `python -X utf8 -I`：`driver.py selftest`；`driver.py run --kind smoke|formal [--n 3]`（不加 `--parallel` 就一个一个跑）；`driver.py report 运行目录 [--commit SHA]`（从存下的文件重评：评估出错或检查脚本改了时用）；`driver.py verify 运行目录`（只重判五个产出）。原始输出在 `S:\IDEO-Scrum-Archives\sprint-20-presentable\stranger-test\运行编号\`：`result.json`（`outputs` 五个产出、`isolation` 过线第 4 条、`leaks` 卫生、`stuck` 卡住的信号、`concessions`、`cost_usd_estimate`）、`transcript.md`（可读）、`conversation.jsonl`、`p.jsonl`、`s.jsonl`、`run.json`、`project/`；仓库里只留判定汇总。测的是 `git archive HEAD` 的 `.claude-plugin`、`plugins` 加 README.md、docs/quick-start.md、docs/glossary.md：**先提交再跑**，没提交的改动测不到，`result.json` 的 `commit` 写着测的哪一版。判法照 2.2 的 63-a（卡住四条、过线五条）；「文档的卡点还是模型的失误」要读 `transcript.md` 判，P 用中文答算模型的噪声（Master 定）。运行上限在 `driver.py` 顶部 `LIMITS`（60 个来回、P 单条 20 分钟、一次 120 分钟），第 2 次冒烟用了 12 个来回、最长 569 秒、1960 秒，不用校准。过线第 5 条的 68-4 检查：`verify.check_outputs(..., board_check=)` 留了接口 `board_check(board_path, proj) -> (ok, detail)`，`driver.py` 的 `evaluate()` 里还没传；块 10 的检查脚本写好后接上，现在 `5_board` 只验文件在。
