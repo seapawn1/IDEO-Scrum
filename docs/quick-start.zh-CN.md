@@ -33,7 +33,7 @@ Scrum Master 和你一起写 `scrum/ProductBacklog.md`：产品、Product Goal�
 | --- | --- |
 ```
 
-「Commitment」那几行逐字写着你的目标。它们保持不变，只有你能改。
+「Commitment」那几行逐字写着你的产品陈述和目标。它们保持不变，只有你能改。如果你还说不出产品是什么、Product Goal 该是什么，Scrum Master 会先开一个设计来回答。
 
 ## 3. 开一个冲刺
 

@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 20 (presentable)
 
 > Started: 2026-11-14 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: worktree-sprint-20-presentable | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[management sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-20]-[do presentable]，原生 worktree sprint-20-presentable）
-> Now: Increment：块 1、3、4、5、7 已完成；块 6（快速上手中英、词汇表）写好，`check_docs.py` 全过（5 份文档、97 个链接、自测 16 例），等发 Master 审；块 8（测法脚本与冒烟，交接笔记在第 4 章，脚本还没写）排在后面；设计线由 PO 另开，Designer 会话在做原型 · 最近一次 PO 决定：2026-11-14 答块 4（图标选 1、文件地图收到文件夹一级、README 大纲交 Master 定）
+> Now: Increment：块 1、3、4、5、6、7 已完成（块 6 Master 审过，改了一处）；块 8（测法脚本与冒烟，交接笔记在第 4 章，脚本还没写）排在后面；设计线由 PO 另开，Designer 会话在做原型 · 最近一次 PO 决定：2026-11-14 答块 4（图标选 1、文件地图收到文件夹一级、README 大纲交 Master 定）
 > Waiting for PO: None
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
@@ -324,7 +324,7 @@ PO 2026-11-14 定精化结束（第 7 步）：「OK，可行。嗯，现在精�
 | 3 | 64-a CHANGELOG 与图标候选 | 根目录 `CHANGELOG.md`（英文，6.0.3 一节详写，之前每版一行，照 tag 列）；图标 3 张候选 | ✓ 2026-11-14 CHANGELOG 的版本和 `git tag` 对得上；3 张候选备好，在块 4 给 PO 挑 |
 | 4 | 三份大纲，PO 一次看完 | README、快速上手的大纲；词汇表词条清单；文件地图收不收的建议；摆出图标候选 | ✓ 2026-11-14 PO 一次看完：大纲说行、图标挑定、文件地图定了 |
 | 5 | 62-a README（中英）与图标入位 | `README.md`（英文）、`README.zh-CN.md`，含 64 的升级、授权、反馈三段；图标放进插件，`plugin.json` 的 `icon` 指向它；同步脚本去掉 Codex 清单里的 `icon` | ✓ 2026-11-14 两份的标题、列表项数、链接对得上，无死链；规矩的句子对得上约定原文；授权一段和 ATTRIBUTION.md 对得上，引了第三方原文的地方带 Source 和 License 两行；`--strict` 通过，plugin-validator（Haiku）无必改项；`sync_codex.py`、`check_codex.py` 通过；Master 审过 |
-| 6 | 62-b、62-c 快速上手（中英）与词汇表 | `docs/quick-start.md`、`docs/quick-start.zh-CN.md`、`docs/glossary.md` | 快速上手一页（约 80 行内），从装好走到第一次收官；陌生人卡点名的词都在词汇表里；两份对得上，无死链，规矩的句子对得上约定原文；署名：引了第三方原文（Scrum Guide、SGEP、d.school）的地方带 Source 和 License 两行，和 ATTRIBUTION.md 一致，出自《Sprint》的词只用自己的话写、不引原文；Master 审过 |
+| 6 | 62-b、62-c 快速上手（中英）与词汇表 | `docs/quick-start.md`、`docs/quick-start.zh-CN.md`、`docs/glossary.md` | ✓ 2026-11-14 快速上手一页（约 80 行内），从装好走到第一次收官；陌生人卡点名的词都在词汇表里；两份对得上，无死链，规矩的句子对得上约定原文；署名：引了第三方原文（Scrum Guide、SGEP、d.school）的地方带 Source 和 License 两行，和 ATTRIBUTION.md 一致，出自《Sprint》的词只用自己的话写、不引原文；Master 审过 |
 | 7 | 63-a 标准与测法 | 测法、卡住的判定、过线的数字，写进 2.2，单独提交 | ✓ 2026-11-14 提交早于任何正式跑；Master 审过，PO 看一眼 |
 | 8 | 63-a 脚本与冒烟 | `scripts/stranger_test/`：驱动脚本、陌生人卡文本、任务；冒烟 1 次（原始输出放仓库外） | 冒烟通过：隔离与认证核实过（init 的 permissionMode、permission_denials）；不通就写明退路 |
 | 9 | 68-b 合并与模板（等设计线交接包） | 从本分支合并设计线的分支；新的 `board-template.html`，照原型 | 用样本数据画出的页面和原型一致，电脑 1440 与手机 375 宽各截一张对照 |
@@ -409,5 +409,6 @@ Go-ahead: 2026-11-14，PO（「可以，那就放行吧」，Master 转来）。
 - **Master 审块 5**（2026-11-14，对 10f1095）：写得好，介绍、示意对话、两张清单、七行两列都对得上约定，中文表措辞自然。一处必改、一处顺手改，已改并提交：① 在 Claude Code 会话里输入的命令（Install 的三行、Your first sentence 的四个角色命令）不是终端命令，代码块却标了 `sh`，陌生人会贴进终端（63 会测到这一点）：改成 `text`，前面写明「In a Claude Code session:」，中文版同样；`check_docs.py` 认 `sh` 块的规则加上「每行都以 `/` 开头的 `text` 块」（会话里的命令），自测加一例，十一例全过。② `claude plugin list` 前写明在终端里跑。我提的五处 Master 都同意：《Sprint》的说法照 ATTRIBUTION.md，这是对外的版权声明、归 PO，Master 请 PO 在 Test 阶段通读全文时专门看这一段，推送前由他点头；ATTRIBUTION.md 这次不动；块 12 一定要把 hook 那几句和 Codex 的说明带回来，Master 审块 12 时核对；中文表没问题；Codex 升级写明没测过可以。块 5 的 ✓ 等块 6 写好、README 指向它们的链接全通再标。
 - **块 5 标 ✓，块 6 写好了**（2026-11-14，等 Master 审）：`docs/quick-start.md`、`docs/quick-start.zh-CN.md`（各 80 行，九节：Before you start、五步、Rules worth keeping、Handing over in writing、When you are lost）和 `docs/glossary.md`（中英同表，四组，42 条）。`scripts/check_docs.py` 全过：5 份文档、97 个链接，零错误；加了词汇表的两项核对（每行五格都有字；批准的词条清单里的词条一条不少），自测十六例（新加快速上手、词汇表各几例）全过。块 5 的链接现在全通，块 5 标 ✓。
 - **块 6 的做法和我找到的几处**（给 Master，每处有建议）：① 快速上手里「产品日志开头的样子」不是本仓库那份（中文、是 PO 自己的版式）的摘录，是照模板的形状写的小例子（和 README 的示意对话同一个「每日一句」小工具）：英文读者读不了中文原文，模板的形状是真的；建议这样，旁边不再另指本仓库的产品日志（README 的 Where the work lives 已指）。② 词汇表四组各一张表，列都是 Term | 中文 | Meaning | 含义 | See；比大纲的约 35 条多：五模式的五个名字各占一行，加了结果、产出完成的定义，共 42 条；释义都用自己的话，不引第三方原文，所以不带 Source、License 两行，头上一句指向 ATTRIBUTION.md；「Test」一行写明和冲刺的 Test 阶段不是一回事；承诺 hook 一行写了「开会话、恢复、清空、压缩」（对着 `hooks.json` 和旧 README）。③ 快速上手里规矩的句子逐句对过约定：阶段末尾 PO 定（overview 12）、放行才动手（sprint-log 8）、Sprint Goal 不变（overview 17）、审阅的不是做的人（sprint-log 14）、日志就是交接（sprint-log 22），表里「你定什么」一列对着 sprint-log 24。④ 引约定写「第 N 条」：约定改号后这几处会漂，收官时 CLAUDE.md「改规矩先找它的其他说法」的清单要加上这三份，`check_docs.py` 不查条号对不对得上，这个靠人读。⑤ 「Ask for the board」一句按现状写，68 做完看板的样子和叫法变了要回来改（块 12 一起核）。
+- **Master 审块 6**（2026-11-14，对 5265a9f）：快速上手和词汇表都好，规矩的句子它逐句对过约定（overview 第 7、9、12、14、17 条，sprint-log 第 1、3、6、8、9、10、13、14、17～19、22、24 条，product-log 第 3、5、6、7、10 条），没有偏的；42 条比大纲多出来的同意，我提的 1～5 都同意。一处必改（DoD 内容忠实），已改并提交：承诺不只装目标，产品陈述也放在一行承诺表里（overview 第 17 条）：词汇表的 Commitment 一行和快速上手第 2 步都改成「产品陈述和目标」，中文同步。一处可选，已采纳（没增加行数）：第 2 步加一句白纸的情况：说不出产品是什么、Product Goal 该是什么时，Scrum Master 先开一个设计来回答（product-log 第 2 条）；陌生人从空文件夹开始，63 可能走到这条路上。块 6 标 ✓。
 
 ## 5. Test

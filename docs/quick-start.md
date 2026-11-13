@@ -33,7 +33,7 @@ The Scrum Master writes `scrum/ProductBacklog.md` with you: the product, the Pro
 | --- | --- |
 ```
 
-The Commitment rows hold your goals word for word. They stay fixed, and only you change them.
+The Commitment rows hold your product statement and your goal word for word. They stay fixed, and only you change them. If you cannot say yet what the product is or what its Product Goal should be, the Scrum Master starts from a design that answers it.
 
 ## 3. Open a Sprint
 
