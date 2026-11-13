@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 19 (board-hook)
 
 > Started: 2026-11-13 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: worktree-golden-orbiting-bachman | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[support sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-19]-[do sprint 19]，golden-orbiting-bachman）
-> Now: Increment：块 1～8 完成（频率测试选定 A4，hook 已改、测试开关已删）；块 9（看板生成）第三批在后台跑；Sprint 18 已合进 main（e1fa560），下一步合 main 进本分支、复核条号，再做块 10 · Master 2026-11-13 放行 How（PO 授权，见第 4 章）
+> Now: Increment：块 1～9 完成，块 10 做完；等 Master：审块 8、9、10 的 diff、说可以进测试（Sprint 18 已合进本分支，条号复核过） · Master 2026-11-13 放行 How（PO 授权，见第 4 章）
 > Waiting for PO: None
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
@@ -107,8 +107,8 @@ PO 2026-11-13 定 Sprint Goal
 | 6 | 频率测试正式跑与选定 | 按块 3 各臂 3 次 Haiku；汇总（行为、内容分两栏，每轮注入多少 token）进第 4 章；原始输出放 `S:\IDEO-Scrum-Archives\sprint-19-board-hook\` | ✓ 2026-11-13　按过线选出频率（测不出差别选最省的）并改进 hook，删掉测试用的模式开关，61-1～3 重过（选定 A4；汇总见第 5 章；最终 hook 在真实会话里整场跑一次：注入 3 次、压缩发生、P1 P2 都引用当前目标） |
 | 7 | 看板约定与模板 | scrum-kernel `conventions/` 下的 `board.md`（英文，自带给子代理的简报）和 PO 挑的那一版的卡片模板；先给大纲，再给全文审阅（sprint-log 第 11、12 条） | ✓ 2026-11-13　Master 审过（`1c2cdb2`，通过）；自足——别人的环境里，一个便宜模型的子代理拿着它就能生成——在块 9 验证 |
 | 8 | 看板夹具与核对脚本 | 夹具构造脚本（临时仓库：main 加两个开着的冲刺分支，其中一个带设计）；核对脚本：事实对日志、链接、Waiting for PO 汇总、删掉重建一致 | ✓ 2026-11-13　核对脚本先自测：一份对的样本过，一份故意弄坏的被抓住（48 条全过：两个场景各一份对的页过、18 种改坏的页都被抓到） |
-| 9 | 看板生成与汇总 | Haiku 子代理对夹具生成 3 次，再对本仓库现状生成一次；汇总进第 4 章 | 验收 35-1～5 通过（35-6 在块 1） |
-| 10 | 接入插件并交测试 | overview 第 4 条加一句；scrum-kernel `SKILL.md` 的文件表加一行；`.gitignore`；README 文件地图加两行；`sync_codex.py`、`check_codex.py` 照 61-5；第 4 章对照验收标准写完成情况 | `claude plugin validate --strict` 通过（新增 `hooks/` 属结构变化，再派 `plugin-dev:plugin-validator`，`model: haiku`）；无死链；Codex 同步并核对通过；Master 说可以进测试 |
+| 9 | 看板生成与汇总 | Haiku 子代理对夹具生成 3 次，再对本仓库现状生成一次；汇总进第 4 章 | ✓ 2026-11-14　验收 35-1～5 通过（35-6 在块 1）：夹具 A、B 各 3/3，本仓库现状批 4 为 2/2，事实集合相同；汇总在第 5 章；生成用的是 magpie 的便宜模型（非 Haiku），手抄丢字的限制见第 4 章 |
+| 10 | 接入插件并交测试 | overview 第 4 条加一句；scrum-kernel `SKILL.md` 的文件表加一行；`.gitignore`；README 文件地图加两行；`sync_codex.py`、`check_codex.py` 照 61-5；第 4 章对照验收标准写完成情况 | `claude plugin validate --strict` 通过（新增 `hooks/` 属结构变化，再派 `plugin-dev:plugin-validator`，`model: haiku`）；无死链；Codex 同步并核对通过；Master 说可以进测试——前三项都做完了（`--strict` 通过、validator 无必改项、`check_codex.py` 内容/链接/导航 0 错，见第 4 章「块 10」），待 Master 说可以进测试后标 ✓ |
 
 **Key choices**
 
@@ -180,6 +180,7 @@ Go-ahead: Master 2026-11-13 放行（PO 授权，见第 4 章）：本分支上�
   6. **检查脚本**：独立读日志的脚本，路径要锚定在顶层（用后缀匹配，会把测试夹具目录里的假日志当成开着的），也别假定编号的写法（Sprint 18 的工作块编号是 `H1`）；夹具要放真仓库里才有的形状（嵌套的假日志、非数字编号、没有等 PO 时的空状态），并先拿真仓库的状态过一遍。
   7. **便宜模型逐字抄长文会丢字**：地图里一个 `-` 没了，`<br/>` 被删——逐字规矩要配核对脚本；约定里写「长文机械拷贝、写完读回对照」；权限放宽时模型会自己写脚本拷贝，没丢字，收紧时只能手抄。
   8. **验证用的子进程要先核对它真被限制**：看 init 事件的 `permissionMode`，也要看 `permission_denials` 有没有出现过——一次都没有，多半是限制没生效，不是模型守规矩。
+- **已知限制**（Master 2026-11-14 定，收官时进产品日志）：① **看板生成后没有自动核对**：检查脚本是仓库里的测试工具，不在插件里；插件只在约定里写「长文机械拷贝、写完把每张地图读回对照」和第 12 条第 5 步「对着日志查一遍」，不写某个工具的用法（overview 第 15 条）；靠模型自查，手抄长文仍可能丢字——真实状态的一次生成里地图丢了一个 `-`，检查脚本抓到了。收官时 Master 登记后续「看板生成后的自动核对」。② **hook**：Windows 上没装 Git for Windows 的用户不生效；macOS 未实测；Codex 里的触发未实测，且要用户先在 `/hooks` 里信任。③ **频率测试**：模型是 magpie 的便宜模型、不是 Haiku；一场只有 14 个提示加一次压缩，不够「很长」，注意力衰减测不出；三次一档，只分得出大差别。④ **看板**：地图靠 Mermaid 的 CDN 画，离线时展开的是源码；本仓库现状的一次生成要 15 到 25 分钟（条目和日志多、模型手抄）。
 
 ## 5. Test
 
@@ -200,4 +201,24 @@ Go-ahead: Master 2026-11-13 放行（PO 授权，见第 4 章）：本分支上�
 - **人工看「过期」的 6 次（A1×2、A2×1、A3×2、A4×1）**：形态都一样——模型发现「会话启动时 hook 给的 Sprint Goal（旧的）和日志 1.1 里的不一致」，按日志原文做了决定，并提醒用户去查（A1-2 还问「哪句才是真实承诺」）。决定没被带偏，但旧的注入成了噪音，按标准字面算过期。A0 一次都没有——它没见过旧文，只在 P1 读了日志。
 - **查日志**：P1 各臂都读了日志（夹具里那条规矩起作用）；P2 只有 A1 的一次读了，其余没读也逐字引用了当前目标——压缩摘要带着 P1 读来的原文。
 - **每次注入多少 token**：样本三句承诺 172 个字符。脚本取的 A0 对 A2 单轮输入 token 之差是 1052，除以 2 次注入得 526，但这个数被一个干扰带偏了：A2 三次里有两次，文档 MCP 服务在开场时已连上，多带了约 1290 token 的工具定义。用同样没连上的一对算（A0 六千五百零四、A2 的第 2 次六千六百九十七），两次注入共多 193 token，**每次约 96 token**。
-- **选定**：按标准，过线的臂是 A0、A2、A4（A1、A3 因 P1 过期 2/3 不过线）。A0 也过线，**如实记「测不出」**：模型有「决定前引用 Sprint Goal 原文」这条规矩时自己会去读日志，压缩摘要又带着原文，所以 hook 在这个测试里没有可测的好处——这也印证了 Master 的判断：约定（66-5）是主力，hook 只补位；而且会话里的目标改了以后，早先注入的旧文留在上下文里，反成噪音（A1、A3 最明显）。标准里「A0 也过线——仍照 PO 的决定带 SessionStart，UserPromptSubmit 选最省的过线臂」，字面读法里「最省」包含 A0（不注），那会得到 A1 的配置，而 A1 自己没过线；按本意（PO 要带 hook），在带 hook 的过线臂里选最省的，是 **A4**（3 次注入对 A2 的 16 次）。这一处读法请 Master 确认。
+- **选定**：按标准，过线的臂是 A0、A2、A4（A1、A3 因 P1 过期 2/3 不过线）。A0 也过线，**如实记「测不出」**：模型有「决定前引用 Sprint Goal 原文」这条规矩时自己会去读日志，压缩摘要又带着原文，所以 hook 在这个测试里没有可测的好处——这也印证了 Master 的判断：约定（66-5）是主力，hook 只补位；而且会话里的目标改了以后，早先注入的旧文留在上下文里，反成噪音（A1、A3 最明显）。标准里「A0 也过线——仍照 PO 的决定带 SessionStart，UserPromptSubmit 选最省的过线臂」，字面读法里「最省」包含 A0（不注），那会得到 A1 的配置，而 A1 自己没过线；按本意（PO 要带 hook），在带 hook 的过线臂里选最省的，是 **A4**（3 次注入对 A2 的 16 次）。这一处读法请 Master 确认。（Master 2026-11-13 确认选 A4，见第 4 章。）
+
+**看板生成与核对**（35-1～5，块 8、9）。检查脚本 `tests/board_check.py`（自测 54 条全过：两个场景各一份写对的参考页过，各 18 种改坏的页都被抓到，再加空状态与重建一致的几条）；驱动 `tests/board_generate.py`。通道同上，工具 Bash、Read、Grep、Glob、Write、Skill；简报是一句话——读 scrum-kernel 的 `conventions/board.md` 与 `board-template.html`、照着写 `scrum/Board.html`；每次都从没有 `Board.html` 的副本做起。原始流与页面在 `S:\IDEO-Scrum-Archives\sprint-19-board-hook\board`、`board2`、`board3`、`board4`。
+
+- **各批结果**（夹具 A：工作区在 main，开着的日志只在分支上；夹具 B：工作区在 Sprint 01 的分支上，Now 行有未提交的改动；本仓库现状）：
+
+  | 批 | 条件 | 夹具 A | 夹具 B | 本仓库现状 |
+  | --- | --- | --- | --- | --- |
+  | 1 | 权限宽松 | 2/3，一页链接写成 `../ProductBacklog.md`（死链） | — | — |
+  | 2 | 宽松；模板补了链接写法 | 2/3，一页删了地图里的 `<br/>` | 3/3 | 2 页各 9 处不过，全是检查脚本自己读错；修脚本后按当时的状态重核，2/2 过 |
+  | 3 | 严格（`--setting-sources project,local`）；模板补了 `<br/>` 的写法 | 3/3 | 3/3 | 1/2：一页过但超时被杀（页面已写好）；一页地图丢了一个字符（`K -.-> U` 写成 `K .-> U`） |
+  | 4 | 严格；合并 Sprint 18 后；board.md 补「长文机械拷贝、把每张地图读回对照」 | — | — | 2/2 |
+
+  每批里同一状态下的页，事实集合相同（`compare`：same facts）；批 2 夹具 A、批 3 本仓库各有一页因上面的丢字不同。严格权限下模型常写 `cd … && git …` 被拒、也试过跑 Python 被拒，它改用不带 `cd` 的写法，没有一次因此失败。
+- **验收**：35-1 本仓库现状（main 加 Sprint 19 的分支；Sprint 18 已收官）出一张产品卡、一张冲刺卡、没有设计时一行「No design is open.」；夹具里是两张冲刺卡、一张设计卡、IDEO 日志一行；链接都打得开。35-2「抽查 10 个事实」改成全查：检查脚本逐项对日志（承诺、Now、等 PO、阶段、工作块与完成标记、条目的标题状态规模、地图、方案标题、来源的分支与提交号），批 3、批 4 的每一页都是 0 处不符。35-3 顶部「等 PO」条恰好是各日志的 Waiting for PO：夹具 A、B 各 3 页都过；本仓库现状两份日志都是 `None`，页面写了一行「Nothing is waiting for the Product Owner.」。35-4 同一状态生成 3 次、事实对：夹具 A、B 各 3/3，本仓库现状批 4 为 2/2。35-5 删掉再生成内容一样：每次都从没有看板的副本做起，同状态的页事实集合相同。35-6 形式：Master 定网页版（块 1）。
+- **成本**：夹具每次约 2 到 6 分钟（输入约 2 万到 6 万 token，另有缓存读 16 万到 68 万，输出约 0.6 万到 1.5 万 token）；本仓库现状每次约 4 到 25 分钟。
+- **手抄丢字的已知限制**见第 4 章。
+
+**Definition of Done（本冲刺选的三项）**：无死链——`check_codex.py` 的链接检查 0 错，`plugin-dev:plugin-validator` 核对过插件里新文件的引用都解析得到；插件校验——`claude plugin validate --strict plugins/ideo-scrum` 通过；Codex 包——同步并核对通过，hook 一并同步。Outcome Done（一次会话走通方法论环节、用户不反复追问）：待 PO 的端到端试用。
+
+**还没做**：Master 对块 8、9、10 的审阅（审提交的 diff）；PO 的端到端试用；Review 与 Retro 由 Master 做。
