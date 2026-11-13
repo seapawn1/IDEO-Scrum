@@ -55,7 +55,7 @@ Scrum Master 和你一起写 `scrum/ProductBacklog.md`：产品、Product Goal�
 
 ## 5. 收官
 
-Test 阶段完成后，说「收官」。Review 和 Retro 装进一个收官提交：冲刺日志压缩后归档到 `scrum/documents/`，产品日志刷新一遍，教训写进项目的记忆或指令文件。这个提交打上冲刺文件夹的名字作 tag，合并进主分支；这些 Scrum Master 可以替你做。推送要等你点头。
+Test 阶段完成后，说「收官」。Review 和 Retro 装进一个收官提交：冲刺日志压缩后归档到 `scrum/documents/`，产品日志刷新一遍，教训写进项目的记忆。这个提交打上冲刺文件夹的名字作 tag，合并进主分支；这些 Scrum Master 可以替你做。推送要等你点头。
 
 ## 值得记住的规矩
 

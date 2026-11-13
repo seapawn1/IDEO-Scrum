@@ -55,7 +55,7 @@ A Developer session (`/ideo-scrum:developer`) builds, or the Scrum Master does. 
 
 ## 5. Close
 
-When the Test stage is done, say "close". The Review and the Retro go into one closing commit: the sprint log is compressed and archived in `scrum/documents/`, the product log is refreshed, and the lessons are written into the project's memory or instructions file. The commit is tagged with the Sprint folder's name and merged into the main branch; the Scrum Master can do this for you. Pushing waits for your consent.
+When the Test stage is done, say "close". The Review and the Retro go into one closing commit: the sprint log is compressed and archived in `scrum/documents/`, the product log is refreshed, and the lessons are written into the project's memory. The commit is tagged with the Sprint folder's name and merged into the main branch; the Scrum Master can do this for you. Pushing waits for your consent.
 
 ## Rules worth keeping
 
