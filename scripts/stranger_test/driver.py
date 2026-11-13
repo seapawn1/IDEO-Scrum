@@ -715,8 +715,10 @@ def selftest() -> int:
 
         g("init", "-q")
         (proj / "scrum/ProductBacklog.md").write_text(
-            "| Commitment | Daily Quote: prints one sentence a day. |\n| --- | --- |\n\n"
-            "| Commitment | A morning ritual people enjoy. |\n| --- | --- |\n", encoding="utf-8")
+            "## 1.1 Product\n\n| Commitment | Daily Quote: prints one sentence a day. |\n| --- | --- |\n\n"
+            "## 1.2 Product Goal\n\n| Commitment | A morning ritual people enjoy. |\n| --- | --- |\n\n"
+            "### 3.1 Items\n\n| Number | Title | Story | Place | Status | Size | Notes |\n| --- | --- | --- | --- | --- | --- | --- |\n\n"
+            "### 3.2 Done\n\n| Number | Title | Result | Source |\n| --- | --- | --- | --- |\n", encoding="utf-8")
         (proj / "quote.py").write_text("print('Carpe diem')\n", encoding="utf-8")
         (proj / "scrum/sprint-01-daily/SprintBacklog.md").write_text(
             "| Commitment | Print one quote, from a list. |\n| --- | --- |\n\nGo-ahead: 2026-11-14, PO.\n",
@@ -726,12 +728,21 @@ def selftest() -> int:
         (proj / "scrum/documents/sprint").mkdir(parents=True)
         (proj / "scrum/documents/sprint/sprint-01-daily.md").write_text("Summary. Goal kept.\n", encoding="utf-8")
         (proj / "scrum/sprint-01-daily/SprintBacklog.md").unlink()
-        (proj / "scrum/ScrumBoard.html").write_text("<html><body><h1>Board</h1></body></html>", encoding="utf-8")
         g("add", "-A")
         g("commit", "-q", "-m", "close the sprint")
         g("tag", "sprint-01-daily")
+        # a board written the way board-log.md asks: the template with the data block filled from the logs
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            "bc", pathlib.Path(__file__).resolve().parent.parent / "board_check" / "check.py")
+        bc = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(bc)
+        (proj / "scrum/ScrumBoard.html").write_text(
+            bc.make_page(bc.reference_data(proj, {}), bc.TEMPLATE.read_text(encoding="utf-8")), encoding="utf-8")
+        g("add", "-A")
+        g("commit", "-q", "-m", "write the board")
         ok = verify.check_outputs(proj, env)
-        expect("good project: all five", {k: v["ok"] for k, v in ok.items()},
+        expect("good project: all five (board: %s)" % ok["5_board"]["detail"][:300], {k: v["ok"] for k, v in ok.items()},
                {"1_product_log": True, "2_sprint_log": True, "3_tool_runs": True, "4_close": True, "5_board": True})
         (proj / "today").write_text("#!/usr/bin/env python\nprint('Carpe diem')\n", encoding="utf-8")
         (proj / "quote.py").write_text("raise SystemExit(1)\n", encoding="utf-8")
@@ -749,6 +760,8 @@ def selftest() -> int:
         expect("no tag", verify.check_outputs(proj, env)["4_close"]["ok"], False)
         (proj / "scrum/ProductBacklog.md").write_text("| Commitment | <product> |\n| --- | --- |\n", encoding="utf-8")
         expect("placeholder commitments", verify.check_outputs(proj, env)["1_product_log"]["ok"], False)
+        (proj / "scrum/ScrumBoard.html").write_text("<html><body><h1>Board</h1></body></html>", encoding="utf-8")
+        expect("a board with no data block", verify.check_outputs(proj, env)["5_board"]["ok"], False)
         (proj / "scrum/ScrumBoard.html").unlink()
         expect("no board", verify.check_outputs(proj, env)["5_board"]["ok"], False)
     finally:

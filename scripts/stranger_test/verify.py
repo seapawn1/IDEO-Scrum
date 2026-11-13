@@ -90,12 +90,25 @@ def check_outputs(proj: pathlib.Path, env: dict, board_check=None) -> dict:
     board = proj / "scrum" / "ScrumBoard.html"
     if not board.is_file():
         out["5_board"] = {"ok": False, "detail": "no scrum/ScrumBoard.html"}
-    elif board_check is None:
-        out["5_board"] = {"ok": True, "detail": "the file is there; the 68-4 check is not wired in yet"}
     else:
-        ok, detail = board_check(board, proj)
+        ok, detail = (board_check or default_board_check)(board, proj)
         out["5_board"] = {"ok": ok, "detail": detail}
     return out
+
+
+def default_board_check(board: pathlib.Path, proj: pathlib.Path):
+    """The 68-4 check (scripts/board_check/check.py): the data block against the logs of the project, and the page
+    against the template outside the data block. Returns (ok, detail)."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("board_check_check",
+                                                  pathlib.Path(__file__).resolve().parent.parent / "board_check" / "check.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    tpl = mod.TEMPLATE.read_text(encoding="utf-8") if mod.TEMPLATE.is_file() else None
+    errors, warnings = mod.check_page(board.read_text(encoding="utf-8", errors="replace"), proj, tpl)
+    if errors:
+        return False, "; ".join(errors[:4])
+    return True, "passes the 68-4 check" + (f" ({len(warnings)} warnings)" if warnings else "")
 
 
 def shebang_runner(p: pathlib.Path):
