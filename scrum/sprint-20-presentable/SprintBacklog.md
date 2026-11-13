@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 20 (presentable)
 
 > Started: 2026-11-14 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: worktree-sprint-20-presentable | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[management sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-20]-[do presentable]，原生 worktree sprint-20-presentable）
-> Now: Increment：块 1（给设计会话的 brief 和样本）已完成、Master 审过；设计线由 PO 另开；我在做块 3（CHANGELOG 与图标候选） · 最近一次 PO 决定：2026-11-14 放行第 3 章（「可以，那就放行吧」），范围见第 3 章末行
+> Now: Increment：块 1、3 已完成；设计线由 PO 另开；我在做块 4（三份大纲，PO 一次看完） · 最近一次 PO 决定：2026-11-14 放行第 3 章（「可以，那就放行吧」），范围见第 3 章末行
 > Waiting for PO: None
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
@@ -280,7 +280,7 @@ PO 2026-11-14 定精化结束（第 7 步）：「OK，可行。嗯，现在精�
 | --- | --- | --- | --- |
 | 1 | 开场包（给设计会话） | 一页 brief（`board-brief.md`，放本冲刺文件夹）；三份样本数据：本仓库现状、Sprint 19 收官前的日志、白纸 | ✓ 2026-11-14 brief 写明看板的一件事、第 1 版的毛病、PO 的话与三条反馈、验收 68-1～68-6、交接包的样子；Master 审过，设计会话读得到 |
 | 2 | 设计线 68-a（PO + 设计师会话，另一个工作树） | 最终原型（固定页面 + 一份数据）；「照抄 / 概括」一页表；电脑 1440 与手机 375 宽的截图 | PO 说「就这个」，交接包齐 |
-| 3 | 64-a CHANGELOG 与图标候选 | 根目录 `CHANGELOG.md`（英文，6.0.3 一节详写，之前每版一行，照 tag 列）；图标 3 张候选 | CHANGELOG 的版本和 `git tag` 对得上；3 张候选备好，在块 4 给 PO 挑 |
+| 3 | 64-a CHANGELOG 与图标候选 | 根目录 `CHANGELOG.md`（英文，6.0.3 一节详写，之前每版一行，照 tag 列）；图标 3 张候选 | ✓ 2026-11-14 CHANGELOG 的版本和 `git tag` 对得上；3 张候选备好，在块 4 给 PO 挑 |
 | 4 | 三份大纲，PO 一次看完 | README、快速上手的大纲；词汇表词条清单；文件地图收不收的建议；摆出图标候选 | PO 一次看完：大纲说行、图标挑定、文件地图定了 |
 | 5 | 62-a README（中英）与图标入位 | `README.md`（英文）、`README.zh-CN.md`，含 64 的升级、授权、反馈三段；图标放进插件，`plugin.json` 的 `icon` 指向它；同步脚本去掉 Codex 清单里的 `icon` | 两份的标题、列表项数、链接对得上，无死链；规矩的句子对得上约定原文；授权一段和 ATTRIBUTION.md 对得上，引了第三方原文的地方带 Source 和 License 两行；`--strict` 通过，plugin-validator（Haiku）无必改项；`sync_codex.py`、`check_codex.py` 通过；Master 审过 |
 | 6 | 62-b、62-c 快速上手（中英）与词汇表 | `docs/quick-start.md`、`docs/quick-start.zh-CN.md`、`docs/glossary.md` | 快速上手一页（约 80 行内），从装好走到第一次收官；陌生人卡点名的词都在词汇表里；两份对得上，无死链，规矩的句子对得上约定原文；署名：引了第三方原文（Scrum Guide、SGEP、d.school）的地方带 Source 和 License 两行，和 ATTRIBUTION.md 一致，出自《Sprint》的词只用自己的话写、不引原文；Master 审过 |
@@ -341,6 +341,7 @@ Go-ahead: 2026-11-14，PO（「可以，那就放行吧」，Master 转来）。
 - **设计线怎么开**（给 PO 开会话用）：新终端 `claude --worktree ideo-board`（原生建法，分支 `worktree-ideo-board`，从远端 main 拉，比冲刺分支旧）；进去先 `git merge worktree-sprint-20-presentable`（通常是快进合并），再输入 `/ideo-scrum:designer`；开 `scrum/ideo-board/IdeoBacklog.md`，For 指向 `../sprint-20-presentable/SprintBacklog.md`；视觉用 `seapawn:frontend-design`。第 1 轮三个起点方向，骨架各不相同：A 决策台（沿用第 1 版骨架：最上面等 PO 拍板，其次正在做，再往下是条目）；B 旅程线（把架构图缩成一条线，条目钉在它所属的步骤上，冲刺阶段在线上亮起，架构图和路线图合成一张）；C 流向列（现在、下一个、以后三列，等 PO 拍板的做成卡上的旗子）。视觉先立一条：一处最响（等 PO 拍板），其余安静。
 - **第 1 版看板的现状**（我 2026-11-14 截图看的，文件 `S:\IDEO-Scrum\scrum\Board.html`）：整页同一种白卡片、灰底，什么都一样响；最响的是一条绿条「Nothing is waiting for the Product Owner」；生成时没有开着的冲刺，整页说不出「现在到哪了」；大写小标签、英文标签配中文内容；下半屏空着。手机宽度：用 `--window-size=375` 截的页面右边被裁，是截图方法的假象；把页面放进 375 宽的 iframe 里截，第 1 版在真 375 宽下单列、不溢出，只是又长又平（块 1 的 `board-data/shot.py` 核对过，还拿一个故意做宽的页面验过它报得出溢出）。这些写进了 brief。
 - **放行，和产品日志 68 的备注**（2026-11-14）：PO 放行第 3 章（「可以，那就放行吧」，Master 转来），范围见第 3 章末行；Now 改成 Increment，Waiting 改成 None。Master 在 plan 模式里写不了文件，产品日志 PBI-68 备注里「不开 IDEO 日志」那处，照它给的文字由我在本分支改了（只改那一句）。
-- **块 1（开场包）做了什么**（2026-11-14）：`board-brief.md`（一页多，写明看板的一件事、PO 的话、第 1 版的毛病、验收 68-1～68-6、交接契约、样本、截图办法、第 1 轮三个方向、怎么交）；`board-data/` 下四份样本（`now/` 本仓库现状、`sprint-19/` 收官前的日志、`acme/` Sprint 19 夹具的小项目、`blank/` 白纸）、第 1 版的两张截图、`shot.py`（一条命令出 1440 与真 375 宽的截图并报横向溢出）。样本文件不叫 `SprintBacklog.md`、`ProductBacklog.md`，免得生成看板时被当成开着的日志（Sprint 19 的教训）；收官时和冲刺文件夹一起删。设计线进工作树后要在块 1 提交之后跑 `git merge worktree-sprint-20-presentable`（已经合过的，再合一次就能拿到新提交）。
+- **块 1（开场包）做了什么**（2026-11-14）：`board-brief.md`（一页多，写明看板的一件事、PO 的话、第 1 版的毛病、验收 68-1～68-6、交接契约、样本、截图办法、第 1 轮三个方向、怎么交）；`board-data/` 下四份样本（`now/` 本仓库现状、`sprint-19/` 收官前的日志、`acme/` Sprint 19 夹具的小项目、`blank/` 白纸）、第 1 版的两张截图、`shot.py`（一条命令出 1440 与真 375 宽的截图并报横向溢出）。样本文件不叫 `SprintBacklog.md`、`ProductBacklog.md`，免得生成看板时被当成开着的日志（Sprint 19 的教训）；收官时和冲刺文件夹一起删。设计线进工作树后要在块 1 提交之后跑 `git merge worktree-sprint-20-presentable`（已经合过的，再合一次就能拿到新提交）。块 1 的 brief 经 Master 审过，提了两处小改（三个方向只是起点；界面标签的语言跟日志走），改完标 ✓。
+- **块 3（CHANGELOG 与图标候选）做了什么**（2026-11-14）：根目录 `CHANGELOG.md`（英文）：6.0.3 一节先写计划（发版时写全，块 15），之前 15 个版本每版一行，和 15 个 `v*` tag 的版本、日期都对得上（脚本核对过；`v1` 对 1.0.2；没有 6.0.1，写在 6.0.2 那行里）；末尾一句交代 Codex 版原来在单独的 `codex` 分支。有两版的一句话是我从提交记录里读出来的（3.0.0、3.1.0，tag 说明只是提交语），其余照 tag 说明。图标候选 3 张，放 `icon-candidates/`：1 冲刺的环绕着设计的菱形（深蓝、奶白、琥珀），2 三张便利贴，3 双钻石带一个箭头（蓝、白、琥珀）；做成 SVG（放大不糊），`sheet.html`、`sheet.png` 是浅色、深色背景上 200、64、32 像素的对照，给 PO 在块 4 挑；挑定后在块 5 导出 PNG 并查 `icon` 字段的写法。
 
 ## 5. Test

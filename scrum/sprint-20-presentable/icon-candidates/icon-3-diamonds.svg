@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>IDEO-Scrum icon, candidate 3: the double diamond with an arrow</title>
+  <rect width="512" height="512" rx="112" fill="#3446D6"/>
+  <path d="M74 256 L162 168 L250 256 L162 344 Z" fill="none" stroke="#FFFFFF" stroke-width="24" stroke-linejoin="round"/>
+  <path d="M262 256 L350 168 L438 256 L350 344 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="24" stroke-linejoin="round"/>
+  <path d="M226 228 L292 256 L226 284 Z" fill="#FFB321" stroke="#FFB321" stroke-width="10" stroke-linejoin="round"/>
+</svg>
