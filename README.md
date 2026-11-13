@@ -1,6 +1,6 @@
 # IDEO-Scrum
 
-为 Claude Code 与 Codex 提供 Design Thinking 与 Scrum Sprint 方法论的插件。v6.0.0。
+为 Claude Code 与 Codex 提供 Design Thinking 与 Scrum Sprint 方法论的插件。v6.0.2。
 
 ## 快速开始
 
@@ -94,7 +94,7 @@ $stakeholder    # Stakeholder
 
 | 文件/目录 | 内容 |
 |---|---|
-| `plugins/ideo-scrum/.claude-plugin/plugin.json` | 插件清单 v6.0.0 |
+| `plugins/ideo-scrum/.claude-plugin/plugin.json` | 插件清单 v6.0.2 |
 | `plugins/ideo-scrum/commands/designer.md` | Command `/ideo-scrum:designer` — 设计阶段结对（IDEO 五模式 + 设计冲刺，原型快速验证、拍板前不落地；进入时加载 ideo-kernel 与 scrum-kernel，工作涉及设计冲刺时再加 design-kernel） |
 | `plugins/ideo-scrum/commands/developer.md` | Command `/ideo-scrum:developer` — Developer 角色（Scrum Guide 2020 原文抄录＋2026 精炼补充；进入时加载 ideo-kernel 与 scrum-kernel，工作涉及冲刺时再加 sprint-kernel） |
 | `plugins/ideo-scrum/commands/scrum-master.md` | Command `/ideo-scrum:scrum-master` — Scrum Master 角色（Scrum Guide 2020 原文抄录＋2026 精炼补充；替 PO 派活、派子代理审阅；进入时加载 ideo-kernel 与 scrum-kernel，工作涉及设计或冲刺时分别再加 design-kernel、sprint-kernel） |
@@ -173,6 +173,8 @@ $stakeholder    # Stakeholder
 | `scrum/documents/sprint-15-feedback-loop.md` | Sprint 15 冲刺日志归档（自我反馈落地，小冲刺，版本不动）：装进 SEAPAWN.md 与全局记忆，PO 改成全英文 |
 | `scrum/documents/sprint-16-kernel-structure.md` | Sprint 16 冲刺日志归档（四个内核、按需加载，版本不动，仍 v5.2.0）：拆出 sprint-kernel、design-kernel 16 份进 steps/、加载分层、Codex 四内核、两轮流程测试与缺口 |
 | `scrum/documents/sprint-17-conventions-rewrite.md` | Sprint 17 冲刺日志归档（约定改顺，发版 v6.0.0）：Now 行与卡住、设计约定八点、Developer 在别的工具里、ideo-kernel 的 IDEO 日志与分界、两轮流程测试与缺口（PBI-59） |
+| `scrum/documents/sprint-18-rules-first.md` | Sprint 18 冲刺日志归档（规矩先顺，随 Sprint 19 发版 v6.0.2）：日志头部统一，scrum、sprint、design 三个内核召唤才来，Master 在书面授权内代行 |
+| `scrum/documents/sprint-19-board-hook.md` | Sprint 19 冲刺日志归档（看得见，发版 v6.0.2）：看板约定与模板、承诺 hook、频率测试 |
 | **冲刺蒸馏 / 归档** | 1.x 五期与 Sprint 06、07 已蒸馏至 `S:\SeaPawn-Memory\memory\IDEO-Scrum\`（MEMORY.md 索引 + 各期教训档案，含出处指向 git）；Sprint 08 起，冲刺日志压缩后归档进 `scrum/documents/` |
 
 ### 源参考
