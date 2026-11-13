@@ -1,8 +1,8 @@
 # Design Backlog — board
 
 > Opened 2026-11-14 | From: PBI-68 看板改版——Sprint 20（`sprint-20-presentable`）的 68 等本设计的原型交接，再做 68-b；同日先开过一条设计线，PO 叫停、日志已删，这是重开 | Branch: `worktree-design-board`（PO 建的原生 worktree，基于 main） | Product Owner: SeaPawn | Designer: 原型和测试由 Designer 会话做，到 Prototype 时开；共情、定义、构思由 PO 和 Master 定、Master 落盘（PO 2026-11-14 的分工） | Scrum Master: 会话 IDEO # [master]-[main]-[management sprint]
-> Now: Test：换成 PO 的方案（总览流向图 + 三层卡片），故事板第 2 版八帧在 prototype/storyboard-v2.html，等 PO 看、说感觉
-> Waiting for PO: 1 看故事板，逐帧说感觉（每帧下面有一个问题）
+> Now: Test：照 PO 的修改出了故事板第 3 版（路线改成条目和地图，How 只分做完没做完），等 PO 说过
+> Waiting for PO: 1 故事板第 3 版过不过（过了就结束设计，进 68-b）
 > Ends when the design questions are answered or the Product Owner stops the design (convention 19 in `design-log.md`); its conclusions flow back to the product log — a blank page's design fills it — and the first Sprint Review after that archives this file (convention 17 in `sprint-log.md`, in the sprint-kernel skill's `conventions/` folder).
 > Methods: the stage excerpts in the design-kernel skill (excerpt paths below are relative to that skill's folder), and in every stage the ideo-kernel's IDEO mode and methods, as the design-kernel `SKILL.md` requires.
 > This log records what each stage produced, not every step taken to get there (convention 22 in `design-log.md`).
@@ -113,18 +113,21 @@ PO 的决定（2026-11-14）：愿景地图行，挑 Master 建议的 6 个 HMW�
 
 Master 照调研加的（PO 要「结合着我们调研的内容进行改进」）：条目流进冲刺、设计的连线照 GitHub Actions 的依赖线画，点一条条目就亮出它流向哪；条目按远近排（在冲刺里 → 待选 → 以后，越往后越淡，借 Now-Next-Later）；全页只有「现在」一种亮色，其余安静（借状态页、壁挂屏）；产品卡的架构画成一条线路、标出冲刺停在哪一段（借地铁线路图）；电脑上左边总览、右边卡片并排（借 GitHub Projects、Linear 的先概括后下钻）；手机上同一张图缩窄、卡片占满屏。
 
+PO 看第 2 版后的修改（2026-11-14）：冲刺和设计的路线不要画五个阶段——「那种都是众所周知的呀，你用它没有用的……冲刺的，那你就是几个 [PBI] 这样排列，然后一个箭头往前走……设计的，那你可能就是一个地图……为什么什么还有怎么做，然后增量这些也不需要的」；How 照旧，「做好了就……标好，然后没做好的就不标」。据此：冲刺卡的路线是条目排成一列、箭头往前，每条下面是它做完了几块；设计卡的路线就是它的地图；总览的冲刺节点里是条目顺序和做完的块数，不再有阶段点；How 只分做完和没做完。
+
 先前的草图（工作材料，在 `sketches/`）：两个 Haiku 子代理各画一个，都选了地铁线路图（甲、乙）；Master 替 PO 画了「项目流水线」（丙），先定过它（故事板第 1 版 `prototype/storyboard.html`），PO 看后换成自己的方案。
 
 PO 的话（2026-11-14）：「我们现在就当设计师吧」——构思到原型由 Master 和 PO 代 Designer 做；原型「根本都不需要把那个网页做出来」，故事板就够。
 
 ### 3.2 Storyboard (optional)
 
-第 2 版八帧，见 `prototype/storyboard-v2.html`：① 总览流向图 → ② 点条目，亮出它流向哪 → ③ 点 Sprint 20，跳到冲刺卡片（Goal · 五阶段路线和条目顺序 · How 工作块）→ ④ 点设计，跳到设计卡片（设计目标 · 五阶段和主干地图 · 方案小故事）→ ⑤ 点产品圆圈，跳到产品卡片（两个承诺 · 线路式架构 · 分组条目）→ ⑥ 电脑：左总览右卡片 → ⑦ 手机：同图缩窄、卡片占满屏 → ⑧ 白纸：产品圆圈下一个虚线空位。
+第 3 版（照 PO 的修改），见 `prototype/storyboard-v3.html`；帧和第 2 版一样，只改了路线和 How。第 2 版八帧，见 `prototype/storyboard-v2.html`：① 总览流向图 → ② 点条目，亮出它流向哪 → ③ 点 Sprint 20，跳到冲刺卡片（Goal · 五阶段路线和条目顺序 · How 工作块）→ ④ 点设计，跳到设计卡片（设计目标 · 五阶段和主干地图 · 方案小故事）→ ⑤ 点产品圆圈，跳到产品卡片（两个承诺 · 线路式架构 · 分组条目）→ ⑥ 电脑：左总览右卡片 → ⑦ 手机：同图缩窄、卡片占满屏 → ⑧ 白纸：产品圆圈下一个虚线空位。
 
 ## 4. Prototype
 
 | Part | The design question it tests | Where it is |
 | --- | --- | --- |
+| 故事板 v3（当前，八帧同 v2，路线改成条目和地图） | 同下 | `prototype/storyboard-v3.html` |
 | 故事板 v2 ① 总览流向图 | 1 好看形象、2 几条线分得清、3 瞄一眼看得出走到哪 | `prototype/storyboard-v2.html` |
 | ② 点条目亮出去向 | 2、6 | 同上 |
 | ③ 冲刺卡片、④ 设计卡片、⑤ 产品卡片 | 6 比问 AI、翻 git、读日志更省事；1 形象（架构简练） | 同上 |
