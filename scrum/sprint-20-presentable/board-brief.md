@@ -80,6 +80,6 @@ PO 说「就这个」时交三样：
 
 ## 9. 做完怎么交
 
-PO 说「就这个」后：交第 5 节的三样；在 IDEO 日志的 Now 写「交接包齐，等合并」；用跨会话消息告诉 Developer（会话 `IDEO # [developer]-[sprint-20]-[do presentable]`）和 Master（`IDEO # [master]-[main]-[management sprint]`）。Developer 从冲刺分支合并你的分支，再做模板和约定（68-b）。
+PO 说「就这个」后：交第 5 节的三样；在 IDEO 日志的 Now 写「交接包齐，等合并」；用跨会话消息只告诉 Master（会话 `IDEO # [master]-[main]-[management sprint]`），不用通知 Developer（PO 定）。Master 核对交接包后，叫 Developer 从冲刺分支合并你的分支，再做模板和约定（68-b）。
 
 不做：不改 `plugins/` 里的模板和 `board.md`（68-b 的活）；不推送、不打 tag；不用真实的生成流程跑页面。

@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 20 (presentable)
 
 > Started: 2026-11-14 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: worktree-sprint-20-presentable | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[management sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-20]-[do presentable]，原生 worktree sprint-20-presentable）
-> Now: Increment：块 1、3 已完成；设计线由 PO 另开；我在做块 4（三份大纲，PO 一次看完） · 最近一次 PO 决定：2026-11-14 放行第 3 章（「可以，那就放行吧」），范围见第 3 章末行
-> Waiting for PO: None
+> Now: Increment：块 1、3 已完成；块 4（三份大纲）写好了，等 Master 审、PO 一次看完；设计线由 PO 另开 · 最近一次 PO 决定：2026-11-14 放行第 3 章（「可以，那就放行吧」），范围见第 3 章末行
+> Waiting for PO: 块 4：README、快速上手的大纲和词汇表词条清单说行；图标挑一张；README 的文件地图收不收（`docs-outline.md`）
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
 
@@ -343,5 +343,7 @@ Go-ahead: 2026-11-14，PO（「可以，那就放行吧」，Master 转来）。
 - **放行，和产品日志 68 的备注**（2026-11-14）：PO 放行第 3 章（「可以，那就放行吧」，Master 转来），范围见第 3 章末行；Now 改成 Increment，Waiting 改成 None。Master 在 plan 模式里写不了文件，产品日志 PBI-68 备注里「不开 IDEO 日志」那处，照它给的文字由我在本分支改了（只改那一句）。
 - **块 1（开场包）做了什么**（2026-11-14）：`board-brief.md`（一页多，写明看板的一件事、PO 的话、第 1 版的毛病、验收 68-1～68-6、交接契约、样本、截图办法、第 1 轮三个方向、怎么交）；`board-data/` 下四份样本（`now/` 本仓库现状、`sprint-19/` 收官前的日志、`acme/` Sprint 19 夹具的小项目、`blank/` 白纸）、第 1 版的两张截图、`shot.py`（一条命令出 1440 与真 375 宽的截图并报横向溢出）。样本文件不叫 `SprintBacklog.md`、`ProductBacklog.md`，免得生成看板时被当成开着的日志（Sprint 19 的教训）；收官时和冲刺文件夹一起删。设计线进工作树后要在块 1 提交之后跑 `git merge worktree-sprint-20-presentable`（已经合过的，再合一次就能拿到新提交）。块 1 的 brief 经 Master 审过，提了两处小改（三个方向只是起点；界面标签的语言跟日志走），改完标 ✓。
 - **块 3（CHANGELOG 与图标候选）做了什么**（2026-11-14）：根目录 `CHANGELOG.md`（英文）：6.0.3 一节先写计划（发版时写全，块 15），之前 15 个版本每版一行，和 15 个 `v*` tag 的版本、日期都对得上（脚本核对过；`v1` 对 1.0.2；没有 6.0.1，写在 6.0.2 那行里）；末尾一句交代 Codex 版原来在单独的 `codex` 分支。有两版的一句话是我从提交记录里读出来的（3.0.0、3.1.0，tag 说明只是提交语），其余照 tag 说明。图标候选 3 张，放 `icon-candidates/`：1 冲刺的环绕着设计的菱形（深蓝、奶白、琥珀），2 三张便利贴，3 双钻石带一个箭头（蓝、白、琥珀）；做成 SVG（放大不糊），`sheet.html`、`sheet.png` 是浅色、深色背景上 200、64、32 像素的对照，给 PO 在块 4 挑；挑定后在块 5 导出 PNG 并查 `icon` 字段的写法。
+- **块 4（三份大纲）写好了**（2026-11-14）：`docs-outline.md` 一份：A README、B 快速上手、C 词汇表词条清单（约 35 条，分四组）、D 文件地图收不收（建议收到文件夹一级，三个选择）、E 图标三张各一句加我的倾向（1）。每行是「将来文档里的英文标题 —— 这一节会写什么」。规矩的句子在快速上手里都标了约定里的位置，写全文时逐句对。等 Master 审、PO 一次看完；PO 说行再写全文。
+- **设计会话开了，交接改了**（2026-11-14，Master 转告）：PO 开了 Designer 会话（`IDEO # [designer]-[sprint-20]-[design board]`），分支 `worktree-ideo-board` 已合到 beaa1f9，拿到了定稿的 brief。交接改成：PO 说用不着给我发消息，Designer 交接时只通知 Master，Master 核对交接包后叫我合并、做 68-b。brief 第 9 节已照改。
 
 ## 5. Test
