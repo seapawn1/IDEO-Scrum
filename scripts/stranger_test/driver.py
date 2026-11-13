@@ -27,6 +27,7 @@ import pathlib
 import queue
 import re
 import shutil
+import stat
 import subprocess
 import sys
 import tempfile
@@ -64,10 +65,37 @@ def magpie_prefix() -> list:
     sys.exit("claude-magpie.cmd is not on PATH")
 
 
+def clean_path(path: str, real_home: str, keep: set, isdir=os.path.isdir) -> str:
+    """The host's PATH without the author's own folders. A folder is dropped when it does not exist, or when it lies
+    under the real home and is not one of `keep` (the folders of the tools the run needs). The first smoke run showed
+    why: the plugin session read PATH, saw the author's missing ~/bin, and proposed creating it in the author's home."""
+    home = norm_dir(real_home)
+    kept = []
+    for entry in path.split(os.pathsep):
+        e = entry.strip().strip('"')
+        if not e or not isdir(e):
+            continue
+        n = norm_dir(e)
+        if (n == home or n.startswith(home + "/")) and n not in keep:
+            continue
+        kept.append(e)
+    return os.pathsep.join(kept)
+
+
+def norm_dir(p: str) -> str:
+    return p.replace("\\", "/").lower().rstrip("/")
+
+
 def make_env(base: pathlib.Path) -> tuple:
     """A whitelist environment with a throwaway home, config dir and temp dir under base. magpie keeps its
     providers under the real ~/.config, so only that is pointed back at the real home."""
     env = {k: v for k, v in os.environ.items() if k.lower() in WHITELIST}
+    real_home = os.environ["USERPROFILE"]
+    tools = {norm_dir(str(pathlib.Path(w).parent)) for w in
+             (shutil.which(t) for t in ("claude", "git", "sh", "python", "node", "magpie")) if w}
+    for k in list(env):
+        if k.lower() == "path":
+            env[k] = clean_path(env[k], real_home, tools)
     home = base / "home"
     (home / "AppData" / "Roaming").mkdir(parents=True)
     (home / "AppData" / "Local").mkdir(parents=True)
@@ -76,7 +104,7 @@ def make_env(base: pathlib.Path) -> tuple:
     gitconfig = base / "gitconfig"
     gitconfig.write_text("", encoding="utf-8")
     drive, tail = os.path.splitdrive(str(home))
-    real_home = pathlib.Path(os.environ["USERPROFILE"])
+    real_home = pathlib.Path(real_home)
     env.update({
         "USERPROFILE": str(home), "HOME": str(home), "HOMEDRIVE": drive, "HOMEPATH": tail,
         "APPDATA": str(home / "AppData" / "Roaming"), "LOCALAPPDATA": str(home / "AppData" / "Local"),
@@ -92,6 +120,20 @@ def make_env(base: pathlib.Path) -> tuple:
     return env, home
 
 
+def rmtree(path) -> None:
+    """Delete a folder tree on Windows, where git leaves read-only files that plain rmtree skips."""
+    def force(func, p, *_):
+        try:
+            os.chmod(p, stat.S_IWRITE)
+            func(p)
+        except OSError:
+            pass
+    try:
+        shutil.rmtree(path, onexc=force)
+    except TypeError:  # Python before 3.12
+        shutil.rmtree(path, onerror=force)
+
+
 def kill_tree(proc) -> None:
     if proc.poll() is None:
         subprocess.run(["taskkill", "/T", "/F", "/PID", str(proc.pid)], capture_output=True)
@@ -102,7 +144,6 @@ class Session:
 
     def __init__(self, name: str, cmd: list, cwd: pathlib.Path, env: dict, log: pathlib.Path):
         self.name, self.cmd, self.cwd, self.env, self.log = name, cmd, cwd, env, log
-        self.rows: list = []
         self.results: queue.Queue = queue.Queue()
         self.proc = None
         self.cost = 0.0
@@ -123,8 +164,7 @@ class Session:
                     d = json.loads(line)
                 except ValueError:
                     continue
-                self.rows.append(d)
-                if d.get("type") == "result":
+                if d.get("type") == "result":  # the stream stays on disk; only the results are kept in memory
                     self.cost += float(d.get("total_cost_usd") or 0)
                     self.results.put(d)
             self.results.put(None)
@@ -446,6 +486,12 @@ class Run:
             "seconds": round(time.time() - self.t0), "commit": self.commit, "dirty_docs_or_plugin": self.dirty,
             "plugin_version": self.plugin_version, "limits": self.limits, "scripted": self.scripted is not None,
             "installs": self.installs,
+            "concessions": [
+                "XDG_CONFIG_HOME and XDG_CACHE_HOME point at the real .config and .cache, only so that magpie can "
+                "sign in; any read there counts as touching the author's paths",
+                "the plugin is installed with the `claude plugin` equivalents of the README's commands, from a "
+                "local copy of the committed state instead of GitHub",
+            ],
             "outputs": outputs, "all_outputs": all(v["ok"] for v in outputs.values()),
             "isolation": {"ok": isolation_ok, "p": p_init, "s": s_init, "paths_touched": touched},
             "stuck": verify.stuck_signals(self.convo, p_rows),
@@ -454,7 +500,7 @@ class Run:
         (self.dir / "result.json").write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
         write_transcript(self.dir, self.convo)
         if not self.keep_temp:
-            shutil.rmtree(self.root, ignore_errors=True)
+            rmtree(self.root)
         return result
 
 
@@ -539,6 +585,29 @@ def selftest() -> int:
     hits = verify.scan_paths(rows, [root], real, FORBIDDEN_NAMES)
     expect("paths: inside the run is fine", [h for h in hits if "st-abc" in h[1]], [])
     expect("paths: real .claude, magpie config and memory are caught", len(hits) >= 3, True)
+    # XDG_CONFIG_HOME points at the real .config only so that magpie can sign in: anything read there, magpie or
+    # not, counts as touching the author's paths
+    other = [{"type": "assistant", "message": {"content": [
+        {"type": "tool_use", "id": "5", "name": "Read", "input": {"file_path": r"C:\Users\someone\.config\gh\hosts.yml"}}]}}]
+    expect("paths: another folder of the real .config is caught",
+           len(verify.scan_paths(other, [root], real, FORBIDDEN_NAMES)), 1)
+    var = [{"type": "assistant", "message": {"content": [
+        {"type": "tool_use", "id": "6", "name": "Bash", "input": {"command": "ls $XDG_CONFIG_HOME/gh"}}]}}]
+    expect("paths: reaching for the XDG variable is caught",
+           len(verify.scan_paths(var, [root], real, FORBIDDEN_NAMES)) >= 1, True)
+    # clean_path: the author's missing ~/bin and private tool folders go; system folders and needed tools stay
+    base = pathlib.Path(tempfile.mkdtemp(prefix="st-selftest-path-"))
+    try:
+        home = base / "home"
+        for d in ("tools", "other", "bin_exists"):
+            (home / d).mkdir(parents=True)
+        (base / "system").mkdir()
+        joined = os.pathsep.join([str(home / "bin"), str(home / "tools"), str(home / "other"), str(base / "system"),
+                                  str(base / "nowhere")])
+        cleaned = clean_path(joined, str(home), {norm_dir(str(home / "tools"))})
+        expect("clean_path", cleaned.split(os.pathsep), [str(home / "tools"), str(base / "system")])
+    finally:
+        rmtree(base)
     # a project that passes, then planted defects
     work = pathlib.Path(tempfile.mkdtemp(prefix="st-selftest-"))
     env = {k: v for k, v in os.environ.items() if k.lower() in WHITELIST}
@@ -582,7 +651,7 @@ def selftest() -> int:
         (proj / "scrum/Board.html").unlink()
         expect("no board", verify.check_outputs(proj, env)["5_board"]["ok"], False)
     finally:
-        shutil.rmtree(work, ignore_errors=True)
+        rmtree(work)
     # stuck signals
     rows = [
         {"type": "assistant", "message": {"content": [{"type": "tool_use", "id": "a", "name": "Bash", "input": {"c": 1}}]}},
