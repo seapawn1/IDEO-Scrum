@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 18 (rules-first)
 
 > Started: 2026-11-13 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: claude/youthful-payne-b1e139 | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[support sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-18]-[do sprint 18]，youthful-payne-b1e139）
-> Now: Increment：H5 第2轮全33次运行中，标准不变，不再自行修正 · Master 2026-11-13 审 be78fa9 通过并放行整轮重跑（PO 授权，见第 4 章）
+> Now: Increment：H6证据已备齐交Master；六次技术补跑有效，A/B/D过线，C3/9未过并转PBI-67，不再调描述 · PO 2026-11-13 经Master定三项处理（原话见第4章）
 > Waiting for PO: None
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
@@ -173,6 +173,11 @@ Go-ahead: Master 2026-11-13 放行（PO 授权，见第 4 章）：本分支上�
 - H5 第1轮 `revised`：33次有效、技术错0，同日同通道；A误触发0/9过，B6/9未过，C0/9未过，D1与D2各3/3过；整体失败。B3三次只是读/搜日志，没有Skill调用；C九次无工具、直接回答。逐次动作见 [tests/revised-behavior.md](tests/revised-behavior.md)，内容另表32达1部分，不抵行为。
 - Master 限一轮修正：先诊断，再给放开的ideo恢复「命中先加载再答」，三个受控核三种召唤后紧跟相同指令；不改三种召唤、泛问豁免、正文或frontmatter开关。修改后description长度为ideo1023、scrum968、sprint943、design1007；提交交Master审，再同日整轮33次重跑，若仍不过就停报Master，由PO定真Haiku确认或已知缺口，不自行追加轮数。
 - Master 2026-11-13 审单轮修正 `be78fa9` 通过：确认仅加命中后加载句、各描述≤1024；放行第2轮整轮33次，跑完无论过没过先报，不再自行修正或追加测试。第2轮在同一外部运行目录的独立 `revised2` 组运行，前两组原始记录保留。
+- H5 第2轮 `revised2`：33次尝试，27次完成、6次在300秒截点超时（B1、B2各3）；A误触发0/9，C仅3/9，D两题各3/3。B1/B2虽在截点前有目标调用，也不把未完成样本凑成B通过；原timeout记录保留。六份原始流后来有迟到成功答案：runner只终止cmd，未终止其CLI子进程；不纳入有效样本，现已查无残留测试进程。
+- 六次超时的直接证据：B1各9次API自动重试，B2各7次；retry事件只报error=unknown、error_status=null，无法进一步断言HTTP状态。最终API耗时分别为596.474、580.441、581.722、316.090、337.575、325.013秒，占总时长超过99%；不是本地Read或Grep本身耗时。详细逐次动作、退避与时长写进测试汇总，不沿用冒烟的502归因。
+- **PO 2026-11-13 决定（Master转达，原话）**：「1.可以 2C可以 3 可以」。对应：①只补B1×3、B2×3这6次技术失败，不算新一轮，其余仍用be78fa9、相同白名单与magpie通道、冻结标准；②C组3/9未过线，已知缺口转PBI-67（main登记提交0b19a22）；③之后完成H6交审。Master随后定超时1200秒而非600，补跑前修runner整树终止，若再次超时或过零点就停报。
+- 技术补跑依据冻结原文第116行（`fde1f50`，H1材料）：「进程或权限等技术错误单列，不删原始记录；修环境后补齐有效试次，两组条件不一致或跨日则成对重跑，不按结果选择性丢弃样本。」原标准没定300秒门槛。runner改Popen、超时taskkill /T /F回收整树；补跑单列revised2-technical，只替换6个技术失败位置，不挑行为失败重跑；同3并发、题目与源码不变，午夜主动停止。Master判基线均在300秒内完成，放宽超时不改变既有基线结果，故不重跑基线。
+- B技术补跑6/6完成，退出0、API重试0、耗时14.311～51.718秒，仍同日；进程树真实父子自测0/stopped。最终33份有效样本由原27份加这6份构成，不采迟到答案；B最终8/9过线，结果已先报Master。C仍3/9未过：已知缺口，转PBI-67，PO 2026-11-13定；不把它改判通过，也不再试第3轮。H6逐项证据与剩余缺口已备，等Master审阅和阶段决定，不自行合并、tag、发版、推送。
 - H3 冒烟前两次失败，尚未启动正式样本：首轮 API 502；核对 init，实际工具只有四个、插件路径正确。另发现子进程沿用了宿主的 Haiku 模型重映射（只比布尔值，不存模型值）；清理后第三次冒烟已通过。按 Master 与 Sprint 19 统一的做法，正式测试改用环境白名单：SystemRoot、PATH、USERPROFILE、APPDATA、LOCALAPPDATA、HOMEDRIVE、HOMEPATH、ComSpec、PATHEXT、TEMP、TMP，加另设的 CLAUDE_CODE_GIT_BASH_PATH、MSYS_NO_PATHCONV，其余不继承；在新环境再冒烟后才跑基线。旧失败记录保留在仓库外，不计正式样本。
 
 ## 5. Test
@@ -187,7 +192,7 @@ Go-ahead: Master 2026-11-13 放行（PO 授权，见第 4 章）：本分支上�
 
 H3 基线：33 次有效结果、技术错误 0；2026-11-13 同日跑完。行为汇总见 [tests/baseline-behavior.md](tests/baseline-behavior.md)：A 误触发 9/9，B 9/9，C 3/9，D1 0/3、D2 3/3；B1 有一次未读 sprint-log，独立披露。内容见 [tests/baseline-content.md](tests/baseline-content.md)：29 达、4 部分、0 不达；争议经 Developer 看原回答复核。全部33份 init 的插件快照路径、四工具限制与同一非宿主模型映射已核对。
 
-H4 质量补丁 `76a2cc3` 已提交；H5 第1轮同日33次已完成，整体未过线。行为与每次失败动作见 [tests/revised-behavior.md](tests/revised-behavior.md)，内容见 [tests/revised-content.md](tests/revised-content.md)（32达、1部分）；B3没加载scrum，C九次没加载ideo。A误触发0/9、B6/9、C0/9、D两题各3/3；内容不能抵行为。一次修正 be78fa9 已获Master审阅通过，第2轮整轮重测正在运行；无论过没过先报告，不再自行修正。本表不是整项DoD已完成的声明。
+H4 质量补丁 `76a2cc3` 已提交；H5 第1轮同日33次已完成，整体未过线。行为与每次失败动作见 [tests/revised-behavior.md](tests/revised-behavior.md)，内容见 [tests/revised-content.md](tests/revised-content.md)（32达、1部分）；B3没加载scrum，C九次没加载ideo。A误触发0/9、B6/9、C0/9、D两题各3/3；内容不能抵行为。一次修正be78fa9后，第2轮先有6次技术超时，再按PO决定补齐，最终情况见下表；没有继续改描述或改标准。
 
 | H4 / H6 静态证据 | 结果 |
 | --- | --- |
@@ -199,4 +204,39 @@ H4 质量补丁 `76a2cc3` 已提交；H5 第1轮同日33次已完成，整体未
 | Codex | 95份文件内容一致；连续两次重新生成均零写入、零删除 |
 | 冻结标准与历史 | 相对 `fde1f50` 的 cases.json / 两份模拟日志未变；相对 `c8a25ec` 的 scrum/documents diff为空 |
 
-H5 的动态门槛、最终内容结果与 Master 阶段决定仍待补，不把静态通过替代行为测试。
+**H5 第二轮最终结果**
+
+完整行为、六次超时与补跑依据见 [tests/revised2-behavior.md](tests/revised2-behavior.md)；逐份内容核对见 [tests/revised2-content.md](tests/revised2-content.md)。原27份有效结果加6次获准技术补跑，最终33份全有效，同日同实际模型映射与四工具白名单；源码仍为be78fa9。
+
+| 组 | 基线 | 第1轮 | 第2轮（补齐技术失败后） | 冻结门槛与结论 |
+| --- | --- | --- | --- | --- |
+| A（误触发次数） | 9/9 | 0/9 | 0/9 | ≤1/9，过 |
+| B（对应内核触发） | 9/9 | 6/9 | 8/9 | ≥8/9，过；B3-r2仍漏触发 |
+| C（ideo触发） | 3/9 | 0/9 | 3/9 | ≥7/9且不低于基线，**未过；已知缺口，转PBI-67，PO 2026-11-13定** |
+| D1（stakeholder） | 0/3 | 3/3 | 3/3 | 不低于基线，过 |
+| D2（scrum-master） | 3/3 | 3/3 | 3/3 | 不低于基线，过 |
+
+内容最终31达、2部分、0不达：B2-r2把已有产品说成空白页、阶段决定归属含糊；C2-r1没有交代模拟证据的限制。必读行为独立披露：B1为2/3、B2为3/3、B3为1/3；C1/C2无加载和方法读取、C3为3/3。标准没有因为这些结果而重写，内容较好不抵行为。真Haiku、Codex动态行为和真实用户端到端体验本冲刺都未实测。
+
+**H6：逐项 Definition of Output Done 与验收交审**
+
+| DoD维度 | Developer结论 | 证据 |
+| --- | --- | --- |
+| 内容忠实 | 静态通过；动态缺口另列 | 源文引文未改，四份内核正文逐字未动；本次约定按2.2定案与Master审阅落地，无新第三方摘录；B2/C2的内容偏差已如实列出，不冒称使用结果全对 |
+| 可导航 | 通过 | 本体和Codex的79个资源均≤2跳可达，核对脚本0个导航错误 |
+| 无死链 | 通过（内部链接） | Codex核对11条本地链接无错，本体导航资源全可解析；日志中新增报告链接均可定位；外部站点在线可用性没有单独巡检 |
+| 插件校验 | 通过 | 最终文字版官方strict显示Validation passed；既有ICON_MISSING目录提示归PBI-64，不谎称没有提示 |
+| 描述长度 | 通过 | ideo1023、scrum968、sprint943、design1007；Master725、Stakeholder858，均≤1024 |
+| Codex包 | 通过 | 随源同步、95份内容核对一致；连续两次重新生成均0写入0删除；不手改生成物 |
+
+| 验收 | 结论 |
+| --- | --- |
+| 66的5项 | 5/5通过；四类模板4/4、双语键/For/✓完成标记可读、目标引用与头部约定对齐、历史未改；Master已审1e347b4并转主线 |
+| 65/60第1、2、3、5、6项 | 静态与文案通过；secretary零残留、三种召唤与角色边界明确、CLAUDE两句同提交、README不再泛称全自动；Master已审主改与唯一修正 |
+| 65/60第4项（触发测试） | A/B/D过；C未过，PO定已知缺口转PBI-67；不是全通过 |
+| 技术补跑 | 只补原6次timeout，依据冻结第116行；换整树清理和1200秒上限，同3并发/白名单/通道/题目/源码，同日完成，旧记录保留 |
+| Reviewer与PO决定 | Master已审How、H1、H2、H4与单轮修正；本次H6等待Master终审与阶段决定，Developer未自行收官 |
+
+**交审依据的Sprint Goal原文**：「规矩先顺：日志头部统一，scrum、sprint、design 召唤才来，角色说明写清；看板和 hook 照着就能读，文档照着就能写。（PO 2026-11-13 定）」
+
+增量已可按定案检查，C缺口没有被隐去；阶段结果与是否收官由Master（PO授权）决定。H5保留未勾的原门槛，不把C未过的行标成全通过；H6材料已提交交审，尚未代替终审决定。

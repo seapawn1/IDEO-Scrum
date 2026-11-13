@@ -10,6 +10,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import time
 import zipfile
 from pathlib import Path
 
@@ -136,7 +137,20 @@ def environment(temp):
     return env
 
 
-def invoke(folder, plugin, prompt):
+def stop_process_tree(process):
+    # cmd 的退出不代表其下的 CLI 已退出；先杀整棵树，再回收直接子进程。
+    if os.name == "nt":
+        killed = subprocess.run(["taskkill.exe", "/PID", str(process.pid), "/T", "/F"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=20)
+        if killed.returncode != 0 and process.poll() is None:
+            process.kill()
+        process.wait(timeout=20)
+        return killed.returncode
+    process.kill()
+    process.wait(timeout=20)
+    return 0
+
+
+def invoke(folder, plugin, prompt, timeout=300):
     cwd = folder / "work"
     temp = folder / "temp"
     cwd.mkdir(parents=True, exist_ok=True)
@@ -149,14 +163,22 @@ def invoke(folder, plugin, prompt):
             "--disallowedTools", "Bash,PowerShell,Write,Edit,Agent", "--permission-prompts", "none",
             "--setting-sources", "user", "--settings", '{"disableAllHooks":true}',
             "--strict-mcp-config", "--no-session-persistence", "--output-format", "stream-json", "--verbose"]
+    timed_out = False
+    tree_kill_code = None
     with (folder / "raw.jsonl").open("w", encoding="utf-8") as out, (folder / "stderr.txt").open("w", encoding="utf-8") as err:
+        process = subprocess.Popen(args, stdin=subprocess.PIPE, text=True, encoding="utf-8", cwd=cwd, env=environment(temp), stdout=out, stderr=err)
         try:
-            completed = subprocess.run(args, input=prompt, text=True, encoding="utf-8", cwd=cwd, env=environment(temp), stdout=out, stderr=err, timeout=300)
-            code = completed.returncode
+            process.communicate(input=prompt, timeout=timeout)
+            code = process.returncode
         except subprocess.TimeoutExpired:
+            timed_out = True
+            tree_kill_code = stop_process_tree(process)
             code = -1
     result = parse((folder / "raw.jsonl").read_text(encoding="utf-8", errors="replace"))
     result["exit_code"] = code
+    result["timeout_seconds"] = timeout
+    result["timed_out"] = timed_out
+    result["tree_kill_exit_code"] = tree_kill_code
     result["technical_error"] = code != 0 or result["subtype"] != "success" or result["api_error"]
     return result
 
@@ -191,15 +213,22 @@ def smoke(run, name):
         raise SystemExit(1)
 
 
-def suite(run, name, workers):
+def suite(run, name, workers, only=None, timeout=300, stop_at_midnight=False):
     group_folder = run / name
     if group_folder.exists():
         raise RuntimeError("该组已有输出，请用新的组名保留旧记录")
     group_folder.mkdir()
     plugin = run / "baseline-source/plugins/ideo-scrum" if name.startswith("baseline") else ROOT / "plugins/ideo-scrum"
-    tasks = [(case, number) for case in DATA["cases"] for number in range(1, DATA["repetitions"] + 1)]
+    selected = [case for case in DATA["cases"] if not only or case["id"] in only]
+    if only and set(only) != {case["id"] for case in selected}:
+        raise RuntimeError("补跑题号不在冻结题目内")
+    tasks = [(case, number) for case in selected for number in range(1, DATA["repetitions"] + 1)]
     results = []
     start_day = local_day()
+    deadline = None
+    if stop_at_midnight:
+        seconds = float(subprocess.check_output(["powershell.exe", "-NoProfile", "-Command", "[Math]::Floor(((Get-Date).Date.AddDays(1) - (Get-Date)).TotalSeconds)"], text=True).strip())
+        deadline = time.monotonic() + max(0, seconds - 1)
 
     def work(task):
         case, number = task
@@ -210,7 +239,11 @@ def suite(run, name, workers):
             target = cwd / relative
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(TESTS / "fixtures/project" / relative, target)
-        result = invoke(folder, plugin, case["prompt"])
+        remaining = timeout if deadline is None else min(timeout, deadline - time.monotonic())
+        if remaining <= 0:
+            result = {"skills": [], "read_calls": [], "answer": "", "subtype": None, "api_error": False, "denials": 0, "exit_code": -2, "technical_error": True, "midnight_cutoff": True}
+        else:
+            result = invoke(folder, plugin, case["prompt"], timeout=remaining)
         result.update({"case": case["id"], "group": case["group"], "repeat": number, "grade": grade(case, result)})
         (folder / "parsed.json").write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
         return result
@@ -219,7 +252,7 @@ def suite(run, name, workers):
         for result in pool.map(work, tasks):
             results.append(result)
             print(f"{name} {result['case']}-r{result['repeat']}: {'ERROR' if result['technical_error'] else '完成'}；目标触发={'是' if result['grade']['trigger_ok'] else '否'}；拒读={result['denials']}", flush=True)
-    summary = {"suite": name, "model_label": MODEL_LABEL, "start_day": start_day, "end_day": local_day(), "results": results}
+    summary = {"suite": name, "model_label": MODEL_LABEL, "start_day": start_day, "end_day": local_day(), "selected_cases": [case["id"] for case in selected], "timeout_seconds": timeout, "stop_at_midnight": stop_at_midnight, "results": results}
     (group_folder / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
     errors = sum(result["technical_error"] for result in results)
     print(f"{name}: {len(results)} 次，技术错误 {errors}；原始记录仅在仓库外。", flush=True)
@@ -237,6 +270,9 @@ def main():
     parser.add_argument("--smoke-name", default="smoke")
     parser.add_argument("--suite")
     parser.add_argument("--workers", type=int, default=3)
+    parser.add_argument("--cases", nargs="+")
+    parser.add_argument("--timeout", type=int, default=300)
+    parser.add_argument("--stop-at-midnight", action="store_true")
     args = parser.parse_args()
     if args.self_test:
         self_test()
@@ -245,7 +281,7 @@ def main():
     elif args.smoke:
         smoke(args.run_dir, args.smoke_name)
     elif args.suite:
-        suite(args.run_dir, args.suite, args.workers)
+        suite(args.run_dir, args.suite, args.workers, args.cases, args.timeout, args.stop_at_midnight)
     else:
         parser.error("请选择准备、自测、冒烟或一组测试")
 
