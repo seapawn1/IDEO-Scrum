@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 19 (board-hook)
 
 > Started: 2026-11-13 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: worktree-golden-orbiting-bachman | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[support sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-19]-[do sprint 19]，golden-orbiting-bachman）
-> Now: Increment：块 1～5 完成；块 6（频率测试正式跑）在后台跑；块 7（board.md 与模板）已写好，待 Master 审 diff；下一步块 8（看板夹具与核对脚本） · Master 2026-11-13 放行 How（PO 授权，见第 4 章）
+> Now: Increment：块 1～5、7、8 完成；块 6（频率测试正式跑）15 次里还剩几次在后台跑，跑完判定；下一步块 9（看板生成与汇总） · Master 2026-11-13 放行 How（PO 授权，见第 4 章）
 > Waiting for PO: None
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
@@ -105,8 +105,8 @@ PO 2026-11-13 定 Sprint Goal
 | 4 | hook 脚本与直接运行测试 | `plugins/ideo-scrum/hooks/` 下的声明和 POSIX sh 脚本（读承诺、开关、出错静默，暂留测试用的模式开关）；样本项目夹具和比对脚本（直接喂输入，不起会话） | ✓ 2026-11-13　验收 61-1～3 通过；本机 Windows 实测通过；macOS、Linux 写明依据（见第 4 章「块 4」） |
 | 5 | 频率测试的跑法与冒烟 | 无头长会话的造法；判定脚本（先拿两份已知结果自测）；一次冒烟，估出单次成本 | ✓ 2026-11-13　冒烟通过，成本记进第 4 章；太贵先报 Master，不自己降规模（成本见第 4 章「块 5」，已报 Master） |
 | 6 | 频率测试正式跑与选定 | 按块 3 各臂 3 次 Haiku；汇总（行为、内容分两栏，每轮注入多少 token）进第 4 章；原始输出放 `S:\IDEO-Scrum-Archives\sprint-19-board-hook\` | 按过线选出频率（测不出差别选最省的）并改进 hook，删掉测试用的模式开关，61-1～3 重过 |
-| 7 | 看板约定与模板 | scrum-kernel `conventions/` 下的 `board.md`（英文，自带给子代理的简报）和 PO 挑的那一版的卡片模板；先给大纲，再给全文审阅（sprint-log 第 11、12 条） | Master 审过；自足：别人的环境里，一个 Haiku 子代理拿着它就能生成 |
-| 8 | 看板夹具与核对脚本 | 夹具构造脚本（临时仓库：main 加两个开着的冲刺分支，其中一个带设计）；核对脚本：事实对日志、链接、Waiting for PO 汇总、删掉重建一致 | 核对脚本先自测：一份对的样本过，一份故意弄坏的被抓住 |
+| 7 | 看板约定与模板 | scrum-kernel `conventions/` 下的 `board.md`（英文，自带给子代理的简报）和 PO 挑的那一版的卡片模板；先给大纲，再给全文审阅（sprint-log 第 11、12 条） | ✓ 2026-11-13　Master 审过（`1c2cdb2`，通过）；自足——别人的环境里，一个便宜模型的子代理拿着它就能生成——在块 9 验证 |
+| 8 | 看板夹具与核对脚本 | 夹具构造脚本（临时仓库：main 加两个开着的冲刺分支，其中一个带设计）；核对脚本：事实对日志、链接、Waiting for PO 汇总、删掉重建一致 | ✓ 2026-11-13　核对脚本先自测：一份对的样本过，一份故意弄坏的被抓住（48 条全过：两个场景各一份对的页过、18 种改坏的页都被抓到） |
 | 9 | 看板生成与汇总 | Haiku 子代理对夹具生成 3 次，再对本仓库现状生成一次；汇总进第 4 章 | 验收 35-1～5 通过（35-6 在块 1） |
 | 10 | 接入插件并交测试 | overview 第 4 条加一句；scrum-kernel `SKILL.md` 的文件表加一行；`.gitignore`；README 文件地图加两行；`sync_codex.py`、`check_codex.py` 照 61-5；第 4 章对照验收标准写完成情况 | `claude plugin validate --strict` 通过（新增 `hooks/` 属结构变化，再派 `plugin-dev:plugin-validator`，`model: haiku`）；无死链；Codex 同步并核对通过；Master 说可以进测试 |
 
@@ -161,6 +161,12 @@ Go-ahead: Master 2026-11-13 放行（PO 授权，见第 4 章）：本分支上�
   - 模板：一份可直接复制的 HTML，槽位写成 `{{…}}`，重复的块标 REPEAT；每个事实带 `data-fact` 标记（13 种，列在模板顶部注释里），块 8 的核对脚本按它逐项对日志；地图用 `<details>` 默认收起，第一次打开才画——藏着的元素量不出尺寸，开页就画会画坏；Mermaid 源码另放在 `details.src` 里，离线或画失败就自动展开；事实里的 `<`、`>`、`&` 要转义（Mermaid 标签里常有 `<br/>`），模板与第 13 条都写了。
   - 随手先做了块 10 的三项：scrum-kernel `SKILL.md` 文件表加两行（导航入口）、overview 第 4 条加看板一句、`.gitignore`；块 10 剩下 README、Codex 同步与核对、校验。
   - 还没验的：模板自足、Haiku 级子代理拿着它就能生成——块 9。
+- **块 7 通过**（Master 2026-11-13，审的是 `1c2cdb2` 的 diff）：16 条都照大纲，细节也认可（同一份日志在几个分支上以最新提交为准；别的分支上的日志不给链接、改写分支名和提交号；设计日志的 2.1 Map、3.1 Solution 节号对过模板）；两个设计选择（`data-fact` 标记、地图首次打开才画加离线展开源码）同意；条号等 Sprint 18 合入后再核。
+- **块 8：看板夹具与核对脚本**（2026-11-13，Developer）。`tests/board_check.py`（`selftest`、`fixture`、`check`、`compare`、`facts`）。
+  - **夹具**：临时 git 仓库，中文产品日志（承诺、带 `<br/>` 的地图、五条 PBI 带括号词状态、一条已完成的 PBI）、一份已收官的冲刺日志放在 `scrum/documents/`（页面上不许出现）；两个开着的冲刺各在自己的分支上（Sprint 01 中文、Sprint 02 英文，一个等 PO、一个 `None`），设计日志与 IDEO 日志在 Sprint 02 的分支上。场景 A：工作区在 main，所有开着的日志只在分支上；场景 B：工作区在 Sprint 01 的分支上，Now 行有一处没提交的改动——该冲刺要读工作区。
+  - **核对**：脚本自带一份独立的日志读法，把每份开着的日志读成「事实」，再对页面：① 每个 `data-fact` 标记里的文字，都要是日志里的原文（承诺、Now、等 PO、阶段、工作块与它的 ✓、地图、方案标题、来源的分支与提交号、条目的标题状态规模）——日志没有的事实不许出现；② 该有的都在：每份开着的日志一张卡、IDEO 日志在它服务的卡上占一行、每个阶段与工作块的完成标记对；③ 顶部「等 PO」条里恰好是各日志的 Waiting for PO，不多不少，`None` 的不列；④ 条目分组与项目自己的分组一致（括号词分组、其余归 Other），已完成和已收官的不许出现；⑤ 链接都打得开（页内 id、工作区里的文件），工作区里有的日志卡上要有链接；⑥ `compare`：同一状态下做的两页，事实集合相同（不算生成时间）。
+  - **自测**：两个场景各一份写对的参考页（只在自测里用）要过；各 18 种改坏的页要被抓到（改一个字的承诺、改写 Sprint Goal、删掉一条等 PO、改写 Now、翻转完成标记、死链、页内死链、改状态、露出已完成条目、改地图、地图里的 `<br/>` 没转义、来源提交号不对、卡片的 id 不对、两个分组并成一个、少了 IDEO 一行、编造一个事实、阶段标记挪错、给 `None` 的日志编一条等 PO）；还有 `compare` 的两条。共 48 条，全过。
+  - **给块 9 的约束**：生成要读别的分支上已提交的日志，模型得能跑 git 的只读命令；测试通道里给 `Bash`，但只放行 `git show`、`git branch`、`git for-each-ref`、`git ls-tree`、`git rev-parse`、`git log` 这几类前缀，加 `Read`、`Grep`、`Glob`、`Write`；工作目录是全新的临时夹具仓库，写文件也只落在里面。这一条偏离了 CLAUDE.md 的「工具限 Read、Grep、Glob、Skill」，理由是看板的活本来就要读分支。
 - **66 接口已交付**（Master 2026-11-13，Sprint 18 分支提交 `1e347b4`）：和 2.2 的读取规则一致；细节：承诺的格式只在 overview 第 17 条写定（首格 `Commitment`，中文日志写 `承诺`，第二格原文不加粗，只存一份，靠节标题认种类）；冲刺、设计、IDEO 三种日志头部 `> Now:` 后紧跟 `> Waiting for PO:`，没有写 `None`，产品日志没有这两行；IDEO 日志的 `For` 写它服务的日志的相对路径；工作块完成标记写在 sprint-log 第 9 条。Sprint 18 合进 main 以后，先把 main 合进本分支，再按合并后的原文核一遍。块 4 的 hook 脚本和块 8 的核对脚本都照这套读。
 
 ## 5. Test
