@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 19 (board-hook)
 
 > Started: 2026-11-13 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: worktree-golden-orbiting-bachman | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[support sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-19]-[do sprint 19]，golden-orbiting-bachman）
-> Now: Increment：做块 1（产品卡两版原型） · Master 2026-11-13 放行 How（PO 授权，见第 4 章）
-> Waiting for PO: None
+> Now: Increment：块 1 两版原型已交，等 PO 挑形式（35-2）；先做块 2（hook 小研究） · Master 2026-11-13 放行 How（PO 授权，见第 4 章）
+> Waiting for PO: 35-2 看板形式
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
 
@@ -138,5 +138,7 @@ Go-ahead: Master 2026-11-13 放行（PO 授权，见第 4 章）：本分支上�
 - 日志由 Master 开：Developer 正要开时，PO 交代精化由 Master 做，Master 就把开日志和精化一起写了。
 - **Developer 复述无疑问**（2026-11-13）：其中「冲刺卡的完成情况读哪里」一处先问了 Master，答复（✓ 标记、路线图只放产品日志里的状态）已补进 2.2 的接口和 35-3。
 - 第 5 章标题：开日志时漏了（模板要求每个标题都留着），Developer 2026-11-13 补上；Sprint 18 的日志同样没有这一章。
+- **块 1 进展**（2026-11-13）：两版产品卡原型已做好，在 `prototype/`（`Board.md`、`Board.html`）。版式手排，数据由一次性脚本（不入库）从真实日志填入：产品日志取 `main` @ 74b929b，Sprint 18 取分支 `claude/youthful-payne-b1e139` 已提交的 df88e67，Sprint 19 取工作区；产品卡的内容和顺序照 35-3，另放了两张冲刺卡的摘要（承诺、Now、等 PO），让链接有去处。网页版用 Edge 无头渲染核对过：联网时 Mermaid 出图，架构图占一屏，网页里可折叠。Waiting for PO 已写上 35-2，等 Master 转 PO 挑；PO 挑定后记在这里并给块 1 标 ✓。
+- **读法上的发现，记给块 7**：条目分组靠产品日志状态列里「（主线）」「（副线）」这样的字，别的项目未必有这种写法——看板约定要写明「照状态列原文分组，没有括号标注的归其他」，状态链到冲刺卡靠「在 Sprint NN」。
 
 ## 5. Test

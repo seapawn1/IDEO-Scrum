@@ -1,0 +1,152 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IDEO-Scrum 看板 · 产品卡（原型 B：网页）</title>
+<style>
+:root { --bg:#f4f6f8; --card:#fff; --ink:#1f2933; --muted:#697586; --line:#e0e5eb; --accent:#2f6fed;
+        --warn:#a15c07; --warnbg:#fff6e3; --ok:#256029; --okbg:#e8f5e9; }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--ink);
+       font:15px/1.6 "Segoe UI","Microsoft YaHei",-apple-system,sans-serif; }
+.wrap { max-width:1200px; margin:0 auto; padding:24px 28px 56px; }
+h1 { margin:0 0 4px; font-size:22px; }
+.meta { color:var(--muted); font-size:12.5px; }
+.proto { display:inline-block; margin-left:8px; padding:1px 8px; border-radius:999px; background:#fde8e8;
+         color:#9b1c1c; font-size:12px; vertical-align:middle; }
+.banner { margin:18px 0; padding:12px 16px; background:var(--warnbg); border:1px solid #f1d49a;
+          border-left:5px solid var(--warn); border-radius:8px; }
+.banner.none { background:var(--okbg); border-color:#b7dfba; border-left-color:var(--ok); }
+.banner ul { margin:6px 0 0; padding-left:20px; }
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.cols { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 18px; }
+.label { font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+.commit { font-size:16px; margin:0; }
+section.block { margin-top:22px; }
+section.block > h2 { font-size:15px; margin:0 0 10px; color:var(--muted); font-weight:600; }
+.pbi { margin-top:10px; padding:10px 12px; border:1px solid var(--line); border-radius:8px; background:#fbfcfd; }
+.badge { display:inline-block; padding:1px 8px; border-radius:999px; background:#eef2ff; color:#3b4cca;
+         font-size:12px; margin-right:6px; }
+.size { color:var(--muted); font-size:12px; }
+.ptitle { margin:4px 0 6px; font-weight:600; }
+.chip { display:inline-block; padding:1px 9px; border-radius:999px; border:1px solid var(--line);
+        font-size:12px; color:var(--muted); text-decoration:none; }
+.chip.sprint { background:var(--okbg); border-color:#b7dfba; color:var(--ok); }
+.kv { margin-top:10px; }
+.kv > span { font-size:12px; color:var(--muted); }
+.kv > p { margin:2px 0 0; }
+.kv .warn { color:var(--warn); font-weight:600; }
+.src { margin-top:12px; font-size:12px; color:var(--muted); }
+.src a, .card a { color:var(--accent); }
+details summary { cursor:pointer; color:var(--muted); font-size:12.5px; }
+summary.dsum { font-size:15px; font-weight:600; margin-bottom:8px; }
+pre.mermaid { background:#fff; margin:0; overflow:auto; }
+pre.src-code { white-space:pre-wrap; font-size:12px; background:#f6f8fa; padding:10px; border-radius:6px; }
+@media (max-width:860px) { .grid2, .cols { grid-template-columns:1fr; } }
+</style></head><body>
+<div class="wrap">
+<h1>IDEO-Scrum 看板 · 产品卡<span class="proto">原型 B：网页 · 用完即弃</span></h1>
+<div class="meta">版式手排，数据由一次性脚本从真实日志填入；不是看板成品。生成于 2026-11-13 21:16（UTC+8） · 读了：main @ 74b929b（产品日志） · claude/youthful-payne-b1e139 @ df88e67（Sprint 18） · worktree-golden-orbiting-bachman 工作区（Sprint 19）</div>
+<div class="banner"><strong>等 PO 拍板 · 1 项</strong><ul><li><strong>Sprint 19</strong>：35-2 看板形式 <a href="#sprint-19">冲刺卡</a></li></ul></div>
+<div class="grid2">
+<div class="card"><div class="label">Product</div><p class="commit">IDEO-Scrum：把 Design Thinking 与 Scrum Sprint 装进 Claude Code。</p></div>
+<div class="card"><div class="label">Product Goal</div><p class="commit">产品化：从作者能用到大家都好用；看板一眼看清进度，文档讲清规矩；懂 Scrum 的人照着就能走完第一个冲刺。（PO 2026-11-13 定）</p></div></div>
+<div class="src">日志原文：<a href="../../../../../../scrum/ProductBacklog.md">ProductBacklog.md</a>（main @ 74b929b）</div>
+<section class="block"><details open class="card" id="diagram">
+<summary class="dsum">架构图（点这里收起、展开）</summary>
+<pre class="mermaid">flowchart TD
+    U[&quot;用户：懂 Scrum 的 solo 开发者（也是 PO）&quot;]
+    M[&quot;Master&quot;]
+    D[&quot;Developer&quot;]
+    G[&quot;Designer&quot;]
+    S[&quot;Stakeholder（含 PO 助手）&quot;]
+    U --&gt; A[&quot;① 装插件，读 README 与快速上手（PBI-62、64）&quot;]
+    A --&gt; A2[&quot;② 召唤角色进门（PBI-65、60）&quot;]
+    A2 --&gt; B[&quot;③ 写产品日志：Product · 架构 · PBI（product-log）&quot;]
+    M --&gt; B
+    B --&gt; C[&quot;④ Planning：Why → What（精化）→ How（计划，不是步骤）（sprint-log；日志头部 PBI-66）&quot;]
+    B -- &quot;某条 PBI 要设计&quot; --&gt; X0{&quot;设计冲刺还是五模式？（ideo-log）&quot;}
+    X0 -- &quot;设计冲刺&quot; --&gt; X[&quot;设计冲刺：五个阶段，各站在一个 IDEO 模式上（design-log）&quot;]
+    X0 -- &quot;五模式&quot; --&gt; I[&quot;五模式：一两个方法就地用，或开 IDEO 日志（ideo-log）&quot;]
+    B -- &quot;白纸：产品和 Product Goal 写不出来&quot; --&gt; X
+    C -- &quot;精化碰到难点&quot; --&gt; X0
+    G --&gt; X
+    S --&gt; X
+    X -- &quot;结论回流&quot; --&gt; B
+    I -- &quot;结论回流&quot; --&gt; B
+    C --&gt; P[&quot;⑤ PO 放行&quot;]
+    P --&gt; W[&quot;⑥ 施工（sprint-log）&quot;]
+    D --&gt; W
+    W --&gt; R[&quot;⑦ Test：测试 · 审阅 · PO 决定收官或回去&quot;]
+    R --&gt; V[&quot;⑧ Review：冲刺日志、已结束的设计日志与 IDEO 日志归档 · 产品日志保鲜&quot;]
+    S --&gt; V
+    V --&gt; T[&quot;⑨ Retro&quot;]
+    T --&gt; E[&quot;结局：Sprint Goal 达成，增量交付，Product Goal 向前一步（体验测试 PBI-63 从 ① 走到这里）&quot;]
+    C -. &quot;日志头部&quot; .-&gt; K[&quot;看进度：看板卡片（PBI-35）· 目标常驻 hook（PBI-61）&quot;]
+    K -.-&gt; U</pre>
+<details id="diagram-source"><summary>图出不来时看源码（需要联网加载 Mermaid）</summary>
+<pre class="src-code">flowchart TD
+    U[&quot;用户：懂 Scrum 的 solo 开发者（也是 PO）&quot;]
+    M[&quot;Master&quot;]
+    D[&quot;Developer&quot;]
+    G[&quot;Designer&quot;]
+    S[&quot;Stakeholder（含 PO 助手）&quot;]
+    U --&gt; A[&quot;① 装插件，读 README 与快速上手（PBI-62、64）&quot;]
+    A --&gt; A2[&quot;② 召唤角色进门（PBI-65、60）&quot;]
+    A2 --&gt; B[&quot;③ 写产品日志：Product · 架构 · PBI（product-log）&quot;]
+    M --&gt; B
+    B --&gt; C[&quot;④ Planning：Why → What（精化）→ How（计划，不是步骤）（sprint-log；日志头部 PBI-66）&quot;]
+    B -- &quot;某条 PBI 要设计&quot; --&gt; X0{&quot;设计冲刺还是五模式？（ideo-log）&quot;}
+    X0 -- &quot;设计冲刺&quot; --&gt; X[&quot;设计冲刺：五个阶段，各站在一个 IDEO 模式上（design-log）&quot;]
+    X0 -- &quot;五模式&quot; --&gt; I[&quot;五模式：一两个方法就地用，或开 IDEO 日志（ideo-log）&quot;]
+    B -- &quot;白纸：产品和 Product Goal 写不出来&quot; --&gt; X
+    C -- &quot;精化碰到难点&quot; --&gt; X0
+    G --&gt; X
+    S --&gt; X
+    X -- &quot;结论回流&quot; --&gt; B
+    I -- &quot;结论回流&quot; --&gt; B
+    C --&gt; P[&quot;⑤ PO 放行&quot;]
+    P --&gt; W[&quot;⑥ 施工（sprint-log）&quot;]
+    D --&gt; W
+    W --&gt; R[&quot;⑦ Test：测试 · 审阅 · PO 决定收官或回去&quot;]
+    R --&gt; V[&quot;⑧ Review：冲刺日志、已结束的设计日志与 IDEO 日志归档 · 产品日志保鲜&quot;]
+    S --&gt; V
+    V --&gt; T[&quot;⑨ Retro&quot;]
+    T --&gt; E[&quot;结局：Sprint Goal 达成，增量交付，Product Goal 向前一步（体验测试 PBI-63 从 ① 走到这里）&quot;]
+    C -. &quot;日志头部&quot; .-&gt; K[&quot;看进度：看板卡片（PBI-35）· 目标常驻 hook（PBI-61）&quot;]
+    K -.-&gt; U</pre></details></details></section>
+<section class="block"><h2>未完成的条目 · 10</h2><div class="cols">
+<div class="card"><div class="label">主线 · 4</div>
+<div class="pbi"><span class="badge">PBI-35</span><span class="size">M</span><div class="ptitle">看板——卡片化，一眼看清进度</div><a class="chip sprint" href="#sprint-19">在 Sprint 19（主线）</a></div>
+<div class="pbi"><span class="badge">PBI-61</span><span class="size">M</span><div class="ptitle">目标常驻——hook 把承诺放进上下文</div><a class="chip sprint" href="#sprint-19">在 Sprint 19（主线）</a></div>
+<div class="pbi"><span class="badge">PBI-63</span><span class="size">M</span><div class="ptitle">体验测试——陌生人从装插件走到看板</div><span class="chip">待选（主线）</span></div>
+<div class="pbi"><span class="badge">PBI-64</span><span class="size">S～M</span><div class="ptitle">发布包装</div><span class="chip">待选（主线）</span></div>
+</div>
+<div class="card"><div class="label">副线 · 4</div>
+<div class="pbi"><span class="badge">PBI-65</span><span class="size">M</span><div class="ptitle">加载边界——ideo 放开，其余召唤才来</div><a class="chip sprint" href="#sprint-18">在 Sprint 18（副线）</a></div>
+<div class="pbi"><span class="badge">PBI-60</span><span class="size">S</span><div class="ptitle">角色说明——PO 助手是谁，Master 能替你做到哪</div><a class="chip sprint" href="#sprint-18">在 Sprint 18（副线）</a></div>
+<div class="pbi"><span class="badge">PBI-66</span><span class="size">M</span><div class="ptitle">日志头部——承诺、Now、等 PO 的事，决定前引用目标</div><a class="chip sprint" href="#sprint-18">在 Sprint 18（副线）</a></div>
+<div class="pbi"><span class="badge">PBI-62</span><span class="size">M</span><div class="ptitle">教学——README、快速上手、词汇表、示例项目</div><span class="chip">待选（副线）</span></div>
+</div>
+<div class="card"><div class="label">以后 · 2</div>
+<div class="pbi"><span class="badge">PBI-51</span><span class="size">L</span><div class="ptitle">插件的记忆机制（研究）</div><span class="chip">以后</span></div>
+<div class="pbi"><span class="badge">PBI-12</span><span class="size">L</span><div class="ptitle">方法论分享——公开系列</div><span class="chip">以后</span></div>
+</div>
+</div></section>
+<section class="block"><h2>冲刺卡 · 开着的 2 张</h2><div class="grid2">
+<div class="card" id="sprint-18"><div class="label">Sprint 18 · rules-first</div><div class="kv"><span>Sprint Goal</span><p>规矩先顺：日志头部统一，scrum、sprint、design 召唤才来，角色说明写清；看板和 hook 照着就能读，文档照着就能写。（PO 2026-11-13 定）</p></div><div class="kv"><span>Now</span><p>How：Developer 起草施工方案 · Master 2026-11-13 定精化结束（PO 授权，见第 4 章）</p></div><div class="kv"><span>等 PO</span><p>None</p></div><div class="src">截至提交 df88e67 · <a href="../../../../youthful-payne-b1e139/scrum/sprint-18-rules-first/SprintBacklog.md">日志原文</a></div></div>
+<div class="card" id="sprint-19"><div class="label">Sprint 19 · board-hook</div><div class="kv"><span>Sprint Goal</span><p>看得见：看板把产品日志和开着的冲刺、设计浓缩成卡片，hook 把承诺放进上下文；PO 照着就能一眼看清进度，AI 照着就不忘目标。（PO 2026-11-13 定）</p></div><div class="kv"><span>Now</span><p>Increment：块 1 两版原型已交，等 PO 挑形式（35-2）；先做块 2（hook 小研究） · Master 2026-11-13 放行 How（PO 授权，见第 4 章）</p></div><div class="kv"><span>等 PO</span><p class="warn">35-2 看板形式</p></div><div class="src">读自工作区（本分支） · <a href="../SprintBacklog.md">日志原文</a></div></div>
+</div></section>
+<div class="src" style="margin-top:28px">本版没做：设计卡、冲刺卡里的 PBI 路线图与 How 进度（只放了承诺、Now、等 PO）。</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    if (window.mermaid) {
+      mermaid.initialize({ startOnLoad: false });
+      mermaid.run({ querySelector: 'pre.mermaid' });
+    } else {
+      document.getElementById('diagram-source').open = true;
+    }
+  });
+</script>
+</body></html>
