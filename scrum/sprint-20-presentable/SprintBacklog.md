@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 20 (presentable)
 
 > Started: 2026-11-14 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: worktree-sprint-20-presentable | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[management sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-20]-[do presentable]，原生 worktree sprint-20-presentable）
-> Now: What：四条的第 1～5 步都已过；68、64 的第 6 步 PO 已认可；62 的复述已到、Master 定了 Developer 提的几处，等 PO 认可；63 等 Developer 复述；第 7 步等复述完由 PO 定精化结束 · 最近一次 PO 决定：2026-11-14 认可 68、64 的复述，63 的细节交 Master 定
-> Waiting for PO: 62 第 6 步：Developer 的复述对不对（含 Master 改产品日志 2.1 陌生人卡的「看得到什么」）
+> Now: What：四条的第 1～6 步都已过；68、64 的复述 PO 已认可，62、63 的复述已到、Master 定了 Developer 提的几处，等 PO 认可；第 7 步等 PO 定精化结束 · 最近一次 PO 决定：2026-11-14 认可 68、64 的复述，63 的细节交 Master 定
+> Waiting for PO: 62、63 第 6 步：Developer 的复述对不对；第 7 步：精化结束了没有
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
 
@@ -248,7 +248,27 @@ PO 2026-11-14 定 Sprint Goal（「可以，我觉得目标可以的」）；DoD
 - 63-4 照 63-1 的标准过线；修不了的卡点登记进产品日志；
 - 63-5 报告先写结论。
 
-**第 6 步 · Developer 的复述**：待写。
+**第 6 步 · Developer 的复述**（2026-11-14，Developer 发给 Master，Master 写进；待 PO 认可）
+
+- **立足点**：每一版都有人替陌生人从头走一遍，装上就能用、不被卡住。这次用便宜的模型模拟，只测 Claude Code，放在本冲刺最后，测 68、64、62 做完后的新版。
+- **怎么模拟**：两个 claude-magpie 会话——一个扮陌生人（拿陌生人卡的「是谁」、README 和它链到的文档、任务；「要什么、怎么算满意」是判卷用的，不给它），一个是装了新版插件、在临时目录的小项目里干活的会话。陌生人只通过一个脚本跟后者说话，脚本传话、记录、控制轮数和花费。从装插件走到第一次收官，最后看板。
+- **装法**（Developer 提）：从本地仓库装：在隔离的配置目录里 `marketplace add <本地路径>` 加 `install`，和 README 的三行一一对应，只把 GitHub 地址换成本地路径（写进报告）。先冒烟：隔离的配置目录下 magpie 的认证还管不管用；不行就退回 `--plugin-dir`，并把「装」这一步标成没测到。
+- **任务**（Developer 提）：一个很小的虚构项目（比如只有一个文件的小工具），陌生人当 PO，从白纸写产品日志、开一个小冲刺、走完五个阶段、收官；花费靠轮数和时长上限控制。
+- **卡住与过线**（Developer 起草，写进 63-a、单独提交后再跑）：给陌生人一个「问作者」的出口，只记录、不回答，每次都算卡点（量「不问作者」）；卡住 = 同一步卡两轮以上、会话报错或原地打转、陌生人要的信息 README 和链到的文档里找不到、撞到轮数或时长上限没走完；先冒烟 1 次，正式跑 3 次；卡点是文档的毛病还是模型的毛病，读记录判，重复出现（≥2 次）或要的信息文档里没有的才算文档的卡点；过线的数字在 63-a 里写。
+- **隔离**：两边都不带作者的记忆和配置：白名单环境、`--setting-sources project,local`，核实子进程真被限制了（init 的 permissionMode、permission_denials）；小项目放系统临时目录，不放 `~/.claude` 下。
+- **看板这一步**：模拟的陌生人看不了网页，用「看板文件生成出来 + 68-4 的检查脚本通过 + 陌生人能说出现在在等 PO 的事」代替「看一眼」；超时给够。
+- **卡点怎么办**：在 62、64 范围里的就地修、再跑；范围外的登记进产品日志。
+- **风险**：便宜的模型扮陌生人，会把模型自己的毛病当成文档的卡点；报告分「文档的卡点」和「模型的失误」两栏，先写结论。
+
+**Developer 提的几处，Master 定**（2026-11-14，在 PO 给 63「你来决定」的范围内）
+
+| 点 | Master 定 |
+| --- | --- |
+| a 陌生人拿到的材料 | README 加它链到的文档；产品日志 2.1 的陌生人卡已改（e6f734f） |
+| b 测法放哪 | 照 Developer 的建议：脚本、陌生人卡文本、任务放进 `scripts/stranger_test/`（产品日志写了「每版都跑」，不放冲刺文件夹）；原始输出放仓库外，仓库里只留判定汇总（CLAUDE.md 回归测试的规矩） |
+| c 花费 | 冒烟 1 次、正式 3 次；单次轮数和时长上限 Developer 在 63-a 里定，Master 审 |
+| d 「问作者」的出口与卡住的四条 | 照 Developer 起草的写进 63-a；判错的逐条人工看，改判写明理由；文档里本该有、只出现一次的卡点也算数，不因次数少放过 |
+| 看板生成的时长 | Sprint 19 的 15～25 分钟是收紧权限、只能手抄时量的；PO 平时生成很快。超时照受限的情况给够，实际时长记进报告 |
 
 ## 3. How
 
