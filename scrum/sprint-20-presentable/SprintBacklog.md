@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 20 (presentable)
 
 > Started: 2026-11-14 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: worktree-sprint-20-presentable | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[management sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-20]-[do presentable]，原生 worktree sprint-20-presentable）
-> Now: Increment：块 1（给设计会话的 brief）在写，设计线由 PO 另开 · 最近一次 PO 决定：2026-11-14 放行第 3 章（「可以，那就放行吧」），范围见第 3 章末行
+> Now: Increment：块 1（给设计会话的 brief 和样本）写好了，等 Master 审；设计线由 PO 另开 · 最近一次 PO 决定：2026-11-14 放行第 3 章（「可以，那就放行吧」），范围见第 3 章末行
 > Waiting for PO: None
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
@@ -339,7 +339,8 @@ Go-ahead: 2026-11-14，PO（「可以，那就放行吧」，Master 转来）。
 - **设计线怎么定的**（2026-11-14）：PO 在我这边提：「其实我想的呢，就是说可能我们现在先去建一个工作树。……开一个设计分支。然后先去把这个给冲刺出来。呃，做出来之后呢。我再把这个东西合并过来，合并到你这里，然后你按照我们的呃原型来去设计，就是说来并进去。然后同时我觉得你可以去干其他的事情了，我觉得应该是不影响。」我答了四处调整（记录用 IDEO 日志、交接契约、先交开场包、合并由我做）。Master 的看法：IDEO 日志合 ideo-log 第 3 条；设计会话用 Designer 角色；设计分支从冲刺分支拉出来，IDEO 日志的 For 指向冲刺日志，由我合并，原型在 IDEO 日志结束后的第一次 Review 归档、删掉；我做 64-a、62 的大纲和 63-a 它同意。PO 经 Master 转来：「那 IDO 日志如果要开工作数，那就肯定是要开了，这个没问题。」「我去定看板……然后他去把其他的那些点都给写好」。PO 在我这边：「可以就用 ideo 日志吧，然后我新开一个设计师的对话。……别的反正我觉得我就没有什么好参与的了，你你反正你需要我去做什么，然后你再找我吧」；「改不改冲刺日志，我觉得都没关系吧。反正最后都可以merge，但当然我肯定是要新建一个设计日志的，这是肯定的。」
 - **改开 IDEO 日志的理由**：产品日志 PBI-68 备注（PO 2026-11-14）原定「不开设计冲刺、不开 IDEO 日志，在冲刺日志里记」，那是原型还在冲刺里做的前提。现在原型独立成线、多于一个会话，照 ideo-log 第 3 条开 IDEO 日志 `scrum/ideo-board/`；两条线改同一份冲刺日志会冲突，所以轮次记在 IDEO 日志里，要点回流本章。「不开设计冲刺」没变：这是五模式自成一轮，不跑设计冲刺的步骤（ideo-log 第 2 条）。产品日志 68 的备注由 Master 改。第 3 章据此排：68-a 不再是我的块，成了设计线；原来写在 2.2 里的「轮次记在第 4 章」改成记在 IDEO 日志。
 - **设计线怎么开**（给 PO 开会话用）：新终端 `claude --worktree ideo-board`（原生建法，分支 `worktree-ideo-board`，从远端 main 拉，比冲刺分支旧）；进去先 `git merge worktree-sprint-20-presentable`（通常是快进合并），再输入 `/ideo-scrum:designer`；开 `scrum/ideo-board/IdeoBacklog.md`，For 指向 `../sprint-20-presentable/SprintBacklog.md`；视觉用 `seapawn:frontend-design`。第 1 轮三个起点方向，骨架各不相同：A 决策台（沿用第 1 版骨架：最上面等 PO 拍板，其次正在做，再往下是条目）；B 旅程线（把架构图缩成一条线，条目钉在它所属的步骤上，冲刺阶段在线上亮起，架构图和路线图合成一张）；C 流向列（现在、下一个、以后三列，等 PO 拍板的做成卡上的旗子）。视觉先立一条：一处最响（等 PO 拍板），其余安静。
-- **第 1 版看板的现状**（我 2026-11-14 截图看的，文件 `S:\IDEO-Scrum\scrum\Board.html`）：整页同一种白卡片、灰底，什么都一样响；最响的是一条绿条「Nothing is waiting for the Product Owner」；生成时没有开着的冲刺，整页说不出「现在到哪了」；大写小标签、英文标签配中文内容；下半屏空着。手机宽度：用 `--window-size=375` 截的页面右边被裁，像是排版宽度比窗口宽（原因没验证），所以手机宽度要用 375 宽的 iframe 套着页面来截。这些写进 brief。
+- **第 1 版看板的现状**（我 2026-11-14 截图看的，文件 `S:\IDEO-Scrum\scrum\Board.html`）：整页同一种白卡片、灰底，什么都一样响；最响的是一条绿条「Nothing is waiting for the Product Owner」；生成时没有开着的冲刺，整页说不出「现在到哪了」；大写小标签、英文标签配中文内容；下半屏空着。手机宽度：用 `--window-size=375` 截的页面右边被裁，是截图方法的假象；把页面放进 375 宽的 iframe 里截，第 1 版在真 375 宽下单列、不溢出，只是又长又平（块 1 的 `board-data/shot.py` 核对过，还拿一个故意做宽的页面验过它报得出溢出）。这些写进了 brief。
 - **放行，和产品日志 68 的备注**（2026-11-14）：PO 放行第 3 章（「可以，那就放行吧」，Master 转来），范围见第 3 章末行；Now 改成 Increment，Waiting 改成 None。Master 在 plan 模式里写不了文件，产品日志 PBI-68 备注里「不开 IDEO 日志」那处，照它给的文字由我在本分支改了（只改那一句）。
+- **块 1（开场包）做了什么**（2026-11-14）：`board-brief.md`（一页多，写明看板的一件事、PO 的话、第 1 版的毛病、验收 68-1～68-6、交接契约、样本、截图办法、第 1 轮三个方向、怎么交）；`board-data/` 下四份样本（`now/` 本仓库现状、`sprint-19/` 收官前的日志、`acme/` Sprint 19 夹具的小项目、`blank/` 白纸）、第 1 版的两张截图、`shot.py`（一条命令出 1440 与真 375 宽的截图并报横向溢出）。样本文件不叫 `SprintBacklog.md`、`ProductBacklog.md`，免得生成看板时被当成开着的日志（Sprint 19 的教训）；收官时和冲刺文件夹一起删。设计线进工作树后要在块 1 提交之后跑 `git merge worktree-sprint-20-presentable`（已经合过的，再合一次就能拿到新提交）。
 
 ## 5. Test
