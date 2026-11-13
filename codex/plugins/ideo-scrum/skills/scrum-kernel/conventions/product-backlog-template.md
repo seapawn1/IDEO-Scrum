@@ -7,9 +7,15 @@
 
 ### 1.1 Product
 
+| Commitment | <product statement> |
+| --- | --- |
+
 <!-- What the product is, in a sentence or two, and its boundary: what it will not do. -->
 
 ### 1.2 Product Goal
+
+| Commitment | <Product Goal> |
+| --- | --- |
 
 <!-- An optional vision line; the current Product Goal; the directions after it (product-log.md, conventions 4 and 18). -->
 

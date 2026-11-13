@@ -40,7 +40,7 @@ Convention 18 holds at every step; see Throughout, below.
 
 ## Each part
 
-4. **Product and Product Goal** — Fill sections 1.1 and 1.2 as the template shows; the vision line is optional.
+4. **Product and Product Goal** — Keep the product statement in section 1.1 and the Product Goal in section 1.2, each in its own one-row commitment table as the template shows (`overview.md`, *Goal fixed, plan flexible*); the vision line is optional. The product log has no Now or Waiting for PO line: it has no stage; those lines belong to the Sprint, design, and IDEO logs.
 5. **Two kinds of Done** — Outcome Done covers the value the product delivers to its stakeholders; Output Done covers the quality of every Increment. A Sprint picks the items that matter to it; the whole Definition of Done still applies. Write the Definition of Done precisely: add an item only when it holds in every case you can foresee, not just because it came up; one you are unsure of goes into the acceptance criteria instead.
 6. **Stakeholders in a short table** — List the stakeholders in section 2.1 in a short table, not a long profile per person. A Stakeholder subagent gets one row as its identity, and the AI fills in the details. If the table is empty, ask the Product Owner who belongs in it, and add the rows.
 7. **Architecture as a map** — Start section 2.2 with one map, drawn as `../design-kernel/steps/2-1-make-a-map.md` describes: actors on top, AI roles included, the ending at the bottom, five to fifteen steps between, as a Mermaid `flowchart TD`. Add a subsection only for a step that needs more words.

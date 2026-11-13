@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 18 (rules-first)
 
 > Started: 2026-11-13 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: claude/youthful-payne-b1e139 | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[support sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-18]-[do sprint 18]，youthful-payne-b1e139）
-> Now: Increment：H1 冻结测试材料，提交后交 Master 核对 · Master 2026-11-13 放行 H1～H6（PO 授权，见第 4 章）
+> Now: Increment：H2 的 66 接口已实现并静态核对，提交后交 Master 转主线 · Master 2026-11-13 核对 H1 通过（PO 授权，见第 4 章）
 > Waiting for PO: None
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
@@ -124,7 +124,7 @@ PO 2026-11-13 定 Sprint Goal
 
 | # | Work item | Output | Done when |
 | --- | --- | --- | --- |
-| H1 | 冻结测试材料 | 2.2 的测试补全稿：11 题的确切题干、对应内核与必读约定、内容判据、固定样本及测试环境；66 的四类静态样本与完成标记判据 | Master 核对不改既定门槛；标准单独提交，早于脚本自测、冒烟、基线与新版测试；本块不跑模型 |
+| H1 | 冻结测试材料 | 2.2 的测试补全稿：11 题的确切题干、对应内核与必读约定、内容判据、固定样本及测试环境；66 的四类静态样本与完成标记判据 | ✓ 2026-11-13；Master 核对不改既定门槛；标准单独提交，早于脚本自测、冒烟、基线与新版测试；本块不跑模型 |
 | H2 | 交付 66 共享接口 | 四份模板和相应约定的分支提交 diff；四类样本的读取核对；提交与接口位置交 Master 转给 Sprint 19 | 66 的五项验收全过，含 How 已完成 / 未完成行；承诺仍在原节，IDEO 不造目标、不加关卡；Codex 生成并核对通过，与插件同一提交；Master 已收到可用接口与证据 |
 | H3 | 固定同日基线 | 固定 main 提交的插件快照；冒烟结果；11 题各 3 次的基线及行为 / 内容两栏汇总 | Haiku 与 Read 权限冒烟通过；33 次结果完整，错判人工核查有理由；版本、通道、日期与隔离条件有记录，原始输出不入库 |
 | H4 | 改 65 与 60 的文字 | 四个内核 description、两条角色命令、五处 secretary 说法及连带约定的分支 diff；插件、README 与描述规约同批修改 | 65-1～65-7、60-1～60-3 对齐；不加 frontmatter 开关、不改 SKILL.md 正文；描述各 ≤1024 字符，secretary 零残留；冲突说法消除；Codex 同步核对，与源改动同提交 |
@@ -161,6 +161,17 @@ Go-ahead: Master 2026-11-13 放行（PO 授权，见第 4 章）：本分支上�
 - Developer 复述无疑问。承诺留原节、头部字段按日志类型区分、三类召唤与 ideo 放开的边界、角色代行与转达权限、测试门槛均按 2.2 定案；只把已有决定转成施工计划，不自行增加范围。
 
 - Master 2026-11-13 审过 How 并放行 H1～H6：仅本分支提交；合并、tag、发版留 Review，不推送。审阅用分支上的 diff（Master 定）；H1 标准与 H2 接口分别提交后立即报提交号。
-- H1：已补全 11 题和固定模拟样本、双栏判据与 66 静态预期；当前仅提交材料，没有脚本自测、冒烟或模型结果，待 Master 核对门槛后标完成。
+- H1：标准单独提交 `fde1f50`；Master 2026-11-13 核对通过，确认 A 按试次计、另列各核次数与既定门槛正确。此后才开始脚本自测与静态核对，H1 标完成。
+- H2：9 份现有模板 / 约定按 66 定案修改，章节与条号不变，承诺留原节；第 9 条加工作块完成标记，阶段决定前引目标，Now / Waiting for PO 与 For 明确；已归档日志未动。Codex 同步生成，不手改；提交后立即报 Master 转 Sprint 19。
 
 ## 5. Test
+
+| H2 核对 | 结果 |
+| --- | --- |
+| 判定脚本已知样本自测 | 双语键、已完成 / 未完成行、代码围栏隔离，通过 |
+| 四类模板的读取接口 | 4/4；承诺原文、应有 / 应无字段、For 指向、How 的 ✓ 行均一致 |
+| Codex 同步与核对 | 95 份包文件；内容、链接、导航错误均为 0，可重复生成 |
+| 官方 strict 插件校验 | Validation passed；目录检查另报既有 ICON_MISSING，不影响校验结果，图标属于 PBI-64 |
+| 历史日志 / 空白检查 | scrum/documents 的 diff 为空；git diff --check 通过 |
+
+尚未运行触发回归；H3 / H5 的模型调用在静态接口交付后进行。本表不是整项 DoD 已完成的声明。
