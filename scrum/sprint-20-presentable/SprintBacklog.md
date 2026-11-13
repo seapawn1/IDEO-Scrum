@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 20 (presentable)
 
 > Started: 2026-11-14 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: worktree-sprint-20-presentable | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[management sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-20]-[do presentable]，原生 worktree sprint-20-presentable）
-> Now: What：四条的第 1～5 步都已过；68、64 的第 6 步 PO 已认可；62、63 等 Developer 复述；第 7 步等复述完由 PO 定精化结束 · 最近一次 PO 决定：2026-11-14 认可 68、64 的复述，63 的细节交 Master 定
-> Waiting for PO: None（62、63 的复述到了再问 PO）
+> Now: What：四条的第 1～5 步都已过；68、64 的第 6 步 PO 已认可；62 的复述已到、Master 定了 Developer 提的几处，等 PO 认可；63 等 Developer 复述；第 7 步等复述完由 PO 定精化结束 · 最近一次 PO 决定：2026-11-14 认可 68、64 的复述，63 的细节交 Master 定
+> Waiting for PO: 62 第 6 步：Developer 的复述对不对（含 Master 改产品日志 2.1 陌生人卡的「看得到什么」）
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
 
@@ -194,7 +194,27 @@ PO 2026-11-14 定 Sprint Goal（「可以，我觉得目标可以的」）；DoD
 - 62-5 Sprint 19 交来的说明点都讲到；
 - 62-6 英文为准，中文同一提交跟着改；和约定原文对得上；无死链。
 
-**第 6 步 · Developer 的复述**：待写。
+**第 6 步 · Developer 的复述**（2026-11-14，Developer 发给 Master，Master 写进；待 PO 认可）
+
+- **中英两份**：README 和快速上手各一份英文、一份中文，英文为准、中文跟着，同一提交改；词汇表一张中英对照表，不拆。
+- **README**：讲是什么；怎么装、怎么升级；第一句说什么（入口要教）；和教科书 Scrum 不同的几处；授权；反馈；链到快速上手和词汇表；文件地图留在最后。64 的升级、授权、反馈三段一起写。先给 PO 看大纲，PO 说行再写全文。
+- **快速上手**：一页，一个会话、PO 加 Master，从装好走到第一次收官；陌生人卡问过的都讲到：你就是 PO；不熟 git 怎么收官（git 的活 Master 做，PO 只说「收官」，推送要 PO 点头；项目不是 git 仓库就先让 Master `git init`）；哪些规矩必须守；书面授权最简怎么写（日志里一行：谁、范围、覆盖哪些阶段）。Developer 写，PO 整份读。
+- **词汇表**：只收插件里会撞上的词：陌生人卡点名的（五模式和设计冲刺的区别、role card、Five-Act Interview、rumble、Lightning Demos），加 Now / Waiting for PO、PO 助手、看板、hook。出自《Sprint》的词用自己的话写一两句，指到 design-kernel 的 `steps/` 里对应的文件，不抄书（全版权）。
+- **看板和 hook 的说明（62-d）**：hook 开关、Windows 要装 Git for Windows、macOS 未实测、Codex 先在 `/hooks` 里信任；看板等 68 定稿，照 68 的结果写。
+- **召唤入口**：README 的「第一句说什么」和快速上手教怎么叫出四个角色和 ideo（顺带覆盖 PBI-67 的「入口教用户」）；stakeholder 的描述是写给 AI 挑技能的，人读靠这两份。
+- **放哪、怎么命名**（Developer 提）：`README.md` 改成英文（GitHub 默认显示），`README.zh-CN.md` 中文，开头互相链；`docs/quick-start.md`、`docs/quick-start.zh-CN.md`；`docs/glossary.md` 一张表（Term | 中文 | Meaning | 含义 | See）；62-d 写成 README 里的一节；示例项目不动，README 指向 `scrum/ProductBacklog.md` 和一份归档的冲刺日志，写明示例是中文的；不放进插件（放进去要改 Codex 同步脚本和导航检查，这次不做）。
+
+**Developer 提的几处，Master 定**（2026-11-14，在 PO 给 62「都可以听你的」、63「你来决定」的范围内）
+
+| 点 | Master 定 |
+| --- | --- |
+| a 陌生人卡看得到什么 | 改：产品日志 2.1 陌生人卡的「看得到什么」从「只有插件和 README」改成「插件、README，和 README 链到的文档」——快速上手和词汇表在 `docs/`，63 要一起给陌生人。同一提交改产品日志 |
+| b README 的文件地图 | 倾向收到文件夹一级（根目录、插件、Codex 包、`scrum/` 各几行），不逐条列归档；它改 CLAUDE.md「README 是文件索引」的说法，放进 README 大纲给 PO 看时一起定；CLAUDE.md 收官时由 Master 在 PO 的会话里改 |
+| c 「一页」 | 照 Developer 的理解：一个文件、约 80 行以内、读完不用翻别的文档就能走完 |
+| d 两份一致 | 脚本核对两份的标题、列表项数、链接；「和约定原文对得上」由 Master 或全新子代理（Haiku）逐句审 |
+| e 词汇表大纲 | 词条清单跟 README 的大纲一起给 PO 看，一次定 |
+| git 的写法 | 快速上手写成可以让 Master 代做 git 的步骤，是建议，不写成新规矩；凡说到规矩的句子，都要对得上约定原文（DoD 内容忠实） |
+| 连带 | README、快速上手、词汇表会重复约定里的说法：收官时 CLAUDE.md「改规矩先找它的其他说法」的清单加上这三份 |
 
 **PBI-63 体验测试**
 
