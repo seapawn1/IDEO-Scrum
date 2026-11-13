@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 19 (board-hook)
 
 > Started: 2026-11-13 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: worktree-golden-orbiting-bachman | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[support sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-19]-[do sprint 19]，golden-orbiting-bachman）
-> Now: Increment：块 1 两版原型已交，等 PO 挑形式（35-2）；先做块 2（hook 小研究） · Master 2026-11-13 放行 How（PO 授权，见第 4 章）
-> Waiting for PO: 35-2 看板形式
+> Now: Increment：块 1 完成（35-2 定网页版，Master 2026-11-13）；做块 2（hook 小研究） · Master 2026-11-13 放行 How（PO 授权，见第 4 章）
+> Waiting for PO: None
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
 
@@ -99,7 +99,7 @@ PO 2026-11-13 定 Sprint Goal
 
 | # | Work item | Output | Done when |
 | --- | --- | --- | --- |
-| 1 | 产品卡两版原型（35-1、35-2） | 冲刺文件夹 `prototype/` 下手做两个文件：`Board.md`（带 Mermaid 架构图）、`Board.html`（单文件网页）；数据取 main 最新的产品日志和 Sprint 18、19 日志的 Now、Waiting for PO；标「原型，用完即弃」 | 两版都能打开，卡上每个事实对得到日志里的一行；Waiting for PO 写上 35-2；Master 转 PO，PO 挑定后记进第 4 章 |
+| 1 | 产品卡两版原型（35-1、35-2） | 冲刺文件夹 `prototype/` 下手做两个文件：`Board.md`（带 Mermaid 架构图）、`Board.html`（单文件网页）；数据取 main 最新的产品日志和 Sprint 18、19 日志的 Now、Waiting for PO；标「原型，用完即弃」 | ✓ 2026-11-13　两版都能打开，卡上每个事实对得到日志里的一行；Waiting for PO 写上 35-2；Master 转 PO，PO 挑定后记进第 4 章 |
 | 2 | hook 小研究（61-2～61-6） | 第 4 章一段研究记录，每条带出处：SessionStart 的 source、UserPromptSubmit 怎么注入、插件里 hook 怎么声明、Windows 下用什么 shell 跑、环境变量与开关、Codex 支不支持 hook（用 hookify、plugin-dev:hook-development 和 claude-code-docs 查） | 61-2～61-6 的每个未知都有答案，没有凭记忆写的；答案推翻 2.2 的哪一点，当天报 Master |
 | 3 | 频率测试的标准 | `tests/frequency-test.md`：臂、场景、探针、判定、过线、夹具（做法见 Key choices）；先写、单独提交 | 单独提交在正式运行之前；Master 看过 |
 | 4 | hook 脚本与直接运行测试 | `plugins/ideo-scrum/hooks/` 下的声明和 POSIX sh 脚本（读承诺、开关、出错静默，暂留测试用的模式开关）；样本项目夹具和比对脚本（直接喂输入，不起会话） | 验收 61-1～3 通过；本机 Windows 实测通过；macOS、Linux 写明依据 |
@@ -139,6 +139,7 @@ Go-ahead: Master 2026-11-13 放行（PO 授权，见第 4 章）：本分支上�
 - **Developer 复述无疑问**（2026-11-13）：其中「冲刺卡的完成情况读哪里」一处先问了 Master，答复（✓ 标记、路线图只放产品日志里的状态）已补进 2.2 的接口和 35-3。
 - 第 5 章标题：开日志时漏了（模板要求每个标题都留着），Developer 2026-11-13 补上；Sprint 18 的日志同样没有这一章。
 - **块 1 进展**（2026-11-13）：两版产品卡原型已做好，在 `prototype/`（`Board.md`、`Board.html`）。版式手排，数据由一次性脚本（不入库）从真实日志填入：产品日志取 `main` @ 74b929b，Sprint 18 取分支 `claude/youthful-payne-b1e139` 已提交的 df88e67，Sprint 19 取工作区；产品卡的内容和顺序照 35-3，另放了两张冲刺卡的摘要（承诺、Now、等 PO），让链接有去处。网页版用 Edge 无头渲染核对过：联网时 Mermaid 出图，架构图占一屏，网页里可折叠。Waiting for PO 已写上 35-2，等 Master 转 PO 挑；PO 挑定后记在这里并给块 1 标 ✓。
+- **35-2 定了：网页版（B）**（Master 2026-11-13；PO 把形式和版式都交给 Master 定，原话：「可以，这些你可以来决定」）。理由：看板不提交，Markdown 能进 git、能看差异的长处用不上；网页更接近 PO 要的卡片化。版式：块的顺序不动，照 PO 的卡片设计——承诺在上，架构图在中，条目在下；「等 PO 拍板」仍放最上面；**架构图默认收起、点一下展开**，条目不被挤到下面；离线时显示 Mermaid 源码（退路）。网页生成时容易走样，由块 7 的模板和块 8 的核对脚本兜。给块 7 的两条：模板里架构图用 `<details>` 且默认不加 `open`；原型里的 `Board.md` 和默认展开的写法都不带进模板。块 1 标 ✓，Waiting for PO 改回 None。
 - **读法上的发现，记给块 7**：条目分组靠产品日志状态列里「（主线）」「（副线）」这样的字，别的项目未必有这种写法——看板约定要写明「照状态列原文分组，没有括号标注的归其他」，状态链到冲刺卡靠「在 Sprint NN」。
 
 ## 5. Test
