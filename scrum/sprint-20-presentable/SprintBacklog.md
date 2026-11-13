@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 20 (presentable)
 
 > Started: 2026-11-14 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: worktree-sprint-20-presentable | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[management sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-20]-[do presentable]，原生 worktree sprint-20-presentable）
-> Now: Increment：块 1、3 已完成；块 4（三份大纲）写好了，等 Master 审、PO 一次看完；设计线由 PO 另开 · 最近一次 PO 决定：2026-11-14 放行第 3 章（「可以，那就放行吧」），范围见第 3 章末行
+> Now: Increment：块 1、3 已完成；块 4（三份大纲）Master 审过、PO 在看；块 7（63-a 的标准）已单独提交（dd6f018），等 Master 审；我在做块 8（测法脚本与冒烟）；设计线由 PO 另开 · 最近一次 PO 决定：2026-11-14 放行第 3 章（「可以，那就放行吧」），范围见第 3 章末行
 > Waiting for PO: 块 4：README、快速上手的大纲和词汇表词条清单说行；图标挑一张；README 的文件地图收不收（`docs-outline.md`）
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
@@ -385,5 +385,7 @@ Go-ahead: 2026-11-14，PO（「可以，那就放行吧」，Master 转来）。
 - **块 3（CHANGELOG 与图标候选）做了什么**（2026-11-14）：根目录 `CHANGELOG.md`（英文）：6.0.3 一节先写计划（发版时写全，块 15），之前 15 个版本每版一行，和 15 个 `v*` tag 的版本、日期都对得上（脚本核对过；`v1` 对 1.0.2；没有 6.0.1，写在 6.0.2 那行里）；末尾一句交代 Codex 版原来在单独的 `codex` 分支。有两版的一句话是我从提交记录里读出来的（3.0.0、3.1.0，tag 说明只是提交语），其余照 tag 说明。图标候选 3 张，放 `icon-candidates/`：1 冲刺的环绕着设计的菱形（深蓝、奶白、琥珀），2 三张便利贴，3 双钻石带一个箭头（蓝、白、琥珀）；做成 SVG（放大不糊），`sheet.html`、`sheet.png` 是浅色、深色背景上 200、64、32 像素的对照，给 PO 在块 4 挑；挑定后在块 5 导出 PNG 并查 `icon` 字段的写法。
 - **块 4（三份大纲）写好了**（2026-11-14）：`docs-outline.md` 一份：A README、B 快速上手、C 词汇表词条清单（约 35 条，分四组）、D 文件地图收不收（建议收到文件夹一级，三个选择）、E 图标三张各一句加我的倾向（1）。每行是「将来文档里的英文标题 —— 这一节会写什么」。规矩的句子在快速上手里都标了约定里的位置，写全文时逐句对。等 Master 审、PO 一次看完；PO 说行再写全文。
 - **设计会话开了，交接改了**（2026-11-14，Master 转告）：PO 开了 Designer 会话（`IDEO # [designer]-[sprint-20]-[design board]`），分支 `worktree-ideo-board` 已合到 beaa1f9，拿到了定稿的 brief。交接改成：PO 说用不着给我发消息，Designer 交接时只通知 Master，Master 核对交接包后叫我合并、做 68-b。brief 第 9 节已照改。
+- **Master 审块 3、块 4**（2026-11-14）：通过。CHANGELOG 的 3.0.0、3.1.0 两行它对过 git log，对得上。两处顺手改：旧 `codex` 分支迁移那段已挪进 CHANGELOG（同意，README 安装一节不再留它）；词汇表要加 Definition of Outcome Done / Output Done（SGEP 的拆法，产品日志模板和 DoD 里都用），等 PO 看完大纲一起改。
+- **块 7（63-a 的标准）**：测法、卡住的判定、过线写进 2.2，单独提交 dd6f018，早于任何运行；冒烟之后只许校准「运行的上限」，校准要在正式跑之前另提交。块 7 的 ✓ 等 Master 审过、PO 看一眼再标。
 
 ## 5. Test

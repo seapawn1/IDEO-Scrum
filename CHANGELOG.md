@@ -29,4 +29,11 @@ Sprint 20 ("presentable"): getting the plugin ready for people who did not build
 - **2.0.0** (2026-08-31): role descriptions rewritten as "use when…" triggers; every method file carries its own Source and License header.
 - **1.0.2** (2026-08-30, tag `v1`): the close of the 1.x line (Sprints 01 to 05): the design kernel rebuilt on the IDEO five modes, and the Scrum kernel's agents replaced by excerpts from the Scrum Guide Expansion Pack.
 
-The Codex edition lived on a separate `codex` branch until Sprint 13 (last released as 3.2.0, tag `codex-v3.2.0`); since 5.2.0 it is generated from `main`.
+The Codex edition lived on a separate `codex` branch until Sprint 13 (last released as 3.2.0, tag `codex-v3.2.0`); since 5.2.0 it is generated from `main`. If you installed the Codex edition from that old branch, remove it first, then install again from `main`:
+
+```
+codex plugin remove ideo-scrum@ideo-scrum
+codex plugin marketplace remove ideo-scrum
+codex plugin marketplace add seapawn1/IDEO-Scrum
+codex plugin add ideo-scrum@ideo-scrum
+```
