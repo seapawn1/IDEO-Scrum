@@ -83,7 +83,7 @@ Conventions 20–26 hold at every step; see Throughout, below. At each "PO decid
 
 ## Throughout
 
-20. **Goal fixed, plan flexible** — Hold the Sprint Goal and the Definition of Done (`../scrum-kernel/overview.md`, convention 17). The How may change at any time; refinement points and acceptance criteria may be renegotiated with the Product Owner, or with the Scrum Master as the Product Owner's secretary. Write each change and its reason in chapter 4, Increment notes.
+20. **Goal fixed, plan flexible** — Hold the Sprint Goal and the Definition of Done (`../scrum-kernel/overview.md`, convention 17). The How may change at any time; refinement points and acceptance criteria may be renegotiated with the Product Owner, or with the Scrum Master, who serves the Product Owner; acts for them within a written handover, and the accountability stays with the Product Owner; decisions made under it are recorded. Write each change and its reason in chapter 4, Increment notes.
 21. **New work gets registered** — New work goes into the product log as an item first; the Product Owner decides whether it enters this Sprint. The scope can be renegotiated; the Sprint Goal stays.
 22. **The log is the handoff** — The header carries `> Now:` with the stage the Sprint is in and the last decision the Product Owner made, followed immediately by `> Waiting for PO:` with each pending decision's number and short question, separated by semicolons, or `None`. Update both with the log change that causes them; a session that picks up the Sprint reads them first. Write no separate handoff documents: before a session ends or its context is shortened, write what matters into the log, commit, and stop at a complete point.
 23. **Special cases** — Two cases need a rule of their own:
