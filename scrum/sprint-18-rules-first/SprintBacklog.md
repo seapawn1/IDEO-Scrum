@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 18 (rules-first)
 
 > Started: 2026-11-13 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: claude/youthful-payne-b1e139 | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[support sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-18]-[do sprint 18]，youthful-payne-b1e139）
-> Now: Increment：H2 的 66 接口已实现并静态核对，提交后交 Master 转主线 · Master 2026-11-13 核对 H1 通过（PO 授权，见第 4 章）
+> Now: Increment：H3 基线 33 次已跑完，核对内容；H4 文字已改，静态检查通过，待质量反馈后提交 Master 审 diff · Master 2026-11-13 审 H2 通过（PO 授权，见第 4 章）
 > Waiting for PO: None
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
@@ -125,8 +125,8 @@ PO 2026-11-13 定 Sprint Goal
 | # | Work item | Output | Done when |
 | --- | --- | --- | --- |
 | H1 | 冻结测试材料 | 2.2 的测试补全稿：11 题的确切题干、对应内核与必读约定、内容判据、固定样本及测试环境；66 的四类静态样本与完成标记判据 | ✓ 2026-11-13；Master 核对不改既定门槛；标准单独提交，早于脚本自测、冒烟、基线与新版测试；本块不跑模型 |
-| H2 | 交付 66 共享接口 | 四份模板和相应约定的分支提交 diff；四类样本的读取核对；提交与接口位置交 Master 转给 Sprint 19 | 66 的五项验收全过，含 How 已完成 / 未完成行；承诺仍在原节，IDEO 不造目标、不加关卡；Codex 生成并核对通过，与插件同一提交；Master 已收到可用接口与证据 |
-| H3 | 固定同日基线 | 固定 main 提交的插件快照；冒烟结果；11 题各 3 次的基线及行为 / 内容两栏汇总 | Haiku 与 Read 权限冒烟通过；33 次结果完整，错判人工核查有理由；版本、通道、日期与隔离条件有记录，原始输出不入库 |
+| H2 | 交付 66 共享接口 | 四份模板和相应约定的分支提交 diff；四类样本的读取核对；提交与接口位置交 Master 转给 Sprint 19 | ✓ 2026-11-13；66 的五项验收全过，含 How 已完成 / 未完成行；承诺仍在原节，IDEO 不造目标、不加关卡；Codex 生成并核对通过，与插件同一提交；Master 已收到可用接口与证据 |
+| H3 | 固定同日基线 | 固定 main 提交的插件快照；冒烟结果；11 题各 3 次的基线及行为 / 内容两栏汇总 | ✓ 2026-11-13；按 Master 澄清的 magpie 实际通道与 Read 权限冒烟通过；33 次结果完整，内容争议已人工核查；版本、通道、日期与隔离条件有记录，原始输出不入库 |
 | H4 | 改 65 与 60 的文字 | 四个内核 description、两条角色命令、五处 secretary 说法及连带约定的分支 diff；插件、README 与描述规约同批修改 | 65-1～65-7、60-1～60-3 对齐；不加 frontmatter 开关、不改 SKILL.md 正文；描述各 ≤1024 字符，secretary 零残留；冲突说法消除；Codex 同步核对，与源改动同提交 |
 | H5 | 跑新版与同日对照 | 同一套 11 题各 3 次的新版结果；逐题行为 / 内容汇总、改判理由和缺口 | A ≤1/9；B ≥8/9；C ≥7/9 且不低于基线；D 每题不低于基线；按冻结标准判定，未过则记失败并修正、重测，不修改门槛；若跨日则基线与新版同日重跑 |
 | H6 | 备齐交审证据 | 第 5 章逐项 DoD 与验收结果、改动摘要、静态核对及回归汇总，交 Master 审阅 | 内容依据、导航、链接、官方 strict 校验、描述长度、Codex 核对逐项有结论；历史日志未改；Master 审阅有记录，阶段决定仍由 Master 给出，不自行收官 |
@@ -162,7 +162,14 @@ Go-ahead: Master 2026-11-13 放行（PO 授权，见第 4 章）：本分支上�
 
 - Master 2026-11-13 审过 How 并放行 H1～H6：仅本分支提交；合并、tag、发版留 Review，不推送。审阅用分支上的 diff（Master 定）；H1 标准与 H2 接口分别提交后立即报提交号。
 - H1：标准单独提交 `fde1f50`；Master 2026-11-13 核对通过，确认 A 按试次计、另列各核次数与既定门槛正确。此后才开始脚本自测与静态核对，H1 标完成。
-- H2：9 份现有模板 / 约定按 66 定案修改，章节与条号不变，承诺留原节；第 9 条加工作块完成标记，阶段决定前引目标，Now / Waiting for PO 与 For 明确；已归档日志未动。Codex 同步生成，不手改；提交后立即报 Master 转 Sprint 19。
+- H2：9 份现有模板 / 约定按 66 定案修改，章节与条号不变，承诺留原节；第 9 条加工作块完成标记，阶段决定前引目标，Now / Waiting for PO 与 For 明确；已归档日志未动。Codex 同步生成，不手改；提交 `1e347b4` 后已报 Master 转 Sprint 19。
+- Master 2026-11-13 澄清测试通道：magpie 的 `--model haiku` 实际不是 Haiku；基线和新版继续同一通道，汇总只标「magpie 的便宜模型，非 Haiku」，不写模型名与提供方。Git Bash 用 `claude-magpie.cmd`，子进程设本机 `CLAUDE_CODE_GIT_BASH_PATH`；结果若落在门槛边界先报 Master，真 Haiku 是否补跑由 PO 定，不自行使用 PO 账号。
+- Master 2026-11-13 核对 H2（`1e347b4`）通过，已转 Sprint 19；Now / Waiting 的写法各内核各写一遍沿用原组织，不再抽层。H2 标完成；H3 基线固定 main `74b929b4e6c5ab80ca84ab9a61c956c69779f59e`，输出留仓库外临时目录。
+- 65-5 的 CLAUDE.md 修改不能仅凭跨会话消息执行；PO 已在本会话的问题框直接选「授权本次同步」，仅准两句触发规约与描述一起改，不改权限或本机设置。
+- H3 / H4 执行顺序调整：基线只读固定 main 快照，与工作区源码隔离，因此33次基线在后台跑时先改 H4，不等结果来决定描述。H4 源码与生成包提交 `9b347af`，已交 Master 审 diff；内核正文未改、描述最长944字符、secretary零残留，静态与官方校验通过。Haiku skill-reviewer做窄范围质量检查，另一个Haiku子代理逐条核基线内容；不替代 Master 的审阅。
+- H3 已完成：全部33份 init 核对插件来自固定快照、工具只有四个、模型映射一致且不同于宿主；行为与内容分表，内容争议由 Developer 读原回答复核，未临时加严标准。
+- Master 审 H4（`9b347af`）通过，要求身份段不重复 PO 助手的完整规矩，改成一句指向行为条款；已改，等 skill-reviewer 反馈一起补提交。另记：白纸项目的直接路径不再自动进设计冲刺是65有意的改变，角色路径仍会按约定进入；Sprint17的PBI-52直接路径行为因此改变，Review由Master写进产品日志。
+- H3 冒烟前两次失败，尚未启动正式样本：首轮 API 502；核对 init，实际工具只有四个、插件路径正确。另发现子进程沿用了宿主的 Haiku 模型重映射（只比布尔值，不存模型值）；清理后第三次冒烟已通过。按 Master 与 Sprint 19 统一的做法，正式测试改用环境白名单：SystemRoot、PATH、USERPROFILE、APPDATA、LOCALAPPDATA、HOMEDRIVE、HOMEPATH、ComSpec、PATHEXT、TEMP、TMP，加另设的 CLAUDE_CODE_GIT_BASH_PATH、MSYS_NO_PATHCONV，其余不继承；在新环境再冒烟后才跑基线。旧失败记录保留在仓库外，不计正式样本。
 
 ## 5. Test
 
@@ -174,4 +181,4 @@ Go-ahead: Master 2026-11-13 放行（PO 授权，见第 4 章）：本分支上�
 | 官方 strict 插件校验 | Validation passed；目录检查另报既有 ICON_MISSING，不影响校验结果，图标属于 PBI-64 |
 | 历史日志 / 空白检查 | scrum/documents 的 diff 为空；git diff --check 通过 |
 
-尚未运行触发回归；H3 / H5 的模型调用在静态接口交付后进行。本表不是整项 DoD 已完成的声明。
+H3 基线：33 次有效结果、技术错误 0；2026-11-13 同日跑完。行为汇总见 [tests/baseline-behavior.md](tests/baseline-behavior.md)：A 误触发 9/9，B 9/9，C 3/9，D1 0/3、D2 3/3；B1 有一次未读 sprint-log，独立披露。内容见 [tests/baseline-content.md](tests/baseline-content.md)：29 达、4 部分、0 不达；争议经 Developer 看原回答复核。全部33份 init 的插件快照路径、四工具限制与同一非宿主模型映射已核对。H5 新版尚未跑，本表不是整项 DoD 已完成的声明。
