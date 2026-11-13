@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 18 (rules-first)
 
 > Started: 2026-11-13 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: claude/youthful-payne-b1e139 | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[support sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-18]-[do sprint 18]，youthful-payne-b1e139）
-> Now: Increment：H5 第1轮未过线，逐次诊断完成；按 Master 限一轮补描述，提交后等审再整轮重跑 · Master 2026-11-13 定修正范围与停止条件（PO 授权，见第 4 章）
+> Now: Increment：H5 第2轮全33次运行中，标准不变，不再自行修正 · Master 2026-11-13 审 be78fa9 通过并放行整轮重跑（PO 授权，见第 4 章）
 > Waiting for PO: None
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
@@ -172,6 +172,7 @@ Go-ahead: Master 2026-11-13 放行（PO 授权，见第 4 章）：本分支上�
 - H4 质量反馈收束：身份段去重；Master 同意 Master 描述的书面授权措辞与杂务指向澄清、scrum 描述的白纸规则限定在召唤后。审查员建议恢复「not the Developer who built」未采纳：Master 核 sprint-log 第17条确认原文就是「never the builder」，兼任Developer并做过增量的Master也不能在Review自行召唤，由PO来召唤；保留定案，不照工具建议改规矩。补丁校验后直接跑H5，不再等放行。
 - H5 第1轮 `revised`：33次有效、技术错0，同日同通道；A误触发0/9过，B6/9未过，C0/9未过，D1与D2各3/3过；整体失败。B3三次只是读/搜日志，没有Skill调用；C九次无工具、直接回答。逐次动作见 [tests/revised-behavior.md](tests/revised-behavior.md)，内容另表32达1部分，不抵行为。
 - Master 限一轮修正：先诊断，再给放开的ideo恢复「命中先加载再答」，三个受控核三种召唤后紧跟相同指令；不改三种召唤、泛问豁免、正文或frontmatter开关。修改后description长度为ideo1023、scrum968、sprint943、design1007；提交交Master审，再同日整轮33次重跑，若仍不过就停报Master，由PO定真Haiku确认或已知缺口，不自行追加轮数。
+- Master 2026-11-13 审单轮修正 `be78fa9` 通过：确认仅加命中后加载句、各描述≤1024；放行第2轮整轮33次，跑完无论过没过先报，不再自行修正或追加测试。第2轮在同一外部运行目录的独立 `revised2` 组运行，前两组原始记录保留。
 - H3 冒烟前两次失败，尚未启动正式样本：首轮 API 502；核对 init，实际工具只有四个、插件路径正确。另发现子进程沿用了宿主的 Haiku 模型重映射（只比布尔值，不存模型值）；清理后第三次冒烟已通过。按 Master 与 Sprint 19 统一的做法，正式测试改用环境白名单：SystemRoot、PATH、USERPROFILE、APPDATA、LOCALAPPDATA、HOMEDRIVE、HOMEPATH、ComSpec、PATHEXT、TEMP、TMP，加另设的 CLAUDE_CODE_GIT_BASH_PATH、MSYS_NO_PATHCONV，其余不继承；在新环境再冒烟后才跑基线。旧失败记录保留在仓库外，不计正式样本。
 
 ## 5. Test
@@ -186,12 +187,12 @@ Go-ahead: Master 2026-11-13 放行（PO 授权，见第 4 章）：本分支上�
 
 H3 基线：33 次有效结果、技术错误 0；2026-11-13 同日跑完。行为汇总见 [tests/baseline-behavior.md](tests/baseline-behavior.md)：A 误触发 9/9，B 9/9，C 3/9，D1 0/3、D2 3/3；B1 有一次未读 sprint-log，独立披露。内容见 [tests/baseline-content.md](tests/baseline-content.md)：29 达、4 部分、0 不达；争议经 Developer 看原回答复核。全部33份 init 的插件快照路径、四工具限制与同一非宿主模型映射已核对。
 
-H4 质量补丁 `76a2cc3` 已提交；H5 第1轮同日33次已完成，整体未过线。行为与每次失败动作见 [tests/revised-behavior.md](tests/revised-behavior.md)，内容见 [tests/revised-content.md](tests/revised-content.md)（32达、1部分）；B3没加载scrum，C九次没加载ideo。A误触发0/9、B6/9、C0/9、D两题各3/3；内容不能抵行为。一次修正后的整轮重测待Master审diff，本表不是整项DoD已完成的声明。
+H4 质量补丁 `76a2cc3` 已提交；H5 第1轮同日33次已完成，整体未过线。行为与每次失败动作见 [tests/revised-behavior.md](tests/revised-behavior.md)，内容见 [tests/revised-content.md](tests/revised-content.md)（32达、1部分）；B3没加载scrum，C九次没加载ideo。A误触发0/9、B6/9、C0/9、D两题各3/3；内容不能抵行为。一次修正 be78fa9 已获Master审阅通过，第2轮整轮重测正在运行；无论过没过先报告，不再自行修正。本表不是整项DoD已完成的声明。
 
 | H4 / H6 静态证据 | 结果 |
 | --- | --- |
 | 内核正文未改 | 四份 SKILL.md 的 frontmatter 之后内容逐字对照 `c8a25ec`，相同 |
-| 描述长度 | ideo 944、scrum 890、sprint 866、design 930；角色 Master 725、Stakeholder 858，全部 ≤1024 |
+| 描述长度 | 单轮修正 be78fa9 后：ideo 1023、scrum 968、sprint 943、design 1007；角色 Master 725、Stakeholder 858，全部 ≤1024；ideo 仅余1字符，改前先量 |
 | 改旧说法 | 插件本体 secretary 0；现行 README 与 Codex README 源稿已写清召唤边界；第三方原文与历史不改 |
 | 内容与依据 | 66、65、60 都按2.2 Master定案；新增文字在约定与角色说明，不改源材料引文，不新增第三方摘录 |
 | 可导航 / 链接 | 本体79个资源 ≤2跳均可达；生成包11条内部链接与79个资源核对无错；未链接尚不存在的看板约定 |
