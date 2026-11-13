@@ -1,8 +1,8 @@
 # Design Backlog — board
 
 > Opened 2026-11-14 | From: PBI-68 看板改版——Sprint 20（`sprint-20-presentable`）的 68 等本设计的原型交接，再做 68-b；同日先开过一条设计线，PO 叫停、日志已删，这是重开 | Branch: `worktree-design-board`（PO 建的原生 worktree，基于 main） | Product Owner: SeaPawn | Designer: 原型和测试由 Designer 会话做，到 Prototype 时开；共情、定义、构思由 PO 和 Master 定、Master 落盘（PO 2026-11-14 的分工） | Scrum Master: 会话 IDEO # [master]-[main]-[management sprint]
-> Now: Define：地图和 HMW 已定，等 PO 在关卡上定这一章、进构思
-> Waiting for PO: 1 定义这一章定不定、进不进构思
+> Now: Ideate：两个子代理各画一个方案（Haiku，互相看不见，各拿一份闪电演示材料）；同时 Master 和 PO 聊 PO 心里的画面
+> Waiting for PO: 1 PO 心里有没有已经成形的画面
 > Ends when the design questions are answered or the Product Owner stops the design (convention 19 in `design-log.md`); its conclusions flow back to the product log — a blank page's design fills it — and the first Sprint Review after that archives this file (convention 17 in `sprint-log.md`, in the sprint-kernel skill's `conventions/` folder).
 > Methods: the stage excerpts in the design-kernel skill (excerpt paths below are relative to that skill's folder), and in every stage the ideo-kernel's IDEO mode and methods, as the design-kernel `SKILL.md` requires.
 > This log records what each stage produced, not every step taken to get there (convention 22 in `design-log.md`).
@@ -96,13 +96,13 @@ flowchart TD
   12. HMW 让晦涩的日志被概括成一眼看得懂的样子，又不加日志里没有的事？
   13. HMW 让想看某条线的细节时，一步就到日志里对应的地方？
 
-PO 的决定（2026-11-14）：愿景地图行，挑 Master 建议的 6 个 HMW（2、3、4、5、9、11）——「认同，非常认同你的看法……这两个点我都同意」。
+PO 的决定（2026-11-14）：愿景地图行，挑 Master 建议的 6 个 HMW（2、3、4、5、9、11）——「认同，非常认同你的看法……这两个点我都同意」。关卡：定义这一章行，进构思（PO：「OK，我们后续的方案……」，并定画方案的子代理要拿现有材料）。
 
 ## 3. Ideate
 
 ### 3.1 Solution
 
-（待做。）约定覆盖（PO 2026-11-14 认可 Master 的建议）：方案由 PO 和 Master 照调研材料画、照第 13 条定；另派 2 个互相看不见的 Haiku 子代理各画一个完整方案作对照，防止只在我们已有的想法里打转（第 11、12 条要的是几个子代理各画一个）。闪电演示（第 9 条）的材料：main 上的 `scrum/documents/PBI-68-board-references.md`、`PBI-68-board-research.md`。
+（进行中。）画方案的子代理拿各自的一份闪电演示材料（PO 2026-11-14：「不给他现有的材料，他肯定……出不来好的方案」；第 11 条允许给「its own part of the gathered ideas」），不给第 1 版看板、约定和代码；只加载 ideo-kernel，不加载 scrum-kernel（第 11 条不给规矩，压过角色命令「子代理也加载两个内核」那句）。约定覆盖（PO 2026-11-14 认可 Master 的建议）：方案由 PO 和 Master 照调研材料画、照第 13 条定；另派 2 个互相看不见的 Haiku 子代理各画一个完整方案作对照，防止只在我们已有的想法里打转（第 11、12 条要的是几个子代理各画一个）。闪电演示（第 9 条）的材料：main 上的 `scrum/documents/PBI-68-board-references.md`、`PBI-68-board-research.md`。
 
 ### 3.2 Storyboard (optional)
 
