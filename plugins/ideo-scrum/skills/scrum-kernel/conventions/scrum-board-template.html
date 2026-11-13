@@ -189,7 +189,8 @@
   var STR = {
     zh: {
       board: '看板', overview: '总览', back: '← 总览', updated: '更新', circle: '产品', hint: '点圆圈看产品的卡片',
-      sprint: '冲刺', design: '设计', forItem: '为', blocks: '工作块', closed: '已收官', here: '在这',
+      sprint: '冲刺', design: '设计', forItem: '为', blocks: '工作块', here: '在这',
+      closed: function (n) { return '已完成 ' + n + ' 组'; },
       grp: { sprint: '在冲刺里', design: '在设计里', next: '待选', later: '以后' },
       l1: '① 承诺', designGoal: '设计目标',
       productL2: '② 路线 · 架构（主干）', productL3: function (n) { return '③ 条目 · 没做完的 ' + n + ' 条'; },
@@ -201,7 +202,8 @@
     },
     en: {
       board: 'Board', overview: 'Overview', back: '← Overview', updated: 'Updated', circle: 'Product', hint: 'Open the circle for the product card',
-      sprint: 'Sprint', design: 'Design', forItem: 'For', blocks: 'Work items', closed: 'Closed', here: 'here',
+      sprint: 'Sprint', design: 'Design', forItem: 'For', blocks: 'Work items', here: 'here',
+      closed: function (n) { return 'Done · ' + n + ' groups'; },
       grp: { sprint: 'In a Sprint', design: 'In a design', next: 'Up next', later: 'Later' },
       l1: '① Commitments', designGoal: 'Design goal',
       productL2: '② Route · architecture (backbone)', productL3: function (n) { return '③ Items · ' + n + ' not done'; },
@@ -247,7 +249,7 @@
   function numOf(id) { var m = /(\d+)\s*$/.exec(String(id)); return m ? m[1] : String(id); }
   function shortOf(t) { t = String(t || ''); var s = t.split(/——| — |：|: /)[0]; return s || t; }
   function sprintName(s) { var m = /^sprint-(\d+)/i.exec(String(s.id)); return m ? 'Sprint ' + m[1] : String(s.id); }
-  function designName(d) { return String(d.id).replace(/^design-/, ''); }
+  function designName(d) { return goalShort(d) || String(d.id).replace(/^design-/, ''); }
   function goalShort(s) {
     var g = String(s.goal || ''), i = g.search(/：|: /);
     return i > 0 && i <= 24 ? g.slice(0, i) : '';
@@ -280,6 +282,22 @@
   sprints.forEach(function (s) { arr(s.items).forEach(function (id) { links.push({ item: id, node: s.id, cls: 's' }); }); });
   designs.forEach(function (d) { arr(d['for']).forEach(function (id) { links.push({ item: id, node: d.id, cls: 'd' }); }); });
 
+  /* Items that sit in a Sprint or a design are listed in that Sprint's or design's own order; the rest keep the product log's. */
+  var rank = {};
+  sprints.forEach(function (s, si) { arr(s.items).forEach(function (id, i) { if (!(id in rank)) { rank[id] = si * 1000 + i; } }); });
+  designs.forEach(function (d, di) { arr(d['for']).forEach(function (id, i) { if (!(id in rank)) { rank[id] = 100000 + di * 1000 + i; } }); });
+  items.forEach(function (it, i) { it._o = i; });
+  function inGroup(g) {
+    var list = items.filter(function (it) { return it._g === g; });
+    if (g === 'sprint' || g === 'design') {
+      list.sort(function (a, b) {
+        var ra = a.id in rank ? rank[a.id] : 1e9, rb = b.id in rank ? rank[b.id] : 1e9;
+        return (ra - rb) || (a._o - b._o);
+      });
+    }
+    return list;
+  }
+
   /* ---- overview ---- */
   var itemEl = {}, nodeEl = {};
   var circle = h('a', 'prod-circle', S.circle);
@@ -295,7 +313,7 @@
     add(ov, add(h('div', 'ov-head'), circle, add(h('div', 'prod-name'), h('b', '', P.name || ''), h('span', '', S.hint))));
     var any = false;
     GROUPS.forEach(function (g) {
-      var list = items.filter(function (it) { return it._g === g; });
+      var list = inGroup(g);
       if (!list.length) { return; }
       any = true;
       itemsCol.appendChild(h('div', 'grp-label', S.grp[g]));
@@ -335,7 +353,7 @@
 
     add(flow, wires, trunk, itemsCol, nodesCol);
     ov.appendChild(flow);
-    if (P.closed) { ov.appendChild(h('div', 'closed', S.closed + ' ' + P.closed)); }
+    if (P.closed) { ov.appendChild(h('div', 'closed', S.closed(P.closed))); }
   }
 
   function svgPath(d, cls, itemId) {
@@ -443,9 +461,9 @@
   function ideoLines(list) {
     return arr(list).map(function (x) { return h('p', '', S.ideo + ' · ' + (x.id || '') + (x.now ? ': ' + x.now : '')); });
   }
-  function sourceLine(src, path, file) {
+  function sourceLine(src, path, file, folder) {
     var p = h('p');
-    p.appendChild(document.createTextNode(src || ''));
+    p.appendChild(document.createTextNode((folder ? folder + ' · ' : '') + (src || '')));
     if (path && /^working copy/i.test(src || '')) {
       p.appendChild(document.createTextNode(' · '));
       var a = h('a', '', file);
@@ -477,7 +495,7 @@
     if (arr(P.map).length) { l2.appendChild(ul); c.appendChild(l2); }
     var l3 = layer(S.productL3(notDone));
     GROUPS.forEach(function (g) {
-      var list = items.filter(function (it) { return it._g === g; });
+      var list = inGroup(g);
       if (!list.length) { return; }
       l3.appendChild(h('div', 'grp', S.grp[g]));
       list.forEach(function (it) { l3.appendChild(itemRow(it)); });
@@ -497,7 +515,9 @@
       fill.style.width = (p.t ? Math.round(100 * p.d / p.t) : 0) + '%';
       bar2.appendChild(fill);
       if (i) { row.appendChild(h('span', 'parr', '→')); }
-      add(pn, h('b', '', it.id), h('span', 't', shortOf(it.title)), bar2, h('small', '', p.t ? S.perItem(p.d, p.t) : '—'));
+      /* No work item names this item: the route lists it without a bar. */
+      if (p.t) { add(pn, h('b', '', it.id), h('span', 't', shortOf(it.title)), bar2, h('small', '', S.perItem(p.d, p.t))); }
+      else { add(pn, h('b', '', it.id), h('span', 't', shortOf(it.title))); }
       pn.title = it.title || '';
       row.appendChild(pn);
     });
@@ -509,7 +529,7 @@
       ol.appendChild(li);
     });
     if (arr(s.blocks).length) { l3.appendChild(ol); c.appendChild(l3); }
-    foot(c, [nowBlock(s.now)].concat(ideoLines(s.ideo), [sourceLine(s.source, s.id + '/SprintBacklog.md', 'SprintBacklog.md')]));
+    foot(c, [nowBlock(s.now)].concat(ideoLines(s.ideo), [sourceLine(s.source, s.id + '/SprintBacklog.md', 'SprintBacklog.md', s.id)]));
   }
 
   function designCard(d) {
@@ -522,7 +542,7 @@
     var l3 = layer(S.designL3), st = h('div', 'story');
     arr(d.story).forEach(function (x) { st.appendChild(add(h('div'), h('b', '', x.title), document.createTextNode(x.text || ''))); });
     if (arr(d.story).length) { l3.appendChild(st); c.appendChild(l3); }
-    foot(c, [nowBlock(d.now)].concat(ideoLines(d.ideo), [sourceLine(d.source, d.id + '/DesignBacklog.md', 'DesignBacklog.md')]));
+    foot(c, [nowBlock(d.now)].concat(ideoLines(d.ideo), [sourceLine(d.source, d.id + '/DesignBacklog.md', 'DesignBacklog.md', d.id)]));
   }
 
   /* ---- showing a card ---- */

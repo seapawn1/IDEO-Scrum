@@ -100,7 +100,7 @@
   {
    "id": "sprint-20-presentable",
    "goal": "拿得出手：看板改版，好看、好读；README、快速上手、词汇表讲清规矩，发布包装补齐；懂 Scrum 的人照着就能装上、走完第一个冲刺，不问作者。",
-   "now": "Increment：块 1～8 已完成，等 Master 审块 8 的证据：冒烟第 3 次过线（五个产出都在，隔离和卫生检查都是 0，没问作者）；设计线结束（PO 2026-11-14 定，原型是故事板第 3 版，设计日志在分支 `worktree-design-board`），块 2 标 ✓；分工仍是 PO 和 Master 监督、我做 Developer（当天说过的「交接给 Master」PO 已作废）；快速上手第 3 步已按 Master 对冒烟的改判补一句（中英）；设计分支已合进来（c268bd8），PBI-68 的用户故事和 2.2 的 68-2、68-4 已改，一并等 Master 审；下一步：块 9（68-b 的模板） · 最近一次 PO 决定：2026-11-14 看板设计结束、分工改回原样",
+   "now": "Increment：块 1～9 已完成，等 Master 审块 9（新模板 `scrum-board-template.html`，照故事板第 3 版，三档截图、点击、检查都做过）；设计线结束、分工是 PO 和 Master 监督、我做 Developer（都已记入第 4 章）；PO 2026-11-14 定看板改名（`ScrumBoard.html`、`board-log.md`、`scrum-board-template.html`），全仓已迁、Codex 包已同步；PO 把新登记的 PBI-70「约定小修」的登记和精化全权交给我（Master 转来），进 Sprint 20，排在块 11 之后、块 13 之前；下一步：登记 PBI-70、写精化和计划发 Master 审，再做块 10（`board-log.md` 和检查脚本） · 最近一次 PO 决定：2026-11-14 看板改名、PBI-70 登记精化交给 Developer",
    "items": [
     "PBI-68",
     "PBI-64",
@@ -150,8 +150,8 @@
     },
     {
      "n": "9",
-     "title": "68-b 合并与模板（等设计线交接包）",
-     "done": false
+     "title": "68-b 合并与模板",
+     "done": true
     },
     {
      "n": "10",
