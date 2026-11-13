@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 20 (presentable)
 
 > Started: 2026-11-14 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: worktree-sprint-20-presentable | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[management sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-20]-[do presentable]，原生 worktree sprint-20-presentable）
-> Now: Increment：块 1（给设计会话的 brief 和样本）写好了，等 Master 审；设计线由 PO 另开 · 最近一次 PO 决定：2026-11-14 放行第 3 章（「可以，那就放行吧」），范围见第 3 章末行
+> Now: Increment：块 1（给设计会话的 brief 和样本）已完成、Master 审过；设计线由 PO 另开；我在做块 3（CHANGELOG 与图标候选） · 最近一次 PO 决定：2026-11-14 放行第 3 章（「可以，那就放行吧」），范围见第 3 章末行
 > Waiting for PO: None
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
@@ -278,7 +278,7 @@ PO 2026-11-14 定精化结束（第 7 步）：「OK，可行。嗯，现在精�
 
 | # | Work item | Output | Done when |
 | --- | --- | --- | --- |
-| 1 | 开场包（给设计会话） | 一页 brief（`board-brief.md`，放本冲刺文件夹）；三份样本数据：本仓库现状、Sprint 19 收官前的日志、白纸 | brief 写明看板的一件事、第 1 版的毛病、PO 的话与三条反馈、验收 68-1～68-6、交接包的样子；Master 审过，设计会话读得到 |
+| 1 | 开场包（给设计会话） | 一页 brief（`board-brief.md`，放本冲刺文件夹）；三份样本数据：本仓库现状、Sprint 19 收官前的日志、白纸 | ✓ 2026-11-14 brief 写明看板的一件事、第 1 版的毛病、PO 的话与三条反馈、验收 68-1～68-6、交接包的样子；Master 审过，设计会话读得到 |
 | 2 | 设计线 68-a（PO + 设计师会话，另一个工作树） | 最终原型（固定页面 + 一份数据）；「照抄 / 概括」一页表；电脑 1440 与手机 375 宽的截图 | PO 说「就这个」，交接包齐 |
 | 3 | 64-a CHANGELOG 与图标候选 | 根目录 `CHANGELOG.md`（英文，6.0.3 一节详写，之前每版一行，照 tag 列）；图标 3 张候选 | CHANGELOG 的版本和 `git tag` 对得上；3 张候选备好，在块 4 给 PO 挑 |
 | 4 | 三份大纲，PO 一次看完 | README、快速上手的大纲；词汇表词条清单；文件地图收不收的建议；摆出图标候选 | PO 一次看完：大纲说行、图标挑定、文件地图定了 |
