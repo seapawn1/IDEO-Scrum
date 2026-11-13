@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 19 (board-hook)
 
 > Started: 2026-11-13 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: worktree-golden-orbiting-bachman | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[support sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-19]-[do sprint 19]，golden-orbiting-bachman）
-> Now: Increment：块 1～5 完成（hook 脚本、直接运行测试、频率测试驱动与冒烟）；做块 6（频率测试正式跑与选定），跑之前先补一次标准的第 9 节 · Master 2026-11-13 放行 How（PO 授权，见第 4 章）
+> Now: Increment：块 1～5 完成；块 6（频率测试正式跑）在后台跑；块 7（board.md 与模板）已写好，待 Master 审 diff；下一步块 8（看板夹具与核对脚本） · Master 2026-11-13 放行 How（PO 授权，见第 4 章）
 > Waiting for PO: None
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
@@ -156,6 +156,11 @@ Go-ahead: Master 2026-11-13 放行（PO 授权，见第 4 章）：本分支上�
   - **结果**：本机 Windows（Git Bash 的 sh）28/28；WSL Ubuntu 24.04 的 dash，awk 分别用 gawk 5.2、mawk，各 26/26（少的两条只在 Windows 上有意义：反斜杠路径、清空 PATH）。变异检查：六种改坏的脚本，五种被本机测试抓到；「不去 CR」一种本机抓不到——MSYS 的 awk 自己吃掉 `\r`——但 WSL 抓到，所以去 CR 这一步在 Linux 上必需。`claude plugin validate --strict plugins/ideo-scrum` 通过（hooks.json 能加载）。真实会话（块 5 冒烟）里，startup 的第一次注入逐字等于样本项目的三句承诺，压缩后那次注入是换过的目标。
   - **macOS：没法实测**。依据：只用 POSIX sh 和 awk、sed、tr、cksum、dirname、basename、mkdir，用法限在 POSIX 的子集；Linux 上 dash 配 gawk、mawk 两种 awk 都过；BSD awk 没试，记成「未在 macOS 上实测」。已知限制：Windows 没装 Git for Windows 的用户 hook 不生效（61-4 的定案）。
 - **块 5：频率测试的驱动与冒烟**（2026-11-13，Developer）。驱动与判定都在 `tests/frequency_test.py`（`selftest`、`smoke`、`run`、`judge`、`tokens`）；判定脚本先拿 16 条已知结果自测，全过（完整引用算引用、Markdown 引用的标点不同仍算、旧目标算过期、改写不算引用、读过日志与没读过分得开、对照臂真的没有注入、其他插件的 hook 不算我们的）。冒烟：A2 整场一次，15 个提示加一次压缩，status ok，注入 16 次（预期 16），压缩发生；P1、P2 都逐字引用了当前目标（P1 另读了一次日志，P2 没读）。成本：228 秒；输入约 21 万 token（其中缓存读约 20 万）、输出约 4 千；Claude Code 自己估的费用是 0.40 美元，但模型不被识别，这个估算不可信。照此推：正式跑 15 次，串行约 1 小时、输入约 340 万 token；并行 3 个约 20 分钟。每次注入 172 个字符。
+- **块 7：看板约定与模板**（2026-11-13，Developer；大纲 Master 通过，三点补充已照改，全文直接在分支上交 Master 审 diff）。产出：`plugins/ideo-scrum/skills/scrum-kernel/conventions/board.md`（16 条，英文，自带给子代理的简报）与 `board-template.html`。
+  - 照 Master 的意见：① 分组——项目自己有分组（状态格里的括号词）就照它分，没有就按 product-log 第 10 条的状态值（在冲刺里、在设计里、待选），其余归 Other，不写死本仓库的词；② 空状态——「等 PO」条、冲刺、设计各一行；③ 第 5 条把 Now、Waiting for PO、承诺、完成标记各自写在哪一条列全（overview 第 17 条、sprint-log 第 9、22 条、design-log 第 24 条、ideo-log 第 4 条），只指过去不重写；④ 「生成物不必进版本控制，进不进由项目定」，本仓库自己在 `.gitignore` 加了 `/scrum/Board.html`；⑤ 步骤只写角色和步骤，不写工具用法，「用 git 读别的分支上已提交的日志」只作说明。这些条号是 66 交付之后的；Sprint 18 合进 main 之前，本分支上的旧文可能对不上，合并后再核（块 10）。
+  - 模板：一份可直接复制的 HTML，槽位写成 `{{…}}`，重复的块标 REPEAT；每个事实带 `data-fact` 标记（13 种，列在模板顶部注释里），块 8 的核对脚本按它逐项对日志；地图用 `<details>` 默认收起，第一次打开才画——藏着的元素量不出尺寸，开页就画会画坏；Mermaid 源码另放在 `details.src` 里，离线或画失败就自动展开；事实里的 `<`、`>`、`&` 要转义（Mermaid 标签里常有 `<br/>`），模板与第 13 条都写了。
+  - 随手先做了块 10 的三项：scrum-kernel `SKILL.md` 文件表加两行（导航入口）、overview 第 4 条加看板一句、`.gitignore`；块 10 剩下 README、Codex 同步与核对、校验。
+  - 还没验的：模板自足、Haiku 级子代理拿着它就能生成——块 9。
 - **66 接口已交付**（Master 2026-11-13，Sprint 18 分支提交 `1e347b4`）：和 2.2 的读取规则一致；细节：承诺的格式只在 overview 第 17 条写定（首格 `Commitment`，中文日志写 `承诺`，第二格原文不加粗，只存一份，靠节标题认种类）；冲刺、设计、IDEO 三种日志头部 `> Now:` 后紧跟 `> Waiting for PO:`，没有写 `None`，产品日志没有这两行；IDEO 日志的 `For` 写它服务的日志的相对路径；工作块完成标记写在 sprint-log 第 9 条。Sprint 18 合进 main 以后，先把 main 合进本分支，再按合并后的原文核一遍。块 4 的 hook 脚本和块 8 的核对脚本都照这套读。
 
 ## 5. Test

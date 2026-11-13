@@ -31,6 +31,8 @@ How a solo + AI team keeps its product log and runs its Sprints is in `overview.
 | `overview.md` | How the product log, Sprints, and designs fit together; folders, including `scrum/documents/`; roles; what stays fixed | Starting a project, or unsure who does what or where a file goes |
 | `conventions/product-log.md` | Writing the product log and refining its items | Writing, refining, or refreshing the product log |
 | `conventions/product-backlog-template.md` | The product log template; the file made from it is `ProductBacklog.md` | Creating a product log |
+| `conventions/board.md` | The board: one page that shows where the project stands, written from the logs; also the brief for whoever writes it | Asked where the project stands at a glance, or to make or refresh the board |
+| `conventions/board-template.html` | The template the board is written from; the file made from it is `scrum/Board.html` | Writing the board |
 
 ## Elements of Scrum
 

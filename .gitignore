@@ -8,6 +8,9 @@ settings.local.json
 # Claude Code 的 worktree（每个冲刺一个，见 CLAUDE.md）
 /.claude/worktrees/
 
+# 看板：由日志生成，不拥有任何事实，删了随时能重建（插件 scrum-kernel 的 conventions/board.md）
+/scrum/Board.html
+
 .DS_Store
 Thumbs.db
 *.aux
