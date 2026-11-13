@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 20 (presentable)
 
 > Started: 2026-11-14 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: worktree-sprint-20-presentable | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[management sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-20]-[do presentable]，原生 worktree sprint-20-presentable）
-> Now: What：68、64、62 的第 1～5 步已过；68、64 的第 6 步 Developer 已复述、Master 审过，等 PO 认可；62 等 Developer 复述；63 由 Master 接着领 PO 精化；第 7 步等四条都精化完再一起定 · 最近一次 PO 决定：2026-11-14 定 62 照做中英两份，精化改由 Master 落盘
-> Waiting for PO: 68 第 6 步：Developer 的复述对不对；64 第 6 步：Developer 的复述对不对
+> Now: What：四条的第 1～5 步都已过；68、64 的第 6 步 PO 已认可；62、63 等 Developer 复述；第 7 步等复述完由 PO 定精化结束 · 最近一次 PO 决定：2026-11-14 认可 68、64 的复述，63 的细节交 Master 定
+> Waiting for PO: None（62、63 的复述到了再问 PO）
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
 
@@ -92,7 +92,7 @@ PO 2026-11-14 定 Sprint Goal（「可以，我觉得目标可以的」）；DoD
 | 先开设计 | Master 的理解：68-a 的原型轮就是这次看板的设计，一定排在 68-b 前面，照旧记在冲刺日志里，不开设计冲刺 |
 | 其余各点 | PO 说「还可以」「没问题」 |
 
-**第 6 步 · Developer 的复述**（2026-11-14，待 PO 认可）
+**第 6 步 · Developer 的复述**（2026-11-14；PO 2026-11-14 认可：「可以，我觉得问题不大」）
 
 用自己的话把每一点说一遍：我听到的是什么，我要做什么。
 
@@ -144,7 +144,7 @@ PO 2026-11-14 定 Sprint Goal（「可以，我觉得目标可以的」）；DoD
 - 64-3 图标是 PO 选定的，放在插件里，`plugin.json` 指向它，`--strict` 通过；
 - 64-4 6.0.3 的版本号各处一致，Codex 包核对通过，推送经 PO 点头。
 
-**第 6 步 · Developer 的复述**（2026-11-14，待 PO 认可）
+**第 6 步 · Developer 的复述**（2026-11-14；PO 2026-11-14 认可：「可以，我觉得问题不大」）
 
 - **立足点**：陌生人装之前、装之后都要放心：看得到版本记录，知道怎么升级、授权有什么限制、在哪反馈，看得到图标。
 - **图标**：我出 3 张给 PO 挑——样子是 PO 的口味，我不替他定；放进插件，`plugin.json` 的 `icon` 指向它，README 顶部也用；提交官方目录不在这次。`icon` 字段的写法（路径、尺寸、格式）做的时候先查 docs MCP。验收（64-3）只能验到「放进去、`--strict` 通过、README 里看得到」：Claude Code 忽略这个字段，官方目录这次不提交，它在 Claude Desktop 里显不显示我验不了。
@@ -193,6 +193,40 @@ PO 2026-11-14 定 Sprint Goal（「可以，我觉得目标可以的」）；DoD
 - 62-4 词汇表中英对照，陌生人卡问过的词都在；
 - 62-5 Sprint 19 交来的说明点都讲到；
 - 62-6 英文为准，中文同一提交跟着改；和约定原文对得上；无死链。
+
+**第 6 步 · Developer 的复述**：待写。
+
+**PBI-63 体验测试**
+
+第 1～5 步是 Master 领着 PO 过的，Master 直接写进日志；PO 2026-11-14：「可以，我觉得问题不大。你来决定就可以」——63 的细节交 Master 定。第 6 步等 Developer 复述。
+
+**①② 立足点**（照抄用户故事）：「作为懂 Scrum 的陌生人，我想要每版都有人替我从头走一遍，以便我装上就能用、不被卡住」
+
+已定（产品日志 PBI-63 备注）：用 2.1 的陌生人卡，只给 README、身份、任务；从装插件走到第一次收官，并在看板上看进度；只测 Claude Code；跑之前先写什么算卡住；放在本冲刺最后，测改完的新版，用 claude-magpie 的便宜模型模拟陌生人（PO 2026-11-14）。
+
+**③④ 定案**
+
+| 点 | 定案（谁定） |
+| --- | --- |
+| 怎么模拟 | 一个便宜的模型拿陌生人卡扮用户，一句一句驱动一个装了插件的 claude-magpie 会话，从装插件走到第一次收官，最后看一眼看板。测法 Developer 出 |
+| 装哪个版本 | 新版没推送，从本地仓库装；推送后要不要再从 GitHub 装一遍，到时再定（Master 定）。Developer 提具体装法 |
+| 卡住与过线 | 什么算卡住、过线，Developer 起草，写进 2.2、单独提交后再跑（sprint-log 第 13 条）；Master 审，PO 看一眼 |
+| 隔离 | 陌生人那边不带作者的记忆和配置；照 CLAUDE.md 的无头测法用白名单环境，并核实子进程真被限制了（init 的 permissionMode、permission_denials） |
+| 陌生人的任务 | 一个很小的虚构项目，从白纸写产品日志、开一个小冲刺、收官；控制花费。Developer 提 |
+| 卡点怎么办 | 在 62、64 范围里的就地修、再跑；范围外的登记进产品日志（sprint-log 第 21 条） |
+
+**⑤ 切成两块**
+
+- **63-a 标准与测法**：写好、单独提交，再跑。
+- **63-b 跑、修、再跑**。
+
+**验收标准（草稿）**
+
+- 63-1 测法、卡住的判定、过线，跑之前写进 2.2 并单独提交；
+- 63-2 陌生人只拿到 README、身份和任务，核实没带作者的记忆和配置；
+- 63-3 从装插件走到第一次收官，最后看到看板；
+- 63-4 照 63-1 的标准过线；修不了的卡点登记进产品日志；
+- 63-5 报告先写结论。
 
 **第 6 步 · Developer 的复述**：待写。
 
