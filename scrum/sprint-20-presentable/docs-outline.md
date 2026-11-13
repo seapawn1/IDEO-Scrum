@@ -5,20 +5,46 @@
 > 2026-11-14，Developer 写。要你做的四件事：① README、快速上手的大纲说行（或指出要改）；② 词汇表的词条清单说行；③ 定 README 的文件地图收不收（D）；④ 从三张图标里挑一张（E）。你说行，我再写全文（sprint-log 第 11、12 条）。
 > 写法：每行是「将来文档里的英文标题 —— 这一节会写什么」；英文为准，中文版标题一一对应。
 
-## A. README（`README.md` 英文，`README.zh-CN.md` 中文）
+## A. README（`README.md` 英文，`README.zh-CN.md` 中文）——对标之后改的版本
 
-- `# IDEO-Scrum` —— 图标、一句话说它是什么、版本号（首行）；紧接着一句醒目的授权提示：d.school 的材料有非商业限制，本仓库不算 OSI 意义上的开源软件，细节见 License。
-- `## What it is` —— 把 Design Thinking 与 Scrum Sprint 装进 Claude Code（Codex 是附带包）：四个角色、四个内核各是什么；不做什么（不是项目管理工具、不接 JIRA 和 Linear）；写给谁（懂 Scrum、一个人加 AI 做项目的人）。
-- `## Install` —— Claude Code 三行命令；Codex 两行（附带，写短）。旧 `codex` 分支迁移那一段对新用户没用，建议挪进 CHANGELOG 的升级提示，不留在这里。
-- `## Upgrade` —— `claude plugin update ideo-scrum@ideo-scrum`，或在 `/plugin` 里打开自动更新（第三方市场默认不自动更新）；指向 CHANGELOG。Codex 的升级办法我查了再写，查不实就写明没验证。
-- `## Your first sentence` —— 入口要教：怎么叫出四个角色（`/ideo-scrum:scrum-master` 等），怎么直接说（「用 ideo-scrum 帮我……」两三个例句），怎么叫出 ideo（发散、定义问题时模型多半直接作答，点名 ideo-kernel 才用它的方法，这是已知的限制）；链到快速上手。
-- `## How it differs from textbook Scrum` —— 一张小表（来自 `overview.md` 的 Departures）：这里怎么做 / 官方怎么说 / 为什么，七行：只有 PO 必须是人；设计与冲刺并列；PO 和 Scrum Master 定条目；How 是计划、放行才动手；检查点代替 Daily Scrum；审阅者必须有；没有冲刺截止日；链到 `overview.md`。
-- `## Where the work lives` —— 你的项目里会长出 `scrum/`：产品日志、冲刺日志、设计日志、IDEO 日志、看板各放哪；真实的示例就是本仓库的 `scrum/`（中文的），看哪几份（`ProductBacklog.md`、一份归档的冲刺日志）。
-- `## Board and hook` —— （62-d，68 做完再写）hook：做什么、`IDEO_SCRUM_COMMITMENTS=off` 关掉、Windows 要装 Git for Windows、macOS 没实测、Codex 要先在 `/hooks` 里信任；看板：怎么叫它生成、长什么样（放一张图）。
+> 2026-11-14 改（初版见 git 历史）。PO 说大纲交 Master 定、力气花在介绍上、先对标。
+
+**对标了四份，只学结构、不抄文字**：官方市场的 `feature-dev`（流程类插件，和我们最像）、`ralph-loop`、`hookify`，另有第三方的 `academic-research-skills`（当反面看）。
+
+| 学到的（要用） | 出处 |
+| --- | --- |
+| 开头一句话说清是什么，装法出现得早（第 12～35 行），装完有一步「怎么看它装好了」 | hookify、ralph-loop、academic-research-skills |
+| 「一次会话什么样」靠短的对话示例：你说什么、它做什么、它问什么 | feature-dev 每个阶段一段 |
+| 「适合谁、不适合谁」是两张短清单 | feature-dev 的 Use for / Don't use for；ralph-loop 的 Good for / Not good for |
+| 平台的坑单独一小节，带绕法 | ralph-loop 的 Windows 一节 |
+
+| 要避开的 | 出处 |
+| --- | --- |
+| 同一句话说四遍（「别跳阶段」在 Overview、Philosophy、Best Practices、Tips 里各来一次，共 413 行） | feature-dev |
+| 介绍埋在后面（装法前先摆了四十行引文） | academic-research-skills |
+| 参考资料压过介绍（正则、字段表比介绍长） | hookify |
+
+**改后的大纲**（英文标题为准，写成英文约 150 行；每行「标题 —— 这一节写什么」，括号里是依据）：
+
+- `# IDEO-Scrum` —— 图标；一句话：把 Design Thinking 与 Scrum Sprint 装进 Claude Code（产品日志 1.1 的承诺原文；Codex 是附带包）；版本号；一行导航（中文版 · Install · Quick start · Glossary · Changelog）；一句醒目的授权提示：d.school 的材料有非商业限制，本仓库不算 OSI 意义上的开源软件，见 License。
+- `## What it is` —— 约 10 行，三层：问题（一个人带着 AI 做项目，规矩和进度都在你脑子里和聊天里，会话断了、压缩了就丢；AI 会跑偏，「做完了」只是它说了算。依据：熟手卡「流程跟着插件走，不用每次口述规矩；会话断了、压缩了能接上」，overview 的 Departures 里「AI may drift」）；得到什么（一支 Scrum 团队：你当 Product Owner，AI 当 Scrum Master、Developer、Designer、Stakeholder；要弄清「人要什么」时用设计思维：IDEO 五模式、d.school 的方法、《Sprint》的设计冲刺；全部写进你仓库里的 Markdown 日志，换个会话读日志就接得上）；不做什么（产品日志 1.1 的边界：不是项目管理工具、不接 JIRA 和 Linear、不是团队协作平台）。
+- `## A session, shortened` —— 一段示意对话，约 12 行，标明是示意、已缩短：你叫出 Scrum Master → 一起写产品日志 → 开冲刺，Why、What、How 每个阶段末尾它停下问你定不定 → 你说放行 → 做、测 → 你说收官。其后两行：这会在你的仓库里长出什么（`scrum/ProductBacklog.md`、`scrum/sprint-01-…/SprintBacklog.md`）；68 做完后在这里放一张看板截图（块 12）。
+- `## Who it is for` —— 两张短清单。适合：一个人用 Claude Code 做自己的项目、懂 Scrum 或想学的人（熟手卡、陌生人卡的「是谁」）；要规矩跟着插件走、会话能接上的人。不适合：要接 JIRA 或 Linear、要团队协作平台的人（产品边界）；要 AI 无人值守跑完的人（每个阶段末尾停下等 PO 定，overview 第 12 条）；要逐字照 Scrum Guide 的人（见下一节）。
+- `## Install` —— Claude Code 三行命令；Codex 两行，写短，说明是生成的附带包；装完怎么看装好了（先在本机核实：`claude plugin list` 列得出 ideo-scrum；Codex 在 `$` 菜单里看得到四个角色）。旧 `codex` 分支的迁移已挪进 CHANGELOG。
+- `## Upgrade` —— `claude plugin update ideo-scrum@ideo-scrum`（终端里；会话里用 `/plugin marketplace update ideo-scrum`）；第三方市场默认不自动更新，要自动就在 `/plugin` 的 Marketplaces 里选 ideo-scrum、打开 Enable auto-update；更新后 `/reload-plugins`；每版改了什么看 CHANGELOG。（这几条 2026-11-14 查过 docs MCP。）Codex 的升级办法：查 Codex 文档再写，查不实就写明没验证。
+- `## Your first sentence` —— 怎么开口：四个角色命令各一行；直接用自己的话说（「用 ideo-scrum 帮我……」两个例句）；Scrum、冲刺、设计冲刺召唤才来（角色命令、点名插件或内核、要求建改日志），泛问不会拉起；发散、定义问题时模型多半直接作答，要用 ideo 的方法就点名 `ideo-kernel`（已知的限制，PBI-67）；链到快速上手。句子取自旧 README 和三份内核描述，逐句对。
+- `## How it differs from textbook Scrum` —— 七行，只用 overview 的 Departures 表「Here」一列的原文，不引官方原句（免得带出第三方原文）；末尾链到 `overview.md`。
+- `## Where the work lives` —— 你的项目里会长出 `scrum/`：一张小表，产品日志、冲刺日志、设计日志、IDEO 日志、看板、`documents/` 各放什么；真实的示例就是本仓库的 `scrum/`（中文的），看 `ProductBacklog.md` 和一份归档的冲刺日志。
+- `## Board and hook` —— （块 12，68 做完再写）hook 做什么、`IDEO_SCRUM_COMMITMENTS=off` 关掉、Windows 要装 Git for Windows、macOS 没实测、Codex 要先在 `/hooks` 里信任；看板怎么叫它生成、长什么样。
 - `## Learn more` —— 链到快速上手、词汇表、CHANGELOG、`overview.md`。
 - `## License and attribution` —— 原创部分 MIT；Scrum Guide、SGEP 是 CC BY-SA 4.0；d.school 是 CC BY-NC-SA 4.0（非商业）；《Sprint》全版权，只记方法流程；链到 `ATTRIBUTION.md`（和它对得上）。
 - `## Feedback` —— GitHub Issues 的链接，写什么进去（装的环境、你说了什么、看到什么）；不做模板。
-- `## Files` —— 文件地图（收不收见 D）。
+- `## Files` —— 文件地图，收到文件夹一级，放最后，越短越好（PO 定，块 4）。
+
+**要 Master 定的三处**（别的我按这份写）：
+1. **顺序**：先讲是什么（问题、一次会话、给谁），再装；导航行放最上面，只想装的人一键跳到 Install。我推荐这样。另一种是 Install 排第二。
+2. **How it differs 七行留不留**：PO 说「没用的去掉」。我认为这七行对懂 Scrum 的人不是没用的，是他们头一个会问的「你们改了什么」；嫌多就砍到四行（Product Owner 必须是人、设计与冲刺并列、放行才动手、没有冲刺截止日）。我推荐留七行。
+3. **示意对话是编的**：标明「示意、已缩短」，不是真输出。63 的体验测试会跑出真实会话，到时可换成真的节选。我推荐先用示意，措辞逐句对着约定写（PO 定的是「短对话示例，或看板截图」）。
 
 ## B. 快速上手（`docs/quick-start.md`、`docs/quick-start.zh-CN.md`，一页，约 80 行内）
 
