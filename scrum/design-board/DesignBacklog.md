@@ -1,8 +1,8 @@
 # Design Backlog — board
 
 > Opened 2026-11-14 | From: PBI-68 看板改版——Sprint 20（`sprint-20-presentable`）的 68 等本设计的原型交接，再做 68-b；同日先开过一条设计线，PO 叫停、日志已删，这是重开 | Branch: `worktree-design-board`（PO 建的原生 worktree，基于 main） | Product Owner: SeaPawn | Designer: 原型和测试由 Designer 会话做，到 Prototype 时开；共情、定义、构思由 PO 和 Master 定、Master 落盘（PO 2026-11-14 的分工） | Scrum Master: 会话 IDEO # [master]-[main]-[management sprint]
-> Now: Empathize：课题、设计目标、设计问题照 PO 的答复改好了，等 PO 在关卡上定这一章
-> Waiting for PO: 1 共情这一章定不定、进不进定义（设计目标按 PO 第 8 题的决定去掉了「哪里在等他」）；2 「在等 PO 的事」改由 hook 或助手提醒，要不要登记成新的 PBI
+> Now: Define：愿景地图和 HMW 写好了，等 PO 挑 HMW、定这一章
+> Waiting for PO: 1 愿景地图行不行；2 挑 HMW
 > Ends when the design questions are answered or the Product Owner stops the design (convention 19 in `design-log.md`); its conclusions flow back to the product log — a blank page's design fills it — and the first Sprint Review after that archives this file (convention 17 in `sprint-log.md`, in the sprint-kernel skill's `conventions/` folder).
 > Methods: the stage excerpts in the design-kernel skill (excerpt paths below are relative to that skill's folder), and in every stage the ideo-kernel's IDEO mode and methods, as the design-kernel `SKILL.md` requires.
 > This log records what each stage produced, not every step taken to get there (convention 22 in `design-log.md`).
@@ -48,17 +48,53 @@ PO 的决定和去掉的问题：
 - **「过时了会不会骗人」不列为设计问题**：PO：「要靠 AI 更新了。不是那么关心」。生成时间照看板约定照样写在页面上。
 - **拍板跟看板关系不大**：PO：「它做到哪儿了？我会用它辅助[拍板]。但是确实是一般，关系不是很大」。PBI-68 用户故事里的「拿它拍板」，设计结束、结论回流产品日志时改。
 
-PO 的决定（2026-11-14）：课题照 Master 写的，PO 不审（「反正你直接写上去吧，我就是挑战，我就不用审了」）；设计目标、设计问题见上。
+PO 的决定（2026-11-14）：课题照 Master 写的，PO 不审（「反正你直接写上去吧，我就是挑战，我就不用审了」）；设计目标、设计问题见上。「在等 PO 的事」由 hook 或助手提醒，不登记成 PBI（「不用登记成新的 [PBI]……他后碰到问题肯定会向我反映的」）。关卡：共情这一章行，进定义（「我觉得可以，可以往下走定义」）。
 
 ## 2. Define
 
 ### 2.1 Map
 
-（待画。）约定覆盖（PO 2026-11-14）：地图画想达到的愿景，不画现在发生的事（design-log 第 8 条写的是只画现在）；PO 在叫停的那条设计线里说：「你画现在的有什么意义呢」。愿景只写想达到的体验，不写做法。
+```mermaid
+flowchart TD
+    PO(["PO"])
+    AS(["助手（维护看板）"])
+    LN(["各条线的会话：Master、Developer、Designer"])
+    LN --> A["各条线干活，写进日志"]
+    AS --> B
+    A --> B["助手照日志更新看板"]
+    B --> C["看板挂在 PO 的屏上：竖屏、电脑或手机"]
+    PO --> D
+    C --> D["PO 抬头瞄一眼：好看、形象，看到项目走到哪、每条线在做什么"]
+    D --> E["PO 心里有数，回到会话里接着做（拍板在会话里）"]
+    E --> F["结局：PO 始终知道项目在哪，不用问 AI、翻 git、读日志"]
+    E -. "工作往下走，日志又变了" .-> A
+```
+
+约定覆盖（PO 2026-11-14）：地图画想达到的愿景，不画现在发生的事（design-log 第 8 条写的是只画现在）；PO 在叫停的那条设计线里说：「你画现在的有什么意义呢」。愿景只写想达到的体验，不写做法；现在的样子（问 AI、翻 git、读晦涩的日志）和哪里疼，在第 1 章。
 
 ### 2.2 How Might We
 
-（待写。）
+对着 2.1 的地图和第 1 章写，按主题分，括号里是它对着地图的哪一步。PO 挑的打 ✓（待挑）；没挑的不丢，当作做的时候要顾到的条件。
+
+- 好看、形象（D）
+  1. HMW 让 PO 第一眼看到的是一幅图，不是一串字？
+  2. HMW 让它好看到 PO 愿意一直挂着，一眼不像模板？
+  3. HMW 让这幅图本身就说出项目的结构：产品、条目、冲刺、设计怎么连着？
+- 几条线并行（A、D）
+  4. HMW 让每条线现在在做什么，一眼分得清？
+  5. HMW 让每条线走到哪个阶段，像进度一样看得出来？
+  6. HMW 让几条线同时跑也不乱？
+- 瞄一眼（C、D）
+  7. HMW 让隔着一段距离也看得清「走到哪」？
+  8. HMW 让瞄一眼就够，不用凑近读字？
+- 不同的屏（C）
+  9. HMW 让同一页在竖屏、电脑、手机上都读得顺？
+  10. HMW 让竖屏挂着看是主角，手机顺带？
+- 少与空（D）
+  11. HMW 让条目很少、甚至一张白纸的项目，看起来也像设计过？
+- 概括（B）
+  12. HMW 让晦涩的日志被概括成一眼看得懂的样子，又不加日志里没有的事？
+  13. HMW 让想看某条线的细节时，一步就到日志里对应的地方？
 
 ## 3. Ideate
 
