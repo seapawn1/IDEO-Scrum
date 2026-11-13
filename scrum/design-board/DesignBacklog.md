@@ -1,8 +1,8 @@
 # Design Backlog — board
 
 > Opened 2026-11-14 | From: PBI-68 看板改版——Sprint 20（`sprint-20-presentable`）的 68 等本设计的原型交接，再做 68-b；同日先开过一条设计线，PO 叫停、日志已删，这是重开 | Branch: `worktree-design-board`（PO 建的原生 worktree，基于 main） | Product Owner: SeaPawn | Designer: 原型和测试由 Designer 会话做，到 Prototype 时开；共情、定义、构思由 PO 和 Master 定、Master 落盘（PO 2026-11-14 的分工） | Scrum Master: 会话 IDEO # [master]-[main]-[management sprint]
-> Now: Test：照 PO 的修改出了故事板第 3 版（路线改成条目和地图，How 只分做完没做完），等 PO 说过
-> Waiting for PO: 1 故事板第 3 版过不过（过了就结束设计，进 68-b）
+> Now: 结束：PO 2026-11-14 定结束设计；结论流向 Sprint 20 的 68-b 和产品日志 PBI-68；等 Sprint 20 的 Review 归档
+> Waiting for PO: None
 > Ends when the design questions are answered or the Product Owner stops the design (convention 19 in `design-log.md`); its conclusions flow back to the product log — a blank page's design fills it — and the first Sprint Review after that archives this file (convention 17 in `sprint-log.md`, in the sprint-kernel skill's `conventions/` folder).
 > Methods: the stage excerpts in the design-kernel skill (excerpt paths below are relative to that skill's folder), and in every stage the ideo-kernel's IDEO mode and methods, as the design-kernel `SKILL.md` requires.
 > This log records what each stage produced, not every step taken to get there (convention 22 in `design-log.md`).
@@ -135,11 +135,38 @@ PO 的话（2026-11-14）：「我们现在就当设计师吧」——构思到�
 | ⑧ 白纸 | 5 条目很少、白纸也像样 | 同上 |
 | 故事板 v1（Master 的项目流水线，已被 PO 的方案取代） | — | `prototype/storyboard.html` |
 
-故事板是静态画面（数据是本仓库 2026-11-14 的样子），PO 说不用做真网页（见 3.1）。
+故事板是静态画面（数据是本仓库 2026-11-14 的样子），PO 说不用做真网页（见 3.1）。设计结束时照第 19 条删了原型和草图，都在提交 `8f19e04` 里：`git show 8f19e04:scrum/design-board/prototype/storyboard-v3.html`（`sketches/`、v1、v2 同一提交）。
+
+PO 的决定（2026-11-14）：原型行，第 3 版就是要做的样子（「我觉得你现在这个原型做得不错的。你可以修改一下原型，然后基本上没问题，我们就过掉了」）。
 
 ## 5. Test
 
 **事先写的标准**（第 18 条）：PO 看完故事板，逐帧说感觉。每个设计问题：PO 说「行」「可以」算是；PO 说不行、要换样子算否；PO 拿不准、要先看真页面算还没定。故事板测不出的：真屏上隔一段距离看的效果、字号够不够、动起来顺不顺——这些留到 68-b 做出真页面后，PO 看真实看板时验（68-6）。
 
+约定覆盖（PO 2026-11-14）：测试只由 PO 来——看板只给 PO 用，熟手卡就是他本人——不另派角色卡（第 17 条）；陌生人会在 Sprint 20 的 63 体验测试里读到看板。
 
-（待做。）约定覆盖（PO 2026-11-14）：测试只由 PO 来——看板只给 PO 用，熟手卡就是他本人——不另派角色卡（第 17 条）；陌生人会在 Sprint 20 的 63 体验测试里读到看板。
+**谁测的、看到了什么**：PO 本人，看了三版故事板。
+- 第 1 版（Master 的项目流水线）：「确实设计得不错」，风格认可；但条目在产品里怎么体现、条目和冲刺的关系没画出来，产品节点也不该只是个点——PO 换成自己的方案。
+- 第 2 版（PO 的总览流向图 + 三层卡片）：「相当好，相当好」；只有路线画错了：五个阶段「众所周知……你用它没有用的」。
+- 第 3 版（路线改成条目往前走和地图，How 只分做完没做完）：PO：「原型做得不错……基本上没问题，我们就过掉了」。
+
+**设计问题的答案**：
+
+| # | 问题 | 答案 | 依据 | 流向 |
+| --- | --- | --- | --- | --- |
+| 1 | 好看、形象到 PO 愿意一直挂着吗？ | 是（故事板层面）；真页面还没定 | PO 对风格三次认可；挂着看的效果要看真页面 | 68-b 照第 3 版做，68-6 PO 看真实看板时再答 |
+| 2 | 几条线并行，每条在做什么，一眼分得清吗？ | 是 | 总览里条目连线流进各自的冲刺、设计；PO 没提异议 | 68-b |
+| 3 | 隔一阵、离屏幕一段距离瞄一眼，看得出走到哪吗？ | 还没定 | 故事板测不出远看和字号 | 68-6 |
+| 4 | 竖屏、电脑、手机都读得顺吗？ | 是（版式）；字号还没定 | 竖屏总览、电脑左右并排、手机缩窄，PO 没提异议 | 68-b 三档截图（68-2） |
+| 5 | 条目很少、白纸也像样吗？ | 是 | 白纸帧：产品圆圈下一个虚线空位 | 68-b 用白纸夹具验 |
+| 6 | 比问 AI、翻 git、读日志更省事更清楚吗？ | 是 | 三层卡片：承诺 · 路线 · 条目 / How / 方案，一跳就到；PO：「相当好」 | 68-b |
+
+**结论流向**（第 19 条）：
+- **Sprint 20 的 68-b**：照第 3 版故事板做看板——总览是竖着的流向图（产品圆圈 → 没做完的条目 → 流进冲刺或设计，连线照 GitHub Actions 的依赖线，点条目亮出去向，条目按在冲刺里 / 待选 / 以后由近到远、越远越淡）；点产品、冲刺、设计跳到它的三层卡片，左上角返回；电脑上左总览右卡片。三层：产品＝两个承诺 · 主干架构（线路式，标「在这」）· 没做完的条目；冲刺＝Sprint Goal · 条目往前走（每条做完几块）· How 工作块（✓ 和没做完）；设计＝设计目标 · 地图 · 方案小故事。全页只有「在这」一种亮色。仍是「固定页面 + 一份数据」，只读，离线。
+- **看板约定 `board.md` 要跟着改**：路线不画五个阶段；Waiting for PO 第一版不上页面（第 1 章 PO 的决定），68-4 的照抄清单去掉 Waiting；架构、地图、路线是概括，节点名取自日志。
+- **产品日志 PBI-68**：用户故事里的「拿它拍板」改成「找回方位」一类（PO：拍板跟看板关系不大）；验收 68-2 加竖屏 1080×1920、「窄屏卡片排成一列」改成「窄屏读得顺」。由 Master 在合并 Sprint 20 的分支后一起改。
+- **反馈区**三条看板反馈（电脑与手机、frontend-design、只概括）在 68-b 做完后照 SEAPAWN 的规矩删。
+
+**结束设计**：PO 2026-11-14 定结束（「我们就是现在就结束掉我们的这个设计冲刺了」）。设计目标原文：「一眼就知道：看板挂在 PO 的屏上，好看、形象；PO 隔一阵瞄一眼，就知道项目走到哪、每条线在做什么；不用再问 AI、翻 git、读日志，看着就想一直挂着。」分支照 PO 的安排不并回 main：Developer 的冲刺分支合进本分支，本分支接着做 Sprint 20 剩下的块，冲刺收官时合进 main（覆盖第 19 条「合进基底再删」）。本日志在 Sprint 20 的 Review 里压缩归档。
+
+**做法教训**（留给 Sprint 20 的 Retro）：共情、定义由 PO 和 Master 当面定，比交给一个新会话快、也准；原型用静态故事板就够，PO 看一眼就能指出错处；两个画方案的子代理拿到同一份「模式小结」，方案趋同成一个思路，分材料时要连小结一起分开。
