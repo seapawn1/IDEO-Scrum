@@ -1,8 +1,8 @@
 # Design Backlog — board
 
 > Opened 2026-11-14 | From: PBI-68 看板改版——Sprint 20（`sprint-20-presentable`）的 68 等本设计的原型交接，再做 68-b；同日先开过一条设计线，PO 叫停、日志已删，这是重开 | Branch: `worktree-design-board`（PO 建的原生 worktree，基于 main） | Product Owner: SeaPawn | Designer: 原型和测试由 Designer 会话做，到 Prototype 时开；共情、定义、构思由 PO 和 Master 定、Master 落盘（PO 2026-11-14 的分工） | Scrum Master: 会话 IDEO # [master]-[main]-[management sprint]
-> Now: Ideate：两个子代理各画一个方案（Haiku，互相看不见，各拿一份闪电演示材料）；同时 Master 和 PO 聊 PO 心里的画面
-> Waiting for PO: 1 PO 心里有没有已经成形的画面
+> Now: Test：Master 定了方案（项目流水线），故事板八帧在 prototype/storyboard.html，等 PO 看、说感觉
+> Waiting for PO: 1 看故事板，逐帧说感觉（每帧下面有一个问题）
 > Ends when the design questions are answered or the Product Owner stops the design (convention 19 in `design-log.md`); its conclusions flow back to the product log — a blank page's design fills it — and the first Sprint Review after that archives this file (convention 17 in `sprint-log.md`, in the sprint-kernel skill's `conventions/` folder).
 > Methods: the stage excerpts in the design-kernel skill (excerpt paths below are relative to that skill's folder), and in every stage the ideo-kernel's IDEO mode and methods, as the design-kernel `SKILL.md` requires.
 > This log records what each stage produced, not every step taken to get there (convention 22 in `design-log.md`).
@@ -102,17 +102,33 @@ PO 的决定（2026-11-14）：愿景地图行，挑 Master 建议的 6 个 HMW�
 
 ### 3.1 Solution
 
-（进行中。）画方案的子代理拿各自的一份闪电演示材料（PO 2026-11-14：「不给他现有的材料，他肯定……出不来好的方案」；第 11 条允许给「its own part of the gathered ideas」），不给第 1 版看板、约定和代码；只加载 ideo-kernel，不加载 scrum-kernel（第 11 条不给规矩，压过角色命令「子代理也加载两个内核」那句）。约定覆盖（PO 2026-11-14 认可 Master 的建议）：方案由 PO 和 Master 照调研材料画、照第 13 条定；另派 2 个互相看不见的 Haiku 子代理各画一个完整方案作对照，防止只在我们已有的想法里打转（第 11、12 条要的是几个子代理各画一个）。闪电演示（第 9 条）的材料：main 上的 `scrum/documents/PBI-68-board-references.md`、`PBI-68-board-research.md`。
+**项目流水线**（丙为骨架，借甲的阶段画法）：从上往下流，根是产品；往下是正在跑的几条线（冲刺、设计），每条线一排五个阶段节点，已过实心、现在亮（全页唯一的亮色）、未到空心；线里挂着它的条目，工作块折成「✓ 6 / 15 ▸」；待选、以后、已收官折成带数字的节点。点任何节点，内容从底下（竖屏、手机）或右边（电脑）出来：几行概括加「打开日志」，不搬日志正文。九步架构图收在根节点里。白纸项目只有产品、Product Goal 和一个虚线的空组。
+
+怎么来的：两个 Haiku 子代理各画一个，都选了地铁线路图（甲：项目地铁图；乙：线路图），站在「流程」上画；Master 替 PO 画了站在「结构」上的丙（项目流水线），照 PO 说的画面：「带折叠的那种线路图……流水线式……节点折叠，点一下某个节点，它相应的内容就可以出来」。三份草图是工作材料，在 `sketches/`。
+
+PO 的话（2026-11-14）：「我们现在就当设计师吧」——构思到原型由 Master 和 PO 代 Designer 做（「其实主要是有点简单了……原型根本都不需要把那个网页做出来，我们只需要定出来这个方向方案啥的就够了」）；方案交 Master 定（「我想让你最后来定一个」），PO 看故事板「Test 一下我的感觉」。Master 定丙为骨架、借甲的阶段画法：它就是 PO 说的画面；甲乙的线路图把九步当路，丙把它收进根节点，首页留给「每条线走到哪」。
 
 ### 3.2 Storyboard (optional)
 
-（需要时写。）
+八帧，见 `prototype/storyboard.html`：① 瞄一眼（竖屏默认）→ ② 点亮着的阶段，内容从底下滑出 → ③ 点「工作块 ▸」，这条线原地展开 → ④ 点折叠的「以后 3」，展开成条目 → ⑤ 点根节点「产品」，出产品陈述和架构图概括 → ⑥ 电脑全屏，从左往右流、内容在右 → ⑦ 手机单列、点开占满屏 → ⑧ 白纸项目。
 
 ## 4. Prototype
 
 | Part | The design question it tests | Where it is |
 | --- | --- | --- |
+| 故事板 ① 瞄一眼 | 1 好看形象、3 隔一段距离看得出走到哪、2 几条线分得清 | `prototype/storyboard.html` |
+| ② 点阶段出内容 | 6 比问 AI、翻 git、读日志更省事 | 同上 |
+| ③ 工作块原地展开 | 2 每条线在做什么 | 同上 |
+| ④ 折叠节点展开 | 1 好看（不挤）、6 | 同上 |
+| ⑤ 根节点里的架构图 | 1 形象（结构说得出来） | 同上 |
+| ⑥ 电脑全屏、⑦ 手机 | 4 三种屏都读得顺 | 同上 |
+| ⑧ 白纸 | 5 条目很少、白纸也像样 | 同上 |
+
+故事板是静态画面（数据是本仓库 2026-11-14 的样子），PO 说不用做真网页（见 3.1）。
 
 ## 5. Test
+
+**事先写的标准**（第 18 条）：PO 看完故事板，逐帧说感觉。每个设计问题：PO 说「行」「可以」算是；PO 说不行、要换样子算否；PO 拿不准、要先看真页面算还没定。故事板测不出的：真屏上隔一段距离看的效果、字号够不够、动起来顺不顺——这些留到 68-b 做出真页面后，PO 看真实看板时验（68-6）。
+
 
 （待做。）约定覆盖（PO 2026-11-14）：测试只由 PO 来——看板只给 PO 用，熟手卡就是他本人——不另派角色卡（第 17 条）；陌生人会在 Sprint 20 的 63 体验测试里读到看板。
