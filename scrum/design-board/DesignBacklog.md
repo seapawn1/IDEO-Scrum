@@ -1,8 +1,8 @@
 # Design Backlog — board
 
 > Opened 2026-11-14 | From: PBI-68 看板改版——Sprint 20（`sprint-20-presentable`）的 68 等本设计的原型交接，再做 68-b；同日先开过一条设计线，PO 叫停、日志已删，这是重开 | Branch: `worktree-design-board`（PO 建的原生 worktree，基于 main） | Product Owner: SeaPawn | Designer: 原型和测试由 Designer 会话做，到 Prototype 时开；共情、定义、构思由 PO 和 Master 定、Master 落盘（PO 2026-11-14 的分工） | Scrum Master: 会话 IDEO # [master]-[main]-[management sprint]
-> Now: Empathize：Master 问 PO 具体经历，再写课题、设计目标、设计问题
-> Waiting for PO: 1 共情：回答 Master 问的具体经历
+> Now: Empathize：课题、设计目标、设计问题照 PO 的答复改好了，等 PO 在关卡上定这一章
+> Waiting for PO: 1 共情这一章定不定、进不进定义（设计目标按 PO 第 8 题的决定去掉了「哪里在等他」）；2 「在等 PO 的事」改由 hook 或助手提醒，要不要登记成新的 PBI
 > Ends when the design questions are answered or the Product Owner stops the design (convention 19 in `design-log.md`); its conclusions flow back to the product log — a blank page's design fills it — and the first Sprint Review after that archives this file (convention 17 in `sprint-log.md`, in the sprint-kernel skill's `conventions/` folder).
 > Methods: the stage excerpts in the design-kernel skill (excerpt paths below are relative to that skill's folder), and in every stage the ideo-kernel's IDEO mode and methods, as the design-kernel `SKILL.md` requires.
 > This log records what each stage produced, not every step taken to get there (convention 22 in `design-log.md`).
@@ -12,16 +12,43 @@
 
 ### 1.1 Challenge
 
-（待写。）
+一个人带着几个 AI 会话并行做项目，PO 想随时知道「现在走到哪了、每条线在做什么、哪里在等我」。现在只能问 AI、翻 git 历史、读日志：日志晦涩，历史不够明确，费时也看不清。第 1 版看板丑、不形象，看一次就不想再看第二次。
+
+为什么是现在：Sprint 20 的目标是「拿得出手」，看板是其中最显眼的一块；今天 PO 同时开着 Master、Developer、Designer、助手四个会话，自己说「我们这次我都不知道在干嘛了」。
+
+听到的（一手 = PO 自己说的，2026-11-14 在 Master 会话里答共情的提问，语音转写，方括号是 Master 补的字）：
+
+- **怎么知道走到哪**（一手）：「打开这个项目啊，我就不知道就走到哪了，然后我就问 A[I]」；「主要是看一下 G[it] 的历史，然后还有……设计冲刺日志」；「日志的话太晦涩了，很难懂」「历史有时候也不够明确」；「花了一点点时间了，而且不是那么明确」。
+- **几个会话一起跑**（一手）：「还是蛮多对话的，因为他们很多都让我来决策嘛……然后我也不知道他们做到哪儿了」。
+- **第 1 版看板**（一手）：「太丑了，实在是太丑了」；「没有任何的……图像化、形象化」；「我看到之后我就不想再看第 2 次」。
+- **竖屏挂着**（一手）：挂在另一块屏上，或者从这块屏「拆一点面积」给它，「一直是显示着……当前做到哪儿了」；「一般都是会和 stakeholder 的对话放在一块的，因为一般都是 stakeholder 的对话去维护他」；「过了半个小时……我看一眼，然后让这个[助手]更新一下」。
+- **拍板**（一手）：「拍版就是在你这的呀。就是你问我……我才排版的呀。这个好像关系不是很[大]」。和 PBI-68 用户故事里的「拿它拍板」对不上：拍板发生在 Master 的会话里，看板管的是「知道走到哪」。
+
+Master 的读法（PO 认了：「差不多」）：看板是一块挂着的「仪表」，不是打开来查的文件；它的活是让 PO 隔一阵瞄一眼就找回方位，尤其是几条线并行时；好看、形象是它能被一直挂着的前提；它旧不旧要看得出来，因为更新要靠助手。
 
 ### 1.2 Design goal
 
-| Commitment | （待 PO 定） |
+| Commitment | 一眼就知道：看板挂在 PO 的屏上，好看、形象；PO 隔一阵瞄一眼，就知道项目走到哪、每条线在做什么；不用再问 AI、翻 git、读日志，看着就想一直挂着。 |
 | --- | --- |
 
 ### 1.3 Design questions
 
-（待写。）
+都从「它会怎么失败」反过来问；按 PO 说的轻重排（PO 2026-11-14 认）。
+
+1. 好看、形象到 PO 愿意一直挂着吗？（PO：「最关键的」；第 1 版看一次就不想再看。）
+2. 几条线并行时，每条在做什么，一眼分得清吗？（PO：「也很重要」。）
+3. 隔一阵、离屏幕有段距离瞄一眼，看得出「走到哪」吗？还是要凑近读字？
+4. 竖屏、电脑全屏、手机上都读得顺吗？（PO：「也很重要」。）
+5. 条目很少、甚至一张白纸的项目，也像样吗？（PO：「条目很少的时候也得……有点这个样子」。）
+6. 比起问 AI、翻 git、读日志，真的更省事、更清楚吗？晦涩的日志概括得出看得懂的样子吗？
+
+PO 的决定和去掉的问题：
+
+- **「在等 PO 的事」第一版不上看板**：PO 先说「当然要显示」，接着说：「如果是要显示这个的话，那就说明其他的点也要去更新看板，那其实我就不是那么喜欢……第一版可以先不写，因为只有 stakeholder 才会更新看板呀，所以它主要是要来同步整个过程。等我的……不如写个[hook]来提醒我呢……不如 stakeholder 他来提醒我直接」。设计目标里原有的「哪里在等他」据此去掉。这会动到 68-4 的照抄清单（Waiting for PO 不再上页面），交接时写给 Developer。
+- **「过时了会不会骗人」不列为设计问题**：PO：「要靠 AI 更新了。不是那么关心」。生成时间照看板约定照样写在页面上。
+- **拍板跟看板关系不大**：PO：「它做到哪儿了？我会用它辅助[拍板]。但是确实是一般，关系不是很大」。PBI-68 用户故事里的「拿它拍板」，设计结束、结论回流产品日志时改。
+
+PO 的决定（2026-11-14）：课题照 Master 写的，PO 不审（「反正你直接写上去吧，我就是挑战，我就不用审了」）；设计目标、设计问题见上。
 
 ## 2. Define
 
