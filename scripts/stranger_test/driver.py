@@ -254,7 +254,8 @@ class _Visible(html.parser.HTMLParser):
     def handle_starttag(self, tag, attrs):
         if tag in self.SKIP:
             self.depth += 1
-        elif tag in ("br", "p", "div", "li", "tr", "h1", "h2", "h3", "h4", "section", "article", "header", "footer"):
+        elif tag in ("br", "p", "div", "li", "tr", "h1", "h2", "h3", "h4", "section", "article", "header", "footer",
+                     "button", "summary", "main"):
             self.parts.append("\n")
 
     def handle_endtag(self, tag):
@@ -273,6 +274,28 @@ def visible_text(page: str) -> str:
     text = "".join(p.parts)
     text = re.sub(r"[ \t]+\n", "\n", text)
     return re.sub(r"\n{3,}", "\n\n", text).strip()
+
+
+EDGES = [r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
+         r"C:\Program Files\Microsoft\Edge\Application\msedge.exe",
+         r"C:\Program Files\Google\Chrome\Application\chrome.exe"]
+
+
+def board_text(path: pathlib.Path) -> str:
+    """What the board page shows to a person. The page is drawn by its own script, so the file's text holds almost
+    nothing: open it in headless Edge and read the drawn page. Without a browser, fall back to the file's own text."""
+    exe = next((b for b in EDGES if os.path.isfile(b)), None)
+    if exe:
+        try:
+            r = subprocess.run([exe, "--headless", "--disable-gpu", "--allow-file-access-from-files",
+                                "--virtual-time-budget=5000", "--dump-dom", path.resolve().as_uri()],
+                               capture_output=True, timeout=120)
+            dom = r.stdout.decode("utf-8", "replace")
+            if dom.strip():
+                return visible_text(dom)
+        except (OSError, subprocess.SubprocessError):
+            pass
+    return visible_text(path.read_text(encoding="utf-8", errors="replace"))
 
 
 def is_install_line(line: str) -> bool:
@@ -399,7 +422,7 @@ class Run:
             stat = (board.stat().st_mtime_ns, board.stat().st_size)
             if stat != self.board_seen:
                 self.board_seen = stat
-                shown = visible_text(board.read_text(encoding="utf-8", errors="replace"))
+                shown = board_text(board)
                 self.log("H", "board", shown)
                 seen += "\n\n[scrum/ScrumBoard.html now shows this text:]\n" + shown
         return seen, None
@@ -744,6 +767,10 @@ def selftest() -> int:
         ok = verify.check_outputs(proj, env)
         expect("good project: all five (board: %s)" % ok["5_board"]["detail"][:300], {k: v["ok"] for k, v in ok.items()},
                {"1_product_log": True, "2_sprint_log": True, "3_tool_runs": True, "4_close": True, "5_board": True})
+        if any(os.path.isfile(b) for b in EDGES):
+            seen = board_text(proj / "scrum/ScrumBoard.html")
+            expect("what S sees of the board: the drawn page, not the empty file",
+                   "Daily Quote" in seen and "A morning ritual" in seen, True)
         (proj / "today").write_text("#!/usr/bin/env python\nprint('Carpe diem')\n", encoding="utf-8")
         (proj / "quote.py").write_text("raise SystemExit(1)\n", encoding="utf-8")
         expect("a script without a suffix, run by its shebang", verify.check_outputs(proj, env)["3_tool_runs"]["ok"],
