@@ -98,6 +98,23 @@ def check_outputs(proj: pathlib.Path, env: dict, board_check=None) -> dict:
     return out
 
 
+def shebang_runner(p: pathlib.Path):
+    """How to run a file without a known suffix, from its first line (`#!/usr/bin/env python`, `#!/bin/sh`...)."""
+    if p.suffix:
+        return None
+    try:
+        with open(p, "rb") as f:
+            first = f.readline(200).decode("utf-8", "replace").strip()
+    except OSError:
+        return None
+    if not first.startswith("#!"):
+        return None
+    for word, runner in (("python", ["python"]), ("node", ["node"]), ("bash", ["bash"]), ("sh", ["bash"])):
+        if re.search(r"\b" + word + r"\b", first):
+            return runner
+    return None
+
+
 def check_tool(proj: pathlib.Path) -> dict:
     """The little tool: run each script found in the project (not under scrum/ or .git/); it passes when one exits
     0 and prints a line."""
@@ -106,20 +123,27 @@ def check_tool(proj: pathlib.Path) -> dict:
         rel = p.relative_to(proj).as_posix()
         if not p.is_file() or rel.startswith((".git/", "scrum/")) or len(rel.split("/")) > 4:
             continue
-        runner = TOOL_SUFFIXES.get(p.suffix.lower())
-        if not runner:
+        runners = [TOOL_SUFFIXES[p.suffix.lower()]] if p.suffix.lower() in TOOL_SUFFIXES else []
+        first = None if runners else shebang_runner(p)
+        if first:
+            # a script with a shebang may be a polyglot that only works as an installed command (the second smoke
+            # run built a sh/Python one): try the shebang's interpreter first, then the others
+            runners = [first] + [r for r in (["python"], ["bash"], ["node"]) if r != first]
+        if not runners:
             continue
         env = {k: v for k, v in os.environ.items() if k.lower() in ("systemroot", "path", "comspec", "pathext")}
-        try:
-            r = subprocess.run(runner + [str(p)], cwd=str(proj), capture_output=True, text=True, encoding="utf-8",
-                               errors="replace", timeout=20, env=env, stdin=subprocess.DEVNULL)
-        except (subprocess.TimeoutExpired, OSError) as e:
-            tried.append(f"{rel}: {type(e).__name__}")
-            continue
-        line = next((l for l in r.stdout.split("\n") if l.strip()), "")
-        tried.append(f"{rel}: exit {r.returncode}, {'a line' if line else 'no output'}")
-        if r.returncode == 0 and line:
-            return {"ok": True, "detail": f"{rel} printed a line ({len(line)} characters)"}
+        for runner in runners:
+            try:
+                r = subprocess.run(runner + [str(p)], cwd=str(proj), capture_output=True, text=True,
+                                   encoding="utf-8", errors="replace", timeout=20, env=env,
+                                   stdin=subprocess.DEVNULL)
+            except (subprocess.TimeoutExpired, OSError) as e:
+                tried.append(f"{rel} with {runner[0]}: {type(e).__name__}")
+                continue
+            line = next((l for l in r.stdout.split("\n") if l.strip()), "")
+            tried.append(f"{rel} with {runner[0]}: exit {r.returncode}, {'a line' if line else 'no output'}")
+            if r.returncode == 0 and line:
+                return {"ok": True, "detail": f"{rel} with {runner[0]} printed a line ({len(line)} characters)"}
     return {"ok": False, "detail": "no script ran and printed a line; tried: " + ("; ".join(tried) or "none")}
 
 
@@ -146,16 +170,18 @@ def tool_inputs(rows: list) -> list:
 
     for d in rows:
         if d.get("type") == "assistant":
-            for c in (d.get("message") or {}).get("content") or []:
+            message = d.get("message")
+            for c in (message.get("content") if isinstance(message, dict) else None) or []:
                 if isinstance(c, dict) and c.get("type") == "tool_use":
                     walk(c.get("name"), c.get("input"))
     return found
 
 
-def scan_paths(rows: list, allowed_roots: list, real_home: str, forbidden: tuple) -> list:
-    """What the plugin session reached for that is the author's: a path under the real home that is not inside
-    one of the run's own folders, or any of the forbidden names. Returns [(tool, offending text)]."""
-    allowed = [norm_path(str(a)).rstrip("/") + "/" for a in allowed_roots]
+def scan_paths(rows: list, allowed_roots: list, real_home: str, forbidden: tuple = (), ignore: tuple = ()) -> list:
+    """Hygiene: what the plugin session reached for under the author's real home, outside the run's own folders
+    (allowed_roots) and the folders of the tools it uses (ignore), plus any of the forbidden names.
+    Returns [(tool, offending text)]."""
+    allowed = [norm_path(str(a)).rstrip("/") + "/" for a in list(allowed_roots) + list(ignore)]
     user = norm_path(real_home).rstrip("/").split("/")[-1]
     token = re.compile(r"[a-z]:/users/" + re.escape(user) + r"[^\s\"'`;|&<>)]*|/c/users/" + re.escape(user) +
                        r"[^\s\"'`;|&<>)]*|~/[^\s\"'`;|&<>)]*")
@@ -172,6 +198,28 @@ def scan_paths(rows: list, allowed_roots: list, real_home: str, forbidden: tuple
             if name.lower() in n:
                 hits.append((tool, name))
     return hits
+
+
+def scan_author(rows: list, real_home: str, names: tuple, dirs: tuple = (".claude", ".config", ".cache")) -> list:
+    """The pass line (63-a): the author's paths the plugin session must not touch: the author's memory folder and
+    this repository (`names`), and the real ~/.claude, ~/.config, ~/.cache (`dirs`; the last two are where magpie
+    keeps its providers, which is why XDG_CONFIG_HOME points there). Returns [(tool, what)]."""
+    home = norm_path(real_home).rstrip("/")
+    hits = []
+    for tool, text in tool_inputs(rows):
+        n = norm_path(text).replace("/c/users/", "c:/users/")
+        for d in dirs:
+            if f"{home}/{d}" in n:
+                hits.append((tool, f"{home}/{d}"))
+        for name in names:
+            if name.lower() in n:
+                hits.append((tool, name))
+    return hits
+
+
+def session_cost(rows: list) -> float:
+    """Claude Code's own estimate for a whole session: the values in the result events are running totals."""
+    return max([float(d.get("total_cost_usd") or 0) for d in rows if d.get("type") == "result"] or [0.0])
 
 
 def init_facts(rows: list, home: str) -> dict:
@@ -197,7 +245,8 @@ def tool_failure_streak(rows: list) -> int:
     """The longest run of the same tool call failing in a row."""
     calls, best, streak, last = {}, 0, 0, None
     for d in rows:
-        content = (d.get("message") or {}).get("content") or []
+        message = d.get("message")  # a string in some system events
+        content = (message.get("content") if isinstance(message, dict) else None) or []
         if d.get("type") == "assistant":
             for c in content:
                 if isinstance(c, dict) and c.get("type") == "tool_use":

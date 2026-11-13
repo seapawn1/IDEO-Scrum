@@ -49,8 +49,10 @@ LIMITS = {"rounds": 60, "p_message_s": 20 * 60, "run_s": 120 * 60, "s_message_s"
 P_TOOLS = "Read,Write,Edit,Bash,Glob,Grep,Skill,Agent"
 MODEL = "haiku"  # magpie maps any model name to its own cheap model
 WHITELIST = {"systemroot", "path", "comspec", "pathext", "windir"}
-FORBIDDEN_NAMES = ("seapawn-memory", "ideo-scrum-archives", "/.config/magpie", "xdg_config_home", "s:/ideo-scrum",
-                   "sprint-20-presentable")
+# Names that mark the author's own places (63-a: the memory folder and this repository), plus magpie's settings and
+# the variable that points at them; the real ~/.claude, ~/.config and ~/.cache are added by verify.scan_author.
+AUTHOR_NAMES = ("seapawn-memory", "ideo-scrum-archives", "s:/ideo-scrum", "sprint-20-presentable",
+                "/.config/magpie", "xdg_config_home")
 
 
 # ---- the sessions -------------------------------------------------------------------------------------------
@@ -67,8 +69,9 @@ def magpie_prefix() -> list:
 
 def clean_path(path: str, real_home: str, keep: set, isdir=os.path.isdir) -> str:
     """The host's PATH without the author's own folders. A folder is dropped when it does not exist, or when it lies
-    under the real home and is not one of `keep` (the folders of the tools the run needs). The first smoke run showed
-    why: the plugin session read PATH, saw the author's missing ~/bin, and proposed creating it in the author's home."""
+    under the real home and is not one of `keep` (the folders of the tools the run needs). The smoke runs showed why:
+    the plugin session read PATH, saw the author's missing ~/bin and proposed creating it there (first run), and
+    installed the little tool into the author's real ~/.local/bin (second run)."""
     home = norm_dir(real_home)
     kept = []
     for entry in path.split(os.pathsep):
@@ -86,19 +89,26 @@ def norm_dir(p: str) -> str:
     return p.replace("\\", "/").lower().rstrip("/")
 
 
+def tool_dirs() -> set:
+    """The folders of the tools the plugin session may use (not claude itself: magpie finds that on its own)."""
+    return {norm_dir(str(pathlib.Path(w).parent)) for w in
+            (shutil.which(t) for t in ("git", "sh", "python", "node", "magpie")) if w}
+
+
 def make_env(base: pathlib.Path) -> tuple:
     """A whitelist environment with a throwaway home, config dir and temp dir under base. magpie keeps its
-    providers under the real ~/.config, so only that is pointed back at the real home."""
+    providers under the real ~/.config, so only that is pointed back at the real home. PATH starts with a
+    throwaway ~/.local/bin (empty, where a person would put a little tool) and has none of the author's folders."""
     env = {k: v for k, v in os.environ.items() if k.lower() in WHITELIST}
     real_home = os.environ["USERPROFILE"]
-    tools = {norm_dir(str(pathlib.Path(w).parent)) for w in
-             (shutil.which(t) for t in ("claude", "git", "sh", "python", "node", "magpie")) if w}
-    for k in list(env):
-        if k.lower() == "path":
-            env[k] = clean_path(env[k], real_home, tools)
     home = base / "home"
     (home / "AppData" / "Roaming").mkdir(parents=True)
     (home / "AppData" / "Local").mkdir(parents=True)
+    userbin = home / ".local" / "bin"
+    userbin.mkdir(parents=True)
+    for k in list(env):
+        if k.lower() == "path":
+            env[k] = os.pathsep.join([str(userbin), clean_path(env[k], real_home, tool_dirs())])
     tmp = base / "tmp"
     tmp.mkdir()
     gitconfig = base / "gitconfig"
@@ -315,6 +325,11 @@ class Run:
                                          text=True).stdout.strip())
         manifest = json.loads((self.market / "plugins/ideo-scrum/.claude-plugin/plugin.json").read_text("utf-8"))
         self.plugin_version = manifest.get("version")
+        (self.dir / "run.json").write_text(json.dumps({
+            "commit": self.commit, "dirty_docs_or_plugin": self.dirty, "plugin_version": self.plugin_version,
+            "limits": self.limits, "scripted": self.scripted is not None, "temp_root": str(self.root),
+            "started": datetime.datetime.now().isoformat(timespec="seconds"), "installs": self.installs,
+        }, indent=2), encoding="utf-8")
 
     def log(self, who: str, kind: str, text: str, **extra) -> None:
         ev = {"t": round(time.time() - self.t0, 1), "round": getattr(self, "round", 0), "who": who, "kind": kind,
@@ -471,37 +486,50 @@ class Run:
         return self.finish(status, s)
 
     def finish(self, status: str, s) -> dict:
-        shutil.copytree(self.proj, self.dir / "project", dirs_exist_ok=True)
-        p_rows = verify.load_rows(self.p_log)
-        s_rows = verify.load_rows(self.dir / "s.jsonl")
-        real_home = os.environ["USERPROFILE"]
-        outputs = verify.check_outputs(self.proj, self.p_env)
-        touched = verify.scan_paths(p_rows, [self.root], real_home, FORBIDDEN_NAMES)
-        p_init, s_init = verify.init_facts(p_rows, str(self.p_home)), verify.init_facts(s_rows, str(self.s_home))
-        isolation_ok = (not p_init["other_plugins"] and p_init["memory_inside_home"] and not touched
-                        and (self.scripted is not None or (not s_init["other_plugins"] and s_init["memory_inside_home"]
-                                                           and not s_init["tools"])))
-        result = {
-            "run": self.id, "kind": self.kind, "status": status, "rounds": getattr(self, "round", 0),
-            "seconds": round(time.time() - self.t0), "commit": self.commit, "dirty_docs_or_plugin": self.dirty,
-            "plugin_version": self.plugin_version, "limits": self.limits, "scripted": self.scripted is not None,
-            "installs": self.installs,
-            "concessions": [
-                "XDG_CONFIG_HOME and XDG_CACHE_HOME point at the real .config and .cache, only so that magpie can "
-                "sign in; any read there counts as touching the author's paths",
-                "the plugin is installed with the `claude plugin` equivalents of the README's commands, from a "
-                "local copy of the committed state instead of GitHub",
-            ],
-            "outputs": outputs, "all_outputs": all(v["ok"] for v in outputs.values()),
-            "isolation": {"ok": isolation_ok, "p": p_init, "s": s_init, "paths_touched": touched},
-            "stuck": verify.stuck_signals(self.convo, p_rows),
-            "cost_usd": {"P": round(self.p.cost, 4) if self.p else 0, "S": round(s.cost, 4) if s else 0},
-        }
+        """Save the project, evaluate, write result.json and the transcript. An error in the evaluation must not
+        cost the raw output: it is recorded, and `driver.py report RUN_DIR` can evaluate again from the saved files."""
+        result = {"run": self.id, "kind": self.kind, "status": status, "rounds": getattr(self, "round", 0),
+                  "seconds": round(time.time() - self.t0)}
+        try:
+            shutil.copytree(self.proj, self.dir / "project", dirs_exist_ok=True)
+            meta = json.loads((self.dir / "run.json").read_text("utf-8"))
+            result.update(meta)
+            result.update(evaluate(self.dir / "project", self.p_env, self.root, self.p_home, self.s_home, self.convo,
+                                   verify.load_rows(self.p_log), verify.load_rows(self.dir / "s.jsonl"),
+                                   self.scripted is not None))
+        except Exception as e:  # noqa: BLE001
+            result["evaluation_error"] = repr(e)
         (self.dir / "result.json").write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
         write_transcript(self.dir, self.convo)
         if not self.keep_temp:
             rmtree(self.root)
         return result
+
+
+def evaluate(proj, env, root, p_home, s_home, convo, p_rows, s_rows, scripted) -> dict:
+    """The five outputs, the isolation and the stuck signals of a finished run, from what the run saved."""
+    real_home = os.environ["USERPROFILE"]
+    outputs = verify.check_outputs(pathlib.Path(proj), env)
+    author = verify.scan_author(p_rows, real_home, AUTHOR_NAMES)
+    leaks = verify.scan_paths(p_rows, [root], real_home, (), ignore=tuple(tool_dirs()))
+    p_init, s_init = verify.init_facts(p_rows, str(p_home)), verify.init_facts(s_rows, str(s_home))
+    s_ok = scripted or (not s_init["other_plugins"] and s_init["memory_inside_home"] and not s_init["tools"])
+    return {
+        "concessions": [
+            "XDG_CONFIG_HOME and XDG_CACHE_HOME point at the real .config and .cache, only so that magpie can "
+            "sign in; any read there counts as touching the author's paths",
+            "the plugin is installed with the `claude plugin` equivalents of the README's commands, from a "
+            "local copy of the committed state instead of GitHub",
+        ],
+        "outputs": outputs, "all_outputs": all(v["ok"] for v in outputs.values()),
+        # pass line 4 of 63-a: no author path touched, and the stranger's sessions carry nothing of the author's
+        "isolation": {"ok": bool(not p_init["other_plugins"] and p_init["memory_inside_home"] and not author and s_ok),
+                      "author_paths_touched": author, "p": p_init, "s": s_init},
+        # hygiene, beyond the pass line: anything else the plugin session did under the author's real home
+        "leaks": leaks,
+        "stuck": verify.stuck_signals(convo, p_rows),
+        "cost_usd_estimate": {"P": round(verify.session_cost(p_rows), 2), "S": round(verify.session_cost(s_rows), 2)},
+    }
 
 
 def write_transcript(directory: pathlib.Path, convo: list) -> None:
@@ -513,10 +541,12 @@ def write_transcript(directory: pathlib.Path, convo: list) -> None:
 
 
 def summary_line(r: dict) -> str:
-    out = r["outputs"]
-    marks = "".join(k[0] if v["ok"] else "." for k, v in sorted(out.items()))
-    return (f"{r['run']}: {r['status']} in {r['rounds']} rounds, {r['seconds']} s; outputs {marks} "
-            f"({'all' if r['all_outputs'] else 'not all'}); isolation {'ok' if r['isolation']['ok'] else 'NOT ok'}; "
+    head = f"{r['run']}: {r['status']} in {r['rounds']} rounds, {r['seconds']} s"
+    if "outputs" not in r:
+        return f"{head}; NOT evaluated: {r.get('evaluation_error')}"
+    marks = "".join(k[0] if v["ok"] else "." for k, v in sorted(r["outputs"].items()))
+    return (f"{head}; outputs {marks} ({'all' if r['all_outputs'] else 'not all'}); "
+            f"isolation {'ok' if r['isolation']['ok'] else 'NOT ok'}, leaks {len(r['leaks'])}; "
             f"ask_author {r['stuck']['ask_author']}, stuck {r['stuck']['stuck_lines']}")
 
 
@@ -541,6 +571,36 @@ def cmd_run(args) -> int:
             results.append(r)
             print(summary_line(r))
     return 0 if all(r["status"] == "done" for r in results) else 1
+
+
+def cmd_report(args) -> int:
+    """Evaluate a saved run again from its files (stream, conversation, project copy): for a run whose evaluation
+    failed, or to apply a corrected check. Writes result.json and transcript.md in the run folder."""
+    run = pathlib.Path(args.run_dir)
+    convo = [json.loads(l) for l in (run / "conversation.jsonl").read_text("utf-8").split("\n") if l.strip()]
+    p_rows, s_rows = verify.load_rows(run / "p.jsonl"), verify.load_rows(run / "s.jsonl")
+    init = next((d for d in p_rows if d.get("type") == "system" and d.get("subtype") == "init"), None)
+    if not init:
+        sys.exit("no init event in p.jsonl: the plugin session never started")
+    root = pathlib.Path(init["cwd"]).parent  # <temp root>/project
+    meta_file = run / "run.json"
+    meta = json.loads(meta_file.read_text("utf-8")) if meta_file.is_file() else {}
+    for k in ("commit", "plugin_version"):
+        if getattr(args, k):
+            meta[k] = getattr(args, k)
+    env = {k: v for k, v in os.environ.items() if k.lower() in WHITELIST}
+    env.update({"GIT_CONFIG_NOSYSTEM": "1"})
+    last = convo[-1] if convo else {}
+    status = "done" if last.get("who") == "S" and last.get("kind") == "done" else "unknown"
+    result = {"run": run.name, "kind": run.name.split("-")[0], "status": status,
+              "rounds": max([e.get("round", 0) for e in convo] or [0]), "seconds": round(last.get("t", 0)),
+              **meta, "reported_from_saved_files": True}
+    result.update(evaluate(run / "project", env, root, root / "p" / "home", root / "s" / "home", convo, p_rows,
+                           s_rows, bool(meta.get("scripted"))))
+    (run / "result.json").write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
+    write_transcript(run, convo)
+    print(summary_line(result))
+    return 0
 
 
 def cmd_verify(args) -> int:
@@ -582,19 +642,50 @@ def selftest() -> int:
         {"type": "tool_use", "id": "3", "name": "Bash", "input": {"command": "cat /c/users/someone/.config/magpie/a"}},
         {"type": "tool_use", "id": "4", "name": "Bash", "input": {"command": "ls S:/SeaPawn-Memory/memory"}},
     ]}}]
-    hits = verify.scan_paths(rows, [root], real, FORBIDDEN_NAMES)
-    expect("paths: inside the run is fine", [h for h in hits if "st-abc" in h[1]], [])
-    expect("paths: real .claude, magpie config and memory are caught", len(hits) >= 3, True)
+    hits = verify.scan_paths(rows, [root], real)
+    expect("hygiene: inside the run is fine", [h for h in hits if "st-abc" in h[1]], [])
+    expect("hygiene: the real .claude and .config are caught", len(hits) >= 2, True)
+    author = verify.scan_author(rows, real, AUTHOR_NAMES)
+    expect("pass line: real .claude, magpie config and memory are caught", len(author) >= 3, True)
+    expect("pass line: the run's own folders and ~ are fine",
+           [a for a in author if "st-abc" in a[1] or a[1] == "~"], [])
     # XDG_CONFIG_HOME points at the real .config only so that magpie can sign in: anything read there, magpie or
     # not, counts as touching the author's paths
     other = [{"type": "assistant", "message": {"content": [
         {"type": "tool_use", "id": "5", "name": "Read", "input": {"file_path": r"C:\Users\someone\.config\gh\hosts.yml"}}]}}]
-    expect("paths: another folder of the real .config is caught",
-           len(verify.scan_paths(other, [root], real, FORBIDDEN_NAMES)), 1)
+    expect("pass line: another folder of the real .config is caught",
+           len(verify.scan_author(other, real, AUTHOR_NAMES)), 1)
     var = [{"type": "assistant", "message": {"content": [
         {"type": "tool_use", "id": "6", "name": "Bash", "input": {"command": "ls $XDG_CONFIG_HOME/gh"}}]}}]
-    expect("paths: reaching for the XDG variable is caught",
-           len(verify.scan_paths(var, [root], real, FORBIDDEN_NAMES)) >= 1, True)
+    expect("pass line: reaching for the XDG variable is caught",
+           len(verify.scan_author(var, real, AUTHOR_NAMES)) >= 1, True)
+    # the second smoke run: the tool installed into the real ~/.local/bin is a hygiene leak, not a pass-line miss
+    installed = [{"type": "assistant", "message": {"content": [
+        {"type": "tool_use", "id": "7", "name": "Bash", "input": {"command": "cp today /c/Users/someone/.local/bin/today"}}]}}]
+    expect("hygiene: a file put into the real ~/.local/bin is caught", len(verify.scan_paths(installed, [root], real)), 1)
+    expect("pass line: ... but it is not an author path of the standard",
+           len(verify.scan_author(installed, real, AUTHOR_NAMES)), 0)
+    pyexe = [{"type": "assistant", "message": {"content": [
+        {"type": "tool_use", "id": "8", "name": "Bash", "input": {"command": r"C:\Users\someone\AppData\Local\Programs\Python\Python313\python.exe -V"}}]}}]
+    expect("hygiene: the folder of a tool in use is ignored",
+           verify.scan_paths(pyexe, [root], real, ignore=(r"C:\Users\someone\AppData\Local\Programs\Python\Python313",)), [])
+    # a system event whose `message` is a string must not break the checks (the second smoke run crashed on one)
+    mixed = [{"type": "system", "subtype": "x", "message": "plain text"}] + rows
+    expect("a string message", verify.tool_failure_streak(mixed), 0)
+    expect("a string message in the scan", len(verify.scan_paths(mixed, [root], real)) >= 2, True)
+    expect("session cost is the running total's last value",
+           verify.session_cost([{"type": "result", "total_cost_usd": 0.2}, {"type": "result", "total_cost_usd": 0.9}]), 0.9)
+    # make_env: PATH starts with a throwaway ~/.local/bin and carries no folder of the author's claude
+    base = pathlib.Path(tempfile.mkdtemp(prefix="st-selftest-env-"))
+    try:
+        env, home = make_env(base)
+        entries = env["PATH"].split(os.pathsep)
+        expect("PATH starts with the throwaway user bin", entries[0], str(home / ".local" / "bin"))
+        claude_dir = shutil.which("claude")
+        expect("PATH has no folder of the author's claude",
+               bool(claude_dir) and norm_dir(str(pathlib.Path(claude_dir).parent)) in [norm_dir(e) for e in entries], False)
+    finally:
+        rmtree(base)
     # clean_path: the author's missing ~/bin and private tool folders go; system folders and needed tools stay
     base = pathlib.Path(tempfile.mkdtemp(prefix="st-selftest-path-"))
     try:
@@ -642,7 +733,17 @@ def selftest() -> int:
         ok = verify.check_outputs(proj, env)
         expect("good project: all five", {k: v["ok"] for k, v in ok.items()},
                {"1_product_log": True, "2_sprint_log": True, "3_tool_runs": True, "4_close": True, "5_board": True})
+        (proj / "today").write_text("#!/usr/bin/env python\nprint('Carpe diem')\n", encoding="utf-8")
         (proj / "quote.py").write_text("raise SystemExit(1)\n", encoding="utf-8")
+        expect("a script without a suffix, run by its shebang", verify.check_outputs(proj, env)["3_tool_runs"]["ok"],
+               True)
+        # a sh/Python polyglot that fails under sh when it is not an installed command, but runs under python
+        (proj / "today").write_text(
+            "#!/bin/sh\n''''exec python \"$(cygpath -w \"$(command -v -- \"$0\")\")\" \"$@\" # '''\nprint('Carpe diem')\n",
+            encoding="utf-8")
+        expect("a polyglot script is tried with the other interpreters",
+               verify.check_outputs(proj, env)["3_tool_runs"]["ok"], True)
+        (proj / "today").unlink()
         expect("a failing tool", verify.check_outputs(proj, env)["3_tool_runs"]["ok"], False)
         g("tag", "-d", "sprint-01-daily")
         expect("no tag", verify.check_outputs(proj, env)["4_close"]["ok"], False)
@@ -690,12 +791,18 @@ def main(argv) -> int:
         r.add_argument("--" + k.replace("_", "-"), dest=k, type=int, default=0)
     v = sub.add_parser("verify")
     v.add_argument("run_dir")
+    rp = sub.add_parser("report")
+    rp.add_argument("run_dir")
+    rp.add_argument("--commit", default="")
+    rp.add_argument("--plugin-version", dest="plugin_version", default="")
     sub.add_parser("selftest")
     args = ap.parse_args(argv)
     if args.cmd == "selftest":
         return selftest()
     if args.cmd == "verify":
         return cmd_verify(args)
+    if args.cmd == "report":
+        return cmd_report(args)
     return cmd_run(args)
 
 
