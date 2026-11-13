@@ -54,15 +54,15 @@ Developer：    计划写在冲刺日志第 3 章。你说「放行」之前，�
 
 ## 安装
 
-需要 Claude Code。你的项目最好是个 git 仓库；没有的话，Scrum Master 可以替你建。
+需要 Claude Code。你的项目最好是个 git 仓库；没有的话，Scrum Master 可以替你建。在 Claude Code 会话里：
 
-```sh
+```text
 /plugin marketplace add seapawn1/IDEO-Scrum
 /plugin install ideo-scrum@ideo-scrum
 /reload-plugins
 ```
 
-检查：`claude plugin list` 里 `ideo-scrum@ideo-scrum` 显示已启用。
+检查：在终端里运行 `claude plugin list`，里面 `ideo-scrum@ideo-scrum` 显示已启用。
 
 Codex 是附带的版本，由同一份源生成；第一个冲刺的走法只在 Claude Code 上测过。在终端里：
 
@@ -91,9 +91,9 @@ codex plugin add ideo-scrum@ideo-scrum
 
 ## 第一句话怎么说
 
-在 Claude Code 里，叫出一个角色：
+在 Claude Code 会话里，叫出一个角色：
 
-```sh
+```text
 /ideo-scrum:scrum-master    # 主持 Planning、检查点、Review 和 Retro；审阅工作；服务你这位 Product Owner
 /ideo-scrum:developer       # 跑一个冲刺：计划、增量、冲刺日志
 /ideo-scrum:designer        # 研究与原型：五模式和设计冲刺；你没定之前不动手做

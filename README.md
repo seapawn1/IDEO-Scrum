@@ -56,13 +56,15 @@ Not a fit:
 
 You need Claude Code. A git repository for your project is recommended; the Scrum Master can set one up for you.
 
-```sh
+In a Claude Code session:
+
+```text
 /plugin marketplace add seapawn1/IDEO-Scrum
 /plugin install ideo-scrum@ideo-scrum
 /reload-plugins
 ```
 
-To check: `claude plugin list` shows `ideo-scrum@ideo-scrum` as enabled.
+To check, run `claude plugin list` in a terminal: it shows `ideo-scrum@ideo-scrum` as enabled.
 
 Codex is a companion edition, generated from the same source; the first-Sprint walkthrough is tested on Claude Code only. In a terminal:
 
@@ -91,9 +93,9 @@ codex plugin add ideo-scrum@ideo-scrum
 
 ## Your first sentence
 
-In Claude Code, call a role:
+In a Claude Code session, call a role:
 
-```sh
+```text
 /ideo-scrum:scrum-master    # facilitates Planning, checkpoints, Review and Retro; reviews the work; serves you, the Product Owner
 /ideo-scrum:developer       # runs a Sprint: the plan, the Increment, the sprint log
 /ideo-scrum:designer        # research and prototypes: the five modes and design sprints; builds nothing before you decide
