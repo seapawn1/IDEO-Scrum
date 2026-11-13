@@ -47,7 +47,7 @@ Ask the Scrum Master to open a Sprint. It gets a branch and a folder, `scrum/spr
 | Increment | The work is built, with notes in the sprint log | That it can go into testing |
 | Test | The work is tested and reviewed | To close, or to go back |
 
-Read the plan, then say "go ahead". Approving a plan is not a go-ahead: building starts only after it. Your first Sprint can be small; even half an hour's work gets one, with each step shrunk to a line or two.
+Read the plan, then say "go ahead". Approving a plan is not a go-ahead: building starts only after it. The Scrum Master may hand the plan, or the building, to a Developer working in the background; if it takes long, ask "Is the plan ready?", or tell the Scrum Master to write it itself. Your first Sprint can be small; even half an hour's work gets one, with each step shrunk to a line or two.
 
 ## 4. Build and test
 
