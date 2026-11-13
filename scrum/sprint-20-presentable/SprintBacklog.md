@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 20 (presentable)
 
 > Started: 2026-11-14 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: worktree-sprint-20-presentable | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[management sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-20]-[do presentable]，原生 worktree sprint-20-presentable）
-> Now: Increment：块 1、3、4、5、6、7 已完成（块 6 Master 审过，改了一处）；块 8：`scripts/stranger_test/` 的驱动脚本写好、自测过、不带 S 的管道测试过，冒烟（带 S，一次）第 1 次跑了约 9 分钟、9 个来回，被系统因内存吃紧停掉，没出结果；查出一处隔离漏洞（P 从 PATH 看到作者家目录下的 `~/bin`、想在那儿建目录），已修；Master 定：等 PO 腾出内存、点头，Master 通知我再跑，在那之前不跑，正式 3 次一个一个跑、不并行；P 用中文答不改（记成「模型的噪声」）；我现在没有能动的块（68-b 以后都等设计线），先停着；设计线由 PO 另开，Designer 会话在做原型，PO 在设计会话里定改用设计冲刺，日志 `scrum/design-board/DesignBacklog.md` · 最近一次 PO 决定：2026-11-14 看过 63-a 的标准（块 7）
-> Waiting for PO: 块 8：冒烟再跑要 PO 腾出内存、点头（Master 去问他关哪些会话）；68：原型定稿（PO 在设计会话里做，交接包由 Designer 通知 Master）
+> Now: Increment：块 1、3、4、5、6、7 已完成（块 6 Master 审过，改了一处）；块 8：`scripts/stranger_test/` 的驱动脚本写好、自测过、不带 S 的管道测试过，冒烟（带 S，一次）第 1 次被系统因内存吃紧停掉，没出结果，查出的隔离漏洞（P 从 PATH 看到作者家目录下的 `~/bin`）已修；PO 腾出内存后 Master 叫我重跑，第 2 次已开跑（一次一个，默认上限），跑完看结果、完整了再校准运行上限、另提交；P 用中文答不改（记成「模型的噪声」）；设计线：PO 定关掉原来那条（Designer 会话关、`worktree-ideo-board` 分支和工作树删、调研材料留在 main 的 `scrum/documents/`），由 PO 和 Master 重做共情、定义，之后开新的 Designer 会话做原型，68 留在本冲刺，68-b 以后的块等交接包 · 最近一次 PO 决定：2026-11-14 关掉设计线重来
+> Waiting for PO: 68：设计重做（PO 和 Master 做共情、定义），之后新 Designer 会话做原型，交接包由 Designer 通知 Master；块 8：无（冒烟在跑）
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
 
@@ -315,12 +315,12 @@ PO 2026-11-14 定精化结束（第 7 步）：「OK，可行。嗯，现在精�
 
 ## 3. How
 
-两条线并行：设计线是 PO 带着设计师会话做看板原型（另一个工作树，设计日志 `scrum/design-board/DesignBacklog.md`），建造线是我做不依赖看板的块；68-b 等原型合回来再做。表里是默认顺序：设计线的交接包一到，68-b 插到最前面。
+两条线并行：设计线先由 PO 和 Master 重做看板设计的共情、定义两个阶段（原来那条设计线 PO 2026-11-14 定关掉重来，见第 4 章），再开新的 Designer 会话做原型（另一个工作树，设计日志的路径等新设计开了再定），建造线是我做不依赖看板的块；68-b 等原型合回来再做。表里是默认顺序：设计线的交接包一到，68-b 插到最前面。
 
 | # | Work item | Output | Done when |
 | --- | --- | --- | --- |
 | 1 | 开场包（给设计会话） | 一页 brief（`board-brief.md`，放本冲刺文件夹）；三份样本数据：本仓库现状、Sprint 19 收官前的日志、白纸 | ✓ 2026-11-14 brief 写明看板的一件事、第 1 版的毛病、PO 的话与三条反馈、验收 68-1～68-6、交接包的样子；Master 审过，设计会话读得到 |
-| 2 | 设计线 68-a（PO + 设计师会话，另一个工作树） | 最终原型（固定页面 + 一份数据）；「照抄 / 概括」一页表；电脑 1440 与手机 375 宽的截图 | PO 说「就这个」，交接包齐 |
+| 2 | 设计线 68-a（先由 PO 和 Master 重做设计的共情、定义两个阶段，再由新开的 Designer 会话做原型，另一个工作树；PO 2026-11-14 定关掉原来那条重来） | 最终原型（固定页面 + 一份数据）；「照抄 / 概括」一页表；电脑 1440 与手机 375 宽的截图 | PO 说「就这个」，交接包齐 |
 | 3 | 64-a CHANGELOG 与图标候选 | 根目录 `CHANGELOG.md`（英文，6.0.3 一节详写，之前每版一行，照 tag 列）；图标 3 张候选 | ✓ 2026-11-14 CHANGELOG 的版本和 `git tag` 对得上；3 张候选备好，在块 4 给 PO 挑 |
 | 4 | 三份大纲，PO 一次看完 | README、快速上手的大纲；词汇表词条清单；文件地图收不收的建议；摆出图标候选 | ✓ 2026-11-14 PO 一次看完：大纲说行、图标挑定、文件地图定了 |
 | 5 | 62-a README（中英）与图标入位 | `README.md`（英文）、`README.zh-CN.md`，含 64 的升级、授权、反馈三段；图标放进插件，`plugin.json` 的 `icon` 指向它；同步脚本去掉 Codex 清单里的 `icon` | ✓ 2026-11-14 两份的标题、列表项数、链接对得上，无死链；规矩的句子对得上约定原文；授权一段和 ATTRIBUTION.md 对得上，引了第三方原文的地方带 Source 和 License 两行；`--strict` 通过，plugin-validator（Haiku）无必改项；`sync_codex.py`、`check_codex.py` 通过；Master 审过 |
@@ -338,7 +338,7 @@ PO 2026-11-14 定精化结束（第 7 步）：「OK，可行。嗯，现在精�
 **Key choices**
 
 - **两条线并行**：设计线在另一个工作树里做原型，记在设计日志；建造线做不依赖看板的块。原因：原型的节奏由 PO 的口味定，不该拦住别的块；原型是用完就扔的东西，按 overview 放在设计日志的文件夹里、不进 Increment；Sprint 18、19 并行跑过。PO 2026-11-14 定（见第 4 章）。
-- **接口先交，合并由我做**：设计线进工作树先 `git merge worktree-sprint-20-presentable` 带上冲刺日志；设计日志写明它为本冲刺的哪一条（68）做，结论回流 2.2 的 68。PO 说「原型好了」，我从本分支合并设计线的分支（我的分支在我的工作树里占着，只能从我这边合）。设计线尽量只往 `scrum/design-board/` 加文件；PO 说改不改冲刺日志都行，万一都改了，合并时我手工合。设计结束后的第一次 Review 把设计日志压缩归档（`scrum/documents/design/`），原型删掉（git 留着）。
+- **接口先交，合并由我做**：设计线进工作树先 `git merge worktree-sprint-20-presentable` 带上冲刺日志；设计日志写明它为本冲刺的哪一条（68）做，结论回流 2.2 的 68。PO 说「原型好了」，我从本分支合并设计线的分支（我的分支在我的工作树里占着，只能从我这边合）。设计线尽量只往它自己的设计文件夹加文件（原来是 `scrum/design-board/`，新设计开了再定）；PO 说改不改冲刺日志都行，万一都改了，合并时我手工合。设计结束后的第一次 Review 把设计日志压缩归档（`scrum/documents/design/`），原型删掉（git 留着）。
 - **交接契约**：设计线交三样：最终原型、「照抄 / 概括」一页表、电脑 1440 与手机 375 宽的截图。原型做成「固定页面 + 一份数据」：好看放在固定的页面里，便宜的模型只负责把日志里的事实和概括填进数据。这样每次生成一样好看，核对变成「数据对日志」，地图用 HTML/SVG 画、不再联网。这是 Developer 的技术选择，写进 brief。
 - **68-4 的核对**：沿用 Sprint 19 的 `board_check.py`（`git show 1bf5a94:scrum/sprint-19-board-hook/tests/board_check.py`），改成读新页面的数据；夹具 A、B 验「条目少」，另造一份白纸；先拿真仓库的状态过一遍，再用来核对生成的页面。
 - **文档先大纲后全文，三份大纲一次给 PO 看**（sprint-log 第 11、12 条），图标候选一起摆。英文在前、中文跟着；两份用脚本核对标题、列表项数、链接；规矩的句子逐句对约定原文；快速上手里的 git 写成「可以让 Master 代做」的建议。署名是 1.2 挑中的 DoD：README 和词汇表只要引了第三方原文（Scrum Guide、SGEP、d.school），就带 Source 和 License 两行并和 ATTRIBUTION.md 一致，授权一段同样对得上；出自《Sprint》的词只用自己的话写（Master 2026-11-14 审第 3 章时要求补）。
@@ -349,7 +349,7 @@ PO 2026-11-14 定精化结束（第 7 步）：「OK，可行。嗯，现在精�
 
 **Risks and open points**
 
-- 设计线的进度由 PO 的节奏定：它没交之前，68-b、62-d、63-b、64-b 都等；我的前几块做完就会等，那时我报给 PO，由 PO 定是帮设计线、还是提前收尾别的块。设计线改用设计冲刺后，它有五个阶段，阶段之间都要 PO 拍板，比五模式重，68-b 以后的块可能要等更久。
+- 设计线的进度由 PO 的节奏定：它没交之前，68-b、62-d、63-b、64-b 都等；我的前几块做完就会等，那时我报给 PO，由 PO 定是帮设计线、还是提前收尾别的块。设计线改用设计冲刺后，它有五个阶段，阶段之间都要 PO 拍板，比五模式重，68-b 以后的块可能要等更久；又关掉重来（前两阶段由 PO 和 Master 重做，之后才开新的 Designer 会话做原型），要等得更久。这段时间我能动的块只有 8 和 62、64 里不依赖看板的收尾，做完就停着，不拿别的块去凑。
 - 块 5、6 篇幅大，一个会话做不完就拆（中英各一块），拆了写进第 4 章。
 - 原型转成真页面会走样：靠交接契约，和 PO 看真实看板（68-6）兜底。
 - 便宜的模型能不能稳定填好数据（概括的地图和路线图）要试了才知道：事实脚本能核对，概括的文字脚本查不了，靠约定和 PO 看；生成时长记进报告（Master：Sprint 19 的 15～25 分钟是收紧权限、只能手抄时量的）。
@@ -418,5 +418,7 @@ Go-ahead: 2026-11-14，PO（「可以，那就放行吧」，Master 转来）。
 - **查出一处隔离漏洞，已修（下次冒烟验）**：P 的 Bash 看了 PATH，里面有作者家目录下并不存在的 `C:\Users\seapawn\bin`，P 建议在那儿建目录放小工具，S 同意；停下时还没建（核对过，目录不存在）。检查脚本把这四处记成碰了作者路径，隔离判「不通过」，判得对。修法：`driver.py` 的 `clean_path` 去掉 P、S 的 PATH 里不存在的目录，和作者家目录下不是必需工具所在的目录（41 条剩 28 条），自测加一例。顺手修了两处：清理临时目录改用能删只读文件的 `rmtree`（git 留下的只读文件，让旧的清理漏掉一批，现在 `selftest` 零残留）；`Session` 不再把整条流存在内存里（流在磁盘上）。
 - **Master 对冒烟被停和修补的定案**（2026-11-14，对 6511479，63 的细节 PO 交给 Master 定）：① 重跑：等 PO 腾出内存再跑，Master 去问 PO 关哪些会话，PO 点头了告诉我；在那之前不跑；正式那组 3 次一个一个跑、不并行，没有违反 63-a。② P 用中文答：不改；63-a 自己写了冒烟后只许校准运行上限，语言设置算测法，不改；S 读得懂、没造成卡点；报告里记成「模型的噪声」，不算文档的卡点。③ PATH 的漏洞和 `.config` 的让步都处理得好，自测也补了。④ 60 个来回够不够，等一次完整的冒烟再校准，照 63-a 另提交。我现在没有能动的块，先停着。
 - **`XDG_CONFIG_HOME` 的让步**（Master 要求写明）：把 `XDG_CONFIG_HOME`、`XDG_CACHE_HOME` 指回真实的 `.config`、`.cache`，只是为了让 magpie 能认证，是个让步；已写进每次运行的 `result.json` 的 `concessions`；读 `.config` 下任何东西（不只是 magpie）都算碰作者路径，自测加了两例（另一个子目录、`$XDG_CONFIG_HOME` 变量），都报。
+- **冒烟第 2 次开跑**（2026-11-14，Master 转来：PO 关了浏览器和 VS Code，空闲从约 2.5 GB 到 4.4 GB，设计会话也马上要关）：照 63-a 跑，一次一个，用默认上限（60 个来回、P 单条消息 20 分钟、一次运行 120 分钟）。开跑前我自己又核了一遍空闲内存：4463 MB。
+- **设计线关掉重来**（PO 2026-11-14 定，Master 转来，原话照录）：「关掉现在这条设计线，Designer 会话关掉，worktree-ideo-board 分支和工作树都删，只把调研材料留下来、提交到 main 的 scrum/documents/；设计目标、地图、HMW 也不留，重新来。看板设计改成 PO 和 Master 一起重做前两阶段（共情、定义），之后再开一个新的 Designer 会话做原型，做好了合给你。68 留在 Sprint 20 不退出（PO：『68我建议还是留在那儿，然后只是后面我们重新做好之后再给他合过去』）；68-b 以后的块照旧等交接包。」Master 还说：产品日志 68 的备注这次先不动，等新设计开了，它一次改好。我的理解和跟着要改的：① 前面那几条（改开 IDEO 日志、改用设计冲刺、`design-board` 的日志路径）是那条设计线的记录，设计线关了，留着不动；② 第 3 章块 2、intro、风险按新情况改了：块 2 改成「PO 和 Master 重做共情、定义，再由新的 Designer 会话做原型」，Done 不变（PO 说「就这个」、交接包齐）；③ 新设计线的工作树、分支和设计日志的名字，等它开了再定，第 3 章的放行写的是「合并设计线的分支」，我理解新分支仍在这条放行里（合并时 PO 说原型好了、Master 核过交接包才合），请 Master 确认；④ `board-brief.md` 和 `board-data/` 是给上一个 Designer 会话的，新 Designer 会话要的话还能用，brief 里写 IDEO 日志、设计日志路径的几处要改，等新设计开了、Master 说怎么交，再改；⑤ 调研材料由 PO 和 Master 提交到 main，我不碰。我这段时间能动的块只有 8（体验测试的脚本和冒烟）和 62、64 里不依赖看板的收尾，做完就停着。
 
 ## 5. Test
