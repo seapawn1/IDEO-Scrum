@@ -1,5 +1,7 @@
 # 三份大纲，PO 一次看完（块 4）
 
+> **PO 的答复（2026-11-14，Master 转来）**：图标选 1；README 文件地图选①（收到文件夹一级，放最后，越短越好）；README 大纲交 Master 定，写全文前先对标两三份写得好的插件 README（只学结构、不抄文字），把力气花在介绍上；词条清单照下面这份，再加 Definition of Outcome Done / Output Done；快速上手的大纲照下面这份。下面 A 里的 README 大纲会在对标之后改。
+
 > 2026-11-14，Developer 写。要你做的四件事：① README、快速上手的大纲说行（或指出要改）；② 词汇表的词条清单说行；③ 定 README 的文件地图收不收（D）；④ 从三张图标里挑一张（E）。你说行，我再写全文（sprint-log 第 11、12 条）。
 > 写法：每行是「将来文档里的英文标题 —— 这一节会写什么」；英文为准，中文版标题一一对应。
 
@@ -37,7 +39,7 @@
 
 - **日志和文件**：product log 产品日志；sprint log 冲刺日志；design log 设计日志；IDEO log IDEO 日志；PBI（产品日志条目）；Commitment 承诺（一行小表：Product Goal、Sprint Goal、设计目标）；Now / Waiting for PO（日志头部两行）；Increment notes 增量笔记（冲刺日志第 4 章）；role card 角色卡（产品日志里利益相关者表的一行）；the Map 架构图（产品日志 2.2）；board 看板；`scrum/documents/` 归档。
 - **角色和分工**：Product Owner；Scrum Master；Developer；Designer（设计结对，插件自己的角色）；Stakeholder（外部视角，或常驻做非源码杂务）；PO assistant PO 助手；fresh subagent 全新子代理；written handover 书面授权；go-ahead 放行；checkpoint 检查点。
-- **流程**：the five stages of a Sprint（Why、What、How、Increment、Test）；refinement 精化（七步）；Review、Retro 与收官提交；small Sprint 小冲刺；kernel 内核（ideo、scrum、sprint、design 四个技能）；commitments hook 承诺 hook；design sprint 设计冲刺 与 the five modes 五模式（两件不同的事，名字都带「五」，这条最重要）。
+- **流程**：the five stages of a Sprint（Why、What、How、Increment、Test）；refinement 精化（七步）；Review、Retro 与收官提交；small Sprint 小冲刺；kernel 内核（ideo、scrum、sprint、design 四个技能）；commitments hook 承诺 hook；Definition of Outcome Done / Output Done 结果完成的定义 / 产出完成的定义（SGEP 的拆法，产品日志模板和 DoD 里用）；design sprint 设计冲刺 与 the five modes 五模式（两件不同的事，名字都带「五」，这条最重要）。
 - **来自 d.school 与《Sprint》**：Empathize、Define、Ideate、Prototype、Test；Point of View；How Might We；Five-Act Interview；rumble；Lightning Demos；Make a Map。
 
 共约 35 条。你说行，我就按这份写；想加想减，直接说。

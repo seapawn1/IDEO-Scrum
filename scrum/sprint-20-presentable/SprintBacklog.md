@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 20 (presentable)
 
 > Started: 2026-11-14 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: worktree-sprint-20-presentable | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[management sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-20]-[do presentable]，原生 worktree sprint-20-presentable）
-> Now: Increment：块 1、3 已完成；块 4（三份大纲）Master 审过、PO 在看；块 7（63-a 的标准）已单独提交（dd6f018），等 Master 审；我在做块 8（测法脚本与冒烟）；设计线由 PO 另开 · 最近一次 PO 决定：2026-11-14 放行第 3 章（「可以，那就放行吧」），范围见第 3 章末行
-> Waiting for PO: 块 4：README、快速上手的大纲和词汇表词条清单说行；图标挑一张；README 的文件地图收不收（`docs-outline.md`）
+> Now: Increment：块 1、3、4 已完成；块 7（63-a 的标准）按 Master 审后改过（61dc0c9），等 Master 再看；下一步块 5（先对标、改 README 大纲、发 Master 定，再写全文）和块 8（测法脚本与冒烟，交接笔记在第 4 章末，脚本还没写）；设计线由 PO 另开，Designer 会话在做原型 · 最近一次 PO 决定：2026-11-14 答块 4（图标选 1、文件地图收到文件夹一级、README 大纲交 Master 定）
+> Waiting for PO: 块 7：63-a 的标准看一眼（Master 转来）
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
 
@@ -322,7 +322,7 @@ PO 2026-11-14 定精化结束（第 7 步）：「OK，可行。嗯，现在精�
 | 1 | 开场包（给设计会话） | 一页 brief（`board-brief.md`，放本冲刺文件夹）；三份样本数据：本仓库现状、Sprint 19 收官前的日志、白纸 | ✓ 2026-11-14 brief 写明看板的一件事、第 1 版的毛病、PO 的话与三条反馈、验收 68-1～68-6、交接包的样子；Master 审过，设计会话读得到 |
 | 2 | 设计线 68-a（PO + 设计师会话，另一个工作树） | 最终原型（固定页面 + 一份数据）；「照抄 / 概括」一页表；电脑 1440 与手机 375 宽的截图 | PO 说「就这个」，交接包齐 |
 | 3 | 64-a CHANGELOG 与图标候选 | 根目录 `CHANGELOG.md`（英文，6.0.3 一节详写，之前每版一行，照 tag 列）；图标 3 张候选 | ✓ 2026-11-14 CHANGELOG 的版本和 `git tag` 对得上；3 张候选备好，在块 4 给 PO 挑 |
-| 4 | 三份大纲，PO 一次看完 | README、快速上手的大纲；词汇表词条清单；文件地图收不收的建议；摆出图标候选 | PO 一次看完：大纲说行、图标挑定、文件地图定了 |
+| 4 | 三份大纲，PO 一次看完 | README、快速上手的大纲；词汇表词条清单；文件地图收不收的建议；摆出图标候选 | ✓ 2026-11-14 PO 一次看完：大纲说行、图标挑定、文件地图定了 |
 | 5 | 62-a README（中英）与图标入位 | `README.md`（英文）、`README.zh-CN.md`，含 64 的升级、授权、反馈三段；图标放进插件，`plugin.json` 的 `icon` 指向它；同步脚本去掉 Codex 清单里的 `icon` | 两份的标题、列表项数、链接对得上，无死链；规矩的句子对得上约定原文；授权一段和 ATTRIBUTION.md 对得上，引了第三方原文的地方带 Source 和 License 两行；`--strict` 通过，plugin-validator（Haiku）无必改项；`sync_codex.py`、`check_codex.py` 通过；Master 审过 |
 | 6 | 62-b、62-c 快速上手（中英）与词汇表 | `docs/quick-start.md`、`docs/quick-start.zh-CN.md`、`docs/glossary.md` | 快速上手一页（约 80 行内），从装好走到第一次收官；陌生人卡点名的词都在词汇表里；两份对得上，无死链，规矩的句子对得上约定原文；署名：引了第三方原文（Scrum Guide、SGEP、d.school）的地方带 Source 和 License 两行，和 ATTRIBUTION.md 一致，出自《Sprint》的词只用自己的话写、不引原文；Master 审过 |
 | 7 | 63-a 标准与测法 | 测法、卡住的判定、过线的数字，写进 2.2，单独提交 | 提交早于任何正式跑；Master 审过，PO 看一眼 |
@@ -388,5 +388,14 @@ Go-ahead: 2026-11-14，PO（「可以，那就放行吧」，Master 转来）。
 - **设计会话开了，交接改了**（2026-11-14，Master 转告）：PO 开了 Designer 会话（`IDEO # [designer]-[sprint-20]-[design board]`），分支 `worktree-ideo-board` 已合到 beaa1f9，拿到了定稿的 brief。交接改成：PO 说用不着给我发消息，Designer 交接时只通知 Master，Master 核对交接包后叫我合并、做 68-b。brief 第 9 节已照改。
 - **Master 审块 3、块 4**（2026-11-14）：通过。CHANGELOG 的 3.0.0、3.1.0 两行它对过 git log，对得上。两处顺手改：旧 `codex` 分支迁移那段已挪进 CHANGELOG（同意，README 安装一节不再留它）；词汇表要加 Definition of Outcome Done / Output Done（SGEP 的拆法，产品日志模板和 DoD 里都用），等 PO 看完大纲一起改。
 - **块 7（63-a 的标准）**：测法、卡住的判定、过线写进 2.2，单独提交 dd6f018，早于任何运行；冒烟之后只许校准「运行的上限」，校准要在正式跑之前另提交。块 7 的 ✓ 等 Master 审过、PO 看一眼再标。
+- **Master 审 63-a，要改四处**（2026-11-14，已改并单独提交 61dc0c9，冒烟前）：任务不带引导（只写目标和要的结果，步骤让 S 自己从文档里找，也不告诉它「每个阶段结束要说你定」，测试题不带引导词的规矩）；写明 S 怎么「看」看板（驱动脚本把 `Board.html` 可见文字转给它，不给源码）；产出 2 放宽（冲刺日志或归档的冲刺日志里找得到 Sprint Goal 承诺和放行的记录，不比被测的约定更严）；正式一组可以并行跑。
+- **PO 对块 4 的答复**（2026-11-14，Master 转来，原话）：「图标我觉得第1个可以的……其实我觉得也是那些地图啥的完全不需要嘛，我觉得就是可以按你定的。我觉得可以精简，就是这些没用的，其实可以多聊一聊怎么去介绍嘛……或者你可以找一个写的比较好的，然后去对标抄他的也行。就是说抄他的结构……那大纲啥的你来定就行了」。定案（Master）：① 图标选 1（冲刺的环绕着设计的菱形）；② README 文件地图选①，收到文件夹一级，放在 README 最后，越短越好；③ README 大纲交 Master 定，PO 不再看大纲；PO 要的方向：没用的去掉，力气花在介绍上；写全文前先对标：找两三份写得好的 Claude Code 插件 README（官方市场 claude-plugins-official 里的，或本机装着的），只学结构、不抄文字，把调整后的大纲发 Master 定；介绍那部分建议讲清：它解决什么问题、一次会话大概什么样（短对话示例，或 68 做完后的看板截图）、适合谁、不适合谁；④ 词汇表词条清单照我的，加上 Definition of Outcome Done / Output Done；快速上手的大纲照我的。块 4 标 ✓。
+- **接下来**：块 5 先对标、改 README 大纲、发 Master 定，再写全文；图标入位用图标 1（SVG 导出 PNG，查 `icon` 字段的写法）。块 6 的词汇表加 Outcome / Output Done。
+- **块 8 的交接笔记**（2026-11-14，压缩对话前写下，脚本还没写、冒烟还没跑）：
+  - 现成的代码在 git 历史里：`git show 1bf5a94:scrum/sprint-19-board-hook/tests/frequency_test.py` 的 `clean_env`（白名单环境）和 `drive`（Popen 开 `--input-format stream-json --output-format stream-json --verbose --include-hook-events`；读线程把 `result` 放进队列；一条条发 `{"type":"user","message":{"role":"user","content":…}}`，等上一条的 result 再发；超时杀整棵进程树）；`board_generate.py` 的权限参数（`--permission-mode dontAsk`、`--setting-sources project,local`、`--tools`、`--allowedTools`、`--plugin-dir`）。magpie 是 `E:\Install\claude-magpie.cmd`（调 `magpie claude run`，Git Bash 里要带 `.cmd`）；`--model` 写什么都映射到它的便宜模型。
+  - 要新做的：S 会话（不给工具，系统提示是陌生人卡「是谁」+ README 和链到的文档全文 + 任务原话 + 通道说明）；驱动循环（S 的话发给 P，P 这一轮的回答转给 S，`ASK_AUTHOR:`、`STUCK:` 只记录不回答）；S 的 `/plugin …` 行翻成 `claude plugin …`，在隔离的配置目录（`CLAUDE_CONFIG_DIR`）里执行，GitHub 地址换成本地路径，`/reload-plugins` 当作重开 P；P 要 Bash、Write、Edit、Read、Skill、Agent、Glob、Grep，项目放系统临时目录；`Board.html` 出现或改动就把可见文字转给 S；原始输出放 `S:\IDEO-Scrum-Archives\sprint-20-presentable\stranger-test\<运行编号>\`；判卷脚本（五个产出）；隔离核实（init 事件里的插件、记忆、设置来源，工具调用里碰到的路径）。
+  - 冒烟先验两件事：隔离的配置目录下 magpie 的认证还管不管用（不行退回 `--plugin-dir`，「装」标成没测到）；`/ideo-scrum:scrum-master` 这类斜杠命令在 stream-json 模式能不能当用户消息发（Sprint 18、19 的测试里能）。冒烟后只许校准「运行的上限」。
+  - 脚本放 `scripts/stranger_test/`（Master 定）；原始输出不进仓库。
+- **压缩对话**（2026-11-14）：PO 要我找个合适的时候压缩对话。上面几条就是为它写的，压缩前所有决定都已记进本日志并提交。
 
 ## 5. Test
