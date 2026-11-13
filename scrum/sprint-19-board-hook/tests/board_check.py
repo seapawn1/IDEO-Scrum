@@ -181,8 +181,8 @@ SPRINT_02 = """# Sprint Backlog — Sprint 02 (beta)
 
 | # | Work item | Output | Done when |
 | --- | --- | --- | --- |
-| 1 | Packing slip template | template | ✓ 2026-11-13 renders |
-| 2 | Print button | button | prints one page |
+| H1 | Packing slip template | template | ✓ 2026-11-13 renders |
+| H2 | Print button | button | prints one page |
 
 Go-ahead: Master 2026-11-13 放行。
 
@@ -279,6 +279,9 @@ def build_fixture(dest, scenario="A"):
     write(dest, "scrum/sprint-02-beta/SprintBacklog.md", SPRINT_02)
     write(dest, "scrum/design-gamma/DesignBacklog.md", DESIGN)
     write(dest, "scrum/ideo-delta/IdeoBacklog.md", IDEO)
+    # a log inside a test fixture, deeper in the tree: not an open log
+    write(dest, "scrum/sprint-02-beta/tests/fixtures/project/scrum/sprint-09-nested/SprintBacklog.md",
+          SPRINT_01.replace("订单一眼看清", "嵌套的假冲刺"))
     git(dest, "add", "-A")
     git(dest, "commit", "-q", "-m", "sprint 02, design, ideo")
     if scenario == "B":
@@ -353,7 +356,9 @@ def parse_log(text, kind):
             out["done_items"].append({"number": c[0], "title": c[1]})
         if kind == "sprint" and c and len(c) == 5 and re.match(r"^PBI-\d+$", c[0]) and heading.startswith("2.1"):
             out["items"].append({"number": c[0], "title": c[1]})
-        if kind == "sprint" and chapter3 and c and len(c) == 4 and re.match(r"^\d+$", c[0]):
+        if kind == "sprint" and chapter3 and c and len(c) == 4 and c[0] != "#" and c[1] != "Work item" \
+                and not set(c[0]) <= set("-: "):
+            # a work item's number is free (1, H1 ...); the header and the separator row are not work items
             out["blocks"].append({"text": c[1], "done": c[3].startswith("✓")})
         if kind == "design" and heading.startswith("3.1") and out["solution"] is None and line.strip() \
                 and not line.startswith("<!--"):
@@ -391,7 +396,8 @@ def read_truth(repo, scenario="A"):
     # then every branch that holds an open log the working copy does not have
     for branch, tip in tips.items():
         for rel in git(repo, "ls-tree", "-r", "--name-only", tip).splitlines():
-            kind = next((k for pat, k in patterns if pathlib.PurePosixPath(rel).match(pat)), None)
+            # only the top-level scrum/ folder: a log inside a test fixture deeper down is not an open log
+            kind = next((k for pat, k in patterns if re.fullmatch(pat.replace("*", "[^/]+").replace(".", r"\."), rel)), None)
             if kind and rel not in logs and not rel.startswith("scrum/documents/"):
                 t = parse_log(git(repo, "show", f"{tip}:{rel}"), kind)
                 t.update(path=rel, read=f"branch {branch} @ {tip[:7]}", branch=branch, commit=tip, in_working_copy=False)
@@ -724,12 +730,19 @@ def check_page(page_path, truth, board_dir):
     # --- the banner: exactly what waits
     banner = ids.get("waiting")
     wanted = sorted(t["waiting"] for t in logs.values() if t["waiting"] not in (None, "None"))
-    if banner is None:
-        bad("no banner (id=\"waiting\")")
+    if wanted:
+        if banner is None:
+            bad("no banner (id=\"waiting\")")
+        else:
+            got = sorted(f["text"] for f in facts if f["fact"] == "waiting" and banner in f["node"].ancestors())
+            if got != wanted:
+                bad(f"the banner lists {got}, what waits is {wanted}")
     else:
-        got = sorted(f["text"] for f in facts if f["fact"] == "waiting" and banner in f["node"].ancestors())
-        if got != wanted:
-            bad(f"the banner lists {got}, what waits is {wanted}")
+        # nothing waits: one line says so (the template's `banner none`), and no banner lists anything
+        if not [n for n in root.walk() if "banner" in n.cls() and "none" in n.cls()]:
+            bad("nothing waits for the Product Owner, but no `banner none` line says so")
+        if [f for f in facts if f["fact"] == "waiting" and any("banner" in a.cls() for a in f["node"].ancestors())]:
+            bad("nothing waits for the Product Owner, but a banner lists something")
 
     # --- archived and done items stay out
     page_text = norm_ws(raw_text(root))
@@ -808,7 +821,7 @@ def render_reference(truth, board_dir):
                      + (f' <a href="#{anchor}">card</a>' if anchor else "") + "</li>")
         h.append("</ul></div>")
     else:
-        h.append('<div class="banner none" id="waiting"><strong>Nothing is waiting for the Product Owner.</strong></div>')
+        h.append('<div class="banner none"><strong>Nothing is waiting for the Product Owner.</strong></div>')
     h.append('<section id="product" data-log="scrum/ProductBacklog.md"><div class="grid2">')
     for name in ("Product", "Product Goal"):
         h.append(f'<div class="card"><div class="label">{name}</div><p class="commit" data-fact="commitment" data-name="{name}">{esc(product["commitments"][name])}</p></div>')
@@ -883,13 +896,15 @@ def selftest():
             logs = truth["logs"]
             check(f"[{scenario}] truth: product, two Sprints, a design, an IDEO log; the archived Sprint is not open",
                   sorted(t["kind"] for t in logs.values()) == ["design", "ideo", "product", "sprint", "sprint"]
-                  and not any("sprint-00" in p for p in logs))
+                  and not any("sprint-00" in p for p in logs) and not any("sprint-09-nested" in p for p in logs))
             s1 = logs["scrum/sprint-01-alpha/SprintBacklog.md"]
             check(f"[{scenario}] truth: Sprint 01 is read from {'the working copy' if scenario == 'B' else 'its branch'}",
                   s1["in_working_copy"] == (scenario == "B") and (s1["stage"] == ("Increment" if scenario == "B" else "How")))
             check(f"[{scenario}] truth: facts of the logs",
                   s1["blocks"] == [{"text": "列表页骨架", "done": True}, {"text": "状态列", "done": False}, {"text": "筛选", "done": False}]
                   and logs["scrum/sprint-02-beta/SprintBacklog.md"]["waiting"] == "None"
+                  and logs["scrum/sprint-02-beta/SprintBacklog.md"]["blocks"] == [
+                      {"text": "Packing slip template", "done": True}, {"text": "Print button", "done": False}]
                   and logs["scrum/design-gamma/DesignBacklog.md"]["solution"] == "分批重试流程"
                   and "<br/>" in logs["scrum/ProductBacklog.md"]["map"] and len(logs["scrum/ProductBacklog.md"]["items"]) == 5)
             board_dir = repo / "scrum"
@@ -927,6 +942,20 @@ def selftest():
             mutate("an invented fact", lambda s: s.replace('<h1>Project board</h1>', '<h1>Project board</h1><p data-fact="now" data-log="scrum/sprint-01-alpha/SprintBacklog.md">Increment：全做完了</p>', 1))
             mutate("the stage marker on the wrong stage", lambda s: re.sub(r'<li class="cur" data-fact="stage">(\w+)</li>', lambda mo: f"<li>{mo.group(1)}</li>", s, count=1).replace("<li>Test</li>", '<li class="cur" data-fact="stage">Test</li>', 1))
             mutate("a waiting entry invented for a log that says None", lambda s: s.replace('</ul></div><div class="kv"><span>Waiting', '</ul></div><div class="kv"><span>Waiting', 1).replace('<div class="src"><span data-fact="source">branch sprint-02-beta', '<div class="kv"><span>Waiting for the Product Owner</span><p data-fact="waiting">None</p></div><div class="src"><span data-fact="source">branch sprint-02-beta', 1))
+            # the empty state: nothing waits, one line says so, no banner lists anything
+            import copy
+            t2 = copy.deepcopy(truth)
+            for t in t2["logs"].values():
+                if t["waiting"] is not None:
+                    t["waiting"] = "None"
+            ref2 = render_reference(t2, board_dir)
+            page.write_text(ref2, encoding="utf-8")
+            check(f"[{scenario}] nothing waits: the page with the one-line empty state passes", not check_page(page, t2, board_dir),
+                  "; ".join(check_page(page, t2, board_dir)[:3]))
+            page.write_text(ref2.replace('<div class="banner none"><strong>Nothing is waiting for the Product Owner.</strong></div>', ""), encoding="utf-8")
+            check(f"[{scenario}] caught: the empty-state line missing", bool(check_page(page, t2, board_dir)))
+            page.write_text(ref2.replace('<h1>Project board</h1>', '<h1>Project board</h1><div class="banner"><ul><li><span data-fact="waiting" data-log="scrum/sprint-01-alpha/SprintBacklog.md">PBI-1 做不做</span></li></ul></div>'), encoding="utf-8")
+            check(f"[{scenario}] caught: a banner that lists something when nothing waits", bool(check_page(page, t2, board_dir)))
             # two pages from the same state hold the same facts; a different one does not
             page.write_text(ref.replace("2026-11-13 23:00", "2026-11-14 08:15"), encoding="utf-8")
             other = pathlib.Path(d) / "Board2.html"

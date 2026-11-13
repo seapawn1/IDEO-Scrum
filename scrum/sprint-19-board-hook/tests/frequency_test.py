@@ -104,7 +104,10 @@ def scenario():
     return steps
 
 
-# arm -> env for the hook (the test-only mode switch in commitments.sh)
+# arm -> env for the hook (the test-only mode switch in commitments.sh).
+# NOTE: the test modes were removed once A4 was chosen (Sprint 19 chose "inject at SessionStart, and at a prompt
+# only when the commitments changed"). Arms A1-A3 can be reproduced only with the hook of commit c3e338b; at
+# HEAD every arm but A0 behaves as A4, and `smoke --arm A4` checks the shipped hook in a real session.
 ARMS = {
     "A0": {"IDEO_SCRUM_COMMITMENTS": "off"},
     "A1": {"IDEO_SCRUM_COMMITMENTS_MODE": "start"},

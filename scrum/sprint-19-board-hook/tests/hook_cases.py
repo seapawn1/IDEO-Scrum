@@ -17,6 +17,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import time
 
 REPO = pathlib.Path(__file__).resolve().parents[3]
 HOOK_DEFAULT = REPO / "plugins/ideo-scrum/hooks/commitments.sh"
@@ -183,9 +184,11 @@ def main():
     case("61-1 one sprint, English log", expect_en(f"Product: {EN['product']}", f"Product Goal: {EN['goal']}",
                                                   f"Sprint Goal (sprint-01-batch-export): {EN['sprint']}"),
          R.run(start, p))
-    case("61-1 the same on UserPromptSubmit in `every` mode", ZH_THREE,
-         R.run(ev("UserPromptSubmit", prompt="hi"), tmp / "p1", {"IDEO_SCRUM_COMMITMENTS_MODE": "every",
-                                                                "CLAUDE_PLUGIN_DATA": sd("a")}))
+    dd = sd("a")
+    case("UserPromptSubmit, nothing injected yet in the session: injects", ZH_THREE,
+         R.run(ev("UserPromptSubmit", session="fresh", prompt="hi"), tmp / "p1", {"CLAUDE_PLUGIN_DATA": dd}))
+    case("UserPromptSubmit again, commitments unchanged: nothing", "",
+         R.run(ev("UserPromptSubmit", session="fresh", prompt="again"), tmp / "p1", {"CLAUDE_PLUGIN_DATA": dd}))
     # reading rules
     p = project(tmp / "p1crlf", ZH, "承诺", sprints=[("sprint-01-batch-export", ZH["sprint"])], crlf=True)
     case("CRLF logs give the same text", ZH_THREE, R.run(start, p))
@@ -245,42 +248,61 @@ def main():
         sh_dir.mkdir(exist_ok=True)
         case("61-3 tools missing (empty PATH)", "", R.run(start, tmp / "p1", path_override=str(sh_dir)))
 
-    # frequency modes (test-only): SessionStart, six prompts, the goal changes after prompt 3, then a compact
-    def sequence(mode):
-        pr = project(tmp / f"m-{mode}", ZH, "承诺", sprints=[("sprint-01-batch-export", ZH["sprint"])])
-        env = {"IDEO_SCRUM_COMMITMENTS_MODE": mode, "CLAUDE_PLUGIN_DATA": sd(mode)}
-        got = []
-        out, _ = R.run(ev("SessionStart", session="seq", source="startup"), pr, env)
+    # when to inject (the frequency test's scenario A4): SessionStart, six prompts, the goal changes before
+    # prompt 4, then a compaction and one more prompt
+    pr = project(tmp / "seq", ZH, "承诺", sprints=[("sprint-01-batch-export", ZH["sprint"])])
+    env = {"CLAUDE_PLUGIN_DATA": sd("seq")}
+    got = []
+    out, _ = R.run(ev("SessionStart", session="seq", source="startup"), pr, env)
+    got.append(bool(out))
+    texts = [out]
+    for i in range(1, 7):
+        if i == 4:
+            f = pr / "scrum/sprint-01-batch-export/SprintBacklog.md"
+            f.write_text(f.read_text(encoding="utf-8").replace(ZH["sprint"], ZH["sprint_v2"]), encoding="utf-8")
+        out, _ = R.run(ev("UserPromptSubmit", session="seq", prompt=f"p{i}"), pr, env)
         got.append(bool(out))
-        for i in range(1, 7):
-            if i == 4:
-                f = pr / "scrum/sprint-01-batch-export/SprintBacklog.md"
-                f.write_text(f.read_text(encoding="utf-8").replace(ZH["sprint"], ZH["sprint_v2"]), encoding="utf-8")
-            out, _ = R.run(ev("UserPromptSubmit", session="seq", prompt=f"p{i}"), pr, env)
-            got.append(bool(out))
-        out, _ = R.run(ev("SessionStart", session="seq", source="compact"), pr, env)
-        got.append(bool(out))
-        out, _ = R.run(ev("UserPromptSubmit", session="seq", prompt="p7"), pr, env)
-        got.append(bool(out))
-        return got
-
+        texts.append(out)
+    out, _ = R.run(ev("SessionStart", session="seq", source="compact"), pr, env)
+    got.append(bool(out))
+    texts.append(out)
+    out, _ = R.run(ev("UserPromptSubmit", session="seq", prompt="p7"), pr, env)
+    got.append(bool(out))
     T, F = True, False
-    want = {
-        "start":   [T, F, F, F, F, F, F, T, F],
-        "every":   [T, T, T, T, T, T, T, T, T],
-        "every-n": [T, F, F, F, F, T, F, T, F],
-        "changed": [T, F, F, F, T, F, F, T, F],
-    }
-    for mode, w in want.items():
-        got = sequence(mode)
-        check(f"mode {mode}: injections per event", got == w, "" if got == w else f"got={got} want={w}")
+    want = [T, F, F, F, T, F, F, T, F]
+    check("injections per event: start, changed goal, compact", got == want, "" if got == want else f"got={got} want={want}")
+    check("the injection after the change holds the new goal, the compact one too",
+          ZH["sprint_v2"] in texts[4] and ZH["sprint"] not in texts[4] and ZH["sprint_v2"] in texts[7],
+          f"{texts[4]!r}")
+    # two sessions do not share a state: the second one injects on its own first prompt
+    out, _ = R.run(ev("UserPromptSubmit", session="other", prompt="p1"), pr, env)
+    check("another session injects once on its first prompt", bool(out))
+    out, _ = R.run(ev("UserPromptSubmit", session="other", prompt="p2"), pr, env)
+    check("... and then not again", not out)
 
-    # a state directory that cannot be created: `changed` fails open, nothing crashes
+    # a state directory that cannot be created: the text is injected again, nothing crashes
     blocker = tmp / "blocker"
     blocker.write_text("a file, not a directory")
-    out, rc = R.run(ev("UserPromptSubmit", session="x", prompt="p"), tmp / "p1",
-                    {"IDEO_SCRUM_COMMITMENTS_MODE": "changed", "CLAUDE_PLUGIN_DATA": R.native(blocker / "sub")})
-    check("unwritable state directory: no crash, exit 0", rc == 0, f"rc={rc}")
+    bad = {"CLAUDE_PLUGIN_DATA": R.native(blocker / "sub")}
+    out, rc = R.run(ev("UserPromptSubmit", session="x", prompt="p"), tmp / "p1", bad)
+    check("unwritable state directory, prompt: injects, exit 0", rc == 0 and out == ZH_THREE, f"rc={rc} out={out!r}")
+    out, rc = R.run(ev("SessionStart", session="x", source="startup"), tmp / "p1", bad)
+    check("unwritable state directory, session start: injects, exit 0", rc == 0 and out == ZH_THREE, f"rc={rc} out={out!r}")
+
+    # the state folder does not grow for ever: a startup keeps the 200 newest files
+    prune_dir = tmp / "prune"
+    (prune_dir / "ideo-scrum-commitments").mkdir(parents=True)
+    now = time.time()
+    for i in range(205):
+        f = prune_dir / "ideo-scrum-commitments" / f"s{i:03d}.fp"
+        f.write_text("x")
+        os.utime(f, (now - 1000 + i, now - 1000 + i))
+    R.run(ev("SessionStart", session="prune", source="startup"), tmp / "p1", {"CLAUDE_PLUGIN_DATA": R.native(prune_dir)})
+    left = sorted(p.name for p in (prune_dir / "ideo-scrum-commitments").glob("*.fp"))
+    check("a startup prunes the state folder to the 200 newest files (its own and the newest 199; the oldest six go)",
+          len(left) == 200 and "prune.fp" in left and "s204.fp" in left and "s006.fp" in left
+          and "s005.fp" not in left and "s000.fp" not in left,
+          f"{len(left)} files; first {left[:2]}")
 
     # the real log of this repository: each injected sentence is a cell of a log
     out, rc = R.run(start, REPO)

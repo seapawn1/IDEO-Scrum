@@ -19,7 +19,7 @@
 # cannot read, a tool that is not installed. To switch it off, set IDEO_SCRUM_COMMITMENTS=off (in the
 # "env" of a settings file, or in the shell).
 #
-# POSIX sh and awk, sed, tr, cksum, dirname, basename, mkdir only.
+# POSIX sh and awk, sed, tr, cksum, dirname, basename, mkdir, ls, grep, tail, rm only.
 
 [ "$IDEO_SCRUM_COMMITMENTS" = "off" ] && exit 0
 
@@ -66,6 +66,11 @@ read_commitments() {
 # field "<lines>" <kind> <column>: one column of the line of that kind.
 field() {
   printf '%s\n' "$1" | awk -F'\t' -v k="$2" -v c="$3" '$1 == k { print $c; exit }'
+}
+
+# Keep the 200 newest state files of the folder $1 and remove the rest, so that it does not grow for ever.
+prune() {
+  ls -t "$1" 2>/dev/null | grep '\.fp$' | tail -n +201 | while read -r f; do rm -f "$1/$f"; done
 }
 
 # Print the text unless it is empty or an unfilled template placeholder such as <Sprint Goal>.
@@ -146,39 +151,29 @@ main() {
     out=$out$nl$(printf "$many_designs" "$n_designs")
   fi
 
-  # TEST-ONLY (Sprint 19 frequency test): the way UserPromptSubmit decides whether to inject. SessionStart
-  # always injects. Remove this block, and the state it keeps, once the frequency is chosen.
-  mode=${IDEO_SCRUM_COMMITMENTS_MODE:-start}
-  n=${IDEO_SCRUM_COMMITMENTS_N:-5}
-  case $n in '' | *[!0-9]* | 0) n=5 ;; esac
+  # When to inject. SessionStart always does (a new session, a resume, a clear, a compaction: the context has
+  # lost the text, or never had it). UserPromptSubmit does only when the commitments differ from what was last
+  # injected in this session, so a goal changed outside the conversation reaches Claude, and an unchanged one
+  # costs nothing after the first injection. The last injected text is kept as a checksum in a file named by the
+  # session, in the plugin's data folder; if that cannot be written, the text is injected again (it is only a
+  # few lines). Sprint 19's frequency test chose this over injecting on every prompt or every few prompts.
   state_dir=${CLAUDE_PLUGIN_DATA:-${TMPDIR:-/tmp}}/ideo-scrum-commitments
   mkdir -p "$state_dir" 2>/dev/null
-  state=$state_dir/${session:-nosession}
+  state=$state_dir/${session:-nosession}.fp
   fp=$(printf '%s' "$out" | cksum | awk '{ print $1 "-" $2 }')
   inject=0
   case $event in
     SessionStart)
       inject=1
-      printf '%s' "$fp" > "$state.fp" 2>/dev/null
-      [ "$source" = startup ] && printf '0' > "$state.count" 2>/dev/null
+      printf '%s' "$fp" > "$state" 2>/dev/null
+      [ "$source" = startup ] && prune "$state_dir"
       ;;
     UserPromptSubmit)
-      case $mode in
-        every) inject=1 ;;
-        every-n)
-          c=$(cat "$state.count" 2>/dev/null)
-          c=$((${c:-0} + 1))
-          printf '%s' "$c" > "$state.count" 2>/dev/null
-          [ $((c % n)) -eq 0 ] && inject=1
-          ;;
-        changed)
-          old=$(cat "$state.fp" 2>/dev/null)
-          if [ "$fp" != "$old" ]; then
-            inject=1
-            printf '%s' "$fp" > "$state.fp" 2>/dev/null
-          fi
-          ;;
-      esac
+      old=$(cat "$state" 2>/dev/null)
+      if [ "$fp" != "$old" ]; then
+        inject=1
+        printf '%s' "$fp" > "$state" 2>/dev/null
+      fi
       ;;
   esac
   [ "$inject" -eq 1 ] && printf '%s\n' "$out"

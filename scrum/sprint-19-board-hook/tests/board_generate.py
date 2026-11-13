@@ -66,8 +66,11 @@ def git(cwd, *args):
 def generate(work, stream_path, timeout=1200):
     # dontAsk: whatever the allowlist does not name is refused, instead of the channel's default bypassPermissions
     # (the first batch of runs showed the default does not enforce the allowlist).
+    # --setting-sources project,local: the user's settings carry broad allow rules that made dontAsk and the
+    # allowlist moot in the second batch of runs; without them the allowlist is what the model really has.
     cmd = [EXE, "-p", BRIEF, "--output-format", "stream-json", "--verbose", "--model", "haiku",
-           "--tools", TOOLS, "--allowedTools", ALLOWED, "--permission-mode", "dontAsk", "--plugin-dir", str(PLUGIN)]
+           "--tools", TOOLS, "--allowedTools", ALLOWED, "--permission-mode", "dontAsk",
+           "--setting-sources", "project,local", "--plugin-dir", str(PLUGIN)]
     t0 = time.time()
     with open(stream_path, "wb") as out:
         try:

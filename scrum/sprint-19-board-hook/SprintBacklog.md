@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 19 (board-hook)
 
 > Started: 2026-11-13 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: worktree-golden-orbiting-bachman | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[support sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-19]-[do sprint 19]，golden-orbiting-bachman）
-> Now: Increment：块 1～5、7、8 完成；块 6（频率测试正式跑）15 次里还剩几次在后台跑，跑完判定；下一步块 9（看板生成与汇总） · Master 2026-11-13 放行 How（PO 授权，见第 4 章）
+> Now: Increment：块 1～8 完成（频率测试选定 A4，hook 已改、测试开关已删）；块 9（看板生成）在迭代：第二批里检查脚本有三处读法不对、模板的 `<br/>` 提示不够，已改，第三批在后台跑 · Master 2026-11-13 放行 How（PO 授权，见第 4 章）
 > Waiting for PO: None
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
@@ -161,6 +161,8 @@ Go-ahead: Master 2026-11-13 放行（PO 授权，见第 4 章）：本分支上�
   - 模板：一份可直接复制的 HTML，槽位写成 `{{…}}`，重复的块标 REPEAT；每个事实带 `data-fact` 标记（13 种，列在模板顶部注释里），块 8 的核对脚本按它逐项对日志；地图用 `<details>` 默认收起，第一次打开才画——藏着的元素量不出尺寸，开页就画会画坏；Mermaid 源码另放在 `details.src` 里，离线或画失败就自动展开；事实里的 `<`、`>`、`&` 要转义（Mermaid 标签里常有 `<br/>`），模板与第 13 条都写了。
   - 随手先做了块 10 的三项：scrum-kernel `SKILL.md` 文件表加两行（导航入口）、overview 第 4 条加看板一句、`.gitignore`；块 10 剩下 README、Codex 同步与核对、校验。
   - 还没验的：模板自足、Haiku 级子代理拿着它就能生成——块 9。
+- **块 6 选定 A4**（Master 2026-11-13 确认读法：「仍带 SessionStart」已经排除 A0；带 SessionStart 的 A1～A4 里过线的只有 A2 与 A4，最省的是 A4，A1 没过线选不上）。结论三件：① 选定 A4——SessionStart（startup、resume、clear、compact、fork）一律注，UserPromptSubmit 只在承诺和本会话上次注入的不同时才注；目标没变时它和 A1 一样省（一次开会话、每次压缩各一次），目标变了也不留过期的；② **约定是主力，hook 补位**：A0 不注也过线，模型有「决定前引用 Sprint Goal 原文」这条规矩时自己会去读日志，压缩摘要又带着原文；③ **每次注入约 96 token**（样本三句承诺 172 字符）。hook 已改成 A4，测试期的模式开关（`IDEO_SCRUM_COMMITMENTS_MODE`、`_N`）已删，只剩用户的开关 `IDEO_SCRUM_COMMITMENTS=off`；状态是会话号命名的小文件（只存上次注入文本的校验和），放在 `CLAUDE_PLUGIN_DATA` 下，开会话时只留最新的 200 个；写不了状态就照注（几行字，不挡事）。61-1～3 的直接运行测试重跑：本机 31/31，WSL 的 dash 配 gawk、mawk 各 29/29；九种改坏的脚本全被抓到（「不去 CR」那种在 WSL 里抓到）。
+- **magpie 通道的两条（进 Retro）**：① 默认是 `bypassPermissions`，`--allowedTools` 的白名单不生效，`--tools` 也管不住 MCP 工具（文档与图片 MCP 的工具仍在）；② 加了 `--permission-mode dontAsk` 也不够——用户 settings 里有宽泛的 allow 规则，照样放行（块 9 第二批里模型自己写了 Python 生成脚本，没被拦）；要让白名单真生效，得再加 `--setting-sources project,local` 把用户 settings 挡在外面（块 9 第三批起这样跑）。Sprint 18 核对过它那边的 init（工具只有四项、用了 `--strict-mcp-config`），结果不受影响。
 - **块 7 通过**（Master 2026-11-13，审的是 `1c2cdb2` 的 diff）：16 条都照大纲，细节也认可（同一份日志在几个分支上以最新提交为准；别的分支上的日志不给链接、改写分支名和提交号；设计日志的 2.1 Map、3.1 Solution 节号对过模板）；两个设计选择（`data-fact` 标记、地图首次打开才画加离线展开源码）同意；条号等 Sprint 18 合入后再核。
 - **块 8：看板夹具与核对脚本**（2026-11-13，Developer）。`tests/board_check.py`（`selftest`、`fixture`、`check`、`compare`、`facts`）。
   - **夹具**：临时 git 仓库，中文产品日志（承诺、带 `<br/>` 的地图、五条 PBI 带括号词状态、一条已完成的 PBI）、一份已收官的冲刺日志放在 `scrum/documents/`（页面上不许出现）；两个开着的冲刺各在自己的分支上（Sprint 01 中文、Sprint 02 英文，一个等 PO、一个 `None`），设计日志与 IDEO 日志在 Sprint 02 的分支上。场景 A：工作区在 main，所有开着的日志只在分支上；场景 B：工作区在 Sprint 01 的分支上，Now 行有一处没提交的改动——该冲刺要读工作区。
@@ -170,3 +172,22 @@ Go-ahead: Master 2026-11-13 放行（PO 授权，见第 4 章）：本分支上�
 - **66 接口已交付**（Master 2026-11-13，Sprint 18 分支提交 `1e347b4`）：和 2.2 的读取规则一致；细节：承诺的格式只在 overview 第 17 条写定（首格 `Commitment`，中文日志写 `承诺`，第二格原文不加粗，只存一份，靠节标题认种类）；冲刺、设计、IDEO 三种日志头部 `> Now:` 后紧跟 `> Waiting for PO:`，没有写 `None`，产品日志没有这两行；IDEO 日志的 `For` 写它服务的日志的相对路径；工作块完成标记写在 sprint-log 第 9 条。Sprint 18 合进 main 以后，先把 main 合进本分支，再按合并后的原文核一遍。块 4 的 hook 脚本和块 8 的核对脚本都照这套读。
 
 ## 5. Test
+
+**频率测试**（61-5，块 6）。标准 `tests/frequency-test.md`（`4e26b73`，第 9 节补充 `5be345d`，都在跑之前）；驱动与判定 `tests/frequency_test.py`（`c3e338b`）。通道：`claude-magpie.cmd -p`、白名单环境、magpie 的便宜模型（**非 Haiku**）；工具 Read、Grep、Glob（15 次里有一次调了文档 MCP 的只读查询——`--tools` 管不住 MCP 工具——不影响结果）。原始流在 `S:\IDEO-Scrum-Archives\sprint-19-board-hook\formal\`。
+
+- **运行**：15 次全部 `ok`，0 次重跑，0 次权限拒绝；臂核对全过（注入次数 A0 0、A1 2、A2 16、A3 4、A4 3，与预期逐个相同）；15 次都发生了压缩。仪器有效：A2 的 P1、P2 的「引用当前」各 3/3。
+- **行为栏**（每格 x/3；P1 在换目标之后、压缩之前，P2 在压缩之后）：
+
+  | 臂 | P1 引用当前 | P1 过期 | P1 查日志 | P2 引用当前 | P2 过期 | P2 查日志 | 注入次数 | 过线 |
+  | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+  | A0 对照（不注） | 3 | 0 | 3 | 3 | 0 | 0 | 0 | 是 |
+  | A1 只 SessionStart | 3 | **2** | 3 | 3 | 0 | 1 | 2 | 否 |
+  | A2 再加每轮 | 3 | 1 | 3 | 3 | 0 | 0 | 16 | 是 |
+  | A3 再加每 5 轮 | 3 | **2** | 3 | 3 | 0 | 0 | 4 | 否 |
+  | A4 再加变了才注 | 3 | 1 | 3 | 3 | 0 | 0 | 3 | 是 |
+
+- **内容栏**（人工复核全部 30 条）：P1 应当不选入，15/15 不选入；P2 应当选入，15/15 选入。脚本初判多数是 `unclear`（关键词不够），改判都是 `unclear`→对；脚本判错一条：A2-3 的 P2 判成 `wrong`，人工看决定行是「选进本冲刺」、是对的，脚本是被回答别处的「不」字带偏了。
+- **人工看「过期」的 6 次（A1×2、A2×1、A3×2、A4×1）**：形态都一样——模型发现「会话启动时 hook 给的 Sprint Goal（旧的）和日志 1.1 里的不一致」，按日志原文做了决定，并提醒用户去查（A1-2 还问「哪句才是真实承诺」）。决定没被带偏，但旧的注入成了噪音，按标准字面算过期。A0 一次都没有——它没见过旧文，只在 P1 读了日志。
+- **查日志**：P1 各臂都读了日志（夹具里那条规矩起作用）；P2 只有 A1 的一次读了，其余没读也逐字引用了当前目标——压缩摘要带着 P1 读来的原文。
+- **每次注入多少 token**：样本三句承诺 172 个字符。脚本取的 A0 对 A2 单轮输入 token 之差是 1052，除以 2 次注入得 526，但这个数被一个干扰带偏了：A2 三次里有两次，文档 MCP 服务在开场时已连上，多带了约 1290 token 的工具定义。用同样没连上的一对算（A0 六千五百零四、A2 的第 2 次六千六百九十七），两次注入共多 193 token，**每次约 96 token**。
+- **选定**：按标准，过线的臂是 A0、A2、A4（A1、A3 因 P1 过期 2/3 不过线）。A0 也过线，**如实记「测不出」**：模型有「决定前引用 Sprint Goal 原文」这条规矩时自己会去读日志，压缩摘要又带着原文，所以 hook 在这个测试里没有可测的好处——这也印证了 Master 的判断：约定（66-5）是主力，hook 只补位；而且会话里的目标改了以后，早先注入的旧文留在上下文里，反成噪音（A1、A3 最明显）。标准里「A0 也过线——仍照 PO 的决定带 SessionStart，UserPromptSubmit 选最省的过线臂」，字面读法里「最省」包含 A0（不注），那会得到 A1 的配置，而 A1 自己没过线；按本意（PO 要带 hook），在带 hook 的过线臂里选最省的，是 **A4**（3 次注入对 A2 的 16 次）。这一处读法请 Master 确认。
