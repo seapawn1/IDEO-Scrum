@@ -120,7 +120,9 @@ def content_errors(root: Path) -> tuple[list[str], dict]:
     if (package / ".codex-plugin/plugin.json").is_file():
         manifest = json.loads(text(package / ".codex-plugin/plugin.json"))
         original = json.loads(text(source / ".claude-plugin/plugin.json"))
-        if {k: v for k, v in manifest.items() if k != "interface"} != {**original, "skills": "./skills/"}:
+        # `icon` is the Claude plugin's own file and is not carried to Codex (sync_codex.py drops it).
+        expected = {k: v for k, v in original.items() if k != "icon"}
+        if {k: v for k, v in manifest.items() if k != "interface"} != {**expected, "skills": "./skills/"}:
             errors.append("manifest differs from source metadata")
         if manifest.get("interface") != approved_interface.get("plugin"):
             errors.append("manifest display copy differs from approved copy")

@@ -1,198 +1,177 @@
+<p align="center"><img src="plugins/ideo-scrum/icon.png" width="96" alt="IDEO-Scrum icon: a loop around a diamond"></p>
+
 # IDEO-Scrum
 
-为 Claude Code 与 Codex 提供 Design Thinking 与 Scrum Sprint 方法论的插件。v6.0.2。
+A Claude Code plugin that brings Design Thinking and Scrum Sprints to a project you build alone with AI. **v6.0.2**
 
-## 快速开始
+[中文](README.zh-CN.md) · [Install](#install) · [Quick start](docs/quick-start.md) · [Glossary](docs/glossary.md) · [Changelog](CHANGELOG.md)
 
-### Claude Code
+> **License note.** The d.school material in this plugin is licensed for non-commercial use only, so this repository is not open-source software in the OSI sense. See [License and attribution](#license-and-attribution).
 
-在 Claude Code 会话中安装：
+## What it is
 
+When you build a project alone with an AI, the rules and the state of the work live in your head and in the chat. A session ends or is compacted, and they go with it. The AI can drift, and no one but the builder looks at what it built.
+
+IDEO-Scrum puts a Scrum team around the work. You are the Product Owner: you decide the direction, the goals, which items enter a Sprint, and when building may start. The AI plays the Scrum Master, the Developer, the Designer and the Stakeholder, one role per command. When the question is what people want, or what counts as good, it brings the design thinking of IDEO and Stanford's d.school: the five modes, or a design sprint. Everything is written into plain Markdown logs in your repository, so a new session reads the log and carries on.
+
+It is not a project-management tool: no JIRA or Linear integration, and not a platform for a team.
+
+## A session, shortened
+
+Illustrative and shortened, not a transcript; the wording will differ. The stops are the point: at the end of each stage the work waits for you.
+
+```text
+You:            /ideo-scrum:scrum-master
+                I'm building a small CLI that prints one quote a day. Help me get started.
+Scrum Master:   First the product log: what is the product, and what should it achieve next?
+You:            It prints a quote every morning. Done means I still enjoy it after a month.
+Scrum Master:   Written to scrum/ProductBacklog.md: the product, the Product Goal, three items.
+                Shall we open a Sprint?
+You:            Yes.
+Scrum Master:   Why, the Sprint Goal: "Daily quote: it prints one quote from a list; adding a quote
+                takes one command." That is the goal. Do you decide it, and move on to What?
+You:            Yes.
+                ... What: you pick and refine the items. How: the Developer writes a plan ...
+Developer:      The plan is in chapter 3 of the sprint log. I won't build until you give the go-ahead.
+You:            Go ahead.
+                ... the Developer builds and keeps notes; someone else reviews; you decide when to close ...
 ```
+
+What this leaves in your repository is plain Markdown you can read and edit: `scrum/ProductBacklog.md` and `scrum/sprint-01-<name>/SprintBacklog.md`. The [quick start](docs/quick-start.md) walks through the whole thing, step by step.
+
+## Who it is for
+
+A good fit:
+
+- You build your own project with Claude Code, and you know Scrum, or will read the Scrum Guide beside this plugin (it ships with it).
+- You want the rules to follow the plugin instead of being dictated again in every session, and a session that breaks off or is compacted to pick up where it stopped.
+
+Not a fit:
+
+- You need JIRA or Linear integration, or a platform for a whole team.
+- You want the AI to run a project on its own: by default the work stops for you at the end of every stage.
+- You want Scrum to the letter of the Scrum Guide: see [How it differs from textbook Scrum](#how-it-differs-from-textbook-scrum).
+
+## Install
+
+You need Claude Code. A git repository for your project is recommended; the Scrum Master can set one up for you.
+
+```sh
 /plugin marketplace add seapawn1/IDEO-Scrum
 /plugin install ideo-scrum@ideo-scrum
 /reload-plugins
 ```
 
-做原型、做测试这类请求，`ideo-kernel` 的方法常会自动介入；发散、定义问题时，模型多半直接作答，想用它的方法就点名 `ideo-kernel` 或用角色命令（这是已知的限制）。Scrum、冲刺、设计冲刺则要召唤才来：用角色命令，或点名本插件、相应内核，或要求建改本插件的产品日志、冲刺日志、设计日志。泛问 Scrum 或设计冲刺术语不会自动进入这些流程。例如：
+To check: `claude plugin list` shows `ideo-scrum@ideo-scrum` as enabled.
 
-```
-用 ideo-scrum 帮我规划下个冲刺，我们有 5 个待办项要精化
-```
-```
-这个功能要不要做我拿不准，先做一轮用户访谈的设计
-```
+Codex is a companion edition, generated from the same source; the first-Sprint walkthrough is tested on Claude Code only. In a terminal:
 
-也可以显式进入某个角色工作（角色注入当前对话，不影响其他对话）：
-
-```
-/ideo-scrum:scrum-master     # Scrum Master：三大支柱、五项价值观、仪式优先
-/ideo-scrum:designer         # Designer：设计结对——IDEO 五模式 + 设计冲刺，原型快速验证
-/ideo-scrum:developer        # Developer：Sprint Backlog、DoD、Review、Retro
-/ideo-scrum:stakeholder      # Stakeholder：一个命令多种身份——外部视角，或常驻做非源码杂务；源码归 Developer
-```
-
-### Codex
-
-在终端中安装：
-
-```
+```sh
 codex plugin marketplace add seapawn1/IDEO-Scrum
 codex plugin add ideo-scrum@ideo-scrum
 ```
 
-如果以前通过 `--ref codex` 从旧 `codex` 分支安装过 3.2.0，先移除旧插件和 marketplace 注册，再按默认分支重新注册并安装：
+Then, in a new Codex session, type `$` and pick a role from the skill menu: `$scrum-master`, `$designer`, `$developer`, `$stakeholder`.
 
+## Upgrade
+
+```sh
+claude plugin update ideo-scrum@ideo-scrum
 ```
+
+Run it in a terminal, then `/reload-plugins` in a session that is already open. Third-party marketplaces do not update themselves by default: to have Claude Code do it, open `/plugin`, go to Marketplaces, select `ideo-scrum` and choose Enable auto-update. What changed in each release is in the [changelog](CHANGELOG.md).
+
+On Codex, refresh the marketplace, then remove the plugin and add it again. We have not tested this path end to end.
+
+```sh
+codex plugin marketplace upgrade ideo-scrum
 codex plugin remove ideo-scrum@ideo-scrum
-codex plugin marketplace remove ideo-scrum
-codex plugin marketplace add seapawn1/IDEO-Scrum
 codex plugin add ideo-scrum@ideo-scrum
 ```
 
-随后在新会话输入 `$`，从技能菜单选中相应角色；角色简称如下：
+## Your first sentence
 
+In Claude Code, call a role:
+
+```sh
+/ideo-scrum:scrum-master    # facilitates Planning, checkpoints, Review and Retro; reviews the work; serves you, the Product Owner
+/ideo-scrum:developer       # runs a Sprint: the plan, the Increment, the sprint log
+/ideo-scrum:designer        # research and prototypes: the five modes and design sprints; builds nothing before you decide
+/ideo-scrum:stakeholder     # an outside view of the product, or a standing assistant for chores such as the board
 ```
-$scrum-master   # Scrum Master
-$designer       # Designer
-$developer      # Developer
-$stakeholder    # Stakeholder
+
+Or say it in your own words:
+
+```text
+Use ideo-scrum to plan the next Sprint; I have five items to refine.
+I'm not sure this feature is worth building. Run a round of user research first.
 ```
 
-四个角色的设置要求显式选择；内核使用与 Claude Code 相同的描述边界：ideo 的自然方法请求可触发，其余三个由角色指令、点名插件或内核、建改插件日志来召唤。Codex 的自动触发行为未做动态测试，不把设置许可当作行为保证。需要区分同名技能时，可用插件命名空间，例如 `$ideo-scrum:developer`。
+What loads, and when: the Scrum, Sprint and design-sprint material comes only when summoned, by a role command, by naming ideo-scrum or one of its kernels, or by asking to create or change its logs; a general question about Scrum is answered as usual. The IDEO methods often step in by themselves for prototyping and testing. For brainstorming and defining a problem the model usually answers directly: name `ideo-kernel` if you want its methods (a known limitation).
 
-**插件提供什么**
+## How it differs from textbook Scrum
 
-| 组件 | 内容 |
-|---|---|
-| `ideo-kernel` skill | IDEO / d.school 五模式（Empathize、Define、Ideate、Prototype、Test；用户说的「IDEO 五阶段法」就是它）、~40 个设计方法、IDEO 日志约定与模板——整个插件共用的工具箱，也是设计各阶段的基础 |
-| `design-kernel` skill | 设计冲刺（不是 IDEO 五阶段法）：五个阶段，各站在一个 IDEO 模式上，配《Sprint》原文摘录，加设计日志约定与模板；设计与冲刺平级，结论回流产品日志 |
-| `scrum-kernel` skill | 产品日志与 Scrum 框架：Scrum Guide 2020 全文、Scrum Guide Expansion Pack（SGEP）v2026.1（除 Artifacts、Events 两章）、Artifact 分项引用、产品日志约定与模板 |
-| `sprint-kernel` skill | 跑冲刺：冲刺日志约定与模板、五个 Scrum 事件（Event 分项引用） |
-| 4 个角色 | Scrum Master / Designer / Developer / Stakeholder。Claude Code 用四个 command（如 `/ideo-scrum:scrum-master`）；Codex 用四个角色 skill，从 `$` 菜单显式选择。每个角色都先加载 ideo-kernel 与 scrum-kernel；design-kernel 与 sprint-kernel 在工作涉及设计冲刺或冲刺时加载（开、进行中、接手、收官都算）；派出的子代理也加载 ideo-kernel 与 scrum-kernel |
+The plugin departs from the official guides in seven places, on purpose. Each is stated once, with its reason, in [`overview.md`](plugins/ideo-scrum/skills/scrum-kernel/overview.md#departures-from-the-official-guides); this is the short version.
 
-## 这里是什么
+| Here | Why |
+| --- | --- |
+| Only the Product Owner must be human | One person works with AI and keeps the value decisions |
+| Designs sit beside Sprints | A design delivers no Increment, may span several Sprints, and the Designer and the Developer are peers |
+| The Product Owner decides the items with the Scrum Master | The Product Owner sets the value direction, and the others say how much fits |
+| The How is a plan, and building waits for the go-ahead | The Scrum Master and the Product Owner check the plan, because AI may drift |
+| Checkpoints replace the Daily Scrum | AI works by session, not by day |
+| A reviewer is required | A Developer may drift, and a second look catches it |
+| No Sprint end date | AI works by session, so the Product Owner watches at checkpoints for a Sprint that drags on |
 
-本插件将 Design Thinking（设计思维）和 Scrum Sprint（敏捷冲刺）两套方法论提供给 Claude Code 与 Codex：Claude Code 使用技能（skills）和斜杠命令（commands），Codex 中全部是技能（skills），共同提供结构化的协作流程。不做项目管理工具本身，不做 JIRA/Linear 集成，也不做团队协作平台——只提供方法论引导和流程框架。
+## Where the work lives
 
-## 文件地图
+Your project grows a `scrum/` folder. This is the author's layout; use your project's own places if it has them.
 
-### 根目录
+| Path | What it holds |
+| --- | --- |
+| `scrum/ProductBacklog.md` | The product log: the product, the Product Goal, the items |
+| `scrum/sprint-NN-<name>/SprintBacklog.md` | One Sprint, from Why to Test, with its notes |
+| `scrum/design-<name>/DesignBacklog.md` | One design: research and prototypes |
+| `scrum/ideo-<name>/IdeoBacklog.md` | One run of the five modes |
+| `scrum/Board.html` | The board: a one-page view of where the project stands, written from the logs; it keeps no state of its own |
+| `scrum/documents/` | Archives of finished Sprints and designs, and files that serve the whole project |
 
-| 文件/目录 | 内容 |
-|---|---|
-| `LICENSE` | MIT — 覆盖本仓库原创部分 |
-| `ATTRIBUTION.md` | 四个第三方来源的完整署名与授权条款 |
-| `.claude-plugin/marketplace.json` | marketplace 清单，供 `/plugin marketplace add` 使用 |
-| `.agents/plugins/marketplace.json` | Codex marketplace 清单，指向同一分支里的 Codex 分发包 |
-| `scripts/sync_codex.py` | 从 Claude Code 源文件生成 Codex 包：`python scripts/sync_codex.py` |
-| `scripts/check_codex.py` | 核对 Codex 内容一致性、内部链接、导航与重复生成；需要 PyYAML |
-| `.gitattributes` | 让插件里的 shell 脚本（`*.sh`）在所有平台都用 LF 换行：Windows 的 `core.autocrlf` 会把脚本写成 CRLF，sh 读到 CR 是语法错误 |
-| `.claude/` | 项目配置——`settings.json`、`seapawn.md`（作者待办与私人笔记，不入库）；项目指令 `CLAUDE.md` 在仓库根目录，记忆在仓库外 `S:\SeaPawn-Memory\memory\IDEO-Scrum\` |
+The plugin calls these files logs: the product log is the Product Backlog, the sprint log is the Sprint Backlog. A real example is this repository's own `scrum/` folder, written in Chinese: start with [`ProductBacklog.md`](scrum/ProductBacklog.md) and one archived sprint log, [`sprint-19-board-hook.md`](scrum/documents/sprint/sprint-19-board-hook.md).
 
-### Claude Code 插件
+## Learn more
 
-| 文件/目录 | 内容 |
-|---|---|
-| `plugins/ideo-scrum/.claude-plugin/plugin.json` | 插件清单 v6.0.2 |
-| `plugins/ideo-scrum/commands/designer.md` | Command `/ideo-scrum:designer` — 设计阶段结对（IDEO 五模式 + 设计冲刺，原型快速验证、拍板前不落地；进入时加载 ideo-kernel 与 scrum-kernel，工作涉及设计冲刺时再加 design-kernel） |
-| `plugins/ideo-scrum/commands/developer.md` | Command `/ideo-scrum:developer` — Developer 角色（Scrum Guide 2020 原文抄录＋2026 精炼补充；进入时加载 ideo-kernel 与 scrum-kernel，工作涉及冲刺时再加 sprint-kernel） |
-| `plugins/ideo-scrum/commands/scrum-master.md` | Command `/ideo-scrum:scrum-master` — Scrum Master 角色（Scrum Guide 2020 原文抄录＋2026 精炼补充；替 PO 派活、派子代理审阅；进入时加载 ideo-kernel 与 scrum-kernel，工作涉及设计或冲刺时分别再加 design-kernel、sprint-kernel） |
-| `plugins/ideo-scrum/commands/stakeholder.md` | Command `/ideo-scrum:stakeholder` — Stakeholder（SGEP 角色章为底；一个命令多种身份：外部视角——按项目写定的身份看产品和增量，说出期望与现状的差距，反馈交 PO，独立评价由全新子代理给；也可作常驻会话做非源码杂务，如维护看板；源码归 Developer；进入时加载 ideo-kernel 与 scrum-kernel） |
-| `plugins/ideo-scrum/hooks/hooks.json`、`commitments.sh` | Hook：开会话、恢复、清空、压缩（SessionStart）时，把日志里写的承诺——Product、Product Goal、开着的 Sprint Goal 或设计目标——放进上下文；会话中途承诺变了（UserPromptSubmit）再注一次，没变不注。读法照 overview 第 17 条；POSIX sh，出错一律静默；`IDEO_SCRUM_COMMITMENTS=off` 关掉；Windows 上要装 Git for Windows，没装则不生效 |
+- [Quick start](docs/quick-start.md): one page, from installing to your first closed Sprint
+- [Glossary](docs/glossary.md): the plugin's own terms
+- [`overview.md`](plugins/ideo-scrum/skills/scrum-kernel/overview.md): how the pieces fit, and every departure from the official guides
+- [Changelog](CHANGELOG.md): what changed in each release
 
-### Codex 分发包
+## License and attribution
 
-`codex/plugins/ideo-scrum/` 由 `python scripts/sync_codex.py` 生成，版本取 Claude Code 插件清单。修改内核或角色时，先改 `plugins/ideo-scrum/`，再运行同步命令；生成包中的工具用语适配由脚本统一处理。
+The original parts of this repository (the plugin's structure, how its skills are organized, and the work records in `scrum/`) are released under the [MIT license](LICENSE). The methods the plugin carries come from four sources, each under its own terms, which MIT does not cover:
 
-| 文件/目录 | 内容 |
-|---|---|
-| `codex/plugins/ideo-scrum/.codex-plugin/plugin.json` | Codex 插件清单 |
-| `codex/plugins/ideo-scrum/skills/ideo-kernel/`、`scrum-kernel/`、`sprint-kernel/`、`design-kernel/` | 四个内核的全部文件，含约定、模板和源材料 |
-| `codex/plugins/ideo-scrum/hooks/` | hooks.json 与脚本，原样复制；Codex 要用户先在 `/hooks` 里审阅并信任才会跑，插件更新改了脚本要重新审阅 |
-| `codex/plugins/ideo-scrum/skills/scrum-master/`、`designer/`、`developer/`、`stakeholder/` | 四个原生角色 skill；各有 SKILL.md 和 agents/openai.yaml |
-| `codex/plugins/ideo-scrum/README.md`、`LICENSE`、`ATTRIBUTION.md` | 包内说明及来源授权 |
-| `scripts/codex_interface.json`、`scripts/codex_readme.md` | Codex 展示文字与包内 README 的生成源 |
+| Source | License |
+| --- | --- |
+| *The Scrum Guide* 2020, Ken Schwaber and Jeff Sutherland | CC BY-SA 4.0 |
+| *Scrum Guide Expansion Pack* 2026.1, Ralph Jocham, John Coleman and Jeff Sutherland | CC BY-SA 4.0 |
+| *Design Thinking Bootleg*, Stanford d.school | CC BY-NC-SA 4.0 (non-commercial) |
+| *Sprint*, Jake Knapp with John Zeratsky and Braden Kowitz (Simon & Schuster, 2016) | All rights reserved |
 
-### design-kernel skill
+The d.school license forbids commercial use, so this repository is not open-source software in the OSI sense. If you plan a commercial use, read [ATTRIBUTION.md](ATTRIBUTION.md) first (it is in Chinese).
 
-> `design-kernel` 是 v3 用过的名字（当时指设计冲刺与 IDEO 合在一起的内核，v4 改名 ideo-kernel）；v5 起重新启用，意思变了：专讲设计冲刺，IDEO 五模式与方法库留在 ideo-kernel。
+From *Sprint* the plugin carries cut-down excerpts of the chapters that describe the method, with no illustrations and not the whole book; if the method helps you, please buy the book. Every excerpt names its source and license, and [ATTRIBUTION.md](ATTRIBUTION.md) lists where each one lives. IDEO-Scrum is an independent work, not affiliated with Scrum.org, scrumexpansion.org, Stanford d.school, IDEO or Simon & Schuster.
 
-| 文件/目录 | 内容 |
-|---|---|
-| `plugins/ideo-scrum/skills/design-kernel/SKILL.md` | Design Kernel 入口（设计冲刺的五个阶段，各站在一个 IDEO 模式上：对应的模式、原书摘录、Use Protocol；开头一句指向 ideo-kernel 的五模式） |
-| `plugins/ideo-scrum/skills/design-kernel/steps/` | 设计冲刺原书摘录（Knapp，原文只删不改，例图改画成 Mermaid 或文字），16 份文件名带「阶段-步骤」序号：共情 `1-1`～`1-3` define-the-challenge / start-at-the-end / ask-the-experts；定义 `2-1`～`2-3` make-a-map / how-might-we / pick-a-target；构思 `3-1`～`3-5` remix-and-improve / sketch / decide / rumble / storyboard；原型 `4-1`～`4-2` fake-it / prototype；测试 `5-1`～`5-3` small-data / interview / learn |
-| `plugins/ideo-scrum/skills/design-kernel/conventions/` | 设计日志约定（design-log：设计放哪、谁定、各阶段怎么用子代理与角色卡、设计结束时的处理）与设计日志模板（design-backlog-template，五章） |
+## Feedback
 
-### ideo-kernel skill
+Found a problem, or have an idea? Open an [issue](https://github.com/seapawn1/IDEO-Scrum/issues). It helps to say where you run it (Claude Code or Codex, its version, your operating system), what you said, and what you saw.
 
-| 文件/目录 | 内容 |
-|---|---|
-| `plugins/ideo-scrum/skills/ideo-kernel/SKILL.md` | IDEO Kernel 入口（整个插件共用的工具箱：IDEO 五模式表 + Method Catalog：按模式索引与合表 + Use Protocol） |
-| `plugins/ideo-scrum/skills/ideo-kernel/IDEO-modes/` | IDEO Design Thinking 五模式 reference（Empathize / Define / Ideate / Prototype / Test，各含 WHAT/WHY/HOW + Transition） |
-| `plugins/ideo-scrum/skills/ideo-kernel/methods/` | Design Thinking 方法库（~40 个方法，含 Use Before / Use Notes / Do Not Use When） |
-| `plugins/ideo-scrum/skills/ideo-kernel/conventions/` | IDEO 日志约定（ideo-log：五模式与设计冲刺的分界和关系、什么时候开 IDEO 日志、放哪、怎么结束）与 IDEO 日志模板（ideo-backlog-template，五章） |
+## Files
 
-### scrum-kernel skill
-
-| 文件/目录 | 内容 |
-|---|---|
-| `plugins/ideo-scrum/skills/scrum-kernel/SKILL.md` | Scrum 技能内核（Scrum Guide 概述、产品日志约定表、Artifact 目录表、Reference 目录） |
-| `plugins/ideo-scrum/skills/scrum-kernel/assets/scrum-guide-2020.md` | Scrum Guide 2020 官方全文 |
-| `plugins/ideo-scrum/skills/scrum-kernel/assets/scrum-guide-expansion-pack-2026.1.md` | SGEP v2026.1 除 Artifacts、Events 两章以外的部分（Theory / Values-OODA / Roles / 引用列表）；那两章在 `references/`、`sprint-kernel/events/` 与两份 SKILL.md 里 |
-| `plugins/ideo-scrum/skills/scrum-kernel/references/scrum-artifact-*.md` | 4 个 Artifact reference：Product / Increment / Product Backlog / Sprint Backlog |
-| `plugins/ideo-scrum/skills/sprint-kernel/events/scrum-event-*.md` | 5 个 Event reference：Sprint / Sprint Planning / Daily Scrum / Sprint Review / Sprint Retrospective |
-| `plugins/ideo-scrum/skills/scrum-kernel/overview.md` | 约定总览（与 SKILL.md 并列）：整个流程的图、三层、文件与文档文件夹、角色、阶段之间由 PO 决定、会话分工、目标不变其余可调、与官方故意不同之处 |
-| `plugins/ideo-scrum/skills/scrum-kernel/conventions/` | 约定：product-log 与 product-backlog-template（产品日志）；board 与 board-template.html（看板：一页看清项目走到哪、等 PO 拍什么，由便宜的模型照日志生成，生成物 `scrum/Board.html` 不必入库） |
-
-### sprint-kernel skill
-
-| 文件/目录 | 内容 |
-|---|---|
-| `plugins/ideo-scrum/skills/sprint-kernel/SKILL.md` | Sprint Kernel 入口（冲刺日志约定表 + 五个事件表 + 指向 scrum-kernel） |
-| `plugins/ideo-scrum/skills/sprint-kernel/conventions/` | 约定：sprint-log 与 sprint-backlog-template（冲刺日志） |
-| `plugins/ideo-scrum/skills/sprint-kernel/events/` | 5 个 Event reference（从 scrum-kernel 的 references 移入） |
-
-### 工作记录（scrum/）
-
-| 文件/目录 | 内容 |
-|---|---|
-| `scrum/ProductBacklog.md` | 产品日志——一 Product / Product Goal / DoD；二 利益相关者表与 Map（流程见插件 scrum-kernel 的 conventions/）；三 PBI（3.1 当前、3.2 已完成附出处） |
-| `scrum/documents/ExpertNotes.md` | 客户之声——作者使用流程已口述落盘（项目骨架→IDEO→design 文件→背景研究→target 四阶段，含与 SprintBacklog 同源表、分工原则、未决清单）；将作为方法论分享的素材 |
-| `scrum/documents/PBI-27-bot-research.md` | Bot 工作方式研究（PBI-27）：Grok Bot、DeepSeekBot（pstack）、DS-Bot 等的可借鉴机制，带出处 |
-| `scrum/documents/sprint/sprint-08-design-kernel.md` | Sprint 08 冲刺日志归档（设计内核独立，v5.0.0）：关键决定、触发回归、审查与 Review |
-| `scrum/documents/sprint/sprint-09-design-template.md` | Sprint 09 冲刺日志归档（设计日志模板改正，小冲刺，v5.0.1） |
-| `scrum/documents/sprint/sprint-10-conventions.md` | Sprint 10 冲刺日志归档（流程全部进插件，v5.1.0）：关键决定、三轮测试、审查与 Review |
-| `scrum/documents/conventions-review-log.md` | PO 逐段审阅约定的记录（2026-11-09，19 处，每条带状态）；当时对照的四份中文译文已删，见 `git show 6a2fd5e` |
-| `scrum/documents/sprint/sprint-11-conventions-review.md` | Sprint 11 冲刺日志归档（约定照 PO 审阅改定，小冲刺，v5.1.1）：19 处的结论、审阅、design-log 读着别扭的地方 |
-| `scrum/documents/sprint/sprint-12-overview-to-root.md` | Sprint 12 冲刺日志归档（总览挪到 scrum-kernel 根目录，小冲刺，v5.1.2） |
-| `scrum/documents/sprint/sprint-13-codex.md` | Sprint 13 冲刺日志归档（Codex 版，版本不动，仍 v5.1.2）：Codex 包并入 main、一条命令生成与核对、五题在 Codex 里过线、原始输出清理 |
-| `scrum/documents/sprint/sprint-14-conventions-tuning.md` | Sprint 14 冲刺日志归档（约定精调，v5.2.0）：PO 逐份强审四份约定与两份模板、冲刺日志五章、设计不做 Review 和 Retro、白纸入口、四轮流程测试、熟手的看法 |
-| `scrum/documents/design/design-feedback-loop.md` | 设计日志归档（自我反馈，PBI-55）：PO 用自己的产品时冒出的点怎么落盘；定「反馈进全局记忆」，三轮测试 |
-| `scrum/documents/sprint/sprint-15-feedback-loop.md` | Sprint 15 冲刺日志归档（自我反馈落地，小冲刺，版本不动）：装进 SEAPAWN.md 与全局记忆，PO 改成全英文 |
-| `scrum/documents/sprint/sprint-16-kernel-structure.md` | Sprint 16 冲刺日志归档（四个内核、按需加载，版本不动，仍 v5.2.0）：拆出 sprint-kernel、design-kernel 16 份进 steps/、加载分层、Codex 四内核、两轮流程测试与缺口 |
-| `scrum/documents/sprint/sprint-17-conventions-rewrite.md` | Sprint 17 冲刺日志归档（约定改顺，发版 v6.0.0）：Now 行与卡住、设计约定八点、Developer 在别的工具里、ideo-kernel 的 IDEO 日志与分界、两轮流程测试与缺口（PBI-59） |
-| `scrum/documents/sprint/sprint-18-rules-first.md` | Sprint 18 冲刺日志归档（规矩先顺，随 Sprint 19 发版 v6.0.2）：日志头部统一，scrum、sprint、design 三个内核召唤才来，Master 在书面授权内代行 |
-| `scrum/documents/sprint/sprint-19-board-hook.md` | Sprint 19 冲刺日志归档（看得见，发版 v6.0.2）：看板约定与模板、承诺 hook、频率测试 |
-| **冲刺蒸馏 / 归档** | 1.x 五期与 Sprint 06、07 已蒸馏至 `S:\SeaPawn-Memory\memory\IDEO-Scrum\`（MEMORY.md 索引 + 各期教训档案，含出处指向 git）；Sprint 08 起，冲刺日志压缩后归档进 `scrum/documents/` |
-
-### 源参考
-
-原始源材料（书籍原件、扫描配图等）**不入库**，仅保留在作者本地。插件内的所有摘录均带章节级署名，来源与授权条款见 [ATTRIBUTION.md](ATTRIBUTION.md)。
-
-## 来源与授权
-
-本仓库的**原创部分**（插件结构、skill 组织、工作记录 `scrum/`）以 [MIT](LICENSE) 发布。
-
-插件内的方法论摘录来自四个外部来源，各自的许可条款不同：
-
-| 来源 | 许可 |
-|---|---|
-| The Scrum Guide 2020 | CC BY-SA 4.0 |
-| Scrum Guide Expansion Pack 2026.1 | CC BY-SA 4.0 |
-| Stanford d.school Design Thinking Bootleg | CC BY-**NC**-SA 4.0 |
-| *Sprint* (Knapp et al., 2016) | 全版权，仅记录方法流程 |
-
-> ⚠️ 第三项含**非商业限制**，因此本仓库整体**不构成 OSI 定义下的开源软件**。商业场景使用前请阅读 [ATTRIBUTION.md](ATTRIBUTION.md)。
-
-本仓库不包含任何书籍全文或原始出版物。若这些方法论对你有价值，请通过官方渠道支持原作者。
+| Path | What it is |
+| --- | --- |
+| `plugins/ideo-scrum/` | The plugin: the four roles in `commands/`, the four kernels in `skills/` (ideo, scrum, sprint, design), and `hooks/` |
+| `codex/plugins/ideo-scrum/` | The Codex edition, generated from the plugin by `scripts/sync_codex.py`; do not edit it by hand |
+| `docs/` | The quick start and the glossary |
+| `scrum/` | This project's own Scrum work, in Chinese: its product log and its archived sprint logs |
+| `scripts/` | Scripts that generate and check the Codex edition and the docs |
+| `.claude-plugin/`, `.agents/plugins/` | The marketplace lists for Claude Code and Codex |
+| `LICENSE`, `ATTRIBUTION.md`, `CHANGELOG.md`, `CLAUDE.md` | The license, the sources and their terms, the release notes, and the instructions for working on this repository |

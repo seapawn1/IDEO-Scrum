@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 20 (presentable)
 
 > Started: 2026-11-14 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: worktree-sprint-20-presentable | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[management sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-20]-[do presentable]，原生 worktree sprint-20-presentable）
-> Now: Increment：块 1、3、4 已完成；块 7（63-a 的标准）按 Master 审后改过（61dc0c9），等 Master 再看；块 5 的 README 大纲 Master 已定（58958be 那版，改一处：How it differs 加「为什么」一列），正在写全文（中英两份，先跑一致性脚本再发 Master 审）；块 8（测法脚本与冒烟，交接笔记在第 4 章，脚本还没写）排在后面；设计线由 PO 另开，Designer 会话在做原型 · 最近一次 PO 决定：2026-11-14 答块 4（图标选 1、文件地图收到文件夹一级、README 大纲交 Master 定）
-> Waiting for PO: 块 7：63-a 的标准看一眼（Master 转来）
+> Now: Increment：块 1、3、4、7 已完成；块 5 的 README 大纲 Master 已定，中英两份全文写好，图标入位，一致性脚本 `scripts/check_docs.py` 自测过，等发 Master 审（块 5 其余的 Done 看审阅）；块 6（快速上手、词汇表）在写；块 8（测法脚本与冒烟，交接笔记在第 4 章，脚本还没写）排在后面；设计线由 PO 另开，Designer 会话在做原型 · 最近一次 PO 决定：2026-11-14 答块 4（图标选 1、文件地图收到文件夹一级、README 大纲交 Master 定）
+> Waiting for PO: None
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
 
@@ -325,7 +325,7 @@ PO 2026-11-14 定精化结束（第 7 步）：「OK，可行。嗯，现在精�
 | 4 | 三份大纲，PO 一次看完 | README、快速上手的大纲；词汇表词条清单；文件地图收不收的建议；摆出图标候选 | ✓ 2026-11-14 PO 一次看完：大纲说行、图标挑定、文件地图定了 |
 | 5 | 62-a README（中英）与图标入位 | `README.md`（英文）、`README.zh-CN.md`，含 64 的升级、授权、反馈三段；图标放进插件，`plugin.json` 的 `icon` 指向它；同步脚本去掉 Codex 清单里的 `icon` | 两份的标题、列表项数、链接对得上，无死链；规矩的句子对得上约定原文；授权一段和 ATTRIBUTION.md 对得上，引了第三方原文的地方带 Source 和 License 两行；`--strict` 通过，plugin-validator（Haiku）无必改项；`sync_codex.py`、`check_codex.py` 通过；Master 审过 |
 | 6 | 62-b、62-c 快速上手（中英）与词汇表 | `docs/quick-start.md`、`docs/quick-start.zh-CN.md`、`docs/glossary.md` | 快速上手一页（约 80 行内），从装好走到第一次收官；陌生人卡点名的词都在词汇表里；两份对得上，无死链，规矩的句子对得上约定原文；署名：引了第三方原文（Scrum Guide、SGEP、d.school）的地方带 Source 和 License 两行，和 ATTRIBUTION.md 一致，出自《Sprint》的词只用自己的话写、不引原文；Master 审过 |
-| 7 | 63-a 标准与测法 | 测法、卡住的判定、过线的数字，写进 2.2，单独提交 | 提交早于任何正式跑；Master 审过，PO 看一眼 |
+| 7 | 63-a 标准与测法 | 测法、卡住的判定、过线的数字，写进 2.2，单独提交 | ✓ 2026-11-14 提交早于任何正式跑；Master 审过，PO 看一眼 |
 | 8 | 63-a 脚本与冒烟 | `scripts/stranger_test/`：驱动脚本、陌生人卡文本、任务；冒烟 1 次（原始输出放仓库外） | 冒烟通过：隔离与认证核实过（init 的 permissionMode、permission_denials）；不通就写明退路 |
 | 9 | 68-b 合并与模板（等设计线交接包） | 从本分支合并设计线的分支；新的 `board-template.html`，照原型 | 用样本数据画出的页面和原型一致，电脑 1440 与手机 375 宽各截一张对照 |
 | 10 | 68-b 约定与检查 | 新的 `board.md`（改第 13、15 条等：事实照抄，概括怎么写）；检查脚本；白纸夹具 | 脚本拿真仓库的状态、夹具 A、B 和白纸自测过 |
@@ -403,5 +403,8 @@ Go-ahead: 2026-11-14，PO（「可以，那就放行吧」，Master 转来）。
   3. 测试题里不带引导：CLAUDE.md 里有这条规矩，63-a 初稿还是把步骤和角色名写进了给 S 的任务，是审阅拦下的。写测试题时先对一遍回归测试的规矩。
 - **块 5 的对标和改后的 README 大纲**（2026-11-14）：对标了四份，只学结构：官方市场的 `feature-dev`（流程类，和我们最像）、`ralph-loop`、`hookify`，第三方的 `academic-research-skills` 当反面看。要用的：开头一句话加早早出现的装法、装完一步「怎么看装好了」；用短对话示例讲一次会话什么样；「适合谁、不适合谁」两张短清单；平台的坑单独一小节带绕法。要避开的：同一句话说四遍（`feature-dev` 413 行）、介绍埋在引文后面、参考资料压过介绍。改后的大纲写进 `docs-outline.md` 的 A（旧版见 git 历史）：What it is（问题、得到什么、不做什么）→ A session, shortened → Who it is for → Install → Upgrade → Your first sentence → How it differs → Where the work lives → Board and hook → Learn more → License → Feedback → Files（最后、最短）。要 Master 定三处：先讲是什么再装（推荐）、How it differs 七行留不留（推荐留）、示意对话先编一段标明示意（推荐）。查过 docs MCP 的两件事：升级是 `claude plugin update <插件>@<市场>`（终端）或 `/plugin marketplace update <市场>`（会话），第三方市场默认不自动更新，要在 `/plugin` 的 Marketplaces 里打开 Enable auto-update；`icon` 是插件内图片文件的路径（如 `./logo.png`），只有 Anthropic 目录收录时才读，Claude Code 加载时忽略，Claude Code 2.1.281 起 `validate` 不再把它报成未知字段，更早的版本 `--strict` 会失败（块 5 动手前先查本机版本）。
 - **Master 定了 README 大纲**（2026-11-14，对 58958be）：① 顺序照推荐：先讲是什么（问题、一次会话、给谁），再装，最上面一行导航；② How it differs 留七行，但加一列「为什么」，同取 overview Departures 表里的原文（「Here」「Why」两列，插件自己的文字；官方原句那一列不引），末尾链到 overview；③ 示意对话标明示意、已缩短，每一句都要能在约定里找到依据（比如每个阶段末尾停下来问 PO、放行以后才动手）；63 跑完要不要换成真节选，到时再看，不算必做。写完中英两份，先跑一致性脚本，再发 Master 审；PO 的全文通读排在 Test 阶段，一次读完。
+- **PO 看过 63-a 的标准，块 7 标 ✓**（2026-11-14，Master 转来，原话）：「什么体检测试的标准。OK，听你的就行。」（「体检」按体验理解。）
+- **块 5 全文写好了**（2026-11-14，等 Master 审）：`README.md`（英文）、`README.zh-CN.md`（中文），各 12 节（不含题头），照 Master 定的大纲，Board and hook 一节除外（块 12）；图标 1 导出成 PNG（512×512，透明圆角）放在 `plugins/ideo-scrum/icon.png`，`plugin.json` 加 `"icon": "./icon.png"`；`sync_codex.py` 去掉 Codex 清单里的 `icon`，`check_codex.py` 的比对跟着改，两个脚本都跑过（Codex 包没有变化）。`claude plugin validate --strict plugins/ideo-scrum` 通过（Claude Code 2.1.323，高于 2.1.281，`icon` 不再被报成未知字段）；plugin-validator（Haiku）：必改 0 项，只提醒 `icon.png` 要和清单同一个提交。新脚本 `scripts/check_docs.py`：中英成对的文档核对标题、各节的列表项、表格行、代码块数、`sh` 块里的命令、链接；所有文档核对链接和锚点能解析、README 的版本等于插件版本、README 的 How it differs 表和 overview 的 Departures 表逐字相同；`--selftest` 在一份副本里种下九处毛病，都被查出，没种毛病的副本零报错。现在它只报块 6 还没写的三份文档（`docs/quick-start.md`、`docs/quick-start.zh-CN.md`、`docs/glossary.md`）和指向它们的 10 个链接，其余全过。
+- **写 README 时找到的几处，和我的建议**（给 Master）：① 旧 README 写《Sprint》是「全版权，仅记录方法流程」，ATTRIBUTION.md 写的是「讲方法各章的原文摘录（有删节，不含插图）」：新 README 照 ATTRIBUTION.md 写；版权声明归 PO，请 Master 让 PO 知道旧说法不准。② ATTRIBUTION.md 只有中文，英文 README 链到它时写了「它是中文的」；建议这次不动，PO 要英文版再登记。③ Board and hook 一节没写（块 12，68 做完再写）：旧 README 里 hook 的几句（关闭办法、Windows 要装 Git for Windows、Codex 要先在 `/hooks` 里信任）要带进去，Codex 包的说明也要照着改，不要丢。④ 示意对话里的措辞是示意，规矩的部分（阶段末尾停下问 PO、放行以后才动手、审阅的不是做的人）对着 sprint-log 第 8、9、14、24 条和 overview 第 12 条写；How it differs 表是 overview 的原文，脚本核过逐字相同；中文表是我译的，请 Master 看一眼。⑤ 旧 README 里的 Codex 说明（角色要显式选、自动触发没做动态测试）只留了「第一个冲刺的走法只在 Claude Code 上测过」一句；Codex 升级那三行（`upgrade`、`remove`、`add`）没有端到端测过，README 里写明了没测。
 
 ## 5. Test

@@ -106,6 +106,9 @@ def expected_files(root: Path) -> tuple[dict[Path, bytes], bytes]:
         (source / ".claude-plugin/plugin.json").read_text(encoding="utf-8-sig")
     )
     manifest["skills"] = "./skills/"
+    # The Claude plugin's `icon` names a file in the Claude plugin; the Codex package does not carry it
+    # (Sprint 20, Master 2026-11-14), so the field would point at nothing.
+    manifest.pop("icon", None)
     if "plugin" in interface:
         manifest["interface"] = interface["plugin"]
     files[Path(".codex-plugin/plugin.json")] = json_bytes(manifest)
