@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 20 (presentable)
 
 > Started: 2026-11-14 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: worktree-sprint-20-presentable | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[management sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-20]-[do presentable]，原生 worktree sprint-20-presentable）
-> Now: What：精化 68、64，第 1～5 步 PO 已在 Master 会话里过了，第 6 步 Developer 已复述、Master 审过，等 PO 认可；62 由 Master 接着领 PO 精化，63 随后；第 7 步等 64、62、63 都精化完再一起定 · 最近一次 PO 决定：2026-11-14 过完 64 的第 1～5 步（图标做，CHANGELOG 等交 Master 定）
+> Now: What：68、64、62 的第 1～5 步已过；68、64 的第 6 步 Developer 已复述、Master 审过，等 PO 认可；62 等 Developer 复述；63 由 Master 接着领 PO 精化；第 7 步等四条都精化完再一起定 · 最近一次 PO 决定：2026-11-14 定 62 照做中英两份，精化改由 Master 落盘
 > Waiting for PO: 68 第 6 步：Developer 的复述对不对；64 第 6 步：Developer 的复述对不对
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
@@ -154,6 +154,48 @@ PO 2026-11-14 定 Sprint Goal（「可以，我觉得目标可以的」）；DoD
 - **发布**：64-b 在 63 测完以后、收官时做：版本号 6.0.3，README 两处同步，跑 `sync_codex.py`、`check_codex.py`、`--strict`；推送 main 和 tag `v6.0.3`，收官时请 PO 点头。
 - **Codex**：见上表，Master 已定：图标和 CHANGELOG 先不进包，只加去掉 `icon` 的一行。
 
+**PBI-62 教学**
+
+第 1～5 步是 Master 领着 PO 过的，从这条起由 Master 直接写进日志（PO 2026-11-14：精化由 Master 落盘，见第 4 章）；第 6 步等 Developer 复述。
+
+**事实**（Master 查过）
+
+- README 是中文的；「快速开始」讲了安装命令、能说的例句、角色命令。
+- 还没有：讲第一个冲刺怎么走的一页、词汇表、和教科书 Scrum 哪里不一样（插件里只有 scrum-kernel `overview.md` 的 Departures 表）。
+- 已定（PO 2026-11-13，产品日志 PBI-62 备注）：中英两份，英文为准、中文跟着，同一提交改；示例项目就是本仓库的 `scrum/`（中文）；不大改内核，帮助放在内核外面。
+
+**①② 立足点**（照抄用户故事）：「作为懂 Scrum 的陌生人，我想要一份讲清本插件规矩的 README、一页快速上手、一张词汇表和一个真实的示例，以便不读作者的仓库也能走完第一个冲刺」
+
+**③④ 定案**
+
+| 点 | 定案（谁定） |
+| --- | --- |
+| 中英两份 | 照做（PO 2026-11-14：「我觉得可以中英两份，没问题」）。词汇表做成一张中英对照表，不拆两份，翻倍的只有 README 和快速上手（Master 建议；PO：「其他的我觉得都可以，都问题不大，都可以听你的」） |
+| 放哪、怎么命名 | Developer 提 |
+| README 讲什么 | 是什么、怎么装和升级、第一句说什么（入口要教）、和教科书 Scrum 不同的几处、授权、反馈，链到快速上手和词汇表；文件地图留在后面。连同 64 的升级、授权、反馈三段一起写。先给 PO 看大纲，PO 说行再写全文（sprint-log 第 11、12 条） |
+| 快速上手 | 一个会话、PO 加 Master，从装好走到第一次收官；陌生人卡问过的都讲到：你就是 PO、不熟 git 怎么收官、哪些规矩必须守、书面授权最简怎么写（日志里一行：谁、范围、覆盖哪些阶段）。Developer 写，PO 读 |
+| 词汇表 | 只收插件自己的词；陌生人卡点名找不到解释的都收：五模式和设计冲刺的区别、role card、Five-Act Interview、rumble、Lightning Demos；再加 Now / Waiting for PO、PO 助手、看板、hook |
+| 看板和 hook 的说明 | hook 的开关 `IDEO_SCRUM_COMMITMENTS=off`；Windows 上要装 Git for Windows，macOS 未实测；Codex 要先在 `/hooks` 里信任。看板等 68 定稿再写；Sprint 19 交来的「架构图要联网才画得出来」，68 改用 HTML/SVG 后多半不再成立，照 68 的结果写 |
+| 召唤入口 | 熟手卡 Sprint 18 的意见：召唤要用户自己记得，入口要教；stakeholder 的描述是写给 AI 挑技能的，人读要靠 README 和快速上手。顺带覆盖 PBI-67 列过的「入口教用户」 |
+
+**⑤ 切成四块**
+
+- **62-a README**（中英）：先大纲后全文，连同 64 的三段。
+- **62-b 快速上手**（中英）：先大纲后全文。
+- **62-c 词汇表**：一张中英对照表。
+- **62-d 看板和 hook 的说明**：排在 68 之后。
+
+**验收标准（草稿）**
+
+- 62-1 README、快速上手先给 PO 看大纲，PO 说行再写全文；全文 PO 整份读过，说行；
+- 62-2 README 讲到上表「README 讲什么」的每一项；
+- 62-3 快速上手只有一页，从装好走到第一次收官；
+- 62-4 词汇表中英对照，陌生人卡问过的词都在；
+- 62-5 Sprint 19 交来的说明点都讲到；
+- 62-6 英文为准，中文同一提交跟着改；和约定原文对得上；无死链。
+
+**第 6 步 · Developer 的复述**：待写。
+
 ## 3. How
 
 | # | Work item | Output | Done when |
@@ -178,5 +220,7 @@ Go-ahead: 尚无
 - **68 补记**（2026-11-14，Master 转来）：PO 说「我们是要先开一次设计的」，又说原型「那当然也是一个设计了」；Master 的理解是 68-a 的原型轮就是这次的设计，不开设计冲刺。原话和这层理解已写进 2.2。
 - **64 的第 1～5 步和我查的两处**（2026-11-14）：64 的第 1～5 步原样写进 2.2，并附 Developer 的复述。Master 让查的两处：Codex 有放图标的地方（`interface.logo`、`interface.composerIcon`），但同步脚本现在不会把图标和 CHANGELOG 带进包；Claude 清单加 `icon` 后会被原样带进 Codex 清单，需要脚本去掉。详见 2.2 的 64 表，Codex 带不带待 Master 定。
 - **Master 对 5be5850 的审阅**（2026-11-14）：没问题。在 PO 给 64 的「细节由 Master 定」范围里定了：64-a 先做 CHANGELOG 和图标，README 的升级、授权、反馈三段跟 62 的 README 重写一起写（先定英文版结构，再写中文）；Codex 先不带图标和 CHANGELOG，同步脚本只加一行去掉 `icon`（Codex 不是核心）；夹具 A、B 只验「条目少」，白纸另做一份，没有冲刺、没有设计、没人等 PO 的空样子也设计进去；68-4 里节点名的写法（日志的地图：产品日志 2.2、设计日志 2.1；条目：产品日志 3.1）可以；68 复述第 4 点的两处理解（工作块名算标题、照抄，✓ 也照抄；路线图的分组只依据日志里写着的内容）同意，和 64 的复述一起拿给 PO 认可。这些已改进 2.2 对应的格子。
+
+- **精化改由 Master 落盘**（2026-11-14）：PO 原话：「精化阶段，其实我是应该给你打开权限的，就是应该让你去落盘的。我不应该是精化阶段也让 developer 去做，developer 只需要同步消息就可以了。」之前 68、64 的精化是 Master 在 plan 模式里写不了文件，转给 Developer 写的。从 62 起到精化结束，2.2 由 Master 直接写、在本分支提交；Developer 不改日志，第 6 步的复述发给 Master，由 Master 写进来。
 
 ## 5. Test
