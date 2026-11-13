@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 19 (board-hook)
 
 > Started: 2026-11-13 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: worktree-golden-orbiting-bachman | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[support sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-19]-[do sprint 19]，golden-orbiting-bachman）
-> Now: Increment：块 1～9 完成，块 10 做完；等 Master：审块 8、9、10 的 diff、说可以进测试（Sprint 18 已合进本分支，条号复核过） · Master 2026-11-13 放行 How（PO 授权，见第 4 章）
+> Now: Test：Master 审过，等收官 · Master 2026-11-13 放行 How（PO 授权，见第 4 章）
 > Waiting for PO: None
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
@@ -108,7 +108,7 @@ PO 2026-11-13 定 Sprint Goal
 | 7 | 看板约定与模板 | scrum-kernel `conventions/` 下的 `board.md`（英文，自带给子代理的简报）和 PO 挑的那一版的卡片模板；先给大纲，再给全文审阅（sprint-log 第 11、12 条） | ✓ 2026-11-13　Master 审过（`1c2cdb2`，通过）；自足——别人的环境里，一个便宜模型的子代理拿着它就能生成——在块 9 验证 |
 | 8 | 看板夹具与核对脚本 | 夹具构造脚本（临时仓库：main 加两个开着的冲刺分支，其中一个带设计）；核对脚本：事实对日志、链接、Waiting for PO 汇总、删掉重建一致 | ✓ 2026-11-13　核对脚本先自测：一份对的样本过，一份故意弄坏的被抓住（48 条全过：两个场景各一份对的页过、18 种改坏的页都被抓到） |
 | 9 | 看板生成与汇总 | Haiku 子代理对夹具生成 3 次，再对本仓库现状生成一次；汇总进第 4 章 | ✓ 2026-11-14　验收 35-1～5 通过（35-6 在块 1）：夹具 A、B 各 3/3，本仓库现状批 4 为 2/2，事实集合相同；汇总在第 5 章；生成用的是 magpie 的便宜模型（非 Haiku），手抄丢字的限制见第 4 章 |
-| 10 | 接入插件并交测试 | overview 第 4 条加一句；scrum-kernel `SKILL.md` 的文件表加一行；`.gitignore`；README 文件地图加两行；`sync_codex.py`、`check_codex.py` 照 61-5；第 4 章对照验收标准写完成情况 | `claude plugin validate --strict` 通过（新增 `hooks/` 属结构变化，再派 `plugin-dev:plugin-validator`，`model: haiku`）；无死链；Codex 同步并核对通过；Master 说可以进测试——前三项都做完了（`--strict` 通过、validator 无必改项、`check_codex.py` 内容/链接/导航 0 错，见第 4 章「块 10」），待 Master 说可以进测试后标 ✓ |
+| 10 | 接入插件并交测试 | overview 第 4 条加一句；scrum-kernel `SKILL.md` 的文件表加一行；`.gitignore`；README 文件地图加两行；`sync_codex.py`、`check_codex.py` 照 61-5；第 4 章对照验收标准写完成情况 | ✓ 2026-11-14　`claude plugin validate --strict` 通过（新增 `hooks/` 属结构变化，再派 `plugin-dev:plugin-validator`，`model: haiku`）；无死链；Codex 同步并核对通过；Master 说可以进测试——前三项都做完了（`--strict` 通过、validator 无必改项、`check_codex.py` 内容/链接/导航 0 错，见第 4 章「块 10」），Master 2026-11-14 审过块 8～10、说可以进测试（PO 授权） |
 
 **Key choices**
 
@@ -181,6 +181,7 @@ Go-ahead: Master 2026-11-13 放行（PO 授权，见第 4 章）：本分支上�
   7. **便宜模型逐字抄长文会丢字**：地图里一个 `-` 没了，`<br/>` 被删——逐字规矩要配核对脚本；约定里写「长文机械拷贝、写完读回对照」；权限放宽时模型会自己写脚本拷贝，没丢字，收紧时只能手抄。
   8. **验证用的子进程要先核对它真被限制**：看 init 事件的 `permissionMode`，也要看 `permission_denials` 有没有出现过——一次都没有，多半是限制没生效，不是模型守规矩。
 - **已知限制**（Master 2026-11-14 定，收官时进产品日志）：① **看板生成后没有自动核对**：检查脚本是仓库里的测试工具，不在插件里；插件只在约定里写「长文机械拷贝、写完把每张地图读回对照」和第 12 条第 5 步「对着日志查一遍」，不写某个工具的用法（overview 第 15 条）；靠模型自查，手抄长文仍可能丢字——真实状态的一次生成里地图丢了一个 `-`，检查脚本抓到了。收官时 Master 登记后续「看板生成后的自动核对」。② **hook**：Windows 上没装 Git for Windows 的用户不生效；macOS 未实测；Codex 里的触发未实测，且要用户先在 `/hooks` 里信任。③ **频率测试**：模型是 magpie 的便宜模型、不是 Haiku；一场只有 14 个提示加一次压缩，不够「很长」，注意力衰减测不出；三次一档，只分得出大差别。④ **看板**：地图靠 Mermaid 的 CDN 画，离线时展开的是源码；本仓库现状的一次生成要 15 到 25 分钟（条目和日志多、模型手抄）。
+- **块 8～10 通过，进 Test**（Master 2026-11-14，PO 授权；审的是 `1c2cdb2..HEAD` 的提交）：块 10 标 ✓，Now 改成「Test：Master 审过，等收官」；审阅的记录在第 5 章。已知限制四条照上面留着。
 
 ## 5. Test
 
@@ -219,6 +220,8 @@ Go-ahead: Master 2026-11-13 放行（PO 授权，见第 4 章）：本分支上�
 - **成本**：夹具每次约 2 到 6 分钟（输入约 2 万到 6 万 token，另有缓存读 16 万到 68 万，输出约 0.6 万到 1.5 万 token）；本仓库现状每次约 4 到 25 分钟。
 - **手抄丢字的已知限制**见第 4 章。
 
+**审阅**（sprint-log 第 16 条的审阅者；Master）：Master 2026-11-14 审过块 1～10 的提交，复核了 strict、Codex、hook 实跑（PO 授权）。它自己核的几项：`claude plugin validate --strict` 通过；`check_codex.py` 各项都是空列表；在本仓库直接跑 hook，输出就是三句承诺原文，exit 0，照日志的语言出中文或英文的标签；`hooks.json` 带开关说明；`sync_codex.py` 不收符号链接；README 的文件地图已同步，也写了 Codex 要先在 `/hooks` 信任。
+
 **Definition of Done（本冲刺选的三项）**：无死链——`check_codex.py` 的链接检查 0 错，`plugin-dev:plugin-validator` 核对过插件里新文件的引用都解析得到；插件校验——`claude plugin validate --strict plugins/ideo-scrum` 通过；Codex 包——同步并核对通过，hook 一并同步。Outcome Done（一次会话走通方法论环节、用户不反复追问）：待 PO 的端到端试用。
 
-**还没做**：Master 对块 8、9、10 的审阅（审提交的 diff）；PO 的端到端试用；Review 与 Retro 由 Master 做。
+**还没做**：PO 的端到端试用；Review 与 Retro 由 Master 做。
