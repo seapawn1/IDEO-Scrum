@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 20 (presentable)
 
 > Started: 2026-11-14 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: worktree-sprint-20-presentable | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[management sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-20]-[do presentable]，原生 worktree sprint-20-presentable）
-> Now: What：精化 68、64，第 1～5 步 PO 已在 Master 会话里过了，第 6 步 Developer 已复述，等 PO 认可；62 由 Master 接着领 PO 精化，63 随后；第 7 步等 64、62、63 都精化完再一起定 · 最近一次 PO 决定：2026-11-14 过完 64 的第 1～5 步（图标做，CHANGELOG 等交 Master 定）
+> Now: What：精化 68、64，第 1～5 步 PO 已在 Master 会话里过了，第 6 步 Developer 已复述、Master 审过，等 PO 认可；62 由 Master 接着领 PO 精化，63 随后；第 7 步等 64、62、63 都精化完再一起定 · 最近一次 PO 决定：2026-11-14 过完 64 的第 1～5 步（图标做，CHANGELOG 等交 Master 定）
 > Waiting for PO: 68 第 6 步：Developer 的复述对不对；64 第 6 步：Developer 的复述对不对
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
@@ -99,10 +99,10 @@ PO 2026-11-14 定 Sprint Goal（「可以，我觉得目标可以的」）；DoD
 - **①② 立足点**：看板是给 PO 本人用的：打开就一眼看清项目走到哪、有什么在等他拍板，并拿它拍板；电脑全屏和手机上都读得顺；原型他亲自参与。
 - **a 放什么**：最上面是等他拍板的，其次是正在做的；其余放什么、不放什么，第 1 版的骨架留不留，现在不定，由 PO 在原型轮里看着定（68-①）。所以第一轮的几个方向里，既有沿用第 1 版骨架的，也有放开重排的，让他在看得见的东西里挑。
 - **b 架构图**：做成一眼看懂的概括：从原图里挑主干节点、省去细节，节点名取自原图、不另造词（核对要靠这个）。怎么画由我在原型里提方案：直接用 HTML/SVG，不再靠 Mermaid 的 CDN；PO 挑。
-- **c 照抄和概括的分界**（68-②，PO 已认可）：照抄的是事实——承诺原文、编号、标题、状态、日期、Now、Waiting；由 LLM 重新组织成概括的是架构图、路线图、说明文字。我补两处理解，请 PO 看对不对：（1）Sprint 卡上第 3 章的工作块名，和条目标题一样算标题，照抄，做完的标记照 `✓`；（2）路线图指产品卡上没做完的条目，和冲刺卡上条目的走向：编号、标题、状态照抄，怎么分组、怎么排由 LLM 重新组织，但分组的依据只能是日志里写着的（状态、所属冲刺、主线/副线/以后），不推算完成度和优先级；概括的文字不加日志里没有的事实。
+- **c 照抄和概括的分界**（68-②，PO 已认可）：照抄的是事实——承诺原文、编号、标题、状态、日期、Now、Waiting；由 LLM 重新组织成概括的是架构图、路线图、说明文字。我补两处理解，请 PO 看对不对：（1）Sprint 卡上第 3 章的工作块名，和条目标题一样算标题，照抄，做完的标记照 `✓`；（2）路线图指产品卡上没做完的条目，和冲刺卡上条目的走向：编号、标题、状态照抄，怎么分组、怎么排由 LLM 重新组织，但分组的依据只能是日志里写着的（状态、所属冲刺、主线/副线/以后），不推算完成度和优先级；概括的文字不加日志里没有的事实。（这两处理解 Master 2026-11-14 已同意，随 64 的复述一起拿给 PO 认可）
 - **d 电脑和手机**：同一页，电脑全屏（我截 1440 宽）和手机（375 宽）都好读；窄屏时卡片排成一列，不横向溢出；两种宽度各截图给 PO、各验一遍（验收 68-2）。
 - **e 好看**：视觉方向用 frontend-design（`seapawn:frontend-design`），先定设计方向、再落页面；什么样算好看是研究题，不是我说了算：每轮给 PO 看截图，他点到哪，我改哪，由他挑。
-- **f 条目少、白纸也好看**：夹具 A、B 是同一个小项目（Acme 订单台：5 条条目、2 个冲刺、1 个设计、1 个 IDEO 日志），只是 git 状态不同——A 的日志只在分支上，B 的工作区里有没提交的改动；拿它们验「条目少」。「白纸」（只有 Product 和 Product Goal，没有条目、没有开着的冲刺和设计、没有等 PO 的事）夹具里没有，我另造一份。没有冲刺、没有设计、没人等 PO 这几种空的样子也要设计过，不是一片空白。
+- **f 条目少、白纸也好看**：夹具 A、B 是同一个小项目（Acme 订单台：5 条条目、2 个冲刺、1 个设计、1 个 IDEO 日志），只是 git 状态不同——A 的日志只在分支上，B 的工作区里有没提交的改动；拿它们验「条目少」。「白纸」（只有 Product 和 Product Goal，没有条目、没有开着的冲刺和设计、没有等 PO 的事）夹具里没有，我另造一份（Master 2026-11-14 同意）。没有冲刺、没有设计、没人等 PO 这几种空的样子也要设计过，不是一片空白。
 - **68-a 原型**：这一轮就是这次看板的设计（PO 的补充：「我们是要先开一次设计的」；Master 的理解：原型轮就是设计），一定排在 68-b 前面，记在本日志里，不开设计冲刺。数据用本仓库现状。现状里 Sprint 20 的第 3 章还空着，卡上看不到工作块，所以另拿 Sprint 19 收官前的日志（`git show 1bf5a94:scrum/sprint-19-board-hook/SprintBacklog.md`）当第二份样本，看有工作块和 `✓` 的冲刺卡。第一轮 2～3 个方向（至少一个沿用第 1 版骨架、至少一个放开重排），静态 HTML；PO 挑一个后，每轮只改他点到的地方，他说「就这个」才算完；轮次记在第 4 章；用五模式，每个方法用之前先读 ideo-kernel 的 `methods/` 里它的文档。原型放在本冲刺的文件夹里，收官时删，git 留着。谁跟 PO 做，开做时再看。
 - **68-b 模板和约定**：照选定的样子重做 `board-template.html` 和 `board.md`；`board.md` 第 13、15 条（逐字抄、抄地图源）改成：事实照抄，概括的部分怎么生成、怎么核对；用便宜的模型照新模板真生成一次本仓库现状的看板，再用 68-4 的方法核对。
 - **Sprint 19 的两条已知限制**（产品日志 PBI-68：不单列，新样子顺带解决的就算解决）：地图靠 CDN，随 HTML/SVG 一起没了；「生成后插件里没有自动核对」这次不解决——检查脚本只用来验收本冲刺，不放进插件，仍记作已知限制；PO 若要把核对放进插件，那是另一条条目，不在 68 的范围。
@@ -130,11 +130,11 @@ PO 2026-11-14 定 Sprint Goal（「可以，我觉得目标可以的」）；DoD
 | CHANGELOG | PO 交给 Master 定（「修改日志……你来决定吧。其他的你都可以来决定」）。Master 定：放根目录，用英文（照 62「英文为准」）；6.0.3 一节详写，之前的版本每版一行，照 tag 列 |
 | 反馈 | 只放 GitHub Issues 的链接，不做模板（Master 定） |
 | 发布 | 推送 main 和 tag v6.0.3（PO 已定），收官时再请 PO 点头 |
-| Codex 的两处 | Master 请 Developer 查，2026-11-14 查得：Codex 有放图标的地方——`.codex-plugin/plugin.json` 的 `interface.logo`、`interface.composerIcon`，路径相对插件根（依据是本机 Codex 插件缓存里的 Superpowers 示例，不是官方规范）。但同步脚本现在只把四个内核、`hooks/`、四个角色技能、清单、LICENSE、ATTRIBUTION.md、README 带进包：放在 `plugins/ideo-scrum/` 里的图标和根目录的 CHANGELOG 都不会自动进包，`check_codex.py` 也不会因此报错。要进包得改两个脚本（同步脚本多拷一份、`check_codex.py` 的预期清单多一项；图标另在 `scripts/codex_interface.json` 里写 `logo`）。另有一处：同步脚本把 Claude 的 `plugin.json` 整份带进 Codex 的清单，Claude 清单加了 `icon` 字段后，Codex 清单里会多出一个指向包里没有的文件的 `icon`，脚本要把它去掉（一行）。Developer 的建议：Codex 先不带图标和 CHANGELOG（Codex 不是核心，PO 2026-11-13），只加去掉 `icon` 字段这一行；要带再加。待 Master 定 |
+| Codex 的两处 | Master 请 Developer 查，2026-11-14 查得：Codex 有放图标的地方——`.codex-plugin/plugin.json` 的 `interface.logo`、`interface.composerIcon`，路径相对插件根（依据是本机 Codex 插件缓存里的 Superpowers 示例，不是官方规范）。但同步脚本现在只把四个内核、`hooks/`、四个角色技能、清单、LICENSE、ATTRIBUTION.md、README 带进包：放在 `plugins/ideo-scrum/` 里的图标和根目录的 CHANGELOG 都不会自动进包，`check_codex.py` 也不会因此报错。要进包得改两个脚本（同步脚本多拷一份、`check_codex.py` 的预期清单多一项；图标另在 `scripts/codex_interface.json` 里写 `logo`）。另有一处：同步脚本把 Claude 的 `plugin.json` 整份带进 Codex 的清单，Claude 清单加了 `icon` 字段后，Codex 清单里会多出一个指向包里没有的文件的 `icon`，脚本要把它去掉（一行）。Developer 的建议：Codex 先不带图标和 CHANGELOG（Codex 不是核心，PO 2026-11-13），只加去掉 `icon` 字段这一行；要带再加。Master 定（2026-11-14，在 PO 给 64 的「细节由 Master 定」范围内）：照 Developer 的建议，图标和 CHANGELOG 先不进 Codex 包，只给同步脚本加一行，把 `icon` 从 Codex 清单里去掉；Codex 不是核心（PO 2026-11-13） |
 
 **⑤ 切成两块**
 
-- **64-a 包装**：CHANGELOG；README 补升级、授权、反馈三段；图标。
+- **64-a 包装**：CHANGELOG；README 补升级、授权、反馈三段；图标。顺序（Master 2026-11-14 定，照 Developer 调的）：先做 CHANGELOG 和图标；README 的三段跟 62 的 README 重写一起写，先定英文版结构，再写中文。
 - **64-b 发版**：63 测完以后、收官时做。版本号改成 6.0.3，README 两处同步，跑 `sync_codex` 和 `check_codex`，跑 `--strict`。
 
 **验收标准（草稿）**
@@ -150,9 +150,9 @@ PO 2026-11-14 定 Sprint Goal（「可以，我觉得目标可以的」）；DoD
 - **图标**：我出 3 张给 PO 挑——样子是 PO 的口味，我不替他定；放进插件，`plugin.json` 的 `icon` 指向它，README 顶部也用；提交官方目录不在这次。`icon` 字段的写法（路径、尺寸、格式）做的时候先查 docs MCP。验收（64-3）只能验到「放进去、`--strict` 通过、README 里看得到」：Claude Code 忽略这个字段，官方目录这次不提交，它在 Claude Desktop 里显不显示我验不了。
 - **CHANGELOG**：根目录，英文；6.0.3 一节详写，6.0.2 及以前每版一行，照 `git tag` 列；我写，给 Master 审。
 - **反馈**：README 里放 GitHub Issues 的链接，不做模板。
-- **README 三段**：升级（`claude plugin update ideo-scrum@ideo-scrum`，或在 `/plugin` 里打开自动更新）、授权（显眼处一句话说 d.school 的非商业限制，链到 ATTRIBUTION.md）、反馈（Issues 链接）。62 要把 README 改成中英两份、英文为准，和这三段碰同一个文件：我打算让三段跟着 62 的 README 一起写（先定英文版的结构，再写中文），CHANGELOG 和图标先做。
+- **README 三段**：升级（`claude plugin update ideo-scrum@ideo-scrum`，或在 `/plugin` 里打开自动更新）、授权（显眼处一句话说 d.school 的非商业限制，链到 ATTRIBUTION.md）、反馈（Issues 链接）。62 要把 README 改成中英两份、英文为准，和这三段碰同一个文件：我打算让三段跟着 62 的 README 一起写（先定英文版的结构，再写中文），CHANGELOG 和图标先做（Master 2026-11-14 同意）。
 - **发布**：64-b 在 63 测完以后、收官时做：版本号 6.0.3，README 两处同步，跑 `sync_codex.py`、`check_codex.py`、`--strict`；推送 main 和 tag `v6.0.3`，收官时请 PO 点头。
-- **Codex**：见上表，待 Master 定。
+- **Codex**：见上表，Master 已定：图标和 CHANGELOG 先不进包，只加去掉 `icon` 的一行。
 
 ## 3. How
 
@@ -177,5 +177,6 @@ Go-ahead: 尚无
 - **64 的授权范围**（2026-11-14，Master 转来）：PO 在精化 64 时说「修改日志……你来决定吧。其他的你都可以来决定」。授权的是 PO，被授权的是 Master，管 64 的细节——这次用在 CHANGELOG 的放法和写法、反馈只放 Issues 链接；不包括关卡（阶段末尾仍由 PO 定），也不包括推送（收官时再请 PO 点头）。
 - **68 补记**（2026-11-14，Master 转来）：PO 说「我们是要先开一次设计的」，又说原型「那当然也是一个设计了」；Master 的理解是 68-a 的原型轮就是这次的设计，不开设计冲刺。原话和这层理解已写进 2.2。
 - **64 的第 1～5 步和我查的两处**（2026-11-14）：64 的第 1～5 步原样写进 2.2，并附 Developer 的复述。Master 让查的两处：Codex 有放图标的地方（`interface.logo`、`interface.composerIcon`），但同步脚本现在不会把图标和 CHANGELOG 带进包；Claude 清单加 `icon` 后会被原样带进 Codex 清单，需要脚本去掉。详见 2.2 的 64 表，Codex 带不带待 Master 定。
+- **Master 对 5be5850 的审阅**（2026-11-14）：没问题。在 PO 给 64 的「细节由 Master 定」范围里定了：64-a 先做 CHANGELOG 和图标，README 的升级、授权、反馈三段跟 62 的 README 重写一起写（先定英文版结构，再写中文）；Codex 先不带图标和 CHANGELOG，同步脚本只加一行去掉 `icon`（Codex 不是核心）；夹具 A、B 只验「条目少」，白纸另做一份，没有冲刺、没有设计、没人等 PO 的空样子也设计进去；68-4 里节点名的写法（日志的地图：产品日志 2.2、设计日志 2.1；条目：产品日志 3.1）可以；68 复述第 4 点的两处理解（工作块名算标题、照抄，✓ 也照抄；路线图的分组只依据日志里写着的内容）同意，和 64 的复述一起拿给 PO 认可。这些已改进 2.2 对应的格子。
 
 ## 5. Test
