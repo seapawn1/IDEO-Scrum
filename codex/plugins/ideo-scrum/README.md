@@ -11,7 +11,7 @@ codex plugin add ideo-scrum@ideo-scrum
 
 In a new session, type `$` and select Developer, Scrum Master, Designer, or Stakeholder from the skill menu. Their short names are `$developer`, `$scrum-master`, `$designer`, and `$stakeholder`; a qualified name such as `$ideo-scrum:developer` identifies the plugin explicitly.
 
-The four kernel skills are configured to allow automatic invocation. The four role skills require explicit selection.
+The IDEO toolbox can be invoked for brainstorming, problem framing, prototypes, user research and testing without naming IDEO. The other three kernels' descriptions limit invocation to a role's instruction, naming this plugin or the relevant kernel, or asking to create or change its product, Sprint or design logs. General Scrum or design-sprint questions alone do not summon them. The four role skills require explicit selection. These descriptions are shared with Claude Code; automatic invocation behavior has not been tested in Codex.
 
 ## Contents
 

@@ -2,12 +2,16 @@
 
 > Started: <date> | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: <branch> | Product Owner: <name> | Scrum Master: <who> | Developer: <who>
 > Now: <the stage the Sprint is in, and the last decision the Product Owner made> — keep it current; a session that picks up the Sprint reads it first (sprint-log.md, convention 22).
+> Waiting for PO: <number and short question; separate several with a semicolon; None when there are none>
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
 
 ## 1. Why
 
 ### 1.1 Sprint Goal
+
+| Commitment | <Sprint Goal> |
+| --- | --- |
 
 <!-- The Product Owner decides it: this Sprint's one commitment (sprint-log.md, conventions 4 and 20). -->
 
