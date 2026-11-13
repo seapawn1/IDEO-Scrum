@@ -8,8 +8,9 @@ the same headings in the same order; in every section the same number of list it
 the same commands in the `sh` blocks (typed in a terminal) and in the `text` blocks whose lines all start with
 `/` (typed in a Claude Code session); a trailing `# comment` is ignored; the same links.
 For every document, glossary included: every relative link and image resolves, and every #fragment names a heading
-in its target. Also: each README's version is the plugin's version, and the English README's "How it differs"
-table repeats the Departures table of overview.md word for word (the Here and Why columns).
+in its target. Also: each README's version is the plugin's version; the English README's "How it differs"
+table repeats the Departures table of overview.md word for word (the Here and Why columns); every row of the
+glossary has five filled cells, and the glossary has every term of the approved list (GLOSSARY_TERMS).
 
 Prints one JSON object and exits 1 when there are errors. It checks shape, not meaning: whether a sentence says
 what the convention says is read by a person.
@@ -26,7 +27,20 @@ PAIRS = [
     ("README.md", "README.zh-CN.md"),
     ("docs/quick-start.md", "docs/quick-start.zh-CN.md"),
 ]
-SINGLES = ["docs/glossary.md"]
+GLOSSARY = "docs/glossary.md"
+SINGLES = [GLOSSARY]
+# The term list the Product Owner and the Scrum Master approved for the glossary (Sprint 20, docs-outline C, plus
+# the two Definitions of Done): the first column of its tables must hold every one of them.
+GLOSSARY_TERMS = [
+    "product log", "sprint log", "design log", "IDEO log", "PBI", "Commitment", "Now / Waiting for PO",
+    "Increment notes", "role card", "the Map", "board", "scrum/documents/",
+    "Product Owner", "Scrum Master", "Developer", "Designer", "Stakeholder", "PO assistant", "fresh subagent",
+    "written handover", "go-ahead", "checkpoint",
+    "the five stages of a Sprint", "refinement", "Review / Retro / closing commit", "small Sprint", "kernel",
+    "commitments hook", "Definition of Outcome Done / Output Done", "design sprint", "the five modes",
+    "Empathize", "Define", "Ideate", "Prototype", "Test", "Point of View", "How Might We", "Five-Act Interview",
+    "rumble", "Lightning Demos", "Make a Map",
+]
 OVERVIEW = "plugins/ideo-scrum/skills/scrum-kernel/overview.md"
 DEPARTURES = "Departures from the official guides"
 DIFFERS = "How it differs from textbook Scrum"
@@ -99,6 +113,10 @@ def parse(text: str) -> dict:
 
 def headings(doc: dict) -> set:
     return {slug(s["title"]) for s in doc["sections"] if s["level"]}
+
+
+def norm_term(cell: str) -> str:
+    return re.sub(r"[`*]", "", cell).strip().lower()
 
 
 def norm_target(target: str) -> str:
@@ -192,6 +210,22 @@ def check(root: Path) -> dict:
             if len(got) != len(departures):
                 errors.append(f"README.md: {len(got)} rows, the Departures table has {len(departures)}")
 
+    # the glossary: five filled cells in every row, and every approved term
+    if GLOSSARY in docs:
+        seen: list[str] = []
+        for sec in docs[GLOSSARY]["sections"]:
+            for row in sec["table"]:
+                if row[0].strip().lower() == "term":
+                    continue  # a header row
+                if len(row) != 5 or not all(c.strip() for c in row):
+                    errors.append(f"{GLOSSARY}: a row without five filled cells: {row[0]!r}")
+                seen.append(norm_term(row[0]))
+        for term in GLOSSARY_TERMS:
+            if norm_term(term) not in seen:
+                errors.append(f"{GLOSSARY}: missing term {term!r}")
+        for term in sorted({t for t in seen if seen.count(t) > 1}):
+            errors.append(f"{GLOSSARY}: term listed twice: {term!r}")
+
     return {"documents": sorted(docs), "links_checked": link_count, "errors": errors}
 
 
@@ -201,21 +235,22 @@ STUB_ZH = "# 桩\n\n## 部分\n\n- 一\n- 二\n\n| 甲 | 乙 |\n| --- | --- |\n|
 
 
 def build_copy(dest: Path) -> None:
-    """A copy of what the check reads: the real READMEs, overview.md and plugin.json, stub docs, and empty
-    files at the other link targets."""
-    for name in ("README.md", "README.zh-CN.md", OVERVIEW, PLUGIN_JSON):
+    """A copy of what the check reads: the real documents (a stub for one that is not written yet), overview.md
+    and plugin.json, and an empty file at every other link target."""
+    names = [n for pair in PAIRS for n in pair] + SINGLES
+    for name in names + [OVERVIEW, PLUGIN_JSON]:
         (dest / name).parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy(ROOT / name, dest / name)
-    for name, text in (("docs/quick-start.md", STUB_EN), ("docs/quick-start.zh-CN.md", STUB_ZH),
-                       ("docs/glossary.md", STUB_EN)):
-        (dest / name).parent.mkdir(parents=True, exist_ok=True)
-        (dest / name).write_text(text, encoding="utf-8")
-    for name in ("README.md", "README.zh-CN.md"):
-        for sec in parse(read(ROOT / name))["sections"]:
+        if (ROOT / name).is_file():
+            shutil.copy(ROOT / name, dest / name)
+        else:
+            (dest / name).write_text(STUB_ZH if name.endswith(".zh-CN.md") else STUB_EN, encoding="utf-8")
+    for name in names:
+        base = (dest / name).parent
+        for sec in parse(read(dest / name))["sections"]:
             for target in sec["links"] + sec["images"]:
                 path_part = target.partition("#")[0]
                 if path_part and not re.match(r"[a-z][a-z0-9+.-]*:", path_part, re.I):
-                    p = dest / path_part
+                    p = base / path_part
                     if not p.exists():
                         p.parent.mkdir(parents=True, exist_ok=True)
                         p.write_text("", encoding="utf-8")
@@ -240,6 +275,16 @@ def selftest() -> int:
          "overview.md#no-such-heading", "no heading for #no-such-heading"),
         ("a zh link retargeted", "README.zh-CN.md", "[词汇表](docs/glossary.md)", "[词汇表](CHANGELOG.md)",
          "links differ"),
+        ("a zh quick-start list item removed", "docs/quick-start.zh-CN.md",
+         "- 问「现在到哪了？」：Scrum Master 读 `Now` 和 `Waiting for PO` 两行，告诉你。\n", "", "list items"),
+        ("a zh quick-start command changed", "docs/quick-start.zh-CN.md", "/ideo-scrum:scrum-master\n```",
+         "/ideo-scrum:developer\n```", "slash-command blocks differ"),
+        ("a glossary term renamed", "docs/glossary.md", "| rumble | 对决 |", "| rumbles | 对决 |",
+         "missing term 'rumble'"),
+        ("a glossary cell dropped", "docs/glossary.md", "| Empathize | 共情 |", "| Empathize |",
+         "five filled cells"),
+        ("a glossary link broken", "docs/glossary.md", "design-kernel/steps/3-4-rumble.md",
+         "design-kernel/steps/3-4-rumbl.md", "dead link"),
     ]
     failures = []
     base = Path(tempfile.mkdtemp(prefix="check-docs-"))
