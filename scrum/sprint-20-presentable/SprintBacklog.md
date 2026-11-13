@@ -282,8 +282,8 @@ PO 2026-11-14 定精化结束（第 7 步）：「OK，可行。嗯，现在精�
 | 2 | 设计线 68-a（PO + 设计师会话，另一个工作树） | 最终原型（固定页面 + 一份数据）；「照抄 / 概括」一页表；电脑 1440 与手机 375 宽的截图 | PO 说「就这个」，交接包齐 |
 | 3 | 64-a CHANGELOG 与图标候选 | 根目录 `CHANGELOG.md`（英文，6.0.3 一节详写，之前每版一行，照 tag 列）；图标 3 张候选 | CHANGELOG 的版本和 `git tag` 对得上；3 张候选备好，在块 4 给 PO 挑 |
 | 4 | 三份大纲，PO 一次看完 | README、快速上手的大纲；词汇表词条清单；文件地图收不收的建议；摆出图标候选 | PO 一次看完：大纲说行、图标挑定、文件地图定了 |
-| 5 | 62-a README（中英）与图标入位 | `README.md`（英文）、`README.zh-CN.md`，含 64 的升级、授权、反馈三段；图标放进插件，`plugin.json` 的 `icon` 指向它；同步脚本去掉 Codex 清单里的 `icon` | 两份的标题、列表项数、链接对得上，无死链；规矩的句子对得上约定原文；`--strict` 通过，plugin-validator（Haiku）无必改项；`sync_codex.py`、`check_codex.py` 通过；Master 审过 |
-| 6 | 62-b、62-c 快速上手（中英）与词汇表 | `docs/quick-start.md`、`docs/quick-start.zh-CN.md`、`docs/glossary.md` | 快速上手一页（约 80 行内），从装好走到第一次收官；陌生人卡点名的词都在词汇表里；两份对得上，无死链，规矩的句子对得上约定原文；Master 审过 |
+| 5 | 62-a README（中英）与图标入位 | `README.md`（英文）、`README.zh-CN.md`，含 64 的升级、授权、反馈三段；图标放进插件，`plugin.json` 的 `icon` 指向它；同步脚本去掉 Codex 清单里的 `icon` | 两份的标题、列表项数、链接对得上，无死链；规矩的句子对得上约定原文；授权一段和 ATTRIBUTION.md 对得上，引了第三方原文的地方带 Source 和 License 两行；`--strict` 通过，plugin-validator（Haiku）无必改项；`sync_codex.py`、`check_codex.py` 通过；Master 审过 |
+| 6 | 62-b、62-c 快速上手（中英）与词汇表 | `docs/quick-start.md`、`docs/quick-start.zh-CN.md`、`docs/glossary.md` | 快速上手一页（约 80 行内），从装好走到第一次收官；陌生人卡点名的词都在词汇表里；两份对得上，无死链，规矩的句子对得上约定原文；署名：引了第三方原文（Scrum Guide、SGEP、d.school）的地方带 Source 和 License 两行，和 ATTRIBUTION.md 一致，出自《Sprint》的词只用自己的话写、不引原文；Master 审过 |
 | 7 | 63-a 标准与测法 | 测法、卡住的判定、过线的数字，写进 2.2，单独提交 | 提交早于任何正式跑；Master 审过，PO 看一眼 |
 | 8 | 63-a 脚本与冒烟 | `scripts/stranger_test/`：驱动脚本、陌生人卡文本、任务；冒烟 1 次（原始输出放仓库外） | 冒烟通过：隔离与认证核实过（init 的 permissionMode、permission_denials）；不通就写明退路 |
 | 9 | 68-b 合并与模板（等设计线交接包） | 从本分支合并设计线的分支；新的 `board-template.html`，照原型 | 用样本数据画出的页面和原型一致，电脑 1440 与手机 375 宽各截一张对照 |
@@ -300,7 +300,7 @@ PO 2026-11-14 定精化结束（第 7 步）：「OK，可行。嗯，现在精�
 - **接口先交，合并由我做**：设计线进工作树先 `git merge worktree-sprint-20-presentable` 带上冲刺日志；IDEO 日志的 For 指向本日志，结论回流 2.2 的 68。PO 说「原型好了」，我从本分支合并设计线的分支（我的分支在我的工作树里占着，只能从我这边合）。设计线尽量只往 `scrum/ideo-board/` 加文件；PO 说改不改冲刺日志都行，万一都改了，合并时我手工合。IDEO 日志结束后的第一次 Review 归档，原型删掉（git 留着）。
 - **交接契约**：设计线交三样：最终原型、「照抄 / 概括」一页表、电脑 1440 与手机 375 宽的截图。原型做成「固定页面 + 一份数据」：好看放在固定的页面里，便宜的模型只负责把日志里的事实和概括填进数据。这样每次生成一样好看，核对变成「数据对日志」，地图用 HTML/SVG 画、不再联网。这是 Developer 的技术选择，写进 brief。
 - **68-4 的核对**：沿用 Sprint 19 的 `board_check.py`（`git show 1bf5a94:scrum/sprint-19-board-hook/tests/board_check.py`），改成读新页面的数据；夹具 A、B 验「条目少」，另造一份白纸；先拿真仓库的状态过一遍，再用来核对生成的页面。
-- **文档先大纲后全文，三份大纲一次给 PO 看**（sprint-log 第 11、12 条），图标候选一起摆。英文在前、中文跟着；两份用脚本核对标题、列表项数、链接；规矩的句子逐句对约定原文；快速上手里的 git 写成「可以让 Master 代做」的建议。
+- **文档先大纲后全文，三份大纲一次给 PO 看**（sprint-log 第 11、12 条），图标候选一起摆。英文在前、中文跟着；两份用脚本核对标题、列表项数、链接；规矩的句子逐句对约定原文；快速上手里的 git 写成「可以让 Master 代做」的建议。署名是 1.2 挑中的 DoD：README 和词汇表只要引了第三方原文（Scrum Guide、SGEP、d.school），就带 Source 和 License 两行并和 ATTRIBUTION.md 一致，授权一段同样对得上；出自《Sprint》的词只用自己的话写（Master 2026-11-14 审第 3 章时要求补）。
 - **64 的三段跟 README 一起写**（Master 2026-11-14 定），CHANGELOG 和图标先做。Codex 不带图标和 CHANGELOG，只在同步脚本里去掉清单里的 `icon`。
 - **图标**：3 张候选，PO 挑；`icon` 字段的写法（路径、尺寸、格式）先查 docs MCP；清单变了，`--strict` 过了还要派 plugin-validator（Haiku）。
 - **体验测试**：标准先写、单独提交，再跑；脚本放 `scripts/stranger_test/`（每版都跑）；原始输出放仓库外；冒烟 1 次、正式 3 次。
