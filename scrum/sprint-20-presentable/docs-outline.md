@@ -33,7 +33,7 @@
 - `## Install` —— Claude Code 三行命令；Codex 两行，写短，说明是生成的附带包；装完怎么看装好了（先在本机核实：`claude plugin list` 列得出 ideo-scrum；Codex 在 `$` 菜单里看得到四个角色）。旧 `codex` 分支的迁移已挪进 CHANGELOG。
 - `## Upgrade` —— `claude plugin update ideo-scrum@ideo-scrum`（终端里；会话里用 `/plugin marketplace update ideo-scrum`）；第三方市场默认不自动更新，要自动就在 `/plugin` 的 Marketplaces 里选 ideo-scrum、打开 Enable auto-update；更新后 `/reload-plugins`；每版改了什么看 CHANGELOG。（这几条 2026-11-14 查过 docs MCP。）Codex 的升级办法：查 Codex 文档再写，查不实就写明没验证。
 - `## Your first sentence` —— 怎么开口：四个角色命令各一行；直接用自己的话说（「用 ideo-scrum 帮我……」两个例句）；Scrum、冲刺、设计冲刺召唤才来（角色命令、点名插件或内核、要求建改日志），泛问不会拉起；发散、定义问题时模型多半直接作答，要用 ideo 的方法就点名 `ideo-kernel`（已知的限制，PBI-67）；链到快速上手。句子取自旧 README 和三份内核描述，逐句对。
-- `## How it differs from textbook Scrum` —— 七行，只用 overview 的 Departures 表「Here」一列的原文，不引官方原句（免得带出第三方原文）；末尾链到 `overview.md`。
+- `## How it differs from textbook Scrum` —— 七行、两列「这里怎么做 | 为什么」（Master 定，加了「为什么」一列），取 overview Departures 表「Here」「Why」两列的原文，不引官方原句那一列（免得带出第三方原文）；末尾链到 `overview.md`。
 - `## Where the work lives` —— 你的项目里会长出 `scrum/`：一张小表，产品日志、冲刺日志、设计日志、IDEO 日志、看板、`documents/` 各放什么；真实的示例就是本仓库的 `scrum/`（中文的），看 `ProductBacklog.md` 和一份归档的冲刺日志。
 - `## Board and hook` —— （块 12，68 做完再写）hook 做什么、`IDEO_SCRUM_COMMITMENTS=off` 关掉、Windows 要装 Git for Windows、macOS 没实测、Codex 要先在 `/hooks` 里信任；看板怎么叫它生成、长什么样。
 - `## Learn more` —— 链到快速上手、词汇表、CHANGELOG、`overview.md`。

@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 20 (presentable)
 
 > Started: 2026-11-14 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: worktree-sprint-20-presentable | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[management sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-20]-[do presentable]，原生 worktree sprint-20-presentable）
-> Now: Increment：块 1、3、4 已完成；块 7（63-a 的标准）按 Master 审后改过（61dc0c9），等 Master 再看；块 5 的对标做完、README 大纲已改，发 Master 定（定了再写全文）；下一步块 8（测法脚本与冒烟，交接笔记在第 4 章，脚本还没写）；设计线由 PO 另开，Designer 会话在做原型 · 最近一次 PO 决定：2026-11-14 答块 4（图标选 1、文件地图收到文件夹一级、README 大纲交 Master 定）
+> Now: Increment：块 1、3、4 已完成；块 7（63-a 的标准）按 Master 审后改过（61dc0c9），等 Master 再看；块 5 的 README 大纲 Master 已定（58958be 那版，改一处：How it differs 加「为什么」一列），正在写全文（中英两份，先跑一致性脚本再发 Master 审）；块 8（测法脚本与冒烟，交接笔记在第 4 章，脚本还没写）排在后面；设计线由 PO 另开，Designer 会话在做原型 · 最近一次 PO 决定：2026-11-14 答块 4（图标选 1、文件地图收到文件夹一级、README 大纲交 Master 定）
 > Waiting for PO: 块 7：63-a 的标准看一眼（Master 转来）
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
@@ -402,5 +402,6 @@ Go-ahead: 2026-11-14，PO（「可以，那就放行吧」，Master 转来）。
   2. 口味类的条目（核心是「什么样算好」），一认出来就马上开设计线，跟冲刺并列跑，不必等冲刺排好计划、备好料。条目可以照样选进冲刺，先标「等设计」，冲刺里其余的条目照做；设计好了合进来再做。设计会话的开场简报从简：PO 本人在场，就是最好的上下文；Developer 要守的接口（比如固定页面 + 一份数据）后面再补。约定本来就允许（overview 第 2 条、ideo-log 第 4 条），教训在时机：这次从精化到简报写完，设计线等了好几个小时才开工（PO 2026-11-14：「我就应该把这个设计专门拉出来开」；补充：「他可以先选到那里，然后他可以先不干，先等待我们那边的设计……实际上这个设计早就可以开始干了，因为我们等备料备等了好久」）。
   3. 测试题里不带引导：CLAUDE.md 里有这条规矩，63-a 初稿还是把步骤和角色名写进了给 S 的任务，是审阅拦下的。写测试题时先对一遍回归测试的规矩。
 - **块 5 的对标和改后的 README 大纲**（2026-11-14）：对标了四份，只学结构：官方市场的 `feature-dev`（流程类，和我们最像）、`ralph-loop`、`hookify`，第三方的 `academic-research-skills` 当反面看。要用的：开头一句话加早早出现的装法、装完一步「怎么看装好了」；用短对话示例讲一次会话什么样；「适合谁、不适合谁」两张短清单；平台的坑单独一小节带绕法。要避开的：同一句话说四遍（`feature-dev` 413 行）、介绍埋在引文后面、参考资料压过介绍。改后的大纲写进 `docs-outline.md` 的 A（旧版见 git 历史）：What it is（问题、得到什么、不做什么）→ A session, shortened → Who it is for → Install → Upgrade → Your first sentence → How it differs → Where the work lives → Board and hook → Learn more → License → Feedback → Files（最后、最短）。要 Master 定三处：先讲是什么再装（推荐）、How it differs 七行留不留（推荐留）、示意对话先编一段标明示意（推荐）。查过 docs MCP 的两件事：升级是 `claude plugin update <插件>@<市场>`（终端）或 `/plugin marketplace update <市场>`（会话），第三方市场默认不自动更新，要在 `/plugin` 的 Marketplaces 里打开 Enable auto-update；`icon` 是插件内图片文件的路径（如 `./logo.png`），只有 Anthropic 目录收录时才读，Claude Code 加载时忽略，Claude Code 2.1.281 起 `validate` 不再把它报成未知字段，更早的版本 `--strict` 会失败（块 5 动手前先查本机版本）。
+- **Master 定了 README 大纲**（2026-11-14，对 58958be）：① 顺序照推荐：先讲是什么（问题、一次会话、给谁），再装，最上面一行导航；② How it differs 留七行，但加一列「为什么」，同取 overview Departures 表里的原文（「Here」「Why」两列，插件自己的文字；官方原句那一列不引），末尾链到 overview；③ 示意对话标明示意、已缩短，每一句都要能在约定里找到依据（比如每个阶段末尾停下来问 PO、放行以后才动手）；63 跑完要不要换成真节选，到时再看，不算必做。写完中英两份，先跑一致性脚本，再发 Master 审；PO 的全文通读排在 Test 阶段，一次读完。
 
 ## 5. Test
