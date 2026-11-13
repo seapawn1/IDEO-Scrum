@@ -1,8 +1,8 @@
 # Design Backlog — board
 
 > Opened 2026-11-14 | From: PBI-68 看板改版——Sprint 20（`sprint-20-presentable`）的 68 等本设计的原型交接，再做 68-b；同日先开过一条设计线，PO 叫停、日志已删，这是重开 | Branch: `worktree-design-board`（PO 建的原生 worktree，基于 main） | Product Owner: SeaPawn | Designer: 原型和测试由 Designer 会话做，到 Prototype 时开；共情、定义、构思由 PO 和 Master 定、Master 落盘（PO 2026-11-14 的分工） | Scrum Master: 会话 IDEO # [master]-[main]-[management sprint]
-> Now: Define：愿景地图和 HMW 写好了，等 PO 挑 HMW、定这一章
-> Waiting for PO: 1 愿景地图行不行；2 挑 HMW
+> Now: Define：地图和 HMW 已定，等 PO 在关卡上定这一章、进构思
+> Waiting for PO: 1 定义这一章定不定、进不进构思
 > Ends when the design questions are answered or the Product Owner stops the design (convention 19 in `design-log.md`); its conclusions flow back to the product log — a blank page's design fills it — and the first Sprint Review after that archives this file (convention 17 in `sprint-log.md`, in the sprint-kernel skill's `conventions/` folder).
 > Methods: the stage excerpts in the design-kernel skill (excerpt paths below are relative to that skill's folder), and in every stage the ideo-kernel's IDEO mode and methods, as the design-kernel `SKILL.md` requires.
 > This log records what each stage produced, not every step taken to get there (convention 22 in `design-log.md`).
@@ -74,27 +74,29 @@ flowchart TD
 
 ### 2.2 How Might We
 
-对着 2.1 的地图和第 1 章写，按主题分，括号里是它对着地图的哪一步。PO 挑的打 ✓（待挑）；没挑的不丢，当作做的时候要顾到的条件。
+对着 2.1 的地图和第 1 章写，按主题分，括号里是它对着地图的哪一步。PO 挑的打 ✓：2、3、4、5、9、11；没挑的不丢，当作做的时候要顾到的条件。
 
 - 好看、形象（D）
   1. HMW 让 PO 第一眼看到的是一幅图，不是一串字？
-  2. HMW 让它好看到 PO 愿意一直挂着，一眼不像模板？
-  3. HMW 让这幅图本身就说出项目的结构：产品、条目、冲刺、设计怎么连着？
+  2. HMW 让它好看到 PO 愿意一直挂着，一眼不像模板？ ✓
+  3. HMW 让这幅图本身就说出项目的结构：产品、条目、冲刺、设计怎么连着？ ✓
 - 几条线并行（A、D）
-  4. HMW 让每条线现在在做什么，一眼分得清？
-  5. HMW 让每条线走到哪个阶段，像进度一样看得出来？
+  4. HMW 让每条线现在在做什么，一眼分得清？ ✓
+  5. HMW 让每条线走到哪个阶段，像进度一样看得出来？ ✓
   6. HMW 让几条线同时跑也不乱？
 - 瞄一眼（C、D）
   7. HMW 让隔着一段距离也看得清「走到哪」？
   8. HMW 让瞄一眼就够，不用凑近读字？
 - 不同的屏（C）
-  9. HMW 让同一页在竖屏、电脑、手机上都读得顺？
+  9. HMW 让同一页在竖屏、电脑、手机上都读得顺？ ✓
   10. HMW 让竖屏挂着看是主角，手机顺带？
 - 少与空（D）
-  11. HMW 让条目很少、甚至一张白纸的项目，看起来也像设计过？
+  11. HMW 让条目很少、甚至一张白纸的项目，看起来也像设计过？ ✓
 - 概括（B）
   12. HMW 让晦涩的日志被概括成一眼看得懂的样子，又不加日志里没有的事？
   13. HMW 让想看某条线的细节时，一步就到日志里对应的地方？
+
+PO 的决定（2026-11-14）：愿景地图行，挑 Master 建议的 6 个 HMW（2、3、4、5、9、11）——「认同，非常认同你的看法……这两个点我都同意」。
 
 ## 3. Ideate
 
