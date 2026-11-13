@@ -16,6 +16,7 @@ import concurrent.futures
 import json
 import os
 import pathlib
+import re
 import shutil
 import subprocess
 import sys
@@ -129,8 +130,14 @@ def one(source, out, tag, scenario):
 def real_copy(dest):
     """This repository's current state: main checked out, the two open Sprints as local branches."""
     git(dest.parent, "clone", "--quiet", "--no-hardlinks", str(REPO.parents[2]), str(dest))
-    for b in ("claude/youthful-payne-b1e139", "worktree-golden-orbiting-bachman"):
-        git(dest, "branch", b, f"origin/{b}")
+    # every branch that still has an open Sprint folder (Sprint 18 was merged and closed after the first batches)
+    for line in git(dest, "for-each-ref", "--format=%(refname:short)", "refs/remotes/origin").splitlines():
+        b = line.strip()[len("origin/"):]
+        if b in ("HEAD", "main") or not b:
+            continue
+        tree = git(dest, "ls-tree", "--name-only", f"origin/{b}", "scrum/")
+        if any(re.match(r"^scrum/(sprint|design|ideo)-", t) for t in tree.splitlines()):
+            git(dest, "branch", b, f"origin/{b}")
     return dest
 
 
