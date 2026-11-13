@@ -1,0 +1,27 @@
+{
+  "description": "Puts the commitments written in the project's logs (Product, Product Goal, the open Sprint Goal or design goal) into Claude's context. Switch off with IDEO_SCRUM_COMMITMENTS=off.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/commitments.sh\"; exit 0",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/commitments.sh\"; exit 0",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

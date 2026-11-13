@@ -1,0 +1,3 @@
+# The plugin's shell scripts run under sh on every platform: keep LF line endings even where
+# core.autocrlf would write CRLF into the working copy (a CR in a sh script is a syntax error).
+*.sh text eol=lf
