@@ -76,5 +76,5 @@ Test 阶段完成后，说「收官」。Review 和 Retro 装进一个收官提�
 ## 迷路了怎么办
 
 - 问「现在到哪了？」：Scrum Master 读 `Now` 和 `Waiting for PO` 两行，告诉你。
-- 要看板：一页看清项目走到哪，由日志写成 `scrum/Board.html`。
+- 要看板：一页看清项目走到哪，由日志写成 `scrum/ScrumBoard.html`。
 - 想弄清人要什么，叫 Designer：`/ideo-scrum:designer`。

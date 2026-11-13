@@ -87,9 +87,9 @@ def check_outputs(proj: pathlib.Path, env: dict, board_check=None) -> dict:
     out["4_close"] = {"ok": bool(closed),
                       "detail": f"sprint folders {sorted(names)}, tags {sorted(tags)}, archived {sorted(archived)[:5]}"}
 
-    board = proj / "scrum" / "Board.html"
+    board = proj / "scrum" / "ScrumBoard.html"
     if not board.is_file():
-        out["5_board"] = {"ok": False, "detail": "no scrum/Board.html"}
+        out["5_board"] = {"ok": False, "detail": "no scrum/ScrumBoard.html"}
     elif board_check is None:
         out["5_board"] = {"ok": True, "detail": "the file is there; the 68-4 check is not wired in yet"}
     else:

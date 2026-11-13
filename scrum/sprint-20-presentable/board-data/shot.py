@@ -1,9 +1,13 @@
-"""Screenshot a board page at 1440 wide and at a true 375 wide, and report sideways overflow.
+"""Screenshot a board page at 1440 wide, at 1080 wide on a 1920-high portrait screen, and at a true 375 wide,
+and report sideways overflow.
 
-    python shot.py <page.html> <out-prefix>
+    python shot.py <page.html> <out-prefix> [card-id]
 
-Writes <out-prefix>-1440.png and <out-prefix>-375.png and prints, for each width, whether the page
-overflows sideways (68-2). The 375 shot is the page inside a 375-wide iframe: with --window-size=375
+With a card id (product, a Sprint folder's name, a design folder's name) the page opens on that card; on the
+375 shot that is the card full screen, as a phone shows it after a tap.
+
+Writes <out-prefix>-1440.png, <out-prefix>-1080.png and <out-prefix>-375.png and prints, for each width, whether
+the page overflows sideways (68-2). Each shot is the page inside an iframe of that width: with --window-size=375
 alone, Edge headless laid the first board out wider than the window and cut its right side off.
 """
 import html
@@ -18,7 +22,7 @@ BROWSERS = [
     r"C:\Program Files\Microsoft\Edge\Application\msedge.exe",
     r"C:\Program Files\Google\Chrome\Application\chrome.exe",
 ]
-SCREEN = {1440: 900, 375: 812}  # screen heights used when measuring
+SCREEN = {1440: 900, 1080: 1920, 375: 812}  # screen heights used when measuring (1080 is the portrait screen)
 WRAP = """<!doctype html><meta charset="utf-8">
 <body style="margin:0;background:#8a8a8a">
 <iframe id="f" src="{src}" width="{w}" height="{h}" style="border:0;background:#fff;display:block;margin:0 auto"></iframe>
@@ -69,13 +73,14 @@ def one(page_url, prefix, width):
 
 
 def main():
-    if len(sys.argv) != 3:
+    if len(sys.argv) not in (3, 4):
         sys.exit(__doc__)
     page = pathlib.Path(sys.argv[1]).resolve()
     prefix = pathlib.Path(sys.argv[2]).resolve()
+    card = sys.argv[3] if len(sys.argv) == 4 else ""  # a card id: product, a Sprint folder, a design folder
     prefix.parent.mkdir(parents=True, exist_ok=True)
-    for width in (1440, 375):
-        print(one(page.as_uri(), prefix, width))
+    for width in (1440, 1080, 375):
+        print(one(page.as_uri() + ("#" + card if card else ""), prefix, width))
 
 
 if __name__ == "__main__":

@@ -133,7 +133,7 @@ codex plugin add ideo-scrum@ideo-scrum
 | `scrum/sprint-NN-<名字>/SprintBacklog.md` | 一个冲刺，从 Why 到 Test，连同它的笔记 |
 | `scrum/design-<名字>/DesignBacklog.md` | 一次设计：研究和原型 |
 | `scrum/ideo-<名字>/IdeoBacklog.md` | 一轮五模式 |
-| `scrum/Board.html` | 看板：一页看清项目走到哪，由日志写成，自己不存状态 |
+| `scrum/ScrumBoard.html` | 看板：一页看清项目走到哪，由日志写成，自己不存状态 |
 | `scrum/documents/` | 已结束的冲刺和设计的归档，以及整个项目共用的文件 |
 
 插件把这些文件叫日志：产品日志就是 Product Backlog，冲刺日志就是 Sprint Backlog。真实的例子就是本仓库自己的 `scrum/` 文件夹，中文写的：先看 [`ProductBacklog.md`](scrum/ProductBacklog.md) 和一份归档的冲刺日志 [`sprint-19-board-hook.md`](scrum/documents/sprint/sprint-19-board-hook.md)。

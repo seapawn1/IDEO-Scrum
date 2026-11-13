@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<!--
+  SCRUM BOARD TEMPLATE. How to use it is in board-log.md, beside this file; read that first.
+
+  The page draws itself from one block of data: the JSON in <script id="board-data"> near the end of the file.
+  Copy this file to scrum/ScrumBoard.html with a command, then replace the one placeholder line inside that block
+  with the board's data (board-log.md lists the fields). Change nothing else: not the style, not the code.
+  In the JSON, write every < as \u003c, so that no text can end the script early.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project board</title>
+<style>
+  :root {
+    --page:#0C0E11; --bg:#14171C; --panel:#1B1F26; --edge:#2A3038; --line:#3A414C; --node:#5B6470;
+    --text:#E6E8EB; --dim:#8A93A0;
+    --done:#7BC6A4; --now:#F5B942; --sprint:#6EA8FE; --design:#C792EA;
+    --sans:"PingFang SC","Microsoft YaHei","Noto Sans SC","Segoe UI",system-ui,-apple-system,sans-serif;
+    --mono:"Cascadia Mono",Consolas,"SFMono-Regular",ui-monospace,monospace;
+  }
+  * { box-sizing:border-box; }
+  html { font-size:16px; -webkit-text-size-adjust:100%; }
+  body { margin:0; background:var(--page); color:var(--text); font:1rem/1.55 var(--sans); overflow-wrap:anywhere; }
+  a { color:inherit; text-decoration:none; }
+  button { font:inherit; color:inherit; background:none; border:0; padding:0; text-align:left; cursor:pointer; }
+  :focus-visible { outline:2px solid var(--text); outline-offset:2px; border-radius:6px; }
+  .mono { font-family:var(--mono); }
+
+  .app { display:grid; grid-template-columns:minmax(26rem,.9fr) 1.4fr; gap:1.6rem; max-width:1400px; margin:0 auto; padding:1.4rem; align-items:start; }
+  .panel { background:var(--bg); border:1px solid var(--edge); border-radius:14px; padding:1rem 1.2rem 1.3rem; box-shadow:0 10px 30px rgba(0,0,0,.45); }
+  .fail { margin:1.4rem; padding:1rem 1.2rem; color:var(--dim); }
+
+  /* overview */
+  .top { display:flex; justify-content:space-between; gap:1rem; font-size:.72rem; color:var(--dim); }
+  .ov-head { display:flex; align-items:center; gap:.8rem; margin:.9rem 0 .3rem; }
+  .prod-circle { flex:none; width:2.9rem; height:2.9rem; border-radius:50%; border:2.5px solid var(--text); display:grid; place-items:center; font-size:.7rem; font-weight:700; background:var(--bg); position:relative; z-index:2; }
+  .en .prod-circle { font-size:.58rem; letter-spacing:-.01em; white-space:nowrap; }
+  .prod-circle.cur { box-shadow:0 0 0 4px rgba(230,232,235,.16); }
+  .prod-name b { display:block; font-size:1.15rem; line-height:1.25; }
+  .prod-name span { font-size:.68rem; color:var(--dim); }
+  .flow { position:relative; display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr); column-gap:2rem; }
+  .trunk { position:absolute; left:1.45rem; top:0; width:2px; margin-left:-1px; background:var(--line); z-index:0; }
+  .items-col { position:relative; margin-left:1.45rem; padding:0 0 .4rem 1.1rem; }
+  .grp-label { font-size:.68rem; color:var(--dim); letter-spacing:.06em; margin:1rem 0 .15rem; }
+  .grp-label:first-child { margin-top:.4rem; }
+  .pbi { position:relative; display:block; width:100%; margin:.4rem 0; padding:.4rem .65rem; background:var(--panel); border:1px solid #2C333D; border-radius:8px; line-height:1.3; z-index:2; }
+  .pbi::before { content:""; position:absolute; left:-1.1rem; top:50%; width:1.1rem; height:2px; margin-top:-1px; background:var(--line); }
+  .pbi b { font:600 .74rem var(--mono); color:var(--text); }
+  .pbi.g-sprint b { color:var(--sprint); }
+  .pbi.g-design b { color:var(--design); }
+  .pbi .s { display:block; font-size:.72rem; color:var(--dim); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .pbi.g-later { opacity:.55; }
+  .pbi.on { opacity:1; border-color:var(--text); box-shadow:0 0 0 3px rgba(230,232,235,.14); }
+  .nodes-col { position:relative; }
+  .node { position:absolute; left:0; right:0; display:block; padding:.6rem .75rem; border:1.5px solid var(--c); border-radius:12px; z-index:2; background:#171C24; background:color-mix(in srgb,var(--c) 9%,var(--bg)); }
+  .node.sprint { --c:var(--sprint); }
+  .node.design { --c:var(--design); }
+  .node.cur { box-shadow:0 0 0 3px rgba(230,232,235,.16); }
+  .node .k { font-size:.68rem; color:var(--dim); }
+  .node b { display:block; font-size:1rem; line-height:1.3; margin:.1rem 0; }
+  .node .g { font-size:.7rem; color:var(--dim); }
+  .node .mt { margin-top:.35rem; }
+  .mchain { display:flex; flex-wrap:wrap; align-items:center; gap:.2rem; margin-top:.5rem; font:.66rem var(--mono); color:var(--dim); }
+  .mchain i { font-style:normal; padding:.05rem .3rem; border-radius:4px; background:rgba(255,255,255,.06); color:var(--text); }
+  .mchain i.full { background:rgba(123,198,164,.3); }
+  .ghost { margin:.6rem 0; padding:1.2rem .9rem; border:1.5px dashed var(--node); border-radius:10px; text-align:center; font-size:.78rem; color:var(--dim); }
+  svg.wires { position:absolute; left:0; top:0; width:100%; height:100%; pointer-events:none; z-index:1; overflow:visible; }
+  .wires path { fill:none; stroke-width:2; }
+  .wires .s { stroke:var(--sprint); opacity:.9; }
+  .wires .d { stroke:var(--design); opacity:.9; }
+  .wires .x { stroke:var(--design); stroke-width:1.5; stroke-dasharray:3 3; }
+  .ov.dim .pbi:not(.on), .ov.dim .node.off, .ov.dim .prod-circle { opacity:.35; }
+  .ov.dim .wires path { opacity:.15; }
+  .ov.dim .wires path.lit { opacity:1; }
+  .closed { display:inline-block; margin:1rem 0 0 1.45rem; padding:.25rem .75rem; border-radius:12px; background:var(--panel); color:var(--dim); font-size:.72rem; }
+  @media (prefers-reduced-motion:no-preference) {
+    .pbi, .node, .prod-circle, .wires path { transition:opacity .15s; }
+  }
+
+  /* cards */
+  .card[hidden] { display:none; }
+  .bar { display:flex; justify-content:space-between; align-items:center; gap:1rem; font-size:.72rem; color:var(--dim); margin-bottom:.4rem; }
+  .bar .back { display:none; color:var(--text); background:var(--panel); padding:.25rem .8rem; border-radius:12px; }
+  .bar .typ { margin-left:auto; padding:.1rem .6rem; border-radius:10px; border:1px solid var(--c); color:var(--c); }
+  .layer { margin-top:1.2rem; }
+  .lb { display:flex; align-items:center; gap:.5rem; margin-bottom:.55rem; font-size:.68rem; letter-spacing:.08em; color:var(--dim); }
+  .lb::after { content:""; flex:1; height:1px; background:#262C35; }
+  .commit { padding-left:.8rem; border-left:3px solid var(--c); font-size:1.02rem; font-weight:700; line-height:1.6; }
+  .commit small { display:block; font-size:.68rem; font-weight:400; letter-spacing:.06em; color:var(--dim); }
+  .commit + .commit { margin-top:.8rem; }
+  .prow { display:flex; flex-wrap:wrap; align-items:stretch; gap:.4rem; }
+  .parr { align-self:center; color:var(--node); }
+  .pn { flex:1 1 7.5rem; min-width:6.5rem; padding:.45rem .55rem; background:var(--panel); border:1px solid #2C333D; border-radius:8px; font-size:.74rem; line-height:1.4; }
+  .pn b { display:block; font:600 .74rem var(--mono); color:var(--sprint); }
+  .pn .t { display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .pn .bar2 { height:4px; margin:.4rem 0 .25rem; border-radius:2px; background:#2C333D; overflow:hidden; }
+  .pn .bar2 i { display:block; height:100%; background:var(--done); }
+  .pn small { color:var(--dim); font-size:.68rem; }
+  .steps { position:relative; margin:0; padding:0 0 0 .3rem; list-style:none; }
+  .steps::before { content:""; position:absolute; left:.7rem; top:.6rem; bottom:.6rem; width:2px; background:var(--line); }
+  .steps li { position:relative; display:flex; align-items:baseline; gap:.6rem; padding:.12rem 0 .12rem 1.9rem; font-size:.82rem; line-height:1.55; color:var(--dim); }
+  .steps li::before { content:""; position:absolute; left:.2rem; top:.5rem; width:.8rem; height:.8rem; border-radius:50%; border:2px solid var(--node); background:var(--bg); }
+  .steps li.ok { color:var(--text); }
+  .steps li.ok::before { background:var(--done); border-color:var(--done); }
+  .steps li .n { flex:none; min-width:1.3rem; font:.72rem var(--mono); color:var(--dim); }
+  .steps li .t { flex:1; min-width:0; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; overflow:hidden; }
+  .metro { position:relative; margin:0; padding:0; list-style:none; }
+  .metro::before { content:""; position:absolute; left:.55rem; top:.7rem; bottom:.7rem; width:3px; border-radius:2px; background:var(--node); }
+  .metro li { position:relative; display:flex; justify-content:space-between; align-items:baseline; gap:.8rem; padding:.2rem 0 .2rem 1.7rem; font-size:.84rem; }
+  .metro li::before { content:""; position:absolute; left:.15rem; top:.55rem; width:.8rem; height:.8rem; border-radius:50%; border:3px solid var(--node); background:var(--bg); }
+  .metro li.here { color:var(--now); font-weight:700; }
+  .metro li.here::before { border-color:var(--now); background:var(--now); box-shadow:0 0 10px rgba(245,185,66,.7); }
+  .metro li.br { padding-left:3rem; color:var(--design); font-size:.78rem; }
+  .metro li.br::before { left:1.5rem; top:.6rem; width:.6rem; height:.6rem; border-color:var(--design); }
+  .metro li em { flex:none; font-style:normal; font-size:.7rem; font-weight:400; color:var(--dim); }
+  .metro li.here em { color:var(--now); }
+  .grp { margin:.7rem 0 .2rem; font-size:.68rem; color:var(--dim); }
+  .r { display:flex; flex-wrap:wrap; align-items:baseline; gap:.1rem .7rem; font-size:.82rem; line-height:1.7; }
+  .r b { min-width:3.8rem; font:600 .74rem var(--mono); color:var(--text); }
+  .r.g-sprint b { color:var(--sprint); }
+  .r.g-design b { color:var(--design); }
+  .r .t { flex:1 1 12rem; }
+  .r em { font-style:normal; font-size:.7rem; color:var(--dim); }
+  .r.g-later { opacity:.55; }
+  .vmap { display:flex; flex-direction:column; gap:.4rem; margin-left:1rem; font-size:.82rem; }
+  .vmap div { position:relative; padding:.3rem .7rem; border-radius:6px; background:var(--panel); }
+  .vmap div + div::before { content:"↓"; position:absolute; left:-.95rem; top:.3rem; color:var(--node); }
+  .story { display:flex; flex-wrap:wrap; gap:.5rem; }
+  .story div { flex:1 1 10rem; padding:.6rem .7rem; border-radius:8px; background:var(--panel); font-size:.78rem; line-height:1.5; color:var(--dim); }
+  .story b { display:block; margin-bottom:.2rem; font-size:.82rem; color:var(--text); }
+  .foot { margin-top:1.2rem; padding-top:.7rem; border-top:1px solid #262C35; font-size:.72rem; color:var(--dim); }
+  .foot p { margin:.35rem 0 0; }
+  .foot details { margin:.2rem 0; }
+  .foot summary { cursor:pointer; }
+  .foot details p { color:var(--text); line-height:1.6; }
+  .foot a { text-decoration:underline; }
+
+  @media (min-width:1700px) { html { font-size:18px; } .app { max-width:1640px; } }
+  @media (max-width:1100px) {
+    html { font-size:clamp(16px,1.75vw,20px); }
+    .app { grid-template-columns:1fr; max-width:none; }
+  }
+  @media (min-width:641px) and (max-width:1100px) {
+    .pbi { display:flex; align-items:baseline; gap:.7rem; padding:.3rem .65rem; }
+    .pbi b { flex:none; min-width:3.6rem; }
+    .pbi .s { flex:1; min-width:0; }
+  }
+  @media (max-width:640px) {
+    html { font-size:15px; }
+    .app { gap:0; padding:0; }
+    .panel { border-radius:0; border-width:0; box-shadow:none; }
+    .app[data-view="card"] .ov { display:none; }
+    .app[data-view="ov"] .cardhost { display:none; }
+    .bar .back { display:inline-block; }
+    .flow { column-gap:1.2rem; }
+  }
+</style>
+</head>
+<body>
+<main class="app" id="app" data-view="ov">
+  <section class="panel ov" id="ov"></section>
+  <section class="panel cardhost" id="cards"></section>
+</main>
+<noscript><p class="fail">This board draws itself with JavaScript. Its data is in the page source: the script with the id board-data.</p></noscript>
+
+<script type="application/json" id="board-data">
+{"todo": "Replace this line with the board data (board-log.md lists the fields)."}
+</script>
+
+<script>
+(function () {
+  'use strict';
+  var NS = 'http://www.w3.org/2000/svg';
+  var $ = function (id) { return document.getElementById(id); };
+  function h(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) { e.className = cls; }
+    if (text !== undefined && text !== null && text !== '') { e.textContent = String(text); }
+    return e;
+  }
+  function add(parent) {
+    for (var i = 1; i < arguments.length; i++) { if (arguments[i]) { parent.appendChild(arguments[i]); } }
+    return parent;
+  }
+  function arr(x) { return Array.isArray(x) ? x : []; }
+
+  var STR = {
+    zh: {
+      board: '看板', overview: '总览', back: '← 总览', updated: '更新', circle: '产品', hint: '点圆圈看产品的卡片',
+      sprint: '冲刺', design: '设计', forItem: '为', blocks: '工作块', closed: '已收官', here: '在这',
+      grp: { sprint: '在冲刺里', design: '在设计里', next: '待选', later: '以后' },
+      l1: '① 承诺', designGoal: '设计目标',
+      productL2: '② 路线 · 架构（主干）', productL3: function (n) { return '③ 条目 · 没做完的 ' + n + ' 条'; },
+      sprintL2: '② 路线 · 条目往前走', sprintL3: function (d, t) { return '③ How · 工作块 ✓ ' + d + ' / ' + t; },
+      designL2: '② 路线 · 地图', designL3: '③ 方案',
+      doneOf: function (d, t) { return '✓ ' + d + ' / ' + t; }, perItem: function (d, t) { return '✓ ' + d + ' / ' + t + ' 块'; },
+      now: '现在 · Now', ideo: 'IDEO 日志', notHere: '不在这个工作区',
+      emptyItems: '写好产品日志的条目，它们会从这里长出来', emptyNodes: '没有开着的冲刺或设计'
+    },
+    en: {
+      board: 'Board', overview: 'Overview', back: '← Overview', updated: 'Updated', circle: 'Product', hint: 'Open the circle for the product card',
+      sprint: 'Sprint', design: 'Design', forItem: 'For', blocks: 'Work items', closed: 'Closed', here: 'here',
+      grp: { sprint: 'In a Sprint', design: 'In a design', next: 'Up next', later: 'Later' },
+      l1: '① Commitments', designGoal: 'Design goal',
+      productL2: '② Route · architecture (backbone)', productL3: function (n) { return '③ Items · ' + n + ' not done'; },
+      sprintL2: '② Route · items in order', sprintL3: function (d, t) { return '③ How · work items ✓ ' + d + ' / ' + t; },
+      designL2: '② Route · map', designL3: '③ Plan',
+      doneOf: function (d, t) { return '✓ ' + d + ' / ' + t; }, perItem: function (d, t) { return '✓ ' + d + ' / ' + t; },
+      now: 'Now', ideo: 'IDEO log', notHere: 'not in this working copy',
+      emptyItems: 'Write items in the product log; they will grow from here.', emptyNodes: 'No Sprint or design is open.'
+    }
+  };
+
+  var app = $('app'), ov = $('ov'), cardHost = $('cards');
+  function fail(msg) {
+    app.textContent = '';
+    app.appendChild(h('div', 'fail', msg));
+  }
+
+  var D;
+  try { D = JSON.parse($('board-data').textContent); }
+  catch (e) { fail('The board data could not be read: ' + e.message); return; }
+  if (!D || !D.product) {
+    fail('This page still holds the template placeholder. Replace the data block with the board data (see board-log.md).');
+    return;
+  }
+
+  var zh = D.lang === 'zh';
+  var S = zh ? STR.zh : STR.en;
+  document.documentElement.lang = zh ? 'zh-CN' : 'en';
+  document.body.className = zh ? 'zh' : 'en';
+  var P = D.product;
+  var items = arr(D.items).filter(function (it) { return it && it.id; });
+  var sprints = arr(D.sprints).filter(function (s) { return s && s.id; });
+  var designs = arr(D.designs).filter(function (d) { return d && d.id; });
+  var GROUPS = ['sprint', 'design', 'next', 'later'];
+  items.forEach(function (it) { it._g = GROUPS.indexOf(it.group) >= 0 ? it.group : 'next'; });
+  document.title = (P.name ? P.name + ' · ' : '') + S.board;
+
+  /* ---- facts the page works out itself ---- */
+  function findItem(id) {
+    for (var i = 0; i < items.length; i++) { if (items[i].id === id) { return items[i]; } }
+    return null;
+  }
+  function numOf(id) { var m = /(\d+)\s*$/.exec(String(id)); return m ? m[1] : String(id); }
+  function shortOf(t) { t = String(t || ''); var s = t.split(/——| — |：|: /)[0]; return s || t; }
+  function sprintName(s) { var m = /^sprint-(\d+)/i.exec(String(s.id)); return m ? 'Sprint ' + m[1] : String(s.id); }
+  function designName(d) { return String(d.id).replace(/^design-/, ''); }
+  function goalShort(s) {
+    var g = String(s.goal || ''), i = g.search(/：|: /);
+    return i > 0 && i <= 24 ? g.slice(0, i) : '';
+  }
+  function nameOf(id) {
+    var i;
+    for (i = 0; i < sprints.length; i++) { if (sprints[i].id === id) { return sprintName(sprints[i]); } }
+    for (i = 0; i < designs.length; i++) { if (designs[i].id === id) { return designName(designs[i]); } }
+    return String(id);
+  }
+  /* A work item names a product item when its text holds the item's id as written, or the id's number on its own. */
+  function names(block, item) {
+    var t = String(block.title || '');
+    if (t.indexOf(item.id) >= 0) { return true; }
+    var n = numOf(item.id).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return new RegExp('(^|[^0-9])' + n + '([^0-9]|$)').test(t);
+  }
+  function counts(s) {
+    var blocks = arr(s.blocks), out = { total: blocks.length, done: 0, per: {} };
+    blocks.forEach(function (b) { if (b.done) { out.done++; } });
+    arr(s.items).forEach(function (id) {
+      var it = findItem(id) || { id: id }, t = 0, d = 0;
+      blocks.forEach(function (b) { if (names(b, it)) { t++; if (b.done) { d++; } } });
+      out.per[id] = { t: t, d: d };
+    });
+    return out;
+  }
+
+  var links = [];
+  sprints.forEach(function (s) { arr(s.items).forEach(function (id) { links.push({ item: id, node: s.id, cls: 's' }); }); });
+  designs.forEach(function (d) { arr(d['for']).forEach(function (id) { links.push({ item: id, node: d.id, cls: 'd' }); }); });
+
+  /* ---- overview ---- */
+  var itemEl = {}, nodeEl = {};
+  var circle = h('a', 'prod-circle', S.circle);
+  circle.href = '#product';
+  var trunk = h('div', 'trunk'), itemsCol = h('div', 'items-col'), nodesCol = h('div', 'nodes-col');
+  var wires = document.createElementNS(NS, 'svg');
+  wires.setAttribute('class', 'wires');
+  wires.setAttribute('aria-hidden', 'true');
+  var flow = h('div', 'flow');
+
+  function buildOverview() {
+    add(ov, add(h('div', 'top'), h('span', '', S.board + ' · ' + S.overview), h('span', 'mono', S.updated + ' ' + (D.generated || '—'))));
+    add(ov, add(h('div', 'ov-head'), circle, add(h('div', 'prod-name'), h('b', '', P.name || ''), h('span', '', S.hint))));
+    var any = false;
+    GROUPS.forEach(function (g) {
+      var list = items.filter(function (it) { return it._g === g; });
+      if (!list.length) { return; }
+      any = true;
+      itemsCol.appendChild(h('div', 'grp-label', S.grp[g]));
+      list.forEach(function (it) {
+        var b = h('button', 'pbi g-' + g);
+        b.type = 'button';
+        b.title = String(it.title || '') + (it.status ? ' · ' + it.status : '');
+        add(b, h('b', '', it.id), h('span', 's', shortOf(it.title)));
+        b.addEventListener('click', function () { light(it.id); });
+        itemEl[it.id] = b;
+        itemsCol.appendChild(b);
+      });
+    });
+    if (!any) { itemsCol.appendChild(h('div', 'ghost', S.emptyItems)); }
+
+    sprints.forEach(function (s) {
+      var a = h('a', 'node sprint'), c = counts(s), chain = h('div', 'mchain'), g = goalShort(s);
+      a.href = '#' + s.id;
+      arr(s.items).forEach(function (id, i) {
+        var p = c.per[id];
+        if (i) { chain.appendChild(document.createTextNode('›')); }
+        chain.appendChild(h('i', p && p.t && p.d === p.t ? 'full' : '', numOf(id)));
+      });
+      add(a, h('div', 'k', S.sprint), h('b', '', sprintName(s)), g ? h('div', 'g', g) : null,
+        arr(s.items).length ? chain : null, c.total ? h('div', 'g mt', S.blocks + ' ' + S.doneOf(c.done, c.total)) : null);
+      nodeEl[s.id] = a;
+      nodesCol.appendChild(a);
+    });
+    designs.forEach(function (d) {
+      var a = h('a', 'node design'), f = arr(d['for']);
+      a.href = '#' + d.id;
+      add(a, h('div', 'k', S.design), h('b', '', designName(d)), f.length ? h('div', 'g', S.forItem + ' ' + f.join(zh ? '、' : ', ')) : null);
+      nodeEl[d.id] = a;
+      nodesCol.appendChild(a);
+    });
+    if (any && !sprints.length && !designs.length) { nodesCol.appendChild(h('div', 'ghost', S.emptyNodes)); }
+
+    add(flow, wires, trunk, itemsCol, nodesCol);
+    ov.appendChild(flow);
+    if (P.closed) { ov.appendChild(h('div', 'closed', S.closed + ' ' + P.closed)); }
+  }
+
+  function svgPath(d, cls, itemId) {
+    var p = document.createElementNS(NS, 'path');
+    p.setAttribute('d', d);
+    p.setAttribute('class', cls);
+    if (itemId) { p.setAttribute('data-item', itemId); }
+    return p;
+  }
+
+  function layout() {
+    if (!flow.offsetWidth) { return; }
+    var fr = flow.getBoundingClientRect(), gap = parseFloat(getComputedStyle(document.documentElement).fontSize) * 0.7;
+    var order = sprints.map(function (s) { return s.id; }).concat(designs.map(function (d) { return d.id; }));
+    var prevBottom = -gap, ncTop = nodesCol.getBoundingClientRect().top;
+    order.forEach(function (id) {
+      var n = nodeEl[id], ys = [];
+      links.forEach(function (l) {
+        if (l.node === id && itemEl[l.item]) {
+          var r = itemEl[l.item].getBoundingClientRect();
+          ys.push(r.top + r.height / 2 - ncTop);
+        }
+      });
+      var want = ys.length ? ys.reduce(function (a, b) { return a + b; }, 0) / ys.length - n.offsetHeight / 2 : 0;
+      var top = Math.max(prevBottom + gap, want);
+      n.style.top = top + 'px';
+      prevBottom = top + n.offsetHeight;
+    });
+    var keys = Object.keys(itemEl);
+    var lastEl = keys.length ? itemEl[keys[keys.length - 1]] : null;
+    nodesCol.style.minHeight = Math.max(prevBottom, 0) + 'px';
+    if (lastEl) {
+      var lr = lastEl.getBoundingClientRect();
+      trunk.style.height = (lr.top + lr.height / 2 - fr.top) + 'px';
+    } else {
+      trunk.style.height = '2.4rem';
+    }
+    fr = flow.getBoundingClientRect();
+    wires.setAttribute('viewBox', '0 0 ' + fr.width + ' ' + fr.height);
+    wires.textContent = '';
+    var seen = {};
+    links.forEach(function (l) {
+      var ie = itemEl[l.item], ne = nodeEl[l.node];
+      if (!ie || !ne) { return; }
+      var a = ie.getBoundingClientRect(), b = ne.getBoundingClientRect();
+      var k = seen[l.node] = (seen[l.node] || 0) + 1;
+      var x1 = a.right - fr.left, y1 = a.top + a.height / 2 - fr.top;
+      var x2 = b.left - fr.left, y2 = b.top + b.height / 2 - fr.top + (k - 1) * 3 - 3;
+      var dx = Math.max(14, (x2 - x1) / 2);
+      wires.appendChild(svgPath('M' + x1 + ' ' + y1 + ' C' + (x1 + dx) + ' ' + y1 + ' ' + (x2 - dx) + ' ' + y2 + ' ' + x2 + ' ' + y2, l.cls, l.item));
+    });
+    sprints.forEach(function (s) {
+      designs.forEach(function (d) {
+        var linked = arr(d['for']).some(function (id) { return arr(s.items).indexOf(id) >= 0; });
+        if (!linked) { return; }
+        var a = nodeEl[s.id].getBoundingClientRect(), b = nodeEl[d.id].getBoundingClientRect();
+        if (b.top <= a.bottom) { return; }
+        var x = a.left + a.width / 2 - fr.left;
+        wires.appendChild(svgPath('M' + x + ' ' + (a.bottom - fr.top) + ' V' + (b.top - fr.top), 'x'));
+      });
+    });
+    light(lit, true);
+  }
+
+  var lit = '';
+  function light(id, keep) {
+    if (!keep) { lit = (lit === id) ? '' : id; }
+    ov.classList.toggle('dim', !!lit);
+    Object.keys(itemEl).forEach(function (k) { itemEl[k].classList.toggle('on', k === lit); });
+    var linked = {};
+    links.forEach(function (l) { if (l.item === lit) { linked[l.node] = true; } });
+    Object.keys(nodeEl).forEach(function (k) { nodeEl[k].classList.toggle('off', !!lit && !linked[k]); });
+    Array.prototype.forEach.call(wires.querySelectorAll('path'), function (p) {
+      p.classList.toggle('lit', !!lit && p.getAttribute('data-item') === lit);
+    });
+  }
+
+  /* ---- cards ---- */
+  var cardEls = {};
+  function card(id) { var c = h('div', 'card'); cardEls[id] = c; cardHost.appendChild(c); return c; }
+  function bar(label, color) {
+    var back = h('a', 'back', S.back), typ = h('span', 'typ', label);
+    back.href = '#';
+    typ.style.setProperty('--c', color);
+    return add(h('div', 'bar'), back, typ);
+  }
+  function layer(label) { return add(h('div', 'layer'), add(h('div', 'lb'), h('span', '', label))); }
+  function commit(label, text, color) {
+    var c = h('div', 'commit');
+    c.style.setProperty('--c', color);
+    c.appendChild(h('small', '', label));
+    c.appendChild(document.createTextNode(text || '—'));
+    return c;
+  }
+  function foot(c, parts) {
+    var f = h('div', 'foot');
+    parts.forEach(function (x) { if (x) { f.appendChild(x); } });
+    c.appendChild(f);
+  }
+  function nowBlock(text) {
+    if (!text) { return null; }
+    var d = h('details'), s = h('summary', '', S.now);
+    return add(d, s, h('p', '', text));
+  }
+  function ideoLines(list) {
+    return arr(list).map(function (x) { return h('p', '', S.ideo + ' · ' + (x.id || '') + (x.now ? ': ' + x.now : '')); });
+  }
+  function sourceLine(src, path, file) {
+    var p = h('p');
+    p.appendChild(document.createTextNode(src || ''));
+    if (path && /^working copy/i.test(src || '')) {
+      p.appendChild(document.createTextNode(' · '));
+      var a = h('a', '', file);
+      a.href = path;
+      p.appendChild(a);
+    } else if (src) {
+      p.appendChild(document.createTextNode(' · ' + S.notHere));
+    }
+    return p;
+  }
+  function itemRow(it) {
+    var r = h('div', 'r g-' + it._g), meta = [it.size, it.status].filter(Boolean).join(' · ');
+    add(r, h('b', '', it.id), h('span', 't', it.title), meta ? h('em', '', meta) : null);
+    return r;
+  }
+
+  function productCard() {
+    var c = card('product'), notDone = items.length;
+    add(c, bar(S.circle + ' · ' + (P.name || ''), 'var(--text)'));
+    add(c, add(layer(S.l1), commit('Product', P.statement, 'var(--text)'), commit('Product Goal', P.goal, 'var(--text)')));
+    var l2 = layer(S.productL2), ul = h('ul', 'metro');
+    arr(P.map).forEach(function (n) {
+      var hereNames = arr(n.here).map(function (id) { return nameOf(id) + ' ' + S.here; });
+      var note = [n.note].concat(hereNames).filter(Boolean).join(' · ');
+      var li = h('li', n.branch ? 'br' : (hereNames.length ? 'here' : ''));
+      add(li, h('span', '', n.text), note ? h('em', '', note) : null);
+      ul.appendChild(li);
+    });
+    if (arr(P.map).length) { l2.appendChild(ul); c.appendChild(l2); }
+    var l3 = layer(S.productL3(notDone));
+    GROUPS.forEach(function (g) {
+      var list = items.filter(function (it) { return it._g === g; });
+      if (!list.length) { return; }
+      l3.appendChild(h('div', 'grp', S.grp[g]));
+      list.forEach(function (it) { l3.appendChild(itemRow(it)); });
+    });
+    if (notDone) { c.appendChild(l3); }
+    foot(c, [sourceLine(P.source, 'ProductBacklog.md', 'ProductBacklog.md')]);
+  }
+
+  function sprintCard(s) {
+    var c = card(s.id), k = counts(s);
+    add(c, bar(S.sprint + ' · ' + sprintName(s), 'var(--sprint)'));
+    add(c, add(layer(S.l1), commit('Sprint Goal', s.goal, 'var(--sprint)')));
+    var l2 = layer(S.sprintL2), row = h('div', 'prow');
+    arr(s.items).forEach(function (id, i) {
+      var it = findItem(id) || { id: id, title: '' }, p = k.per[id] || { t: 0, d: 0 };
+      var pn = h('div', 'pn'), bar2 = h('div', 'bar2'), fill = h('i');
+      fill.style.width = (p.t ? Math.round(100 * p.d / p.t) : 0) + '%';
+      bar2.appendChild(fill);
+      if (i) { row.appendChild(h('span', 'parr', '→')); }
+      add(pn, h('b', '', it.id), h('span', 't', shortOf(it.title)), bar2, h('small', '', p.t ? S.perItem(p.d, p.t) : '—'));
+      pn.title = it.title || '';
+      row.appendChild(pn);
+    });
+    if (arr(s.items).length) { l2.appendChild(row); c.appendChild(l2); }
+    var l3 = layer(S.sprintL3(k.done, k.total)), ol = h('ul', 'steps');
+    arr(s.blocks).forEach(function (b) {
+      var li = h('li', b.done ? 'ok' : '');
+      add(li, h('span', 'n', b.n), h('span', 't', b.title));
+      ol.appendChild(li);
+    });
+    if (arr(s.blocks).length) { l3.appendChild(ol); c.appendChild(l3); }
+    foot(c, [nowBlock(s.now)].concat(ideoLines(s.ideo), [sourceLine(s.source, s.id + '/SprintBacklog.md', 'SprintBacklog.md')]));
+  }
+
+  function designCard(d) {
+    var c = card(d.id), f = arr(d['for']);
+    add(c, bar(S.design + ' · ' + designName(d), 'var(--design)'));
+    add(c, add(layer(S.l1), commit(S.designGoal + (f.length ? ' · ' + S.forItem + ' ' + f.join(zh ? '、' : ', ') : ''), d.goal, 'var(--design)')));
+    var l2 = layer(S.designL2), vm = h('div', 'vmap');
+    arr(d.map).forEach(function (t) { vm.appendChild(h('div', '', t)); });
+    if (arr(d.map).length) { l2.appendChild(vm); c.appendChild(l2); }
+    var l3 = layer(S.designL3), st = h('div', 'story');
+    arr(d.story).forEach(function (x) { st.appendChild(add(h('div'), h('b', '', x.title), document.createTextNode(x.text || ''))); });
+    if (arr(d.story).length) { l3.appendChild(st); c.appendChild(l3); }
+    foot(c, [nowBlock(d.now)].concat(ideoLines(d.ideo), [sourceLine(d.source, d.id + '/DesignBacklog.md', 'DesignBacklog.md')]));
+  }
+
+  /* ---- showing a card ---- */
+  var defaultId = sprints.length ? sprints[0].id : (designs.length ? designs[0].id : 'product');
+  function show(id) {
+    Object.keys(cardEls).forEach(function (k) { cardEls[k].hidden = (k !== id); });
+    circle.classList.toggle('cur', id === 'product');
+    Object.keys(nodeEl).forEach(function (k) { nodeEl[k].classList.toggle('cur', k === id); });
+  }
+  function route() {
+    var id = '';
+    try { id = decodeURIComponent(location.hash.replace(/^#/, '')); } catch (e) { id = ''; }
+    if (!cardEls[id]) { id = ''; }
+    app.dataset.view = id ? 'card' : 'ov';
+    show(id || defaultId);
+    window.requestAnimationFrame(layout);
+  }
+
+  buildOverview();
+  productCard();
+  sprints.forEach(sprintCard);
+  designs.forEach(designCard);
+  window.addEventListener('hashchange', function () {
+    route();
+    if (window.matchMedia('(max-width:640px)').matches) { window.scrollTo(0, 0); }
+  });
+  window.addEventListener('resize', layout);
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(layout); }
+  route();
+}());
+</script>
+</body>
+</html>

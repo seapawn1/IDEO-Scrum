@@ -135,7 +135,7 @@ Your project grows a `scrum/` folder. This is the author's layout; use your proj
 | `scrum/sprint-NN-<name>/SprintBacklog.md` | One Sprint, from Why to Test, with its notes |
 | `scrum/design-<name>/DesignBacklog.md` | One design: research and prototypes |
 | `scrum/ideo-<name>/IdeoBacklog.md` | One run of the five modes |
-| `scrum/Board.html` | The board: a one-page view of where the project stands, written from the logs; it keeps no state of its own |
+| `scrum/ScrumBoard.html` | The board: a one-page view of where the project stands, written from the logs; it keeps no state of its own |
 | `scrum/documents/` | Archives of finished Sprints and designs, and files that serve the whole project |
 
 The plugin calls these files logs: the product log is the Product Backlog, the sprint log is the Sprint Backlog. A real example is this repository's own `scrum/` folder, written in Chinese: start with [`ProductBacklog.md`](scrum/ProductBacklog.md) and one archived sprint log, [`sprint-19-board-hook.md`](scrum/documents/sprint/sprint-19-board-hook.md).

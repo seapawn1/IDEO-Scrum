@@ -2,13 +2,13 @@
 
 > Working conventions: reference, not law — follow what fits, override what doesn't, note why. Source labels and short names are explained in convention 15 of `overview.md`, in the skill folder, beside `SKILL.md`. A convention with no label is the author's practice.
 
-The board is one page that shows where the project stands. Its template is `board-template.html`, beside this file; this file is also the brief for whoever generates the page. Paths starting with `../` are relative to the scrum-kernel skill folder.
+The board is one page that shows where the project stands. Its template is `scrum-board-template.html`, beside this file; this file is also the brief for whoever generates the page. Paths starting with `../` are relative to the scrum-kernel skill folder.
 
 ```mermaid
 flowchart TD
     L["The logs<br/>product log, open Sprint, design, and IDEO logs"] --> R["Read<br/>conventions 4–6"]
-    R --> G["Generate<br/>conventions 12–16, with board-template.html"]
-    G --> B["scrum/Board.html<br/>conventions 1–3, 7–11"]
+    R --> G["Generate<br/>conventions 12–16, with scrum-board-template.html"]
+    G --> B["scrum/ScrumBoard.html<br/>conventions 1–3, 7–11"]
     B -. "delete it, generate it again" .-> G
 ```
 
@@ -16,7 +16,7 @@ flowchart TD
 
 1. **One board for the project** — Keep one page for the whole project: the product log, and every open Sprint and design, one card each. It answers two questions without opening a log: where does the project stand, and what is waiting for the Product Owner.
 2. **It owns nothing** — The board only reads the logs. It keeps no state, and no log is ever changed from it. Delete it and generate it again, and every fact is the same; only the time of generation differs. For that reason the page need not go into version control; the project decides, for example with a `.gitignore` entry.
-3. **Where it lives, who writes it, and when** — Name it `scrum/Board.html`, beside the product log. A cheap model writes it, because the work is copying and laying out, not judging: a fresh subagent told to read this file and the template and to follow them, or a standing helper session of the Product Owner's. Generate it when the Product Owner wants to look, or after a log has changed.
+3. **Where it lives, who writes it, and when** — Name it `scrum/ScrumBoard.html`, beside the product log. A cheap model writes it, because the work is copying and laying out, not judging: a fresh subagent told to read this file and the template and to follow them, or a standing helper session of the Product Owner's. Generate it when the Product Owner wants to look, or after a log has changed.
 
 ## What it reads
 
@@ -38,15 +38,15 @@ flowchart TD
 8. **The product card** — The Product and the Product Goal, word for word; the map, folded away until opened; the items that are not done, grouped as in convention 6, each with its number, title, size, and status. Items in section 3.2 are done or closed and are not shown. A status that names an open Sprint or design links to that card.
 9. **A Sprint card** — The Sprint's name; its Sprint Goal; its Now line; the stage it is in, marked among the five stages — Why, What, How, Increment, Test — the one the Now line names, or none when it names none; the items it took, each with the status the product log gives it (the card does not work out how far an item is done); the work items of chapter 3, with the done ones marked; its Waiting for PO; and where the log was read (convention 4). When no Sprint is open, one line says so in place of the cards.
 10. **A design card** — The design's name; its design goal; its Now line; its map; the solution being worked on; its Waiting for PO; and where the log was read. An IDEO log has no card of its own: one line on the card of the log it serves, with its Now line. When no design is open, one line says so. A design whose `From` field names a Sprint is linked from that Sprint's card.
-11. **Links** — Each card links to the log it was made from when that file is in this working copy, as a link relative to `scrum/Board.html` — the page is in `scrum/`, so the product log is `ProductBacklog.md` and a Sprint log is `sprint-01-alpha/SprintBacklog.md`. When it is not — the log is only on another branch — the card names the branch and the commit instead, so that no link is dead. The product card links to every Sprint and design card.
+11. **Links** — Each card links to the log it was made from when that file is in this working copy, as a link relative to `scrum/ScrumBoard.html` — the page is in `scrum/`, so the product log is `ProductBacklog.md` and a Sprint log is `sprint-01-alpha/SprintBacklog.md`. When it is not — the log is only on another branch — the card names the branch and the commit instead, so that no link is dead. The product card links to every Sprint and design card.
 
 ## How to generate it
 
 12. **Steps** — Follow these steps:
-    1. Read `board-template.html`; its comments say what goes where.
+    1. Read `scrum-board-template.html`; its comments say what goes where.
     2. Find the logs (convention 4) and read what each one holds (conventions 5 and 6).
     3. Copy each fact from its log into the template's markers (convention 13). Repeat a card for every open Sprint and design.
-    4. Write the page to `scrum/Board.html`, replacing the old one.
+    4. Write the page to `scrum/ScrumBoard.html`, replacing the old one.
     5. Check the page against the logs: every fact on it is found in a log, and every link opens. Read each map back from the page and compare it with the log's, line by line: a long text copied by hand can lose a character. Fix what is not.
 13. **Word for word** — Commitments, Now lines, Waiting for PO texts, item titles, and statuses go onto the page exactly as the log has them: the same characters, the same language; never reworded, shortened, translated, or tidied. Escape what HTML needs escaped, and no more: the `<br/>` that a map's labels often hold is written `&lt;br/&gt;` on the page, and stays. Copy a long text, such as a map, mechanically if you can — with a command or a script — rather than retyping it. The labels around the facts are the template's own. Keep the template's `data-fact` markers: they say what each piece of text is, so that the page can be checked against the logs. A fact the logs do not give is not written; where a card needs one that is missing, write `not found` there.
 14. **Say what was read** — The page says when it was made and, for each log, which version was read: the working copy, or a branch and a commit.

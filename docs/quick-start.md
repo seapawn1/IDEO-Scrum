@@ -76,5 +76,5 @@ Handover, 2026-11-14: the Product Owner hands the Scrum Master the end-of-stage 
 ## When you are lost
 
 - Ask "Where are we?": the Scrum Master reads `Now` and `Waiting for PO` and tells you.
-- Ask for the board: a one-page view of where the project stands, written from the logs into `scrum/Board.html`.
+- Ask for the board: a one-page view of where the project stands, written from the logs into `scrum/ScrumBoard.html`.
 - To find out what people want, call the Designer: `/ideo-scrum:designer`.

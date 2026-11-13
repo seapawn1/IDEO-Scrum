@@ -1,0 +1,222 @@
+{
+ "lang": "zh",
+ "generated": "2026-11-14 12:00",
+ "product": {
+  "name": "IDEO-Scrum",
+  "statement": "IDEO-Scrum：把 Design Thinking 与 Scrum Sprint 装进 Claude Code。",
+  "goal": "产品化：从作者能用到大家都好用；看板一眼看清进度，文档讲清规矩；懂 Scrum 的人照着就能走完第一个冲刺。",
+  "source": "working copy",
+  "map": [
+   {
+    "text": "装插件，读 README",
+    "note": "62 · 64"
+   },
+   {
+    "text": "召唤角色进门",
+    "note": "67"
+   },
+   {
+    "text": "写产品日志"
+   },
+   {
+    "text": "Planning → PO 放行 → 施工 → Test",
+    "here": [
+     "sprint-20-presentable"
+    ]
+   },
+   {
+    "text": "设计冲刺",
+    "branch": true,
+    "here": [
+     "design-board"
+    ]
+   },
+   {
+    "text": "Review → Retro",
+    "note": "69"
+   }
+  ],
+  "closed": 17
+ },
+ "items": [
+  {
+   "id": "PBI-68",
+   "title": "看板改版——更好看、更好读",
+   "status": "Sprint 20（第 1 条）",
+   "size": "M～L",
+   "group": "sprint"
+  },
+  {
+   "id": "PBI-63",
+   "title": "体验测试——陌生人从装插件走到看板",
+   "status": "Sprint 20（第 4 条，最后做）",
+   "size": "M",
+   "group": "sprint"
+  },
+  {
+   "id": "PBI-64",
+   "title": "发布包装",
+   "status": "Sprint 20（第 2 条）",
+   "size": "S～M",
+   "group": "sprint"
+  },
+  {
+   "id": "PBI-62",
+   "title": "教学——README、快速上手、词汇表、示例项目",
+   "status": "Sprint 20（第 3 条）",
+   "size": "M",
+   "group": "sprint"
+  },
+  {
+   "id": "PBI-67",
+   "title": "ideo 的自然触发——发散、定义问题也先加载",
+   "status": "待选（副线）",
+   "size": "S～M",
+   "group": "next"
+  },
+  {
+   "id": "PBI-69",
+   "title": "Retro 只存要点，一条一条进记忆",
+   "status": "以后",
+   "size": "S～M",
+   "group": "later"
+  },
+  {
+   "id": "PBI-51",
+   "title": "插件的记忆机制（研究）",
+   "status": "以后",
+   "size": "L",
+   "group": "later"
+  },
+  {
+   "id": "PBI-12",
+   "title": "方法论分享——公开系列",
+   "status": "以后",
+   "size": "L",
+   "group": "later"
+  }
+ ],
+ "sprints": [
+  {
+   "id": "sprint-20-presentable",
+   "goal": "拿得出手：看板改版，好看、好读；README、快速上手、词汇表讲清规矩，发布包装补齐；懂 Scrum 的人照着就能装上、走完第一个冲刺，不问作者。",
+   "now": "Increment：块 1～8 已完成，等 Master 审块 8 的证据：冒烟第 3 次过线（五个产出都在，隔离和卫生检查都是 0，没问作者）；设计线结束（PO 2026-11-14 定，原型是故事板第 3 版，设计日志在分支 `worktree-design-board`），块 2 标 ✓；分工仍是 PO 和 Master 监督、我做 Developer（当天说过的「交接给 Master」PO 已作废）；快速上手第 3 步已按 Master 对冒烟的改判补一句（中英）；设计分支已合进来（c268bd8），PBI-68 的用户故事和 2.2 的 68-2、68-4 已改，一并等 Master 审；下一步：块 9（68-b 的模板） · 最近一次 PO 决定：2026-11-14 看板设计结束、分工改回原样",
+   "items": [
+    "PBI-68",
+    "PBI-64",
+    "PBI-62",
+    "PBI-63"
+   ],
+   "blocks": [
+    {
+     "n": "1",
+     "title": "开场包（给设计会话）",
+     "done": true
+    },
+    {
+     "n": "2",
+     "title": "设计线 68-a（另一个工作树，分支 `worktree-design-board`，设计日志 `scrum/design-board/DesignBacklog.md`；PO 2026-11-14 定关掉原来那条重来，新设计做完）",
+     "done": true
+    },
+    {
+     "n": "3",
+     "title": "64-a CHANGELOG 与图标候选",
+     "done": true
+    },
+    {
+     "n": "4",
+     "title": "三份大纲，PO 一次看完",
+     "done": true
+    },
+    {
+     "n": "5",
+     "title": "62-a README（中英）与图标入位",
+     "done": true
+    },
+    {
+     "n": "6",
+     "title": "62-b、62-c 快速上手（中英）与词汇表",
+     "done": true
+    },
+    {
+     "n": "7",
+     "title": "63-a 标准与测法",
+     "done": true
+    },
+    {
+     "n": "8",
+     "title": "63-a 脚本与冒烟",
+     "done": true
+    },
+    {
+     "n": "9",
+     "title": "68-b 合并与模板（等设计线交接包）",
+     "done": false
+    },
+    {
+     "n": "10",
+     "title": "68-b 约定与检查",
+     "done": false
+    },
+    {
+     "n": "11",
+     "title": "68-b 生成并核对",
+     "done": false
+    },
+    {
+     "n": "12",
+     "title": "62-d 看板与 hook 的说明",
+     "done": false
+    },
+    {
+     "n": "13",
+     "title": "63-b 正式跑",
+     "done": false
+    },
+    {
+     "n": "14",
+     "title": "63-b 修与再跑",
+     "done": false
+    },
+    {
+     "n": "15",
+     "title": "64-b 发版准备",
+     "done": false
+    }
+   ],
+   "source": "working copy"
+  }
+ ],
+ "designs": [
+  {
+   "id": "design-board",
+   "for": [
+    "PBI-68"
+   ],
+   "goal": "一眼就知道：看板挂在 PO 的屏上，好看、形象；PO 隔一阵瞄一眼，就知道项目走到哪、每条线在做什么；不用再问 AI、翻 git、读日志，看着就想一直挂着。",
+   "now": "结束：PO 2026-11-14 定结束设计；结论流向 Sprint 20 的 68-b 和产品日志 PBI-68；等 Sprint 20 的 Review 归档",
+   "map": [
+    "各条线干活，写进日志",
+    "助手照日志更新看板",
+    "看板挂在 PO 的屏上",
+    "PO 抬头瞄一眼",
+    "PO 心里有数，回到会话里接着做"
+   ],
+   "story": [
+    {
+     "title": "瞄一眼",
+     "text": "总览上看每条线流到哪、做完多少"
+    },
+    {
+     "title": "点一下",
+     "text": "跳到那张卡片：承诺、路线、条目 / How / 方案"
+    },
+    {
+     "title": "返回",
+     "text": "回到总览，下次抬头再看"
+    }
+   ],
+   "source": "working copy"
+  }
+ ]
+}

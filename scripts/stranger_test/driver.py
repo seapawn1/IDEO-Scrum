@@ -394,14 +394,14 @@ class Run:
         kind = "reply" if r["status"] == "ok" else "error"
         self.log("P", kind, r["text"], subtype=r.get("subtype"))
         seen = r["text"] if r["status"] == "ok" else f"(Claude Code reported an error: {r.get('subtype')})\n{r['text']}"
-        board = self.proj / "scrum" / "Board.html"
+        board = self.proj / "scrum" / "ScrumBoard.html"
         if board.is_file():
             stat = (board.stat().st_mtime_ns, board.stat().st_size)
             if stat != self.board_seen:
                 self.board_seen = stat
                 shown = visible_text(board.read_text(encoding="utf-8", errors="replace"))
                 self.log("H", "board", shown)
-                seen += "\n\n[scrum/Board.html now shows this text:]\n" + shown
+                seen += "\n\n[scrum/ScrumBoard.html now shows this text:]\n" + shown
         return seen, None
 
     # -- the run
@@ -726,7 +726,7 @@ def selftest() -> int:
         (proj / "scrum/documents/sprint").mkdir(parents=True)
         (proj / "scrum/documents/sprint/sprint-01-daily.md").write_text("Summary. Goal kept.\n", encoding="utf-8")
         (proj / "scrum/sprint-01-daily/SprintBacklog.md").unlink()
-        (proj / "scrum/Board.html").write_text("<html><body><h1>Board</h1></body></html>", encoding="utf-8")
+        (proj / "scrum/ScrumBoard.html").write_text("<html><body><h1>Board</h1></body></html>", encoding="utf-8")
         g("add", "-A")
         g("commit", "-q", "-m", "close the sprint")
         g("tag", "sprint-01-daily")
@@ -749,7 +749,7 @@ def selftest() -> int:
         expect("no tag", verify.check_outputs(proj, env)["4_close"]["ok"], False)
         (proj / "scrum/ProductBacklog.md").write_text("| Commitment | <product> |\n| --- | --- |\n", encoding="utf-8")
         expect("placeholder commitments", verify.check_outputs(proj, env)["1_product_log"]["ok"], False)
-        (proj / "scrum/Board.html").unlink()
+        (proj / "scrum/ScrumBoard.html").unlink()
         expect("no board", verify.check_outputs(proj, env)["5_board"]["ok"], False)
     finally:
         rmtree(work)
