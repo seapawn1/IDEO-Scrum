@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 19 (board-hook)
 
 > Started: 2026-11-13 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: worktree-golden-orbiting-bachman | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[support sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-19]-[do sprint 19]，golden-orbiting-bachman）
-> Now: How：Developer 已写完草稿，待 Master 审、给放行 · Master 2026-11-13 定精化结束（PO 授权，见第 4 章）
+> Now: Increment：做块 1（产品卡两版原型） · Master 2026-11-13 放行 How（PO 授权，见第 4 章）
 > Waiting for PO: None
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
@@ -129,7 +129,7 @@ PO 2026-11-13 定 Sprint Goal
 - **Haiku 生成看板可能逐字不稳**：模板填空、简报写死「承诺逐字照抄」，核对脚本兜底；3 次都不稳，先升一档再回头报 Master。
 - **网页版的 Mermaid 要联网加载**（若 PO 选网页）：离线时架构图出不来；退路是同页放 Mermaid 源码；正式版是否内嵌另议。
 
-Go-ahead: 尚未放行。（拟：本分支上提交；合并、打 tag、发版在 Review 决定；不推送。）
+Go-ahead: Master 2026-11-13 放行（PO 授权，见第 4 章）：本分支上提交；合并、打 tag、发版在 Review 决定；不推送。
 
 ## 4. Increment notes
 
