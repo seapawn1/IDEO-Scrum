@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 20 (presentable)
 
 > Started: 2026-11-14 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: worktree-sprint-20-presentable | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[management sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-20]-[do presentable]，原生 worktree sprint-20-presentable）
-> Now: How：第 3 章已写好，等 Master 审、PO 放行 · 最近一次 PO 决定：2026-11-14 定精化结束；设计线改开 IDEO 日志、放单独的工作树，PO 带设计师会话做看板，Developer 做其余
-> Waiting for PO: 放行（第 3 章 How）
+> Now: Increment：块 1（给设计会话的 brief）在写，设计线由 PO 另开 · 最近一次 PO 决定：2026-11-14 放行第 3 章（「可以，那就放行吧」），范围见第 3 章末行
+> Waiting for PO: None
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
 
@@ -318,7 +318,7 @@ PO 2026-11-14 定精化结束（第 7 步）：「OK，可行。嗯，现在精�
 - 文档和约定重复一份，会漂：靠逐句对原文，收官时 CLAUDE.md「改规矩先找它的其他说法」的清单加上这三份。
 - 开放点：README 文件地图收不收（PO 在块 4 定）；PBI-67（ideo 不点名也触发）留不留，看 63 的结果；CLAUDE.md 要改的几处（README 的规矩、版本号「两处」的含义、上面那份清单）收官时由 Master 在 PO 的会话里改；Retro 照 PBI-69 试行（Master 列候选、PO 挑、一条一个记忆文件）。
 
-Go-ahead: 尚无。Developer 建议放行到：在本分支提交（含 PO 说「原型好了」之后合并设计线的分支）；合并 main、tag、发 6.0.3、推送都等收官时 PO 点头；设计线的工作树和分支由 PO 另开，不在这条放行里。
+Go-ahead: 2026-11-14，PO（「可以，那就放行吧」，Master 转来）。放行到：在本分支提交，含 PO 说原型好了以后合并设计线的分支；合并 main、tag、发 6.0.3、推送都等收官时 PO 点头；设计线的工作树和分支由 PO 另开，不在这条放行里。
 
 ## 4. Increment notes
 
@@ -340,5 +340,6 @@ Go-ahead: 尚无。Developer 建议放行到：在本分支提交（含 PO 说�
 - **改开 IDEO 日志的理由**：产品日志 PBI-68 备注（PO 2026-11-14）原定「不开设计冲刺、不开 IDEO 日志，在冲刺日志里记」，那是原型还在冲刺里做的前提。现在原型独立成线、多于一个会话，照 ideo-log 第 3 条开 IDEO 日志 `scrum/ideo-board/`；两条线改同一份冲刺日志会冲突，所以轮次记在 IDEO 日志里，要点回流本章。「不开设计冲刺」没变：这是五模式自成一轮，不跑设计冲刺的步骤（ideo-log 第 2 条）。产品日志 68 的备注由 Master 改。第 3 章据此排：68-a 不再是我的块，成了设计线；原来写在 2.2 里的「轮次记在第 4 章」改成记在 IDEO 日志。
 - **设计线怎么开**（给 PO 开会话用）：新终端 `claude --worktree ideo-board`（原生建法，分支 `worktree-ideo-board`，从远端 main 拉，比冲刺分支旧）；进去先 `git merge worktree-sprint-20-presentable`（通常是快进合并），再输入 `/ideo-scrum:designer`；开 `scrum/ideo-board/IdeoBacklog.md`，For 指向 `../sprint-20-presentable/SprintBacklog.md`；视觉用 `seapawn:frontend-design`。第 1 轮三个起点方向，骨架各不相同：A 决策台（沿用第 1 版骨架：最上面等 PO 拍板，其次正在做，再往下是条目）；B 旅程线（把架构图缩成一条线，条目钉在它所属的步骤上，冲刺阶段在线上亮起，架构图和路线图合成一张）；C 流向列（现在、下一个、以后三列，等 PO 拍板的做成卡上的旗子）。视觉先立一条：一处最响（等 PO 拍板），其余安静。
 - **第 1 版看板的现状**（我 2026-11-14 截图看的，文件 `S:\IDEO-Scrum\scrum\Board.html`）：整页同一种白卡片、灰底，什么都一样响；最响的是一条绿条「Nothing is waiting for the Product Owner」；生成时没有开着的冲刺，整页说不出「现在到哪了」；大写小标签、英文标签配中文内容；下半屏空着。手机宽度：用 `--window-size=375` 截的页面右边被裁，像是排版宽度比窗口宽（原因没验证），所以手机宽度要用 375 宽的 iframe 套着页面来截。这些写进 brief。
+- **放行，和产品日志 68 的备注**（2026-11-14）：PO 放行第 3 章（「可以，那就放行吧」，Master 转来），范围见第 3 章末行；Now 改成 Increment，Waiting 改成 None。Master 在 plan 模式里写不了文件，产品日志 PBI-68 备注里「不开 IDEO 日志」那处，照它给的文字由我在本分支改了（只改那一句）。
 
 ## 5. Test
