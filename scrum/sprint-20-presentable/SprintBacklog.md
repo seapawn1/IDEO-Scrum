@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 20 (presentable)
 
 > Started: 2026-11-14 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: worktree-sprint-20-presentable | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[management sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-20]-[do presentable]，原生 worktree sprint-20-presentable）
-> Now: Increment：块 1、3、4、5、6、7 已完成（块 6 Master 审过，改了一处）；块 8：`scripts/stranger_test/` 的驱动脚本写好、自测过、不带 S 的管道测试过，冒烟（带 S，一次）第 1 次跑了约 9 分钟、9 个来回，被系统因内存吃紧停掉，没出结果；查出一处隔离漏洞（P 从 PATH 看到作者家目录下的 `~/bin`、想在那儿建目录），已修；按系统的交代我不自己重跑；设计线由 PO 另开，Designer 会话在做原型，PO 在设计会话里定改用设计冲刺，日志 `scrum/design-board/DesignBacklog.md` · 最近一次 PO 决定：2026-11-14 看过 63-a 的标准（块 7）
-> Waiting for PO: 块 8：冒烟第 1 次被系统因内存吃紧停了，要你（或 Master）说一声再跑，建议先关掉闲着的 Claude 会话；正式 3 次一组我打算一个一个跑、不并行
+> Now: Increment：块 1、3、4、5、6、7 已完成（块 6 Master 审过，改了一处）；块 8：`scripts/stranger_test/` 的驱动脚本写好、自测过、不带 S 的管道测试过，冒烟（带 S，一次）第 1 次跑了约 9 分钟、9 个来回，被系统因内存吃紧停掉，没出结果；查出一处隔离漏洞（P 从 PATH 看到作者家目录下的 `~/bin`、想在那儿建目录），已修；Master 定：等 PO 腾出内存、点头，Master 通知我再跑，在那之前不跑，正式 3 次一个一个跑、不并行；P 用中文答不改（记成「模型的噪声」）；我现在没有能动的块（68-b 以后都等设计线），先停着；设计线由 PO 另开，Designer 会话在做原型，PO 在设计会话里定改用设计冲刺，日志 `scrum/design-board/DesignBacklog.md` · 最近一次 PO 决定：2026-11-14 看过 63-a 的标准（块 7）
+> Waiting for PO: 块 8：冒烟再跑要 PO 腾出内存、点头（Master 去问他关哪些会话）；68：原型定稿（PO 在设计会话里做，交接包由 Designer 通知 Master）
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
 
@@ -416,6 +416,7 @@ Go-ahead: 2026-11-14，PO（「可以，那就放行吧」，Master 转来）。
 - **冒烟第 1 次被系统停了**（2026-11-14，05:08 起跑，约 9 分钟、9 个来回后）：后台命令因系统内存吃紧被 Claude Code 停掉；不是脚本的错，也不算冒烟结果（没有 `result.json`）。当时系统 16 GB 里空闲约 2.5 GB，八个以上 Claude 会话在跑，每个 350～800 MB；冒烟自己有两个 claude 进程，P 的子代理还会再加。核对过：没有残留的测试进程；留下的 47 个临时文件夹已清；部分项目存在归档 `S:\IDEO-Scrum-Archives\sprint-20-presentable\stranger-test\smoke-20261114-050759-1\project-partial\`，流水在同一文件夹的 `conversation.jsonl`、`p.jsonl`、`s.jsonl`。按系统的交代，我不自己重跑，等 PO 或 Master 说再跑；正式 3 次一组我打算一个一个跑，不并行（并行会再加四个进程；63-a 写的是「可以并行」，不并行不违反）。
 - **冒烟前 9 个来回里看到的**：S 照 README 一条条装好插件（一次一条命令），叫出 Scrum Master，写好产品日志，定下 Sprint Goal，开了冲刺，进了 What，在细化第一条条目；S 没问作者，没发 `STUCK:`（0 次、0 次）；S 读得懂 P 的中文回答，照常用英文接。插件会话每一轮约 1～2 分钟（5 轮平均约 80 秒），这个速度下 60 个来回可能不够走完一个冲刺，等一次完整的冒烟再看要不要校准上限。P 在 Why 之后自己提出「Sprint 还缺一个 Developer」，S 选了「你在这个会话里兼 Developer」：快速上手写的「Developer 会话做，或者 Scrum Master 做」够用。
 - **查出一处隔离漏洞，已修（下次冒烟验）**：P 的 Bash 看了 PATH，里面有作者家目录下并不存在的 `C:\Users\seapawn\bin`，P 建议在那儿建目录放小工具，S 同意；停下时还没建（核对过，目录不存在）。检查脚本把这四处记成碰了作者路径，隔离判「不通过」，判得对。修法：`driver.py` 的 `clean_path` 去掉 P、S 的 PATH 里不存在的目录，和作者家目录下不是必需工具所在的目录（41 条剩 28 条），自测加一例。顺手修了两处：清理临时目录改用能删只读文件的 `rmtree`（git 留下的只读文件，让旧的清理漏掉一批，现在 `selftest` 零残留）；`Session` 不再把整条流存在内存里（流在磁盘上）。
+- **Master 对冒烟被停和修补的定案**（2026-11-14，对 6511479，63 的细节 PO 交给 Master 定）：① 重跑：等 PO 腾出内存再跑，Master 去问 PO 关哪些会话，PO 点头了告诉我；在那之前不跑；正式那组 3 次一个一个跑、不并行，没有违反 63-a。② P 用中文答：不改；63-a 自己写了冒烟后只许校准运行上限，语言设置算测法，不改；S 读得懂、没造成卡点；报告里记成「模型的噪声」，不算文档的卡点。③ PATH 的漏洞和 `.config` 的让步都处理得好，自测也补了。④ 60 个来回够不够，等一次完整的冒烟再校准，照 63-a 另提交。我现在没有能动的块，先停着。
 - **`XDG_CONFIG_HOME` 的让步**（Master 要求写明）：把 `XDG_CONFIG_HOME`、`XDG_CACHE_HOME` 指回真实的 `.config`、`.cache`，只是为了让 magpie 能认证，是个让步；已写进每次运行的 `result.json` 的 `concessions`；读 `.config` 下任何东西（不只是 magpie）都算碰作者路径，自测加了两例（另一个子目录、`$XDG_CONFIG_HOME` 变量），都报。
 
 ## 5. Test
