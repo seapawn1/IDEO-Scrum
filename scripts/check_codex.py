@@ -67,7 +67,12 @@ def content_errors(root: Path) -> tuple[list[str], dict]:
         for path in (source / "skills" / kernel).rglob("*")
         if path.is_file()
     }
-    expected = kernel_paths | {
+    hook_paths = {
+        path.relative_to(source)
+        for path in (source / "hooks").rglob("*")
+        if path.is_file()
+    } if (source / "hooks").is_dir() else set()
+    expected = kernel_paths | hook_paths | {
         Path(f"skills/{role}/{name}")
         for role in ROLES for name in ("SKILL.md", "agents/openai.yaml")
     } | {Path(".codex-plugin/plugin.json"), Path("LICENSE"), Path("ATTRIBUTION.md")}
@@ -76,7 +81,7 @@ def content_errors(root: Path) -> tuple[list[str], dict]:
     actual = {p.relative_to(package) for p in package.rglob("*") if p.is_file()}
     errors += [f"missing: {p.as_posix()}" for p in sorted(expected - actual)]
     errors += [f"extra: {p.as_posix()}" for p in sorted(actual - expected)]
-    for relative in sorted(kernel_paths & actual):
+    for relative in sorted((kernel_paths | hook_paths) & actual):
         before, after = source / relative, package / relative
         if relative == Path("skills/design-kernel/SKILL.md"):
             a, b = text(before), text(after)
@@ -249,6 +254,14 @@ def self_test(root: Path) -> dict:
         sample.write_bytes(saved + b"\nUnexpected prose.\n")
         assert any("unapproved difference:" in e for e in content_errors(fixture)[0])
         sample.write_bytes(saved)
+        hook = fixture / PACKAGE / "hooks/commitments.sh"
+        if hook.is_file():
+            saved_hook = hook.read_bytes()
+            hook.write_bytes(saved_hook + b"\n# drift\n")
+            assert any("unapproved difference:" in e for e in content_errors(fixture)[0])
+            hook.unlink()
+            assert any("missing:" in e for e in content_errors(fixture)[0])
+            hook.write_bytes(saved_hook)
         links = fixture / PACKAGE / "checker-sample.md"
         links.write_text("# Good\n\n[ok](#good)\n[license][ref]\n\n[ref]: LICENSE\n", encoding="utf-8")
         assert not link_errors(fixture / PACKAGE)[0]

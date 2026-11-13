@@ -87,6 +87,7 @@ $stakeholder    # Stakeholder
 | `.agents/plugins/marketplace.json` | Codex marketplace 清单，指向同一分支里的 Codex 分发包 |
 | `scripts/sync_codex.py` | 从 Claude Code 源文件生成 Codex 包：`python scripts/sync_codex.py` |
 | `scripts/check_codex.py` | 核对 Codex 内容一致性、内部链接、导航与重复生成；需要 PyYAML |
+| `.gitattributes` | 让插件里的 shell 脚本（`*.sh`）在所有平台都用 LF 换行：Windows 的 `core.autocrlf` 会把脚本写成 CRLF，sh 读到 CR 是语法错误 |
 | `.claude/` | 项目配置——`settings.json`、`seapawn.md`（作者待办与私人笔记，不入库）；项目指令 `CLAUDE.md` 在仓库根目录，记忆在仓库外 `S:\SeaPawn-Memory\memory\IDEO-Scrum\` |
 
 ### Claude Code 插件
@@ -98,6 +99,7 @@ $stakeholder    # Stakeholder
 | `plugins/ideo-scrum/commands/developer.md` | Command `/ideo-scrum:developer` — Developer 角色（Scrum Guide 2020 原文抄录＋2026 精炼补充；进入时加载 ideo-kernel 与 scrum-kernel，工作涉及冲刺时再加 sprint-kernel） |
 | `plugins/ideo-scrum/commands/scrum-master.md` | Command `/ideo-scrum:scrum-master` — Scrum Master 角色（Scrum Guide 2020 原文抄录＋2026 精炼补充；替 PO 派活、派子代理审阅；进入时加载 ideo-kernel 与 scrum-kernel，工作涉及设计或冲刺时分别再加 design-kernel、sprint-kernel） |
 | `plugins/ideo-scrum/commands/stakeholder.md` | Command `/ideo-scrum:stakeholder` — Stakeholder（SGEP 角色章为底；一个命令多种身份：外部视角——按项目写定的身份看产品和增量，说出期望与现状的差距，反馈交 PO，独立评价由全新子代理给；也可作常驻会话做非源码杂务，如维护看板；源码归 Developer；进入时加载 ideo-kernel 与 scrum-kernel） |
+| `plugins/ideo-scrum/hooks/hooks.json`、`commitments.sh` | Hook：开会话、恢复、清空、压缩（SessionStart）时，把日志里写的承诺——Product、Product Goal、开着的 Sprint Goal 或设计目标——放进上下文；会话中途承诺变了（UserPromptSubmit）再注一次，没变不注。读法照 overview 第 17 条；POSIX sh，出错一律静默；`IDEO_SCRUM_COMMITMENTS=off` 关掉；Windows 上要装 Git for Windows，没装则不生效 |
 
 ### Codex 分发包
 
@@ -107,6 +109,7 @@ $stakeholder    # Stakeholder
 |---|---|
 | `codex/plugins/ideo-scrum/.codex-plugin/plugin.json` | Codex 插件清单 |
 | `codex/plugins/ideo-scrum/skills/ideo-kernel/`、`scrum-kernel/`、`sprint-kernel/`、`design-kernel/` | 四个内核的全部文件，含约定、模板和源材料 |
+| `codex/plugins/ideo-scrum/hooks/` | hooks.json 与脚本，原样复制；Codex 要用户先在 `/hooks` 里审阅并信任才会跑，插件更新改了脚本要重新审阅 |
 | `codex/plugins/ideo-scrum/skills/scrum-master/`、`designer/`、`developer/`、`stakeholder/` | 四个原生角色 skill；各有 SKILL.md 和 agents/openai.yaml |
 | `codex/plugins/ideo-scrum/README.md`、`LICENSE`、`ATTRIBUTION.md` | 包内说明及来源授权 |
 | `scripts/codex_interface.json`、`scripts/codex_readme.md` | Codex 展示文字与包内 README 的生成源 |
@@ -140,7 +143,7 @@ $stakeholder    # Stakeholder
 | `plugins/ideo-scrum/skills/scrum-kernel/references/scrum-artifact-*.md` | 4 个 Artifact reference：Product / Increment / Product Backlog / Sprint Backlog |
 | `plugins/ideo-scrum/skills/sprint-kernel/events/scrum-event-*.md` | 5 个 Event reference：Sprint / Sprint Planning / Daily Scrum / Sprint Review / Sprint Retrospective |
 | `plugins/ideo-scrum/skills/scrum-kernel/overview.md` | 约定总览（与 SKILL.md 并列）：整个流程的图、三层、文件与文档文件夹、角色、阶段之间由 PO 决定、会话分工、目标不变其余可调、与官方故意不同之处 |
-| `plugins/ideo-scrum/skills/scrum-kernel/conventions/` | 约定：product-log 与 product-backlog-template（产品日志） |
+| `plugins/ideo-scrum/skills/scrum-kernel/conventions/` | 约定：product-log 与 product-backlog-template（产品日志）；board 与 board-template.html（看板：一页看清项目走到哪、等 PO 拍什么，由便宜的模型照日志生成，生成物 `scrum/Board.html` 不必入库） |
 
 ### sprint-kernel skill
 

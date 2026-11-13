@@ -74,6 +74,16 @@ def expected_files(root: Path) -> tuple[dict[Path, bytes], bytes]:
                 data = replace_once(data, *DESIGN_LOAD, "design-kernel")
             files[relative] = data
 
+    # The plugin's hooks (hooks/hooks.json and the scripts it runs) go over unchanged: Codex looks for
+    # hooks/hooks.json in the plugin root, and sets CLAUDE_PLUGIN_ROOT as Claude Code does.
+    hooks = source / "hooks"
+    if hooks.is_dir():
+        for path in sorted(hooks.rglob("*")):
+            if path.is_symlink():
+                raise ValueError(f"Symlink is not a distributable source: {path}")
+            if path.is_file():
+                files[path.relative_to(source)] = path.read_bytes()
+
     interface_path = root / "scripts/codex_interface.json"
     # Display copy is added only after the Master approves its full text.
     interface = (

@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 19 (board-hook)
 
 > Started: 2026-11-13 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: worktree-golden-orbiting-bachman | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[support sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-19]-[do sprint 19]，golden-orbiting-bachman）
-> Now: Increment：块 1～8 完成（频率测试选定 A4，hook 已改、测试开关已删）；块 9（看板生成）在迭代：第二批里检查脚本有三处读法不对、模板的 `<br/>` 提示不够，已改，第三批在后台跑 · Master 2026-11-13 放行 How（PO 授权，见第 4 章）
+> Now: Increment：块 1～8 完成（频率测试选定 A4，hook 已改、测试开关已删）；块 9（看板生成）第三批在后台跑；Sprint 18 已合进 main（e1fa560），下一步合 main 进本分支、复核条号，再做块 10 · Master 2026-11-13 放行 How（PO 授权，见第 4 章）
 > Waiting for PO: None
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
@@ -104,7 +104,7 @@ PO 2026-11-13 定 Sprint Goal
 | 3 | 频率测试的标准 | `tests/frequency-test.md`：臂、场景、探针、判定、过线、夹具（做法见 Key choices）；先写、单独提交 | ✓ 2026-11-13　单独提交（`4e26b73`）在正式运行之前；Master 看过（通过，三处都同意） |
 | 4 | hook 脚本与直接运行测试 | `plugins/ideo-scrum/hooks/` 下的声明和 POSIX sh 脚本（读承诺、开关、出错静默，暂留测试用的模式开关）；样本项目夹具和比对脚本（直接喂输入，不起会话） | ✓ 2026-11-13　验收 61-1～3 通过；本机 Windows 实测通过；macOS、Linux 写明依据（见第 4 章「块 4」） |
 | 5 | 频率测试的跑法与冒烟 | 无头长会话的造法；判定脚本（先拿两份已知结果自测）；一次冒烟，估出单次成本 | ✓ 2026-11-13　冒烟通过，成本记进第 4 章；太贵先报 Master，不自己降规模（成本见第 4 章「块 5」，已报 Master） |
-| 6 | 频率测试正式跑与选定 | 按块 3 各臂 3 次 Haiku；汇总（行为、内容分两栏，每轮注入多少 token）进第 4 章；原始输出放 `S:\IDEO-Scrum-Archives\sprint-19-board-hook\` | 按过线选出频率（测不出差别选最省的）并改进 hook，删掉测试用的模式开关，61-1～3 重过 |
+| 6 | 频率测试正式跑与选定 | 按块 3 各臂 3 次 Haiku；汇总（行为、内容分两栏，每轮注入多少 token）进第 4 章；原始输出放 `S:\IDEO-Scrum-Archives\sprint-19-board-hook\` | ✓ 2026-11-13　按过线选出频率（测不出差别选最省的）并改进 hook，删掉测试用的模式开关，61-1～3 重过（选定 A4；汇总见第 5 章；最终 hook 在真实会话里整场跑一次：注入 3 次、压缩发生、P1 P2 都引用当前目标） |
 | 7 | 看板约定与模板 | scrum-kernel `conventions/` 下的 `board.md`（英文，自带给子代理的简报）和 PO 挑的那一版的卡片模板；先给大纲，再给全文审阅（sprint-log 第 11、12 条） | ✓ 2026-11-13　Master 审过（`1c2cdb2`，通过）；自足——别人的环境里，一个便宜模型的子代理拿着它就能生成——在块 9 验证 |
 | 8 | 看板夹具与核对脚本 | 夹具构造脚本（临时仓库：main 加两个开着的冲刺分支，其中一个带设计）；核对脚本：事实对日志、链接、Waiting for PO 汇总、删掉重建一致 | ✓ 2026-11-13　核对脚本先自测：一份对的样本过，一份故意弄坏的被抓住（48 条全过：两个场景各一份对的页过、18 种改坏的页都被抓到） |
 | 9 | 看板生成与汇总 | Haiku 子代理对夹具生成 3 次，再对本仓库现状生成一次；汇总进第 4 章 | 验收 35-1～5 通过（35-6 在块 1） |
