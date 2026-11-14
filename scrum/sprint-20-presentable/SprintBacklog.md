@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 20 (presentable)
 
 > Started: 2026-11-14 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: worktree-sprint-20-presentable | Product Owner: SeaPawn | Scrum Master: 会话 IDEO # [master]-[main]-[management sprint] | Developer: Claude Code（会话 IDEO # [developer]-[sprint-20]-[do presentable]，原生 worktree sprint-20-presentable）
-> Now: Increment：块 1～10 已完成，等 Master 审块 10（`board-log.md` 重写、`scripts/board_check/check.py` 和自测、已接进体验测试的产出 5）；PBI-70 的块 16～18 PO 已放行，排在块 11 之后；有一件要 Master 定：看板改版带来 63-a 第 5 条和陌生人任务要改（见第 4 章）；下一步：块 11（便宜的模型照新模板和 `board-log.md` 生成本仓库的看板，过检查，请 PO 看真实看板） · 最近一次 PO 决定：2026-11-14 放行块 16～18
-> Waiting for PO: 无（等 Master：审块 10；定 63-a 第 5 条和陌生人任务怎么改）
+> Now: Increment：块 1～12、16～18 已完成，等 Master 审块 12、16～18 的收尾（c946ed7、0ec6074 Master 已审过，40fb37d、4ac79ea 是审阅后的小改）；下一步：块 13（63-b 正式跑一组 3 次，一个接一个，过线就停）：要空闲内存 ≥4 GB（现在约 3.7 GB，Master 在请 PO 关闲着的会话），PO 说好了 Master 告诉我再跑；然后块 14（最多修一轮）、块 15（6.0.3 发版准备）；PO 已书面授权：63-b 过线就收官、推送、发 6.0.3、更新本机插件，没过线就停下来回 PO；Retro 挑要点也提前交给 Master，收官不改 CLAUDE.md · 最近一次 PO 决定：2026-11-14 提前授权收官；看板「非常好」；62-1 通读过
+> Waiting for PO: 无（等 Master：空闲内存够了、PO 说好了，再跑块 13）
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
 
