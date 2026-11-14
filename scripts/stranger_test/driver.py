@@ -16,6 +16,9 @@ answered with "the author is not here". The plugin is installed from the committ
 Raw output goes to --out, outside the repository (default: the archive folder of this Sprint). The channel is
 magpie's own `claude run`, which is what `claude-magpie.cmd` runs; it is called directly because the .cmd wrapper
 cannot carry a multi-line argument. The environment of both sessions is a whitelist with a throwaway home folder.
+Each run lives in a folder of its own under the public folder, not under the author's home (Claude Code loads the
+instruction files of every folder above its working directory, and the author's CLAUDE.md is one), and starts only
+after Claude Code's own `/context all` shows that no instruction file is loaded into either session.
 """
 import argparse
 import concurrent.futures
@@ -128,6 +131,67 @@ def make_env(base: pathlib.Path) -> tuple:
     if sh:
         env["CLAUDE_CODE_GIT_BASH_PATH"] = str(pathlib.Path(sh).with_name("bash.exe"))
     return env, home
+
+
+# ---- where a run lives --------------------------------------------------------------------------------------
+# Claude Code loads the instruction files of the working directory and of every folder above it at launch. The
+# system temp folder lies under the author's home, so the author's own ~/.claude/CLAUDE.md was loaded into the
+# plugin session as a "Project" memory file (formal run 1, 2026-11-14): the session read the author's memory folder
+# and answered in the author's language. A run therefore lives where nothing above it is an instruction file, and
+# each run starts only after Claude Code itself says it loaded none.
+INSTRUCTION_FILES = ("CLAUDE.md", "CLAUDE.local.md", "AGENTS.md", ".claude/CLAUDE.md")
+
+
+def instruction_files_above(path) -> list:
+    """The instruction files in `path` and in every folder above it: CLAUDE.md, CLAUDE.local.md, AGENTS.md,
+    .claude/CLAUDE.md and .claude/rules/*.md. [] when there are none."""
+    here = pathlib.Path(path).resolve()
+    found = []
+    for folder in [here, *here.parents]:
+        for rel in INSTRUCTION_FILES:
+            if (folder / rel).is_file():
+                found.append(str(folder / rel))
+        rules = folder / ".claude" / "rules"
+        if rules.is_dir():
+            found.extend(str(p) for p in sorted(rules.rglob("*.md")))
+    return found
+
+
+def neutral_parent() -> pathlib.Path:
+    """A folder to keep the runs in, with no instruction file above it: $ST_ROOT, else the public folder, else the
+    root of the system drive."""
+    for c in (os.environ.get("ST_ROOT"), os.environ.get("PUBLIC"), (os.environ.get("SystemDrive") or "C:") + "\\"):
+        if c and pathlib.Path(c).is_dir() and not instruction_files_above(c):
+            return pathlib.Path(c)
+    sys.exit("no folder without an instruction file above it to run in; set ST_ROOT to one")
+
+
+def parse_memory_files(text: str) -> list:
+    """The rows of the "Memory Files" table in the output of `/context all`: [(type, path)]."""
+    rows, inside = [], False
+    for line in text.splitlines():
+        if line.startswith("#"):
+            inside = "memory files" in line.lower()
+        elif inside and line.startswith("|"):
+            cells = [c.strip() for c in line.strip().strip("|").split("|")]
+            if len(cells) >= 2 and cells[0].lower() != "type" and not set(cells[0]) <= set("-: "):
+                rows.append((cells[0], cells[1]))
+    return rows
+
+
+def probe_memory_files(env: dict, cwd: pathlib.Path, extra: list):
+    """The memory files (CLAUDE.md and the like) Claude Code loads for a session started in `cwd` with the run's own
+    environment, read from its own `/context all` (no model call). [(type, path)], or None when the probe failed."""
+    cmd = magpie_prefix() + ["-p", "--output-format", "text", "--model", MODEL, "--tools", "", "--setting-sources",
+                             "user,project,local"] + extra + ["/context all"]
+    try:
+        r = subprocess.run(cmd, cwd=str(cwd), env=env, capture_output=True, text=True, encoding="utf-8",
+                           errors="replace", timeout=180, stdin=subprocess.DEVNULL)
+    except (OSError, subprocess.SubprocessError):
+        return None
+    if r.returncode != 0 or "Context Usage" not in r.stdout:
+        return None
+    return parse_memory_files(r.stdout)
 
 
 def rmtree(path) -> None:
@@ -321,7 +385,7 @@ class Run:
     # -- setup
     def setup(self) -> None:
         self.dir.mkdir(parents=True, exist_ok=False)
-        self.root = pathlib.Path(tempfile.mkdtemp(prefix="st-"))
+        self.root = pathlib.Path(tempfile.mkdtemp(prefix="st-", dir=neutral_parent()))
         self.p_base, self.s_base = self.root / "p", self.root / "s"
         for b in (self.p_base, self.s_base):
             b.mkdir()
@@ -329,6 +393,8 @@ class Run:
         self.s_env, self.s_home = make_env(self.s_base)
         self.proj = self.root / "project"
         self.proj.mkdir()
+        self.s_cwd = self.root / "s-cwd"
+        self.s_cwd.mkdir()
         self.market = self.root / "market"
         self.market.mkdir()
         z = self.root / "market.zip"
@@ -336,6 +402,17 @@ class Run:
                         ".claude-plugin", "plugins"], check=True)
         with zipfile.ZipFile(z) as f:
             f.extractall(self.market)
+        # no instruction file may reach either session: ask Claude Code itself, in each session's own environment
+        self.memory_files = {"p": probe_memory_files(self.p_env, self.proj, ["--add-dir", str(self.market)]),
+                             "s": [] if self.scripted is not None else probe_memory_files(self.s_env, self.s_cwd, [])}
+        bad = {k: v for k, v in self.memory_files.items() if v is None or v}
+        if bad:
+            detail = "; ".join(f"{k}: " + ("the probe failed" if v is None else ", ".join(p for _, p in v))
+                               for k, v in bad.items())
+            rmtree(self.root)
+            shutil.rmtree(self.dir, ignore_errors=True)
+            sys.exit("not starting: Claude Code would load instruction files into the session, or could not be "
+                     "asked (" + detail + ")")
         self.pages = {}
         for name in PAGES:
             r = subprocess.run(["git", "-C", str(self.repo), "show", f"HEAD:{name}"], capture_output=True,
@@ -351,6 +428,7 @@ class Run:
         (self.dir / "run.json").write_text(json.dumps({
             "commit": self.commit, "dirty_docs_or_plugin": self.dirty, "plugin_version": self.plugin_version,
             "limits": self.limits, "scripted": self.scripted is not None, "temp_root": str(self.root),
+            "memory_files": self.memory_files,
             "started": datetime.datetime.now().isoformat(timespec="seconds"), "installs": self.installs,
         }, indent=2), encoding="utf-8")
 
@@ -449,7 +527,7 @@ class Run:
                 cmd = magpie_prefix() + ["-p", "--input-format", "stream-json", "--output-format", "stream-json",
                                          "--verbose", "--model", MODEL, "--tools", "", "--system-prompt", system,
                                          "--setting-sources", "user,project,local"]
-                s = Session("S", cmd, self.root / "s-cwd", self.s_env, self.dir / "s.jsonl")
+                s = Session("S", cmd, self.s_cwd, self.s_env, self.dir / "s.jsonl")
                 s.start()
             empties = 0
             for n in range(1, self.limits["rounds"] + 1):
@@ -519,7 +597,7 @@ class Run:
             result.update(meta)
             result.update(evaluate(self.dir / "project", self.p_env, self.root, self.p_home, self.s_home, self.convo,
                                    verify.load_rows(self.p_log), verify.load_rows(self.dir / "s.jsonl"),
-                                   self.scripted is not None))
+                                   self.scripted is not None, meta.get("memory_files")))
         except Exception as e:  # noqa: BLE001
             result["evaluation_error"] = repr(e)
         (self.dir / "result.json").write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -529,14 +607,18 @@ class Run:
         return result
 
 
-def evaluate(proj, env, root, p_home, s_home, convo, p_rows, s_rows, scripted) -> dict:
-    """The five outputs, the isolation and the stuck signals of a finished run, from what the run saved."""
+def evaluate(proj, env, root, p_home, s_home, convo, p_rows, s_rows, scripted, memory_files=None) -> dict:
+    """The five outputs, the isolation and the stuck signals of a finished run, from what the run saved.
+    `memory_files` is what Claude Code said it loaded for each session at the start ({"p": [...], "s": [...]}); runs
+    from before that probe have none, and are judged on the folders above the run's root instead."""
     real_home = os.environ["USERPROFILE"]
     outputs = verify.check_outputs(pathlib.Path(proj), env)
     author = verify.scan_author(p_rows, real_home, AUTHOR_NAMES)
     leaks = verify.scan_paths(p_rows, [root], real_home, (), ignore=tuple(tool_dirs()))
     p_init, s_init = verify.init_facts(p_rows, str(p_home)), verify.init_facts(s_rows, str(s_home))
     s_ok = scripted or (not s_init["other_plugins"] and s_init["memory_inside_home"] and not s_init["tools"])
+    above = instruction_files_above(pathlib.Path(root) / "project")
+    loaded = [p for k in ("p", "s") for _, p in ((memory_files or {}).get(k) or [])]
     return {
         "concessions": [
             "XDG_CONFIG_HOME and XDG_CACHE_HOME point at the real .config and .cache, only so that magpie can "
@@ -546,8 +628,11 @@ def evaluate(proj, env, root, p_home, s_home, convo, p_rows, s_rows, scripted) -
         ],
         "outputs": outputs, "all_outputs": all(v["ok"] for v in outputs.values()),
         # pass line 4 of 63-a: no author path touched, and the stranger's sessions carry nothing of the author's
-        "isolation": {"ok": bool(not p_init["other_plugins"] and p_init["memory_inside_home"] and not author and s_ok),
-                      "author_paths_touched": author, "p": p_init, "s": s_init},
+        # (no instruction file above the run's folder, none loaded: the first formal run was voided for this)
+        "isolation": {"ok": bool(not p_init["other_plugins"] and p_init["memory_inside_home"] and not author and s_ok
+                                 and not above and not loaded),
+                      "author_paths_touched": author, "instruction_files_above": above,
+                      "memory_files_loaded": memory_files, "p": p_init, "s": s_init},
         # hygiene, beyond the pass line: anything else the plugin session did under the author's real home
         "leaks": leaks,
         "stuck": verify.stuck_signals(convo, p_rows),
@@ -565,6 +650,8 @@ def write_transcript(directory: pathlib.Path, convo: list) -> None:
 
 def summary_line(r: dict) -> str:
     head = f"{r['run']}: {r['status']} in {r['rounds']} rounds, {r['seconds']} s"
+    if r.get("voided"):
+        head += f" [VOIDED: {r['voided']}]"
     if "outputs" not in r:
         return f"{head}; NOT evaluated: {r.get('evaluation_error')}"
     marks = "".join(k[0] if v["ok"] else "." for k, v in sorted(r["outputs"].items()))
@@ -608,9 +695,11 @@ def cmd_report(args) -> int:
     root = pathlib.Path(init["cwd"]).parent  # <temp root>/project
     meta_file = run / "run.json"
     meta = json.loads(meta_file.read_text("utf-8")) if meta_file.is_file() else {}
-    for k in ("commit", "plugin_version"):
+    for k in ("commit", "plugin_version", "voided"):
         if getattr(args, k):
             meta[k] = getattr(args, k)
+    if args.voided and meta_file.is_file():  # a voided run stays marked in later reports
+        meta_file.write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
     env = {k: v for k, v in os.environ.items() if k.lower() in WHITELIST}
     env.update({"GIT_CONFIG_NOSYSTEM": "1"})
     last = convo[-1] if convo else {}
@@ -619,7 +708,7 @@ def cmd_report(args) -> int:
               "rounds": max([e.get("round", 0) for e in convo] or [0]), "seconds": round(last.get("t", 0)),
               **meta, "reported_from_saved_files": True}
     result.update(evaluate(run / "project", env, root, root / "p" / "home", root / "s" / "home", convo, p_rows,
-                           s_rows, bool(meta.get("scripted"))))
+                           s_rows, bool(meta.get("scripted")), meta.get("memory_files")))
     (run / "result.json").write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
     write_transcript(run, convo)
     print(summary_line(result))
@@ -722,6 +811,33 @@ def selftest() -> int:
         expect("clean_path", cleaned.split(os.pathsep), [str(home / "tools"), str(base / "system")])
     finally:
         rmtree(base)
+    # where a run lives: an instruction file anywhere above it is found, and the folder chosen for the runs has none
+    base = pathlib.Path(tempfile.mkdtemp(prefix="st-selftest-instr-"))
+    try:
+        planted = base / "a" / ".claude" / "CLAUDE.md"
+        planted.parent.mkdir(parents=True)
+        planted.write_text("x", encoding="utf-8")
+        (base / "a" / "b" / "c").mkdir(parents=True)
+        expect("an instruction file above the run is found",
+               str(planted.resolve()) in instruction_files_above(base / "a" / "b" / "c"), True)
+        rules = base / "a" / "b" / ".claude" / "rules"
+        rules.mkdir(parents=True)
+        (rules / "r.md").write_text("x", encoding="utf-8")
+        expect("a rules file above the run is found",
+               str((rules / "r.md").resolve()) in instruction_files_above(base / "a" / "b" / "c"), True)
+    finally:
+        rmtree(base)
+    try:
+        expect("the folder chosen for the runs has no instruction file above it",
+               instruction_files_above(neutral_parent()), [])
+    except SystemExit as e:
+        failures.append(f"no neutral folder: {e}")
+    sample = ("## Context Usage\n\n### Estimated usage by category\n\n| Category | Tokens | Percentage |\n"
+              "|----------|--------|------------|\n| Memory files | 317 | 0.1% |\n\n### Memory Files\n\n"
+              "| Type | Path | Tokens |\n|------|------|--------|\n| Project | C:\\Users\\x\\.claude\\CLAUDE.md | 317 |\n\n")
+    expect("memory files read from /context all", parse_memory_files(sample),
+           [("Project", r"C:\Users\x\.claude\CLAUDE.md")])
+    expect("no memory files section", parse_memory_files("### Estimated usage by category\n\n| A | B |\n"), [])
     # a project that passes, then planted defects
     work = pathlib.Path(tempfile.mkdtemp(prefix="st-selftest-"))
     env = {k: v for k, v in os.environ.items() if k.lower() in WHITELIST}
@@ -781,6 +897,15 @@ def selftest() -> int:
             encoding="utf-8")
         expect("a polyglot script is tried with the other interpreters",
                verify.check_outputs(proj, env)["3_tool_runs"]["ok"], True)
+        # a bash script is run with Git's bash (a bare `bash` is the WSL launcher: formal run 1 judged a working bash
+        # tool as failing) and with a throwaway home (the tool must not write into the real one)
+        (proj / "today").write_text("#!/usr/bin/env bash\nmkdir -p \"$HOME/.st-selftest\" && echo 'Carpe diem'\n",
+                                    encoding="utf-8", newline="\n")
+        expect("a bash script", verify.check_outputs(proj, env)["3_tool_runs"]["ok"], True)
+        probe_dir = pathlib.Path(os.environ["USERPROFILE"]) / ".st-selftest"
+        expect("the tool did not write into the real home", probe_dir.exists(), False)
+        if probe_dir.exists():
+            rmtree(probe_dir)
         (proj / "today").unlink()
         expect("a failing tool", verify.check_outputs(proj, env)["3_tool_runs"]["ok"], False)
         g("tag", "-d", "sprint-01-daily")
@@ -835,6 +960,7 @@ def main(argv) -> int:
     rp.add_argument("run_dir")
     rp.add_argument("--commit", default="")
     rp.add_argument("--plugin-version", dest="plugin_version", default="")
+    rp.add_argument("--voided", default="", help="mark the run as voided, with the reason (a fault of the test bench)")
     sub.add_parser("selftest")
     args = ap.parse_args(argv)
     if args.cmd == "selftest":

@@ -92,7 +92,10 @@ def read_log(root, path, source):
 
 
 def commitments(text):
-    """{kind: exact text} from the one-row tables whose first cell is Commitment / 承诺; the heading says which."""
+    """{kind: exact text} from the one-row tables whose first cell is Commitment / 承诺; the heading says which.
+    A heading may be left in English or put into Chinese (产品, 产品目标, 冲刺目标, 设计目标): a stranger's AI writing
+    the log in Chinese translated "1.1 Product" to "1.1 产品" (formal run 1, 2026-11-14), which the commitments hook
+    (commitments.sh) reads, and this check has to read too."""
     out, head = {}, ""
     for line in text.split("\n"):
         if line.startswith("#"):
@@ -100,8 +103,10 @@ def commitments(text):
         m = re.match(r"^\|\s*(?:Commitment|承诺)\s*\|\s*(.*?)\s*\|\s*$", line)
         if m:
             h = head.lower()
-            kind = ("sprint_goal" if "sprint goal" in h else "product_goal" if "product goal" in h
-                    else "design_goal" if ("design goal" in h or "设计目标" in h) else "product" if "product" in h else "")
+            kind = ("sprint_goal" if ("sprint goal" in h or "冲刺目标" in h)
+                    else "product_goal" if ("product goal" in h or "产品目标" in h)
+                    else "design_goal" if ("design goal" in h or "设计目标" in h)
+                    else "product" if ("product" in h or "产品" in h) else "")
             if kind and kind not in out:
                 out[kind] = m.group(1)
     return out
@@ -492,6 +497,30 @@ def selftest():
             failures.append("the reference page has warnings: %s" % warns[:2])
         blank = build_fixture("blank", tmp)
         check("blank reference passes", reference_data(blank, {}), project=blank)
+        # a log whose headings were put into Chinese (formal run 1: "1.1 产品") reads the same as the English one
+        zh_dir = pathlib.Path(tmp) / "zhcase"
+        zh_dir.mkdir()
+        zh = build_fixture("acme", zh_dir)
+        for rel, pairs in (("scrum/ProductBacklog.md", (("## 1.1 Product", "## 1.1 产品"),
+                                                         ("## 1.2 Product Goal", "## 1.2 产品目标"))),
+                           ("scrum/sprint-01-alpha/SprintBacklog.md", (("### 1.1 Sprint Goal", "### 1.1 冲刺目标"),)),
+                           ("scrum/sprint-02-beta/SprintBacklog.md", (("### 1.1 Sprint Goal", "### 1.1 冲刺目标"),))):
+            path = zh / rel
+            body = path.read_text(encoding="utf-8")
+            for old, new in pairs:
+                if old not in body:
+                    failures.append("zh headings: %r not found in the %s fixture" % (old, rel))
+                body = body.replace(old, new)
+            path.write_text(body, encoding="utf-8")
+        cases += 1
+        en_p, zh_p = read_project(acme), read_project(zh)
+        if not en_p["product"]["statement"] or not en_p["product"]["goal"]:
+            failures.append("zh headings: the English fixture has no Product or Product Goal to compare with")
+        if (zh_p["product"]["statement"], zh_p["product"]["goal"]) != (en_p["product"]["statement"], en_p["product"]["goal"]):
+            failures.append("zh headings: 产品 / 产品目标 are not read as Product / Product Goal")
+        if {k: v["goal"] for k, v in zh_p["sprints"].items()} != {k: v["goal"] for k, v in en_p["sprints"].items()} \
+                or not all(v["goal"] for v in zh_p["sprints"].values()):
+            failures.append("zh headings: 冲刺目标 is not read as the Sprint Goal")
         br_dir = pathlib.Path(tmp) / "branchcase"
         br_dir.mkdir()
         branch = build_fixture("acme", br_dir, branch=True)

@@ -7,8 +7,10 @@ import json
 import os
 import pathlib
 import re
+import shutil
 import subprocess
 import sys
+import tempfile
 
 COMMIT_ROW = re.compile(r"^\|\s*(Commitment|承诺)\s*\|\s*(.+?)\s*\|\s*$", re.M)
 GO_AHEAD = re.compile(r"go-ahead|放行", re.I)
@@ -128,35 +130,50 @@ def shebang_runner(p: pathlib.Path):
     return None
 
 
+def runner_exe(name: str) -> str:
+    """An interpreter as an absolute path. A bare `bash` is not safe on Windows: CreateProcess looks in System32
+    before PATH, finds the WSL launcher there, and that cannot open a Windows path (exit 127; formal run 1 judged a
+    working bash tool as failing). `bash` is Git's, next to the `sh` that Git for Windows puts on PATH."""
+    if name == "bash":
+        sh = shutil.which("sh")
+        if sh and pathlib.Path(sh).with_name("bash.exe").is_file():
+            return str(pathlib.Path(sh).with_name("bash.exe"))
+    return shutil.which(name) or name
+
+
 def check_tool(proj: pathlib.Path) -> dict:
     """The little tool: run each script found in the project (not under scrum/ or .git/); it passes when one exits
-    0 and prints a line."""
+    0 and prints a line. The tool runs with a throwaway home and temp folder: a tool that keeps its list under
+    ~ must not write into the author's real home."""
     tried = []
-    for p in sorted(proj.rglob("*")):
-        rel = p.relative_to(proj).as_posix()
-        if not p.is_file() or rel.startswith((".git/", "scrum/")) or len(rel.split("/")) > 4:
-            continue
-        runners = [TOOL_SUFFIXES[p.suffix.lower()]] if p.suffix.lower() in TOOL_SUFFIXES else []
-        first = None if runners else shebang_runner(p)
-        if first:
-            # a script with a shebang may be a polyglot that only works as an installed command (the second smoke
-            # run built a sh/Python one): try the shebang's interpreter first, then the others
-            runners = [first] + [r for r in (["python"], ["bash"], ["node"]) if r != first]
-        if not runners:
-            continue
+    with tempfile.TemporaryDirectory(prefix="st-tool-", ignore_cleanup_errors=True) as scratch:
         env = {k: v for k, v in os.environ.items() if k.lower() in ("systemroot", "path", "comspec", "pathext")}
-        for runner in runners:
-            try:
-                r = subprocess.run(runner + [str(p)], cwd=str(proj), capture_output=True, text=True,
-                                   encoding="utf-8", errors="replace", timeout=20, env=env,
-                                   stdin=subprocess.DEVNULL)
-            except (subprocess.TimeoutExpired, OSError) as e:
-                tried.append(f"{rel} with {runner[0]}: {type(e).__name__}")
+        env.update({"HOME": scratch, "USERPROFILE": scratch, "APPDATA": scratch, "LOCALAPPDATA": scratch,
+                    "TEMP": scratch, "TMP": scratch})
+        for p in sorted(proj.rglob("*")):
+            rel = p.relative_to(proj).as_posix()
+            if not p.is_file() or rel.startswith((".git/", "scrum/")) or len(rel.split("/")) > 4:
                 continue
-            line = next((l for l in r.stdout.split("\n") if l.strip()), "")
-            tried.append(f"{rel} with {runner[0]}: exit {r.returncode}, {'a line' if line else 'no output'}")
-            if r.returncode == 0 and line:
-                return {"ok": True, "detail": f"{rel} with {runner[0]} printed a line ({len(line)} characters)"}
+            runners = [TOOL_SUFFIXES[p.suffix.lower()]] if p.suffix.lower() in TOOL_SUFFIXES else []
+            first = None if runners else shebang_runner(p)
+            if first:
+                # a script with a shebang may be a polyglot that only works as an installed command (the second
+                # smoke run built a sh/Python one): try the shebang's interpreter first, then the others
+                runners = [first] + [r for r in (["python"], ["bash"], ["node"]) if r != first]
+            if not runners:
+                continue
+            for runner in runners:
+                try:
+                    r = subprocess.run([runner_exe(runner[0])] + runner[1:] + [str(p)], cwd=str(proj),
+                                       capture_output=True, text=True, encoding="utf-8", errors="replace",
+                                       timeout=20, env=env, stdin=subprocess.DEVNULL)
+                except (subprocess.TimeoutExpired, OSError) as e:
+                    tried.append(f"{rel} with {runner[0]}: {type(e).__name__}")
+                    continue
+                line = next((l for l in r.stdout.split("\n") if l.strip()), "")
+                tried.append(f"{rel} with {runner[0]}: exit {r.returncode}, {'a line' if line else 'no output'}")
+                if r.returncode == 0 and line:
+                    return {"ok": True, "detail": f"{rel} with {runner[0]} printed a line ({len(line)} characters)"}
     return {"ok": False, "detail": "no script ran and printed a line; tried: " + ("; ".join(tried) or "none")}
 
 
