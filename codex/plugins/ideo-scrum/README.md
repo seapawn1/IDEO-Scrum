@@ -1,6 +1,6 @@
 # IDEO-Scrum for Codex
 
-v6.0.2. Design Thinking and Scrum Sprint guidance, sharing its source content with the Claude Code edition.
+v6.0.3. Design Thinking and Scrum Sprint guidance, sharing its source content with the Claude Code edition.
 
 ## Install
 

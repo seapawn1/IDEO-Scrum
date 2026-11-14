@@ -2,11 +2,11 @@
 
 What changed in each release of IDEO-Scrum, newest first. Every release is a git tag named `vX.Y.Z`; the 1.x line is the tag `v1`. To upgrade, see the [README](README.md).
 
-## [6.0.3] — unreleased
+## [6.0.3] — 2026-11-14
 
 Sprint 20 ("presentable"): getting the plugin ready for people who did not build it.
 
-- **Board**: redesigned. `scrum/ScrumBoard.html` (it was `Board.html`) is now one fixed page that draws itself from a block of data the AI writes from your logs: a flow diagram of the product, the items not done, and the Sprints and designs they flow into, with a card for each. It reads on a wide screen, a portrait screen and a phone, and needs no network. A check script, `scripts/board_check/check.py`, compares the data with the logs. **Renamed:** `conventions/board.md` is now `board-log.md`, and `board-template.html` is now `scrum-board-template.html`.
+- **Board**: redesigned. `scrum/ScrumBoard.html` (it was `Board.html`) is now one fixed page that draws itself from a block of data the AI writes from your logs: a flow diagram of the product, the items not done, and the Sprints and designs they flow into, with a card for each. It reads on a wide screen, a portrait screen and a phone, follows the system's light or dark setting, and needs no network. A check script, `scripts/board_check/check.py`, compares the data with the logs. **Renamed:** `conventions/board.md` is now `board-log.md`, and `board-template.html` is now `scrum-board-template.html`.
 - **Conventions, seven small fixes**: a prototype follows its conclusions into the Sprint that builds them, as that Sprint's specification; at a gate the AI reads the commitment and writes it into the log instead of reading it out to you; a design's Empathize and Define are settled by you with the Scrum Master session, and the Designer takes over at Ideate; a design's map draws the experience you want, not today's; a test uses only the role cards that matter; Lightning Demos and subagent sketches are optional; the Retrospective writes its lessons into the project's memory, never an instructions file.
 - **Docs**: a README in English and Chinese, a one-page quick start in both, a glossary of the plugin's own terms, and a `Board and hook` section.
 - **Release packaging**: this changelog; upgrade, license and feedback notes in the README; a plugin icon.

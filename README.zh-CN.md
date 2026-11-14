@@ -2,7 +2,7 @@
 
 # IDEO-Scrum
 
-一个 Claude Code 插件：把 Design Thinking 与 Scrum Sprint 带给你一个人加 AI 做的项目。**v6.0.2**
+一个 Claude Code 插件：把 Design Thinking 与 Scrum Sprint 带给你一个人加 AI 做的项目。**v6.0.3**
 
 [English](README.md) · [安装](#安装) · [快速上手](docs/quick-start.zh-CN.md) · [词汇表](docs/glossary.md) · [更新记录](CHANGELOG.md)（英文）
 
@@ -142,9 +142,11 @@ codex plugin add ideo-scrum@ideo-scrum
 
 项目里日志一多，有两样小东西帮你找回方位。
 
-**看板。** 请 Scrum Master，或者一个常驻的助手会话，要一份看板：它照你的日志写出 `scrum/ScrumBoard.html`，用浏览器打开。一张流向图画出产品、没做完的条目，以及每条流进哪个冲刺或设计；点一个冲刺或设计，打开它的卡片：目标、路线、已经做完的工作块。它是为瞥一眼做的：宽屏、竖屏、手机上都读得顺。便宜的模型就能写，照 [`board-log.md`](plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md)（英文）的约定；随时可以删掉再要一份。
+**看板。** 请 Scrum Master，或者一个常驻的助手会话，要一份看板：它照你的日志写出 `scrum/ScrumBoard.html`，用浏览器打开。一张流向图画出产品、没做完的条目，以及每条流进哪个冲刺或设计；点一个冲刺或设计，打开它的卡片：目标、路线、已经做完的工作块。它是为瞥一眼做的：宽屏、竖屏、手机上都读得顺，配色跟着系统的浅色或深色。便宜的模型就能写，照 [`board-log.md`](plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md)（英文）的约定；随时可以删掉再要一份。
 
-![本仓库的看板，由它自己的日志画出](docs/images/board-overview.png)
+![本仓库的看板，由它自己的日志画出，浅色](docs/images/board-overview-light.png)
+
+![同一张看板，深色](docs/images/board-overview.png)
 
 **承诺 hook。** 会话开始、恢复或压缩时，以及承诺变了的那一轮，一个小 hook 会把日志里写着的承诺——产品、Product Goal、开着的 Sprint Goal 或设计目标——逐字放进 AI 的上下文，长会话也不会跑偏。
 

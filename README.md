@@ -2,7 +2,7 @@
 
 # IDEO-Scrum
 
-A Claude Code plugin that brings Design Thinking and Scrum Sprints to a project you build alone with AI. **v6.0.2**
+A Claude Code plugin that brings Design Thinking and Scrum Sprints to a project you build alone with AI. **v6.0.3**
 
 [中文](README.zh-CN.md) · [Install](#install) · [Quick start](docs/quick-start.md) · [Glossary](docs/glossary.md) · [Changelog](CHANGELOG.md)
 
@@ -144,9 +144,11 @@ The plugin calls these files logs: the product log is the Product Backlog, the s
 
 Two small things help you find your place when a project has several logs.
 
-**The board.** Ask the Scrum Master, or a standing helper session, for the board: it writes `scrum/ScrumBoard.html` from your logs. Open it in a browser. A flow diagram shows the product, the items not done, and the Sprint or design each one flows into; pressing a Sprint or a design opens its card with the goal, the route, and the work items done so far. It is made to be read at a glance, on a wide screen, a portrait screen, or a phone. A cheap model can write it, following [`board-log.md`](plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md); delete it any time and ask again.
+**The board.** Ask the Scrum Master, or a standing helper session, for the board: it writes `scrum/ScrumBoard.html` from your logs. Open it in a browser. A flow diagram shows the product, the items not done, and the Sprint or design each one flows into; pressing a Sprint or a design opens its card with the goal, the route, and the work items done so far. It is made to be read at a glance, on a wide screen, a portrait screen, or a phone, and it follows your system's light or dark setting. A cheap model can write it, following [`board-log.md`](plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md); delete it any time and ask again.
 
-![The board of this repository, drawn from its own logs](docs/images/board-overview.png)
+![The board of this repository, drawn from its own logs, in the light setting](docs/images/board-overview-light.png)
+
+![The same board in the dark setting](docs/images/board-overview.png)
 
 **The commitments hook.** When a session starts, resumes, or is compacted, and again when a commitment changes, a small hook puts the commitments written in your logs — the product, the Product Goal, the open Sprint Goal or design goal — into the AI's context word for word, so a long session does not drift from them.
 
