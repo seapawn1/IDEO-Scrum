@@ -138,6 +138,20 @@ codex plugin add ideo-scrum@ideo-scrum
 
 插件把这些文件叫日志：产品日志就是 Product Backlog，冲刺日志就是 Sprint Backlog。真实的例子就是本仓库自己的 `scrum/` 文件夹，中文写的：先看 [`ProductBacklog.md`](scrum/ProductBacklog.md) 和一份归档的冲刺日志 [`sprint-19-board-hook.md`](scrum/documents/sprint/sprint-19-board-hook.md)。
 
+## 看板和 hook
+
+项目里日志一多，有两样小东西帮你找回方位。
+
+**看板。** 请 Scrum Master，或者一个常驻的助手会话，要一份看板：它照你的日志写出 `scrum/ScrumBoard.html`，用浏览器打开。一张流向图画出产品、没做完的条目，以及每条流进哪个冲刺或设计；点一个冲刺或设计，打开它的卡片：目标、路线、已经做完的工作块。它是为瞥一眼做的：宽屏、竖屏、手机上都读得顺。便宜的模型就能写，照 [`board-log.md`](plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md)（英文）的约定；随时可以删掉再要一份。
+
+![本仓库的看板，由它自己的日志画出](docs/images/board-overview.png)
+
+**承诺 hook。** 会话开始、恢复或压缩时，以及承诺变了的那一轮，一个小 hook 会把日志里写着的承诺——产品、Product Goal、开着的 Sprint Goal 或设计目标——逐字放进 AI 的上下文，长会话也不会跑偏。
+
+- 用 `IDEO_SCRUM_COMMITMENTS=off` 关掉，写在设置文件的 `env` 里，或设在你的 shell 里。
+- 它要 POSIX 的 `sh`：Windows 上要装 Git for Windows。没在 macOS 上试过。
+- Codex 要你先信任才会运行 hook：在 `/hooks` 里审阅它，插件更新改了脚本以后要再审一次。没在 Codex 里试过。
+
 ## 了解更多
 
 - [快速上手](docs/quick-start.zh-CN.md)：一页，从装好到走完你的第一个冲刺

@@ -140,6 +140,20 @@ Your project grows a `scrum/` folder. This is the author's layout; use your proj
 
 The plugin calls these files logs: the product log is the Product Backlog, the sprint log is the Sprint Backlog. A real example is this repository's own `scrum/` folder, written in Chinese: start with [`ProductBacklog.md`](scrum/ProductBacklog.md) and one archived sprint log, [`sprint-19-board-hook.md`](scrum/documents/sprint/sprint-19-board-hook.md).
 
+## Board and hook
+
+Two small things help you find your place when a project has several logs.
+
+**The board.** Ask the Scrum Master, or a standing helper session, for the board: it writes `scrum/ScrumBoard.html` from your logs. Open it in a browser. A flow diagram shows the product, the items not done, and the Sprint or design each one flows into; pressing a Sprint or a design opens its card with the goal, the route, and the work items done so far. It is made to be read at a glance, on a wide screen, a portrait screen, or a phone. A cheap model can write it, following [`board-log.md`](plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md); delete it any time and ask again.
+
+![The board of this repository, drawn from its own logs](docs/images/board-overview.png)
+
+**The commitments hook.** When a session starts, resumes, or is compacted, and again when a commitment changes, a small hook puts the commitments written in your logs — the product, the Product Goal, the open Sprint Goal or design goal — into the AI's context word for word, so a long session does not drift from them.
+
+- Switch it off with `IDEO_SCRUM_COMMITMENTS=off`, in the `env` of a settings file or in your shell.
+- It needs a POSIX `sh`: on Windows, install Git for Windows. It has not been tried on macOS.
+- Codex does not run a hook until you trust it: review it in `/hooks`, and again after an update changes the script. It has not been tried there.
+
 ## Learn more
 
 - [Quick start](docs/quick-start.md): one page, from installing to your first closed Sprint
