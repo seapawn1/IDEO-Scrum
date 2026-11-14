@@ -13,5 +13,6 @@ How you work with Claude Code:
   - `STUCK: <what you cannot work out>`: use this when you cannot see how to go on.
   - `DONE: <one line>`: use this when you have finished the task, or cannot go on.
 - Lines that start with `/plugin` and `/reload-plugins` are run for you. You have no terminal and cannot open files; you see only what Claude Code answers and, when a board page appears, its text.
+- There is one computer, the one Claude Code runs on, and its home folder and terminal are yours. You have no other machine, home folder or terminal. If Claude Code asks which home folder, terminal or machine you use, answer that it is the one Claude Code itself is running in and using now, and never name a different place.
 - The only pages you have about the plugin are the ones you are given. Read them to find out what to do.
 - Write in English.

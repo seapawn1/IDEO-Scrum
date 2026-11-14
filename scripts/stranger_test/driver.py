@@ -196,6 +196,86 @@ def probe_memory_files(env: dict, cwd: pathlib.Path, extra: list):
     return parse_memory_files(r.stdout)
 
 
+# ---- keeping the author's own files out of reach ------------------------------------------------------------
+# The plugin session runs as the author's own account, so the author's real home is on the same disk and can be found
+# (the Python folder on PATH names it). The second formal run: the simulated stranger said its terminal opens in "the
+# Windows profile home", and the plugin session installed the tool, a .bashrc and a .bash_profile there. A guard hook
+# (guard.py) now refuses every tool call that names the real home; the stranger is told there is one computer; what
+# the session left behind in the real temp folder (its /tmp) is removed after the run.
+TEMPLATE_PATH = "plugins/ideo-scrum/skills/scrum-kernel/conventions/scrum-board-template.html"
+SNAPSHOT_SKIP = {".claude", "AppData", ".cache", ".config", ".local"}  # .local: only .local/bin is kept
+
+
+def write_guard(dest: pathlib.Path, real_home: str, config_dir: pathlib.Path) -> pathlib.Path:
+    """Put guard.py on every tool call of the plugin session (PreToolUse): the config goes to `dest`, the hook into
+    the session's user settings, in its throwaway config dir (merged into what is there: `claude plugin install`
+    writes that file too). Not `--settings`: magpie passes its own settings that way, and a second flag replaces
+    them, which logged the session out. The script and its config sit in the session's own config dir and the command
+    is a bare `python`: when a call is refused the model is shown the hook's command line, and that must not name
+    the author's repository or home. Returns the settings file."""
+    where = pathlib.Path(config_dir) / "st-guard"
+    where.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(HERE / "guard.py", where / "guard.py")
+    cfg = where / "guard.json"
+    cfg.write_text(json.dumps({"real_home": real_home, "allow": sorted(tool_dirs()), "names": list(AUTHOR_NAMES)},
+                              indent=2), encoding="utf-8")
+    shutil.copy2(cfg, pathlib.Path(dest) / "guard.json")  # a copy for the record, in the run's folder
+    command = f'python "{(where / "guard.py").as_posix()}" "{cfg.as_posix()}"'
+    settings = pathlib.Path(config_dir) / "settings.json"
+    settings.parent.mkdir(parents=True, exist_ok=True)
+    data = json.loads(settings.read_text("utf-8")) if settings.is_file() else {}
+    data.setdefault("hooks", {})["PreToolUse"] = [{"matcher": "*", "hooks": [{"type": "command", "command": command}]}]
+    settings.write_text(json.dumps(data, indent=2), encoding="utf-8")
+    return settings
+
+
+def snapshot_home(home, dest: pathlib.Path) -> None:
+    """What the plugin session left in its home besides its own settings and caches (its installed little tool,
+    its list and state files), so that the tool can be run later the way the stranger's machine left it."""
+    dest.mkdir(parents=True, exist_ok=True)
+    for p in pathlib.Path(home).iterdir():
+        try:
+            if p.name == ".local" and (p / "bin").is_dir():
+                shutil.copytree(p / "bin", dest / ".local" / "bin", dirs_exist_ok=True)
+            elif p.name in SNAPSHOT_SKIP:
+                continue
+            elif p.is_dir():
+                shutil.copytree(p, dest / p.name, dirs_exist_ok=True)
+            elif p.stat().st_size <= 2_000_000:
+                shutil.copy2(p, dest / p.name)
+        except OSError:
+            pass
+
+
+def cleanup_real_temp(rows: list, since: float) -> list:
+    """Git Bash's /tmp is the author's real temp folder whatever TEMP says (its fstab line is `usertemp`), so the
+    plugin session's scratch files land there. Remove what it named under /tmp that was made during the run (the
+    XXXXXX of a mktemp template becomes a wildcard). Returns the names removed."""
+    temp = pathlib.Path(os.environ["USERPROFILE"]) / "AppData" / "Local" / "Temp"
+    names = set()
+    for _, text in verify.tool_inputs(rows):
+        names.update(re.findall(r"/tmp/([A-Za-z0-9_.\-]+)", text))
+    removed = []
+    for name in sorted(names):
+        for p in temp.glob(re.sub(r"X{3,}", "*", name)):
+            try:
+                if p.name.startswith(("claude", "st-", "Headless")) or p.stat().st_mtime < since:
+                    continue
+                rmtree(p) if p.is_dir() else (os.chmod(p, stat.S_IWRITE), p.unlink())
+                removed.append(p.name)
+            except OSError:
+                pass
+    return removed
+
+
+def template_at(commit: str):
+    """The board template as it was in the tested commit: the page of the plugin session is compared with the
+    template it copied, not with whatever the repository holds now."""
+    r = subprocess.run(["git", "-C", str(REPO), "show", f"{commit}:{TEMPLATE_PATH}"], capture_output=True, text=True,
+                       encoding="utf-8")
+    return r.stdout if r.returncode == 0 and r.stdout.strip() else None
+
+
 def rmtree(path) -> None:
     """Delete a folder tree on Windows, where git leaves read-only files that plain rmtree skips."""
     def force(func, p, *_):
@@ -393,6 +473,7 @@ class Run:
             b.mkdir()
         self.p_env, self.p_home = make_env(self.p_base)
         self.s_env, self.s_home = make_env(self.s_base)
+        write_guard(self.dir, os.environ["USERPROFILE"], self.p_home / ".claude")
         self.proj = self.root / "project"
         self.proj.mkdir()
         self.s_cwd = self.root / "s-cwd"
@@ -443,6 +524,10 @@ class Run:
 
     # -- the plugin session
     def start_p(self) -> None:
+        # the installs write the session's user settings too: put the guard back in just before the session starts,
+        # and keep a copy of the settings in the run's folder
+        settings = write_guard(self.dir, os.environ["USERPROFILE"], self.p_home / ".claude")
+        shutil.copy2(settings, self.dir / "p-settings.json")
         cmd = magpie_prefix() + ["-p", "--input-format", "stream-json", "--output-format", "stream-json",
                                  "--verbose", "--include-hook-events", "--model", MODEL, "--tools", P_TOOLS,
                                  "--permission-mode", "acceptEdits", "--allowedTools", "Bash",
@@ -595,11 +680,15 @@ class Run:
                   "seconds": round(time.time() - self.t0)}
         try:
             shutil.copytree(self.proj, self.dir / "project", dirs_exist_ok=True)
+            snapshot_home(self.p_home, self.dir / "p-home")
+            p_rows = verify.load_rows(self.p_log)
+            result["temp_litter_removed"] = cleanup_real_temp(p_rows, self.t0)
             meta = json.loads((self.dir / "run.json").read_text("utf-8"))
             result.update(meta)
             result.update(evaluate(self.dir / "project", self.p_env, self.root, self.p_home, self.s_home, self.convo,
-                                   verify.load_rows(self.p_log), verify.load_rows(self.dir / "s.jsonl"),
-                                   self.scripted is not None, meta.get("memory_files")))
+                                   p_rows, verify.load_rows(self.dir / "s.jsonl"),
+                                   self.scripted is not None, meta.get("memory_files"), meta.get("commit"),
+                                   self.dir / "p-home"))
         except Exception as e:  # noqa: BLE001
             result["evaluation_error"] = repr(e)
         (self.dir / "result.json").write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -609,12 +698,17 @@ class Run:
         return result
 
 
-def evaluate(proj, env, root, p_home, s_home, convo, p_rows, s_rows, scripted, memory_files=None) -> dict:
+def evaluate(proj, env, root, p_home, s_home, convo, p_rows, s_rows, scripted, memory_files=None, commit=None,
+             home_snapshot=None) -> dict:
     """The five outputs, the isolation and the stuck signals of a finished run, from what the run saved.
     `memory_files` is what Claude Code said it loaded for each session at the start ({"p": [...], "s": [...]}); runs
-    from before that probe have none, and are judged on the folders above the run's root instead."""
+    from before that probe have none, and are judged on the folders above the run's root instead. `commit` is the
+    tested commit (its board template is the one the page is compared with); `home_snapshot` is what the plugin
+    session left in its home (the little tool is run with it)."""
     real_home = os.environ["USERPROFILE"]
-    outputs = verify.check_outputs(pathlib.Path(proj), env)
+    snapshot = home_snapshot if home_snapshot and pathlib.Path(home_snapshot).is_dir() else None
+    outputs = verify.check_outputs(pathlib.Path(proj), env, template_text=template_at(commit) if commit else None,
+                                   home=snapshot)
     author = verify.scan_author(p_rows, real_home, AUTHOR_NAMES)
     leaks = verify.scan_paths(p_rows, [root], real_home, (), ignore=tuple(tool_dirs()))
     p_init, s_init = verify.init_facts(p_rows, str(p_home)), verify.init_facts(s_rows, str(s_home))
@@ -634,7 +728,9 @@ def evaluate(proj, env, root, p_home, s_home, convo, p_rows, s_rows, scripted, m
         "isolation": {"ok": bool(not p_init["other_plugins"] and p_init["memory_inside_home"] and not author and s_ok
                                  and not above and not loaded),
                       "author_paths_touched": author, "instruction_files_above": above,
-                      "memory_files_loaded": memory_files, "p": p_init, "s": s_init},
+                      "memory_files_loaded": memory_files,
+                      # calls the guard hook refused: attempts on the author's own files, none of them carried out
+                      "guard_blocks": verify.guard_blocks(p_rows), "p": p_init, "s": s_init},
         # hygiene, beyond the pass line: anything else the plugin session did under the author's real home
         "leaks": leaks,
         "stuck": verify.stuck_signals(convo, p_rows),
@@ -658,7 +754,8 @@ def summary_line(r: dict) -> str:
         return f"{head}; NOT evaluated: {r.get('evaluation_error')}"
     marks = "".join(k[0] if v["ok"] else "." for k, v in sorted(r["outputs"].items()))
     return (f"{head}; outputs {marks} ({'all' if r['all_outputs'] else 'not all'}); "
-            f"isolation {'ok' if r['isolation']['ok'] else 'NOT ok'}, leaks {len(r['leaks'])}; "
+            f"isolation {'ok' if r['isolation']['ok'] else 'NOT ok'}, leaks {len(r['leaks'])}, "
+            f"guard blocked {r['isolation'].get('guard_blocks', '?')}; "
             f"ask_author {r['stuck']['ask_author']}, stuck {r['stuck']['stuck_lines']}")
 
 
@@ -710,7 +807,11 @@ def cmd_report(args) -> int:
               "rounds": max([e.get("round", 0) for e in convo] or [0]), "seconds": round(last.get("t", 0)),
               **meta, "reported_from_saved_files": True}
     result.update(evaluate(run / "project", env, root, root / "p" / "home", root / "s" / "home", convo, p_rows,
-                           s_rows, bool(meta.get("scripted")), meta.get("memory_files")))
+                           s_rows, bool(meta.get("scripted")), meta.get("memory_files"), meta.get("commit"),
+                           run / "p-home"))
+    note = run / "p-home" / "RECONSTRUCTED.txt"  # a run from before the home snapshot: rebuilt by hand, and said so
+    if note.is_file():
+        result["home_snapshot_note"] = note.read_text("utf-8").strip()
     (run / "result.json").write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
     write_transcript(run, convo)
     print(summary_line(result))
@@ -721,7 +822,10 @@ def cmd_verify(args) -> int:
     run = pathlib.Path(args.run_dir)
     proj = run / "project"
     env = {k: v for k, v in os.environ.items() if k.lower() in WHITELIST}
-    print(json.dumps(verify.check_outputs(proj, env), ensure_ascii=False, indent=2))
+    snapshot = run / "p-home" if (run / "p-home").is_dir() else None
+    meta = json.loads((run / "run.json").read_text("utf-8")) if (run / "run.json").is_file() else {}
+    tpl = template_at(meta["commit"]) if meta.get("commit") else None
+    print(json.dumps(verify.check_outputs(proj, env, template_text=tpl, home=snapshot), ensure_ascii=False, indent=2))
     return 0
 
 
@@ -863,6 +967,83 @@ def selftest() -> int:
         found = probe_in(None) or []
         expect("the probe finds the author's CLAUDE.md under the system temp folder",
                any(p.lower().endswith("claude.md") for _, p in found), True)
+    # the guard: calls that name the author's real home, memory folder or repository are refused
+    import guard
+    expect("the guard's text is the one verify counts", guard.MARKER, verify.GUARD_MARKER)
+    gcfg = {"real_home": r"C:\Users\someone", "allow": ["c:/users/someone/appdata/local/programs/python/python313"],
+            "names": ["seapawn-memory", "s:/ideo-scrum"]}
+    for label, tool_input, blocked in (
+            ("the real home, Windows form", {"command": r"dir C:\Users\someone"}, True),
+            ("the real home, MSYS form", {"command": "ls -la /c/Users/someone/.local/bin"}, True),
+            ("a file in the real home", {"file_path": "C:/Users/someone/.bashrc"}, True),
+            ("HOME set to the real home", {"command": "HOME=/c/Users/someone bash -lc 'echo hi'"}, True),
+            ("the author's memory folder", {"command": "cat S:/SeaPawn-Memory/SEAPAWN.md"}, True),
+            ("the author's repository", {"path": "S:/IDEO-Scrum/CLAUDE.md"}, True),
+            ("a tool folder under the real home",
+             {"command": "/c/Users/someone/AppData/Local/Programs/Python/Python313/python -V"}, False),
+            ("the run's own home", {"command": "ls ~ /c/Users/Public/st-abc/p/home"}, False),
+            ("a user name that only starts the same", {"command": "ls /c/Users/someone2"}, False),
+            ("text a tool writes is not read", {"file_path": "x.md", "content": r"the home is C:\Users\someone"}, False),
+            ("the prompt of a subagent is not read", {"prompt": r"look in C:\Users\someone"}, False)):
+        expect("guard: " + label, bool(guard.reason(tool_input, gcfg)), blocked)
+    base = pathlib.Path(tempfile.mkdtemp(prefix="st-selftest-guard-"))
+    try:
+        cdir = base / "cfg"
+        cdir.mkdir()
+        (cdir / "settings.json").write_text(json.dumps({"extraKnownMarketplaces": {"m": {"source": "x"}}}), encoding="utf-8")
+        settings = json.loads(write_guard(base, r"C:\Users\someone", cdir).read_text("utf-8"))
+        hook_cmd = settings["hooks"]["PreToolUse"][0]["hooks"][0]["command"]
+        expect("the guard settings name guard.py and its config", "guard.py" in hook_cmd and "guard.json" in hook_cmd, True)
+        expect("the guard is merged into the settings that are there", "extraKnownMarketplaces" in settings, True)
+        expect("the guard config is written", json.loads((base / "guard.json").read_text("utf-8"))["real_home"],
+               r"C:\Users\someone")
+    finally:
+        rmtree(base)
+    # the home snapshot keeps the installed tool and the list, not the session's settings, caches and big files
+    base = pathlib.Path(tempfile.mkdtemp(prefix="st-selftest-snap-"))
+    try:
+        fake = base / "home"
+        for rel in (".claude/x", "AppData/y", ".local/bin/t", ".local/share/z", "list.txt"):
+            (fake / rel).parent.mkdir(parents=True, exist_ok=True)
+            (fake / rel).write_text("x", encoding="utf-8")
+        (fake / "big.bin").write_bytes(b"0" * 3_000_000)
+        snapshot_home(fake, base / "snap")
+        kept = sorted(p.relative_to(base / "snap").as_posix() for p in (base / "snap").rglob("*") if p.is_file())
+        expect("the home snapshot", kept, [".local/bin/t", "list.txt"])
+        # the little tool is run the way the stranger's machine left it: with the session's list, or its installed command
+        proj = base / "proj"
+        proj.mkdir()
+        (proj / "daily").write_text("#!/usr/bin/env bash\nf=\"$HOME/list.txt\"\n[ -f \"$f\" ] || exit 1\nhead -n 1 \"$f\"\n",
+                                    encoding="utf-8", newline="\n")
+        expect("a tool that needs the session's list fails without it", verify.check_tool(proj)["ok"], False)
+        expect("... and passes with the snapshot", verify.check_tool(proj, base / "snap")["ok"], True)
+        (proj / "daily").unlink()
+        expect("a command installed in the session's ~/.local/bin",
+               verify.check_tool(proj, base / "snap")["ok"], False)  # `t` holds just "x": not a script
+        (base / "snap" / ".local" / "bin" / "t").write_text("#!/usr/bin/env bash\necho hi\n", encoding="utf-8", newline="\n")
+        expect("... runs when it is a script", verify.check_tool(proj, base / "snap")["ok"], True)
+    finally:
+        rmtree(base)
+    # what the session left in the real temp folder through /tmp is removed, but only what it named and made in the run
+    real_tmp = pathlib.Path(os.environ["USERPROFILE"]) / "AppData" / "Local" / "Temp"
+    made = [real_tmp / "zz-selftest-file", real_tmp / "zz-selftest-dirA1b2C3", real_tmp / "zz-selftest-old"]
+    try:
+        made[0].write_text("x", encoding="utf-8")
+        made[1].mkdir(exist_ok=True)
+        made[2].write_text("x", encoding="utf-8")
+        os.utime(made[2], (time.time() - 7200, time.time() - 7200))
+        litter = [{"type": "assistant", "message": {"content": [{"type": "tool_use", "id": "1", "name": "Bash", "input": {
+            "command": "mktemp -d /tmp/zz-selftest-dirXXXXXX; echo x > /tmp/zz-selftest-file; cat /tmp/zz-selftest-old"}}]}}]
+        expect("temp litter removed", sorted(cleanup_real_temp(litter, time.time() - 600)),
+               ["zz-selftest-dirA1b2C3", "zz-selftest-file"])
+        expect("... and what was there before the run stays", made[2].exists(), True)
+    finally:
+        for p in made:
+            if p.is_dir():
+                rmtree(p)
+            elif p.exists():
+                p.unlink()
+    expect("the template of a commit", (template_at("HEAD") or "").startswith("<!DOCTYPE html>"), True)
     # a project that passes, then planted defects
     work = pathlib.Path(tempfile.mkdtemp(prefix="st-selftest-"))
     env = {k: v for k, v in os.environ.items() if k.lower() in WHITELIST}

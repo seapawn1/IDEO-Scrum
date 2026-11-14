@@ -59,8 +59,10 @@ def sprint_log_texts(proj: pathlib.Path, env: dict) -> dict:
     return texts
 
 
-def check_outputs(proj: pathlib.Path, env: dict, board_check=None) -> dict:
-    """The five outputs of 63-a. Each value is {"ok": bool, "detail": str}."""
+def check_outputs(proj: pathlib.Path, env: dict, board_check=None, template_text=None, home=None) -> dict:
+    """The five outputs of 63-a. Each value is {"ok": bool, "detail": str}. `template_text` is the board template of
+    the commit that was tested (the page is compared with the template the plugin session copied, not with whatever
+    the repository holds now); `home` is a snapshot of the plugin session's home, see check_tool."""
     out = {}
 
     pl = proj / "scrum" / "ProductBacklog.md"
@@ -76,7 +78,7 @@ def check_outputs(proj: pathlib.Path, env: dict, board_check=None) -> dict:
     out["2_sprint_log"] = {"ok": bool(goal) and bool(ahead),
                            "detail": f"Sprint Goal commitment in {sorted(goal)[:3]}; go-ahead in {sorted(ahead)[:3]}"}
 
-    out["3_tool_runs"] = check_tool(proj)
+    out["3_tool_runs"] = check_tool(proj, home)
 
     names = set()
     for line in git(proj, env, "log", "--all", "--name-only", "--format=").split("\n"):
@@ -93,20 +95,21 @@ def check_outputs(proj: pathlib.Path, env: dict, board_check=None) -> dict:
     if not board.is_file():
         out["5_board"] = {"ok": False, "detail": "no scrum/ScrumBoard.html"}
     else:
-        ok, detail = (board_check or default_board_check)(board, proj)
+        ok, detail = board_check(board, proj) if board_check else default_board_check(board, proj, template_text)
         out["5_board"] = {"ok": ok, "detail": detail}
     return out
 
 
-def default_board_check(board: pathlib.Path, proj: pathlib.Path):
+def default_board_check(board: pathlib.Path, proj: pathlib.Path, template_text=None):
     """The 68-4 check (scripts/board_check/check.py): the data block against the logs of the project, and the page
-    against the template outside the data block. Returns (ok, detail)."""
+    against the template outside the data block (the given template, else the repository's current one).
+    Returns (ok, detail)."""
     import importlib.util
     spec = importlib.util.spec_from_file_location("board_check_check",
                                                   pathlib.Path(__file__).resolve().parent.parent / "board_check" / "check.py")
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
-    tpl = mod.TEMPLATE.read_text(encoding="utf-8") if mod.TEMPLATE.is_file() else None
+    tpl = template_text or (mod.TEMPLATE.read_text(encoding="utf-8") if mod.TEMPLATE.is_file() else None)
     errors, warnings = mod.check_page(board.read_text(encoding="utf-8", errors="replace"), proj, tpl)
     if errors:
         return False, "; ".join(errors[:4])
@@ -141,17 +144,31 @@ def runner_exe(name: str) -> str:
     return shutil.which(name) or name
 
 
-def check_tool(proj: pathlib.Path) -> dict:
-    """The little tool: run each script found in the project (not under scrum/ or .git/); it passes when one exits
-    0 and prints a line. The tool runs with a throwaway home and temp folder: a tool that keeps its list under
-    ~ must not write into the author's real home."""
+def check_tool(proj: pathlib.Path, home=None) -> dict:
+    """The little tool: run each script found in the project (not under scrum/ or .git/) and each command the plugin
+    session installed in its ~/.local/bin; it passes when one exits 0 and prints a line. It runs the way the
+    stranger's machine left it: `home` is a snapshot of the plugin session's home (its list, its state file, its
+    installed command; the second formal run built a tool that needs ~/daily-sentences.txt and exits 1 without it),
+    copied into a throwaway folder that becomes HOME, with its .local/bin first on PATH. Without a snapshot the home
+    is empty. Either way a tool that keeps its list under ~ cannot write into the author's real home."""
     tried = []
     with tempfile.TemporaryDirectory(prefix="st-tool-", ignore_cleanup_errors=True) as scratch:
+        scratch_home, scratch_tmp = pathlib.Path(scratch) / "home", pathlib.Path(scratch) / "tmp"
+        if home and pathlib.Path(home).is_dir():
+            shutil.copytree(home, scratch_home)
+        else:
+            scratch_home.mkdir()
+        (scratch_home / ".local" / "bin").mkdir(parents=True, exist_ok=True)
+        scratch_tmp.mkdir()
         env = {k: v for k, v in os.environ.items() if k.lower() in ("systemroot", "path", "comspec", "pathext")}
-        env.update({"HOME": scratch, "USERPROFILE": scratch, "APPDATA": scratch, "LOCALAPPDATA": scratch,
-                    "TEMP": scratch, "TMP": scratch})
-        for p in sorted(proj.rglob("*")):
-            rel = p.relative_to(proj).as_posix()
+        for k in list(env):
+            if k.lower() == "path":
+                env[k] = os.pathsep.join([str(scratch_home / ".local" / "bin"), env[k]])
+        env.update({"HOME": str(scratch_home), "USERPROFILE": str(scratch_home), "APPDATA": str(scratch_home),
+                    "LOCALAPPDATA": str(scratch_home), "TEMP": str(scratch_tmp), "TMP": str(scratch_tmp)})
+        candidates = [(p.relative_to(proj).as_posix(), p) for p in sorted(proj.rglob("*"))]
+        candidates += [(".local/bin/" + p.name, p) for p in sorted((scratch_home / ".local" / "bin").glob("*"))]
+        for rel, p in candidates:
             if not p.is_file() or rel.startswith((".git/", "scrum/")) or len(rel.split("/")) > 4:
                 continue
             runners = [TOOL_SUFFIXES[p.suffix.lower()]] if p.suffix.lower() in TOOL_SUFFIXES else []
@@ -245,6 +262,18 @@ def scan_author(rows: list, real_home: str, names: tuple, dirs: tuple = (".claud
             if name.lower() in n:
                 hits.append((tool, name))
     return hits
+
+
+GUARD_MARKER = "a place outside this session's folders"  # in the text guard.py prints when it refuses a tool call
+
+
+def guard_blocks(rows: list) -> int:
+    """How many tool calls of the plugin session guard.py refused (it tried to reach the author's own files)."""
+    n = 0
+    for d in rows:
+        if d.get("type") == "user" and GUARD_MARKER in json.dumps(d.get("message"), ensure_ascii=False):
+            n += 1
+    return n
 
 
 def session_cost(rows: list) -> float:
