@@ -9,7 +9,7 @@ settings.local.json
 /.claude/worktrees/
 
 # 看板：由日志生成，不拥有任何事实，删了随时能重建（插件 scrum-kernel 的 conventions/board.md）
-/scrum/Board.html
+/scrum/ScrumBoard.html
 
 .DS_Store
 Thumbs.db
