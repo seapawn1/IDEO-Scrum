@@ -182,8 +182,10 @@ def parse_memory_files(text: str) -> list:
 def probe_memory_files(env: dict, cwd: pathlib.Path, extra: list):
     """The memory files (CLAUDE.md and the like) Claude Code loads for a session started in `cwd` with the run's own
     environment, read from its own `/context all` (no model call). [(type, path)], or None when the probe failed."""
-    cmd = magpie_prefix() + ["-p", "--output-format", "text", "--model", MODEL, "--tools", "", "--setting-sources",
-                             "user,project,local"] + extra + ["/context all"]
+    # `--add-dir` takes any number of values: the option after it (here --setting-sources) must end the list, or the
+    # prompt is swallowed as a folder and the probe fails
+    cmd = magpie_prefix() + ["-p", "--output-format", "text", "--model", MODEL, "--tools", ""] + extra + [
+        "--setting-sources", "user,project,local", "/context all"]
     try:
         r = subprocess.run(cmd, cwd=str(cwd), env=env, capture_output=True, text=True, encoding="utf-8",
                            errors="replace", timeout=180, stdin=subprocess.DEVNULL)
@@ -838,6 +840,29 @@ def selftest() -> int:
     expect("memory files read from /context all", parse_memory_files(sample),
            [("Project", r"C:\Users\x\.claude\CLAUDE.md")])
     expect("no memory files section", parse_memory_files("### Estimated usage by category\n\n| A | B |\n"), [])
+
+    # the probe itself, asked the way a run asks it (the first version put --add-dir last and it swallowed the
+    # prompt as a folder): nothing in a folder with no instruction file above it; the author's CLAUDE.md under the
+    # system temp folder, where formal run 1 lived (when the author's home has one)
+    def probe_in(parent):
+        base = pathlib.Path(tempfile.mkdtemp(prefix="st-selftest-probe-", dir=parent))
+        try:
+            (base / "p").mkdir()
+            penv, _ = make_env(base / "p")
+            (base / "project").mkdir()
+            (base / "market").mkdir()
+            return probe_memory_files(penv, base / "project", ["--add-dir", str(base / "market")])
+        finally:
+            rmtree(base)
+
+    try:
+        expect("the probe finds no memory file in the folder chosen for the runs", probe_in(neutral_parent()), [])
+    except SystemExit as e:
+        failures.append(f"no neutral folder: {e}")
+    if (pathlib.Path(os.environ["USERPROFILE"]) / ".claude" / "CLAUDE.md").is_file():
+        found = probe_in(None) or []
+        expect("the probe finds the author's CLAUDE.md under the system temp folder",
+               any(p.lower().endswith("claude.md") for _, p in found), True)
     # a project that passes, then planted defects
     work = pathlib.Path(tempfile.mkdtemp(prefix="st-selftest-"))
     env = {k: v for k, v in os.environ.items() if k.lower() in WHITELIST}
