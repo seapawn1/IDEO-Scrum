@@ -199,7 +199,11 @@ def read_project(root):
         else:
             target = header_field(body, "For")
             m = re.search(r"(sprint-[^/\s]+|design-[^/\s]+)", target)
-            P["ideo"][ident] = {"source": info["source"], "now": now_line(body), "for": m.group(1) if m else ""}
+            now = now_line(body)
+            # only an IDEO log that serves an open Sprint or design and is itself still open is on the page: one
+            # whose For is the product log, or whose Now says concluded / closed, is not open work (board-log 11)
+            P["ideo"][ident] = {"source": info["source"], "now": now, "for": m.group(1) if m else "",
+                                "open": bool(m) and not re.search(r"\b(concluded|closed)\b", now, re.I)}
     return P
 
 
@@ -381,6 +385,8 @@ def check_data(D, P, errors, warnings):
         for x in owner.get("ideo") or []:
             placed[x.get("id")] = (owner.get("id"), x.get("now"))
     for ident, w in P["ideo"].items():
+        if not w["open"]:
+            continue  # serves the product log, or says concluded / closed: not on the page (board-log 11)
         if ident not in placed:
             errors.append("ideo %s: the log is open but the page does not show it" % ident)
         else:
@@ -388,7 +394,7 @@ def check_data(D, P, errors, warnings):
                 errors.append("ideo %s: shown under %s, its For field points to %s" % (ident, placed[ident][0], w["for"]))
             eq(errors, "ideo %s now" % ident, placed[ident][1], w["now"])
     for ident in placed:
-        if ident not in P["ideo"]:
+        if ident not in P["ideo"] or not P["ideo"][ident]["open"]:
             errors.append("ideo %s is shown but has no open log" % ident)
 
 
@@ -424,7 +430,7 @@ def reference_data(root, summ):
                 "story": summ.get("designs", {}).get(k, {}).get("story", [])} for k, v in P["designs"].items()]
     by_id = {x["id"]: x for x in sprints + designs}
     for k, v in P["ideo"].items():
-        if v["for"] in by_id:
+        if v["open"] and v["for"] in by_id:
             by_id[v["for"]].setdefault("ideo", []).append({"id": k, "now": v["now"]})
     lang = "zh" if re.search(r"[\u4e00-\u9fff]", pp["statement"]) else "en"
     return {"lang": lang, "generated": "2026-11-14 12:00",
@@ -521,6 +527,30 @@ def selftest():
         if {k: v["goal"] for k, v in zh_p["sprints"].items()} != {k: v["goal"] for k, v in en_p["sprints"].items()} \
                 or not all(v["goal"] for v in zh_p["sprints"].values()):
             failures.append("zh headings: 冲刺目标 is not read as the Sprint Goal")
+        # an IDEO log that is not open work is not on the page: its For is the product log, or its Now says concluded
+        # (formal run 2 drew a voice run for the product log, closed, and left it off the page — correctly)
+        id_dir = pathlib.Path(tmp) / "ideocase"
+        id_dir.mkdir()
+        ideo = build_fixture("acme", id_dir)
+        lo = ideo / "scrum/ideo-delta/IdeoBacklog.md"
+        body = lo.read_text(encoding="utf-8")
+        for old, new in (("> Opened 2026-11-13 | For: ../design-gamma/DesignBacklog.md", "> Opened 2026-11-13 | For: ../ProductBacklog.md"),
+                         ("> Now: Test：把重试间隔拿给两位店员看", "> Now: concluded 2026-11-14 — the frame is found")):
+            if old not in body:
+                failures.append("ideo not open work: %r not found in the fixture" % old)
+            body = body.replace(old, new)
+        lo.write_text(body, encoding="utf-8")
+        cases += 1
+        idref = reference_data(ideo, ACME_SUMM)
+        if any(x.get("ideo") for x in idref["sprints"] + idref["designs"]):
+            failures.append("ideo not open work: the page data still shows it")
+        check("a log that serves the product log, and is concluded, is not shown", idref, project=ideo)
+        shown = copy.deepcopy(idref)
+        shown["designs"][0].setdefault("ideo", []).append({"id": "ideo-delta", "now": "concluded 2026-11-14 — the frame is found"})
+        errs, _ = check_page(make_page(shown, tpl), ideo, tpl)
+        if not any("has no open log" in e for e in errs):
+            failures.append("ideo not open work: showing it is not caught (%s)" % errs[:2])
+        cases += 1
         br_dir = pathlib.Path(tmp) / "branchcase"
         br_dir.mkdir()
         branch = build_fixture("acme", br_dir, branch=True)
