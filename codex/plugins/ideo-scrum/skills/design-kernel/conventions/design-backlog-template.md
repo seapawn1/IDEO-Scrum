@@ -14,7 +14,7 @@
 
 ### 1.1 Challenge
 
-<!-- The big challenge, in a sentence or two. Why now: high stakes, not enough time, or just plain stuck. -->
+<!-- The big challenge, in a sentence or two. Why now: high stakes, not enough time, or just plain stuck. The situation today and where it hurts go here too, each with its source (convention 6); the map in chapter 2 draws the experience we want, not today (convention 8). -->
 
 ### 1.2 Design goal
 
