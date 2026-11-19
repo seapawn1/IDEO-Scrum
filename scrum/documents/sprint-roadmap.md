@@ -1,0 +1,50 @@
+# Sprint 21–26：使用反馈收齐
+
+2026-11-19，PO：SeaPawn。方向：把前期使用积累的反馈和待做的插件条目落实到产品里，做成一版经过实际使用打磨的插件。现有 Product Goal 不变；这里确定六期的分工，不代替每期自己的 Sprint Goal、How 或施工放行。PBI 的故事、状态与规模只在[产品日志](../ProductBacklog.md)维护。
+
+## 六期分工
+
+**六个 Sprint，各一名 Developer。** 按共同交付结果分，不按“凡有品味要求就交给 PO 施工”分。先建 21 的 Developer（PO 指定 Sonnet、与 Master 相同的思考强度、Ultracode），其他逐个建。PO、Master 和各期 Developer 先把六期的 Planning 逐期做齐，再由 PO 一期一期放行施工；已分别放行的工作可在独立工作树并行，互不等待 Memory。
+
+| Sprint · 文件夹／分支短名 | PBI | 做成什么；哪些不在范围内 | 三方要谈清、验清的事 |
+| --- | --- | --- | --- |
+| **21 · `sprint-21-design-board`** | 74、71 | 只重做设计冲刺卡。第一块只放设计目标；第二块取设计日志的地图主线，借用产品卡的简略路线表达；第三块独立展示选定方案，是本期重点。产品卡与普通 Sprint 卡不改版。 | AI Developer 提方案，Master 跟进。核对设计日志 1.2（目标）、2.1（地图）、3.1（方案）与可选的 3.2（故事板）。没选方案或没画故事板时仍有独立区域，不编造内容。PBI-71 另验服务产品日志／已收尾 IDEO 日志的归属，不混同于设计卡。 |
+| **22 · `sprint-22-project-agents`** | 73、75 | 参谋给独立第二意见；插件让**各个使用它的项目**按自己的 Stakeholder 角色卡复用 Agent。不是给所有项目装同一批角色，也不是通用 Claude Code Setup。 | Developer 用合适的 IDEO 方法调研已有做法，再提设计。角色卡定后展示配置；接受才写该项目的 Agent 并在产品日志 2.1 引用，拒绝不写且流程照走。更新先展示差异、确认，不覆盖用户文件。独立反馈用新上下文。Master 关注注册、引用与权限，不替 Developer 定 How；DSH 等价能力待查。 |
+| **23 · `sprint-23-log-rules`** | 76、77、78、79、69 | 把决定、承诺、验收与收尾说清。DoD 全部生效，选本轮核验重点不是豁免。进入或返回阶段前等 PO；Ideate 发散前 PO 先组织。承诺原文只存一份，可另写解释；区分汇总级和项目级 Goal。保留设计中间材料，项目 Retro 的重要教训分条入记忆。 | 分别验证 How 到施工、选方案到原型等阶段门；不把认可上一阶段当下一阶段放行。解释不是承诺，已有等价规则不重写。保留速写、演示、评审、合成稿及被否方案，不把原型算 Increment。PBI-69 管项目教训，不与 PBI-51 合并。 |
+| **24 · `sprint-24-loading-reliability`** | 80、81、82、83 | 定 Product Goal、Sprint Goal，写设计挑战／目标／问题与精化产出前，确实读了指定原文、约定和模板注释。角色入口实际调用 4/3/3/2 个内核。sprint-kernel 加载时即包含 Sprint Backlog／Sprint Goal 方法论原文，单有链接不算。解决承诺 hook 在每条消息上的开销。 | 分别验证“调用 Skill”和“读原文并使用”；其他阶段材料是否预载靠实测，不一次全塞。保留来源署名与原文。Master 与 Developer 调研 hook 瓶颈，必要时用五模式或提设计研究；旧测 2.1–2.4 秒，300ms 是候选值，先定环境、样本、通过线和预算，再跑测试；注入频率、原文和开关不变。 |
+| **25 · `sprint-25-dsh-docs`** | 72 | 验收已有的 DSH 分发、收齐 README、快速上手及维护说明。Claude 与 DSH **两版都改为 0.6.3**，不是其中一版降号。建立跨宿主的 `AGENTS.md`；`CLAUDE.md` 单向导入 `@AGENTS.md`，不循环互引。 | DSH 实现 `b2679aa` 已在 main；原 DSH 工作树同点，无待合入内容。先查 SeaPawn `advisor-workspace` 的既有验收，再补缺口，不重复造包。打包／自动检查与实际安装、角色入口、承诺上下文分开验；验证版本回退的升级行为；DSH 是否读取共用文件及能否注册项目 Agent 由 Developer 实查。改号归本期，发布另授权。 |
+| **26 · `sprint-26-plugin-memory`** | 51 | PO 与 Developer **通读整个插件**，不只 conventions；审作者约定的依据与去留，把插件自己的约定做成 Memory。不是项目知识库或 Retro 档案。 | PO 主要定方向、品味和内容，也可以交 AI 自动化处理大量工作；不要求 PO 自己写命令、逐段施工或全程盯守。未配置时不自动加载，开启才自动加载，两种情况下都可手动调用。Skill／命令只是候选，载体未定；若选 Skill，用 skill-creator 等相应工具。保留原书摘录、PO 原话和已批准文本。 |
+
+## 谁问、谁决定、何时合
+
+- **每期都可以、也必须把关键问题交回 PO**，包括 PO 不亲自跟进或审稿的期：目标和范围不清、价值／品味取舍、验收含义或证据不足、与已有决定冲突、是否进入下一阶段。已定的实现细节由 Developer 自主处理；不让 PO 决定每个技术步骤。Master 及时报阻碍、跟进依据与审阅，不替 PO 拍板，不代写 Developer 的 How。
+- PO、Master、该期 Developer 一起定本期 Why、What 和精化；Developer 提 How 并在本期工作树建 `SprintBacklog.md`。认可计划不自动授权施工。Master 只维护跨期材料，不提前建六份日志，不批量启动团队。
+- Developer 自测，Master 对照任务、DoD、验收条件审阅；合入前把完整增量和未决取舍交给 PO。PO 可选择哪些内容要亲自看、哪些让 AI 做；提交、合并、推送、发布各按明确授权。
+- 工作树隔离施工目录，不消除同段或语义冲突。尤其留意 21/23 的设计日志字段、22/24 的角色入口、23/24 的模板、24/25 的承诺行为，以及 26 的全插件整理。交接所用基线和受影响的规则，合入时列清差异，按 PO 决定整合并重验。
+
+## 反馈对账
+
+下面的短名对应反馈索引 `memory/FeedBack/MEMORY.md` 所指 IDEO-Scrum 文件；F 只用于核对来源，不是新的 PBI 或优先级。进入规划不等于反馈已解决。
+
+| 来源 | PBI／Sprint | 原问题与去向 |
+| --- | --- | --- |
+| F01 · conventions-as-index | 51／26 | 约定怎样组织为可复用 Memory；索引是候选，不锁定实现。 |
+| F02 · retro-lessons-as-separate-memories | 69／23 | Retro 只存重要教训，一条一条，不写汇总。 |
+| F03 · product-goal-source-not-read | 80／24 | 定 Product Goal 前读对应产物原文；PO 指出偏差先回查依据。 |
+| F04 · commitment-hook-cost | 83／24 | 保留承诺注入，定位每条消息的耗时，用同条件复测。 |
+| F05 · author-conventions-need-review | 51／26 | 作者规矩逐条审去留，不把助手附加的建议当成规范。 |
+| F06 · stage-read-before-draft | 80／24 | 设计、Planning、精化的漏读场景分别验证，不能只验证技能被调用。 |
+| F07 · role-command-loads-kernels | 81／24 | Master／Developer／Designer／Stakeholder：4／3／3／2。 |
+| F08 · drop-codex-for-dsh | 72／25 | 换宿主已有实现，收齐验收与用户、维护文档。 |
+| F09 · ideate-entry-needs-po-approval | 77／23 | PO 先组织本次如何发散；助手写的“至少两种方法”不是 PO 规定。 |
+| F10 · commitment-table-with-notes | 78／23 | 表下可解释为什么定这个目标；解释不计入承诺原文。 |
+| F11 · keep-design-working-material | 79／23 | 收尾保留决策依据，包括没选的方案。 |
+| F12 · dsh-build-version-0-6-3 | 72／25 | PO 最新决定：两版均为 0.6.3，不再单独追问 CC 是否改号。 |
+| F13 · sprint-goal-style | 78／23 | 汇总级可按条目列；项目 Sprint 保留统一的价值目标。 |
+| F14 · force-load-stage-text | 82／24 | 不全量预载所有方法和阶段文件；其余边界按测试证据定。 |
+| F15 · sprint-backlog-artifact-location | 82／24 | sprint-kernel 的加载内容包含 Sprint Backlog 原文；实现要避免原文漂移。 |
+| F16 · plugin-update-needs-full-energy | 51／26 | 是 PO 共作线的精力约束，不是其他五期的开工前置，更不是产品功能。 |
+
+**范围之外**：PBI-12 公开方法论分享留待以后；PBI-67 的自然触发专项按 PO 决定取消，从当前项撤下，不算已修好，不改写 Sprint 18 历史。
+
+**交接依据**：[产品日志及 DoD](../ProductBacklog.md)、[无头验证约定](headless-testing.md)、[看板约定](../../plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md)。看板使用模板和 `scripts/board_check/check.py`，源文档与用户说明使用 `scripts/check_docs.py`；插件／分发按现行 DoD 验证。各期先定自己的判据再测，不把某期专项测试当六期统一门槛。

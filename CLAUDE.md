@@ -1,13 +1,13 @@
 # IDEO-Scrum
 
-为 Claude Code 与 Codex 提供 Design Thinking 与 Scrum Sprint 方法论的插件。
+为 Claude Code 与 DeepSeek Harness（DSH）提供 Design Thinking 与 Scrum Sprint 方法论的插件。
 
 ## 这个仓库是什么
 
 | 块 | 位置 | 性质 |
 |---|---|---|
 | 插件本体 | `plugins/ideo-scrum/` | 交付物。用户装的就是这里 |
-| Codex 分发包 | `codex/plugins/ideo-scrum/` | 生成物，不手改，`scripts/sync_codex.py` 生成 |
+| DSH 分发包 | `dsh/`、`package.json`、`cordis.patch.yml` | 从仓库根目录安装的 bundle；与 Claude 版共用方法论正文 |
 | 工作记录 | `scrum/` | 用本插件的方法论开发本插件的过程记录 |
 
 现状看 `scrum/ProductBacklog.md` 与 `git log`；开着的冲刺、设计看 `scrum/sprint-*/`、`scrum/design-*/`。已完成的冲刺与设计不回改（事实错误除外）。
@@ -17,7 +17,7 @@
 - README 面向外部读者：只写这里是什么、文件地图（列到文件夹一级）、来源授权；当前状态不进 README。发现 README 过期要显式提醒。
 - 多会话并行时，会话开头读到的 CLAUDE.md 是快照：动手前 `git log --oneline -5`，与磁盘不一致按磁盘来。
 - 版本号在 `plugins/ideo-scrum/.claude-plugin/plugin.json`；改动时同步 `README.md`、`README.zh-CN.md` 首行的版本。
-- 改了插件或版本号：同一提交里跑 `python scripts/sync_codex.py`，再跑 `python scripts/check_codex.py`（需 PyYAML）。Codex 版本由脚本取自 Claude 清单。
+- 改了插件或版本号：跑 `node --test scripts/check_dsh.mjs`；DSH 与 Claude 共用方法论正文，不做生成包同步。分发改动另验实际安装与角色入口。
 - 版本用 tag 标记；tag 与冲刺文件夹同名（同名分支随即删除）。
 - 工作区有别的改动时，`git add` 逐个写文件，不按目录加。
 - 迁移类改动（路径、位置、名称）同一提交内全仓 grep 旧值到零。
