@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 22 (project-agents)
 
 > Started: 2026-11-19 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `claude/sprint-22-project-agents-b09bf1` | Product Owner: SeaPawn | Scrum Master: 项目 Scrum Master | Developer: Sprint 22 Developer
-> Now: What；PO 已确认 Why 并明确放行本期 What；PBI-73、PBI-75 已列入，待 Master 给出首轮精化判据。
-> Waiting for PO: None
+> Now: What；PO 已放行本期 What，并定案参谋「默认 Fable，可另选」；两项首轮验收草案已记，待 Master 与 PO 逐项收口。
+> Waiting for PO: 1. PBI-75 是否要求子代理和 Workflow 两种入口都通过？
 > How to write this log: [Sprint log conventions](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md).
 
 ## 1. Why
@@ -33,14 +33,50 @@
 
 ### 2.2 Refinement
 
-先精化 PBI-73，再精化 PBI-75，两项分别验收。以下为 Developer 的边界复述与暂估，验收判据和通过线待 Master 主导精化，尚未定案。
+沿用 §2.1 的用户故事，先精化 PBI-73，再精化 PBI-75，两项分别验收。以下是 Master 在 2026-11-19 提出的首轮验收草案及 Developer 的复述和暂估。除注明的 PO 定案外，判据仍待收口，未做实测。
 
-| 条目 | 边界复述 | 规模与可行性（暂估） |
-| --- | --- | --- |
-| PBI-73 | 拍板、选方案或评审设计时，参谋只读地提供独立第二意见，不改被评议产物，不替 PO 拍板。按 PO 要求，实际设计前先用适用的 IDEO 方法调研已有做法。 | 沿用 S～M。若既有做法能复用且满足只读与独立性，偏 S；若需重新验证角色或宿主约束，偏 M。早期原型是调研输入，不能当作插件已有能力。 |
-| PBI-75 | 每个项目只注册自己的 Stakeholder 角色，角色卡是外部反馈的立场，不是参谋的第二判断。角色卡定后展示可选配置，接受才写入该项目并在该项目产品日志 §2.1 引用；拒绝不写，仍可临时召唤。更新先展示差异，得到同意后才写，不静默覆盖。只复用角色定义，每次用新上下文听取反馈，不沿用旧评议。 | 暂估 M（3–5 个会话）。注册、拒绝、更新与后续按名召唤都需要证据。待实查项目角色在 Claude Code 子代理或 Workflow 中的可发现范围；这会影响验收，不能用全局配置兜底。 |
+**PBI-73：参谋**
 
-Claude Code 是已知宿主；不含通用 Claude Code Setup、MCP 或全局配置。DSH 的项目 Agent 等价能力待查，不在本期承诺内。
+来源：[产品日志 §3.1](../ProductBacklog.md#31-当前的-pbi) 中 PBI-73 所列个人原型 `advisor-synthesis.md`（§1、§8–9）和 Master 首轮提议。原型的脚本、双模型投票、费用线、固定回话模板和当时「不做插件」的限制不自动沿用；原型不等于插件已有能力。
+
+复述：在拍板、选方案或评审设计时，给参谋一个待决定的问题、约束及点名材料的原文。参谋独立回答「怎么看，为什么」，理由能对照原件；只读，不改产物，不替 PO 决定。
+
+| 验收场景（草案） | 过线行为 |
+| --- | --- |
+| 材料足以纠正一个前提 | 指出哪个前提需改、哪处原文支持纠正，以及为何影响判断。 |
+| 原方案有充分依据 | 可以赞同，独立说明理由，不为展示差异强造反对意见。 |
+| 缺少关键材料 | 指出缺什么、为何会改变判断；可以请求补充，不编造依据或强下结论。 |
+
+三个场景分别核对独立判断、原件依据、只读与决策边界。不以意见是否不同于主会话作为过线依据。
+
+**模型选择，PO 定案（2026-11-19，Master 转达）：**「默认 Fable，可另选」。
+
+| 情形 | 要核验的行为 |
+| --- | --- |
+| 未指定其他模型 | 默认选 Fable。 |
+| 项目明确另选可用模型 | 遵从该选择。 |
+| 所选模型不可用 | 如实提示，可另选或取消，不静默换模型。 |
+
+这个决定只约束参谋，不约束普通 Stakeholder、Developer 或现有会话。配置入口与模型名解析留给 How；不把固定版本 ID 或个人网关映射当成通用规则。
+
+**Developer 暂估：S～M，偏 M。** 除三个意见场景，还有三种模型选择行为；若调研证明既有做法可同时满足只读、独立与模型选择，才向 S 调整。保留 PO 要求的调研：实际设计前用适用的 IDEO 方法了解已有做法，结论交三方，再定 How。
+
+**PBI-75：项目 Stakeholder**
+
+来源：[产品日志 §2.1](../ProductBacklog.md#21-stakeholders) 的角色卡、§3.1 的 PBI-75、[现行 Stakeholder 命令](../../plugins/ideo-scrum/commands/stakeholder.md#code-of-conduct) 和 Master 首轮提议。
+
+复述：用一张已确认的角色卡（例如「陌生人」）核对。项目 Stakeholder 按卡片立场给外部反馈，每个项目只登记自己的角色。可复用的是角色定义，不是旧评议；即使共用技术手段，也不把 Stakeholder 反馈当成参谋的第二判断。
+
+| 验收场景（草案） | 过线行为 |
+| --- | --- |
+| 接受配置 | 角色卡确认后展示可选配置，接受才只在本项目登记，并让该项目产品日志 §2.1 指到对应角色。草案要求分别核对子代理和 Workflow，均从新上下文按名召唤同一角色定义，无旧评议；不强求意见不同。 |
+| 拒绝配置 | 不写文件、不造引用；仍能临时按角色卡请全新子代理给外部反馈。 |
+| 角色卡变更或已有同名配置 | 先显示差异；未批准则原文件和引用保持不变，批准才更新，不静默覆盖。 |
+| 角色职责与召唤权 | 常驻 PO 助手不冒称独立审阅者，不串用职责；在 Sprint Review，外部视角仍由 PO 或 Scrum Master 召唤，建造者不召唤。 |
+
+**Developer 暂估：M（3–5 个会话）。** 四种情形需分别取得证据。故事写的是「子代理或 Workflow」，而双入口都通过是草案增加的验收要求，待 Master 与 PO 确认是否作为硬门槛。Claude Code 中项目角色在两类入口的可发现范围待查；不能用全局配置兜底。
+
+现只核对 Claude Code 已明的项目作用域；不做通用 Claude Code Setup、MCP 或全局配置。DSH 的项目 Agent 等价能力待查，不在本期承诺内。
 
 ## 3. How
 
