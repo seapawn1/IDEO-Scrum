@@ -2,7 +2,7 @@
 
 > Started: 2026-11-19 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `claude/sprint-22-project-agents-b09bf1` | Product Owner: SeaPawn | Scrum Master: 项目 Scrum Master | Developer: Sprint 22 Developer
 > Now: What；PO 已放行本期 What，并定案参谋「默认 Fable，可另选」；两项首轮验收草案已记，待 Master 与 PO 逐项收口。
-> Waiting for PO: 1. PBI-75 是否要求子代理和 Workflow 两种入口都通过？
+> Waiting for PO: 1. PBI-75 验收是否必须为普通子代理和 Workflow 两个入口分别举证？
 > How to write this log: [Sprint log conventions](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md).
 
 ## 1. Why
@@ -67,14 +67,16 @@
 
 复述：用一张已确认的角色卡（例如「陌生人」）核对。项目 Stakeholder 按卡片立场给外部反馈，每个项目只登记自己的角色。可复用的是角色定义，不是旧评议；即使共用技术手段，也不把 Stakeholder 反馈当成参谋的第二判断。
 
+Master 转达 PO 原话：「开子代理的时候，开工作流的时候就可以直接复用」。两种入口复用同一份已注册的项目角色，不做两套注册，也不要求每个项目启用 Workflow。
+
 | 验收场景（草案） | 过线行为 |
 | --- | --- |
-| 接受配置 | 角色卡确认后展示可选配置，接受才只在本项目登记，并让该项目产品日志 §2.1 指到对应角色。草案要求分别核对子代理和 Workflow，均从新上下文按名召唤同一角色定义，无旧评议；不强求意见不同。 |
+| 接受配置 | 角色卡确认后展示可选配置，接受才只在本项目登记，并让该项目产品日志 §2.1 指到对应角色。Master 建议在支持 Workflow 的 Claude Code 环境，分别从普通子代理和 Workflow 按名调用同一份角色定义；各用独立的新上下文，不带旧评议，不强求意见不同。 |
 | 拒绝配置 | 不写文件、不造引用；仍能临时按角色卡请全新子代理给外部反馈。 |
 | 角色卡变更或已有同名配置 | 先显示差异；未批准则原文件和引用保持不变，批准才更新，不静默覆盖。 |
 | 角色职责与召唤权 | 常驻 PO 助手不冒称独立审阅者，不串用职责；在 Sprint Review，外部视角仍由 PO 或 Scrum Master 召唤，建造者不召唤。 |
 
-**Developer 暂估：M（3–5 个会话）。** 四种情形需分别取得证据。故事写的是「子代理或 Workflow」，而双入口都通过是草案增加的验收要求，待 Master 与 PO 确认是否作为硬门槛。Claude Code 中项目角色在两类入口的可发现范围待查；不能用全局配置兜底。
+**Developer 暂估：M（3–5 个会话）。** 四种情形需分别取得证据。只核验一个入口不能证明另一个；验收是否必须为两处分别举证，由 Master 向 PO 确认。Claude Code 中项目角色在两类入口的可发现范围待查；不能用全局配置兜底。
 
 现只核对 Claude Code 已明的项目作用域；不做通用 Claude Code Setup、MCP 或全局配置。DSH 的项目 Agent 等价能力待查，不在本期承诺内。
 
