@@ -1,0 +1,4 @@
+- insert:
+    - id: ideo-scrum
+      name: '@seapawn/ideo-scrum'
+      config: {}

@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "IDEO-Scrum",
+    "description": "给一个人和 AI 做的项目带来设计思维与 Scrum 冲刺。在标准会话中输入 /scrum-master、/developer、/designer 或 /stakeholder，可在后面接任务。角色和方法与 Claude Code 版共用正文。当前项目日志里的承诺会随会话进入模型上下文，不另发模型请求；启动 DSH 时设 IDEO_SCRUM_COMMITMENTS=off 可关闭。部分第三方材料仅限非商业使用。"
+  }
+}

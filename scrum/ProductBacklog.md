@@ -8,7 +8,7 @@
 | 承诺 | IDEO-Scrum：把 Design Thinking 与 Scrum Sprint 装进 Claude Code。 |
 | --- | --- |
 
-**IDEO-Scrum** 是一个 Claude Code marketplace 插件：将 Design Thinking 与 Scrum Sprint 两套方法论集成到 Claude Code，通过 skills 和 commands 提供结构化的方法论引导与流程框架。Codex 版是脚本从插件本体生成的附带包，不是核心（PO 2026-11-13）。
+**IDEO-Scrum** 是 Claude Code marketplace 插件，也是可从仓库根目录安装的 DeepSeek Harness（DSH）bundle。两者直接共用同一套 Design Thinking 与 Scrum Sprint 方法论正文，通过角色入口和技能提供结构化的引导与流程框架。
 
 **边界**：不做项目管理工具本身，不做 JIRA/Linear 集成，也不做团队协作平台——只提供方法论引导和流程框架。看板只读日志、不另存状态，由便宜的模型生成，不是项目管理工具。
 
@@ -44,7 +44,7 @@
 | 无死链 | 所有 markdown 内部链接可解析，无 404 |
 | 插件校验 | `claude plugin validate --strict plugins/ideo-scrum` 通过 |
 | 描述长度 | 每个技能的 description 不超过 1024 字符 |
-| Codex 包 | 改了插件就跑 `scripts/sync_codex.py`，`scripts/check_codex.py` 通过 |
+| DSH 分发 | `node --test scripts/check_dsh.mjs` 通过，共用的正文无需同步；分发改动另验实际安装与角色入口 |
 
 # 二、架构
 
@@ -112,7 +112,7 @@ flowchart TD
 | PBI-73 | 参谋：把「第二意见」做成插件里的一条命令 | 作为用插件干活的 solo 开发者，我想要在拍板、选方案、评审设计时叫一个只读的子代理独立看一眼，以便拿到第二判断，而不是自己再想一遍 | Map ②、设计冲刺收敛 | 待选 | S～M | PO 2026-11-17 定：先在 SeaPawn 本机用**手动召唤的子代理**做原型（Explore 类型：只读、不注入 CLAUDE.md），体验几天，好用再收进插件。原型的模板与素材见 `S:\SeaPawn\Scrum\sprint-advisor-workspace\artifacts\advisor-synthesis.md`（原生 advisor 的查证、12 条灵感、输入/输出格式）。开放点：做成 `commands/advise.md` 还是 `agents/advisor.md`，或两者；输出模板等原型跑顺再抄进来。 |
 | PBI-67 | ideo 的自然触发——发散、定义问题也先加载 | 作为懂 Scrum 的陌生人，我想要说「帮我发散几个方向」「从这几段访谈里理出要解决的问题」时，ideo-kernel 也会先加载，以便不用说出 IDEO 或设计思维这些词，也能用上它的方法 | Map ② | 待选（副线） | S～M | PO 2026-11-14：不进 Sprint 20——「不顺路的东西不做就先不做，你比如说 ideo 不点名也触发，那这个就可以先不做」；62 的快速上手会教用户怎么叫出 ideo，63 跑完看陌生人会不会卡在这里，再定这条留不留。来源：Sprint 18 第 2 轮触发测试（2026-11-13，magpie 的便宜模型，非 Haiku）：C 组 3/9，只和基线持平，没过 7/9——C3（做原型）3/3，C1（发散）、C2（从访谈里定义问题）各 0/3，模型不调任何工具、直接作答；描述里加了「命中就先加载」也没救回来。PO 2026-11-13 定：记成已知缺口，另登记本条，不为它在 Sprint 18 里一轮轮重跑。开放点：描述之外还能用什么办法——hook 带一句事实、入口教用户（PBI-62），或者重新想 ideo 的触发面；改之前照 CLAUDE.md 量描述长度（ideo 现在 1023，已经顶到线）。测试数据见 [documents/sprint/sprint-18-rules-first.md](documents/sprint/sprint-18-rules-first.md)，题目与报告见 `git show 3e8860b:scrum/sprint-18-rules-first/tests/`；README 已在 Sprint 18 收官时照实写（熟手卡 Review 的意见） |
 | PBI-71 | 看板：服务产品日志的 IDEO 日志怎么处理 | 作为用插件做设计的人，我想要看板约定写清「服务产品日志、或已经收尾的 IDEO 日志页面怎么处理」，以便模型和检查脚本对同一件事有同一个答案 | Map「设计冲刺」 | 待选 | S | 来源：Sprint 20 体验测试第 2 次（2026-11-14），模型按约定把这样的 IDEO 日志留空不画（合理），检查脚本却要求画；检查脚本已改，约定还缺一句（`board-log.md` 第 11、16 条） |
-| PBI-72 | 删掉 Codex 分发版，改出 DeepSeek（DSH）版 | 作为用 DeepSeek Harness 的 solo 开发者，我想要同一套方法论也能装进 DSH，以便换宿主不换流程 | 分发：`codex/` 那一层改挂 DSH | 待选 | M | 来源：反馈区（2026-11-16），PO 原话：「IDEO-Scrum 插件删除codex版本，改换deepseek版本，PBI记。」PO 2026-11-13 已把 Codex 版定为附带包、不是核心，这次连附带包也不做。开放点：DSH 插件格式（npm 包 + `dsh.bundle.patch` + `cordis.patch.yml`）里 skills 能直接挂，commands 与 hooks 有没有对应物没查；`sync_codex.py` 是删还是改成 `sync_dsh.py`，做的时候定。同时要改 `codex/`、`.agents/plugins/marketplace.json`、1.3 DoD 的 Codex 行、CLAUDE.md 同步规矩、README 中英文 |
+| PBI-72 | 删掉 Codex 分发版，改出 DeepSeek（DSH）版 | 作为用 DeepSeek Harness 的 solo 开发者，我想要同一套方法论也能装进 DSH，以便换宿主不换流程 | 分发：Claude Code + DSH | 待选 | M | 来源：反馈区（2026-11-16），PO 原话：「IDEO-Scrum 插件删除codex版本，改换deepseek版本，PBI记。」同一实施由 SeaPawn 冲刺 `advisor-workspace` 的 PBI-061 跟踪，不另立冲刺：DSH 从仓库根目录装 bundle，角色走 DSH 原生技能入口，承诺走当前会话上下文；与 Claude Code 直接共用方法论，删除旧分发和同步脚本。验收及尚未获准的维护说明变更见该冲刺日志。 |
 | PBI-69 | Retro 只存要点，一条一条进记忆 | 作为熟手，我想要 Retro 只把要点一条一条存进记忆、非要点丢掉，以便记忆里都是用得上的教训，不是每个冲刺一份大杂烩 | Map ⑨ | 以后 | S～M | 来源：反馈区（2026-11-14），PO 原话：「分条存储到记忆，而不应该存储一个 Retro 文件。应该是重要的事情存进去，而不是这个什么大杂烩。」PO 2026-11-14：「这个优化成什么样子，最终那个样子好不好，我就不是那么的确定」；「一改内核其实还是蛮重的，我们现在的反馈其实数量不是很高」——先不改内核（sprint-log 第 18 条）。Master 定单列（PO：「单列也可以」）：和 PBI-51 相近，都管记什么、怎么记，但这条只管 Retro 的产出。本仓库从 Sprint 20 的 Retro 起试：Master 列候选教训，PO 挑要点，一条一个记忆文件，不写按冲刺的汇总文件；试的结果作为本条的依据 |
 | PBI-51 | 插件的记忆机制（研究） | 作为熟手，我想要插件有自己的记忆机制——必要时借鉴 llm-wiki 的 index 做法：规矩一行一条、链到细节、按名字引用，以便不用整份加载、一条规矩只写一处、增删不用改号 | 插件：四个内核 | 以后 | L | 决定：下一步做，值得研究，不只是 index（PO 2026-11-13）；做插件，不做全局记忆系统（PO 2026-11-12）。开放点：开做时先按分界定用设计冲刺还是五模式；和 PBI-61、35 是同一类事（61 是眼前的小块）。来源：反馈区（2026-11-12，conventions as an index）；Sprint 14 Stakeholder 的提议 |
 | PBI-12 | 方法论分享——公开系列 | 作为读者，我想要一套公开的方法论分享（系列文章、网页或视频），讲清 solo + AI 怎么用 Scrum 和设计思维，以便不装插件也能学会、用到自己的项目里 | 产品之外：分享线（1.2「之后」） | 以后 | L | 决定：下一步做（PO 2026-11-13）；公开发布前过一遍授权（d.school 非商业）、经 PO 确认。素材：[ExpertNotes.md](documents/ExpertNotes.md)、`git show 3f43476:scrum/documents/five-stage-mapping.svg`（图里冲刺还是旧的三段，用前改成五个阶段；2026-11-14 PO 整理 documents 时从仓库删去）。来源：2026-10-24 PO 改为方法论分享 |

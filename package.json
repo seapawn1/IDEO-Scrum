@@ -1,0 +1,23 @@
+{
+  "name": "@seapawn/ideo-scrum",
+  "version": "6.0.3",
+  "private": true,
+  "description": "Design thinking and Scrum Sprints for solo work with AI",
+  "license": "SEE LICENSE IN ATTRIBUTION.md",
+  "type": "module",
+  "engines": { "dsh": ">=0.2.2-rc.5 <0.3.0" },
+  "exports": {
+    ".": "./dsh/index.js",
+    "./locale/*.json": "./dsh/locale/*.json",
+    "./icon": "./plugins/ideo-scrum/icon.png"
+  },
+  "files": [
+    "cordis.patch.yml",
+    "dsh/",
+    "ATTRIBUTION.md",
+    "plugins/ideo-scrum/commands/",
+    "plugins/ideo-scrum/skills/",
+    "plugins/ideo-scrum/icon.png"
+  ],
+  "dsh": { "bundle": { "patch": "./cordis.patch.yml" } }
+}

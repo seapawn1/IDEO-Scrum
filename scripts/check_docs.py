@@ -6,7 +6,7 @@
 For each English/Chinese pair (README.md and README.zh-CN.md, docs/quick-start.md and docs/quick-start.zh-CN.md):
 the same headings in the same order; in every section the same number of list items, table rows and code blocks;
 the same commands in the `sh` blocks (typed in a terminal) and in the `text` blocks whose lines all start with
-`/` (typed in a Claude Code session); a trailing `# comment` is ignored; the same links.
+`/` (role entries in Claude Code or DSH); a trailing `# comment` is ignored; the same links.
 For every document, glossary included: every relative link and image resolves, and every #fragment names a heading
 in its target. Also: each README's version is the plugin's version; the English README's "How it differs"
 table repeats the Departures table of overview.md word for word (the Here and Why columns); every row of the
@@ -265,7 +265,7 @@ def selftest() -> int:
          "claude plugin update ideo-scrum\n```", "sh blocks differ"),
         ("a zh list item removed", "README.zh-CN.md", "- 你要接 JIRA 或 Linear，或者要一个给整个团队用的平台。\n", "",
          "list items"),
-        ("a zh table row removed", "README.zh-CN.md", "| `scripts/` | 生成、核对 Codex 版和文档的脚本 |\n", "",
+        ("a zh table row removed", "README.zh-CN.md", "| `scripts/` | 文档和看板检查、首次冲刺体验测试 |\n", "",
          "table rows"),
         ("an en Departures cell changed", "README.md", "AI works by session, not by day", "AI works by session",
          "not in the Departures table"),
@@ -279,6 +279,8 @@ def selftest() -> int:
          "- 问「现在到哪了？」：Scrum Master 读 `Now` 和 `Waiting for PO` 两行，告诉你。\n", "", "list items"),
         ("a zh quick-start command changed", "docs/quick-start.zh-CN.md", "/ideo-scrum:scrum-master\n```",
          "/ideo-scrum:developer\n```", "slash-command blocks differ"),
+        ("a zh DSH role entry changed", "docs/quick-start.zh-CN.md", "/scrum-master\n```",
+         "/developer\n```", "slash-command blocks differ"),
         ("a glossary term renamed", "docs/glossary.md", "| rumble | 对决 |", "| rumbles | 对决 |",
          "missing term 'rumble'"),
         ("a glossary cell dropped", "docs/glossary.md", "| Empathize | 共情 |", "| Empathize |",

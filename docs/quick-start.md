@@ -1,6 +1,6 @@
 # Quick start
 
-One page, from an installed plugin to your first closed Sprint. You work in one Claude Code session as the Product Owner, with the Scrum Master at your side. It assumes you know Scrum; the [glossary](glossary.md) explains the plugin's own terms.
+One page, from an installed plugin to your first closed Sprint. You work in one Claude Code or DeepSeek Harness (DSH) session as the Product Owner, with the Scrum Master at your side. It assumes you know Scrum; the [glossary](glossary.md) explains the plugin's own terms.
 
 ## Before you start
 
@@ -15,7 +15,13 @@ In a Claude Code session:
 /ideo-scrum:scrum-master
 ```
 
-Then say what you are building. You are the Product Owner: you decide the value and the direction, and the Scrum Master serves you.
+In a new DSH **Standard** session opened in your project directory:
+
+```text
+/scrum-master
+```
+
+Say what you are building. In DSH, you can put the request after `/scrum-master` in the same message. You are the Product Owner: you decide the value and the direction, and the Scrum Master serves you.
 
 ## 2. Write the product log
 
@@ -51,7 +57,7 @@ Read the plan, then say "go ahead". Approving a plan is not a go-ahead: building
 
 ## 4. Build and test
 
-A Developer session (`/ideo-scrum:developer`) builds, or the Scrum Master does. Whoever builds, someone else reviews: when the Scrum Master built the work, a fresh subagent reviews it. The test method and the pass lines are written down before the tests run. The Scrum Master can do the git work for you.
+A Developer session (`/ideo-scrum:developer` in Claude Code, `/developer` in DSH) builds, or the Scrum Master does. Whoever builds, someone else reviews: when the Scrum Master built the work, a fresh subagent reviews it. The test method and the pass lines are written down before the tests run. The Scrum Master can do the git work for you.
 
 ## 5. Close
 
@@ -77,4 +83,4 @@ Handover, 2026-11-14: the Product Owner hands the Scrum Master the end-of-stage 
 
 - Ask "Where are we?": the Scrum Master reads `Now` and `Waiting for PO` and tells you.
 - Ask for the board: a one-page view of where the project stands, written from the logs into `scrum/ScrumBoard.html`.
-- To find out what people want, call the Designer: `/ideo-scrum:designer`.
+- To find out what people want, call the Designer: `/ideo-scrum:designer` in Claude Code, `/designer` in DSH.

@@ -1,6 +1,6 @@
 # 快速上手
 
-一页，从装好插件到你的第一个冲刺收官。你在一个 Claude Code 会话里当 Product Owner，Scrum Master 陪在旁边。默认你懂 Scrum；插件自己的词，[词汇表](glossary.md)里有解释。
+一页，从装好插件到你的第一个冲刺收官。你在一个 Claude Code 或 DeepSeek Harness（DSH）会话里当 Product Owner，Scrum Master 陪在旁边。默认你懂 Scrum；插件自己的词，[词汇表](glossary.md)里有解释。
 
 ## 开始之前
 
@@ -15,7 +15,13 @@
 /ideo-scrum:scrum-master
 ```
 
-然后说你在做什么。你是 Product Owner：价值和方向由你定，Scrum Master 为你服务。
+在项目目录里新开的 DSH **Standard** 会话中：
+
+```text
+/scrum-master
+```
+
+说你在做什么。在 DSH 里，任务可以和 `/scrum-master` 写在同一条消息里，跟在它后面。你是 Product Owner：价值和方向由你定，Scrum Master 为你服务。
 
 ## 2. 写产品日志
 
@@ -51,7 +57,7 @@ Scrum Master 和你一起写 `scrum/ProductBacklog.md`：产品、Product Goal�
 
 ## 4. 做和测
 
-由一个 Developer 会话（`/ideo-scrum:developer`）来做，或者由 Scrum Master 来做。不管谁做，都由别人审阅：Scrum Master 自己做的，就由一个全新子代理审阅。测试的方法和过线的标准，先写下来，再跑测试。git 的活可以让 Scrum Master 替你做。
+由一个 Developer 会话（Claude Code 用 `/ideo-scrum:developer`，DSH 用 `/developer`）来做，或者由 Scrum Master 来做。不管谁做，都由别人审阅：Scrum Master 自己做的，就由一个全新子代理审阅。测试的方法和过线的标准，先写下来，再跑测试。git 的活可以让 Scrum Master 替你做。
 
 ## 5. 收官
 
@@ -77,4 +83,4 @@ Test 阶段完成后，说「收官」。Review 和 Retro 装进一个收官提�
 
 - 问「现在到哪了？」：Scrum Master 读 `Now` 和 `Waiting for PO` 两行，告诉你。
 - 要看板：一页看清项目走到哪，由日志写成 `scrum/ScrumBoard.html`。
-- 想弄清人要什么，叫 Designer：`/ideo-scrum:designer`。
+- 想弄清人要什么，叫 Designer：Claude Code 用 `/ideo-scrum:designer`，DSH 用 `/designer`。

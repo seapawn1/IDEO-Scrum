@@ -24,11 +24,12 @@
 - Windows 上无头测试要连 PowerShell 一起禁（只禁 Bash 拦不住）；要写文件的测试不放在 `~/.claude` 下，那里会被权限系统拦写，改用系统临时目录。
 - 测试的原始输出放仓库外，仓库里只留判定汇总；提交前按提供方地址、凭据值、令牌形态、设置值扫一遍（Sprint 13：原始输出带了模型服务地址，只好改写未推送的冲刺历史）。
 - 正式测之前先冒烟：一次最简单的调用，确认模型在提供方的实际目录里（不看本地模型缓存）、读文件的权限正常（Sprint 13：第一轮模型无通道，第二轮只读权限拒读，各白跑一轮）。
-- 在 Codex 里测角色：`codex exec` 里裸打 `$角色` 挂不上角色，要用 app-server 的原生 Skill 输入；隔离安装用独立的用户目录，不动本机 `~/.codex`。当时的脚本在 `git show sprint-13-codex~1:scrum/sprint-13-codex/run_codex_smoke.py`（Sprint 13）。
+- 历史（Sprint 13，旧宿主已移除）：`codex exec` 里的 `$角色` 不加载角色，彼时用 app-server 的原生 Skill 输入验证；脚本在 `git show sprint-13-codex~1:scrum/sprint-13-codex/run_codex_smoke.py`。
+- DSH 分发：`node --test scripts/check_dsh.mjs` 核对角色/内核正文、承诺与资源；`npm pack --dry-run --json --ignore-scripts` 检查打包文件，Claude 版照常跑 `--strict`。DSH Web 和 headless 的 profile 分开；独立试跑可用 `dsh --profile headless --patch <测试挂载> --permission-mode read-only --approval-policy never --json -`，把测试会话日志另存到临时目录。不要把模型复述或 stdout 当成角色注入证据：在会话日志找 `user/message` 的 `skill-invocation` 来源，在原生角色内容内核对 IDEO → Scrum，按需加载的内核看原生调用/成功结果或显式技能注入；承诺核对 `runtime-context` 的 `ideo-scrum:commitments`。
 - 原型说明里举例，别用正在测的那个点：它等于把那个点又写了一遍，会混进对照（Sprint 15 设计第二轮）。
 - 对照组跑之前先确认真的去掉了那样东西：检查最终喂给模型的文件，不只看源文件（Sprint 15：脚本先内联后删行，第一次对照没隔开）。
 - 判定标准照被测的那句话写，别比它更严：被测那一行允许「一个环」，标准写成「没有判断分支」，第三轮就有一次卡在这里（Sprint 15）。
-- 描述有 1024 字符上限（Agent Skills 规范，plugin-validator 会报，Codex 也照它）；Claude Code 技能清单每条显示到 1536，但以 1024 为准。现在最长的是 ideo-kernel，1023 字符（Sprint 18），已经顶线；改描述时先量长度（Sprint 16；Sprint 17 第 2 轮一度超到 1191，收官前压回）。
+- 描述有 1024 字符上限（Agent Skills 规范，plugin-validator 会报）；Claude Code 技能清单每条显示到 1536，但以 1024 为准。现在最长的是 ideo-kernel，1023 字符（Sprint 18），已经顶线；改描述时先量长度（Sprint 16；Sprint 17 第 2 轮一度超到 1191，收官前压回）。
 - **体验测试（模拟陌生人 + 插件会话）的做法**（Sprint 20 定，`scripts/stranger_test/`）：
   - **运行放上级目录里没有指令文件的地方**（`C:\Users\Public\st-…`）：Claude Code 会读工作目录所有上级目录的 `CLAUDE.md`。放在系统临时目录下时，作者的 `~/.claude/CLAUDE.md` 会被当成项目指令读进会话（Sprint 20 旧的第 1 次因此作废）。开跑前用 Claude Code 自己的 `/context all`（不花模型调用）在每个会话自己的环境里核实装进了哪些指令文件，有就停。`--add-dir` 放在参数最后会吞掉后面的提示词。
   - **陌生人只有一台电脑**：通道说明里写清「只有一台电脑，就是 Claude Code 正在跑的这台」。不写，它会替一台不存在的机器做决定（Sprint 20：它选了作者的真实家目录，插件会话于是往那里装工具）。

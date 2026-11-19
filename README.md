@@ -2,7 +2,7 @@
 
 # IDEO-Scrum
 
-A Claude Code plugin that brings Design Thinking and Scrum Sprints to a project you build alone with AI. **v6.0.3**
+A plugin for Claude Code and DeepSeek Harness (DSH) that brings Design Thinking and Scrum Sprints to a project you build alone with AI. **v6.0.3**
 
 [中文](README.zh-CN.md) · [Install](#install) · [Quick start](docs/quick-start.md) · [Glossary](docs/glossary.md) · [Changelog](CHANGELOG.md)
 
@@ -18,7 +18,7 @@ It is not a project-management tool: no JIRA or Linear integration, and not a pl
 
 ## A session, shortened
 
-Illustrative and shortened, not a transcript; the wording will differ. The stops are the point: at the end of each stage the work waits for you.
+A shortened Claude Code example, not a transcript; the wording will differ. The stops are the point: at the end of each stage the work waits for you.
 
 ```text
 You:            /ideo-scrum:scrum-master
@@ -43,7 +43,7 @@ What this leaves in your repository is plain Markdown you can read and edit: `sc
 
 A good fit:
 
-- You build your own project with Claude Code, and you know Scrum, or will read the Scrum Guide beside this plugin (it ships with it).
+- You build your own project with Claude Code or DSH, and you know Scrum, or will read the Scrum Guide beside this plugin (it ships with it).
 - You want the rules to follow the plugin instead of being dictated again in every session, and a session that breaks off or is compacted to pick up where it stopped.
 
 Not a fit:
@@ -54,9 +54,9 @@ Not a fit:
 
 ## Install
 
-You need Claude Code. A git repository for your project is recommended; the Scrum Master can set one up for you.
+A git repository for your project is recommended; the Scrum Master can set one up for you.
 
-In a Claude Code session:
+**Claude Code.** In a Claude Code session:
 
 ```text
 /plugin marketplace add seapawn1/IDEO-Scrum
@@ -66,30 +66,19 @@ In a Claude Code session:
 
 To check, run `claude plugin list` in a terminal: it shows `ideo-scrum@ideo-scrum` as enabled.
 
-Codex is a companion edition, generated from the same source; the first-Sprint walkthrough is tested on Claude Code only. In a terminal:
-
-```sh
-codex plugin marketplace add seapawn1/IDEO-Scrum
-codex plugin add ideo-scrum@ideo-scrum
-```
-
-Then, in a new Codex session, type `$` and pick a role from the skill menu: `$scrum-master`, `$designer`, `$developer`, `$stakeholder`.
+**DeepSeek Harness (DSH `0.2.2-rc.5`).** Clone this repository to a location you plan to keep. In the DSH sidebar, open **Plugins → Add plugin**. Enter the absolute path to the repository root (the folder with `package.json`) in **Package name or address** and select **Install**. DSH links `@seapawn/ideo-scrum` to that directory rather than copying it. Open a new **Standard** session in the project you want to work on.
 
 ## Upgrade
+
+**Claude Code.** Run this in a terminal:
 
 ```sh
 claude plugin update ideo-scrum@ideo-scrum
 ```
 
-Run it in a terminal, then `/reload-plugins` in a session that is already open. Third-party marketplaces do not update themselves by default: to have Claude Code do it, open `/plugin`, go to Marketplaces, select `ideo-scrum` and choose Enable auto-update. What changed in each release is in the [changelog](CHANGELOG.md).
+Then run `/reload-plugins` in a session that is already open. Third-party marketplaces do not update themselves by default: to have Claude Code do it, open `/plugin`, go to Marketplaces, select `ideo-scrum` and choose Enable auto-update. What changed in each release is in the [changelog](CHANGELOG.md).
 
-On Codex, refresh the marketplace, then remove the plugin and add it again. We have not tested this path end to end.
-
-```sh
-codex plugin marketplace upgrade ideo-scrum
-codex plugin remove ideo-scrum@ideo-scrum
-codex plugin add ideo-scrum@ideo-scrum
-```
+**DSH.** Update the linked checkout in place, restart DSH, and open a new **Standard** session. If the checkout moves, use **Uninstall** in **Plugins** for the old link before adding the new path with **Add plugin**.
 
 ## Your first sentence
 
@@ -102,14 +91,25 @@ In a Claude Code session, call a role:
 /ideo-scrum:stakeholder     # an outside view of the product, or a standing assistant for chores such as the board
 ```
 
-Or say it in your own words:
+In a DSH **Standard** session, use its native skill entries:
+
+```text
+/scrum-master
+/developer
+/designer
+/stakeholder
+```
+
+Type the entry or choose it from the `/` suggestions. You can add the request in the same message: `/scrum-master Help me plan the next Sprint.` The role brings in IDEO and Scrum in order; Sprint and Design load only as needed. To explicitly load both for a task that spans them, start with `/scrum-master /sprint-kernel /design-kernel`. DSH also recognizes a standalone `/name` in the middle of a sentence; wrap it in backticks when you are only mentioning it.
+
+In Claude Code, you can also say it in your own words:
 
 ```text
 Use ideo-scrum to plan the next Sprint; I have five items to refine.
 I'm not sure this feature is worth building. Run a round of user research first.
 ```
 
-What loads, and when: the Scrum, Sprint and design-sprint material comes only when summoned, by a role command, by naming ideo-scrum or one of its kernels, or by asking to create or change its logs; a general question about Scrum is answered as usual. The IDEO methods often step in by themselves for prototyping and testing. For brainstorming and defining a problem the model usually answers directly: name `ideo-kernel` if you want its methods (a known limitation).
+What loads, and when: the Scrum, Sprint and design-sprint material comes only when summoned, by a role, by naming ideo-scrum or one of its kernels, or by asking to create or change its logs; a general question about Scrum is answered as usual. In Claude Code, the IDEO methods often step in by themselves for prototyping and testing. For brainstorming and defining a problem the model usually answers directly: name `ideo-kernel` if you want its methods (a known limitation).
 
 ## How it differs from textbook Scrum
 
@@ -150,11 +150,11 @@ Two small things help you find your place when a project has several logs.
 
 ![The same board in the dark setting](docs/images/board-overview.png)
 
-**The commitments hook.** When a session starts, resumes, or is compacted, and again when a commitment changes, a small hook puts the commitments written in your logs — the product, the Product Goal, the open Sprint Goal or design goal — into the AI's context word for word, so a long session does not drift from them.
+**Commitments.** The product, Product Goal, open Sprint Goal and design goal come from your logs, word for word.
 
-- Switch it off with `IDEO_SCRUM_COMMITMENTS=off`, in the `env` of a settings file or in your shell.
-- It needs a POSIX `sh`: on Windows, install Git for Windows. It has not been tried on macOS.
-- Codex does not run a hook until you trust it: review it in `/hooks`, and again after an update changes the script. It has not been tried there.
+- **Claude Code:** A small hook puts them in context when a session starts, resumes, or is compacted, and when a commitment changes. The hook needs a POSIX `sh`: on Windows, install Git for Windows. It has not been tried on macOS.
+- **DSH:** Before a model step, the plugin reads the current project's logs. It adds the commitment snapshot on first use, when the text changes, or when compaction removes the previous snapshot. If several Sprints or designs are open, it gives a count rather than picking one goal. If the automatic read cannot supply a commitment, have the role reread its source log. No shell hook is needed.
+- To switch this off, set `IDEO_SCRUM_COMMITMENTS=off` in the `env` of a Claude Code settings file or in its shell. For DSH, set it in the environment before starting DSH.
 
 ## Learn more
 
@@ -180,16 +180,16 @@ From *Sprint* the plugin carries cut-down excerpts of the chapters that describe
 
 ## Feedback
 
-Found a problem, or have an idea? Open an [issue](https://github.com/seapawn1/IDEO-Scrum/issues). It helps to say where you run it (Claude Code or Codex, its version, your operating system), what you said, and what you saw.
+Found a problem, or have an idea? Open an [issue](https://github.com/seapawn1/IDEO-Scrum/issues). It helps to say where you run it (Claude Code or DSH, its version, your operating system), what you said, and what you saw.
 
 ## Files
 
 | Path | What it is |
 | --- | --- |
-| `plugins/ideo-scrum/` | The plugin: the four roles in `commands/`, the four kernels in `skills/` (ideo, scrum, sprint, design), and `hooks/` |
-| `codex/plugins/ideo-scrum/` | The Codex edition, generated from the plugin by `scripts/sync_codex.py`; do not edit it by hand |
+| `plugins/ideo-scrum/` | The Claude Code plugin and the shared source for the four roles and the four kernels (ideo, scrum, sprint, design) |
+| `dsh/`, `package.json`, `cordis.patch.yml` | The DSH integration and bundle entry points |
 | `docs/` | The quick start and the glossary |
 | `scrum/` | This project's own Scrum work, in Chinese: its product log and its archived sprint logs |
-| `scripts/` | Scripts that generate and check the Codex edition and the docs |
-| `.claude-plugin/`, `.agents/plugins/` | The marketplace lists for Claude Code and Codex |
+| `scripts/` | Documentation and board checks, and tests for a first Sprint |
+| `.claude-plugin/` | The Claude Code marketplace list |
 | `LICENSE`, `ATTRIBUTION.md`, `CHANGELOG.md`, `CLAUDE.md` | The license, the sources and their terms, the release notes, and the instructions for working on this repository |

@@ -2,7 +2,7 @@
 
 # IDEO-Scrum
 
-一个 Claude Code 插件：把 Design Thinking 与 Scrum Sprint 带给你一个人加 AI 做的项目。**v6.0.3**
+一个面向 Claude Code 和 DeepSeek Harness（DSH）的插件：把 Design Thinking 与 Scrum Sprint 带给你一个人加 AI 做的项目。**v6.0.3**
 
 [English](README.md) · [安装](#安装) · [快速上手](docs/quick-start.zh-CN.md) · [词汇表](docs/glossary.md) · [更新记录](CHANGELOG.md)（英文）
 
@@ -18,7 +18,7 @@ IDEO-Scrum 给这份工作配一支 Scrum 团队。你当 Product Owner：方向
 
 ## 一次会话大概什么样
 
-示意，已缩短，不是实录；措辞会不一样。要看的是它在哪儿停：每个阶段结束，工作都等你。
+这是 Claude Code 里的简化示例，不是实录；措辞会不一样。要看的是它在哪儿停：每个阶段结束，工作都等你。
 
 ```text
 你：           /ideo-scrum:scrum-master
@@ -43,7 +43,7 @@ Developer：    计划写在冲刺日志第 3 章。你说「放行」之前，�
 
 适合：
 
-- 你用 Claude Code 做自己的项目，懂 Scrum，或者愿意把 Scrum Guide 放在旁边读（插件自带）。
+- 你用 Claude Code 或 DSH 做自己的项目，懂 Scrum，或者愿意把 Scrum Guide 放在旁边读（插件自带）。
 - 你想让规矩跟着插件走，不用每个会话重新口述；会话断了、被压缩了，能从停下的地方接上。
 
 不适合：
@@ -54,7 +54,9 @@ Developer：    计划写在冲刺日志第 3 章。你说「放行」之前，�
 
 ## 安装
 
-需要 Claude Code。你的项目最好是个 git 仓库；没有的话，Scrum Master 可以替你建。在 Claude Code 会话里：
+你的项目最好是个 git 仓库；没有的话，Scrum Master 可以替你建。
+
+**Claude Code。** 在 Claude Code 会话里：
 
 ```text
 /plugin marketplace add seapawn1/IDEO-Scrum
@@ -64,30 +66,19 @@ Developer：    计划写在冲刺日志第 3 章。你说「放行」之前，�
 
 检查：在终端里运行 `claude plugin list`，里面 `ideo-scrum@ideo-scrum` 显示已启用。
 
-Codex 是附带的版本，由同一份源生成；第一个冲刺的走法只在 Claude Code 上测过。在终端里：
-
-```sh
-codex plugin marketplace add seapawn1/IDEO-Scrum
-codex plugin add ideo-scrum@ideo-scrum
-```
-
-然后在新的 Codex 会话里输入 `$`，从技能菜单里选角色：`$scrum-master`、`$designer`、`$developer`、`$stakeholder`。
+**DeepSeek Harness（DSH `0.2.2-rc.5`）。** 把本仓库克隆到会一直保留的目录。在 DSH 侧栏打开**插件 → 添加插件**，在**包名或地址**里填本仓库根目录（有 `package.json` 的目录）的绝对路径，然后点**安装**。DSH 把 `@seapawn/ideo-scrum` 链接到这个目录，不会复制一份。到你要做的项目目录新开一个 **Standard** 会话。
 
 ## 升级
+
+**Claude Code。** 在终端里运行：
 
 ```sh
 claude plugin update ideo-scrum@ideo-scrum
 ```
 
-在终端里运行，然后在已经打开的会话里运行 `/reload-plugins`。第三方市场默认不会自动更新：想让 Claude Code 代劳，打开 `/plugin`，进 Marketplaces，选 `ideo-scrum`，选 Enable auto-update。每个版本改了什么，见[更新记录](CHANGELOG.md)（英文）。
+然后在已经打开的会话里运行 `/reload-plugins`。第三方市场默认不会自动更新：想让 Claude Code 代劳，打开 `/plugin`，进 Marketplaces，选 `ideo-scrum`，选 Enable auto-update。每个版本改了什么，见[更新记录](CHANGELOG.md)（英文）。
 
-Codex 上，先刷新市场，再把插件移除、重新装一遍。这条路我们没有完整测过。
-
-```sh
-codex plugin marketplace upgrade ideo-scrum
-codex plugin remove ideo-scrum@ideo-scrum
-codex plugin add ideo-scrum@ideo-scrum
-```
+**DSH。** 在原位置更新链接的仓库，重启 DSH，再开一个 **Standard** 会话。仓库换了位置，就先在**插件**页**卸载**旧链接，再用**添加插件**填新路径。
 
 ## 第一句话怎么说
 
@@ -100,14 +91,25 @@ codex plugin add ideo-scrum@ideo-scrum
 /ideo-scrum:stakeholder     # 对产品的外部视角，或者常驻做看板之类杂务的助手
 ```
 
-或者用自己的话说：
+在 DSH **Standard** 会话里，用原生的技能入口：
+
+```text
+/scrum-master
+/developer
+/designer
+/stakeholder
+```
+
+可以直接输入，也可以从 `/` 提示里选。任务可以跟在同一条消息里：`/scrum-master 帮我规划下个冲刺。` 角色按顺序带入 IDEO 内核和 Scrum 内核，Sprint 和 Design 按需加载。任务横跨冲刺与设计冲刺时，可以用 `/scrum-master /sprint-kernel /design-kernel` 显式顺序加载。DSH 也会识别句中独立出现的 `/名称`；只是提及名称时，在输入里用反引号包住它。
+
+在 Claude Code 中，也可以用自己的话说：
 
 ```text
 用 ideo-scrum 帮我规划下个冲刺，我们有 5 个待办项要精化
 这个功能要不要做我拿不准，先做一轮用户访谈的设计
 ```
 
-什么时候加载什么：Scrum、冲刺、设计冲刺的材料只有召唤才来——用角色命令，点名 ideo-scrum 或它的某个内核，或者要求建改它的日志；泛泛问 Scrum，照常回答。做原型、做测试时，IDEO 的方法常会自己介入；发散、定义问题时，模型多半直接作答，想用它的方法就点名 `ideo-kernel`（已知的限制）。
+什么时候加载什么：Scrum、冲刺、设计冲刺的材料只有召唤才来——叫出角色，点名 ideo-scrum 或它的某个内核，或者要求建改它的日志；泛泛问 Scrum，照常回答。在 Claude Code 里，做原型、做测试时，IDEO 的方法常会自己介入；发散、定义问题时，模型多半直接作答，想用它的方法就点名 `ideo-kernel`（已知的限制）。
 
 ## 和教科书上的 Scrum 有什么不同
 
@@ -148,11 +150,11 @@ codex plugin add ideo-scrum@ideo-scrum
 
 ![同一张看板，深色](docs/images/board-overview.png)
 
-**承诺 hook。** 会话开始、恢复或压缩时，以及承诺变了的那一轮，一个小 hook 会把日志里写着的承诺——产品、Product Goal、开着的 Sprint Goal 或设计目标——逐字放进 AI 的上下文，长会话也不会跑偏。
+**承诺。** 产品、Product Goal、开着的 Sprint Goal 和设计目标都以日志原文为准。
 
-- 用 `IDEO_SCRUM_COMMITMENTS=off` 关掉，写在设置文件的 `env` 里，或设在你的 shell 里。
-- 它要 POSIX 的 `sh`：Windows 上要装 Git for Windows。没在 macOS 上试过。
-- Codex 要你先信任才会运行 hook：在 `/hooks` 里审阅它，插件更新改了脚本以后要再审一次。没在 Codex 里试过。
+- **Claude Code：** 会话开始、恢复、压缩或承诺变化时，一个小 hook 把承诺逐字放进上下文。它要 POSIX 的 `sh`：Windows 上要装 Git for Windows。没在 macOS 上试过。
+- **DSH：** 每次模型执行前，插件读取当前项目的日志。在首次使用、文字变化或压缩移除了上次快照时，把承诺快照补进上下文。开着的冲刺或设计不止一个时，只报数量，不替你选目标。自动读不到承诺时，让角色重读原日志。不用 shell hook。
+- 要关闭此功能，Claude Code 可把 `IDEO_SCRUM_COMMITMENTS=off` 设在设置文件的 `env` 或 shell 里；DSH 在启动前设置这个环境变量。
 
 ## 了解更多
 
@@ -178,16 +180,16 @@ d.school 的许可禁止商业使用，所以本仓库不算 OSI 意义上的开
 
 ## 反馈
 
-发现了问题，或者有想法？开一个 [issue](https://github.com/seapawn1/IDEO-Scrum/issues)。写上你在哪里用（Claude Code 还是 Codex、它的版本、你的操作系统）、你说了什么、你看到了什么，会有帮助。
+发现了问题，或者有想法？开一个 [issue](https://github.com/seapawn1/IDEO-Scrum/issues)。写上你在哪里用（Claude Code 还是 DSH、它的版本、你的操作系统）、你说了什么、你看到了什么，会有帮助。
 
 ## 文件
 
 | 路径 | 是什么 |
 | --- | --- |
-| `plugins/ideo-scrum/` | 插件本体：`commands/` 里四个角色，`skills/` 里四个内核（ideo、scrum、sprint、design），还有 `hooks/` |
-| `codex/plugins/ideo-scrum/` | Codex 版，由 `scripts/sync_codex.py` 从插件本体生成，不要手改 |
+| `plugins/ideo-scrum/` | Claude Code 插件，也是四个角色和四个内核（ideo、scrum、sprint、design）的共用源 |
+| `dsh/`、`package.json`、`cordis.patch.yml` | DSH 适配和插件包入口 |
 | `docs/` | 快速上手和词汇表 |
 | `scrum/` | 本项目自己的 Scrum 工作，中文写的：它的产品日志和归档的冲刺日志 |
-| `scripts/` | 生成、核对 Codex 版和文档的脚本 |
-| `.claude-plugin/`、`.agents/plugins/` | Claude Code 和 Codex 的市场清单 |
+| `scripts/` | 文档和看板检查、首次冲刺体验测试 |
+| `.claude-plugin/` | Claude Code 市场清单 |
 | `LICENSE`、`ATTRIBUTION.md`、`CHANGELOG.md`、`CLAUDE.md` | 许可、来源和它们的条款、更新记录、改这个仓库时用的指令 |
