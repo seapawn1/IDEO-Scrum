@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 21 (design-board)
 
 > Started: 2026-11-19 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `claude/sprint-21-design-board-2a4e5b` | Product Owner: SeaPawn | Scrum Master: IDEO # [master]-[main]-[manage sprint] | Developer: Sprint 21 Developer
-> Now: Increment · H1–H5 施工产物已交 Master 审阅。PO 上次决定（2026-11-20，Master 转达）：仅放行本期施工交审的本地检查点提交；Test 未放行。
+> Now: Increment · H4／H5 已按 Master 的静态审阅修订，待复审。PO 上次决定（2026-11-20，Master 转达）：仅放行本期施工交审的本地提交；Test 未放行。
 > Waiting for PO: H6 · Master 审阅后是否放行 Test？
 > 日志约定：[sprint-log.md](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md)。
 
@@ -121,6 +121,16 @@ Go-ahead: 2026-11-19，PO：「可以，放行吧，随后你受到master得监�
 
 **2026-11-20 · 本地检查点。** Master 转达 PO 的决定：只在本 Sprint 分支提交 H1–H5 施工产物及本日志，供 Master 审阅。不改实现或通过线，不进入 Test，不合并、不打 tag、不推送、不发布。
 
-**停点：** Master 审阅 H1–H5；PO 明确放行 Test 后，定稿 §2.2 的测法和通过线、另获提交授权并提交，再执行验收。施工交审检查点不替代这次提交。
+**2026-11-20 · H4／H5 静态审阅修订。** Master 复核 `7453a50`：PBI-74 未见静态阻塞；PBI-71 三处退回当前 Increment 修订，准在本期分支做本地修订提交，仍不放行 Test。目标原文：「设计方案看得懂：打开设计冲刺卡，一眼看清这次设计的目标、路线和选定的方案；即使没画故事板，也能知道选了什么、方案怎么用。」
+
+| 审阅点 | 修订与依据 | 已备对照，尚未执行 |
+| --- | --- | --- |
+| 明确结束的 IDEO 仍被判应挂 | 收尾只读状态开头的完整表述，支持明确主语与中英文结束动词；不在后文搜关键词。看板约定第 16 条补例，不增加日志字段。 | `Test: The IDEO run has concluded; awaiting archive.` 与 `测试：本轮五模式已收尾，待归档` 应省略且误挂应报错；保留「待收尾」和 `review closed cases` 应挂的对照。 |
+| 宿主文件在，宿主已结束 | 依据看板约定第 11、16 条的开放宿主限制，及设计日志约定第 19 条「先结束、后由 Sprint Review 归档」的区别，只在嵌套 IDEO 归属时读取宿主自身的 `Now`。不改 `discover`、宿主卡生成、产品／普通 Sprint 卡或 IDEO 合法宿主范围。 | Sprint 的 `Test: Sprint 01 has ended; awaiting Review archive.` 与设计的 `测试：设计已结束（待 Review 归档）`：保留宿主卡，但在办 IDEO 不挂它，误挂报错。另有宿主文件不存在、仅一轮测试结束而宿主仍在办的独立对照。 |
+| `Question` 中的 `For:` 抢字段 | 按模板头部引用行的字段起点或竖线分隔边界取 `For`；冒号后的提问内容不是字段名。不要求新增字段。 | 完整模板头部把问题里的 `For: ../sprint-02-beta/SprintBacklog.md` 放在真正的 `For: ../sprint-01-alpha/SprintBacklog.md` 前；应只挂 Sprint 01。原先不含 `Question` 的简短头部继续保留。 |
+
+自测仍保留「正确宿主先出现」「正确宿主后出现」两种跨卡重复负例。改动仅为看板约定、检查器及本日志；H2–H5 继续待核。此次仅 Python AST 与 `git diff --check` 通过，未导入或执行检查器，未跑任何自测、实测或验收页。宿主恢复时原工作树处于分离 HEAD；确认 HEAD 和本期分支同为 `7453a50`、工作树干净后，重新关联原分支，未动主检出。
+
+**停点：** 修订提交后直接通知 Master 复审。PO 明确放行 Test 后，定稿 §2.2 的测法和通过线、另获提交授权并提交，再执行验收。施工交审检查点不替代这次提交；不合并、不推送、不打 tag、不发布。
 
 ## 5. Test

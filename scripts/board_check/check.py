@@ -118,8 +118,17 @@ def now_line(text):
 
 
 def header_field(text, name):
-    m = re.search(r"^>.*?\b%s:\s*([^|\n]*)" % name, text, re.M)
-    return m.group(1).strip() if m else ""
+    # 只从页首引用的字段起点取值；Question 中提到的 For: 不是字段。
+    for line in text.splitlines():
+        if line.startswith("##"):
+            break
+        if not line.startswith(">"):
+            continue
+        for field in line[1:].split("|"):
+            label, colon, value = field.strip().partition(":")
+            if colon and label == name:
+                return value.strip()
+    return ""
 
 
 def ideo_host(text, log_path):
@@ -136,14 +145,45 @@ def ideo_host(text, log_path):
     return None
 
 
-def ideo_concluded(now):
-    # 只识别状态开头的明确收尾，不把正文里的 finished work 或待收尾当成结论。
+MODE_PREFIX = re.compile(r"^(?:Empathize|Define|Ideate|Prototype|Test|共情|定义|构思|原型|测试)\s*[:：·]\s*", re.I)
+ENDED_EN = r"(?:concluded|closed|ended)"
+ENDED_ZH = r"已(?:收尾|结束|关闭)"
+
+
+def matches_end_state(state, english, chinese):
+    # 从状态开头读完整表述，不在后文搜索收尾关键词。
     return bool(re.match(
-        r"^(?:(?:Empathize|Define|Ideate|Prototype|Test|共情|定义|构思|原型|测试)\s*[:：]\s*)?"
-        r"(?:(?:this run (?:is|has been)\s+)?(?:concluded|closed)|(?:本轮|本次)?已(?:收尾|结束|关闭))"
-        r"(?=$|\s*(?:[.。:：·,，—–;；（(]|-\s|\d{4}-\d{2}-\d{2}\b))",
-        now, re.I,
+        rf"(?:{english}|{chinese})(?=$|\s*(?:[.。:：·,，—–;；（(]|-\s|\d{{4}}-\d{{2}}-\d{{2}}\b))",
+        state, re.I,
     ))
+
+
+def ideo_concluded(now):
+    return matches_end_state(
+        MODE_PREFIX.sub("", now, count=1),
+        rf"(?:(?:this|the)\s+(?:IDEO\s+)?run\s+(?:(?:is|has(?:\s+been)?)\s+)?)?{ENDED_EN}",
+        rf"(?:(?:本轮|本次)\s*)?(?:(?:IDEO\s*)?五模式\s*)?{ENDED_ZH}",
+    )
+
+
+def host_concluded(now, kind):
+    # 只供 IDEO 条目决定归属；阶段结束不等于宿主结束，也不据此移除宿主卡。
+    if kind == "sprints":
+        english_subject = r"sprint(?:\s+\d+)?"
+        chinese_subject = r"(?:本(?:期|次|轮)?)?冲刺(?:\s*\d+)?"
+        chinese_state = r"已(?:收官|收尾|结束|关闭)"
+    else:
+        english_subject = r"design(?:\s+sprint)?"
+        chinese_subject = r"(?:本(?:次|轮)?)?设计(?:冲刺)?"
+        chinese_state = ENDED_ZH
+    state = MODE_PREFIX.sub("", now, count=1)
+    if state == now and matches_end_state(state, ENDED_EN, rf"(?:(?:本期|本次|本轮)\s*)?{chinese_state}"):
+        return True
+    return matches_end_state(
+        state,
+        rf"(?:(?:this|the)\s+)?{english_subject}(?:\s+(?:(?:is|has(?:\s+been)?)\s+)?|\s*[:：]\s*){ENDED_EN}",
+        rf"{chinese_subject}\s*{chinese_state}",
+    )
 
 
 def table_after(text, heading_re):
@@ -241,9 +281,12 @@ def expected_ideo(project):
     """按看板约定 11、16 得到每条应展示的 IDEO 日志唯一的宿主和 Now。"""
     expected = {}
     for ident, log in project["ideo"].items():
-        host = log["host"]
-        if host and host[1] in project[host[0]] and not ideo_concluded(log["now"]):
-            expected[ident] = host[1], log["now"]
+        if not log["host"] or ideo_concluded(log["now"]):
+            continue
+        kind, host_id = log["host"]
+        host = project[kind].get(host_id)
+        if host is not None and not host_concluded(host["now"], kind):
+            expected[ident] = host_id, log["now"]
     return expected
 
 
@@ -657,21 +700,9 @@ def selftest():
         body = lo.read_text(encoding="utf-8")
         active = "Test：把重试间隔拿给两位店员看"
         design_path = "../design-gamma/DesignBacklog.md"
-        scenarios = [
-            ("open for a design", design_path, active, "design-gamma"),
-            ("open for a Sprint", "[Sprint 01](../sprint-01-alpha/SprintBacklog.md)", active, "sprint-01-alpha"),
-            ("open for the product log", "`scrum/ProductBacklog.md`", active, None),
-            ("concluded in English", design_path, "concluded 2026-11-14 — the frame is found", None),
-            ("concluded with an English full stop", design_path, "Test: concluded.", None),
-            ("concluded in Chinese", design_path, "测试：本轮已收尾（待归档）", None),
-            ("still waiting to close", design_path, "测试：待收尾", "design-gamma"),
-            ("closed mentioned in ongoing work", design_path, "Test: review closed cases", "design-gamma"),
-            ("no open host", "../sprint-09-closed/SprintBacklog.md", active, None),
-            ("a note is not a host log", "../design-gamma/Notes.md", active, None),
-        ]
-        for label, target, now, host in scenarios:
-            text = body.replace("For: " + design_path, "For: " + target, 1).replace(
-                "> Now: " + active, "> Now: " + now, 1)
+        sprint_path = "../sprint-01-alpha/SprintBacklog.md"
+
+        def placement(label, text, now, host, reject_on="design-gamma"):
             lo.write_text(text, encoding="utf-8")
             data = reference_data(ideo, ACME_SUMM)
             entry = {"id": "ideo-delta", "now": now}
@@ -680,13 +711,61 @@ def selftest():
             if actual != want:
                 failures.append("%s: expected %r, reference generated %r" % (label, want, actual))
             check(label, data, project=ideo)
-            if not host:
+            if host is None:
                 shown = copy.deepcopy(data)
-                card_data(shown, "design-gamma").setdefault("ideo", []).append(entry)
-                check(label + " incorrectly shown", shown, project=ideo, want_ok=False, expect="not eligible")
+                owner = next((c for c in shown["sprints"] + shown["designs"] if c["id"] == reject_on), None)
+                if owner is None:
+                    failures.append("%s: card %s should still be on the board" % (label, reject_on))
+                else:
+                    owner.setdefault("ideo", []).append(entry)
+                    check(label + " incorrectly shown", shown, project=ideo, want_ok=False, expect="not eligible")
+
+        scenarios = [
+            ("open for a design", design_path, active, "design-gamma"),
+            ("open for a Sprint", "[Sprint 01](%s)" % sprint_path, active, "sprint-01-alpha"),
+            ("open for the product log", "`scrum/ProductBacklog.md`", active, None),
+            ("concluded in English", design_path, "concluded 2026-11-14 — the frame is found", None),
+            ("concluded with an English full stop", design_path, "Test: concluded.", None),
+            ("concluded in an English sentence", design_path, "Test: The IDEO run has concluded; awaiting archive.", None),
+            ("concluded in Chinese", design_path, "测试：本轮已收尾（待归档）", None),
+            ("concluded in a Chinese sentence", design_path, "测试：本轮五模式已收尾，待归档", None),
+            ("still waiting to close", design_path, "测试：待收尾", "design-gamma"),
+            ("closed mentioned in ongoing work", design_path, "Test: review closed cases", "design-gamma"),
+            ("host log absent", "../sprint-09-closed/SprintBacklog.md", active, None),
+            ("a note is not a host log", "../design-gamma/Notes.md", active, None),
+        ]
+        for label, target, now, host in scenarios:
+            text = body.replace("For: " + design_path, "For: " + target, 1).replace(
+                "> Now: " + active, "> Now: " + now, 1)
+            placement(label, text, now, host)
+
+        sprint_body = body.replace("For: " + design_path, "For: " + sprint_path, 1)
+        full_header = (
+            "> Opened 2026-11-13 | Question: Which log should receive the conclusion? Suggested For: ../sprint-02-beta/SprintBacklog.md"
+            " | For: " + sprint_path + " | Product Owner: SeaPawn | Who runs it: AI"
+        )
+        with_question = sprint_body.replace(sprint_body.splitlines()[2], full_header, 1)
+        placement("only the For field sets the host", with_question, active, "sprint-01-alpha")
+
+        # 只改现有宿主的 Now，保持 IDEO 在办且 For 不变，宿主卡本身必须仍可发现。
+        host_states = [
+            ("sprint-01-alpha", sprint_path, sprint_body, "Test: Sprint 01 has ended; awaiting Review archive.",
+             "Test: The Sprint's first test has ended; next test pending."),
+            ("design-gamma", design_path, body, "测试：设计已结束（待 Review 归档）", "测试：第一轮已结束，继续核对设计问题"),
+        ]
+        for host, target, text, closed_now, stage_now in host_states:
+            host_file = (lo.parent / target).resolve()
+            original = host_file.read_text(encoding="utf-8")
+            prefix = "> Now: "
+            for host_now, want_host, state in ((closed_now, None, "ended but not archived"),
+                                              (stage_now, host, "one stage of work ended")):
+                updated = original.replace(prefix + now_line(original), prefix + host_now, 1)
+                host_file.write_text(updated, encoding="utf-8")
+                placement(host + " " + state, text, active, want_host, reject_on=host)
+            host_file.write_text(original, encoding="utf-8")
 
         # 两张同类卡可交换遍历顺序；保留正确挂载再向错误卡复制，不能只测移走原条目。
-        lo.write_text(body.replace("For: " + design_path, "For: ../sprint-01-alpha/SprintBacklog.md", 1), encoding="utf-8")
+        lo.write_text(sprint_body, encoding="utf-8")
         double = reference_data(ideo, ACME_SUMM)
         double["sprints"].sort(key=lambda card: card["id"])
         card_data(double, "sprint-02-beta")["ideo"] = [{"id": "ideo-delta", "now": active}]
