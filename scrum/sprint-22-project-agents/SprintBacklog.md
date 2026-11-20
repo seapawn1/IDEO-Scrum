@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 22 (project-agents)
 
 > Started: 2026-11-19 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `claude/sprint-22-project-agents-b09bf1` | Product Owner: SeaPawn | Scrum Master: 项目 Scrum Master | Developer: Sprint 22 Developer
-> Now: What；PO 已委托 Master 决定 PBI-75 双入口验收门槛，Master 已定。PBI-73、75 的验收判据已通过 Master 审阅，精化未结束。
-> Waiting for PO: 1. 是否结束 Sprint 22 的 What 精化？
+> Now: Planning · How；PO「定案并放行 What」（Master 转达）。PBI-73 设计前调研完成，待三方对齐 §4 结论再起草 How；未放行施工。
+> Waiting for PO: 1. 是否按调研建议起草 How？; 2. How 计划经 Master／PO 审阅后，是否放行施工？
 > How to write this log: [Sprint log conventions](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md).
 
 ## 1. Why
@@ -33,7 +33,7 @@
 
 ### 2.2 Refinement
 
-沿用 §2.1 的用户故事，先精化 PBI-73，再精化 PBI-75，两项分别验收。以下是 Master 在 2026-11-19 提出的验收场景及 Developer 的复述和暂估；判据已通过 Master 审阅，待 PO 决定是否结束 What，未做实测。
+沿用 §2.1 的用户故事，先精化 PBI-73，再精化 PBI-75，两项分别验收。以下是 Master 在 2026-11-19 提出的验收场景及 Developer 的复述和暂估；两项精化已定案，未做实测。
 
 **PBI-73：参谋**
 
@@ -86,9 +86,11 @@ Master 转达 PO 原话：「开子代理的时候，开工作流的时候就可
 
 只核对 Claude Code 的项目作用域；不做通用 Claude Code Setup、MCP 或全局配置。DSH 的项目 Agent 等价能力待查，不在本期承诺内。
 
-**Developer 核对（2026-11-19）：** 两项分别落实 §1.1 的独立判断和项目角色复用；PBI-73 的设计前 IDEO 调研仍待完成。
+**Developer 核对（2026-11-19）：** 两项精化均已核对：PBI-73 的只读第二意见与 PBI-75 的项目角色复用分别服务 §1.1，验收场景和取证口径齐备。PBI-75 两个入口均未实测，记「未验证」。PBI-73 的 IDEO 调研是方案设计的前置工作：先用适用方法调研已有做法，把结论交 PO、Master 与 Developer，再确定具体 How。
 
-**Master 审阅（2026-11-19，基于 `a5a7595`）：** PBI-73、75 的验收场景和取证口径均无必改项，可交 PO 决定是否结束 What。判据审阅通过不是功能验收通过；未放行 How、施工或实测。
+**Master 审阅（2026-11-19，基于 `a5a7595`）：** PBI-73、75 的验收场景和取证口径均无必改项。判据审阅通过不是功能验收通过。
+
+**PO 决定（2026-11-19，Master 转达）：**「定案并放行 What」。对照 §1.1 的 Sprint Goal「独立的第二视角：拍板前能请参谋复核方案，也能按本项目的角色卡听取 Stakeholder 的反馈；身份不用每次重讲，意见每次独立，决定仍由 PO 来做。」Master 据此记录 PBI-73、75 的 What 精化结束，转入 How 规划；How 方案尚未获批，施工及实测未放行。
 
 ## 3. How
 
@@ -100,5 +102,15 @@ Master 转达 PO 原话：「开子代理的时候，开工作流的时候就可
 **Risks and open points**
 
 ## 4. Increment notes
+
+**2026-11-20（UTC+8）· PBI-73 设计前调研。** 仍在 How 规划。用 [Assume a beginner's mindset](../../plugins/ideo-scrum/skills/ideo-kernel/methods/assume-beginners-mindset.md) 和 [What? How? Why?](../../plugins/ideo-scrum/skills/ideo-kernel/methods/what-how-why.md)，把个人原型的实际决定、宿主文档和推论分开。材料、原文出处和对照表见三方共享笔记 `sprint-22-advisor-research.md`。
+
+| 发现 | 对 How 的影响 |
+| --- | --- |
+| 个人原型最后选的是手动召唤的只读 Explore 子代理；因未满足真实决策试用条件，收口但未验收。`86c7f6b` 只登记了 PBI。 | 保留手动召唤、点名原件和只给意见的体验，不把旧脚本、双模型或本机网关选择当作产品规格。 |
+| [原生 advisor](https://code.claude.com/docs/en/advisor) 由 Claude 决定何时咨询，读取整段对话；[内置 Explore](https://code.claude.com/docs/en/sub-agents#built-in-subagents) 的默认模型受主会话和宿主影响。 | 建议优先考虑专用只读子代理：每次新上下文、只带点名原件，实际模型须有对应调用的可信记录。普通上下文隔离不等于完全没有项目规则，也不靠模型不同来证明独立。 |
+| [宿主可能替换子代理模型](https://code.claude.com/docs/en/sub-agents#when-an-allowlist-blocks-a-subagent-model)，网关映射也可能不可核实。 | 「默认 Fable，可另选」不变；需区分请求、宿主替换和实际执行，证据不足记「实际模型未验证」，不以改模型、权限或网关取证。 |
+
+下一检查点：三方看调研结论，确定起草方向，再由 Developer 提具体 How 给 Master／PO 审阅。本轮未定封装、未写 Agent、未跑功能测试；PBI-75 的普通子代理与 Workflow 入口仍「未验证」。
 
 ## 5. Test
