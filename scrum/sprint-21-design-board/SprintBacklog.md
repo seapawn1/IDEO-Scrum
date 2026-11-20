@@ -157,6 +157,10 @@ Go-ahead: 2026-11-19，PO：「可以，放行吧，随后你受到master得监�
 
 范围仅 Sprint 21：Master 决定 Review 前的阶段门、测试、修正与复测及本期分支本地提交；到 Review 之前停下，由 Master 通知 PO。仍交回 PO：改 Product Goal、取消冲刺、推翻 PO 已定事项、PO 点名的品味、推送发布。不启动 Review、Retro，不合并、不打 tag、不推送、不发布，不改 CLAUDE.md。B 卡独立盲读由 Master 召唤；Developer 不兼独立评阅。
 
+**2026-11-20（UTC+8）· PO 追加书面委托（Master 在 Test 中转达，逐字）。**「现在他们全部都开跑了，这样子我跟你讲。嗯，每一个对话，我现在给你权限，每一个对话，等到他们 review 之前向我报告就可以了。不意是每一个对话哦。因为他们现在都已经开始跑了。」
+
+覆盖已开的 Sprint 21–25。各期正式 Sprint Review 前的阶段门与常规决定由 Master 处理，到各期 Review 前由 Master 向 PO 报告。仍回 PO：改 Product Goal、取消 Sprint、推翻 PO 已定决定、PO 点名的品味、正式 Review／Retro／收官、推送发布；不代批 CLAUDE.md。本期只续做 Test 内的出处核验，不改变以下入口决定、已冻结判据或当前阶段。
+
 **阶段决定 · 2026-11-20，Master 依上述委托代 PO：Increment → Test（H6）。** 静态复审 `f030513` 未见阻塞，先冻结 §2.2 具体测法与通过线并只提交该日志，再执行本机验证。允许本期分支的判据、范围内修正和证据本地提交；失败保留原证据并按冻结判据复测，需回 Increment 或改验收边界先交 Master。§1.1 当时的目标原文快照：「设计方案看得懂：打开设计冲刺卡，一眼看清这次设计的目标、路线和选定的方案；即使没画故事板，也能知道选了什么、方案怎么用。」Test 完成也不自动 Review／收官。
 
 ## 5. Test
@@ -208,5 +212,7 @@ Go-ahead: 2026-11-19，PO：「可以，放行吧，随后你受到master得监�
 **2026-11-20 · Master 复核 `7ae87ff`。** PBI-74／PBI-71 均按 `9558a0a` 过线。认可首轮仅修取证驱动，保留原判，按原口径复测；不重跑已通过项。SGEP 资产的粗体标签不缺出处或许可，三处基线裸路径另记，不计为 Markdown 断链。
 
 **五模式署名缺口。** Master 核对 `89eb3dd` 的 Stanford 底本、`0d2629f` 从早期内核提取的补料及 `832092c` 的合并，确认有两路材料。`6c1017c` 改注现版 d.school 的 4.0 标注，但未逐项对上具体底本和旧版补料。[HPI 留存的 Stanford Bootcamp Bootleg 2010 原件](https://hpi.de/fileadmin/user_upload/fachgebiete/d-school/documents/01_GDTW-Files/bootcampbootleg2010.pdf)第 2 页明载 `CC BY-NC-SA 3.0 Unported`；[Stanford d.school 现版 Design Thinking Bootleg 页面](https://dschool.stanford.edu/tools/design-thinking-bootleg)标注 `CC BY-NC-SA 4.0`。这只证明两版原件的标注不同，不据此推定本仓库任何段落适用哪一版许可，不认定 IDEO 是另一个出版者，也不作侵权判断。待核的是具体内容、原件版本、出处与许可的逐项对应。
+
+**2026-11-20 · 五模式出处续核（Master 已核）。** `0d2629f` 的 38 个补料文本块逐词对应 Stanford 官方 2018 版 *Design Thinking Bootleg* PDF 第 3–12 页；4.0 标注出自链接该 PDF 的 Stanford 资源页，不据此反推历史下载记录或整份正文的许可。`89eb3dd` 的底本可追到本地 *An Introduction to Design Thinking — Process Guide* 的 DOCX／MD；仍缺与该底本对应、能确认具体版本和出处的官方原件，以及针对该版本的许可声明或权利方授权。2010／2018 年版 Bootleg 的许可不能替代这份证据。逐模式行号、页码和原件见仓外归档 `checks/attribution-audit/five-modes-evidence.md`；没有新的官方原件或权利方依据，不再重复查同一镜像。
 
 **Test 停点：** H6 不勾，整体 Test 未判通过。只记录复核，不改旧署名、原文、CLAUDE.md 或冻结标准，不回 Increment，不进 Review 或 Retro，不收官。不合并、不打 tag、不推送、不发布。
