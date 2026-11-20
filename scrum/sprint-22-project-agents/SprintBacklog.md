@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 22 (project-agents)
 
 > Started: 2026-11-19 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `claude/sprint-22-project-agents-b09bf1` | Product Owner: SeaPawn | Scrum Master: 项目 Scrum Master | Developer: Sprint 22 Developer
-> Now: Increment；PO 将施工中间决定交 Master。H1 已审过，Master 已有条件放行 H2；测法与通过线见 §4，先核开跑条件，未实测。
+> Now: Increment；PO 将施工中间决定交 Master。H2 两线的开跑条件未满足，均未发起样本；等 Master 复核，不进 H3–H7。
 > Waiting for PO: None（正式 Test 前由 Master 报 PO；目前未到 Test 门）。
 > How to write this log: [Sprint log conventions](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md).
 
@@ -191,5 +191,14 @@ Master 将请 PO 单独放行隔离 H2：合计最多 7 个样本、20 分钟、
 | PBI-75 · 75-A Agent、75-W Workflow，各一次；来源不透明时各一次独立对照 | 在同一个隔离项目只登记一份唯一合成角色定义，比较写前、写后原会话及新会话加载状态，记录生效条件。生效后从普通具名 Agent 和 Workflow 分别按名启动新评议；用宿主来源／作用域或定义内容核对同一份文件，核对新启动及实收上下文无预置旧评议。需要独立对照时只改变该定义是否存在，角色区分信息不进入两入口的题面。 | 普通 Agent 与 Workflow 须分别证实按名命中这份定义且新上下文，两入口都举证才过；相同名称、相似回答或一条仅有角色标记都不能替代。任一入口无证（含无隔离 Workflow）记「未验证」，不进 H4／H5，不复制角色提示或用全局配置兜底。 |
 
 **预算及停止。** PBI-73 至多 3 样本／US$1.50，PBI-75 至多 4 样本／US$0.50，总计 7 样本／20 分钟／US$2.00；单样本最长 180 秒，以先到的上限为准。冒烟与补跑占样本，父／子所有请求、缓存、自动重试及超时已发请求计入费用；启动前必须核算可执行的上界，超时终止整棵测试进程树，不能用超时或客户端估算上限当账单上界。保留实际次数、费用、逐线证据与缺口，只在仓内记可分享的汇总。不加跑、不挪用另一线预算，不用无损失假设放行；H2 不替代正式 Test。
+
+**2026-11-20 · H2 开跑核对（冻结基准 `5ef57d9`）。** 只核对本机入口是否安装、仓内回归脚本和公开宿主文档，未启动测试宿主或读取个人配置。原生 CLI 与现有回归入口都存在，但安装不等于隔离、取证和预算条件成立。
+
+| 线 | 实际样本／费用 | 核对结果与停点 |
+| --- | --- | --- |
+| PBI-73 | 0／US$0.00 | [回归手册](../documents/headless-testing.md)的固定便宜映射不能证实实际 Fable。[Agent 完成结果](https://code.claude.com/docs/en/agent-sdk/python#agent)文档可说明起始模型与中途切换记录的含义，却不能证明本期允许的运行路径下，手动入口在交付前能读到同次实际执行证据。没有核实到同时满足上述取证、只读工具范围、不可用／替换对照和费用上界的获准隔离通道。73-A／B／C 均未启动，实际模型、交付前识别和只读能力未验证；不进 H3。 |
+| PBI-75 | 0／US$0.00 | 现有[陌生人回归驱动](../../scripts/stranger_test/driver.py)第 101–129 行仅隔离部分目录，提供方配置仍指向作者环境；[守卫](../../scripts/stranger_test/guard.py)第 53–59 行读取配置／输入失败时放行，不能作为本次隔离保证。[CLI 费用参数](https://code.claude.com/docs/en/cli-reference#cli-flags)仅适用 print 模式且可超出估算上限；[Workflow 会自动重试](https://code.claude.com/docs/en/workflows#when-an-agent-stalls-and-restarts)。没有核实到同一隔离项目内启用 Workflow、可核全部请求 US$0.50 上界的获准交互会话；既不在当前会话借跑，也不先跑普通入口作替代。两入口及生效条件均未验证；不进 H4／H5。 |
+
+合计 **0 个样本、0 次模型调用、US$0.00**（H2 单列，含冒烟、父／子、重试，均为零）。这是前置条件未满足，不是实测失败，也不说明所有宿主都不支持。未生成测试夹具或更改用户配置；测法和判据不变。请 Master 复核：如后续有获准且可验证隔离与费用上界的通道，再依原门槛核对；不据此推进 H3–H6，不进 H7。
 
 ## 5. Test
