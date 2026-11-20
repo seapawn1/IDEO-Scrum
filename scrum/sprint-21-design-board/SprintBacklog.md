@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 21 (design-board)
 
 > Started: 2026-11-19 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `claude/sprint-21-design-board-2a4e5b` | Product Owner: SeaPawn | Scrum Master: IDEO # [master]-[main]-[manage sprint] | Developer: Sprint 21 Developer
-> Now: Test · 2026-11-20，Master 依 PO 的书面委托放行 H6，并复核两条 PBI 过线。五模式底本已追到官方存档维基页与空间级 CC BY-NC-SA 3.0 声明，尚待 Master／PO 裁定能否闭环及与现注 4.0 之落差；整体 Test 未判通过，不进 Review。
-> Waiting for PO: None
+> Now: Test 停点（Review 前）· 2026-11-21，Master 依 PO 书面委托收口：两条 PBI 与本期 Output Done 过线，不重测；基线遗留五模式底本署名落差未闭环，整体 Test 不判全过、H6 不勾为全套 DoD 通过。停在正式 Review 前，等 PO 对署名证据与处置拍板。
+> Waiting for PO: 1. 是否接受 2010 Process Guide 官方维基空间级 CC BY-NC-SA 3.0 存档证据并另立 PBI 补齐双源署名，或改写／移除底本后再合入发布。
 > 日志约定：[sprint-log.md](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md)。
 
 ## 1. Why
@@ -163,6 +163,14 @@ Go-ahead: 2026-11-19，PO：「可以，放行吧，随后你受到master得监�
 
 **阶段决定 · 2026-11-20，Master 依上述委托代 PO：Increment → Test（H6）。** 静态复审 `f030513` 未见阻塞，先冻结 §2.2 具体测法与通过线并只提交该日志，再执行本机验证。允许本期分支的判据、范围内修正和证据本地提交；失败保留原证据并按冻结判据复测，需回 Increment 或改验收边界先交 Master。§1.1 当时的目标原文快照：「设计方案看得懂：打开设计冲刺卡，一眼看清这次设计的目标、路线和选定的方案；即使没画故事板，也能知道选了什么、方案怎么用。」Test 完成也不自动 Review／收官。
 
+**2026-11-20 · PO 委托（Master 逐字转达）。**「21有什么要决策的吗？感觉没什么要决策的呀。就自己决定就行了呀，这些东西我都不需要管。」
+
+范围为本期 Review 前的常规决定；仍回 PO：改 Product Goal／Sprint Goal 承诺、取消 Sprint、推翻 PO 定案、PO 点名品味、计划外工作是否另建 PBI、法律／署名取舍、改 `CLAUDE.md`、正式 Review／Retro／收官、合并、tag、推送、发布。
+
+**2026-11-21 · PO 追加委托（Master 逐字转达）。**「可以，先审 22、23、25 吧  后面这些，嗯，对话。他们到 review 之前再向我报告。就是后面的事情你都可以决定了，review 之前再向我报告。」
+
+仍回 PO 的事项同上，不因追加委托而扩大：改 Product Goal／Sprint Goal 承诺、取消 Sprint、推翻 PO 定案、PO 点名品味、计划外工作是否另建 PBI、法律／署名取舍、改 `CLAUDE.md`、正式 Review／Retro／收官、合并、tag、推送、发布。本期只按裁停到正式 Review 前。
+
 ## 5. Test
 
 **2026-11-20 · Developer 验收。** 按先行本地提交 `9558a0a` 冻结的口径执行；被测插件与检查器仍为 `f030513` 所载实现，旧模板基线 `00c224b`。PBI-74、PBI-71 各自过线，H2–H5 勾选；Master 复核及完整 Test 停点见本章末。原始运行、首轮误判与复测留在仓库外 `S:/IDEO-Scrum-Archives/sprint-21-design-board/h6-9558a0a/`，下表证据路径相对于它。
@@ -222,3 +230,11 @@ Go-ahead: 2026-11-19，PO：「可以，放行吧，随后你受到master得监�
 4. **未闭环缺口（本次不改原文与现有署名）：**（a）授权声明位于维基首页（空间级），不在 `wiki/36873` 单页或 PDF 内；（b）官方维基已下线，仅有存档证据、未发函取得权利方书面回执；（c）该官方空间级声明为 `CC BY-NC-SA 3.0 Unported` 且来源为 *Design Process Mini-Guide*（*Process Guide*），而本仓库 `ATTRIBUTION.md` 第 3 节与 `IDEO-modes/*.md` 现仅标注 2018 *Design Thinking Bootleg*（`CC BY-NC-SA 4.0`），尚未登记该底本与 3.0 许可。
 
 **Test 停点：** H6 不勾，整体 Test 未判通过，两条 PBI 过线不变。只补记证据与缺口，不重测，不改旧署名、原文、CLAUDE.md 或冻结标准，不回 Increment，不进 Review 或 Retro，不收官；不合并、不打 tag、不推送、不发布。
+
+**2026-11-21 · Master Test 收口裁定（依 PO 2026-11-20／21 书面委托）。** 核对 §1.1 承诺原文：「设计方案看得懂：打开设计冲刺卡，一眼看清这次设计的目标、路线和选定的方案；即使没画故事板，也能知道选了什么、方案怎么用。」已核 `050b1cd` 与仓外 `S:/IDEO-Scrum-Archives/sprint-21-design-board/h6-9558a0a/checks/attribution-audit/publisher-wiki/` 全部 19 份捕获件、`publisher-wiki-evidence.md` 及 `sha256.json`，取证扎实完整；Master 裁定停止继续外网搜寻，直接定案到 Review 前停点。结论分列：
+
+1. **本期增量与两项 PBI 正式过线（不重测）：** PBI-74（设计卡三块、无故事板独立 Sonnet 盲读、6 组环境离线 42 卡次）与 PBI-71（13 份独立夹具离线归属、5 负例、79 项自测），以及本期涉及的 Output Done（内容忠实、可导航、无死链、插件严格校验、描述长度、DSH 自动回归 6/6）均已充分证实并通过；原判与复测证据保留，不重跑。
+2. **基线遗留 `IDEO-modes/` 署名缺口维持诚实未过、不越界修改、不降 DoD：** 本期分支未改动 `ATTRIBUTION.md` 或 `IDEO-modes/*.md`；按「计划外工作先登记 PBI，再由 PO 定进不进当前 Sprint」，不在 Sprint 21 内擅改其原文／标注。全产品 DoD 诚实线守住：「署名」项保持未判通过，H6 不勾为全套 DoD 通过。整体 Test 明确分列为：① 本期增量与两条 PBI 验收全过；② 基线遗留五模式底本署名落差（2010 *Design Process Mini-Guide* 官方维基空间级 `CC BY-NC-SA 3.0 Unported` 存档证据 vs 仓库现注 2018 *Bootleg* `4.0`）未闭环，作为 Review 唯一待 PO 拍板项——由 PO 决定是否接受该存档证据并另立 PBI 补齐双源署名，或改写／移除底本后再合入发布。
+3. **合流后待回验：** Sprint 23 归档态与本期看板、IDEO 归属规则的合流核对仍按上文「跨期合流待核」执行，不因本期收口而提前。
+
+**正式 Review 前停点：** 已停在 Review 前，不启动 Review／Retro，不改其他文件，不合并、不打 tag、不推送、不发布；等待 PO 对署名证据与处置拍板。
