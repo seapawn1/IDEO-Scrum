@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 25 (dsh-docs)
 
 > Started: 2026-11-19 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: claude/sprint-25-dsh-docs-4f4070 | Product Owner: SeaPawn | Scrum Master: IDEO-Scrum Master | Developer: Sprint 25 Developer
-> Now: How — 2026-11-20 PO 结束 What、放行 How 规划；Master 已审，无必改项，待 PO 放行施工。
-> Waiting for PO: 1. 是否放行 H1–H3 及授权范围；2. 是否直接授权执行会话修改本仓库 CLAUDE.md
+> Now: Increment — 2026-11-20 PO 直接授权本会话原样迁移根规则（`AGENTS.md` + `CLAUDE.md` 单向 `@AGENTS.md` 已落盘校验）；中英维护说明送审稿及 Test 隔离预算前置已备，待 Master 审稿并决定 Test 放行。
+> Waiting for PO: None
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
 
@@ -15,7 +15,7 @@
 
 <!-- The Product Owner decides it: this Sprint's one commitment (sprint-log.md, conventions 4 and 20). -->
 
-这一步服务[产品目标「产品化」](../ProductBacklog.md#12-product-goal)：在各自宿主里，用户不必请作者解释就能开始。范围见[六期总表](../documents/sprint-roadmap.md)的 Sprint 25；F08、F12 都归 PBI-72。以已入 main 的 `b2679aa` 为验收基线，不重做 DSH 包。PO 已定两版目标均为 `0.6.3`；两份清单仍为 `6.0.3`，版本目标不是改号、实机安装或发布的授权。
+这一步服务[产品目标「产品化」](../ProductBacklog.md#12-product-goal)：在各自宿主里，用户不必请作者解释就能开始。范围见[六期总表](../documents/sprint-roadmap.md)的 Sprint 25；F08、F12 都归 PBI-72。以已入 main 的 `b2679aa` 为验收基线，不重做 DSH 包。PO 已定两版目标均为 `0.6.3`；Why 定案时两份清单仍为 `6.0.3`。版本目标本身不是改号、实机安装或发布的授权。
 
 已定边界：仓库共用规则收在 `AGENTS.md`，`CLAUDE.md` 只单向 `@AGENTS.md` 导入，不循环；改 `CLAUDE.md` 仍须 PO 直接授权。DSH 如何读取共用规则、是否支持项目级 Agent 待实查，不承诺原生支持，不替 Sprint 22 实现。
 
@@ -98,11 +98,23 @@ PO 决定（2026-11-20，Master 转达）：原话「可以，我觉得23、25�
 
 **Master 审阅（2026-11-20，`c568270`）：** H1–H5 与 §2.2 一致，无必改项。降号迁移、DSH 共用规则和实机取证的停点保留；未经验证的宿主能力和迁移路径只作候选，不写成公开承诺。即使获准施工，改 `CLAUDE.md` 仍须 PO 直接授权执行会话；改号只调候选，不改已发布历史；安装与实机测试另等 Test 放行。
 
-Go-ahead: 待 PO 明确放行施工并注明范围。目前只放行 How 及本期日志的本地检查点；不改号、不改 `CLAUDE.md` 或其他交付物、不安装、不作正式测试、不合并、不打 tag、不推送、不发布。
+Go-ahead（2026-11-20，SeaPawn）：原话「可以放行吧。」按已审计划放行本工作树 H1–H3 和相应本地检查点。`CLAUDE.md` 仍须直接授权；安装、正式测试及 H4–H5 另等 Test 放行。不合并、不打 tag、不推送、不发布。决定时的 Sprint Goal 原文：「换宿主不换规矩：使用 Claude Code 或 DSH 的人，照各自的说明就能装好 0.6.3、叫出角色，用上同一套方法论；已装 6.0.3 的人知道怎样迁移，维护者只需维护一份共用规则。」
 
 ## 4. Increment notes
 
 <!-- Whoever does the work writes the notes, in whatever form helps: each change and its reason, and what a new session needs to pick the Sprint up; they may refine the How (sprint-log.md, conventions 9 and 20). A session that picks up the Sprint reads these first. The chapter ends with the Product Owner's decision that the Increment can go into testing (sprint-log.md, convention 24). -->
+
+| 工作项 | 2026-11-20 检查点 |
+| --- | --- |
+| H1 | [宿主证据与验收样例](host-evidence.md)已记固定版本的官方源码（`dsh-v0.2.2-rc.5` 提交 `9c2670d`）、两条旧安装基线（`v6.0.3` `d681c69`、`b2679aa`），以及待批的 Test（H4–H5）隔离白名单、4 组运行矩阵（`H4-A`/`H4-B`/`H5-A`/`H5-B`）、完整样例夹具、外部原始留证路径（`S:\IDEO-Scrum-Archives\sprint-25-dsh-docs\test-runs\`）、预算上限（单次最多 6 轮、单步 ≤ 120 秒）、压缩后补入界定与停点。当前 `PATH` 无 `dsh`；专用 Web／Standard 环境未启动，不能以源码或旧实跑当本期实机证据。 |
+| H2 | 1. **根规则原样迁移（PO 直接授权本执行会话，提交 `90aff9a`）**：`HEAD:CLAUDE.md` 原样迁至 [`AGENTS.md`](../../AGENTS.md)（5691 字节，blob `65e2c4e`，SHA-256 `f397cccd...`），[`CLAUDE.md`](../../CLAUDE.md) 仅留单向导入 `@AGENTS.md`（11 字节，blob `43c994c`，`AGENTS.md` 无 `@CLAUDE.md` 循环引用）。<br>2. **中英维护说明送审稿**：按 [docs-review.md](docs-review.md) 已审大纲（H1 + 4 H2）写成 [`docs/maintaining.md`](../../docs/maintaining.md) 与 [`docs/maintaining.zh-CN.md`](../../docs/maintaining.zh-CN.md)，严格区分官方源码、历史基线与待测项。中英 README 与双语快速上手保持未改，待 Master 审阅全文及实机 Test（H4–H5）通过后再落地。 |
+| H3 | 单独提交 `2800cc0`：两份清单、中英 README 与 CHANGELOG 的 Unreleased 条目同步为 `0.6.3`；未改已发布历史或 DSH 宿主版本。等 H2 的文档全部定稿，再锁定最终取证候选。 |
+
+静态与结构核验（未装插件、未跑实机模型测试）：`claude plugin validate --strict plugins/ideo-scrum`、`node --test scripts/check_dsh.mjs`、`npm pack --dry-run --json --ignore-scripts`、`python -X utf8 -I scripts/check_docs.py`（及 `--selftest` 与附带 `docs/maintaining*.md` 的对等／链接检查）、`python -X utf8 -I scripts/board_check/check.py selftest` 待最终提交前全部核验并留证于交付报告；H4–H5 安装、降号迁移与实机角色／承诺／规则加载取证仍未执行，待 Master 审阅并决定是否放行 Test。
+
+**PO 委托（2026-11-20，UTC+8，Master 转达）：**「现在他们全部都开跑了，这样子我跟你讲。嗯，每一个对话，我现在给你权限，每一个对话，等到他们 review 之前向我报告就可以了。不意是每一个对话哦。因为他们现在都已经开始跑了。」
+
+Sprint 21–25 的 Review 前阶段门和常规事项交 Master；本期安全隔离、安装前置与证据方案齐备后，请 Master 决定是否进入 Test。目前尚未放行。更改 Product Goal、取消 Sprint、推翻 PO 决定、PO 点名的品味、正式 Review／Retro／收官及推送发布仍交 PO；本仓库 `CLAUDE.md` 仍须 PO 直接授权实际执行会话。这不扩大任何工具权限或提交、安装范围。
 
 ## 5. Test
 
