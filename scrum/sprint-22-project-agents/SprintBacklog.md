@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 22 (project-agents)
 
 > Started: 2026-11-19 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `claude/sprint-22-project-agents-b09bf1` | Product Owner: SeaPawn | Scrum Master: 项目 Scrum Master | Developer: Sprint 22 Developer
-> Now: Planning · How；PO 已放行 How 规划（Master 转达）。Master 初审认可方向，两处 H2 停点已补，待复审；未放行施工。
-> Waiting for PO: 1. How 计划经 Master／PO 审阅后，是否放行施工？
+> Now: Planning · How；PO 已放行 How 规划（Master 转达）。Master 已复审通过 How 计划，将按并行安排报 PO；施工未放行。
+> Waiting for PO: 1. 是否放行施工？
 > How to write this log: [Sprint log conventions](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md).
 
 ## 1. Why
@@ -94,7 +94,7 @@ Master 转达 PO 原话：「开子代理的时候，开工作流的时候就可
 
 ## 3. How
 
-**Developer 提案（2026-11-20，按 Master 初审意见修订，待复审）。** 依据 §4 的设计前调研和 §2.2 的已定判据。以下均为放行后的工作，不代表已经施工或通过测试；每块控制在一个会话内。
+**Developer 提案（2026-11-20，按 Master 初审意见修订，已复审）。** 依据 §4 的设计前调研和 §2.2 的已定判据。以下均为放行后的工作，不代表已经施工或通过测试；每块控制在一个会话内。
 
 | # | Work item | Output | Done when |
 | --- | --- | --- | --- |
@@ -124,11 +124,13 @@ Master 转达 PO 原话：「开子代理的时候，开工作流的时候就可
 | 项目卡片、文件和引用漂移，或不同作用域存在同名定义 | 角色卡为身份依据；展示差异和实际命中来源。用户文件冲突不自动覆盖、不扫改全局；拒绝仍保留临时召唤。 |
 | 23／24 改共用约定和角色入口，25 改文档与版本 | Master 对齐接口后再改重叠段；本期只追加项目角色能力，不承担内核加载修正、两版改号或发布。 |
 
+**Master 复审（2026-11-20，基于 `8de87d1`）：** 两处 H2 停点及分线边界已补齐，How 计划通过复审。此为 Master 对计划的结论，不是 PO 放行或实测通过；由 Master 按并行安排报 PO。
+
 施工 Go-ahead：尚无。PO 经 Master 转达已授权 How 规划日志的本地检查点提交；不含启动 H1–H7、施工、功能实测、合并、tag、推送或发布。H2 最小能力实测与 H7 正式 Test 均须分别明确放行。
 
 ## 4. Increment notes
 
-**2026-11-20（UTC+8）· PBI-73 设计前调研。** 仍在 How 规划。用 [Assume a beginner's mindset](../../plugins/ideo-scrum/skills/ideo-kernel/methods/assume-beginners-mindset.md) 和 [What? How? Why?](../../plugins/ideo-scrum/skills/ideo-kernel/methods/what-how-why.md)，把个人原型的实际决定、宿主文档和推论分开。仓外共享笔记的完整位置为 `C:/Users/seapawn/AppData/Local/Claude-3p/side-session-notes/local_a8ccbc96-4762-4e09-a22e-f4fddb781972/sprint-22-advisor-research.md`；复核要点及来源列在下方，不依赖将私有原件复制入库。
+**2026-11-20（UTC+8）· PBI-73 设计前调研。** 仍在 How 规划。用 [Assume a beginner's mindset](../../plugins/ideo-scrum/skills/ideo-kernel/methods/assume-beginners-mindset.md) 和 [What? How? Why?](../../plugins/ideo-scrum/skills/ideo-kernel/methods/what-how-why.md)，把个人原型的实际决定、宿主文档和推论分开。调研工作笔记为 `sprint-22-advisor-research.md`（PBI-73）；复核要点及来源列在下方。私有原件保留原处，不复制入库。
 
 | 发现 | 对 How 的影响 |
 | --- | --- |
@@ -136,7 +138,7 @@ Master 转达 PO 原话：「开子代理的时候，开工作流的时候就可
 | [原生 advisor](https://code.claude.com/docs/en/advisor) 由 Claude 决定何时咨询，读取整段对话；[内置 Explore](https://code.claude.com/docs/en/sub-agents#built-in-subagents) 的默认模型受主会话和宿主影响。 | 建议优先考虑专用只读子代理：每次新上下文、只带点名原件，实际模型须有对应调用的可信记录。普通上下文隔离不等于完全没有项目规则，也不靠模型不同来证明独立。 |
 | [宿主可能替换子代理模型](https://code.claude.com/docs/en/sub-agents#when-an-allowlist-blocks-a-subagent-model)，网关映射也可能不可核实。 | 「默认 Fable，可另选」不变；需区分请求、宿主替换和实际执行，证据不足记「实际模型未验证」，不以改模型、权限或网关取证。 |
 
-**复核出处：** 个人原型的最后决定和未验收原因见 SeaPawn 仓外日志 `S:/SeaPawn/Scrum/sprint-advisor-workspace/SprintBacklog.md:56–65`（PBI-058）；早期候选与模型归属缺口见同目录 `artifacts/advisor-synthesis.md:7–25,90–113`。宿主证据的含义见 [Agent 执行结果](https://code.claude.com/docs/en/agent-sdk/python#agent)及[子代理完成事件](https://code.claude.com/docs/en/monitoring-usage#subagent-completed-event)，仅供理解起始模型与最终执行模型的区别，并不指定取证字段或要求开启遥测。
+**复核出处：** 个人原型的最后决定和未验收原因见《Sprint Backlog — advisor-workspace》§2.2 的 PBI-058「advisor（已收口，未验收）」；早期候选与模型归属缺口见《advisor（参谋）构思综合》（`advisor-synthesis.md`）§1–2、§5、§8–9。宿主证据的含义见 [Agent 执行结果](https://code.claude.com/docs/en/agent-sdk/python#agent)及[子代理完成事件](https://code.claude.com/docs/en/monitoring-usage#subagent-completed-event)，仅供理解起始模型与最终执行模型的区别，并不指定取证字段或要求开启遥测。
 
 调研时的检查点：结论交三方，之后由 Developer 提具体 How 给 Master／PO 审阅。调研未定封装、未写 Agent、未跑功能测试；PBI-75 的普通子代理与 Workflow 入口仍「未验证」。
 
