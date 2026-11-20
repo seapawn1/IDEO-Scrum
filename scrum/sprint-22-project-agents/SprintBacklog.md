@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 22 (project-agents)
 
 > Started: 2026-11-19 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `claude/sprint-22-project-agents-b09bf1` | Product Owner: SeaPawn | Scrum Master: 项目 Scrum Master | Developer: Sprint 22 Developer
-> Now: Increment；PBI-73 H2 已通过 Master 审阅、PBI-75 H2 取证已移交，正按 Master 放行顺序施工 H3 → H4 → H5 → H6；H7 正式 Test 待 Master 审阅 H3–H6 后冻结放行。
+> Now: Increment；H3–H6 已施工并自检通过（`a9c3eaa`／`dcf2fd2`／`c4f578e`），H7 正式 Test 方案已列入 §4 待 Master 审阅冻结；未获放行前不跑 H7、不进 Review／合并／推送。
 > Waiting for PO: None
 > How to write this log: [Sprint log conventions](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md).
 
@@ -283,5 +283,30 @@ Master 将请 PO 单独放行隔离 H2：合计最多 7 个样本、20 分钟、
 - **Sprint 25 H1 交接结论：** `dsh-v0.2.2-rc.5`（`9c2670d`）的 `agent-preset`／`tool-subagent` 不证明按项目自动发现 Agent 文件，DSH 文档边界如实标为未证实、不作项目级 Agent 支持声明。
 
 **2026-11-21 · 放行 H3–H6 施工（不含 H7 正式 Test）。** 依上述 PO 委托，在分支 `claude/sprint-22-project-agents-b09bf1` 上完成 H3 → H4 → H5 → H6 施工及逐文件本地检查点提交：H3 按 `4709f8f` 第 3 条口径写 `agents/advisor.md` 与 `claude-skills/second-opinion/SKILL.md`；H4–H5 写 `claude-skills/project-stakeholder/SKILL.md` 并写入上述两条宿主实测事实；H6 在 `plugin.json` 追加 `skills` 路径，写齐两份 `docs/project-agents*.md`，暂不改 `docs/quick-start*.md`（拟加的 1 行双语导航草案记入下方交接）。**H6 完成后自检并停点交审；未获 Master 审阅 H3–H6 并冻结放行 H7 前，不运行 H7 正式 Test，不进 Review、合并、tag、推送或发布。**
+
+**2026-11-21 · H3–H6 施工结果（交 Master 审阅）。** 四个本地检查点，逐文件提交，未合并、未推送、未打 tag。
+
+| 提交 | 内容 | 要点 |
+| --- | --- | --- |
+| `a9c3eaa` H3 | `plugins/ideo-scrum/agents/advisor.md`；`plugins/ideo-scrum/claude-skills/second-opinion/SKILL.md` | 参谋 `tools: Read, Skill`、`disallowedTools` 覆盖写入／Shell／再委派／通信／网络／MCP，`model: fable`；入口 `disable-model-invocation: true`，只传问题、约束与点名路径，新普通实例非 fork／续接；三态模型实测如实标为后续配置项，入口不声称已验证具体型号 |
+| `dcf2fd2` H4–H5 | `plugins/ideo-scrum/claude-skills/project-stakeholder/SKILL.md` | 从产品日志 §2.1 取卡；先展示两处变更再写入；拒绝不写、同名只报不覆盖、半途失败逐项报告；写入两条宿主实测事实（下一轮用户消息边界生效、Workflow 透传触发当轮原话）；保留 Review 召唤权与常驻 PO 助手边界 |
+| `c4f578e` H6 | `plugin.json` 追加 `"skills": ["./claude-skills/"]`；`docs/project-agents.md` 与 `.zh-CN.md`；`scripts/check_docs.py` 的 `PAIRS` | 默认 `skills/` 保留不变（清单该项为追加）；两份文档结构对等并加入配对检查；未改版本号、`dsh/`、`package.json`、`CLAUDE.md`、共用命令／内核／约定 |
+
+**H6 自检（全过）：** `claude plugin validate --strict plugins/ideo-scrum` 通过（识别新增 `ideo-scrum:advisor` 与两个新技能，共 6 个 skills）；`node --test scripts/check_dsh.mjs` 6 项全过（DSH 侧只注册四内核四角色，未受影响）；`python -X utf8 -I scripts/check_docs.py` 无错误（链接 103 条），`--selftest` 17 例全过；新增 description 长度 640／420／580 字符，均 ≤ 1024。
+
+**quick-start 导航草案（交接，本期不改 `docs/quick-start*.md`）。** 英文：`- For a second opinion, or a stakeholder your project keeps: [project agents](project-agents.md).`；中文：`- 需要第二意见，或想留住本项目的 Stakeholder：[项目 Agent](project-agents.zh-CN.md)。` 由 Sprint 25 先交共用段落，Master 对齐后再接。
+
+**H7 正式 Test 方案（提案，未冻结；须 Master 审阅 H3–H6 后单独放行）。**
+
+| 项 | 提案 |
+| --- | --- |
+| 前置 | H3–H6 提交经 Master 审阅；结构变更另派 `plugin-dev:plugin-validator`，显式 `model: "haiku"`，审 `agents/advisor.md`、两个新技能与清单追加；`plugin-dev:skill-reviewer` 按需并列 |
+| 环境 | 与 H2 同法：仓外空测试家目录、合成 Git 项目、白名单环境变量、`--setting-sources project,local`、`--strict-mcp-config`、只读工具面与故障即拒守卫；每次开跑前用 `/context all` 确认指令文件为 0 |
+| 参谋线（§2.2 三场景） | 纠正前提、独立赞同、缺少材料各一次：手动入口起新普通实例，逐项比对输入、点名原件、理由与文件状态；另核非显式请求不会误召唤、实际只读不转派、夹具前后一致 |
+| 参谋线（模型三态） | 默认／另选／不可用仍属后续配置项，不在 H7 通过线内；H7 只核「不把未验证的模型说成已验证」这一行为 |
+| 角色线（PBI-75 四场景） | 首次登记（展示两处变更、接受后成对写入）、拒绝（两处都不写）、更新与同名冲突（不静默覆盖、逐项报错）、双入口按名复用（普通 Agent 与 Workflow 各一次，同一份定义、各自新上下文、无预置旧评议） |
+| 隔离与安全 | 只用合成数据；不改用户模型、网关、权限或遥测；原始流留仓外，入仓只回填脱敏汇总；DSH 只跑既有回归，不作项目级 Agent 支持声明 |
+| 预算（提案） | 参谋 3 样本、角色 4 样本，合计 7 样本；单样本 ≤ 240 秒、总量 ≤ 30 分钟、估算 ≤ US$3.00；shell 与登记类动作零模型；超时终止整棵进程树；不补跑、不挪预算 |
+| 停点 | 任一场景缺证据即记「未验证」并停在该场景，不带证据改验收线；H7 结果交 Master，正式 Review／合并／tag／推送／发布仍由 PO 决定 |
 
 ## 5. Test
