@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 22 (project-agents)
 
 > Started: 2026-11-19 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `claude/sprint-22-project-agents-b09bf1` | Product Owner: SeaPawn | Scrum Master: 项目 Scrum Master | Developer: Sprint 22 Developer
-> Now: Increment；PO 将施工中间决定交 Master。H2 两线的开跑条件未满足，均未发起样本；等 Master 复核，不进 H3–H7。
-> Waiting for PO: None（正式 Test 前由 Master 报 PO；目前未到 Test 门）。
+> Now: Increment；Master 核准并放行仅启动 PBI-73 H2（通道 2 硬化隔离行为通道），补齐三项实施细化与 H3／H7 口径后先提交冻结检查点，再跑 `73-A`／`73-B`／`73-C`（首样本熔断）；PBI-75 维持停点（0 样本／US$0.00）。
+> Waiting for PO: None
 > How to write this log: [Sprint log conventions](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md).
 
 ## 1. Why
@@ -200,5 +200,41 @@ Master 将请 PO 单独放行隔离 H2：合计最多 7 个样本、20 分钟、
 | PBI-75 | 0／US$0.00 | 现有[陌生人回归驱动](../../scripts/stranger_test/driver.py)第 101–129 行仅隔离部分目录，提供方配置仍指向作者环境；[守卫](../../scripts/stranger_test/guard.py)第 53–59 行读取配置／输入失败时放行，不能作为本次隔离保证。[CLI 费用参数](https://code.claude.com/docs/en/cli-reference#cli-flags)仅适用 print 模式且可超出估算上限；[Workflow 会自动重试](https://code.claude.com/docs/en/workflows#when-an-agent-stalls-and-restarts)。没有核实到同一隔离项目内启用 Workflow、可核全部请求 US$0.50 上界的获准交互会话；既不在当前会话借跑，也不先跑普通入口作替代。两入口及生效条件均未验证；不进 H4／H5。 |
 
 合计 **0 个样本、0 次模型调用、US$0.00**（H2 单列，含冒烟、父／子、重试，均为零）。这是前置条件未满足，不是实测失败，也不说明所有宿主都不支持。未生成测试夹具或更改用户配置；测法和判据不变。请 Master 复核：如后续有获准且可验证隔离与费用上界的通道，再依原门槛核对；不据此推进 H3–H6，不进 H7。
+
+**2026-11-20（UTC+8）· PO 授权各期正式 Sprint Review 前的阶段决定（Master 转达）。**「现在他们全部都开跑了，这样子我跟你讲。嗯，每一个对话，我现在给你权限，每一个对话，等到他们 review 之前向我报告就可以了。不意是每一个对话哦。因为他们现在都已经开始跑了。」本期由 Master 决定并记录正式 Review 前的阶段放行，含今后 H7 Test 门；替代本章先前「Test 仍由 PO 明确放行」的安排，不是现在放行 Test。Developer 只向 Master 交审和报阻碍，由 Master 在正式 Review 前向 PO 报告。
+
+**保留事项。** 更改 Product Goal 或 Sprint Goal、取消 Sprint、推翻 PO 已定决定、PO 点名要看的品味事项、正式 Sprint Review／Retro／收官及对外发布，均不在此次授权内。不因此获得合并、tag、推送、发布或改用户配置的授权；修改 `CLAUDE.md` 仍须 PO 直接授权修改它的会话。
+
+**H2 只读补查复核（2026-11-20，Master）。** 维持 `e3e5459` 的未启动／未验证停点：PBI-73 仍缺入口交付前可用的同次可信实际模型证据和可验只读的隔离通道；`PostToolUse` 的宿主解析／换模记录不能替不透明网关证明实际执行，不临时新增 hook。PBI-75 仍缺同一隔离项目内的普通 Agent／Workflow 双入口取证条件，以及覆盖交互 Workflow 含重试费用的可核分线上界。默认 Fable、双入口判据及 `5ef57d9` 的安全、取证与预算门槛不变；两条窄版建议暂不实施。有经核符合原门槛的通道才报 Master，不试跑未知环境。仅记授权和补查边界，未新增测试、组件或支出，不进 H3–H7。
+
+**2026-11-20（UTC+8）· PO 更新 PBI-73 模型决定及适用范围（Master 转达）。** 对照 §1.1 的 Sprint Goal「独立的第二视角：拍板前能请参谋复核方案，也能按本项目的角色卡听取 Stakeholder 的反馈；身份不用每次重讲，意见每次独立，决定仍由 PO 来做。」，PO 新决定原话为：「我说实话，22那个随便一个模型就可以。到时候再详细配置，用户回详细配置就行了，他测试的时候随便找个模型测就行，他可以用 Opus 去测也行啊。」
+
+- **覆盖与保留范围：** 本条依据[日志约定第 20 条](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md)调整 Sprint 22 本轮 H2 的开跑与过线门槛：在获准隔离通道上用可用模型先验证参谋核心功能，不把 2026-11-19 的「默认 Fable，可另选」（§2.2）或指定 Opus、入口交付前同次真实型号核验、以及换模／不可用专门对照作为本轮开跑门或功能过线门（同步调整上段复核对 PBI-73 模型的停点要求）。原 §2.2 的「默认 Fable，可另选」及三态表、§4 `5ef57d9` 原冻结段及 `e3e5459` 零样本记录（含「合计 0 个样本、0 次模型调用、US$0.00」与「这是前置条件未满足，不是实测失败」）全部保留不改写；详细模型配置与指定模型／换模取证另留后续，本轮不声称某精确型号已测试、不伪装用户所选、不静默改变配置。不为用 Opus 多花费、不改作者设置、不加型号验证 hook。§3 H3／H7 中「默认 Fable、明确另选、不可用」措辞是随本轮单列收敛对齐，还是留作后续详细配置项，待 Master 核准下述草案时一并裁示。
+- **PBI-75 线不动：** §2.2 PBI-75 四个验收场景、双入口门槛、取证口径、M 暂估及 `5ef57d9` 的普通 Agent／Workflow 同一项目定义与 4 样本／US$0.50 预算不变；两线不互等。
+
+**2026-11-20（UTC+8）· PBI-73 H2 修订草案（待 Master 核准，尚未冻结／未开跑）。** 沿 `5ef57d9` 在第 4 章追加 H2 预检口径（不改 §2.2，不填 §5，不替代 H7 正式 Test；未获 Master 核准并独立作本地检查点提交前，不发起任何样本）。
+
+| 样本（共 <= 3 个） | 测法、触发与旧意见隔离设计（零隐藏探针） | 通过线与实际工具面核验 |
+| --- | --- | --- |
+| 73-A（纠正前提）· 73-B（独立赞同）· 73-C（缺少材料） | 在仓外最小测试插件定义（仅含临时 `advisor` 与手动 `second-opinion`，不动 `plugins/ideo-scrum/`）及隔离合成 Git 夹具上，每样本起一个独立隔离会话（`--input-format stream-json`）：**第 1 轮**只作普通决策讨论并由父会话提出带标记的偏颇旧意见（`OLD-OPINION-...`），不请求第二意见、不点名入口；**第 2 轮**显式调用 `/ideo-scrum:second-opinion`，只传待决问题、约束与点名合成材料路径，不转第 1 轮旧意见，召唤新、非 fork、非续接的 `advisor` 实例。3 个样本分别对应 §2.2 三种意见场景；每样本的父会话双轮、子代理调用、缓存及重试全部计入本线预算，不再另跑第 4 次「非自动触发探针」。 | ① 明确手动召唤与非自动触发：3 个样本第 1 轮调用／事件追踪均无 `second-opinion` 或 `advisor` 自动召唤（不单独拿静态 `disable-model-invocation` 代替运行时触发验证），第 2 轮均显式命中；② 全新上下文与无旧意见泄漏：子代理为新普通实例（非 fork／续接），实收派单与上下文不含第 1 轮 `OLD-OPINION-...`；③ 实际只读且不转派：照 §3 H1 与[回归手册](../documents/headless-testing.md)，子代理加载内核（`ideo-kernel` → `scrum-kernel`，按需 `sprint-kernel`／`design-kernel`）前后工具面均含 `Read` 与 `Skill`，且**不含** `Write`、`Edit`、`NotebookEdit`、`Bash`、`PowerShell`、`Agent`、`Workflow`、`SendMessage`、`WebFetch`、`WebSearch` 及 `mcp__*`（不强制限定全集仅 `{Read, Skill}`），运行时零写入／Shell／再委派／通信调用，且夹具文件前后 SHA-256 与 mtime 一致；④ 三个场景均按 §2.2 给出可对照原件的独立意见，不代决定、不写回、不编造缺料依据。 |
+
+- **隔离基线与待 Master 核准的通道／上界选项：** 按[无头回归手册](../documents/headless-testing.md)第 10、34 条：同一 Windows Claude Code 构建；仓外全新 `USERPROFILE`／`HOME`／`APPDATA`／`LOCALAPPDATA`／`TEMP`／`TMP`／`CLAUDE_CONFIG_DIR`；项目置于无任何上级 `CLAUDE.md`／`AGENTS.md`／`.claude/rules` 的位置（如 `C:\Users\Public\...`）并 `git init`；开跑前每个会话用 `/context all` 确认指令文件为 0；白名单环境变量、`--setting-sources project,local`、`--strict-mcp-config`、`--tools`／`--disallowedTools`；180 秒超时终止整棵进程树；保留 3 样本／US$1.50／单样本 180 秒／总量 20 分钟边界不扩。现有两条可行路径供 Master 选定其一并核准其上界条件（不把 `PostToolUse` 新增 hook 列为候选）：
+  1. **通道 1（非作者隔离 API 凭据 + Console 工作区限额 + `-p` / `stream-json`）：** 完整凭据隔离且响应含真实 `model`／`usage`；但 CLI `--max-budget-usd` 仅适用 print 模式且按客户端估算可超出（`e3e5459` 已记），不能单独算可执行账单上界，须由 Master／PO 提供非作者专用 `ANTHROPIC_API_KEY` 并在对应 Console 工作区确认可设 `<= US$1.50` 限额（目前未具备）。
+  2. **通道 2（本机 `claude-magpie` 硬化隔离行为通道）：** 按手册第 6、10 条即时可用且为便宜模型（汇总记「magpie 的便宜模型，非 Haiku」），在新 PO 决定下不再因「固定映射不能证 Fable」而被否；**必须由 Master 明确核准的两项边界：**（a）`claude-magpie` 经由作者本机 `magpie` 网关／凭据路由（不共用作者设置／会话／项目文件，并可另加故障即拒的本地路径守卫而不沿用遇错放行的 `scripts/stranger_test/guard.py`），属于**网关配置归作者环境、执行范围隔离**，非非作者独立 API 账号；（b）网关不透明，无服务端硬性 US$1.50 计费上界，只能以客户端 `--max-budget-usd`（估算）配合单样本 180 秒树杀与只读工具白名单兜底。
+  未获 Master 明确选定上述通道与预算接受口径、并作独立检查点固定前，PBI-73 H2 仍维持 **0 样本／US$0.00**，不启动、不进 H3–H7。
+
+**2026-11-20（UTC+8）· Master 核准 PBI-73 H2 修订、通道 2 口径与实施细化冻结（仅启动 PBI-73 H2）。** 对照 §1.1 的 Sprint Goal「独立的第二视角：拍板前能请参谋复核方案，也能按本项目的角色卡听取 Stakeholder 的反馈；身份不用每次重讲，意见每次独立，决定仍由 PO 来做。」依据[日志约定第 20 条](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md)，Master 复核 PBI-75 仓外夹具与计费核对通过并维持停点（0 样本／US$0.00），同时核准仅启动 PBI-73 H2 并冻结以下条款（先只暂存并独立提交本文件作冻结检查点，再进行零调用预检与样本执行）：
+
+1. **选定通道 2（本机 `claude-magpie` 硬化隔离行为通道）及接受边界（仅用于 PBI-73 H2）：**
+   - 网关／凭据经本机 `magpie`（[无头回归手册](../documents/headless-testing.md)第 6 条既定便宜模型测试入口），属执行范围严格硬化隔离：仓外全新 `USERPROFILE`／`HOME`／`APPDATA`／`LOCALAPPDATA`／`TEMP`／`TMP`／`CLAUDE_CONFIG_DIR`，零写入作者 `~/.claude`，上级无指令文件目录（`C:\Users\Public\...`）并 `git init`，每会话开跑前以 `/context all` 确认指令文件为 0，白名单环境变量、`--setting-sources project,local`、`--strict-mcp-config`、故障即拒本地路径守卫，绝不访问作者配置、记忆或仓库；
+   - 不声称服务端硬账单上限，不声称验证了 Fable／Opus 等具体型号（汇总统一标「magpie 的便宜模型，非 Haiku」，不写模型名、网关地址或提供方）；以客户端 `--max-budget-usd`（总计 `<= US$1.50`）＋单样本 180 秒 `taskkill /T /F` 整棵进程树终止＋总计 `<= 20` 分钟＋严格最多 3 样本兜底。
+2. **开跑前补齐并冻结的三项实施细化：**
+   - **父会话 vs 子代理工具面分开：** 父会话保留 `Read,Grep,Glob,Skill,Agent`（同时禁 `Write,Edit,NotebookEdit,Bash,PowerShell,Workflow,SendMessage,WebFetch,WebSearch` 与 MCP）以在第 2 轮召唤 `advisor`；`advisor` 子代理本身由仓外临时代理定义强制只读与不转派（加载内核前后均含 `Read` 与 `Skill`，不含 `Write`/`Edit`/`NotebookEdit`/`Bash`/`PowerShell`/`Agent`/`Workflow`/`SendMessage`/`WebFetch`/`WebSearch`/`mcp__*`），不以父会话限制代替子代理工具面证据。
+   - **故障即拒守卫放入隔离项目 `.claude/settings.local.json`：** 按[无头回归手册](../documents/headless-testing.md)第 36 条，绝不经 CLI `--settings` 传守卫；因启用 `--setting-sources project,local`（屏蔽用户 settings），守卫钩子置于隔离项目的 `.claude/settings.local.json`（不计入合成材料哈希、命令本身不提测试或作者路径），并在零成本预检阶段确认守卫确实被加载且不影响 `/context all` 指令文件为 0。
+   - **零额外模型冒烟＋首样本熔断：** `/context all`、守卫脚本本地单测与夹具哈希均为零模型调用预检；真实模型调用严格控制在 `73-A`／`73-B`／`73-C` 至多 3 样本内，不另跑第 4 次模型探针。若 `73-A` 出现隔离串入、守卫失效、工具面越权或无法召唤，立即停机回报 Master，不继续跑 `73-B`／`73-C`。
+3. **本轮 H3／H7 单列覆盖口径（保留 §2.2 与 §3 原文不回改）：**
+   - 本轮 H3／H7 对 PBI-73 按 PO 2026-11-20 决定执行模型无关的功能交付与验收（手动召唤、非自动触发、全新无旧意见上下文、实际只读不转派、§2.2 三场景独立意见、插件校验与 DSH 回归）；代理定义保留可配置模型接口但不锁死个人网关或固定版本 ID，不加模型验证 hook。
+   - 原 §2.2 与 §3 的「默认 Fable、明确另选、不可用」三态实测及用户侧详细模型配置明确留作后续配置项，不在本轮标为已测，也不静默删除，待 Review 时一并向 PO 列明。
+4. **阶段边界：** 不动 `plugins/ideo-scrum/`，原始流放仓外，入仓只留脱敏汇总；PBI-75 不动；PBI-73 H2 结果未交 Master 审阅前不进 H3–H7，不改 `CLAUDE.md`，不进 Review／合并／打 tag／推送／发布。
 
 ## 5. Test
