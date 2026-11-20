@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 25 (dsh-docs)
 
 > Started: 2026-11-19 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: claude/sprint-25-dsh-docs-4f4070 | Product Owner: SeaPawn | Scrum Master: IDEO-Scrum Master | Developer: Sprint 25 Developer
-> Now: Test（部分放行：仅 H4） — 2026-11-20 Master 依 PO 委托审过 H1–H3 交付（`90aff9a`、`ab4061c`），局部放行 Claude Code 侧 `H4`（`H4-A`、`H4-B` 及压缩后补入取证）；DSH 侧 `H5` 因 `PATH` 无 `dsh` 且缺已确认安全的 `0.2.2-rc.5` Web/Standard 入口暂不放行。
-> Waiting for PO: 1. 明确可安全使用的 DSH 0.2.2-rc.5 Web/Standard 启动入口，以决定 H5 放行及 DSH 压缩后补入取证口径（当前先执行已获放行的 H4）
+> Now: Test（H4 开发者验证完成待 Master 复核；H5 挂起） — 2026-11-20 已完成隔离冒烟、`H4-A`（`0.6.3` 新装）与 `H4-B`（`v6.0.3 → 0.6.3` 迁移），两项均含 `/compact` 压缩后承诺复注原生 hook 取证；DSH 侧 `H5` 仍待 PO 明确安全入口。
+> Waiting for PO: 1. 明确可安全使用的 DSH 0.2.2-rc.5 Web/Standard 启动入口，以决定 H5 放行及 DSH 压缩后补入取证口径
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
 
@@ -123,3 +123,19 @@ Sprint 21–25 的 Review 前阶段门和常规事项交 Master；本期安全�
 ## 5. Test
 
 <!-- Record here the Developer's tests, the reviewer's check (by default the Scrum Master), the Product Owner's end-to-end test, and the result of each Definition of Done item and acceptance criterion. Fix a problem on the spot and test again (sprint-log.md, convention 16). The chapter ends with the Product Owner's decision: close, or go back (sprint-log.md, convention 24). -->
+
+### Developer Test · Claude Code `H4`（2026-11-20，待 Master 复核；DSH `H5` 挂起）
+
+**结论：Claude Code 侧 `H4`（隔离冒烟、`H4-A` 新装 `0.6.3`、`H4-B` `v6.0.3 → 0.6.3` 迁移、两项 `/compact` 压缩后承诺复注、`AGENTS.md` 单向导入与 `scrum/` 逐字节保全）全部通过；常规 `claude plugin marketplace update ideo-scrum` + `claude plugin update ideo-scrum@ideo-scrum` 在 Claude Code `2.1.329` 上直接完成 `6.0.3 → 0.6.3` 降号更新，无需卸载重装。唯一剩余缺口为 DSH 侧 `H5`（待 PO 明确安全入口）。**
+
+- **环境与模型口径**：被测提交 `119e4af`（`plugins/` 与 `ab4061c`/`2800cc0` 相同，候选 `0.6.3`）；旧基线 `d681c69`（`v6.0.3`）。宿主 Claude CLI `2.1.329`；模型通道 `claude-magpie`（magpie 的便宜模型，非 Haiku）；进程使用白名单环境变量、中性父目录 `C:\Users\Public\s25-test\`、各运行独立 `CLAUDE_CONFIG_DIR` 与 `TMPDIR`、仅放开 `Read,Grep,Glob,Skill`（禁用 `Bash,PowerShell,Write,Edit,Agent`）、`--strict-mcp-config --permission-mode dontAsk`，并在各配置目录 `settings.json` 挂载 `scripts/stranger_test/guard.py`（未传冲突 `--settings`）。仓外原始流与清单快照：`S:\IDEO-Scrum-Archives\sprint-25-dsh-docs\test-runs\H4-A\` 与 `H4-B\`。
+- **冒烟与隔离实测纠偏**：
+  1. **Git 市场形态**：本机用仅监听 `127.0.0.1` 的 `git-http-backend` 提供裸仓 URL（`known_marketplaces.json` 记为 `"source": "git"`），使 `add`/`update` 真实走 `git clone` 与版本缓存，区别于 `"source": "directory"`。
+  2. **`--setting-sources` 与用户插件加载**：冒烟（`C:\Users\Public\s25-test\smoke-03\`）证实 `claude plugin install` 默认写 `user` 作用域（`CLAUDE_CONFIG_DIR\settings.json` 的 `enabledPlugins`）；若传 `--setting-sources project,local`，会话不会挂载 `ideo-scrum`。因本测试已完全隔离 `CLAUDE_CONFIG_DIR`，故先以 `--setting-sources user,project,local` 跑 `/context all` 证清白（`Memory Files: []`），再以同一隔离范围跑正式会话（与 `scripts/stranger_test/driver.py` 一致）。
+  3. **POSIX `sh` 与状态文件隔离**：清洁 `PATH` 命中 `E:\GIT\Git\usr\bin\sh.EXE`（非 WSL）；`commitments.sh` 的 `.fp` 状态写入各运行独立 `CLAUDE_CONFIG_DIR\plugins\data\ideo-scrum-ideo-scrum\ideo-scrum-commitments\*.fp`，零触碰共享 `/tmp`。
+  4. **真实 `~/.claude` 核对**：`H4-A` 全程 `plugins/` 与 `settings*.json` 差异为 `0`；`H4-B` 中真实 `~/.claude` 未出现 `0.6.3`、未改任何清单或设置（仅并行其他会话的两个短生命周期 PID 在宿主机原有插件缓存下留下了 `.in_use/` 锁文件）。
+
+| 运行 | 隔离 `/context all` | 市场与缓存加载（来源／版本） | 角色、内核与原生 hook | `/compact` 压缩后复注 | 规则与日志保全 |
+| --- | --- | --- | --- | --- | --- |
+| `H4-A`（新装 `0.6.3`） | 放规则前 `[]`；放后仅加载 `proj\CLAUDE.md`（23 tok）与 `proj\AGENTS.md`（32 tok） | `git` 市场安装；`claude plugin list` 与会话 `init` 均指向 `...\H4-A\...\cache\ideo-scrum\ideo-scrum\0.6.3`（`0.6.3`，`d627d118`） | `init` 见 4 角色与 4 内核；`/ideo-scrum:scrum-master` 按序调 `Skill`（`ideo-kernel` → `scrum-kernel` → `sprint-kernel`）并进入 Why/Planning；`SessionStart:startup`（`exit_code: 0`）注入 3 条原文承诺 | `compact_boundary`（`manual`）后触发 `SessionStart:compact`（`exit_code: 0`），再次注入 3 条原文承诺；第 3 轮模型完整复核承诺与规则 | 回应原文引用 `S25-SHARED-RULE: Preserve the sample logs.`；`scrum/` 前后 SHA-256 一致、`git status` 干净 |
+| `H4-B`（`v6.0.3` → `0.6.3` 迁移） | 放规则前 `[]`；放后仅加载 `proj\CLAUDE.md`（23 tok）与 `proj\AGENTS.md`（32 tok） | **迁移前**：`d681c69` 市场安装，`list` 与 `init` 为 `...\6.0.3`（`6.0.3`，`d2af0a6b`）。**迁移**：推 `0.6.3` 到夹具市场后跑 `marketplace update` + `plugin update`，直接返回 `updateOutcome: "updated"`（`6.0.3 → 0.6.3`）；`list` 与新会话 `init` 切至 `...\0.6.3`（`0.6.3`，`e2d99a21`），无需卸载重装 | 迁移前 `6.0.3` 与迁移后 `0.6.3` 新会话均可见 4 角色与 4 内核；新会话 `/ideo-scrum:scrum-master` 按序调 3 个内核并进入 Planning；`SessionStart:startup`（`exit_code: 0`）注入 3 条原文承诺 | `compact_boundary`（`manual`）后触发 `SessionStart:compact`（`exit_code: 0`），再次注入 3 条原文承诺；第 3 轮模型完整复核承诺与规则 | 新会话引用 `S25-SHARED-RULE: Preserve the sample logs.`；迁移及两段会话前后 `scrum/` SHA-256 逐字节一致、`git status` 干净 |
