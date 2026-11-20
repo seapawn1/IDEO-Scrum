@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 25 (dsh-docs)
 
 > Started: 2026-11-19 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: claude/sprint-25-dsh-docs-4f4070 | Product Owner: SeaPawn | Scrum Master: IDEO-Scrum Master | Developer: Sprint 25 Developer
-> Now: How — 2026-11-20 PO 结束 What、放行 How 规划；计划已拟，待 Master 审阅。
-> Waiting for PO: 1. Master 审阅后，是否给 §3 计划施工 Go-ahead；2. 是否单独直接授权修改本仓库 CLAUDE.md
+> Now: How — 2026-11-20 PO 结束 What、放行 How 规划；Master 已审，无必改项，待 PO 放行施工。
+> Waiting for PO: 1. 是否放行 H1–H3 及授权范围；2. 是否直接授权执行会话修改本仓库 CLAUDE.md
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
 
@@ -95,6 +95,8 @@ PO 决定（2026-11-20，Master 转达）：原话「可以，我觉得23、25�
 
 - 两宿主是否接受降号尚无当期证据。普通路径失败先在隔离环境验替代路径；没有可重复的迁移路径，或 DSH 不能使用同一份共用规则，带证据回 PO，不降通过线、不擅自新增宿主功能。
 - 旧 DSH 记录不是目标版本的证明。若没有可安全使用的 DSH Web／Standard 实机环境，报告缺口，不拿 headless 冒充，也不操作 PO 的常用配置。测试前锁定基线与判据，原始会话记录留在仓库外，日志只写结果摘要。
+
+**Master 审阅（2026-11-20，`c568270`）：** H1–H5 与 §2.2 一致，无必改项。降号迁移、DSH 共用规则和实机取证的停点保留；未经验证的宿主能力和迁移路径只作候选，不写成公开承诺。即使获准施工，改 `CLAUDE.md` 仍须 PO 直接授权执行会话；改号只调候选，不改已发布历史；安装与实机测试另等 Test 放行。
 
 Go-ahead: 待 PO 明确放行施工并注明范围。目前只放行 How 及本期日志的本地检查点；不改号、不改 `CLAUDE.md` 或其他交付物、不安装、不作正式测试、不合并、不打 tag、不推送、不发布。
 
