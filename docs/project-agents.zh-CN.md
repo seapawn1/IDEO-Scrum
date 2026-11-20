@@ -29,10 +29,14 @@
 
 ## 从产品日志登记 Stakeholder
 
-1. Product Owner 在产品日志 `scrum/ProductBacklog.md` §2.1 的 Stakeholder 表里点名一个 Stakeholder。
-2. 让插件登记那一行；它先展示要写的定义文件、以及要往表里加的那一行相对引用，你接受之前什么都不写。
+```text
+/ideo-scrum:project-stakeholder
+```
+
+1. Product Owner 在产品日志 `scrum/ProductBacklog.md` §2.1 的 Stakeholder 表里点名一个 Stakeholder——表可以是任意语言，角色排在行上或排在列上都行。
+2. 登记那张角色卡；入口先展示要写的定义文件、以及要加的那一行相对引用，你接受之前什么都不写。
 3. 拒绝则两处都不动。名字已被占用时只报告、不覆盖，也不靠改另一个作用域来清重名。
-4. 更新时，旧定义保持原样，直到新的一定被接受；写到一半失败，逐项报告哪一处成了、哪一处没成。
+4. 更新时，旧定义保持原样，直到新的定义被接受；写到一半失败，逐项报告哪一处成了、哪一处没成。
 
 ## 按名召唤
 

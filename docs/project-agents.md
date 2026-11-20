@@ -29,8 +29,12 @@ The entry takes the open question, the constraints, and the exact files to read:
 
 ## Register a stakeholder from the product log
 
-1. The Product Owner names a stakeholder in the product log's stakeholder table, in `scrum/ProductBacklog.md` §2.1.
-2. Ask the plugin to register that row; it shows the definition file and the one-line reference it would add to the table, and writes nothing until you accept.
+```text
+/ideo-scrum:project-stakeholder
+```
+
+1. The Product Owner names a stakeholder in the product log's stakeholder table, in `scrum/ProductBacklog.md` §2.1 — in any language, with roles down the rows or across the columns.
+2. Register that role card; the entry shows the definition file and the one-line reference it would add, and writes nothing until you accept.
 3. Declining leaves both untouched. A name already in use is reported, never overwritten, and never cleared by editing another scope.
 4. After a change, the old definition stays as it was until the new one is accepted; a half-finished write is reported part by part.
 
