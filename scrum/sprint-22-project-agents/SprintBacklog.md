@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 22 (project-agents)
 
 > Started: 2026-11-19 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `claude/sprint-22-project-agents-b09bf1` | Product Owner: SeaPawn | Scrum Master: 项目 Scrum Master | Developer: Sprint 22 Developer
-> Now: Increment；H3–H6 已施工并自检通过（`a9c3eaa`／`dcf2fd2`／`c4f578e`），H7 正式 Test 方案已列入 §4 待 Master 审阅冻结；未获放行前不跑 H7、不进 Review／合并／推送。
+> Now: Increment；H3–H6 已施工并按 Master 审阅意见修订（`b88a79b`），H7 修订版方案在 §4 待冻结；未获放行前不跑 H7、不进 Review／合并／推送。
 > Waiting for PO: None
 > How to write this log: [Sprint log conventions](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md).
 
@@ -296,17 +296,28 @@ Master 将请 PO 单独放行隔离 H2：合计最多 7 个样本、20 分钟、
 
 **quick-start 导航草案（交接，本期不改 `docs/quick-start*.md`）。** 英文：`- For a second opinion, or a stakeholder your project keeps: [project agents](project-agents.md).`；中文：`- 需要第二意见，或想留住本项目的 Stakeholder：[项目 Agent](project-agents.zh-CN.md)。` 由 Sprint 25 先交共用段落，Master 对齐后再接。
 
-**H7 正式 Test 方案（提案，未冻结；须 Master 审阅 H3–H6 后单独放行）。**
+**2026-11-21 · H4–H6 按 Master 审阅意见修订（`b88a79b`）。** 三处必改均已落实：
+
+| 必改项 | 修订 |
+| --- | --- |
+| §2.1 不依赖固定列／行方向 | 入口改为按语义定位角色卡：支持角色排在行上或排在列上（本仓库自己的产品日志即转置表：`是谁`／`要什么`／`怎么算满意`／`看得到什么`／`何时召唤`／`负责`／`不负责`）、任意语言与任意字段集；只取卡上实有的事实，不编造缺失项，不把措辞改写掉；相对路径写进该卡对应的「何时召唤」格 |
+| 生成定义的最低有效结构与并发／更新核验 | 写明必须合法 YAML frontmatter（`name` 与文件名同为 kebab-case、单行双引号 `description` ≤ 1024 且说明何时召唤）、不给源码写入权限（保留 `commands/stakeholder.md` 的外部反馈与不改源码边界，`Bash` 仅在用户明说时按角色需求授予）、正文按序 `Skill` 加载 ideo → scrum（按需 sprint／design）并写入角色卡原文身份；更新时展示与现有文件及日志引用的 diff，落盘前重读两处确认未被并发修改，变了就停下来展示新差异而不是覆盖 |
+| 双语文档 | 修正中文错别字「直到新的一定被接受」→「直到新的定义被接受」；中英均把「那一行／that row」改为「角色卡／role card」，并补上入口命令 `/ideo-scrum:project-stakeholder` 的代码块 |
+
+**H4–H6 修订后自检（全过）：** `claude plugin validate --strict` 通过；`node --test scripts/check_dsh.mjs` 6/6；`python -X utf8 -I scripts/check_docs.py` 无错误（103 链），`--selftest` 17/17；三个新增 description 640／420／**692** 字符，均 ≤ 1024。
+
+**H7 正式 Test 方案（修订版提案，未冻结；须先独立提交并由 Master 放行 Increment → Test 后才执行）。**
 
 | 项 | 提案 |
 | --- | --- |
-| 前置 | H3–H6 提交经 Master 审阅；结构变更另派 `plugin-dev:plugin-validator`，显式 `model: "haiku"`，审 `agents/advisor.md`、两个新技能与清单追加；`plugin-dev:skill-reviewer` 按需并列 |
-| 环境 | 与 H2 同法：仓外空测试家目录、合成 Git 项目、白名单环境变量、`--setting-sources project,local`、`--strict-mcp-config`、只读工具面与故障即拒守卫；每次开跑前用 `/context all` 确认指令文件为 0 |
-| 参谋线（§2.2 三场景） | 纠正前提、独立赞同、缺少材料各一次：手动入口起新普通实例，逐项比对输入、点名原件、理由与文件状态；另核非显式请求不会误召唤、实际只读不转派、夹具前后一致 |
-| 参谋线（模型三态） | 默认／另选／不可用仍属后续配置项，不在 H7 通过线内；H7 只核「不把未验证的模型说成已验证」这一行为 |
-| 角色线（PBI-75 四场景） | 首次登记（展示两处变更、接受后成对写入）、拒绝（两处都不写）、更新与同名冲突（不静默覆盖、逐项报错）、双入口按名复用（普通 Agent 与 Workflow 各一次，同一份定义、各自新上下文、无预置旧评议） |
-| 隔离与安全 | 只用合成数据；不改用户模型、网关、权限或遥测；原始流留仓外，入仓只回填脱敏汇总；DSH 只跑既有回归，不作项目级 Agent 支持声明 |
-| 预算（提案） | 参谋 3 样本、角色 4 样本，合计 7 样本；单样本 ≤ 240 秒、总量 ≤ 30 分钟、估算 ≤ US$3.00；shell 与登记类动作零模型；超时终止整棵进程树；不补跑、不挪预算 |
-| 停点 | 任一场景缺证据即记「未验证」并停在该场景，不带证据改验收线；H7 结果交 Master，正式 Review／合并／tag／推送／发布仍由 PO 决定 |
+| 顺序与前置 | ① 本方案先独立提交冻结，Master 放行 **Increment → Test** 后才执行；② 结构变更先派 `plugin-dev:plugin-validator`，显式 `model: "haiku"`，审 `agents/advisor.md`、两个新技能、清单 `skills` 追加与两份文档；③ 再做无头场景；④ 生成的 Agent 定义交 Master 在交互会话补跑 Workflow 闭环 |
+| 环境 | 仓外空测试家目录与 `CLAUDE_CONFIG_DIR`、合成 Git 项目、白名单环境变量、`--setting-sources project,local`、`--strict-mcp-config`、故障即拒守卫；每次开跑前 `/context all` 确认指令文件为 0；只用合成数据，不改用户模型／网关／权限／遥测 |
+| **工具面（按场景分，不混用）** | **PBI-73 参谋线**：父会话 `Read,Grep,Glob,Skill,Agent`，禁 `Write,Edit,NotebookEdit,Bash,PowerShell,Workflow,SendMessage,WebFetch,WebSearch` 与 `mcp__*`；子代理由定义强制只读。**PBI-75 登记线**：父会话 `Read,Grep,Glob,Write,Edit,Skill,Agent`（不加 Shell、网络与 MCP），并由故障即拒守卫把 `Write`／`Edit` 硬限在该样本的合成项目目录内，严禁写项目外、真实 `~/.claude/agents/` 或本仓库 |
+| Developer 侧（隔离无头，`-p`） | **参谋线**：纠正前提、独立赞同、缺少材料各一次；另核非显式请求 0 自动召唤、实际只读不转派、夹具前后一致。**角色线四场景**：① 接受登记——至少一例**中文转置或非固定形态** §2.1 夹具，验「预览 → 明确同意 → 成对写入 → 同会话下一轮普通 `Agent` 按名召唤且无旧评议」；② 拒绝——两处未改，临时 `stakeholder` 召唤仍可用；③ 更新与重名冲突——含隔离 `HOME/.claude/agents/` 的同名作用域冲突，只报不覆盖、未批不变、批准才更新且不改他域；④ 角色职责与 Review 召唤权边界 |
+| Master 侧（交互 Workflow 闭环） | 场景 ① 中由 `project-stakeholder` 真实生成的 `.claude/agents/<name>.md` 与合成夹具归档到 `S:\IDEO-Scrum-Archives\sprint-22-project-agents\h7\generated-agent\`；由 Master 在交互 Claude Code `2.1.329`（显式 `model: "haiku"`）对**该真实生成文件**补跑 `Workflow`（`75-W`）与普通 `Agent` 双入口验收，不在无头 `-p` 里空写跑 Workflow |
+| 模型字段口径 | `advisor.md` 定义请求 `fable`；`claude-magpie` 不认该别名时，按 PO 2026-11-20 授权在该样本的调用参数里指定通道可用的模型（不改用户设置），开跑前先预检通道路由，避免因模型字段白耗预算；无论哪种，`second-opinion` 都不得把未验证的型号写成已验证，H7 只核这一条行为，不把具体型号列为通过线 |
+| DoD 对账（§1.3，H7 填 §5 时逐项列证据） | 完整产品 DoD：`claude plugin validate --strict plugins/ideo-scrum`、`node --test scripts/check_dsh.mjs`、`python -X utf8 -I scripts/check_docs.py` 与 `--selftest`；**全部**技能与代理 `description` ≤ 1024；内容忠实（本次未改第三方原文；基线五模式署名缺口另见 Sprint 21）；署名（新文件为作者自写，无第三方摘录，不入 ATTRIBUTION）；可导航与无死链（`check_docs` 覆盖）；Outcome Done 诚实标注「未重测全流程」，不以本期局部验证代替 |
+| 预算（提案） | 参谋 3 样本、角色 4 样本，合计 7 样本；单样本 ≤ 240 秒、总量 ≤ 30 分钟、客户端估算 ≤ US$3.00；登记与拒绝类动作中不调用模型的部分零成本；超时终止整棵进程树；不补跑、不挪预算 |
+| 停点 | 任一场景缺证据记「未验证」并停在该场景，不改验收线；H7 结果交 Master；正式 Review／合并／tag／推送／发布仍由 PO 决定 |
 
 ## 5. Test
