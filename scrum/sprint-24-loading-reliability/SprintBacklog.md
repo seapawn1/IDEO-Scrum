@@ -1,7 +1,7 @@
 # Sprint Backlog · Sprint 24（加载可靠性）
 
 > Started: 2026-11-19 | 达成 Sprint Goal 或 PO 停止时收官 | Branch: `claude/sprint-24-loading-reliability-012ded` | Product Owner: SeaPawn | Scrum Master: IDEO-Scrum Master | Developer: Sprint 24 Developer
-> Now: Increment，H1–H5 已完成静态核对，在本期分支检查点交 Master 审阅（依 2026-11-20 书面委托）；H6–H11、冒烟、可选预载与支出仍未放行。
+> Now: Increment，H6 基线复核与瓶颈拆解已完成，交 Master 审阅并申请 H7 施工（依 2026-11-20 书面委托）；H7–H11、冒烟、可选预载与支出仍未放行。
 > Waiting for PO: None
 > 日志写法见 [sprint-log.md](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md)。
 
@@ -158,7 +158,7 @@
 | H3 | 让 `sprint-kernel` 加载即带原文（PBI-82） | 带出处的 Sprint Backlog／Sprint Goal 原文与一致性检查 | ✓ 2026-11-20 加载正文涵盖 §2.2 指定篇幅，文字、署名和授权可逐字核对；原参考可达，不加可选预载。 |
 | H4 | 把必读要求放到 Scrum 的起草入口（PBI-80） | Product Goal、Sprint Goal、精化各自的按需读用指引 | ✓ 2026-11-20 起草前能找到完整原文、相关约定和模板注释；被纠正先回查，指引不把进入下一阶段当作已获批准。 |
 | H5 | 把必读要求放到设计起草入口（PBI-80） | 设计挑战／目标／问题的按需读用指引 | ✓ 2026-11-20 入口明确指向该阶段原文、IDEO 模式、约定和模板注释；不把可选访谈或设计推进写成必做。 |
-| H6 | 复核承诺 hook 基线（PBI-83，须先获本机实测放行） | 同条件基线记录与瓶颈证据 | 分清命令启动与其余开销；若 `00c224b` 不复现旧慢，停在这里报 Master，不改 hook、不改线。 |
+| H6 | 复核承诺 hook 基线（PBI-83，须先获本机实测放行） | 同条件基线记录与瓶颈证据 | ✓ 2026-11-20 分清命令启动与其余开销；若 `00c224b` 不复现旧慢，停在这里报 Master，不改 hook、不改线。 |
 | H7 | 降低不变提示的 hook 开销（PBI-83，H6 支持且获准后） | 保持现有注册与语义的优化候选 | 只消除证据指出的重复工作；承诺选择、原文、触发时机、开关和异常退出行为不变，候选留待双层验证。 |
 | H8 | 验证首稿与纠偏（PBI-80，实测放行后） | 四类场景与纠偏回合的双证据报告，并留存 G1 首回合的角色调用证据 | 各场景按 §2.2 分判读全和用对，首稿不被续轮覆盖；入口调用证据不替代任何一栏。 |
 | H9 | 验证角色入口与载入原文（PBI-81／82，实测放行后） | 四角色顺序和首次加载正文的分项报告 | Master 固定复用 H8 的 G1 首回合；冷启动、复用和必带原文各按 §2.2 判。链接或读文件不冒充加载结果。 |
@@ -201,6 +201,36 @@ Go-ahead: 2026-11-20（UTC+8），PO SeaPawn（由 Master 转达）： 「你觉
   - **H7（hook 优化）待审前提**：仅在 H6 实测确认存在且可归因的重复开销后才申请施工；保持现有 `hooks.json` 注册、承诺选择、原文、触发时机、开关与异常退出行为不变。
   - **H8–H11（正式 Test）待审前提**：须 Master 另行核准两臂冻结快照、按 [headless-testing.md](../documents/headless-testing.md) 的隔离配置、实际模型与路由核对、网关可核对计费口径、仓外日志位置，以及共用冒烟（2 次）+ 计划 56 次（上限 60 次）宿主启动／204 次本机调用／200 分钟／US$5 上限；`clear`/`compact`/`fork` 仅记脚本层，不报宿主通过；不实施不测可选预载；不改分发方式时不另开实机重装专项。
   - **并行接口提示**：`commands/*.md`（Sprint 22）、日志与模板边界（Sprint 23）、`README*.md` 与 `docs/quick-start*.md`（Sprint 25）留待整合时按影响复核；本期不依赖 Sprint 26 Memory。
+
+**Master 审阅裁定与 H6 放行（2026-11-20 22:28，UTC+8；依 2026-11-20 PO 书面委托）**：
+- **H1–H5 审阅通过（无必改项）**：复核 `c5c6577`（基线 `00c224b`）22 个文件与干净工作树、4 份夹具、`claude plugin validate --strict`、`check_dsh.mjs`（7/7）、`check_docs.py`（107 链 0 错 / `--selftest` 17/17）、`npm pack --dry-run`、29/29 内链、84/84 ≤2 跳、`description` ≤1024 及 `hooks/*`／`dsh/*`／`package.json` 零改动通过；`sprint-kernel`/`design-kernel` 的 `description` 暂留 `00c224b` 原状待 H9 观察。
+- **仅放行 H6（PBI-83 本机基线复核，US$0、零模型请求、零宿主启动）**：仓外独立临时目录构造 `L1`（G2+R1）与 `L2`（`L1` 产品日志末加 200 行固定无关备注）并记 SHA-256；以 `hooks.json` 同等方式在当前 Windows Git Bash 单调钟重放 `00c224b` 的 `commitments.sh`（独立状态与会话 ID；每夹具 `SessionStart` + 3 暖身 + 30 常态未变 `UserPromptSubmit`，另单列 `startup` 与承诺变更耗时）；在仓外副本定量拆解命令启动开销与脚本内部开销（不改动工作树且不混入基线样本）。若不复现旧慢停报 Master；若复现且可归因，同样停在 H6 交审并附 H7 拟议方案。
+- **仍未放行**：H7（未获 Master 核准前不动 `plugins/ideo-scrum/hooks/*`）、H8–H11（不跑 `claude-magpie`、冒烟、无头测试、真实宿主或付费调用）、可选预载、改通过线、合并、打 tag、推送、正式 Review 与越级向 PO 请示。
+
+**H6 本机基线复核与瓶颈拆解（2026-11-20，UTC+8；US$0、零模型请求、零宿主启动）**
+
+- **仓外证据位置（不改仓库内夹具及 `hooks/*`／`dsh/*`／`package.json`）**：`S:\IDEO-Scrum-Archives\sprint-24-loading-reliability\h6-baseline\`（报告 `h6-summary.md`、原始计时 `raw/h6_baseline_and_profile.json`、生成与重放脚本 `scripts/generate_fixtures.py` 与 `scripts/run_h6.py`）。
+- **冻结基线与 L1／L2 SHA-256（供 H10 复用）**：
+  - `00c224b` `commitments.sh`（6965 B，184 行 LF）：`7ce9cff1a67c7e33370f8090564b605fe2aac5cfddf84edc5f5c75aed6776b57`；`hooks.json`：`33e60cb5c8ea1944e2edeb3f0c68c90784b5d0f0072c8e8800c16731852c171b`。
+  - `L1`（G2+R1）：`ProductBacklog.md`（1934 B，63 行）`a48caf49562d2d0878c4d64c426a81a6b649fb7a6e9e2d5a858a4e2f066d5aaa`；`SprintBacklog.md`（3375 B，55 行）`966c423c9bc1e8551cf60420faff1c5cf37e17cce5ebed0226ed669d7ab6f9d6`。
+  - `L2`（`L1` 产品日志末尾追加 200 行固定 `- Appendix note 001..200: unrelated static log padding line for PBI-83 L2 baseline replay.`）：`ProductBacklog.md`（19134 B，263 行）`f3202f678fe52c0e14fa68f34f2822c91a47990127b53ced0921ea5f06de529d`；`SprintBacklog.md` 同 `L1`。
+- **环境元信息（已脱敏，未打印环境变量值）**：Windows 10 Pro（10.0.19045，64-bit）；Git `2.56.0.windows.4`；`E:\GIT\Git\usr\bin\sh.exe`（GNU bash `5.3.15(2)-release`, `x86_64-pc-cygwin`）；`GNU Awk 5.4.1`、`GNU sed 4.9`、`coreutils 8.32`（`tr`/`cksum`/`cat`）；Python `3.13.15`（`perf_counter_ns`）。隔离沙箱与 `CLAUDE_PLUGIN_DATA` 位于 `C:`（NTFS NVMe SSD），仓外归档与夹具源位于 `S:`（NTFS USB SSD），Git 二进制位于 `E:`（SATA HDD）。
+- **基线重放结果（`sh -c 'sh "${CLAUDE_PLUGIN_ROOT}/hooks/commitments.sh"; exit 0'`；`C:` 沙箱，每组独立目录与会话）**：
+  - **`L1`**：`startup = 4653.57 ms`；3 暖身 `[3327.05, 3532.44, 5646.49] ms`；30 次常态未变 `UserPromptSubmit` **`P50 = 2874.29 ms`、`P95 = 9682.46 ms`**（min `2516.23`、max `10997.68`、mean `3408.16`）；`change`（`续借`→`展期`）`2732.82 ms`、变更后静默 `3017.72 ms`。
+  - **`L2`**：`startup = 2884.80 ms`；3 暖身 `[2750.84, 3313.37, 2923.44] ms`；30 次常态未变 `UserPromptSubmit` **`P50 = 3241.42 ms`、`P95 = 8531.39 ms`**（min `2461.08`、max `9159.85`、mean `3718.07`）；`change` `2835.35 ms`、变更后静默 `3051.61 ms`。
+  - 全部试次 `exit 0`、输出与预期完全一致；**明确复现旧慢**，常态 P50 约 2.87–3.24 s，且出现 8.5–11.0 s 尾延迟逼近或超过 10 s 超时线。
+- **定量瓶颈拆解（仓外 `$EPOCHREALTIME` 零 fork 插桩，12 样本，未混入上表）**：
+  - **外部壳启动**：与 `hooks.json` 相同的双层壳空脚本 `sh -c 'sh empty.sh; exit 0'` 仅 **`P50 = 169.79 ms`（`P95 = 345.31 ms`）**，占 `L1_root` 总耗时（`2606.91 ms`）约 **6.4%**（`167.71 ms`）。
+  - **脚本内部开销占 `93.6%`（`L1_root` `2439.20 ms`；`L2_root` `2725.69 ms`；嵌套 3 层 `L1_depth3` `3033.09 ms`）**：根因是每次常态 `UserPromptSubmit` 在 Cygwin/Git Bash 下顺序 fork+exec **20 个（depth3 为 23 个）外部短进程**，单次 fork 约 70–120 ms，高频 fork 还放大数秒级长尾：
+    - `cat | tr`（`165.68 ms`）+ `3× sed`（`442.78 ms`）= **5 次 fork / `608.46 ms`（23.3%）**
+    - `find_root`（`tr` + 逐级 `dirname`）：depth 0 为 `196.45 ms`（1 fork）；depth 3 为 **`481.19 ms`（4 forks）**
+    - `ProductBacklog` 解析（`tr` + `awk` + `3× field awk`）：**5 forks / `716.26 ms`（27.5%）**
+    - `SprintBacklog` 解析（`tr` + `awk` + `field awk` + `dirname` + `basename`）：**5 forks / `531.52 ms`（20.4%）**；而纯 shell `for` 扫目录仅 **`1.40 ms`（0.1%）**
+    - 状态处理（`mkdir` `69.54 ms` + `cksum | awk` `184.93 ms` + `cat $state` `121.93 ms`）：**4 forks / `376.40 ms`（14.4%）**
+  - 辅助对照：`S:` USB SSD（`n=10`）P50 `3118.98 ms`，与 `C:` 同量级；`startup` 遇 >200 `.fp` 修剪额外 `+695 ms`（`3084 -> 3779 ms`）。
+- **H7 拟议优化方案（停在 H6 待 Master 核准；未改任何 `hooks/*`）**：
+  - 保持 `hooks.json` 注册、承诺选择、中英文原文、触发时机、`IDEO_SCRUM_COMMITMENTS=off` 与静默 `exit 0` 不变；不引入新必需运行时；**不以文件大小或 `mtime` 判未变**，每轮仍实读日志正文并逐字比对最新承诺输出。
+  - **主选方案 A（把脚本内部 20–28 次外部 fork 减至 1 次，预计常态降至 P50 ~260 ms / P95 ~450–550 ms）**：① 用 POSIX `sh` 内建 `while IFS= read -r` 与参数展开取代 `cat`/`tr`/`3× sed`；② 用纯 `sh` 参数展开取代 `find_root` 与 `dirname`/`basename`；③ 将产品／冲刺／设计日志的 `\r` 剥离、表格提取、占位过滤与文本拼装合并为**单次**标准 POSIX `awk`（`FNR == 1` 分文件，兼容 `gawk`/`mawk`/`dash`，保留全部正则与 `\|`、`{{...}}` 语义）；④ `[ -d "$state_dir" ] || mkdir -p` 跳过已存在目录，用纯 `sh` 内建读写 `$state` 并直接逐字比对 `$out`（去掉 `cksum`/`awk`/`cat`）。**备选 B**：若后续同日实测单次 `awk` 仍近 1 s，则改用纯 `sh` 读行解析做到脚本内部 0 fork。**停点重申**：仅留下本记录检查点，不改 `hooks/*`、不写 §5 正式测试、不进 H7–H11。
 
 ## 5. Test
 
