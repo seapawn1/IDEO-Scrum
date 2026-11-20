@@ -199,17 +199,17 @@ Sprint 21–25 的 Review 前阶段门和常规事项交 Master；本期安全�
 
 **整体判定：** Sprint 25 Test **通过**。增量质量、Claude Code `H4`（新装、迁移、压缩后复注）、DSH `H5-A`／`H5-B`（新装、Planning、迁移、压缩后复注、规则读取）、双语对照与打包检查均已验证。保留的诚实边界：DSH 同路径原地更新未单独实测（界面无该入口）；Outcome Done「熟手陌生人走完第一冲刺」本期未重跑；五模式署名缺口仍归 Sprint 21 Review。
 
-### 6 项静态／打包／回归复核（2026-11-21，候选 `3a58190`）
+### 6 项静态／打包／回归复核（2026-11-21，候选 `62cfd42`）
 
 | # | 检查 | 结果 |
 | --- | --- | --- |
 | 1 | `claude plugin validate --strict plugins/ideo-scrum` | 通过：钩子、4 内核、4 角色全部列出，`Validation passed` |
 | 2 | `node --test scripts/check_dsh.mjs` | 通过：6 项全过，0 失败 |
-| 3 | `npm pack --dry-run --json --ignore-scripts` | 通过：100 个文件；`cordis.patch.yml`、`package.json`、`ATTRIBUTION.md`、`dsh/`、四角色与四内核源、`icon.png` 均在包内；`hooks/` 按白名单不入包 |
-| 4 | `python -X utf8 -I scripts/check_docs.py` | 通过：7 份文档、189 条链接、0 错误 |
+| 3 | `npm pack --dry-run --json --ignore-scripts` | 通过：`@seapawn/ideo-scrum@0.6.3`，100 个文件；入口与运行资源在包内；`hooks/`、`AGENTS.md`、`CLAUDE.md` 按白名单不入包 |
+| 4 | `python -X utf8 -I scripts/check_docs.py` | 通过：7 份文档、187 条链接、0 错误 |
 | 5 | `python -X utf8 -I scripts/check_docs.py --selftest` | 通过：17 例，0 失败 |
 | 6 | `python -X utf8 -I scripts/board_check/check.py selftest` | 通过：42 例，0 失败 |
 
-同候选核对：`plugins/ideo-scrum/.claude-plugin/plugin.json` 与 `package.json` 仍为 `0.6.3`；`CLAUDE.md` 未改（仅 `@AGENTS.md`）；未合并、未打 tag、未推送、未发布。
+另核：`git diff --check 00c224b..HEAD` 零问题；脱敏扫描零令牌、零提供方 URL、零端口号、零模型名。同候选核对：`plugin.json` 与 `package.json` 仍为 `0.6.3`；`CLAUDE.md` 未改（仅 `@AGENTS.md`）；未合并、未打 tag、未推送、未发布。
 
 **Master 独立复核（2026-11-21，`5f2115f`）：** Master 在该提交上独立重跑全部 6 项并通过（`validate --strict` 通过；`check_dsh` 6/6；`npm pack` 为 `@seapawn/ideo-scrum@0.6.3`、100 文件且不含 `hooks/`、`AGENTS.md`、`CLAUDE.md`；`check_docs` 7 文档 189 链接 0 错误；docs 自检 17/17；看板自检 42/42），`git diff --check 00c224b..HEAD` 零问题，确认 `CLAUDE.md`、版本号与 Sprint 23 段落未动。结论：代码、文档与 6 项复核通过，无必改项；DSH `H5` 4 项维持诚实未验证缺口，整体 Test 不判全面通过，交 PO 在正式 Review 拍板。
