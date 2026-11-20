@@ -128,6 +128,13 @@ Sprint 21–25 的 Review 前阶段门和常规事项交 Master；本期安全�
 
 **Master 复核与 H2／H5 裁定（2026-11-21，依上述委托）：** 已复核 `7ae0b49`、仓外 `H4-A`／`H4-B` 全部清单快照、`/context all` 与原始会话流，Claude Code `H4` 通过、无必改项。裁定：DSH `H5` 实机部分（`H5-A`／`H5-B`、DSH `0.6.3` 压缩后补入）维持诚实缺口，不强跑、不降标，不触碰 PO 日常 DSH 实例／配置／令牌、不全局安装 `dsh`、不以 headless 冒充 Web／Standard、不把源码或旧 `b2679aa` 记录算作 `0.6.3` 实机通过；因此整体 Sprint 25 Test 不判为全面通过——增量质量与 Claude Code／静态／打包／DSH 自动回归单列已验证，DSH 实机项单列未验证，交 PO 在正式 Review 决定是否手工补跑或接受范围。放行 H2 文档收口与 H5 静态／打包／回归复核（仅本分支 `claude/sprint-25-dsh-docs-4f4070`）：去草稿标记、写入已验证的 Claude Code `0.6.3` 新装／`6.0.3 → 0.6.3`／`/compact` 复注／`CLAUDE.md → @AGENTS.md` 证据，DSH 项标待实机；按 [docs-review.md](docs-review.md) 最小化更新 README 与快速上手，不改 Sprint 23 的阶段门／承诺表／Retro 段落；`docs/maintaining*.md` 并入 `check_docs.py` `PAIRS`；对同一候选实跑 6 项检查；逐文件 `git add` 本地提交，不改 `CLAUDE.md`、不改版本号、不合并／tag／推送／发布，完成后停在 Review 前报 Master 复核。
 
+**PO 直接指示（2026-11-21，来源：PO 在本执行会话直接指示；链接与访问令牌按凭据卫生隐去）：**
+- 原话一：「你还差 DSH 实机验证是吧，如果。是的话我去开一个 DSH 出来，然后给你他的 Web 的一个链接，你是不是就可以了？」
+- 原话二：「这样子我们有一个 stakeholder 对话，你去需要操作 DSH 的什么，你就去找他要。我现在已经把 DSH 打开了，并且链接是: <已隐去：带访问令牌的地址，不入库> 然后你去找 stakeholder 要一些内容，要一些信息，他可以直接看到，如果你不方便操作，也可以让他帮你操作。然后审阅的时候还是靠 Master。后面她会指导你怎么呃。那个通过不通过什么的，什么时候停都以他为准。」
+- 决定时的 Sprint Goal 原文：「换宿主不换规矩：使用 Claude Code 或 DSH 的人，照各自的说明就能装好 0.6.3、叫出角色，用上同一套方法论；已装 6.0.3 的人知道怎样迁移，维护者只需维护一份共用规则。」
+
+**Master 安全边界与 `H5-A` 取证要求（2026-11-21）：** 拒绝使用 PO 日常 `~/.dsh` 实例（3080），不复制其 `profiles`／`sessions`／`bot`／凭据；先核 3081 隔离清白与 `--offline` 对 Standard 会话模型调用的影响。DSH 操作由 Stakeholder（PO assistant）代办，其不改代码／文档／本日志、不做通过判定或阶段放行；不全局安装 `dsh`；拿不到干净隔离 Web／Standard 入口、3081 含脏状态或缺非作者测试模型通道即停机报 Master 并同步 PO；严禁以 headless 冒充。`H5-A` 与 `H5-B` 各用独立 `DSH_HOME`／`DSH_AGENTS_HOME` 与独立样例项目。复核前不推进 `H5-B`，不改 `README*.md`、`docs/maintaining*.md`、`docs/quick-start*.md`、`CLAUDE.md` 或版本号。`H5-A` 必核：宿主版本与隔离路径、实际加载路径与 `0.6.3`、Standard 会话 4 角色与 `/scrum-master` 原生 `skill-invocation`（内核按序）、原生 `runtime-context`（`ideo-scrum:commitments`）3 条承诺原文、首轮 `AGENTS.md`（`S25-SHARED-RULE`）加载且不重复不越界、`scrum/` SHA-256 一致；压缩后补入测了另留证据，未测如实标注。原始证据留仓外 `S:\IDEO-Scrum-Archives\sprint-25-dsh-docs\test-runs\H5\`；摘要严禁含令牌、带 token 的 URL、提供方地址、密钥或个人配置。
+
 ## 5. Test
 
 <!-- Record here the Developer's tests, the reviewer's check (by default the Scrum Master), the Product Owner's end-to-end test, and the result of each Definition of Done item and acceptance criterion. Fix a problem on the spot and test again (sprint-log.md, convention 16). The chapter ends with the Product Owner's decision: close, or go back (sprint-log.md, convention 24). -->
