@@ -1,7 +1,7 @@
 # Sprint Backlog · Sprint 24（加载可靠性）
 
 > Started: 2026-11-19 | 达成 Sprint Goal 或 PO 停止时收官 | Branch: `claude/sprint-24-loading-reliability-012ded` | Product Owner: SeaPawn | Scrum Master: IDEO-Scrum Master | Developer: Sprint 24 Developer
-> Now: Increment，H7 已按 Master 核准落盘并交审；H8–H11、冒烟、可选预载与支出仍未放行。
+> Now: Test，H7 通过；按 Master 两步放行执行 H10 本机正式基准、H11 静态 DoD 与 SMOKE-01（2 次），报告后等放行余下 54 次。
 > Waiting for PO: None
 > 日志写法见 [sprint-log.md](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md)。
 
@@ -259,6 +259,16 @@ Go-ahead: 2026-11-20（UTC+8），PO SeaPawn（由 Master 转达）： 「你觉
 - **预算与样本**：共用冒烟 2 次 + 计划 56 次（上限 60）宿主启动；本机调用 ≤204；200 分钟；US$5；G1 首回合由 H8／H9 固定共享；H10 脚本层重放零模型请求，宿主层只作边界核对；维持 10 s 超时判定。
 - **DoD 对账（§1.3 Output Done）**：内容忠实（原文与出处）；署名（Source／License 与 `ATTRIBUTION.md` 一致）；可导航 ≤2 跳；无死链；`claude plugin validate --strict` 通过；四个 `description` ≤1024；`node --test scripts/check_dsh.mjs` 7/7。加本期专项：PBI-80 四场景双证据、PBI-81 4／3／3／2 实际调用、PBI-82 首次加载含 Sprint Backlog 原文、PBI-83 两夹具 P50／P95 与两层语义。
 - **停止条件**：宿主证据缺失不写通过；语义失败、事件无法配对、环境不可比或样本不足即停；技术失败按冻结标准补齐，不挑样本；不改冻结的通过线。
+
+**阶段门：Increment → Test（Master 2026-11-21，依 PO Review 前委托；Test 期间冻结产品源码）**：
+- **H7 独立复核通过（`a482a52`）**：3 处必改逐行核验，并独立补跑边界实测（`$HOME`／反引号／`$(...)`／反斜杠／竖线原文与二次静默，CRLF＋Tab/空格＋`null`/`false`/数字 JSON 落 `nosession.fp`）；`sh -n`、`node --test scripts/check_dsh.mjs` 7/7、`claude plugin validate --strict` 通过；仓外 50/50（本机）、48/48（WSL dash＋mawk/gawk）、9/9（265 步逐字节等价）已核。
+- **Test 分两步放行；本步立即执行**：两臂锁定 A＝`00c224b`（hook `7ce9cff1…`）对 B＝`a482a52`（hook `77821628…`），均从 git blob 复制到仓外，不读工作树实时文件；原始记录留 `S:\IDEO-Scrum-Archives\sprint-24-loading-reliability\h8-h11\`。
+  1. **H10 正式本机重放**（US$0，≤204 次本机调用，≤20 分钟）：L1／L2 各 30 对交替计时、`startup`／变更计时与 §2.2 全部脚本层语义（`clear`／`compact`／`fork` 仅标脚本层）。若同日 `00c224b` 不复现旧慢、任一夹具未达 P50 降 ≥50% 且 P95 ≤ 基线且 ≤1 s、或任一语义失败，立即停报，**不跑冒烟**。
+  2. **H11 静态 DoD + `plugin-dev:plugin-validator`**（显式 `model: "haiku"`）：核 §1.3 静态项与四个 `description` ≤1024、`ATTRIBUTION.md` Source／License、≤2 跳、零死链、validate 与 `check_dsh`；validator 结果存仓外，出现必改项先停报。
+  3. **仅 `SMOKE-01`（2 次宿主启动：B→C）**：沙箱 `C:\Users\Public\s24-h8-h11\…`，开跑前核实上级零指令文件；每臂独立 `CLAUDE_PLUGIN_DATA`、`TEMP`／`TMP`；按 [headless-testing.md](../documents/headless-testing.md) 白名单 env、`cygpath -w`、`taskkill /T /F`（单回合 150 s）；`--tools Read,Grep,Glob,Skill`、禁 Bash／PowerShell／Write／Edit／NotebookEdit／Workflow／SendMessage／WebFetch／WebSearch／`mcp__*`、`--strict-mcp-config`、`--permission-mode dontAsk`、`--setting-sources project,local`、`--include-hook-events`、stream-json 两回合、`--debug`；夹具 `.claude/settings.local.json` 装故障即拒的 `PreToolUse` 守卫（封禁作者真实用户目录、`S:\IDEO-Scrum`、`SeaPawn-Memory`、`IDEO-Scrum-Archives`、`guard.py`／`rules.json`，只放策略内夹具与仓外插件副本只读），先零成本跑 `guard-selftest`。输入：G1 副本，回合 1 发 `/ideo-scrum:stakeholder`，回合 2 发只读追问；核 `init.tools`、`permissionMode=dontAsk`、两臂实际模型一致（只记布尔）、`permission_denials`／越界拦截、原生入口与 `SessionStart`／`UserPromptSubmit` 的 hook 事件及 debug 上下文交付。
+- **费用口径**：`claude-magpie` 走 magpie 便宜模型代理，无独立网关账单；以每试次 CLI `total_cost_usd`（保守列表价上界）＋ token 用量记账，硬守累计 ≤ **US$5.00**、≤180 分钟。两次 `SMOKE-01` 完成后立即停报：H10 结论、H11 结论、冒烟隔离／取证／模型／守卫结果、单次 `total_cost_usd`／耗时与余下 54 次相对上限的投射。
+- **阶段门承诺原文（逐字）**：「先读原文再动笔：叫出角色就能调齐该用的内核；定目标、写设计问题或精化条目前，AI 先读并用上对应的原文、约定和模板注释，不用 PO 反复提醒；承诺照常提示，发消息时不再为检查未变的承诺等上几秒。」
+- **停点**：收到第一步报告并经 Master 放行前，不启动余下 54 次（H8、H9、H10 宿主 `HOST-01..03`）。仍未放行：修改源码、放宽通过线、可选预载、超 US$5.00／60 次／200 分钟、正式 Review、合并、打 tag、推送、发布、改版本号或 `CLAUDE.md`。
 
 ## 5. Test
 
