@@ -1,7 +1,7 @@
 # Sprint Backlog · Sprint 24（加载可靠性）
 
 > Started: 2026-11-19 | 达成 Sprint Goal 或 PO 停止时收官 | Branch: `claude/sprint-24-loading-reliability-012ded` | Product Owner: SeaPawn | Scrum Master: IDEO-Scrum Master | Developer: Sprint 24 Developer
-> Now: Test，H7 通过；按 Master 两步放行执行 H10 本机正式基准、H11 静态 DoD 与 SMOKE-01（2 次），报告后等放行余下 54 次。
+> Now: Test，第一步完成（H10 通过、H11 无必改、SMOKE-01 两次完成），等 Master 裁定余下 54 次与费用上限。
 > Waiting for PO: None
 > 日志写法见 [sprint-log.md](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md)。
 
@@ -273,3 +273,35 @@ Go-ahead: 2026-11-20（UTC+8），PO SeaPawn（由 Master 转达）： 「你觉
 ## 5. Test
 
 <!-- Record here the Developer's tests, the reviewer's check (by default the Scrum Master), the Product Owner's end-to-end test, and the result of each Definition of Done item and acceptance criterion. Fix a problem on the spot and test again (sprint-log.md, convention 16). The chapter ends with the Product Owner's decision: close, or go back (sprint-log.md, convention 24). -->
+
+**Test 第一步记录（2026-11-21，UTC+8；Master 两步放行；产品源码未改）**
+
+两臂：B（基线）`00c224b`，hook `7ce9cff1…`；C（候选）`a482a52`，hook `77821628…`。均从 git blob 用 `git archive` 解到仓外；原始记录在 `S:\IDEO-Scrum-Archives\sprint-24-loading-reliability\h8-h11\raw\`。
+
+**H10 本机正式重放（脚本层，US$0；两臂独立目录、状态与会话）**
+
+| 夹具 | 臂 | `startup` ms | 常态 P50／P95 ms | 变更 ms | 变更后静默 ms |
+| --- | --- | ---: | ---: | ---: | ---: |
+| L1 | B | 2489.25 | 2326.90 / 3092.61 | 2295.93 | 2344.94 |
+| L1 | C | 250.84 | **215.56 / 239.17** | 211.12 | 186.18 |
+| L2 | B | 2492.95 | 2319.06 / 2608.84 | 2382.10 | 2268.14 |
+| L2 | C | 284.31 | **206.00 / 242.59** | 194.73 | 193.42 |
+
+- 判定：两夹具基线 P50 均 >1000 ms（同日复现旧慢）；候选 P50 降幅 L1 `90.7%`、L2 `91.1%`（线 ≥50%）；候选 P95 均 ≤ 基线且 ≤1000 ms。全部 `exit 0`、输出与预期原文／静默一致。
+- 脚本层语义：候选 50/50（含 `startup`／`resume`／`clear`／`compact`／`fork`、同大小同 mtime 变更、中英、单／多日志、占位、开关、null、CRLF、盘符根等）；基线 50/50 与 265 步逐字节等价见 H7 仓外证据（`h7-candidate/raw/`）。
+- 预算：本机调用 **194/204**，用时 **213.3 s/1200 s**。
+
+**H11 静态 DoD 与 validator**
+- `claude plugin validate --strict` 通过；`node --test scripts/check_dsh.mjs` **7/7**；`scripts/check_docs.py` 0 错、`--selftest` 全过。
+- 四个技能 `description`：`ideo-kernel` 1023、`design-kernel` 1007、`scrum-kernel` 968、`sprint-kernel` 943；四个命令 858／725／557／476，均 ≤1024。
+- 从各 `SKILL.md` 入口 ≤2 跳无缺；75 个带 `> Source:` 的摘录文件均有 `> License:`，许可族与 `ATTRIBUTION.md` 一致。
+- `plugin-dev:plugin-validator`（`model: haiku`）：**无必改项**。nits：① 我的范围描述未含 `c5c6577` 的 H1–H5 产品改动（非产品问题）；② JSON 在 `"prompt"` 处截断，若宿主把事件键排在其后则静默——沿用 `00c224b`，实际分发顺序满足；③ awk 认 `设计目标` 不认 `产品目标`——沿用旧脚本，模板用英文标题；④ 版本号仍 6.0.3，收官再定。报告原文存仓外。
+
+**SMOKE-01（2 次宿主启动：B→C；隔离于 `C:\Users\Public\s24-h8-h11\smoke-20261121-055413\`）**
+- 隔离：两臂上级指令文件 0（文件系统核查＋`/context all` 零调用探针均 exit 0）；每臂独立 `CLAUDE_PLUGIN_DATA`、`TEMP`／`TMP` 与插件副本；白名单 env；守卫 `PreToolUse` 自测两臂各 8/8 通过，实际调用 6 次均 exit 0，`permission_denials` 为空（会话未尝试越界路径）。
+- `init`：`tools` 仅 `Glob/Grep/Read/Skill`，`permissionMode` 为 `dontAsk`，`mcp_servers` 空；两臂实际模型**相同**（只记布尔，模型名与提供方仅在仓外原始流）。
+- 原生入口：回合 1 `/ideo-scrum:stakeholder` 成功；每臂 `Skill` 调用 2 次（`ideo-kernel`、`scrum-kernel`，与 Stakeholder 的 2 内核相符）；流中出现 `isSynthetic` 的技能正文（含 `# IDEO Kernel`、`## The Shared Toolbox` 等），证明完整正文交付，而非只有「Launching skill」。
+- hook 交付：`SessionStart:startup` 的 `hook_started`／`hook_response` 各 1，stdout 为承诺原文、exit 0；`UserPromptSubmit` 每臂 2 次，stdout 均空、exit 0（未变静默）。第二回合原生 `UserPromptSubmit` 事件存在。
+- 费用与耗时（CLI `total_cost_usd`，保守列表价上界）：B `$0.343297`／39.9 s，C `$0.347736`／41.4 s，合计 **$0.691033**。
+- **投射与停点**：按 2 回合均值约 `$0.3455/次`，余下 54 次约 **$18.7**，总计约 **$19.4**，远超 US$5.00；即便按每回合约 `$0.17` 计，54 次也约 **$9.2**。时间约 54×40 s ≈ 36 min，低于 180 min。**不启动余下 54 次**，等 Master／PO 裁定缩规模、改回合数或调整上限。
+- 技术失败说明：首轮 `--run` 在准备阶段因脚本 `make_env` 重复建目录报错，未启动模型、未计费；修正后按上述两次冒烟重跑，准备期的旧沙箱未用于证据。
