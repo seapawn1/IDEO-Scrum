@@ -66,7 +66,7 @@ Developer：    计划写在冲刺日志第 3 章。你说「放行」之前，�
 
 检查：在终端里运行 `claude plugin list`，里面 `ideo-scrum@ideo-scrum` 显示已启用。
 
-**DeepSeek Harness（DSH `0.2.2-rc.5`）。** 把本仓库克隆到会一直保留的目录。在 DSH 侧栏打开**插件 → 添加插件**，在**包名或地址**里填本仓库根目录（有 `package.json` 的目录）的绝对路径，然后点**安装**。DSH 把 `@seapawn/ideo-scrum` 链接到这个目录，不会复制一份。到你要做的项目目录新开一个 **Standard** 会话。
+**DeepSeek Harness（DSH `0.2.2-rc.5`）。** 这里的版本号是 DSH 宿主版本，不是 IDEO-Scrum 插件版本（`0.6.3`）。把本仓库克隆到会一直保留的目录。在 DSH 侧栏打开**插件 → 添加插件**，在**包名或地址**里填本仓库根目录（有 `package.json` 的目录）的绝对路径，然后点**安装**。DSH 把 `@seapawn/ideo-scrum` 链接到这个目录，不会复制一份。到你要做的项目目录新开一个 **Standard** 会话。
 
 ## 升级
 
@@ -77,6 +77,8 @@ claude plugin update ideo-scrum@ideo-scrum
 ```
 
 然后在已经打开的会话里运行 `/reload-plugins`。第三方市场默认不会自动更新：想让 Claude Code 代劳，打开 `/plugin`，进 Marketplaces，选 `ideo-scrum`，选 Enable auto-update。每个版本改了什么，见[更新记录](CHANGELOG.md)（英文）。
+
+从 `6.0.3` 过来，同一条更新命令就会升到 `0.6.3`：版本号变小是正常的，这条路径已在 Claude Code `2.1.329` 上验证过，不用卸载重装。要核对实际加载的是哪一版，以及 DSH 的迁移，见[已装用户怎样迁移](docs/maintaining.zh-CN.md#已装用户怎样迁移)。
 
 **DSH。** 在原位置更新链接的仓库，重启 DSH，再开一个 **Standard** 会话。仓库换了位置，就先在**插件**页**卸载**旧链接，再用**添加插件**填新路径。
 
@@ -153,13 +155,14 @@ claude plugin update ideo-scrum@ideo-scrum
 **承诺。** 产品、Product Goal、开着的 Sprint Goal 和设计目标都以日志原文为准。
 
 - **Claude Code：** 会话开始、恢复、压缩或承诺变化时，一个小 hook 把承诺逐字放进上下文。它要 POSIX 的 `sh`：Windows 上要装 Git for Windows。没在 macOS 上试过。
-- **DSH：** 每次模型执行前，插件读取当前项目的日志。在首次使用、文字变化或压缩移除了上次快照时，把承诺快照补进上下文。开着的冲刺或设计不止一个时，只报数量，不替你选目标。自动读不到承诺时，让角色重读原日志。不用 shell hook。
+- **DSH：** 每次模型执行前，插件读取当前项目的日志。在首次使用、文字变化或压缩移除了上次快照时，把承诺快照补进上下文；其中压缩后的补入依赖 DSH 自己的上下文处理，尚未在 `0.2.2-rc.5` 上实机验证。开着的冲刺或设计不止一个时，只报数量，不替你选目标。自动读不到承诺时，让角色重读原日志。不用 shell hook。
 - 要关闭此功能，Claude Code 可把 `IDEO_SCRUM_COMMITMENTS=off` 设在设置文件的 `env` 或 shell 里；DSH 在启动前设置这个环境变量。
 
 ## 了解更多
 
 - [快速上手](docs/quick-start.zh-CN.md)：一页，从装好到走完你的第一个冲刺
 - [词汇表](docs/glossary.md)：插件自己的词
+- [维护 IDEO-Scrum](docs/maintaining.zh-CN.md)：两个宿主共用一份正文、仓库规则从哪里读、怎样迁移与核验候选版本
 - [`overview.md`](plugins/ideo-scrum/skills/scrum-kernel/overview.md)：各部分怎么配合，以及和官方指南的每一处不同（英文）
 - [更新记录](CHANGELOG.md)：每个版本改了什么（英文）
 
@@ -188,8 +191,8 @@ d.school 的许可禁止商业使用，所以本仓库不算 OSI 意义上的开
 | --- | --- |
 | `plugins/ideo-scrum/` | Claude Code 插件，也是四个角色和四个内核（ideo、scrum、sprint、design）的共用源 |
 | `dsh/`、`package.json`、`cordis.patch.yml` | DSH 适配和插件包入口 |
-| `docs/` | 快速上手和词汇表 |
+| `docs/` | 快速上手、词汇表和维护说明 |
 | `scrum/` | 本项目自己的 Scrum 工作，中文写的：它的产品日志和归档的冲刺日志 |
 | `scripts/` | 文档和看板检查、首次冲刺体验测试 |
 | `.claude-plugin/` | Claude Code 市场清单 |
-| `LICENSE`、`ATTRIBUTION.md`、`CHANGELOG.md`、`CLAUDE.md` | 许可、来源和它们的条款、更新记录、改这个仓库时用的指令 |
+| `LICENSE`、`ATTRIBUTION.md`、`CHANGELOG.md`、`AGENTS.md`、`CLAUDE.md` | 许可、来源和它们的条款、更新记录、改这个仓库时用的指令（正文在 `AGENTS.md`，`CLAUDE.md` 导入它） |

@@ -66,7 +66,7 @@ A git repository for your project is recommended; the Scrum Master can set one u
 
 To check, run `claude plugin list` in a terminal: it shows `ideo-scrum@ideo-scrum` as enabled.
 
-**DeepSeek Harness (DSH `0.2.2-rc.5`).** Clone this repository to a location you plan to keep. In the DSH sidebar, open **Plugins → Add plugin**. Enter the absolute path to the repository root (the folder with `package.json`) in **Package name or address** and select **Install**. DSH links `@seapawn/ideo-scrum` to that directory rather than copying it. Open a new **Standard** session in the project you want to work on.
+**DeepSeek Harness (DSH `0.2.2-rc.5`).** The number in these instructions is the DSH host version, not the IDEO-Scrum plugin version (`0.6.3`). Clone this repository to a location you plan to keep. In the DSH sidebar, open **Plugins → Add plugin**. Enter the absolute path to the repository root (the folder with `package.json`) in **Package name or address** and select **Install**. DSH links `@seapawn/ideo-scrum` to that directory rather than copying it. Open a new **Standard** session in the project you want to work on.
 
 ## Upgrade
 
@@ -77,6 +77,8 @@ claude plugin update ideo-scrum@ideo-scrum
 ```
 
 Then run `/reload-plugins` in a session that is already open. Third-party marketplaces do not update themselves by default: to have Claude Code do it, open `/plugin`, go to Marketplaces, select `ideo-scrum` and choose Enable auto-update. What changed in each release is in the [changelog](CHANGELOG.md).
+
+Coming from `6.0.3`, this same update moves you to `0.6.3`: the lower number is expected, and the update was verified on Claude Code `2.1.329` without uninstalling. To check what actually loaded, and for the DSH migration, see [Migrating an existing installation](docs/maintaining.md#migrating-an-existing-installation).
 
 **DSH.** Update the linked checkout in place, restart DSH, and open a new **Standard** session. If the checkout moves, use **Uninstall** in **Plugins** for the old link before adding the new path with **Add plugin**.
 
@@ -153,13 +155,14 @@ Two small things help you find your place when a project has several logs.
 **Commitments.** The product, Product Goal, open Sprint Goal and design goal come from your logs, word for word.
 
 - **Claude Code:** A small hook puts them in context when a session starts, resumes, or is compacted, and when a commitment changes. The hook needs a POSIX `sh`: on Windows, install Git for Windows. It has not been tried on macOS.
-- **DSH:** Before a model step, the plugin reads the current project's logs. It adds the commitment snapshot on first use, when the text changes, or when compaction removes the previous snapshot. If several Sprints or designs are open, it gives a count rather than picking one goal. If the automatic read cannot supply a commitment, have the role reread its source log. No shell hook is needed.
+- **DSH:** Before a model step, the plugin reads the current project's logs. It adds the commitment snapshot on first use, when the text changes, or when compaction removes the previous snapshot; the compaction case relies on DSH's own context handling and has not yet been tested live on `0.2.2-rc.5`. If several Sprints or designs are open, it gives a count rather than picking one goal. If the automatic read cannot supply a commitment, have the role reread its source log. No shell hook is needed.
 - To switch this off, set `IDEO_SCRUM_COMMITMENTS=off` in the `env` of a Claude Code settings file or in its shell. For DSH, set it in the environment before starting DSH.
 
 ## Learn more
 
 - [Quick start](docs/quick-start.md): one page, from installing to your first closed Sprint
 - [Glossary](docs/glossary.md): the plugin's own terms
+- [Maintaining IDEO-Scrum](docs/maintaining.md): two hosts on one source, where repository rules load from, and how to migrate and check a candidate
 - [`overview.md`](plugins/ideo-scrum/skills/scrum-kernel/overview.md): how the pieces fit, and every departure from the official guides
 - [Changelog](CHANGELOG.md): what changed in each release
 
@@ -188,8 +191,8 @@ Found a problem, or have an idea? Open an [issue](https://github.com/seapawn1/ID
 | --- | --- |
 | `plugins/ideo-scrum/` | The Claude Code plugin and the shared source for the four roles and the four kernels (ideo, scrum, sprint, design) |
 | `dsh/`, `package.json`, `cordis.patch.yml` | The DSH integration and bundle entry points |
-| `docs/` | The quick start and the glossary |
+| `docs/` | The quick start, the glossary and the maintenance guide |
 | `scrum/` | This project's own Scrum work, in Chinese: its product log and its archived sprint logs |
 | `scripts/` | Documentation and board checks, and tests for a first Sprint |
 | `.claude-plugin/` | The Claude Code marketplace list |
-| `LICENSE`, `ATTRIBUTION.md`, `CHANGELOG.md`, `CLAUDE.md` | The license, the sources and their terms, the release notes, and the instructions for working on this repository |
+| `LICENSE`, `ATTRIBUTION.md`, `CHANGELOG.md`, `AGENTS.md`, `CLAUDE.md` | The license, the sources and their terms, the release notes, and the instructions for working on this repository (`AGENTS.md` holds them; `CLAUDE.md` imports it) |

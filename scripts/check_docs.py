@@ -3,7 +3,8 @@
     python -X utf8 -I scripts/check_docs.py             check this repository
     python -X utf8 -I scripts/check_docs.py --selftest  prove each check can fail, on a copy with planted defects
 
-For each English/Chinese pair (README.md and README.zh-CN.md, docs/quick-start.md and docs/quick-start.zh-CN.md):
+For each English/Chinese pair (README.md and README.zh-CN.md, docs/quick-start.md and docs/quick-start.zh-CN.md,
+docs/maintaining.md and docs/maintaining.zh-CN.md):
 the same headings in the same order; in every section the same number of list items, table rows and code blocks;
 the same commands in the `sh` blocks (typed in a terminal) and in the `text` blocks whose lines all start with
 `/` (role entries in Claude Code or DSH); a trailing `# comment` is ignored; the same links.
@@ -26,6 +27,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PAIRS = [
     ("README.md", "README.zh-CN.md"),
     ("docs/quick-start.md", "docs/quick-start.zh-CN.md"),
+    ("docs/maintaining.md", "docs/maintaining.zh-CN.md"),
 ]
 GLOSSARY = "docs/glossary.md"
 SINGLES = [GLOSSARY]

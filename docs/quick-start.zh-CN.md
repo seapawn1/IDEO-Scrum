@@ -4,7 +4,7 @@
 
 ## 开始之前
 
-- 插件已经装好（[README](../README.zh-CN.md#安装)）。
+- 插件已经装好（[README](../README.zh-CN.md#安装)）；已经装过旧版的，看[升级说明](../README.zh-CN.md#升级)。
 - 你的项目是个 git 仓库。不是的话，可以让 Scrum Master 替你运行 `git init`；这只是建议，不是规定。
 
 ## 1. 叫出 Scrum Master

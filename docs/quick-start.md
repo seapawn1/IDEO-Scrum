@@ -4,7 +4,7 @@ One page, from an installed plugin to your first closed Sprint. You work in one 
 
 ## Before you start
 
-- The plugin is installed ([README](../README.md#install)).
+- The plugin is installed ([README](../README.md#install)); if you already have an older version, follow the [upgrade instructions](../README.md#upgrade).
 - Your project is a git repository. If it is not, ask the Scrum Master to run `git init` for you; this is a suggestion, not a rule.
 
 ## 1. Call the Scrum Master
