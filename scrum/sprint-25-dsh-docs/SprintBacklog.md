@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 25 (dsh-docs)
 
 > Started: 2026-11-19 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: claude/sprint-25-dsh-docs-4f4070 | Product Owner: SeaPawn | Scrum Master: IDEO-Scrum Master | Developer: Sprint 25 Developer
-> Now: Test 停点（Review 前）· 2026-11-21 Master 复核通过（增量、Claude Code H4 与 6 项复核全过；DSH H5 四项诚实留缺口，整体 Test 不判全面通过），停在正式 Review 前。
-> Waiting for PO: 1. 正式 Review 拍板：决定由 PO 手工补跑 DSH 0.2.2-rc.5 实机 H5，或接受当前 Claude Code 已验 + DSH 实机待验范围。
+> Now: Test 完成（Review 前）· 2026-11-21 `H5-A`／`H5-B` 全部实机核销，DSH 四项缺口清零；用户文档与维护说明已回填，6 项复核已重跑，停在正式 Review 前。
+> Waiting for PO: 1. 正式 Review 拍板与收官；2. 是否在 Review 前补跑 Outcome Done 的熟手陌生人全流程（本期未观测）。
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
 
@@ -128,12 +128,14 @@ Sprint 21–25 的 Review 前阶段门和常规事项交 Master；本期安全�
 
 **Master 复核与 H2／H5 裁定（2026-11-21，依上述委托）：** 已复核 `7ae0b49`、仓外 `H4-A`／`H4-B` 全部清单快照、`/context all` 与原始会话流，Claude Code `H4` 通过、无必改项。裁定：DSH `H5` 实机部分（`H5-A`／`H5-B`、DSH `0.6.3` 压缩后补入）维持诚实缺口，不强跑、不降标，不触碰 PO 日常 DSH 实例／配置／令牌、不全局安装 `dsh`、不以 headless 冒充 Web／Standard、不把源码或旧 `b2679aa` 记录算作 `0.6.3` 实机通过；因此整体 Sprint 25 Test 不判为全面通过——增量质量与 Claude Code／静态／打包／DSH 自动回归单列已验证，DSH 实机项单列未验证，交 PO 在正式 Review 决定是否手工补跑或接受范围。放行 H2 文档收口与 H5 静态／打包／回归复核（仅本分支 `claude/sprint-25-dsh-docs-4f4070`）：去草稿标记、写入已验证的 Claude Code `0.6.3` 新装／`6.0.3 → 0.6.3`／`/compact` 复注／`CLAUDE.md → @AGENTS.md` 证据，DSH 项标待实机；按 [docs-review.md](docs-review.md) 最小化更新 README 与快速上手，不改 Sprint 23 的阶段门／承诺表／Retro 段落；`docs/maintaining*.md` 并入 `check_docs.py` `PAIRS`；对同一候选实跑 6 项检查；逐文件 `git add` 本地提交，不改 `CLAUDE.md`、不改版本号、不合并／tag／推送／发布，完成后停在 Review 前报 Master 复核。
 
+**Master 核销与文档同步放行（2026-11-21）：** 独立复核 `H5-A`（新装、Planning/`sprint-kernel`、压缩后承诺复注）与 `H5-B`（`6.0.3 → 0.6.3` 卸载重加迁移、新会话核验）均通过，四项 DSH 缺口清零。放行用户文档与维护说明回填、§5 证据回填与 6 项复核重跑；边界：DSH 同路径原地更新未单独实测、Outcome Done 全流程本期未重跑、Sprint 21 旧五模式署名缺口仍归 Sprint 21 Review；不改 `CLAUDE.md`、版本号、插件与 `dsh/`，不合并／tag／推送／发布。
+
 **PO 直接指示（2026-11-21，来源：PO 在本执行会话直接指示；链接与访问令牌按凭据卫生隐去）：**
 - 原话一：「你还差 DSH 实机验证是吧，如果。是的话我去开一个 DSH 出来，然后给你他的 Web 的一个链接，你是不是就可以了？」
 - 原话二：「这样子我们有一个 stakeholder 对话，你去需要操作 DSH 的什么，你就去找他要。我现在已经把 DSH 打开了，并且链接是: <已隐去：带访问令牌的地址，不入库> 然后你去找 stakeholder 要一些内容，要一些信息，他可以直接看到，如果你不方便操作，也可以让他帮你操作。然后审阅的时候还是靠 Master。后面她会指导你怎么呃。那个通过不通过什么的，什么时候停都以他为准。」
 - 决定时的 Sprint Goal 原文：「换宿主不换规矩：使用 Claude Code 或 DSH 的人，照各自的说明就能装好 0.6.3、叫出角色，用上同一套方法论；已装 6.0.3 的人知道怎样迁移，维护者只需维护一份共用规则。」
 
-**Master 安全边界与 `H5-A` 取证要求（2026-11-21）：** 拒绝使用 PO 日常 `~/.dsh` 实例（3080），不复制其 `profiles`／`sessions`／`bot`／凭据；先核 3081 隔离清白与 `--offline` 对 Standard 会话模型调用的影响。DSH 操作由 Stakeholder（PO assistant）代办，其不改代码／文档／本日志、不做通过判定或阶段放行；不全局安装 `dsh`；拿不到干净隔离 Web／Standard 入口、3081 含脏状态或缺非作者测试模型通道即停机报 Master 并同步 PO；严禁以 headless 冒充。`H5-A` 与 `H5-B` 各用独立 `DSH_HOME`／`DSH_AGENTS_HOME` 与独立样例项目。复核前不推进 `H5-B`，不改 `README*.md`、`docs/maintaining*.md`、`docs/quick-start*.md`、`CLAUDE.md` 或版本号。`H5-A` 必核：宿主版本与隔离路径、实际加载路径与 `0.6.3`、Standard 会话 4 角色与 `/scrum-master` 原生 `skill-invocation`（内核按序）、原生 `runtime-context`（`ideo-scrum:commitments`）3 条承诺原文、首轮 `AGENTS.md`（`S25-SHARED-RULE`）加载且不重复不越界、`scrum/` SHA-256 一致；压缩后补入测了另留证据，未测如实标注。原始证据留仓外 `S:\IDEO-Scrum-Archives\sprint-25-dsh-docs\test-runs\H5\`；摘要严禁含令牌、带 token 的 URL、提供方地址、密钥或个人配置。
+**Master 安全边界与 `H5-A` 取证要求（2026-11-21）：** 拒绝使用 PO 日常 DSH 实例，不复制其 `profiles`／`sessions`／`bot`／凭据；先核隔离实例清白与 `--offline` 对 Standard 会话模型调用的影响。DSH 操作由 Stakeholder（PO assistant）代办，其不改代码／文档／本日志、不做通过判定或阶段放行；不全局安装 `dsh`；拿不到干净隔离 Web／Standard 入口、隔离实例含脏状态或缺非作者测试模型通道即停机报 Master 并同步 PO；严禁以 headless 冒充。`H5-A` 与 `H5-B` 各用独立 `DSH_HOME`／`DSH_AGENTS_HOME` 与独立样例项目。复核前不推进 `H5-B`，不改 `README*.md`、`docs/maintaining*.md`、`docs/quick-start*.md`、`CLAUDE.md` 或版本号。`H5-A` 必核：宿主版本与隔离路径、实际加载路径与 `0.6.3`、Standard 会话 4 角色与 `/scrum-master` 原生 `skill-invocation`（内核按序）、原生 `runtime-context`（`ideo-scrum:commitments`）3 条承诺原文、首轮 `AGENTS.md`（`S25-SHARED-RULE`）加载且不重复不越界、`scrum/` SHA-256 一致；压缩后补入测了另留证据，未测如实标注。原始证据留仓外 `S:\IDEO-Scrum-Archives\sprint-25-dsh-docs\test-runs\H5\`；摘要严禁含令牌、带 token 的 URL、提供方地址、密钥或个人配置。
 
 ## 5. Test
 
@@ -145,7 +147,7 @@ Sprint 21–25 的 Review 前阶段门和常规事项交 Master；本期安全�
 
 - **环境与模型口径**：被测提交 `119e4af`（`plugins/` 与 `ab4061c`/`2800cc0` 相同，候选 `0.6.3`）；旧基线 `d681c69`（`v6.0.3`）。宿主 Claude CLI `2.1.329`；模型通道 `claude-magpie`（magpie 的便宜模型，非 Haiku）；进程使用白名单环境变量、中性父目录 `C:\Users\Public\s25-test\`、各运行独立 `CLAUDE_CONFIG_DIR` 与 `TMPDIR`、仅放开 `Read,Grep,Glob,Skill`（禁用 `Bash,PowerShell,Write,Edit,Agent`）、`--strict-mcp-config --permission-mode dontAsk`，并在各配置目录 `settings.json` 挂载 `scripts/stranger_test/guard.py`（未传冲突 `--settings`）。仓外原始流与清单快照：`S:\IDEO-Scrum-Archives\sprint-25-dsh-docs\test-runs\H4-A\` 与 `H4-B\`。
 - **冒烟与隔离实测纠偏**：
-  1. **Git 市场形态**：本机用仅监听 `127.0.0.1` 的 `git-http-backend` 提供裸仓 URL（`known_marketplaces.json` 记为 `"source": "git"`），使 `add`/`update` 真实走 `git clone` 与版本缓存，区别于 `"source": "directory"`。
+  1. **Git 市场形态**：本机用仅监听本地回环的 `git-http-backend` 提供裸仓 URL（`known_marketplaces.json` 记为 `"source": "git"`），使 `add`/`update` 真实走 `git clone` 与版本缓存，区别于 `"source": "directory"`。
   2. **`--setting-sources` 与用户插件加载**：冒烟（`C:\Users\Public\s25-test\smoke-03\`）证实 `claude plugin install` 默认写 `user` 作用域（`CLAUDE_CONFIG_DIR\settings.json` 的 `enabledPlugins`）；若传 `--setting-sources project,local`，会话不会挂载 `ideo-scrum`。因本测试已完全隔离 `CLAUDE_CONFIG_DIR`，故先以 `--setting-sources user,project,local` 跑 `/context all` 证清白（`Memory Files: []`），再以同一隔离范围跑正式会话（与 `scripts/stranger_test/driver.py` 一致）。
   3. **POSIX `sh` 与状态文件隔离**：清洁 `PATH` 命中 `E:\GIT\Git\usr\bin\sh.EXE`（非 WSL）；`commitments.sh` 的 `.fp` 状态写入各运行独立 `CLAUDE_CONFIG_DIR\plugins\data\ideo-scrum-ideo-scrum\ideo-scrum-commitments\*.fp`，零触碰共享 `/tmp`。
   4. **真实 `~/.claude` 核对**：`H4-A` 全程 `plugins/` 与 `settings*.json` 差异为 `0`；`H4-B` 中真实 `~/.claude` 未出现 `0.6.3`、未改任何清单或设置（仅并行其他会话的两个短生命周期 PID 在宿主机原有插件缓存下留下了 `.in_use/` 锁文件）。
@@ -163,13 +165,13 @@ Sprint 21–25 的 Review 前阶段门和常规事项交 Master；本期安全�
 | --- | --- | --- |
 | 无死链 | `python -X utf8 -I scripts/check_docs.py`：7 份文档（含维护说明中英，已并入 `PAIRS`）、189 条链接、0 错误 | 通过 |
 | 插件校验 | `claude plugin validate --strict plugins/ideo-scrum` 通过（结果见下方 6 项复核） | 通过 |
-| DSH 分发 | `node --test scripts/check_dsh.mjs` 自动回归通过；`npm pack --dry-run` 清单含 `dsh/`、`cordis.patch.yml`、角色与内核源；实际安装：Claude Code 实机通过，DSH 未实机 | 部分：自动回归与打包通过，DSH 实机未验证 |
+| DSH 分发 | `node --test scripts/check_dsh.mjs` 自动回归通过；`npm pack --dry-run` 清单含 `dsh/`、`cordis.patch.yml`、角色与内核源；实际安装：Claude Code 与 DSH `0.2.2-rc.5` 均实机通过 | 通过 |
 
 | §2.2 精化块 | 证据 | 状态 |
 | --- | --- | --- |
-| 1. 照说明装好、叫到角色 | `H4-A` 隔离 Git 市场新装 `0.6.3`：4 角色可选，`/scrum-master` 按序加载内核并进入 Planning，3 条承诺原文入上下文；中英 README 与双语快速上手已同步宿主号说明与入口 | Claude Code 通过；DSH 未验证（`H5-A`） |
-| 2. 已装用户按文档迁移 | `H4-B` `d681c69`（`v6.0.3`）→ `0.6.3`：常规更新直接接受降号，重开会话加载 `0.6.3`，角色与承诺复注通过，`scrum/` 逐字节未变；迁移说明已写入维护文档与 README 升级节 | Claude Code 通过；DSH 未验证（`H5-B`） |
-| 3. 一处维护仓库规则 | `AGENTS.md` 为唯一正文（blob `65e2c4e`，SHA-256 `f397cccd...`），`CLAUDE.md` 仅 `@AGENTS.md`（blob `43c994c`），无循环；`H4-A`／`H4-B` 的 `/context all` 证隔离会话只读项目 `CLAUDE.md` + `AGENTS.md`，不串上级目录或用户设置 | Claude 通过；DSH 运行时读取仅有 `dsh-v0.2.2-rc.5` 源码事实，未实机 |
+| 1. 照说明装好、叫到角色 | `H4-A` 隔离 Git 市场新装 `0.6.3`：4 角色可选，`/scrum-master` 按序加载内核并进入 Planning，3 条承诺原文入上下文；`H5-A` 隔离 DSH `0.2.2-rc.5` 新装 `0.6.3`：4 角色与 4 内核在 `/` 菜单，原生 `skill-invocation` 来自候选包，第 2 轮加载 `sprint-kernel` 进入 Why/Planning；中英 README 与双语快速上手已同步宿主号说明与入口 | 两个宿主均通过（`H4-A`、`H5-A`） |
+| 2. 已装用户按文档迁移 | `H4-B` `d681c69`（`v6.0.3`）→ `0.6.3`：常规更新直接接受降号，重开会话加载 `0.6.3`，角色与承诺复注通过，`scrum/` 逐字节未变；`H5-B` `b2679aa`（`6.0.3`）→ `0.6.3`：实测卸载旧链接→添加候选→重启→新开 Standard，磁盘与原生 base dir 均切至候选，承诺与规则通过；迁移说明已写入维护文档与 README 升级节 | 两个宿主均通过（`H4-B`、`H5-B`）；DSH 原地更新链接未另测 |
+| 3. 一处维护仓库规则 | `AGENTS.md` 为唯一正文（blob `65e2c4e`，SHA-256 `f397cccd...`），`CLAUDE.md` 仅 `@AGENTS.md`（blob `43c994c`），无循环；`H4-A`／`H4-B` 的 `/context all` 与 `H5-A`／`H5-B` 的原生 `agent-instructions` 均证隔离会话只读项目 `AGENTS.md` + `CLAUDE.md`，不串上级目录或用户设置 | 两个宿主均通过 |
 | 4. 版本与维护资料对得上 | 两份清单与中英 README 均为 `0.6.3`；维护说明中英、README 中英、快速上手双语结构对等、命令一致、链接可达（189 条，0 死链）；`npm pack` 清单与源码对照通过 | 通过 |
 
 产品日志 §1.3 的完整 DoD 继续生效，本期核验重点不豁免其余项；对账如下（续表）：
@@ -182,16 +184,20 @@ Sprint 21–25 的 Review 前阶段门和常规事项交 Master；本期安全�
 | Output Done · 描述长度 | 未改技能 frontmatter 与描述；4 内核描述仍 ≤ 1024 字符（ideo `1023`、design `1009`、scrum `970`、sprint `945`，按 YAML 取值计） | 通过 |
 | Outcome Done · 一次会话完整引导、熟手陌生人走完第一冲刺 | 本期未重测全流程 | 本期未观测（保留旧版基线边界，不冒充本期已达成） |
 
-**H5 缺口总表（未验证，交 PO 正式 Review 决定）：**
+**H5 核销（2026-11-21，原缺口全部实机通过）：**
 
-| 项 | 状态与前置缺口 |
+| 项 | 结果与原生证据 |
 | --- | --- |
-| DSH `0.6.3` 实机新装（`H5-A`） | 未验证（前置缺口：无隔离实机与非作者凭据通道，未触碰 PO 日常 DSH 配置） |
-| DSH `b2679aa → 0.6.3` 实机迁移（`H5-B`） | 未验证（同上前置缺口） |
-| DSH 运行时 `AGENTS.md` 实机读取（首轮、去重、不越界） | 未验证；仅有 `dsh-v0.2.2-rc.5` 源码事实 |
-| DSH `0.6.3` 压缩后承诺补入 | 未验证；README 与维护说明已标范围 |
+| DSH `0.6.3` 实机新装（`H5-A`） | 通过。隔离实例（全新 `DSH_HOME`／`DSH_AGENTS_HOME`，与 PO 日常实例分开）；Web **Add plugin** 装本地候选，界面「版本 0.6.3」，磁盘 profile 的 `link:` 与 Junction 指向候选，重启后保持；4 角色（均「仅用户」）与 4 内核在 `/` 菜单。 |
+| DSH 运行时 `AGENTS.md` 实机读取（首轮、去重、不越界） | 通过。原生 `agent-instructions` 仅 `AGENTS.md` 与 `CLAUDE.md` 两处 `set`（digest 与磁盘 SHA-1 一致；`CLAUDE.md` 为字面 `@AGENTS.md`，未展开），无重复、无父目录或用户配置；新装与迁移后各验一次。 |
+| DSH `0.6.3` 压缩后承诺补入 | 通过。原生 `command/run compact` 压缩 16 条后，`agent-instructions` 重注两份规则，`runtime-context`（`ideo-scrum:commitments`）逐字重注 3 条承诺。 |
+| DSH 角色、内核与承诺（`H5-A` 会话） | 通过。`/scrum-master` 原生 `skill-invocation` base dir = 候选 `commands`，预载 `ideo-kernel` → `scrum-kernel`；第 2 轮按需加载 `sprint-kernel`（无前缀、base dir 候选）并进入 Why/Planning 只读讨论；`runtime-context` 3 条承诺逐字。 |
+| DSH `b2679aa → 0.6.3` 实机迁移（`H5-B`） | 通过。独立新环境与独立样例副本；基线 `6.0.3` 首装与重启后两段会话 base dir 均为 `baseline-b2679aa`；插件详情页无 Update，只有卸载，实测路径为**卸载 → 添加插件填候选 → 重启 → 新开 Standard 会话**；磁盘 `link:`／Junction／版本切至 `0.6.3`，新会话 base dir 切至候选，角色、内核、承诺与规则均通过。**原地更新链接仓库未单独实测**（界面无该入口）。 |
+| 日志保全（两段） | 通过。`scrum/` 各文件 SHA-256 与初始逐字节一致，两段 `git status` 干净；三段会话均无 `write`／`edit` 工具调用。 |
 
-**整体判定：** Sprint 25 Test **不判为全面通过**。已验证：Claude Code `H4`（新装与迁移）、双语文档对照与链接、插件严格校验、DSH 自动回归与打包清单、`AGENTS.md` 单源迁移、Claude Code 压缩后承诺复注。未验证：上表 4 项 DSH 实机。是否由 PO 手工补跑 DSH 或接受此范围，交正式 Review 决定。
+模型通道：`magpie` 的便宜模型，非 Haiku。原始证据在仓外 `S:\IDEO-Scrum-Archives\sprint-25-dsh-docs\test-runs\H5\`（`H5-A\`、`H5-B\`），入仓只留脱敏摘要。
+
+**整体判定：** Sprint 25 Test **通过**。增量质量、Claude Code `H4`（新装、迁移、压缩后复注）、DSH `H5-A`／`H5-B`（新装、Planning、迁移、压缩后复注、规则读取）、双语对照与打包检查均已验证。保留的诚实边界：DSH 同路径原地更新未单独实测（界面无该入口）；Outcome Done「熟手陌生人走完第一冲刺」本期未重跑；五模式署名缺口仍归 Sprint 21 Review。
 
 ### 6 项静态／打包／回归复核（2026-11-21，候选 `3a58190`）
 
