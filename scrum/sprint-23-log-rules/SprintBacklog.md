@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 23 (log-rules)
 
 > Started: 2026-11-19 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `claude/sprint-23-log-rules-4b3ec9` | Product Owner: SeaPawn | Scrum Master: Sprint 21–26 主会话 | Developer: Sprint 23 工作树会话
-> Now: Planning · What。PO 于 2026-11-20 确认 PBI-78：承诺表是唯一权威来源，阶段决定行保留原文快照。五项的验收口径已齐，待 PO 决定是否结束精化；未放行 How。
-> Waiting for PO: 1. Sprint 23 是否结束 What 精化？
+> Now: Planning · How。2026-11-20，Master 转达 PO 决定：What 精化结束，放行 How 规划；计划待 Master 审阅，尚未放行施工或实测。
+> Waiting for PO: None
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
 
@@ -143,18 +143,42 @@ Master 确认沿用现行 `sprint-log.md` 第 18 条的无宿主项目记忆兜�
 
 - **Developer 暂估**：S～M（约 2～3 个工作会话）。两块验收边界：只保存重要教训且能独立找回；项目记忆及现行兜底不产生汇总或混入插件 Memory。本轮只拟定判据，不对真实项目记忆执行 Retro、迁移或清理。
 
+**2026-11-20 · What 决定（Master 转达）**：PO 原话「可以，我觉得23、25可以结束 what，然后去放行到 how。」对照 §1.1，五项精化覆盖日志接手与收尾的目标，Sprint 23 结束 What，放行 How 规划，不含施工、实测、合并、推送或发布。§1.1 当时原文快照：「照着日志接手：接手的人能分清承诺原文和定目标的理由，查到本期重点验什么、完整 DoD 是否满足，以及下一步是否已获 PO 放行；收尾后，能找回选定和否决方案的依据，也能在项目记忆里逐条找到 Retro 的重要教训。」
+
 ## 3. How
 
 <!-- The Developer writes this chapter as a plan for making the selected items, short and not in detail (sprint-log.md, convention 7): the work items in order, each with its output and how to tell it is done; the key choices and why; the risks and open points. The last line is the go-ahead (sprint-log.md, convention 8). -->
 
 | # | Work item | Output | Done when |
 | --- | --- | --- | --- |
+| H1 | 定修订范围和交接基线 | 基于 `00c224b` 的受影响条款、模板、入口说明和跨期接口清单 | 每处拟改文字能指到原文、作者约定或 PO 决定；对照命令、SKILL.md、双语 README、快速上手、词汇表与项目指令中的同义说法，标清改哪处、哪处只引用或不动。 |
+| H2 | PBI-76：对齐 DoD 与取证写法 | 产品约定、Sprint 的 Why／Test 写法与模板的成套修订稿 | 从同一份样本能追溯完整 DoD、需新取证、仍有效的旧证据与未触发条件。适用但缺证据不通过；Outcome 信号是否拦本期 Test 按事前约定判，不把待观察当通过或豁免。 |
+| H3 | PBI-77：对齐通用阶段门与 Sprint 流程 | `overview.md` 与 Sprint 阶段门、模板的修订稿 | 进入、返回与同阶段接手三种情况分得清；认可 How 不授权施工，认可增量不授权 Sprint Test；可追溯放行人、目标阶段与范围。 |
+| H4 | PBI-77：对齐设计阶段门 | 设计约定与模板的修订稿 | 进入和返回都须明确放行；书面交接仅在 PO 明授的范围内有效，不因 Prototype／Test 可以由 AI 承担而省略阶段门。Ideate 的组织方式由 PO 先定，选定方案与放行 Prototype 分开；不新增方法数门槛，不改设计日志既有字段。 |
+| H5 | PBI-78：对齐承诺与解释 | 三类日志的承诺说明及项目级／汇总级 Sprint Goal 对照样本 | 表内原文唯一权威，表下解释可选且不参与提取；过关先读再核对，决定行留当时原文快照。汇总级条目列在同一单行承诺格内；保留两列表形状和既有标题，不改解析器。 |
+| H6 | PBI-79：设计结束时保留依据 | 设计材料的保留与交接规则、原型去向说明 | 选定与否决方案、原型、速写、演示、评审及合成稿仍从日志可找回；是否有承接 Sprint 不决定删除，留存不计作正式 Increment。 |
+| H7 | PBI-79：让归档和 Sprint 清理保住材料 | 设计归档与承接 Sprint 收尾的修订稿 | 首次归档 Review 和承接 Sprint 收官后都能按有效引用读回原件；档案不被误认成开着的设计，通用「过期即删」和工作文件清理不再删去保留材料。本次规则约束以后收尾，不回迁历史。 |
+| H8 | PBI-69：项目 Retro 分条入记忆 | Retro 约定修订稿与正常／兜底对照样本 | 只保存重要教训且每条可独立找到；没有重要教训不凑数。无宿主项目记忆时沿用仓库教训笔记；通用工作材料规则不能让 Retro 教训写进指令文件，不建每期汇总，不混入插件约定 Memory。 |
+| H9 | 交审成套修订稿 | 可圈阅的全文、§2.2 判据对照和跨期交接记录 | 五项各有正反例或必要分支，受影响的说明一致，已让 Master 能逐项审；反馈按单会话工作块处理，不以交审代替批准。 |
+| H10 | 将批准的改稿集中落源 | 可提检的共用方法论正文、模板和受影响说明 | 仅将经过 Master 审阅、全新子代理对抗审查与 PO 强审的文字按授权落盘；范围与批准稿一致，未改第三方原文，保留既有解析接口。开发自检和待核验证据已区分，供 PO 决定是否放行 Test。 |
 
 **Key choices**
 
+- 工作块按编号推进，每块按一个工作会话估量，审阅和 PO 等待另记。先审成套修订稿，不把讨论中的约定逐条改成生效规则；大改约定集中落源，不随手改 `CLAUDE.md`。
+- 共用规则放在已有的 `overview.md` 条款，阶段细节留在 Sprint／设计约定，模板只提醒记录什么。只修相抵或缺失的说法，不替换 Scrum 等原文、不另建规则层，不先加字段、钩子或强制口令。
+- 材料随相应的设计档案保存，沿现有 `scrum/documents/` 归档体系保留可读原件；设计结束至归档前保住原件与路径，归档后由日志及承接 Sprint 指向可用位置，不把唯一一份留在待清理的工作目录。Retro 只取可复用原则，不能拿它替代设计材料。
+- 用能串起接手和收尾的隔离样本覆盖 §2.2 的反例与分支，以实际停留／继续、留下的日志与材料为证，不只看会话复述；不触及真实设计材料、项目记忆或用户配置。按[仓库测试手册](../documents/headless-testing.md)在运行前将样本、方法和通过线记入 §2.2 并单独提交，不改已定口径，不扩成自然触发专项。获准进入 Test 后，按 §5 留证，覆盖 §2.2、完整产品 DoD、Claude 严格校验和 DSH 既有回归；未改分发则不加实机重装专项。Test 通过也不自动收官。
+
 **Risks and open points**
 
-Go-ahead: <date, who gave it, and how far it reaches — for example: commit on the Sprint branch; merge, tag, and release decided at Review; no push>
+| 接口／风险 | 交接与回验 |
+| --- | --- |
+| Sprint 21：设计卡依赖日志 §1.2、§2.1、§3.1 和可选 §3.2；归档留材可能被误识别成开着的设计 | 保持章节与承诺表形状；把拟改模板及收尾后的日志、材料路径样本交 Master 转 Sprint 21，合流时复核设计卡字段、开闭状态及 PBI-71 的归属，不在本期改看板。 |
+| Sprint 24：模板注释与阶段阅读指引可能改同一段；承诺快照不能成为注入来源 | 交接受影响的节与基线，区分本期的阶段门／日志语义和 24 的原文加载、角色入口及 hook 性能；整合后重验从承诺表逐字取值，不把解释或快照注入，不改频率或开关。 |
+| Sprint 25／26：共用方法论正文与项目记忆容易被宿主或插件约定绑定 | 25 接收共用改动清单与 DSH 回归证据；本期不改打包、版本或安装方式。26 接收项目教训与插件约定 Memory 的边界，不等待该期、不接管其载体。 |
+| 同一条约定在几处有不同表述，或归档后路径失效 | 交接注明基线提交、受影响段落、不得改变的接口和回验场景；Master 审过共用口径再转各期。发现冲突或需变更目标／验收，先报 Master 由 PO 定；不拉入其他分支，不把未合流的验证当作合流证据。 |
+
+Go-ahead: 未获施工或实测放行。当前仅获准形成和审阅本期 How 规划，不授权合并、tag、推送或发布。
 
 ## 4. Increment notes
 
