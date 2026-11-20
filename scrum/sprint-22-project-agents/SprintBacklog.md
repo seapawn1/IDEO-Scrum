@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 22 (project-agents)
 
 > Started: 2026-11-19 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `claude/sprint-22-project-agents-b09bf1` | Product Owner: SeaPawn | Scrum Master: 项目 Scrum Master | Developer: Sprint 22 Developer
-> Now: Increment；PBI-73 H2 三样本已跑完并交 Master 审阅（脱敏汇总见 §4）；PBI-75 维持停点（0 样本／US$0.00）；未获审阅结论前不进 H3–H7。
+> Now: Increment；PBI-73 H2 已通过 Master 审阅、PBI-75 H2 取证已移交，正按 Master 放行顺序施工 H3 → H4 → H5 → H6；H7 正式 Test 待 Master 审阅 H3–H6 后冻结放行。
 > Waiting for PO: None
 > How to write this log: [Sprint log conventions](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md).
 
@@ -263,5 +263,25 @@ Master 将请 PO 单独放行隔离 H2：合计最多 7 个样本、20 分钟、
 - **原始材料**：宿主原始流、调试记录与脚本全部留在仓外的 `S:\IDEO-Scrum-Archives\sprint-22-project-agents\pbi-73-h2\`，本段只记可分享的汇总；`plugins/ideo-scrum/` 未改动，§2.2 与 §5 未改。
 
 **结论（交 Master 按线决定）：** PBI-73 H2 的三项开跑前细化均已落实并有实测证据，四类通过线在 3 个样本内均成立；未发现隔离串入、守卫失效、工具面越权或无法召唤。**据此仅报 Master 审阅；未获审阅结论前不进 H3–H7，PBI-75 维持停点。**
+
+**2026-11-21（UTC+8）· PO 委托（Master 转达，逐字）。**「可以，先审 22、23、25 吧  后面这些，嗯，对话。他们到 review 之前再向我报告。就是后面的事情你都可以决定了，review 之前再向我报告。」对照 §1.1 的 Sprint Goal「独立的第二视角：拍板前能请参谋复核方案，也能按本项目的角色卡听取 Stakeholder 的反馈；身份不用每次重讲，意见每次独立，决定仍由 PO 来做。」本期由 Master 在正式 Review 前决定阶段放行与记账，Developer 只向 Master 交审和报阻碍。**仍回 PO 的事项：** 改 Product Goal／Sprint Goal 承诺、取消 Sprint、推翻 PO 定案、PO 点名品味、改本仓库 `CLAUDE.md`、正式 Review／Retro／收官、合并、tag、推送、发布。本委托不降验收线，不授权越界。
+
+**2026-11-21 · Master 审阅结论：PBI-73 H2 通过。** 已复核 `4709f8f`／`79078de` 及仓外 `S:\IDEO-Scrum-Archives\sprint-22-project-agents\pbi-73-h2\` 的原始流、报告与调试日志：零调用预检清白（指令文件 0、`claude doctor` 正常、守卫在隔离项目 `.claude/settings.local.json` 实际生效）；三样本均符合四类通过线，第 1 轮自动召唤 0、第 2 轮各 1 次显式命中；均为新实例非 fork／非续接，`OLD-OPINION` 零泄漏；子代理实际调用严格为 `Skill(ideo-kernel)`→`Skill(scrum-kernel)`→`Read`，禁集与 MCP 为 0，夹具哈希与 mtime 未变；三场景可对照原件且不代决定；73-C 单次 `Glob` 被守卫拦截属预期拦截、零作者串入；代价 415.0 秒／估算 US$0.9527 在上界内。**顺记一处事实观察（非 PBI-73 阻塞）：** 预检 73-A 有 `commitments.sh` 冷启动 10 秒超时（73-B／73-C 及正式会话正常），留供交接参考。
+
+**2026-11-21 · PBI-75 H2 双入口取证（Master 移交，停点解开）。** 按 PO 2026-11-21 指示，Master 已在其交互会话（Claude Code `2.1.329`，显式 `model: "haiku"`）完成 PBI-75 双入口最小验证；原始证据与汇总归档于仓外 `S:\IDEO-Scrum-Archives\sprint-22-project-agents\pbi-75-h2\`（`summary.json`、`fixture-catalog-reader.md`、`receipt-note.md`、`75-A` 与 `75-W` 原始记录）。
+
+| 核验项 | 实测结果 |
+| --- | --- |
+| `definition_absent` | `75-A-absent` 与 `75-W-absent` 均报错 `agent type 'fixture-catalog-reader' not found`，零模型调用，未回退通用代理 |
+| `definition_present` 的生效条件 | 落盘**同轮内**仍报 `not found`；**同会话下一轮用户消息边界**自动注册生效，无需重启会话 |
+| `75-A`（普通具名 Agent） | `Agent(subagent_type="fixture-catalog-reader", model="haiku")`：API `system` 块含定义正文，`tools` 为 `["Read"]`，无 `OLD-REVIEW-N8V2`，拒认采购单 24 册并输出 `CATALOG-ROLE-Q7M4` |
+| `75-W`（Workflow） | `Workflow` `wf_6c05a7c3-e7e`，`agentType: 'fixture-catalog-reader'`，脚本未内联角色正文与标记；API `system` 块含定义正文，`tools` 为 `["Read"]`，同样无旧评议、输出角色标记 |
+| 夹具完整性 | SHA-256 与 mtime 前后一致 |
+
+- **须写进 H4–H6 文档的两条宿主实测事实：** ① 新建 `.claude/agents/<name>.md` 不在同轮热刷新，而在**同会话下一轮用户消息边界**生效（不必重启会话）；② Workflow 子代理不继承先前对话历史，但宿主会把**触发该 Workflow 的当轮用户原话**作为 `[Workflow harness — user request]` 透传给子代理，因此触发独立评议的当轮提示也不应夹带倾向。
+- **须如实保留的边界：** 该次实测在 Master 交互会话中以 `haiku` 路由完成，附带常规会话 `instructions`，非零指令文件的 `CLAUDE_CONFIG_DIR` 沙箱；不宣称特定后端型号或服务端账单硬顶。
+- **Sprint 25 H1 交接结论：** `dsh-v0.2.2-rc.5`（`9c2670d`）的 `agent-preset`／`tool-subagent` 不证明按项目自动发现 Agent 文件，DSH 文档边界如实标为未证实、不作项目级 Agent 支持声明。
+
+**2026-11-21 · 放行 H3–H6 施工（不含 H7 正式 Test）。** 依上述 PO 委托，在分支 `claude/sprint-22-project-agents-b09bf1` 上完成 H3 → H4 → H5 → H6 施工及逐文件本地检查点提交：H3 按 `4709f8f` 第 3 条口径写 `agents/advisor.md` 与 `claude-skills/second-opinion/SKILL.md`；H4–H5 写 `claude-skills/project-stakeholder/SKILL.md` 并写入上述两条宿主实测事实；H6 在 `plugin.json` 追加 `skills` 路径，写齐两份 `docs/project-agents*.md`，暂不改 `docs/quick-start*.md`（拟加的 1 行双语导航草案记入下方交接）。**H6 完成后自检并停点交审；未获 Master 审阅 H3–H6 并冻结放行 H7 前，不运行 H7 正式 Test，不进 Review、合并、tag、推送或发布。**
 
 ## 5. Test
