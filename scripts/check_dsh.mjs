@@ -73,6 +73,28 @@ test('register the original four role bodies and kernels with resolvable resourc
   assert.equal(skills.size + contexts.size, 0)
 })
 
+test('keep the loaded Sprint Backlog excerpt identical to its SGEP reference', () => {
+  const skills = join(plugin, 'skills')
+  const refPath = join(skills, 'scrum-kernel', 'references', 'scrum-artifact-sprint-backlog.md')
+  const reference = readFileSync(refPath, 'utf8').replaceAll('\r\n', '\n')
+  const body = canonical(join(skills, 'sprint-kernel', 'SKILL.md')).content.replaceAll('\r\n', '\n')
+  const heading = '\n## Sprint Backlog\n'
+  const start = reference.indexOf(heading)
+  const inline = body.indexOf(heading)
+  assert.ok(start !== -1 && inline !== -1, 'The reference and the skill must both contain the Sprint Backlog section')
+  assert.ok(reference.includes('\n### Commitment: Sprint Goal\n', start))
+  // The excerpt is the last section in both files. Ignore only different line endings.
+  assert.equal(body.slice(inline), reference.slice(start))
+  const attribution = reference.match(/^> Source: .+\n> License: .+$/m)?.[0]
+  const headerStart = body.lastIndexOf('\n---', inline)
+  const excerptHeader = body.slice(headerStart === -1 ? 0 : headerStart, inline)
+  assert.ok(attribution && excerptHeader.includes(attribution), 'The inline excerpt must carry its source and license')
+  const refLink = excerptHeader.match(/^> Local reference: \[[^\]]+\]\(([^)#\s]+)\)/m)?.[1]
+  assert.ok(refLink && join(skills, 'sprint-kernel', refLink) === refPath, 'The inline excerpt must link to its local reference')
+  const centralAttribution = readFileSync(join(root, 'ATTRIBUTION.md'), 'utf8')
+  assert.match(centralAttribution, /plugins\/ideo-scrum\/skills\/sprint-kernel\/SKILL\.md/)
+})
+
 test('bundle, Claude version, existing icon and two locale exports agree', () => {
   const read = path => readFileSync(join(root, path))
   const manifest = JSON.parse(read('package.json'))

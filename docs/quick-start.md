@@ -15,6 +15,8 @@ In a Claude Code session:
 /ideo-scrum:scrum-master
 ```
 
+This Claude Code command calls the IDEO, Scrum, Sprint, and Design kernels in that order before starting work; you don't need to call them yourself. See the [role convention](../plugins/ideo-scrum/skills/scrum-kernel/overview.md#who-does-what) for the other roles.
+
 In a new DSH **Standard** session opened in your project directory:
 
 ```text

@@ -91,6 +91,8 @@ In a Claude Code session, call a role:
 /ideo-scrum:stakeholder     # an outside view of the product, or a standing assistant for chores such as the board
 ```
 
+Each Claude Code role command calls its required kernels in order before starting work (see the [role convention](plugins/ideo-scrum/skills/scrum-kernel/overview.md#who-does-what)).
+
 In a DSH **Standard** session, use its native skill entries:
 
 ```text
@@ -100,7 +102,7 @@ In a DSH **Standard** session, use its native skill entries:
 /stakeholder
 ```
 
-Type the entry or choose it from the `/` suggestions. You can add the request in the same message: `/scrum-master Help me plan the next Sprint.` The role brings in IDEO and Scrum in order; Sprint and Design load only as needed. To explicitly load both for a task that spans them, start with `/scrum-master /sprint-kernel /design-kernel`. DSH also recognizes a standalone `/name` in the middle of a sentence; wrap it in backticks when you are only mentioning it.
+Type the entry or choose it from the `/` suggestions. You can add the request in the same message: `/scrum-master Help me plan the next Sprint.` In DSH, the role brings in IDEO and Scrum in order; Sprint and Design load only as needed. To explicitly load both for a task that spans them, start with `/scrum-master /sprint-kernel /design-kernel`. DSH also recognizes a standalone `/name` in the middle of a sentence; wrap it in backticks when you are only mentioning it.
 
 In Claude Code, you can also say it in your own words:
 

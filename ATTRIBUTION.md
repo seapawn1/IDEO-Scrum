@@ -33,7 +33,7 @@
 | 许可 | **CC BY-SA 4.0** — https://creativecommons.org/licenses/by-sa/4.0/legalcode |
 | 原始出处 | https://scrumexpansion.org/scrum-guide-expanded/ |
 | 本仓库位置 | `plugins/ideo-scrum/skills/scrum-kernel/assets/scrum-guide-expansion-pack-2026.1.md`（v2026.1 除 Artifacts、Events 两章以外的部分）<br>`plugins/ideo-scrum/skills/scrum-kernel/references/`（Artifacts 两章拆成的 4 份摘录）<br>`plugins/ideo-scrum/skills/sprint-kernel/events/`（Events 两章拆成的 5 份摘录）<br>`plugins/ideo-scrum/skills/scrum-kernel/SKILL.md`、`plugins/ideo-scrum/skills/sprint-kernel/SKILL.md`（SGEP 句的嵌入引用）<br>`plugins/ideo-scrum/commands/scrum-master.md`、`plugins/ideo-scrum/commands/developer.md`（角色命令的 2026 精炼补充）<br>`plugins/ideo-scrum/commands/stakeholder.md`（Stakeholder 角色内容——SGEP 角色章精炼改写）<br>`plugins/ideo-scrum/skills/scrum-kernel/conventions/`（约定里的嵌入引用，句中注明出处） |
-| 修改说明 | v2026.1 的 Artifacts、Events 两章抽成 `references/` 与 `events/` 的单份文件，`assets/` 里是其余部分；原文措辞未改动。角色命令（scrum-master / developer / stakeholder）中的 SGEP 内容为精炼改写（含原文短语），署名统一在本档登记。 |
+| 修改说明 | v2026.1 的 Artifacts、Events 两章抽成 `references/` 与 `events/` 的单份文件，`assets/` 里是其余部分；原文措辞未改动。`sprint-kernel/SKILL.md` 的加载正文逐字带入 Sprint Backlog 节（含 Sprint Goal 子节），并指向原摘录。角色命令（scrum-master / developer / stakeholder）中的 SGEP 内容为精炼改写（含原文短语），署名统一在本档登记。 |
 
 **注意**：Scrum Guide Expansion Pack 由上述三位作者编写，托管于 scrumexpansion.org，**并非 Scrum.org 出品**。该站点上另有一份 "AI and Scrum" 文档采用 CC BY-NC-ND 许可，本仓库未使用。
 

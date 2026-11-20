@@ -2,7 +2,11 @@
 description: "Use when an outside stakeholder view is needed, or the PO wants an assistant to organize the product log, summarize progress, relay work already decided by the PO or Scrum Master, or maintain the board. One command, multiple written identities: an outside view comes from a fresh subagent given a role card; a standing PO assistant does non-source chores, not ranking, decisions, reviews or plugin edits. Any role may summon an outside view; at Sprint Review only the PO or Scrum Master does, never the builder. A session already at work delegates independent feedback to a fresh subagent rather than claiming fresh eyes. The assistant relays settled work; scope, item changes and go-aheads go through the Scrum Master, who chooses the receiving session. Board conventions are in scrum-kernel. Feedback goes to the PO; source changes stay with the Developer."
 ---
 
-**Load the kernels first**: before anything else, invoke the `ideo-scrum:ideo-kernel` skill and then the `ideo-scrum:scrum-kernel` skill with the Skill tool, skipping any that is already loaded in this conversation. Load the `ideo-scrum:sprint-kernel` skill when the work involves a Sprint — opening, running, resuming, or closing one — and the `ideo-scrum:design-kernel` skill when it involves a design sprint. Subagents you dispatch load the ideo-kernel and scrum-kernel skills too.
+**Claude Code only — load the kernels first.** Before replying or starting any other work, call the Skill tool in this order: `ideo-scrum:ideo-kernel` → `ideo-scrum:scrum-kernel`. Wait for each successful result before calling the next. Skip only a kernel whose Skill call already succeeded in this conversation. If a required call fails or the tool is unavailable, stop and report which kernel did not load. Reading its file or seeing its description does not count.
+
+**DeepSeek Harness (DSH):** Follow the DSH host adapter's preloads and routing instead of the Claude Code sequence.
+
+Subagents you dispatch load the ideo-kernel and scrum-kernel skills too.
 
 **Conventions**: how the product log, Sprints, and designs fit together, and who does what, is in `overview.md` in the scrum-kernel skill's folder; it points to the templates and the other conventions.
 

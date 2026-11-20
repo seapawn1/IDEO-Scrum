@@ -91,6 +91,8 @@ claude plugin update ideo-scrum@ideo-scrum
 /ideo-scrum:stakeholder     # 对产品的外部视角，或者常驻做看板之类杂务的助手
 ```
 
+每个 Claude Code 角色命令都会先按顺序调用所需内核，再开始工作（见[角色约定](plugins/ideo-scrum/skills/scrum-kernel/overview.md#who-does-what)）。
+
 在 DSH **Standard** 会话里，用原生的技能入口：
 
 ```text
@@ -100,7 +102,7 @@ claude plugin update ideo-scrum@ideo-scrum
 /stakeholder
 ```
 
-可以直接输入，也可以从 `/` 提示里选。任务可以跟在同一条消息里：`/scrum-master 帮我规划下个冲刺。` 角色按顺序带入 IDEO 内核和 Scrum 内核，Sprint 和 Design 按需加载。任务横跨冲刺与设计冲刺时，可以用 `/scrum-master /sprint-kernel /design-kernel` 显式顺序加载。DSH 也会识别句中独立出现的 `/名称`；只是提及名称时，在输入里用反引号包住它。
+可以直接输入，也可以从 `/` 提示里选。任务可以跟在同一条消息里：`/scrum-master 帮我规划下个冲刺。` 在 DSH 中，角色按顺序带入 IDEO 内核和 Scrum 内核，Sprint 和 Design 按需加载。任务横跨冲刺与设计冲刺时，可以用 `/scrum-master /sprint-kernel /design-kernel` 显式顺序加载。DSH 也会识别句中独立出现的 `/名称`；只是提及名称时，在输入里用反引号包住它。
 
 在 Claude Code 中，也可以用自己的话说：
 

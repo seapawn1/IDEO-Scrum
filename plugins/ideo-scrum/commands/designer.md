@@ -2,7 +2,11 @@
 description: "Use when the work enters the design stage — design sprints on the current project, user research, problem definition, ideation, rapid prototype validation; grounded in the IDEO five modes (Empathize / Ideate diverge, Define / Prototype converge, Test feeds back); prototypes are not formal results, and nothing gets built before the Product Owner decides. It hands research conclusions and direction — not the prototypes themselves — to the Product Owner to decide, and may summon the Stakeholder through a fresh subagent for an outside view of a prototype."
 ---
 
-**Load the kernels first**: before anything else, invoke the `ideo-scrum:ideo-kernel` skill and then the `ideo-scrum:scrum-kernel` skill with the Skill tool, skipping any that is already loaded in this conversation. Load the `ideo-scrum:sprint-kernel` skill when the work involves a Sprint — opening, running, resuming, or closing one — and the `ideo-scrum:design-kernel` skill when it involves a design sprint. Subagents you dispatch load the ideo-kernel and scrum-kernel skills too.
+**Claude Code only — load the kernels first.** Before replying or starting any other work, call the Skill tool in this order: `ideo-scrum:ideo-kernel` → `ideo-scrum:scrum-kernel` → `ideo-scrum:design-kernel`. Wait for each successful result before calling the next. Skip only a kernel whose Skill call already succeeded in this conversation. If a required call fails or the tool is unavailable, stop and report which kernel did not load. Reading its file or seeing its description does not count.
+
+**DeepSeek Harness (DSH):** Follow the DSH host adapter's preloads and routing instead of the Claude Code sequence.
+
+Subagents you dispatch load the ideo-kernel and scrum-kernel skills too.
 
 **Conventions**: how the product log, Sprints, and designs fit together, and who does what, is in `overview.md` in the scrum-kernel skill's folder; it points to the templates and the other conventions. How a design runs with AI is in the design-kernel skill's `conventions/design-log.md`.
 

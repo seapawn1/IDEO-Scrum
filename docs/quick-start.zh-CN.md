@@ -15,6 +15,8 @@
 /ideo-scrum:scrum-master
 ```
 
+这个 Claude Code 命令先依次调用 IDEO、Scrum、Sprint 和 Design 内核，再开始工作；不用你逐个调用。其他角色的顺序见[角色约定](../plugins/ideo-scrum/skills/scrum-kernel/overview.md#who-does-what)。
+
 在项目目录里新开的 DSH **Standard** 会话中：
 
 ```text

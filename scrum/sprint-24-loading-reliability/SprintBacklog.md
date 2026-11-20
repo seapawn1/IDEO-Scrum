@@ -1,8 +1,8 @@
 # Sprint Backlog · Sprint 24（加载可靠性）
 
 > Started: 2026-11-19 | 达成 Sprint Goal 或 PO 停止时收官 | Branch: `claude/sprint-24-loading-reliability-012ded` | Product Owner: SeaPawn | Scrum Master: IDEO-Scrum Master | Developer: Sprint 24 Developer
-> Now: How 草案待 Master 审阅。PO 已结束 What，仅放行 How 规划；施工与实测均未放行。
-> Waiting for PO: 1 How 经审阅后是否放行施工（实测与支出另批）
+> Now: Increment，H1–H5 已完成静态核对，在本期分支检查点交 Master 审阅（依 2026-11-20 书面委托）；H6–H11、冒烟、可选预载与支出仍未放行。
+> Waiting for PO: None
 > 日志写法见 [sprint-log.md](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md)。
 
 ## 1. Why
@@ -153,11 +153,11 @@
 
 | # | Work item | Output | Done when |
 | --- | --- | --- | --- |
-| H1 | 准备共用验证材料 | 合成夹具、固定题面、证据索引和判卷表 | 对应 §2.2 的样本、冻结快照和上限；G1 首回合固定共享，四个 PBI 独立判定；不需真实项目资料。 |
-| H2 | 对齐四角色入口（PBI-81） | 四个 Claude 角色入口及一致的加载说明 | 开场顺序分别为 4／3／3／2；只跳过已成功加载项，不静默跳过失败；DSH 的原生入口与预载行为保持。 |
-| H3 | 让 `sprint-kernel` 加载即带原文（PBI-82） | 带出处的 Sprint Backlog／Sprint Goal 原文与一致性检查 | 加载正文涵盖 §2.2 指定篇幅，文字、署名和授权可逐字核对；原参考可达，不加可选预载。 |
-| H4 | 把必读要求放到 Scrum 的起草入口（PBI-80） | Product Goal、Sprint Goal、精化各自的按需读用指引 | 起草前能找到完整原文、相关约定和模板注释；被纠正先回查，指引不把进入下一阶段当作已获批准。 |
-| H5 | 把必读要求放到设计起草入口（PBI-80） | 设计挑战／目标／问题的按需读用指引 | 入口明确指向该阶段原文、IDEO 模式、约定和模板注释；不把可选访谈或设计推进写成必做。 |
+| H1 | 准备共用验证材料 | 合成夹具、固定题面、证据索引和判卷表 | ✓ 2026-11-20 对应 §2.2 的样本、冻结快照和上限；G1 首回合固定共享，四个 PBI 独立判定；不需真实项目资料。 |
+| H2 | 对齐四角色入口（PBI-81） | 四个 Claude 角色入口及一致的加载说明 | ✓ 2026-11-20 开场顺序分别为 4／3／3／2；只跳过已成功加载项，不静默跳过失败；DSH 的原生入口与预载行为保持。 |
+| H3 | 让 `sprint-kernel` 加载即带原文（PBI-82） | 带出处的 Sprint Backlog／Sprint Goal 原文与一致性检查 | ✓ 2026-11-20 加载正文涵盖 §2.2 指定篇幅，文字、署名和授权可逐字核对；原参考可达，不加可选预载。 |
+| H4 | 把必读要求放到 Scrum 的起草入口（PBI-80） | Product Goal、Sprint Goal、精化各自的按需读用指引 | ✓ 2026-11-20 起草前能找到完整原文、相关约定和模板注释；被纠正先回查，指引不把进入下一阶段当作已获批准。 |
+| H5 | 把必读要求放到设计起草入口（PBI-80） | 设计挑战／目标／问题的按需读用指引 | ✓ 2026-11-20 入口明确指向该阶段原文、IDEO 模式、约定和模板注释；不把可选访谈或设计推进写成必做。 |
 | H6 | 复核承诺 hook 基线（PBI-83，须先获本机实测放行） | 同条件基线记录与瓶颈证据 | 分清命令启动与其余开销；若 `00c224b` 不复现旧慢，停在这里报 Master，不改 hook、不改线。 |
 | H7 | 降低不变提示的 hook 开销（PBI-83，H6 支持且获准后） | 保持现有注册与语义的优化候选 | 只消除证据指出的重复工作；承诺选择、原文、触发时机、开关和异常退出行为不变，候选留待双层验证。 |
 | H8 | 验证首稿与纠偏（PBI-80，实测放行后） | 四类场景与纠偏回合的双证据报告，并留存 G1 首回合的角色调用证据 | 各场景按 §2.2 分判读全和用对，首稿不被续轮覆盖；入口调用证据不替代任何一栏。 |
@@ -176,11 +176,31 @@
 - PBI-80／81 若因为入口或取证能力不一致而无法比较，停报 Master；不加暗示题面、补跑行为失败或动通过线。有关 Sprint 22 角色入口、Sprint 23 日志与模板、Sprint 25 DSH 的重叠接口，留待整合后按影响复核；不依赖 Sprint 26 Memory。
 - 计费或宿主事件不可核实就不启动付费运行，不能以本机结果代替宿主。H6 的基线复测也需单独放行；若安排在测试阶段，回施工仍须获准。只列必需测试的规划上限，可选预载不实施、不测。分发方式不变时不新增实机重装专项。
 
-Go-ahead: 未放行。待 Master 审阅 How、PO 明确决定是否施工；实测（含冒烟）、宿主核验与支出另等明确授权。
+Go-ahead: 2026-11-20（UTC+8），PO SeaPawn（由 Master 转达）： 「你觉得没什么问题了对吧？你觉得没什么问题就放行吧，24。」Master 已审 `9deb68d` §3，无必改项；仅放行 H1–H5 施工与本期分支内的交审检查点。H6 基线实测、H7 hook 优化、H8–H11 正式 Test、冒烟、可选预载、支出、合并、推送、打 tag 和发布均不在此次放行内。放行时 Sprint Goal 原文：「先读原文再动笔：叫出角色就能调齐该用的内核；定目标、写设计问题或精化条目前，AI 先读并用上对应的原文、约定和模板注释，不用 PO 反复提醒；承诺照常提示，发消息时不再为检查未变的承诺等上几秒。」
 
 ## 4. Increment notes
 
 <!-- Whoever does the work writes the notes, in whatever form helps: each change and its reason, and what a new session needs to pick the Sprint up; they may refine the How (sprint-log.md, conventions 9 and 20). A session that picks up the Sprint reads these first. The chapter ends with the Product Owner's decision that the Increment can go into testing (sprint-log.md, convention 24). -->
+
+**书面委托（2026-11-20，UTC+8；PO SeaPawn，由 Master 转达）**：「现在他们全部都开跑了，这样子我跟你讲。嗯，每一个对话，我现在给你权限，每一个对话，等到他们 review 之前向我报告就可以了。不意是每一个对话哦。因为他们现在都已经开始跑了。」Master 代 PO 处理 Sprint 21–25 各自在 Review 前的阶段门与常规事项，决定逐项记入各期日志，责任仍归 PO。本期的 Product Goal、取消 Sprint、推翻 PO 既定决定、PO 点名的品味、正式 Review／Retro／收官、推送发布以及 `CLAUDE.md` 的直接授权仍归 PO。此委托不改变 [§1.1 的 Sprint Goal](#11-sprint-goal)，不等于放行下一个工作项：继续已放行的 H1–H5；H6 的本机基线口径、H7 启动条件及正式 Test 的快照、判据、隔离与费用上界须另交 Master 核准，在此之前不实测、不冒烟、不支出；不做可选预载。
+
+**H1–H5 施工与交审检查点（2026-11-20，UTC+8；分支 `claude/sprint-24-loading-reliability-012ded`，工作树 `sprint-24-loading-reliability-012ded`）**
+
+- **核对与改动边界**：开工前已按 [§1.1 承诺表](#11-sprint-goal) 原文核对目标并在 §3 Go-ahead 补录放行人、原话与仅限 H1–H5 的边界；全部改动都在本期工作树内，主检出 `S:\IDEO-Scrum` 与 `plugins/ideo-scrum/hooks/*`、`dsh/*`、`package.json` 均未改动。
+- **H1（共用验证材料）**：新增 [试次索引](validation/trial-index.md)、[独立判卷表](validation/scorecard.md) 与 `validation/fixtures/{g1,g2,r1}/` 四份夹具。夹具从 `00c224b` 的产品与冲刺模板仅填 §2.2 指定字段；题面、试次对号、B/C 交替顺序、G1 `/entry` 固定共享与上限（计划 56 次、最多 60 次宿主启动；最多 204 次本机调用；200 分钟；US$5）与 §2.2 一致，均标明未运行。
+- **H2（四角色入口，PBI-81）**：修改 `plugins/ideo-scrum/commands/{scrum-master,developer,designer,stakeholder}.md` 开场指令，仅限 Claude Code 入口逐个调用 `4 / 3 / 3 / 2` 个内核（前一个成功后再调下一个、仅跳过本会话已成功的 Skill 调用、缺调或失败即停并报告，不以读文件或看到描述代替），保留 frontmatter `description`、`# Identity`、`# Code of Conduct` 与 SGEP 正文不变，并显式指向 DSH 适配器自身的预载与路由。同步更新 `plugins/ideo-scrum/skills/scrum-kernel/overview.md` 第 8 条、`docs/glossary.md`、`docs/quick-start.md`、`docs/quick-start.zh-CN.md`、`README.md` 与 `README.zh-CN.md`。
+- **H3（`sprint-kernel` 加载带入原文，PBI-82）**：在 `plugins/ideo-scrum/skills/sprint-kernel/SKILL.md` 末尾逐字嵌入 [scrum-artifact-sprint-backlog.md](../../plugins/ideo-scrum/skills/scrum-kernel/references/scrum-artifact-sprint-backlog.md) 的 `## Sprint Backlog` 至文末（含 `### Commitment: Sprint Goal`），附 `> Source:`、`> License:` 与本地参考链接；不额外预载其他阶段文件（F14）。同步更新 `ATTRIBUTION.md` 第 2 节并在 `scripts/check_dsh.mjs` 增加正文一致性、局部出处／参考链接及 `ATTRIBUTION.md` 登记检查。
+- **H4–H5（起草前必读与运用指引，PBI-80）**：补齐 `plugins/ideo-scrum/skills/scrum-kernel/SKILL.md`（Product Goal）、`plugins/ideo-scrum/skills/sprint-kernel/SKILL.md`（Sprint Goal 与条目精化）与 `plugins/ideo-scrum/skills/design-kernel/SKILL.md`（Empathize 的挑战／设计目标／设计问题）按需必读清单、方法运用要求及在对话中给首稿的约束；明确未读全先停、PO 指出偏差先回查原文再重拟、起草不等于批准目标或进入下一阶段；保持 *Ask the Experts* 访谈／研究按需执行（约定 7）。
+- **静态核对与对抗审阅结果（均在最后一次改动后复核；未跑任何宿主或性能实测）**：
+  - `claude plugin validate --strict plugins/ideo-scrum`、`node --test scripts/check_dsh.mjs`、`python -X utf8 -I scripts/check_docs.py` 及 `--selftest`、`npm pack --dry-run --json --ignore-scripts` 均于提交前复跑通过（具体结果见本节后文或提交说明前核对；不替代运行时证据）。
+  - 四个技能与四个命令 `description` 字符数均 ≤ 1024（`ideo-kernel` 1023、`design-kernel` 1007、`scrum-kernel` 968、`sprint-kernel` 943）；plugin、Sprint 24 与 `ATTRIBUTION.md` 内链全部可达；各 `SKILL.md` 到参考材料均 ≤ 2 跳（`design-kernel/steps/2-3-pick-a-target.md` 经 `conventions/design-log.md` 两跳可达）。
+  - 内部 Haiku Workflow 五维审阅 + 对抗复核后已修正：`commands/*.md` 去掉无所指的 `above`、`scrum-kernel/SKILL.md` 补齐「起草不等于定目标或推进」、去掉会命中 H1 的 `#sprint-backlog` 锚点、`check_dsh.mjs` 补齐链接位置与 `ATTRIBUTION.md` 断言、`README*` 补充 Claude Code 顺序说明与 DSH 界定。`sprint-kernel`/`design-kernel` 的 `description` 保留 `00c224b` 原文，待 H9 冷启动实测若出现犹豫再另议，不在无触发实测下改动。
+- **当前状态与后续待审条件（均未运行、未支出、未请求 PO 测试放行）**：
+  - 当前增量尚未完整（H6–H11 全部未标记完成，§5 无测试记录），仅提交本地检查点供 Master 对照 `00c224b` 审阅 H1–H5。
+  - **H6（PBI-83 本机基线）待审前提**：须 Master 先核准 `L1`/`L2` 夹具生成、同机同隔离环境与 `00c224b` 的单调钟重放计时口径（`SessionStart` + 3 次暖身 + 30 对常态样本，另报启动与变更耗时）；若 `00c224b` 不复现旧慢，立即停报 Master。
+  - **H7（hook 优化）待审前提**：仅在 H6 实测确认存在且可归因的重复开销后才申请施工；保持现有 `hooks.json` 注册、承诺选择、原文、触发时机、开关与异常退出行为不变。
+  - **H8–H11（正式 Test）待审前提**：须 Master 另行核准两臂冻结快照、按 [headless-testing.md](../documents/headless-testing.md) 的隔离配置、实际模型与路由核对、网关可核对计费口径、仓外日志位置，以及共用冒烟（2 次）+ 计划 56 次（上限 60 次）宿主启动／204 次本机调用／200 分钟／US$5 上限；`clear`/`compact`/`fork` 仅记脚本层，不报宿主通过；不实施不测可选预载；不改分发方式时不另开实机重装专项。
+  - **并行接口提示**：`commands/*.md`（Sprint 22）、日志与模板边界（Sprint 23）、`README*.md` 与 `docs/quick-start*.md`（Sprint 25）留待整合时按影响复核；本期不依赖 Sprint 26 Memory。
 
 ## 5. Test
 
