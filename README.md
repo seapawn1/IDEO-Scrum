@@ -2,7 +2,7 @@
 
 # IDEO-Scrum
 
-A plugin for Claude Code and DeepSeek Harness (DSH) that brings Design Thinking and Scrum Sprints to a project you build alone with AI. **v6.0.3**
+A plugin for Claude Code and DeepSeek Harness (DSH) that brings Design Thinking and Scrum Sprints to a project you build alone with AI. **v0.6.3**
 
 [中文](README.zh-CN.md) · [Install](#install) · [Quick start](docs/quick-start.md) · [Glossary](docs/glossary.md) · [Changelog](CHANGELOG.md)
 

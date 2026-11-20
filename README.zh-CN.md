@@ -2,7 +2,7 @@
 
 # IDEO-Scrum
 
-一个面向 Claude Code 和 DeepSeek Harness（DSH）的插件：把 Design Thinking 与 Scrum Sprint 带给你一个人加 AI 做的项目。**v6.0.3**
+一个面向 Claude Code 和 DeepSeek Harness（DSH）的插件：把 Design Thinking 与 Scrum Sprint 带给你一个人加 AI 做的项目。**v0.6.3**
 
 [English](README.md) · [安装](#安装) · [快速上手](docs/quick-start.zh-CN.md) · [词汇表](docs/glossary.md) · [更新记录](CHANGELOG.md)（英文）
 

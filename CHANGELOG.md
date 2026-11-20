@@ -5,6 +5,7 @@ What changed in each release of IDEO-Scrum, newest first. Every release is a git
 ## [Unreleased]
 
 - **Distribution**: added DeepSeek Harness (DSH) alongside Claude Code and retired the Codex distribution.
+- **Version**: the Claude Code plugin and DSH bundle both use `0.6.3`. This is the IDEO-Scrum version, not a change to the DSH host version.
 
 ## [6.0.3] — 2026-11-14
 
