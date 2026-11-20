@@ -80,7 +80,7 @@ Then run `/reload-plugins` in a session that is already open. Third-party market
 
 Coming from `6.0.3`, this same update moves you to `0.6.3`: the lower number is expected, and the update was verified on Claude Code `2.1.329` without uninstalling. To check what actually loaded, and for the DSH migration, see [Migrating an existing installation](docs/maintaining.md#migrating-an-existing-installation).
 
-**DSH.** Update the linked checkout in place, restart DSH, and open a new **Standard** session. If the checkout moves, use **Uninstall** in **Plugins** for the old link before adding the new path with **Add plugin**.
+**DSH.** On DSH `0.2.2-rc.5`, a link to a local directory has no in-place update button in the plugin details, only **Uninstall**. The path verified for `6.0.3 → 0.6.3` is: in **Plugins**, **Uninstall** the old link, then **Add plugin** with the new path, restart DSH, and open a new **Standard** session. Updating a linked checkout in place is not separately tested.
 
 ## Your first sentence
 
@@ -155,7 +155,7 @@ Two small things help you find your place when a project has several logs.
 **Commitments.** The product, Product Goal, open Sprint Goal and design goal come from your logs, word for word.
 
 - **Claude Code:** A small hook puts them in context when a session starts, resumes, or is compacted, and when a commitment changes. The hook needs a POSIX `sh`: on Windows, install Git for Windows. It has not been tried on macOS.
-- **DSH:** Before a model step, the plugin reads the current project's logs. It adds the commitment snapshot on first use, when the text changes, or when compaction removes the previous snapshot; the compaction case relies on DSH's own context handling and has not yet been tested live on `0.2.2-rc.5`. If several Sprints or designs are open, it gives a count rather than picking one goal. If the automatic read cannot supply a commitment, have the role reread its source log. No shell hook is needed.
+- **DSH:** Before a model step, the plugin reads the current project's logs. It adds the commitment snapshot on first use, when the text changes, or when compaction removes the previous snapshot; on DSH `0.2.2-rc.5` with `0.6.3`, the post-compaction re-injection was verified live. If several Sprints or designs are open, it gives a count rather than picking one goal. If the automatic read cannot supply a commitment, have the role reread its source log. No shell hook is needed.
 - To switch this off, set `IDEO_SCRUM_COMMITMENTS=off` in the `env` of a Claude Code settings file or in its shell. For DSH, set it in the environment before starting DSH.
 
 ## Learn more
