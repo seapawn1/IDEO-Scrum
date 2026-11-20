@@ -320,4 +320,10 @@ Master 将请 PO 单独放行隔离 H2：合计最多 7 个样本、20 分钟、
 | 预算（提案） | 参谋 3 样本、角色 4 样本，合计 7 样本；单样本 ≤ 240 秒、总量 ≤ 30 分钟、客户端估算 ≤ US$3.00；登记与拒绝类动作中不调用模型的部分零成本；超时终止整棵进程树；不补跑、不挪预算 |
 | 停点 | 任一场景缺证据记「未验证」并停在该场景，不改验收线；H7 结果交 Master；正式 Review／合并／tag／推送／发布仍由 PO 决定 |
 
+**2026-11-21 · Master 冻结并放行 Increment → Test（H7）。** 复核 `b88a79b`、`6e4f45c`，并在 `6e4f45c` 上独立复跑 `claude plugin validate --strict`（通过）、`node --test scripts/check_dsh.mjs`（6/6）、`python -X utf8 -I scripts/check_docs.py`（7 文档、103 链、0 错）与 `--selftest`（17/17），确认三处组件／文档修订及四处 H7 方案修订全部落实。依 PO 2026-11-20 Review 前全权委托，冻结 `6e4f45c` 并放行按该方案执行 H7。
+
+核对放行时 §1.1 的 Sprint Goal 原文快照：「独立的第二视角：拍板前能请参谋复核方案，也能按本项目的角色卡听取 Stakeholder 的反馈；身份不用每次重讲，意见每次独立，决定仍由 PO 来做。」
+
+执行约束：先派结构审阅（`plugin-dev:plugin-validator`，显式 `model: "haiku"`；后台会话不提供该类型时报 Master 代跑，不换模型、不跳过）；再按冻结方案跑 7 个隔离无头场景，分场景工具面、故障即拒守卫、`/context all` 指令文件为 0、先预检通道路由；原始证据存仓外 `S:\IDEO-Scrum-Archives\sprint-22-project-agents\h7\`，场景 ① 真实生成的定义与夹具归档到其 `generated-agent\` 供 Master 补跑 `Workflow` 与 `Agent` 双入口；执行期间不改通过线与产品源码，实测暴露组件缺陷就停下报 Master 裁定；完成后结果与 §1.3 完整产品 DoD 对账写入 §5 并单文件提交，停在 Master 补跑与 Review 前复核。
+
 ## 5. Test
