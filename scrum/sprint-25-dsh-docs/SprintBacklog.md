@@ -175,3 +175,16 @@ Sprint 21–25 的 Review 前阶段门和常规事项交 Master；本期安全�
 | DSH `0.6.3` 压缩后承诺补入 | 未验证；README 与维护说明已标范围 |
 
 **整体判定：** Sprint 25 Test **不判为全面通过**。已验证：Claude Code `H4`（新装与迁移）、双语文档对照与链接、插件严格校验、DSH 自动回归与打包清单、`AGENTS.md` 单源迁移、Claude Code 压缩后承诺复注。未验证：上表 4 项 DSH 实机。是否由 PO 手工补跑 DSH 或接受此范围，交正式 Review 决定。
+
+### 6 项静态／打包／回归复核（2026-11-21，候选 `3a58190`）
+
+| # | 检查 | 结果 |
+| --- | --- | --- |
+| 1 | `claude plugin validate --strict plugins/ideo-scrum` | 通过：钩子、4 内核、4 角色全部列出，`Validation passed` |
+| 2 | `node --test scripts/check_dsh.mjs` | 通过：6 项全过，0 失败 |
+| 3 | `npm pack --dry-run --json --ignore-scripts` | 通过：100 个文件；`cordis.patch.yml`、`package.json`、`ATTRIBUTION.md`、`dsh/`、四角色与四内核源、`icon.png` 均在包内；`hooks/` 按白名单不入包 |
+| 4 | `python -X utf8 -I scripts/check_docs.py` | 通过：7 份文档、189 条链接、0 错误 |
+| 5 | `python -X utf8 -I scripts/check_docs.py --selftest` | 通过：17 例，0 失败 |
+| 6 | `python -X utf8 -I scripts/board_check/check.py selftest` | 通过：42 例，0 失败 |
+
+同候选核对：`plugins/ideo-scrum/.claude-plugin/plugin.json` 与 `package.json` 仍为 `0.6.3`；`CLAUDE.md` 未改（仅 `@AGENTS.md`）；未合并、未打 tag、未推送、未发布。
