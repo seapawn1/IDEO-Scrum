@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 22 (project-agents)
 
 > Started: 2026-11-19 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `claude/sprint-22-project-agents-b09bf1` | Product Owner: SeaPawn | Scrum Master: 项目 Scrum Master | Developer: Sprint 22 Developer
-> Now: Increment；PO 已放行施工（Master 转达）。H1 接口、大纲和 H2 取证预算已备，待 Master 审阅；未改插件、未实测。
-> Waiting for PO: 1. H1 经 Master 审阅、取证方案冻结后，是否单独放行 H2 最小宿主实测？
+> Now: Increment；PO 已放行施工（Master 转达）。H1 已通过 Master 审阅；H2 未放行，测法与通过线尚未独立提交，未实测。
+> Waiting for PO: 1. 是否按 §4 的分线预算单独放行隔离 H2 最小宿主实测？由 Master 汇报。
 > How to write this log: [Sprint log conventions](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md).
 
 ## 1. Why
@@ -172,5 +172,11 @@ Master 转达 PO 原话：「开子代理的时候，开工作流的时候就可
 **拟冻结预算。** PBI-73 至多 3 个宿主调用样本、US$1.50；PBI-75 至多 4 个（两入口各一正例、必要时各一对照）、US$0.50。总计最多 7 个样本、US$2.00、一次会话内最多 20 分钟；每样本最多 180 秒，加载状态预查优先用不请求模型的宿主记录。成本含父／子请求、缓存、思考及重试；开跑前按通道现行费率、上下文和请求上限核算并确认可守住两线及总额；无法限制自动重试或预估费用时不启动，不超额补跑。超时按手册终止整棵测试进程树，保留技术失败和已发生费用，不替换为成功样本。任一线证据缺口独立报 Master，不降低 §2.2 通过线。
 
 **H7 正式 Test 对照。** 另获 Test 放行后，按 §2.2 的三个参谋意见场景逐个比对输入、原件、理由与文件状态，并分别核验默认／另选／不可用及非显式请求没有误召唤；项目线逐项比对接受、拒绝、更新／同名冲突与角色职责，实际跑双入口并记录各自归属和新上下文。先冻结正式样本、预算与通过线再跑；完整 DoD 及仓库校验另列证据，不用 H2 的最小夹具代替。此处只做 H1 交审，H2–H7 未启动，§5 不填测试结果。
+
+**2026-11-20 · Master 审阅 H1（基于 `8b5dc33`）。** 接口、全文大纲及最小取证方案通过审阅；已核对 Claude Code 清单的追加 `skills` 行为和本仓库 DSH 文件白名单。沿提案新增 Claude 专用入口，不动共用内核、DSH 打包或版本。此为 H1 方案审阅结论，不是 H2 实测授权或功能通过。
+
+**H2 取证补充要求（Master 审阅意见）。** PBI-73 必须分开留证：一是事后能复核同次调用的实际执行模型；二是返回入口在交付意见前确实取得同次可信证据，能识别替换／证据不足并按 §3 三态处理。第一项不能代替第二项，事后补查不能算入口已阻止替代意见交付。沿同次调用核对证据与交付先后，不为此改用户配置或开启遥测。隔离 Workflow、实际模型证据、只读工具验真或费用上界任一前置不具备，停对应线并报 Master。
+
+Master 将请 PO 单独放行隔离 H2：合计最多 7 个样本、20 分钟、US$2.00；PBI-73 的 3 样本／US$1.50 与 PBI-75 的 4 样本／US$0.50 分线限额不变。须同时具备 PO 明确放行与测法／通过线的独立本地提交才开始，当前两项均未具备；不跑冒烟、宿主或付费实测，不跳到 H3–H7。H2 不替代 H7 正式验收。
 
 ## 5. Test
