@@ -163,7 +163,7 @@ Sprint 21–25 的 Review 前阶段门和常规事项交 Master；本期安全�
 
 | §1.2 本期重点 | 证据 | 状态 |
 | --- | --- | --- |
-| 无死链 | `python -X utf8 -I scripts/check_docs.py`：7 份文档（含维护说明中英，已并入 `PAIRS`）、189 条链接、0 错误 | 通过 |
+| 无死链 | `python -X utf8 -I scripts/check_docs.py`：7 份文档（含维护说明中英，已并入 `PAIRS`）、187 条链接、0 错误 | 通过 |
 | 插件校验 | `claude plugin validate --strict plugins/ideo-scrum` 通过（结果见下方 6 项复核） | 通过 |
 | DSH 分发 | `node --test scripts/check_dsh.mjs` 自动回归通过；`npm pack --dry-run` 清单含 `dsh/`、`cordis.patch.yml`、角色与内核源；实际安装：Claude Code 与 DSH `0.2.2-rc.5` 均实机通过 | 通过 |
 
@@ -172,7 +172,7 @@ Sprint 21–25 的 Review 前阶段门和常规事项交 Master；本期安全�
 | 1. 照说明装好、叫到角色 | `H4-A` 隔离 Git 市场新装 `0.6.3`：4 角色可选，`/scrum-master` 按序加载内核并进入 Planning，3 条承诺原文入上下文；`H5-A` 隔离 DSH `0.2.2-rc.5` 新装 `0.6.3`：4 角色与 4 内核在 `/` 菜单，原生 `skill-invocation` 来自候选包，第 2 轮加载 `sprint-kernel` 进入 Why/Planning；中英 README 与双语快速上手已同步宿主号说明与入口 | 两个宿主均通过（`H4-A`、`H5-A`） |
 | 2. 已装用户按文档迁移 | `H4-B` `d681c69`（`v6.0.3`）→ `0.6.3`：常规更新直接接受降号，重开会话加载 `0.6.3`，角色与承诺复注通过，`scrum/` 逐字节未变；`H5-B` `b2679aa`（`6.0.3`）→ `0.6.3`：实测卸载旧链接→添加候选→重启→新开 Standard，磁盘与原生 base dir 均切至候选，承诺与规则通过；迁移说明已写入维护文档与 README 升级节 | 两个宿主均通过（`H4-B`、`H5-B`）；DSH 原地更新链接未另测 |
 | 3. 一处维护仓库规则 | `AGENTS.md` 为唯一正文（blob `65e2c4e`，SHA-256 `f397cccd...`），`CLAUDE.md` 仅 `@AGENTS.md`（blob `43c994c`），无循环；`H4-A`／`H4-B` 的 `/context all` 与 `H5-A`／`H5-B` 的原生 `agent-instructions` 均证隔离会话只读项目 `AGENTS.md` + `CLAUDE.md`，不串上级目录或用户设置 | 两个宿主均通过 |
-| 4. 版本与维护资料对得上 | 两份清单与中英 README 均为 `0.6.3`；维护说明中英、README 中英、快速上手双语结构对等、命令一致、链接可达（189 条，0 死链）；`npm pack` 清单与源码对照通过 | 通过 |
+| 4. 版本与维护资料对得上 | 两份清单与中英 README 均为 `0.6.3`；维护说明中英、README 中英、快速上手双语结构对等、命令一致、链接可达（187 条，0 死链）；`npm pack` 清单与源码对照通过 | 通过 |
 
 产品日志 §1.3 的完整 DoD 继续生效，本期核验重点不豁免其余项；对账如下（续表）：
 
@@ -180,7 +180,7 @@ Sprint 21–25 的 Review 前阶段门和常规事项交 Master；本期安全�
 | --- | --- | --- |
 | Output Done · 内容忠实 | 未改第三方方法论原文；两版共用 `plugins/ideo-scrum/` 唯一正文源，无生成包、无同步脚本；未把源码事实或旧 `b2679aa` 基线写成 `0.6.3` 实机通过 | 通过 |
 | Output Done · 署名 | 本期无新增第三方摘录，未改 `ATTRIBUTION.md` 或 `IDEO-modes/`；基线五模式署名缺口沿用 Sprint 21 Review 待决项 | 本期无新增；旧待决项不因此关闭 |
-| Output Done · 可导航 | 未改技能入口；新增 `docs/maintaining*.md` 从中英 README「了解更多」一跳可达，`check_docs.py` 189 条链接 0 死链 | 通过 |
+| Output Done · 可导航 | 未改技能入口；新增 `docs/maintaining*.md` 从中英 README「了解更多」一跳可达，`check_docs.py` 187 条链接 0 死链 | 通过 |
 | Output Done · 描述长度 | 未改技能 frontmatter 与描述；4 内核描述仍 ≤ 1024 字符（ideo `1023`、design `1009`、scrum `970`、sprint `945`，按 YAML 取值计） | 通过 |
 | Outcome Done · 一次会话完整引导、熟手陌生人走完第一冲刺 | 本期未重测全流程 | 本期未观测（保留旧版基线边界，不冒充本期已达成） |
 
@@ -193,7 +193,7 @@ Sprint 21–25 的 Review 前阶段门和常规事项交 Master；本期安全�
 | DSH `0.6.3` 压缩后承诺补入 | 通过。原生 `command/run compact` 压缩 16 条后，`agent-instructions` 重注两份规则，`runtime-context`（`ideo-scrum:commitments`）逐字重注 3 条承诺。 |
 | DSH 角色、内核与承诺（`H5-A` 会话） | 通过。`/scrum-master` 原生 `skill-invocation` base dir = 候选 `commands`，预载 `ideo-kernel` → `scrum-kernel`；第 2 轮按需加载 `sprint-kernel`（无前缀、base dir 候选）并进入 Why/Planning 只读讨论；`runtime-context` 3 条承诺逐字。 |
 | DSH `b2679aa → 0.6.3` 实机迁移（`H5-B`） | 通过。独立新环境与独立样例副本；基线 `6.0.3` 首装与重启后两段会话 base dir 均为 `baseline-b2679aa`；插件详情页无 Update，只有卸载，实测路径为**卸载 → 添加插件填候选 → 重启 → 新开 Standard 会话**；磁盘 `link:`／Junction／版本切至 `0.6.3`，新会话 base dir 切至候选，角色、内核、承诺与规则均通过。**原地更新链接仓库未单独实测**（界面无该入口）。 |
-| 日志保全（两段） | 通过。`scrum/` 各文件 SHA-256 与初始逐字节一致，两段 `git status` 干净；三段会话均无 `write`／`edit` 工具调用。 |
+| 日志保全（两段运行，合计 4 段会话） | 通过。`scrum/` 各文件 SHA-256 与初始逐字节一致，两段运行后 `git status` 均干净；4 段会话均无 `write`／`edit` 工具调用。 |
 
 模型通道：`magpie` 的便宜模型，非 Haiku。原始证据在仓外 `S:\IDEO-Scrum-Archives\sprint-25-dsh-docs\test-runs\H5\`（`H5-A\`、`H5-B\`），入仓只留脱敏摘要。
 
