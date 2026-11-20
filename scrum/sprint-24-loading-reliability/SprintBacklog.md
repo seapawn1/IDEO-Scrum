@@ -1,7 +1,7 @@
 # Sprint Backlog · Sprint 24（加载可靠性）
 
 > Started: 2026-11-19 | 达成 Sprint Goal 或 PO 停止时收官 | Branch: `claude/sprint-24-loading-reliability-012ded` | Product Owner: SeaPawn | Scrum Master: IDEO-Scrum Master | Developer: Sprint 24 Developer
-> Now: Increment，H6 基线复核与瓶颈拆解已完成，交 Master 审阅并申请 H7 施工（依 2026-11-20 书面委托）；H7–H11、冒烟、可选预载与支出仍未放行。
+> Now: Increment，H7 已按 Master 核准落盘并交审；H8–H11、冒烟、可选预载与支出仍未放行。
 > Waiting for PO: None
 > 日志写法见 [sprint-log.md](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md)。
 
@@ -159,7 +159,7 @@
 | H4 | 把必读要求放到 Scrum 的起草入口（PBI-80） | Product Goal、Sprint Goal、精化各自的按需读用指引 | ✓ 2026-11-20 起草前能找到完整原文、相关约定和模板注释；被纠正先回查，指引不把进入下一阶段当作已获批准。 |
 | H5 | 把必读要求放到设计起草入口（PBI-80） | 设计挑战／目标／问题的按需读用指引 | ✓ 2026-11-20 入口明确指向该阶段原文、IDEO 模式、约定和模板注释；不把可选访谈或设计推进写成必做。 |
 | H6 | 复核承诺 hook 基线（PBI-83，须先获本机实测放行） | 同条件基线记录与瓶颈证据 | ✓ 2026-11-20 分清命令启动与其余开销；若 `00c224b` 不复现旧慢，停在这里报 Master，不改 hook、不改线。 |
-| H7 | 降低不变提示的 hook 开销（PBI-83，H6 支持且获准后） | 保持现有注册与语义的优化候选 | 只消除证据指出的重复工作；承诺选择、原文、触发时机、开关和异常退出行为不变，候选留待双层验证。 |
+| H7 | 降低不变提示的 hook 开销（PBI-83，H6 支持且获准后） | ✓ 2026-11-21 落盘 `commitments.sh`（SHA-256 `77821628…`）；按 Master 审定的 3 处必改修正后施工 | 只消除证据指出的重复工作；承诺选择、原文、触发时机、开关和异常退出行为不变，候选留待双层验证。 |
 | H8 | 验证首稿与纠偏（PBI-80，实测放行后） | 四类场景与纠偏回合的双证据报告，并留存 G1 首回合的角色调用证据 | 各场景按 §2.2 分判读全和用对，首稿不被续轮覆盖；入口调用证据不替代任何一栏。 |
 | H9 | 验证角色入口与载入原文（PBI-81／82，实测放行后） | 四角色顺序和首次加载正文的分项报告 | Master 固定复用 H8 的 G1 首回合；冷启动、复用和必带原文各按 §2.2 判。链接或读文件不冒充加载结果。 |
 | H10 | 验证承诺行为与耗时（PBI-83，实测放行后） | 两个夹具的 P50／P95 与脚本层、宿主层分列报告 | 两夹具各自达 §2.2 性能线；两层各自覆盖的承诺语义全过；`clear`、`compact`、`fork` 不报宿主通过。 |
@@ -231,6 +231,34 @@ Go-ahead: 2026-11-20（UTC+8），PO SeaPawn（由 Master 转达）： 「你觉
 - **H7 拟议优化方案（停在 H6 待 Master 核准；未改任何 `hooks/*`）**：
   - 保持 `hooks.json` 注册、承诺选择、中英文原文、触发时机、`IDEO_SCRUM_COMMITMENTS=off` 与静默 `exit 0` 不变；不引入新必需运行时；**不以文件大小或 `mtime` 判未变**，每轮仍实读日志正文并逐字比对最新承诺输出。
   - **主选方案 A（把脚本内部 20–28 次外部 fork 减至 1 次，预计常态降至 P50 ~260 ms / P95 ~450–550 ms）**：① 用 POSIX `sh` 内建 `while IFS= read -r` 与参数展开取代 `cat`/`tr`/`3× sed`；② 用纯 `sh` 参数展开取代 `find_root` 与 `dirname`/`basename`；③ 将产品／冲刺／设计日志的 `\r` 剥离、表格提取、占位过滤与文本拼装合并为**单次**标准 POSIX `awk`（`FNR == 1` 分文件，兼容 `gawk`/`mawk`/`dash`，保留全部正则与 `\|`、`{{...}}` 语义）；④ `[ -d "$state_dir" ] || mkdir -p` 跳过已存在目录，用纯 `sh` 内建读写 `$state` 并直接逐字比对 `$out`（去掉 `cksum`/`awk`/`cat`）。**备选 B**：若后续同日实测单次 `awk` 仍近 1 s，则改用纯 `sh` 读行解析做到脚本内部 0 fork。**停点重申**：仅留下本记录检查点，不改 `hooks/*`、不写 §5 正式测试、不进 H7–H11。
+
+**Master H6 复核、状态文件裁定与 H7 放行（2026-11-21，UTC+8）**：
+- **H6 复核通过**：核对 `ca64cd4`、`h6-summary.md` 与工作树后，确认 `L1` P50 `2874.29 ms`／P95 `9682.46 ms`、`L2` P50 `3241.42 ms`／P95 `8531.39 ms` 复现旧慢，93.6% 耗时归因于每轮 20–23 次外部短进程 fork；`hooks/*`、`dsh/*`、`package.json` 零改动，US$0。
+- **状态文件格式裁定：批准**——由 `cksum` 改为存承诺全文并逐字比对；仅跨版本热升级的在途会话首次 `UserPromptSubmit` 多注一次原文，随后恢复静默，新会话 `SessionStart` 即刻覆盖；接受该升级行为。
+- **H7 逐行审计**：仓外候选（SHA-256 `2be2c120…`）检出 2 处边界回归 + 1 处草案头注，先修后落盘：① `json_field` 遇 `null`／数字／布尔会串读下一键（如 `session_id:null` 误落 `cwd.fp`、`source:null` 可能误触发 `prune`）；② `find_root_set` 在 Windows 盘符根 `C:` 退回 `.`；③ 删除草案头注。修正后仅动 `plugins/ideo-scrum/hooks/commitments.sh`，不动 `hooks.json`、`dsh/*`、`package.json`、版本号与 `CLAUDE.md`。
+- **放行边界**：仅 H7 施工，US$0、零宿主／模型调用；补回归用例、重跑本机与 WSL `dash`（`mawk`＋`gawk`）、跑 `claude plugin validate --strict` 与 `node --test scripts/check_dsh.mjs`、§4 记录并逐文件提交报审，附 H8–H11 冻结提案。
+- **仍未放行**：H8–H11、宿主／冒烟／无头／`claude-magpie`／付费调用、可选预载、改通过线、合并、打 tag、推送、正式 Review。
+
+**H7 施工结果与脚本层证据（2026-11-21，UTC+8；US$0、零模型请求、零宿主启动）**：
+- **落盘**：`plugins/ideo-scrum/hooks/commitments.sh`（300 行 LF，SHA-256 `77821628847bafe42dc6ee4f85ef10d1a24cbf6b16f10ef9a317e27b314e5492`）；`hooks.json` 注册与 `timeout: 10` 未动。相对 `00c224b` +187／−71。
+- **实现**：原每轮 20–23 次外部 fork 降为常态 1 次（单次 POSIX `awk` 合并读产品／单冲刺／单设计日志）；stdin 用内建 `read` 与参数展开解析；寻根、取名用参数展开；`mkdir` 仅在状态目录缺失时调用；状态文件存承诺全文并逐字比较；`startup` 先数 `.fp`，≤200 时跳过修剪流水线。承诺选择、中英文原文、触发时机、`IDEO_SCRUM_COMMITMENTS=off`、异常静默 `exit 0` 不变；不以文件大小或 `mtime` 判未变。
+- **Master 3 处必改已修**：`json_field` 改为「空白 → 必为 `:` → 空白 → 必为 `"`」锚定（`[[:space:]]` 兼容空格、Tab、CR），非字符串值不再串读；`find_root_set` 对 `[A-Za-z]:` 盘符根直接终止；草案头注换成正式说明。
+- **语义证据（脚本层）**：
+  - 本机 Git Bash `sh`：`00c224b` **50/50**；候选落盘前 **50/50**；落盘文件复跑 **50/50**。
+  - WSL Ubuntu-24.04 `/bin/sh`（dash）：配 `mawk` **48/48**、配 `gawk` **48/48**（`--runner wsl`，`--wsl-awk`）。
+  - 新增回归：`session_id:null` 落 `nosession.fp` 而非 `cwd.fp`；`source:null` 后跟键名 `startup` 不误读、205 个 `.fp` 不修剪；CRLF JSON；`PWD`／`CLAUDE_PROJECT_DIR` 为盘符根时静默。
+  - 逐字节等价扫描：9 个合成场景 × 28–30 步，共 **265 步**，基线 vs 候选的 stdout、退出码全部相同。
+- **耗时诊断（非 H10 正式证据）**：L1 夹具、20 对交替臂、同 `sh.exe -c 'sh <hook>; exit 0'` 外层：常态 P50 `2209.01 → 192.39 ms`（−91.3%），P95 `2378.53 → 220.32 ms`（−90.7%）；`startup` `2430.57 → 246.04 ms`。正式两夹具各 30 对、宿主 `hook_started`／`hook_response` 配对与内容变化分列留 H10。
+- **静态检查**：`claude plugin validate --strict plugins/ideo-scrum` 通过；`node --test scripts/check_dsh.mjs` **7/7**；`sh -n` 通过；文件无 CR。`plugin-dev:plugin-validator` 未派：会引入模型调用，违背本轮 US$0；按 H11 Done-when 留到实测放行后。
+- **改动与证据位置**：本提交仅 `plugins/ideo-scrum/hooks/commitments.sh` 与本日志；仓外证据 `S:\IDEO-Scrum-Archives\sprint-24-loading-reliability\h7-candidate\`（`README.md`、`raw/commitments-h7.diff`、`raw/semantics-*.txt`、`raw/equivalence*.{txt,json}`、`raw/timing-diagnostic.*`）。
+
+**H8–H11 正式 Test 冻结提案（未运行，待 Master 一次审完放行）**：
+- **两臂冻结**：A＝`00c224b`（`commitments.sh` SHA-256 `7ce9cff1…`）；B＝本 H7 提交（`commitments.sh` SHA-256 `77821628…`）。两臂插件根均从 git blob 复制到仓外运行目录，`hooks.json` 相同；不读工作树实时文件。
+- **隔离与归档**：运行沙箱用 `C:` 全新空目录（每臂独立 `CLAUDE_PLUGIN_DATA`、`TEMP`／`TMP`）；持久归档 `S:\IDEO-Scrum-Archives\sprint-24-loading-reliability\h8-h11\`（脚本、夹具、原始输出、判定）；仓库只留判定汇总。按 [headless-testing.md](../documents/headless-testing.md) 的白名单 env、`cygpath -w` 路径与 `taskkill /T /F` 超时。
+- **`claude-magpie` 路由与隔离**：`claude-magpie.cmd -p --plugin-dir <path>`；`--tools Read,Grep,Glob,Skill`，禁 Bash、PowerShell、Write、Edit、Agent；`--strict-mcp-config`、`--permission-mode dontAsk`、`--setting-sources project,local`；`--include-hook-events` 取原生 hook 证据；同进程 `--input-format stream-json` 逐条发送。模型一律 magpie 便宜模型，汇总标「magpie 的便宜模型，非 Haiku」。冒烟先核 init 的实际工具、模型与 `permission_denials` 是否真生效。
+- **预算与样本**：共用冒烟 2 次 + 计划 56 次（上限 60）宿主启动；本机调用 ≤204；200 分钟；US$5；G1 首回合由 H8／H9 固定共享；H10 脚本层重放零模型请求，宿主层只作边界核对；维持 10 s 超时判定。
+- **DoD 对账（§1.3 Output Done）**：内容忠实（原文与出处）；署名（Source／License 与 `ATTRIBUTION.md` 一致）；可导航 ≤2 跳；无死链；`claude plugin validate --strict` 通过；四个 `description` ≤1024；`node --test scripts/check_dsh.mjs` 7/7。加本期专项：PBI-80 四场景双证据、PBI-81 4／3／3／2 实际调用、PBI-82 首次加载含 Sprint Backlog 原文、PBI-83 两夹具 P50／P95 与两层语义。
+- **停止条件**：宿主证据缺失不写通过；语义失败、事件无法配对、环境不可比或样本不足即停；技术失败按冻结标准补齐，不挑样本；不改冻结的通过线。
 
 ## 5. Test
 
