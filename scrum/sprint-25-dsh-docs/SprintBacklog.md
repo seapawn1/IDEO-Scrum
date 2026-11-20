@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 25 (dsh-docs)
 
 > Started: 2026-11-19 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: claude/sprint-25-dsh-docs-4f4070 | Product Owner: SeaPawn | Scrum Master: IDEO-Scrum Master | Developer: Sprint 25 Developer
-> Now: Test（H4 经 Master 复核通过；H2 文档收口与 6 项复核已验证，待 Review 前复核；H5 挂起） — 2026-11-21 已按 Master 裁定去草稿标记、写入 Claude Code 实机证据、同步 README／快速上手、并入 `PAIRS`；DSH `H5` 维持诚实缺口。
-> Waiting for PO: 1. 明确可安全使用的 DSH 0.2.2-rc.5 Web/Standard 启动入口，以决定 H5 放行及 DSH 压缩后补入取证口径
+> Now: Test 停点（Review 前）· 2026-11-21 Master 复核通过（增量、Claude Code H4 与 6 项复核全过；DSH H5 四项诚实留缺口，整体 Test 不判全面通过），停在正式 Review 前。
+> Waiting for PO: 1. 正式 Review 拍板：决定由 PO 手工补跑 DSH 0.2.2-rc.5 实机 H5，或接受当前 Claude Code 已验 + DSH 实机待验范围。
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
 
@@ -165,6 +165,16 @@ Sprint 21–25 的 Review 前阶段门和常规事项交 Master；本期安全�
 | 3. 一处维护仓库规则 | `AGENTS.md` 为唯一正文（blob `65e2c4e`，SHA-256 `f397cccd...`），`CLAUDE.md` 仅 `@AGENTS.md`（blob `43c994c`），无循环；`H4-A`／`H4-B` 的 `/context all` 证隔离会话只读项目 `CLAUDE.md` + `AGENTS.md`，不串上级目录或用户设置 | Claude 通过；DSH 运行时读取仅有 `dsh-v0.2.2-rc.5` 源码事实，未实机 |
 | 4. 版本与维护资料对得上 | 两份清单与中英 README 均为 `0.6.3`；维护说明中英、README 中英、快速上手双语结构对等、命令一致、链接可达（189 条，0 死链）；`npm pack` 清单与源码对照通过 | 通过 |
 
+产品日志 §1.3 的完整 DoD 继续生效，本期核验重点不豁免其余项；对账如下（续表）：
+
+| §1.3 完整 DoD 其余项 | 本期对账 | 状态 |
+| --- | --- | --- |
+| Output Done · 内容忠实 | 未改第三方方法论原文；两版共用 `plugins/ideo-scrum/` 唯一正文源，无生成包、无同步脚本；未把源码事实或旧 `b2679aa` 基线写成 `0.6.3` 实机通过 | 通过 |
+| Output Done · 署名 | 本期无新增第三方摘录，未改 `ATTRIBUTION.md` 或 `IDEO-modes/`；基线五模式署名缺口沿用 Sprint 21 Review 待决项 | 本期无新增；旧待决项不因此关闭 |
+| Output Done · 可导航 | 未改技能入口；新增 `docs/maintaining*.md` 从中英 README「了解更多」一跳可达，`check_docs.py` 189 条链接 0 死链 | 通过 |
+| Output Done · 描述长度 | 未改技能 frontmatter 与描述；4 内核描述仍 ≤ 1024 字符（ideo `1023`、design `1009`、scrum `970`、sprint `945`，按 YAML 取值计） | 通过 |
+| Outcome Done · 一次会话完整引导、熟手陌生人走完第一冲刺 | 本期未重测全流程 | 本期未观测（保留旧版基线边界，不冒充本期已达成） |
+
 **H5 缺口总表（未验证，交 PO 正式 Review 决定）：**
 
 | 项 | 状态与前置缺口 |
@@ -188,3 +198,5 @@ Sprint 21–25 的 Review 前阶段门和常规事项交 Master；本期安全�
 | 6 | `python -X utf8 -I scripts/board_check/check.py selftest` | 通过：42 例，0 失败 |
 
 同候选核对：`plugins/ideo-scrum/.claude-plugin/plugin.json` 与 `package.json` 仍为 `0.6.3`；`CLAUDE.md` 未改（仅 `@AGENTS.md`）；未合并、未打 tag、未推送、未发布。
+
+**Master 独立复核（2026-11-21，`5f2115f`）：** Master 在该提交上独立重跑全部 6 项并通过（`validate --strict` 通过；`check_dsh` 6/6；`npm pack` 为 `@seapawn/ideo-scrum@0.6.3`、100 文件且不含 `hooks/`、`AGENTS.md`、`CLAUDE.md`；`check_docs` 7 文档 189 链接 0 错误；docs 自检 17/17；看板自检 42/42），`git diff --check 00c224b..HEAD` 零问题，确认 `CLAUDE.md`、版本号与 Sprint 23 段落未动。结论：代码、文档与 6 项复核通过，无必改项；DSH `H5` 4 项维持诚实未验证缺口，整体 Test 不判全面通过，交 PO 在正式 Review 拍板。
