@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 22 (project-agents)
 
 > Started: 2026-11-19 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `claude/sprint-22-project-agents-b09bf1` | Product Owner: SeaPawn | Scrum Master: 项目 Scrum Master | Developer: Sprint 22 Developer
-> Now: Planning · How；PO 已放行 How 规划（Master 转达）。PBI-73 调研见 §4，Developer 的 How 提案待 Master 审阅；未放行施工。
+> Now: Planning · How；PO 已放行 How 规划（Master 转达）。Master 初审认可方向，两处 H2 停点已补，待复审；未放行施工。
 > Waiting for PO: 1. How 计划经 Master／PO 审阅后，是否放行施工？
 > How to write this log: [Sprint log conventions](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md).
 
@@ -94,48 +94,49 @@ Master 转达 PO 原话：「开子代理的时候，开工作流的时候就可
 
 ## 3. How
 
-**Developer 提案（2026-11-20，待 Master 审阅）。** 依据 §4 的设计前调研和 §2.2 的已定判据。以下均为放行后的工作，不代表已经施工或通过测试；每块控制在一个会话内。
+**Developer 提案（2026-11-20，按 Master 初审意见修订，待复审）。** 依据 §4 的设计前调研和 §2.2 的已定判据。以下均为放行后的工作，不代表已经施工或通过测试；每块控制在一个会话内。
 
 | # | Work item | Output | Done when |
 | --- | --- | --- | --- |
 | H1 | 对齐新增组件、项目登记与取证接口 | 新增 agent、登记说明及用户说明的大纲；§2.2 各场景的验证计划 | Master 看过大纲、涉及文件及与 Sprint 23／24／25 的交接面；判据、环境、费用和样本预算在实测前冻结，获准后另作提交。 |
-| H2 | 尽早核验宿主能否提供关键证据 | 获准后在隔离项目取得模型执行和双入口角色来源的最小证据 | 核对入口能否识别所选模型不可用或被替换，不把替代回答当成指定模型成功；普通子代理和 Workflow 各自证明命中本项目定义且没有旧评议。任一证据缺失即报 Master，再决定相关实现能否继续；不改用户设置取证。 |
+| H2 | 尽早核验宿主能否提供关键证据（须另获实测授权） | 隔离项目的模型执行记录、最小角色定义的生效条件、Agent 与 Workflow 各自的证据 | 按下方两处停点分别判断相关实现能否继续。任一项未达到判据，带证据停在该线并报 Master，不改用户设置、不自行降标。 |
 | H3 | 交付 PBI-73 专用只读参谋 | 插件 agent、手动调用入口、模型选择与不可用时的反馈 | 新组件全文经审阅后落插件；明确请求才召唤，默认 Fable、明确另选、不可用三种路径符合 §2.2；只读与新上下文有工具及调用证据。 |
 | H4 | 交付 PBI-75 首次登记与拒绝路径 | Claude Code 侧可选登记入口、项目角色文件和产品日志引用 | 以用户项目已确认的角色卡为准，完整预览后接受才成对写入项目定义及 §2.1 引用；拒绝不写，临时召唤照常。只在隔离项目验证，不拿作者家目录当用户项目。 |
 | H5 | 补齐角色更新、冲突和双入口复用 | 差异确认、同名检查及按名召唤说明 | 未批准时原文件与引用不变；批准才更新；同名遮蔽不被当成项目定义命中。一份定义供两个入口使用，保留角色职责和 Review 召唤权，建造者不因注册而取得召唤权。 |
 | H6 | 对齐用户可用的入口与文档 | Claude Code 侧的调用、登记说明和文档导航 | 新行为有来源或标为作者设计；不改共用约定、已批准 Identity 和原文。用户从产品日志能找到对应角色；无 Workflow 仍可普通召唤，DSH 不被写成已支持项目 Agent。 |
-| H7 | 核验功能与完整 DoD，交 Master 审阅 | 逐项证据表、未验证项与完整增量 | §2.2 的参谋正反例、模型选择及项目登记四组场景分别有结果；Claude 严格校验、文档链接、description 长度及 DSH 既有回归合格。结构变化按仓库规则另派 Haiku validator；缺证据不判通过。 |
+| H7 | 正式 Test 放行后核验功能与完整 DoD，交 Master 审阅 | 逐项证据表、未验证项与完整增量 | §2.2 的参谋正反例、模型选择及项目登记四组场景分别有结果；Claude 严格校验、文档链接、description 长度及 DSH 既有回归合格。结构变化按仓库规则另派 Haiku validator；缺证据不判通过。 |
 
 **Key choices**
 
 - **参谋用插件专用 agent，由手动入口调用。** 新增只在用户明确请求第二意见时使用的 [Claude Code 手动入口](https://code.claude.com/docs/en/skills#control-who-invokes-a-skill)；它准备问题、约束与点名原件，调非 fork、非续接的新实例，不传旧评议或主会话倾向。用宿主的工具限制保证只读，不靠角色提示自律，不启用评议记忆；保留既有内核加载边界，不增加写入或再委派能力。无需新服务或全局配置。
-- **默认值与实际执行分开。** 插件定义请求 Fable；PO 明确另选时，优先用本次调用的模型参数，不自动保存设置。已知模型不可用时不启动；宿主若替换则提示另选或取消，不把替代结果当作指定模型意见。证据不能证明实际模型时记「实际模型未验证」。[宿主可覆盖模型](https://code.claude.com/docs/en/sub-agents#choose-a-model)；H2 须先核入口能识别哪些状态，不承诺能锁住宿主回退。
+- **默认值与实际执行分开。** 插件定义请求 Fable；PO 明确另选时，优先用本次调用的模型参数，不自动保存设置。[宿主可覆盖模型](https://code.claude.com/docs/en/sub-agents#choose-a-model)，因此按 H2 的模型停点处理，既不承诺能锁住宿主回退，也不把请求值当执行证据。
 - **Stakeholder 的一份定义只属于用户项目。** Claude Code 侧的可选登记动作衔接现有 Stakeholder 与产品日志；角色卡定后，展示[项目作用域](https://code.claude.com/docs/en/sub-agents#choose-the-subagent-scope)的角色文件与 §2.1 相对引用。不改 DSH 共用的 Stakeholder 命令正文。角色定义保存已确认的卡片内容和角色边界，承接现行守则、内核入口和 Review 召唤权；不依赖卡片固定列数，不固化留白、不带旧评议，也不把常驻 PO 助手转成独立审阅者。
 - **登记和引用作为一项变更确认。** 展示两处目标和完整差异；宿主写权限不代替用户确认。写前核对项目边界、同名来源和当前内容是否仍是预览版本；遇同名遮蔽不静默覆盖。若半途失败，报告未完成、恢复一致性，不覆盖并行出现的用户改动；不修改其他作用域来消除重名。
-- **两个入口分别证明命中同一份定义。** 在同一隔离项目中，普通子代理和 Workflow 分别按名调用；证据用来源／作用域记录，或以另一项目缺少该定义等独立对照佐证。仅同名、相似输出或复制角色卡提示词不算。无法证明命中且未续接旧评议的入口记「未验证」。
-- **先查关键可行性，再补全内容。** H2 的最小能力调用须另有明确实测授权；H7 待 Test 放行。既有 `claude-magpie` 隔离回归可验行为，固定模型映射不能证明默认 Fable。取证不改用户模型、网关、权限或遥测；不改分发则只跑既有 DSH 回归、不重复验安装。
+- **先查关键可行性，再补全内容。** H2 只做最小能力核验，须另获 PO 明确实测授权；即使施工获准也不自动包含 H2。H7 的正式验收须等 PO 放行 Test。既有 `claude-magpie` 隔离回归可验行为，固定模型映射不能证明默认 Fable。取证不改用户模型、网关、权限或遥测；不改分发则只跑既有 DSH 回归、不重复验安装。
 
 **Risks and open points**
 
-| 风险 | 处理方式 |
+| H2 停点与其他风险 | 处理方式 |
 | --- | --- |
-| 模型被宿主替换，或网关无法证明实际执行模型 | H2 优先核验可得证据；不把请求别名当执行证明，不承诺插件能阻止宿主回退。若无法满足已定判据，报 Master／PO 处理，不自行降标。 |
-| Workflow 对项目类型的解析与来源记录不足 | 放行后以同一隔离项目、同一已注册角色分别验证两入口；成功调用普通子代理不能替 Workflow 过线。 |
+| PBI-73：指定模型不可用、被替换或无法证实 | 区分三态：①有可归属到本次调用的可信记录证实指定模型，才把意见作为该模型的结果交付；②确知不可用或被替换，明确告知，由用户另选或取消，不交替代意见；③证据不足，记「实际模型未验证」，不把意见当成指定模型结果。若宿主不能识别替换或证实实际模型，留存已有证据与缺口，停在 PBI-73 线，报 Master／PO；不进入 H3，不计通过，不自行降标。 |
+| PBI-75：项目定义不生效，或有入口无法举证 | 在隔离项目用同一份最小项目角色定义，记录宿主何时、怎样使新登记定义生效，再分别取普通 Agent 和 Workflow 按名命中该定义、从新上下文开始评议的证据。可用来源／作用域记录或独立对照；仅同名或相似输出不够。任一入口缺证据，含宿主无 Workflow，记「未验证」，带证据停在 PBI-75 线并报 Master／PO；不进入 H4／H5，不用复制提示词或全局配置代替。 |
 | 严格只读与内核加载的工具需求冲突 | H1 明确工具和加载边界；H2 验实际工具面，尤其写入、Shell、再委派和评议记忆。若需要扩大权限，先报 Master，不以提示词声称受限。 |
 | 项目卡片、文件和引用漂移，或不同作用域存在同名定义 | 角色卡为身份依据；展示差异和实际命中来源。用户文件冲突不自动覆盖、不扫改全局；拒绝仍保留临时召唤。 |
 | 23／24 改共用约定和角色入口，25 改文档与版本 | Master 对齐接口后再改重叠段；本期只追加项目角色能力，不承担内核加载修正、两版改号或发布。 |
 
-Go-ahead：尚无。当前只授权 How Planning；本提案未获批准，不含施工、功能实测、提交、合并、推送或发布授权。
+施工 Go-ahead：尚无。PO 经 Master 转达已授权 How 规划日志的本地检查点提交；不含启动 H1–H7、施工、功能实测、合并、tag、推送或发布。H2 最小能力实测与 H7 正式 Test 均须分别明确放行。
 
 ## 4. Increment notes
 
-**2026-11-20（UTC+8）· PBI-73 设计前调研。** 仍在 How 规划。用 [Assume a beginner's mindset](../../plugins/ideo-scrum/skills/ideo-kernel/methods/assume-beginners-mindset.md) 和 [What? How? Why?](../../plugins/ideo-scrum/skills/ideo-kernel/methods/what-how-why.md)，把个人原型的实际决定、宿主文档和推论分开。材料、原文出处和对照表见三方共享笔记 `sprint-22-advisor-research.md`。
+**2026-11-20（UTC+8）· PBI-73 设计前调研。** 仍在 How 规划。用 [Assume a beginner's mindset](../../plugins/ideo-scrum/skills/ideo-kernel/methods/assume-beginners-mindset.md) 和 [What? How? Why?](../../plugins/ideo-scrum/skills/ideo-kernel/methods/what-how-why.md)，把个人原型的实际决定、宿主文档和推论分开。仓外共享笔记的完整位置为 `C:/Users/seapawn/AppData/Local/Claude-3p/side-session-notes/local_a8ccbc96-4762-4e09-a22e-f4fddb781972/sprint-22-advisor-research.md`；复核要点及来源列在下方，不依赖将私有原件复制入库。
 
 | 发现 | 对 How 的影响 |
 | --- | --- |
 | 个人原型最后选的是手动召唤的只读 Explore 子代理；因未满足真实决策试用条件，收口但未验收。`86c7f6b` 只登记了 PBI。 | 保留手动召唤、点名原件和只给意见的体验，不把旧脚本、双模型或本机网关选择当作产品规格。 |
 | [原生 advisor](https://code.claude.com/docs/en/advisor) 由 Claude 决定何时咨询，读取整段对话；[内置 Explore](https://code.claude.com/docs/en/sub-agents#built-in-subagents) 的默认模型受主会话和宿主影响。 | 建议优先考虑专用只读子代理：每次新上下文、只带点名原件，实际模型须有对应调用的可信记录。普通上下文隔离不等于完全没有项目规则，也不靠模型不同来证明独立。 |
 | [宿主可能替换子代理模型](https://code.claude.com/docs/en/sub-agents#when-an-allowlist-blocks-a-subagent-model)，网关映射也可能不可核实。 | 「默认 Fable，可另选」不变；需区分请求、宿主替换和实际执行，证据不足记「实际模型未验证」，不以改模型、权限或网关取证。 |
+
+**复核出处：** 个人原型的最后决定和未验收原因见 SeaPawn 仓外日志 `S:/SeaPawn/Scrum/sprint-advisor-workspace/SprintBacklog.md:56–65`（PBI-058）；早期候选与模型归属缺口见同目录 `artifacts/advisor-synthesis.md:7–25,90–113`。宿主证据的含义见 [Agent 执行结果](https://code.claude.com/docs/en/agent-sdk/python#agent)及[子代理完成事件](https://code.claude.com/docs/en/monitoring-usage#subagent-completed-event)，仅供理解起始模型与最终执行模型的区别，并不指定取证字段或要求开启遥测。
 
 调研时的检查点：结论交三方，之后由 Developer 提具体 How 给 Master／PO 审阅。调研未定封装、未写 Agent、未跑功能测试；PBI-75 的普通子代理与 Workflow 入口仍「未验证」。
 
