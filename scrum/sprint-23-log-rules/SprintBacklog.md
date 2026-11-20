@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 23 (log-rules)
 
 > Started: 2026-11-19 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `claude/sprint-23-log-rules-4b3ec9` | Product Owner: SeaPawn | Scrum Master: Sprint 21–26 主会话 | Developer: Sprint 23 工作树会话
-> Now: Planning · How。2026-11-20，Master 转达 PO 决定：What 精化结束，放行 How 规划；计划待 Master 审阅，尚未放行施工或实测。
-> Waiting for PO: None
+> Now: Planning · How。PO 于 2026-11-20 仅放行 How 规划；Master 审阅 `b1995ec` 无必改项。施工和实测未放行，H1–H10 与 Test 均未启动。
+> Waiting for PO: 1. 是否放行本期施工、授权到哪一步（待 Master 汇总转请）？
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
 
@@ -173,10 +173,12 @@ Master 确认沿用现行 `sprint-log.md` 第 18 条的无宿主项目记忆兜�
 
 | 接口／风险 | 交接与回验 |
 | --- | --- |
-| Sprint 21：设计卡依赖日志 §1.2、§2.1、§3.1 和可选 §3.2；归档留材可能被误识别成开着的设计 | 保持章节与承诺表形状；把拟改模板及收尾后的日志、材料路径样本交 Master 转 Sprint 21，合流时复核设计卡字段、开闭状态及 PBI-71 的归属，不在本期改看板。 |
-| Sprint 24：模板注释与阶段阅读指引可能改同一段；承诺快照不能成为注入来源 | 交接受影响的节与基线，区分本期的阶段门／日志语义和 24 的原文加载、角色入口及 hook 性能；整合后重验从承诺表逐字取值，不把解释或快照注入，不改频率或开关。 |
+| Sprint 21：设计卡依赖日志 §1.2、§2.1、§3.1 和可选 §3.2；归档留材可能被误识别成开着的设计 | 保持既有章节、表格与 `Now` 表达，区分「宿主自身已结束但尚待归档」与「现在仍开放」。把拟改模板及收尾后的日志、材料路径样本交 Master 转 Sprint 21，合流时复核设计卡字段、开闭状态及 PBI-71 的归属；不新增强制字段，不在本期改看板或替 21 改判卷。 |
+| Sprint 24：模板注释与阶段阅读指引可能改同一段；承诺快照不能成为注入来源 | 交接受影响的节与基线，区分本期的阶段门／日志语义和 24 的原文加载、角色入口及 hook 性能。整合后重验只从承诺表逐字取值，表下解释和决定行快照均不参与提取；不改频率或开关。 |
 | Sprint 25／26：共用方法论正文与项目记忆容易被宿主或插件约定绑定 | 25 接收共用改动清单与 DSH 回归证据；本期不改打包、版本或安装方式。26 接收项目教训与插件约定 Memory 的边界，不等待该期、不接管其载体。 |
 | 同一条约定在几处有不同表述，或归档后路径失效 | 交接注明基线提交、受影响段落、不得改变的接口和回验场景；Master 审过共用口径再转各期。发现冲突或需变更目标／验收，先报 Master 由 PO 定；不拉入其他分支，不把未合流的验证当作合流证据。 |
+
+**2026-11-20 · How 计划审阅（Master）**：`b1995ec` 的 H1–H10 覆盖五项已定判据；先审成套全文再集中落源，保留原文与既有解析接口。计划无必改项，不等于施工放行。PO 强审由 Master 交整份文本供通读，不让 PO 逐条核对；施工放行由 Master 汇总后转请 PO。
 
 Go-ahead: 未获施工或实测放行。当前仅获准形成和审阅本期 How 规划，不授权合并、tag、推送或发布。
 
