@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 21 (design-board)
 
 > Started: 2026-11-19 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `claude/sprint-21-design-board-2a4e5b` | Product Owner: SeaPawn | Scrum Master: IDEO # [master]-[main]-[manage sprint] | Developer: Sprint 21 Developer
-> Now: Test · 2026-11-20，Master 依 PO 的书面委托放行 H6，并复核两条 PBI 过线。五模式旧底本与补料的出处、许可尚未逐项核清；整体 Test 未判通过，不进 Review。
+> Now: Test · 2026-11-20，Master 依 PO 的书面委托放行 H6，并复核两条 PBI 过线。五模式底本已追到官方存档维基页与空间级 CC BY-NC-SA 3.0 声明，尚待 Master／PO 裁定能否闭环及与现注 4.0 之落差；整体 Test 未判通过，不进 Review。
 > Waiting for PO: None
 > 日志约定：[sprint-log.md](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md)。
 
@@ -215,4 +215,10 @@ Go-ahead: 2026-11-19，PO：「可以，放行吧，随后你受到master得监�
 
 **2026-11-20 · 五模式出处续核（Master 已核）。** `0d2629f` 的 38 个补料文本块逐词对应 Stanford 官方 2018 版 *Design Thinking Bootleg* PDF 第 3–12 页；4.0 标注出自链接该 PDF 的 Stanford 资源页，不据此反推历史下载记录或整份正文的许可。`89eb3dd` 的底本可追到本地 *An Introduction to Design Thinking — Process Guide* 的 DOCX／MD；仍缺与该底本对应、能确认具体版本和出处的官方原件，以及针对该版本的许可声明或权利方授权。2010／2018 年版 Bootleg 的许可不能替代这份证据。逐模式行号、页码和原件见仓外归档 `checks/attribution-audit/five-modes-evidence.md`；没有新的官方原件或权利方依据，不再重复查同一镜像。
 
-**Test 停点：** H6 不勾，整体 Test 未判通过。只记录复核，不改旧署名、原文、CLAUDE.md 或冻结标准，不回 Increment，不进 Review 或 Retro，不收官。不合并、不打 tag、不推送、不发布。
+**2026-11-20 · Process Guide 副本与官方出版维基取证（待 Master 裁定）。**
+1. **第三方副本对账（Master 所交）：** `checks/attribution-audit/process-guide-license-check.md` 与 `process-guide-alnap.pdf`（SHA-256 `72bb9da7b55f39e39cff440ca2a7a8a5924ff90d75d385674b17e0da7efdb196`，6 页，ALNAP 目录列 HPI of Design 2010）第 2–6 页分别对应 Empathize／Define／Ideate／Prototype／Test；目录页、PDF 文本、渲染页、批注与 XML 均未见许可。
+2. **官方原页与字节相同原件：** 沿 Wayback 存档核实 Stanford d.school 官方 `Design Resources` 维基页 [`Design Process Mini-Guide`](https://dschool.stanford.edu/groups/designresources/wiki/36873/Design_Process_MiniGuide.html)（建于 `2011-06-16`，`2012-08-02` 由 Thomas Both 编辑；同维基 [`The Wallet Project`](https://dschool.stanford.edu/groups/designresources/wiki/4dbb2/The_Wallet_Project.html) 亦直接指向它）同时挂载屏显 6 页 `ModeGuideBOOTCAMP2010L.pdf`（`2016-01-18`／`04-06` 及 `dschool-old` `2017-11-09` 捕获，与 `process-guide-alnap.pdf` **逐字节相同**，`2010-09-29` InDesign CS3 建档；正文 3,156 词与本地 `references/IDEO-StanfordDesignGuides.md` 去图片标记后 3,145 词除排布引语、封面与连字外全对得上）与小册子 11 页 `ModeGuideBOOTCAMP2010.pdf`（`2014-10-22` 捕获，SHA-256 `7ee2e054...`，封面＋五双页模式）。两份 PDF 及 `wiki/36873` 本页（含 `revisions/36873/2–4` 与 `2013–2023` 存档）自身均无版权或 CC 文本；APA 目录指向的教师个人目录 `509554.pdf`（Wayback `2026-11-11`，SHA-256 `a2bc58a4...`，`2010-11-08` Quartz 重印）系个人转载，非官方原件，亦无许可。
+3. **同维基首页授权与现行站状态：** `wiki/36873` 所属的官方维基首页 [`https://dschool.stanford.edu/groups/designresources/`](https://dschool.stanford.edu/groups/designresources/) 自 `revisions/welcome/14`（`2011-06-19`，`36873` 建页三日后）起至 `2013-01-30`、`2016-03-15`、`dschool-old` `2019-10-06`、`2023-01-30` 捕获均明载 `"The resources in this wiki by Hasso Plattner Institute of Design at Stanford are licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License. Permissions beyond the scope of this license may be available at info@dschool.stanford.edu."`（带 `rel="license"` 指向 `by-nc-sa/3.0/`）。现行 `dschool.stanford.edu` 站点（506 URL 站图、`/innovate/tools`、`/innovate/tools/from-the-d-school-archive`、`/connect/faq`）及 2017–2021 `/resources/` 存档均未列名或托管本文件，原维基路径已 404／`dschool-old` 不可达；现行页脚标 `© 2026 ... All Rights Reserved.`，`/connect/faq` 仅泛称遵循 CC 非商业相同方式共享原则，Stanford 网站条款限个人非商业下载。详见仓外归档 `checks/attribution-audit/publisher-wiki/publisher-wiki-evidence.md`。
+4. **未闭环缺口（本次不改原文与现有署名）：**（a）授权声明位于维基首页（空间级），不在 `wiki/36873` 单页或 PDF 内；（b）官方维基已下线，仅有存档证据、未发函取得权利方书面回执；（c）该官方空间级声明为 `CC BY-NC-SA 3.0 Unported` 且来源为 *Design Process Mini-Guide*（*Process Guide*），而本仓库 `ATTRIBUTION.md` 第 3 节与 `IDEO-modes/*.md` 现仅标注 2018 *Design Thinking Bootleg*（`CC BY-NC-SA 4.0`），尚未登记该底本与 3.0 许可。
+
+**Test 停点：** H6 不勾，整体 Test 未判通过，两条 PBI 过线不变。只补记证据与缺口，不重测，不改旧署名、原文、CLAUDE.md 或冻结标准，不回 Increment，不进 Review 或 Retro，不收官；不合并、不打 tag、不推送、不发布。
