@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 21 (design-board)
 
 > Started: 2026-11-19 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `claude/sprint-21-design-board-2a4e5b` | Product Owner: SeaPawn | Scrum Master: IDEO # [master]-[main]-[manage sprint] | Developer: Sprint 21 Developer
-> Now: Test · 2026-11-20，Master 依 PO 的书面委托放行 H6；两条 PBI 验收过线，既有署名差异待 Master 核定。不进 Review。
+> Now: Test · 2026-11-20，Master 依 PO 的书面委托放行 H6，并复核两条 PBI 过线。五模式旧底本与补料的出处、许可尚未逐项核清；整体 Test 未判通过，不进 Review。
 > Waiting for PO: None
 > 日志约定：[sprint-log.md](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md)。
 
@@ -161,7 +161,7 @@ Go-ahead: 2026-11-19，PO：「可以，放行吧，随后你受到master得监�
 
 ## 5. Test
 
-**2026-11-20 · Developer 验收。** 按先行本地提交 `9558a0a` 冻结的口径执行；被测插件与检查器仍为 `f030513` 所载实现，旧模板基线 `00c224b`。PBI-74、PBI-71 各自过线，H2–H5 勾选；Master 对完整结果的审阅仍待回复，不开始 Review。原始运行、首轮误判与复测留在仓库外 `S:/IDEO-Scrum-Archives/sprint-21-design-board/h6-9558a0a/`，下表证据路径相对于它。
+**2026-11-20 · Developer 验收。** 按先行本地提交 `9558a0a` 冻结的口径执行；被测插件与检查器仍为 `f030513` 所载实现，旧模板基线 `00c224b`。PBI-74、PBI-71 各自过线，H2–H5 勾选；Master 复核及完整 Test 停点见本章末。原始运行、首轮误判与复测留在仓库外 `S:/IDEO-Scrum-Archives/sprint-21-design-board/h6-9558a0a/`，下表证据路径相对于它。
 
 | 验收项 | 结果 | 证据 |
 | --- | --- | --- |
@@ -189,7 +189,7 @@ Go-ahead: 2026-11-19，PO：「可以，放行吧，随后你受到master得监�
 | Output Done | 结论及证据 |
 | --- | --- |
 | 内容忠实 | 本期通过。设计日志约定给出 §1.2、§2.1、§3.1 与可选 §3.2 的来源；看板约定第 5、6、8、11、12、16 条属作者工作约定。三种设计卡与各自源文相符；只借归档设计 §3.1，不改归档；两条承诺及第三方原文摘录与基线相比未改。 |
-| 署名 | 许可逐组与 `ATTRIBUTION.md` 核对一致，命令按既有登记，无新增第三方摘录。独立文档核查按许可一致判过；Developer 复核后保留来源名一致性待 Master 核定：五份 `IDEO-modes/` 的 `Source` 写 `IDEO / Stanford d.school Design Guides`，总表对该目录只明列 d.school Bootleg；未证实 IDEO 是另一个来源，不能擅加登记或断言全量署名已过。另有 SGEP 资产保留原文粗体 `Source`／`License`，两项信息齐全，但格式不同于统一前缀。两者均是 `00c224b` 已有差异，本期未改。 |
+| 署名 | 未判通过。独立核查确认现有许可标注与 `ATTRIBUTION.md` 表面一致、命令按既有登记，本期无新增第三方摘录。Master 复核指出，现有标注相同不能证明五份 `IDEO-modes/` 的具体底本与旧版补料均已对上出处和许可；见下方复核及原件链接。SGEP 资产的原文粗体标签已给出处与许可，不是缺署名。 |
 | 可导航 | 过。沿用 Sprint 16／17 的同一口径，从各技能入口到其自有材料 ≤2 跳；本期 `scrum-kernel/SKILL.md` 到看板约定、模板和四份 `references/` 各 1 跳。`sprint-kernel` 经 scrum 入口到四份引用 2 跳。`checks/doc-audit/nav-own.txt`、`nav-all.txt` 记录实测；设计、IDEO 入口不是这些 Scrum 引用的使用入口。 |
 | 无死链 | 过。提交前扫描 132 份文件，139 条相对链接、17 个锚点，0 断；基线 124 条、12 个锚点，亦 0 断。两份 README、相应入口和本日志可解析。实点六个工作区卡脚链接，均打开对应 Markdown、内容逐字一致；仅在分支的 `sprint-02-beta` 只列分支与提交，不生成本地链接。见 `checks/doc-audit/current-links-submission.json` 与 `pages/matrix-corrected.json`。 |
 | 插件严格校验 | 过，`claude plugin validate --strict plugins/ideo-scrum` 退出 0，`Validation passed`；`checks/claude-strict.stdout`。本次不发布，不把本地校验写成外部目录审核。 |
@@ -205,4 +205,8 @@ Go-ahead: 2026-11-19，PO：「可以，放行吧，随后你受到master得监�
 
 **跨期合流待核（Master 交接，不属本轮判据）。** Sprint 23 设计结束时在既有 `Now` 写 `Concluded — awaiting archive` 或等价语义，首个 Review 才迁出活动路径。合流后分别核「开放」「结束待归档」「已迁出活动路径（含分支残留）」的宿主发现、来源标注与 PBI-71 嵌套归属；本期只排除已结束宿主下的 IDEO，不改变宿主卡发现，不提前合流。
 
-**Developer 停点：** 已按冻结口径取证并交 Master。两条 PBI 的验收结果不等于全量 DoD 已满足；署名来源一致性待 Master 核定，H6 暂不勾选。不改通过线、不回 Increment、不进 Review 或 Retro。不合并、不打 tag、不推送、不发布。
+**2026-11-20 · Master 复核 `7ae87ff`。** PBI-74／PBI-71 均按 `9558a0a` 过线。认可首轮仅修取证驱动，保留原判，按原口径复测；不重跑已通过项。SGEP 资产的粗体标签不缺出处或许可，三处基线裸路径另记，不计为 Markdown 断链。
+
+**五模式署名缺口。** Master 核对 `89eb3dd` 的 Stanford 底本、`0d2629f` 从早期内核提取的补料及 `832092c` 的合并，确认有两路材料。`6c1017c` 改注现版 d.school 的 4.0 标注，但未逐项对上具体底本和旧版补料。[HPI 留存的 Stanford Bootcamp Bootleg 2010 原件](https://hpi.de/fileadmin/user_upload/fachgebiete/d-school/documents/01_GDTW-Files/bootcampbootleg2010.pdf)第 2 页明载 `CC BY-NC-SA 3.0 Unported`；[Stanford d.school 现版 Design Thinking Bootleg 页面](https://dschool.stanford.edu/tools/design-thinking-bootleg)标注 `CC BY-NC-SA 4.0`。这只证明两版原件的标注不同，不据此推定本仓库任何段落适用哪一版许可，不认定 IDEO 是另一个出版者，也不作侵权判断。待核的是具体内容、原件版本、出处与许可的逐项对应。
+
+**Test 停点：** H6 不勾，整体 Test 未判通过。只记录复核，不改旧署名、原文、CLAUDE.md 或冻结标准，不回 Increment，不进 Review 或 Retro，不收官。不合并、不打 tag、不推送、不发布。
