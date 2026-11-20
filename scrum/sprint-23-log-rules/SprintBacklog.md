@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 23 (log-rules)
 
 > Started: 2026-11-19 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `claude/sprint-23-log-rules-4b3ec9` | Product Owner: SeaPawn | Scrum Master: Sprint 21–26 主会话 | Developer: Sprint 23 工作树会话
-> Now: Planning · How。PO 于 2026-11-20 仅放行 How 规划；Master 审阅 `b1995ec` 无必改项。施工和实测未放行，H1–H10 与 Test 均未启动。
-> Waiting for PO: 1. 是否放行本期施工、授权到哪一步（待 Master 汇总转请）？
+> Now: Increment · 2026-11-21 PO Review 前全权委托（原话见 §4），Master 二轮复核 18 份拟稿全部通过并放行 H10。18 份已审稿已逐字落源并作本分支本地提交（自检全绿）；最后一轮流程 Test 方案已拟、待 Master 冻结与放行，正式 Test 未运行。
+> Waiting for PO: 1) 正式 Review 前的报告，含 Designer Identity 替换句的最终合入确认；2) 正式 Review／Retro／收官及合并、tag、推送、发布仍回 PO。当前无需 PO 立即处理的事项。
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
 
@@ -151,16 +151,16 @@ Master 确认沿用现行 `sprint-log.md` 第 18 条的无宿主项目记忆兜�
 
 | # | Work item | Output | Done when |
 | --- | --- | --- | --- |
-| H1 | 定修订范围和交接基线 | 基于 `00c224b` 的受影响条款、模板、入口说明和跨期接口清单 | 每处拟改文字能指到原文、作者约定或 PO 决定；对照命令、SKILL.md、双语 README、快速上手、词汇表与项目指令中的同义说法，标清改哪处、哪处只引用或不动。 |
-| H2 | PBI-76：对齐 DoD 与取证写法 | 产品约定、Sprint 的 Why／Test 写法与模板的成套修订稿 | 从同一份样本能追溯完整 DoD、需新取证、仍有效的旧证据与未触发条件。适用但缺证据不通过；Outcome 信号是否拦本期 Test 按事前约定判，不把待观察当通过或豁免。 |
-| H3 | PBI-77：对齐通用阶段门与 Sprint 流程 | `overview.md` 与 Sprint 阶段门、模板的修订稿 | 进入、返回与同阶段接手三种情况分得清；认可 How 不授权施工，认可增量不授权 Sprint Test；可追溯放行人、目标阶段与范围。 |
-| H4 | PBI-77：对齐设计阶段门 | 设计约定与模板的修订稿 | 进入和返回都须明确放行；书面交接仅在 PO 明授的范围内有效，不因 Prototype／Test 可以由 AI 承担而省略阶段门。Ideate 的组织方式由 PO 先定，选定方案与放行 Prototype 分开；不新增方法数门槛，不改设计日志既有字段。 |
-| H5 | PBI-78：对齐承诺与解释 | 三类日志的承诺说明及项目级／汇总级 Sprint Goal 对照样本 | 表内原文唯一权威，表下解释可选且不参与提取；过关先读再核对，决定行留当时原文快照。汇总级条目列在同一单行承诺格内；保留两列表形状和既有标题，不改解析器。 |
-| H6 | PBI-79：设计结束时保留依据 | 设计材料的保留与交接规则、原型去向说明 | 选定与否决方案、原型、速写、演示、评审及合成稿仍从日志可找回；是否有承接 Sprint 不决定删除，留存不计作正式 Increment。 |
-| H7 | PBI-79：让归档和 Sprint 清理保住材料 | 设计归档与承接 Sprint 收尾的修订稿 | 首次归档 Review 和承接 Sprint 收官后都能按有效引用读回原件；档案不被误认成开着的设计，通用「过期即删」和工作文件清理不再删去保留材料。本次规则约束以后收尾，不回迁历史。 |
-| H8 | PBI-69：项目 Retro 分条入记忆 | Retro 约定修订稿与正常／兜底对照样本 | 只保存重要教训且每条可独立找到；没有重要教训不凑数。无宿主项目记忆时沿用仓库教训笔记；通用工作材料规则不能让 Retro 教训写进指令文件，不建每期汇总，不混入插件约定 Memory。 |
-| H9 | 交审成套修订稿 | 可圈阅的全文、§2.2 判据对照和跨期交接记录 | 五项各有正反例或必要分支，受影响的说明一致，已让 Master 能逐项审；反馈按单会话工作块处理，不以交审代替批准。 |
-| H10 | 将批准的改稿集中落源 | 可提检的共用方法论正文、模板和受影响说明 | 仅将经过 Master 审阅、全新子代理对抗审查与 PO 强审的文字按授权落盘；范围与批准稿一致，未改第三方原文，保留既有解析接口。开发自检和待核验证据已区分，供 PO 决定是否放行 Test。 |
+| H1 | 定修订范围和交接基线 | 基于 `00c224b` 的受影响条款、模板、入口说明和跨期接口清单 | ✓ 2026-11-20 每处拟改文字能指到原文、作者约定或 PO 决定；对照命令、SKILL.md、双语 README、快速上手、词汇表与项目指令中的同义说法，标清改哪处、哪处只引用或不动。 |
+| H2 | PBI-76：对齐 DoD 与取证写法 | 产品约定、Sprint 的 Why／Test 写法与模板的成套修订稿 | ✓ 2026-11-20 从同一份样本能追溯完整 DoD、需新取证、仍有效的旧证据与未触发条件。适用但缺证据不通过；Outcome 信号是否拦本期 Test 按事前约定判，不把待观察当通过或豁免。 |
+| H3 | PBI-77：对齐通用阶段门与 Sprint 流程 | `overview.md` 与 Sprint 阶段门、模板的修订稿 | ✓ 2026-11-20 进入、返回与同阶段接手三种情况分得清；认可 How 不授权施工，认可增量不授权 Sprint Test；可追溯放行人、目标阶段与范围。 |
+| H4 | PBI-77：对齐设计阶段门 | 设计约定与模板的修订稿 | ✓ 2026-11-20 进入和返回都须明确放行；书面交接仅在 PO 明授的范围内有效，不因 Prototype／Test 可以由 AI 承担而省略阶段门。Ideate 的组织方式由 PO 先定，选定方案与放行 Prototype 分开；不新增方法数门槛，不改设计日志既有字段。 |
+| H5 | PBI-78：对齐承诺与解释 | 三类日志的承诺说明及项目级／汇总级 Sprint Goal 对照样本 | ✓ 2026-11-20 表内原文唯一权威，表下解释可选且不参与提取；过关先读再核对，决定行留当时原文快照。汇总级条目列在同一单行承诺格内；保留两列表形状和既有标题，不改解析器。 |
+| H6 | PBI-79：设计结束时保留依据 | 设计材料的保留与交接规则、原型去向说明 | ✓ 2026-11-20 选定与否决方案、原型、速写、演示、评审及合成稿仍从日志可找回；是否有承接 Sprint 不决定删除，留存不计作正式 Increment。 |
+| H7 | PBI-79：让归档和 Sprint 清理保住材料 | 设计归档与承接 Sprint 收尾的修订稿 | ✓ 2026-11-20 首次归档 Review 和承接 Sprint 收官后都能按有效引用读回原件；档案不被误认成开着的设计，通用「过期即删」和工作文件清理不再删去保留材料。本次规则约束以后收尾，不回迁历史。 |
+| H8 | PBI-69：项目 Retro 分条入记忆 | Retro 约定修订稿与正常／兜底对照样本 | ✓ 2026-11-20 只保存重要教训且每条可独立找到；没有重要教训不凑数。无宿主项目记忆时沿用仓库教训笔记；通用工作材料规则不能让 Retro 教训写进指令文件，不建每期汇总，不混入插件约定 Memory。 |
+| H9 | 交审成套修订稿 | 可圈阅的全文、§2.2 判据对照和跨期交接记录 | ✓ 2026-11-20 五项各有正反例或必要分支，受影响的说明一致，已让 Master 能逐项审；反馈按单会话工作块处理，不以交审代替批准。 |
+| H10 | 将批准的改稿集中落源 | 可提检的共用方法论正文、模板和受影响说明 | ✓ 2026-11-21 经 Master 审阅与全新子代理对抗审查、依 PO Review 前全权委托由 Master 二轮复核核准的文字已逐字落源；PO 最终确认在 Review 前报告中；范围与批准稿一致，未改第三方原文，保留既有解析接口。开发自检和待核验证据已区分，供 PO 决定是否放行 Test。 |
 
 **Key choices**
 
@@ -180,11 +180,97 @@ Master 确认沿用现行 `sprint-log.md` 第 18 条的无宿主项目记忆兜�
 
 **2026-11-20 · How 计划审阅（Master）**：`b1995ec` 的 H1–H10 覆盖五项已定判据；先审成套全文再集中落源，保留原文与既有解析接口。计划无必改项，不等于施工放行。PO 强审由 Master 交整份文本供通读，不让 PO 逐条核对；施工放行由 Master 汇总后转请 PO。
 
-Go-ahead: 未获施工或实测放行。当前仅获准形成和审阅本期 How 规划，不授权合并、tag、推送或发布。
+Go-ahead: **2026-11-20（UTC+8）· PO 直接放行施工**。原话：「可以，我觉得23放行吧，可以开始做了。」已审 How 覆盖 §1.1 的日志接手与收尾目标；按 H1–H9 起草和交审，不把施工放行当成草稿批准。H10 只落经 Master 审、全新子代理对抗审查和 PO 通读强审后获准落源的文本。此次未单独授权提交（按第 22 条暂留未提交改动并记接手点；H10 落源、Test 前冻结及收官提交另请明确授权），不放行正式 Test 或收官，不授权合并、tag、推送或发布。§1.1 当时原文快照：「照着日志接手：接手的人能分清承诺原文和定目标的理由，查到本期重点验什么、完整 DoD 是否满足，以及下一步是否已获 PO 放行；收尾后，能找回选定和否决方案的依据，也能在项目记忆里逐条找到 Retro 的重要教训。」
+
+Go-ahead: **2026-11-21（UTC+8）· H10 落源与本分支本地提交**。Master 依 PO 2026-11-21 Review 前全权委托（原话见 §4），二轮复核 18 份拟稿零必改项后放行：已审稿逐字落入生效路径、删除临时 `draft/`，作本分支本地提交；不改版本号、`CLAUDE.md`、hooks、`dsh/`，不合并、tag、推送或发布。H10 完成不等于正式 Test 放行：最后一轮流程 Test 方案另交 Master 审阅并冻结，Increment → Test 阶段门仍须单独放行。§1.1 当时原文快照：「照着日志接手：接手的人能分清承诺原文和定目标的理由，查到本期重点验什么、完整 DoD 是否满足，以及下一步是否已获 PO 放行；收尾后，能找回选定和否决方案的依据，也能在项目记忆里逐条找到 Retro 的重要教训。」
 
 ## 4. Increment notes
 
 <!-- Whoever does the work writes the notes, in whatever form helps: each change and its reason, and what a new session needs to pick the Sprint up; they may refine the How (sprint-log.md, conventions 9 and 20). A session that picks up the Sprint reads these first. The chapter ends with the Product Owner's decision that the Increment can go into testing (sprint-log.md, convention 24). -->
+
+**H1 · 修订范围与交接基线（2026-11-20）**。对照 `00c224b`，插件、对外说明、DSH 与检查器均未变。按总表 F02、F09、F10、F11、F13 和 §2.2 已定判据执行；Developer 和三个独立只读核对覆盖以下表面的同义说法。这是拟修订范围，不是规则已变更。Master 同意将完整拟改稿放 `draft/<原相对路径>`，按落源位置核对引用，不改生效正文。归档写作 `scrum/documents/` 体系，兼容项目既有的分类子目录，不规定回迁方式。
+
+| 工作块 | 拟改的旧说法和位置 | 依据；只引用或不动 |
+| --- | --- | --- |
+| H2 · DoD | `product-log.md` 第 5 条已说全套 DoD 生效，但「picks the items that matter」仍可能被读成缩小标准；对齐 `sprint-log.md` 第 4、13、16 条及 Sprint 模板 §1.2／§2.2／§5，写清重点、证据和判定。 | PBI-76、§2.2 与 SGEP Product／Increment／Product Backlog；不改产品日志 §1.3、不改正式验收何时需要 PO 的既有第 15 条、不改源文。 |
+| H3 · Sprint 阶段门 | `overview.md` 图及第 12 条、`sprint-log.md` 图及第 3、8、22–24 条、Sprint 模板的页头提示与决定记录。`developer.md` 和 `scrum-master.md` 把「委托审 How」读成可替 PO 放行的句子要纠正；冲刺中途可发版的旧句也应指明仍须 PO 同意。 | PBI-77、阶段放行临时修正；保留书面授权，但审阅权／阶段内决定不等于阶段放行。说明起始无既定 Goal 的门、同阶段接手和 Test 原地修正与回退的区别。角色加载不动。 |
+| H4 · 设计阶段门 | `design-log.md` 图、「三个环」、第 21、26、27 条及设计模板；`design-kernel/SKILL.md` 的 Use Protocol 不能靠「发现错了便回去」自行回退；`designer.md` 的原型例外不替代阶段许可。 | F09、PBI-77；保留《Sprint》章节、d.school 模式、现有第 9–15 条的方法写法和时机。独立 IDEO 五模式不是五个阶段，不增放行门；进入正式设计仍按正式设计的门。 |
+| H5 · 承诺、解释与快照 | `overview.md` 第 16–17 条、承诺表下的三份模板注释、`sprint-log.md` 第 4、24 条、`design-log.md` 第 26 条；产品约定第 4 条已引用总规则，不再整条重写。 | F10、F13、PBI-78 与 PO 快照定案；表唯一权威，表下解释可选，历史决定行快照不替代表。保留一物理行的两列表、章节标题和纯文本；不改任何解析器。 |
+| H6–H7 · 留材 | `design-log.md` 第 16、19、26 条、设计模板 §4／§5、`design-kernel/SKILL.md` Prototype 行、`designer.md` 与 `ideo-kernel/SKILL.md` 正文里的「用完丢掉」；`overview.md` 第 3–6 条和 `sprint-log.md` 第 17 条要免除设计原件被两次清理。独立 `ideo-log.md` 第 4 条只解除对变化了的设计交接条款的误引用。 | F11、PBI-79、§2.2；保留原型粗快、用于学习且不是增量；只改作者的保存约定，不改书中「disposable」原文，也不把独立 IDEO 日志或普通 Sprint 文件一律纳入。 |
+| H8 · Retro | `sprint-log.md` 第 18 条仍说「a notes file」；把规则写成项目记忆中的独立要点，无宿主能力沿用仓库教训笔记。`overview.md` 第 6 条的指令文件用途不得盖过 Retro 专门规则。 | F02、PBI-69、SGEP Retro；仍无 Retro 章、不写汇总或指令文件、不并入 PBI-51；本项目现行的 Master 列候选、PO 挑要点仍在 `CLAUDE.md`，不推为通例。 |
+| 对外说明 | README 双语的开场与会话例子不得把「定了」说成继续行动，也不得省略实际让用户放行 Test；快速上手双语 §§2–5／书面授权、词汇表对应行和常规入口用同一说法。 | 只改现有说明，不加教程层或变版本、命令形式、分发／加载表述。`CLAUDE.md` 仅核对不动；不回改历史日志。 |
+
+| 交接 | 保留的接口；合流时回验 |
+| --- | --- |
+| 21 · 看板 | 设计 §1.2／§2.1／§3.1／可选 §3.2，原 `From`、`Now`、`Waiting for PO` 位置及表形状不动。当前 `board-log.md` 第 4 条和 `scripts/board_check/check.py` 的 `discover()` 按活动路径发现，设计分支上的活动日志也会被读；设计结束待归档要在既有 `Now` 表明已结束，归档后从活动路径移走并核对仍在的分支。21 回验待归档／已归档的展示；PBI-71 的 `For` 与已结束 IDEO 归属不在本期改。 |
+| 24 · 加载和提取 | `commitments.sh:43–63`、`dsh/commitments.js:21–48` 和 `scripts/board_check/check.py:94–112` 只取承诺行；不能把判卷能识别的某个中文标题当作各宿主通用。三个模板的注释、设计内核 Use Protocol 和角色入口正文是合流点；保留阅读要求，不动 loading、hook 频率或开关。两宿主运行期输出（`commitments.sh:125–133`、`dsh/commitments.js:81–82` 与 `check_dsh.mjs:102`）本期未改，多日志仍报「开着」／「are open」，交 24／25 评估是否顺带改运行期措辞。 |
+| 25 · DSH 与双语说明 | 交同一份正文和双语文档的改动段落；保留安装、入口、版本段和打包范围，不改分发。`check_docs.py` 依赖 README 的 Departures 表原样对应总览，拟不动该表；两份 README／快速上手保持结构和链接对应。待按批准范围回验 DSH。 |
+| 26 · 约定 Memory | 项目 Retro 教训与插件约定是两个内容层，项目教训不进入分发包或 PBI-51；设计原件也不以教训摘要替代。 |
+
+**H2–H9 · 成套审阅稿（2026-11-20，Developer 交审稿）**。`draft/` 下 18 份全文保留原路径层级；圈阅时以 `00c224b` 同路径为改前全文，链接按拟落源位置核对。以下是改动与场景，不是正式 Test 的方法、通过线或结果。沿用 H1 所列出处，未动生效约定、技能描述、角色加载正文、Scrum 和设计源材料、看板、两个宿主的承诺读取器与版本。
+
+| 工作块 | 圈阅位置与建议 | 对照场景（未运行） |
+| --- | --- | --- |
+| H2 · PBI-76 | [产品约定第 5 条](../../plugins/ideo-scrum/skills/scrum-kernel/conventions/product-log.md#each-part)、[Sprint 约定第 4、13、16 条](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md#test)、[Sprint 模板](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-backlog-template.md)、[Developer](../../plugins/ideo-scrum/commands/developer.md#code-of-conduct)。一个地方设标准；Planning 定取证重点和 Test 的要求；Test 分记质量与价值。 | **同一份样本 Sprint** 的产品日志列三个 Output：文档新改链接有效、模板章节契约没有变、改分发才验安装；Outcome 有「陌生人走完首个冲刺」。§1.2 指回全部 DoD，重点查链接；§2.2 写定方法与过线。§5 以本次链接检查作新证据，以可追溯的旧样本和模板契约逐项相同说明旧证据仍有效；没改分发才允许写安装条件未触发。对照删掉模板旧证据：它仍适用，不能判通过。再对照同一个 Outcome：没列当期必须验证则记待观察，不报全套 DoD 已过；事前要求当期验证则缺证拦整体 Test。若有失败观察，记未达及影响，不写待观察。 |
+| H3 · PBI-77 | [总览第 12 条](../../plugins/ideo-scrum/skills/scrum-kernel/overview.md#who-does-what)、[Sprint 约定第 8、22、24 条和流程图](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md)、Sprint 模板和 [Master](../../plugins/ideo-scrum/commands/scrum-master.md#code-of-conduct)、Developer。先核真实授权、再行动；单收委托审 How 不得代发施工许可。 | 只说「计划不错」：留 How，不施工、不委派；说「计划通过，现在按这份 How 开始施工」：明确两件事，可进入。只看过增量：施工自检可做，不启 Sprint Test。发现要回去时先报目标阶段，不复用上次放行；同阶段同范围换会话看日志可续。首次明确启动 Why 时还没有 Sprint Goal，不把 `<Sprint Goal>` 当原文。 |
+| H4 · PBI-77 | [设计约定第 21、24、26 条和流程图](../../plugins/ideo-scrum/skills/design-kernel/conventions/design-log.md)、[设计模板](../../plugins/ideo-scrum/skills/design-kernel/conventions/design-backlog-template.md)、[设计内核正文](../../plugins/ideo-scrum/skills/design-kernel/SKILL.md#use-protocol)、[Designer](../../plugins/ideo-scrum/commands/designer.md#code-of-conduct)、[IDEO 约定第 1、2 条](../../plugins/ideo-scrum/skills/ideo-kernel/conventions/ideo-log.md#the-boundary)。独立五模式不加门，只有转入正式设计才按正式设计的门。 | 认可 Define，或只说「开始 Ideate」但未定这轮怎么发散：不做 Lightning Demos、不发散、不画草图、不派构思；PO 明确本轮组织并放行才继续。只选方案不做原型；Prototype 试跑不是设计 Test。测试发现题目错了，记录依据、等 PO 放行返回 Define；交了选方案或审阅不算交了进 Prototype。 |
+| H5 · PBI-78 | [总览第 16、17 条](../../plugins/ideo-scrum/skills/scrum-kernel/overview.md#what-stays-fixed)、[产品模板](../../plugins/ideo-scrum/skills/scrum-kernel/conventions/product-backlog-template.md)、Sprint 和设计模板；两份阶段约定保留逐字快照，不把快照和表下理由接入承诺提取。已有等价规则不再重写。 | **项目 Sprint 目标格**：「找得回收件记录：接班的人能用订单号定位签收证明，不用找上一班问。」**汇总级目标格**：「交接索引：① 收件线定位签收证明；② 值班线交接未完成事项。」两例各是一物理行、一个承诺格，短名不变。产品、Sprint、设计的表下可另写或不写理由，例如「夜班交接时常找不到上一位」；改这句话不改目标。若 PO 后来改目标，旧决定行仍留当时文字；删去当前承诺表只剩理由或快照，下一次不能过门。 |
+| H6–H7 · PBI-79 | [设计约定第 16、19 条](../../plugins/ideo-scrum/skills/design-kernel/conventions/design-log.md#ending)、设计模板、设计内核 Prototype 行、[IDEO 内核正文](../../plugins/ideo-scrum/skills/ideo-kernel/SKILL.md#ideo-design-thinking)、[Designer 的原型段](../../plugins/ideo-scrum/commands/designer.md#identity)、[总览第 3–6 条](../../plugins/ideo-scrum/skills/scrum-kernel/overview.md#where-things-live)与 [Sprint 约定第 17 条](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md#closing)。Designer 的旧 Identity 只换与 PBI-79 相抵的「用完即丢」句段，留作单独圈阅；书中低成本、可放弃的原型观不改，保留文件不等于交付。 | 设计结束时 `Now` 记已结束待归档，`sketches/a.md`、`sketches/b-rejected.md`、`demos/`、`review.md`、`synthesis.md`、`prototype/` 仍从设计日志可访问。第一次归档 Review 把日志及原件移到 `scrum/documents/` 下的设计档案，核对引用和活动路径；承接 Sprint 先后顺序及清理不删原件。另验没有承接者、结论不实施，材料仍在；只剩摘要或 `git show <sha>` 的失败。普通 Sprint 临时文件继续按原规则清理，不把保护扩到独立 IDEO 的原型。 |
+| H8 · PBI-69 | [Sprint 约定第 18 条](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md#closing)、总览第 6 条。项目记忆与仓库兜底都按单条可独立读取；例子不规定路径，现有项目的角色分工不升格为通例。 | 例：「交接时列新路径和旧路径」若能说明上次为何只发新路径导致承接误删，则写成一条可复用教训；「先开了两个窗口」只是一次过程细节，不存。无重要教训则不写；无项目记忆时写进仓库教训笔记的独立条目，仍不写当期汇总或指令文件。设计评审原件保留，不拿教训替代，不交插件 Memory。 |
+| H9 · 对外说明与交接 | [README EN](../../README.md)／[中文](../../README.zh-CN.md)、[快速上手 EN](../../docs/quick-start.md)／[中文](../../docs/quick-start.zh-CN.md)、[词汇表](../../docs/glossary.md)。只改对应说法，Departures 表、安装命令和双语结构不变。交接按 H1，Sprint 21 的 PBI-71 不等于移除已结束待归档的宿主卡。 | 换会话按 `Now`、已记录的授权和承诺表追到当前阶段；仅有 hook 提示不算取得授权。归档后不留活动设计路径；发现别的分支还有旧活动日志，只汇报，23 不擅自改。 |
+
+**H9 自检**：18 份草稿与基线逐份核对；三份日志模板的标题、页头字段与表格行未变，命令加载段、技能／命令 frontmatter 与源文署名未变；按拟落源位置静查 6 处新增跨文件指针及双语说明／词汇表的 103 个引用，无报错。未运行正式流程样本、Claude 严格校验或 DSH 回归，§5 不记通过；后续以获准落源后的文件、事前冻结的标准和单独的 Test 放行为准。
+
+**2026-11-20 · Developer 交审**：成套全文、上表和交接位置已发 Master，待审阅。How 表中的完成标记只记这轮修订稿与交审动作，不是条目验收。当前检查点 `183d97d`；日志与审阅稿留在本工作树、未提交。下一步按 Master 审阅、全新子代理对抗审查、PO 通读强审的顺序推进；未获批准不做 H10，不进 Test。
+
+**2026-11-20 · Master 首审修订**：只改拟稿中的两项；Designer 原 Identity 与拟替换句保留，单列待 PO 明批。
+
+| 条目 | 修订与对照（未运行正式 Test） |
+| --- | --- |
+| PBI-76 | [总览 Test 节点](../../plugins/ideo-scrum/skills/scrum-kernel/overview.md#the-map)不再把 PO 端到端测试写成固定动作；Formal acceptance 仍按 Sprint 约定第 15–16 条。有写定要求才需要 PO 正式验收；两种情况都不省略独立审阅。 |
+| PBI-79 | [设计约定第 19 条](../../plugins/ideo-scrum/skills/design-kernel/conventions/design-log.md#ending)、[Sprint 约定第 17 条](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md#closing)与[设计模板](../../plugins/ideo-scrum/skills/design-kernel/conventions/design-backlog-template.md)对齐：先收官的工作树拿不到完整设计日志或任一原件，就不跨树搬动，设计继续待归档。第一个在本检出能读全的 Review 才归档，并交接旧、新路径；承接方未读到新路径前保留可用引用，读到后再在本检出换链。其他分支的残留只报 Master，不代改；解析契约不变。 |
+
+**2026-11-20（UTC+8）· Review 前委托（Master 转达）**。PO 原话：「现在他们全部都开跑了，这样子我跟你讲。嗯，每一个对话，我现在给你权限，每一个对话，等到他们 review 之前向我报告就可以了。不意是每一个对话哦。因为他们现在都已经开始跑了。」
+
+- **Master 代定**：仅适用已开的 Sprint 21–25；各期正式 Sprint Review 前的阶段门和常规事项由 Master 定，各次决定仍按约定记录。
+- **仍回 PO**：改 Product Goal、取消 Sprint、推翻既定决定、PO 指定的品味、正式 Review／Retro／收官、推送与发布。Sprint 23 的成套规则由 PO 通读强审；Designer Identity 的替换单独等 PO 明确批准。
+- **当时停点（2026-11-20 审阅前）**：Master 已复核两处修订，18 份拟稿原样等待 Master 安排的全新子代理对抗审阅。独立审阅和 PO 强审之后，Master 按各自条件分别核准 H10 与正式 Test；本次记录委托不等于放行。未暂存、未提交、未落源、未进正式 Test。
+
+**2026-11-20 · 对抗审阅整改与二次静态审计补正**。先按对抗审阅五点及既有 README 计数对齐修改第一批 9 份拟稿，随后经 5 个独立只读代理全量静态审计并补正——连同 [设计模板](../../plugins/ideo-scrum/skills/design-kernel/conventions/design-backlog-template.md) 共修订 10 份拟稿（下列为文字修订与反例边界，非正式 Test 结果）：
+
+| 点 | 拟稿修订位置与核对 | 对应反例／应有处理（未运行） |
+| --- | --- | --- |
+| 1 · PBI-79 合流后的引用 | [设计约定第 19 条](../../plugins/ideo-scrum/skills/design-kernel/conventions/design-log.md#ending)与 [Sprint 约定第 17 条](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md#closing)：施工期间可暂留可读旧链。若设计归档已在 `main`、本检出或同行待合入分支，承接 Sprint 收官前对照该目标集成态核实际材料引用（含准备归档的承接 Sprint 日志）与原件，不能只凭旧工作树能读就收官；若各处尚均未归档（仍待首个可读全套的 Review 归档），则保留可用活动引用、记待归档并合入 `main`，由随后归档的 Review 在收官提交前全项目清扫旧路径并把未合入分支残留报 Master。不跨树代改，不改逐字历史承诺快照。 | A 将设计归档并合入 `main`；B 工作树仍有旧目录，旧链能读，但 B 准备合入的归档日志还指旧目录。应在目标集成态发现断链，换成新引用后才能收官。反序时若设计尚在 C 分支未归档、B 先收官合入 `main`，B 留可用旧引并在 `main` 等待 C 归档时按第 19 条第 1 步全项目替换；不留孤儿断链。 |
+| 2 · PBI-77 续接、提交与设计 Git 许可 | [Sprint 约定第 22、26 条](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md#throughout)限定会话交接／停顿时获准才提交，不豁免第 13 条 Test 前冻结提交或第 19 条收官提交——到门若无提交许可须先请示，不能跳过前置；[设计约定第 19、21、24、26 条](../../plugins/ideo-scrum/skills/design-kernel/conventions/design-log.md#throughout)与[设计模板页头](../../plugins/ideo-scrum/skills/design-kernel/conventions/design-backlog-template.md)明确定义设计侧 git 许可由 PO 另批并记入阶段／结束决定，进入或续接阶段不等于授权提交／合并／删分支／推送。 | 只获施工或设计阶段入口许可需要换会话：保存已有改动、日志记状态和接手点，不擅自 commit；正式 Test 冻结提交未完成时，不能以「提交未授权」作理由免除冻结而直接开测。 |
+| 3 · PBI-77／79 两类设计边界 | [Designer CoC](../../plugins/ideo-scrum/commands/designer.md#code-of-conduct)、[README EN](../../README.md#your-first-sentence)／[中文](../../README.zh-CN.md#第一句话怎么说)及 [IDEO 共用技能正文](../../plugins/ideo-scrum/skills/ideo-kernel/SKILL.md#ideo-design-thinking)：正式设计先由 PO 定本轮发散安排且放行 Ideate，再出方案；入口前只谈如何发散。独立五模式不加阶段门；保留原件规则限定设计冲刺，独立 IDEO 原型仍照自己的去向规则。Identity 原句和拟替换句均不再改，仍单列待 PO 明批。 | 设计还在 Define，只有「帮我想想怎么发散」：可谈本轮安排，不画方案或派构思。反例不能反过来要求独立五模式每换模式都请放行，也不能据设计冲刺的留材规则取消独立 IDEO 的原型交接／清理。 |
+| 4 · PBI-69 收官提交与记忆落点 | [Sprint 约定第 19 条第 2 步](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md#closing)、[快速上手 EN](../../docs/quick-start.md#5-close)／[中文](../../docs/quick-start.zh-CN.md#5-收官)与[词汇表](../../docs/glossary.md#process-流程)：收官提交只装 Review／Retro 实际产生的仓内改动；项目记忆在仓外不搬入，没有重要教训不凑条目。无宿主项目记忆时用仓库里逐条可找回的教训笔记，不写指令文件或每期 Retro 汇总；词汇表补回 Review「压缩并归档」、区分「每期 Retro 汇总」与归档摘要。 | 只有一条重要教训，实际已写仓外项目记忆：提交只含实际仓内 Review 等改动，不复制教训来凑齐两种文件。没有重要教训就不新建；无宿主记忆时有两条重要教训，则在仓库教训笔记中分别保存，而非造一个 Sprint Retro 汇总。 |
+| 5 · PBI-76 未触发条件的原因 | [快速上手 EN §4](../../docs/quick-start.md#4-build-and-test)／[中文 §4](../../docs/quick-start.zh-CN.md#4-做和测)明确写清即使非本期重点也不豁免、并记录未适用原因，与 Sprint 第 16 条一致；顺手去掉中文示范块「把 定」多余空格。 | 样本只写「安装条件未触发」而未解释本期没有分发变更：证据记录仍缺原因；必须写清触发条件和未触发原因。仍适用的标准不能借此逃过核验。 |
+| 既有 README 计数与运行期口径 | 双语 README 承诺段与其中 DSH 条目写明提醒按 `scrum/` 活动路径扫描（DSH 限当前检出），已结束待归档日志也可能仍在；并明示现行运行期多日志消息仍打印「开着」／`"open"`，不能把存在或数量当成开放或授权，仍查 `Now` 与记录许可。不改标题、承诺表及 `commitments.sh`／`dsh/commitments.js`／`check_dsh.mjs`。 | 当前检出下有一份仍在做和一份已结束待归档的设计日志：运行期提醒会报两份「开着」；不能据此认定两个设计都开放或获准继续，要查各自 `Now` 和许可。 |
+
+- **二次静查与复核结果（2026-11-20，仅静态与叠加预检，未运行正式 Test）**：
+  - 确定性静查与叠加校验：18 份 `draft/` 零 CR 字节、与基线 `00c224b` 逐份核对且生效源码与运行期读取器未改；新增相对路径 6 处、双语与词汇表 103 处引用、18 份拟稿与本日志共 151 处内部链接及锚点零错误；§2.1 逐字及三处 §1.1 快照核对一致；模板与承诺提取在 `board_check`、临时叠加（`check_docs.py`、`check_dsh.mjs`、`claude plugin validate --strict`、`commitments.sh == dsh/commitments.js`）均通过；仓库基准自检 `check_docs.py --selftest`（17 项）、`scripts/board_check/check.py selftest`（42 项）、`node --test scripts/check_dsh.mjs`（6/6）与 `claude plugin validate --strict plugins/ideo-scrum` 均通过。
+  - 只读复核：独立 Haiku 子代理对二次静态审计全部 13 项发现逐项复核 13/13 通过（无新增冲突或回归）。
+  - **当前停点**：18 份拟稿仍留 `draft/`，工作区未暂存、未提交、未落源（H10 未执行），未进入正式 Test；待交 Master 复核后送 PO 通读强审与 Designer Identity 裁定，并另请对应提交／落源授权。
+
+**2026-11-21（UTC+8）· Review 前全权委托（Master 转达）**。PO 原话：「可以，先审 22、23、25 吧  后面这些，嗯，对话。他们到 review 之前再向我报告。就是后面的事情你都可以决定了，review 之前再向我报告。」
+
+- **Master 代定**：Sprint 22、23、25 正式 Sprint Review 前的阶段门和常规事项由 Master 定；各次决定仍按约定记录。
+- **仍回 PO**：改 Product Goal／Sprint Goal 承诺、取消 Sprint、推翻 PO 定案、PO 点名品味、改本仓库 `CLAUDE.md`、正式 Review／Retro／收官、合并、tag、推送、发布。
+- 本委托不降验收线，不跳过 Increment → Test 阶段门与 Test 前冻结提交。
+
+**2026-11-21 · Master 二轮复核与 H10 放行**。Master 逐份核对 18 份拟稿与基线 `00c224b` 的完整 diff，全部通过、零必改项：对抗审阅五点（合流后归档引用与反序清扫、交接提交不豁免第 13／19 条门及设计侧 git 许可、正式设计与独立五模式边界、PBI-69 收官提交与仓外记忆／兜底笔记、PBI-76 未触发原因）及 README 计数与运行期口径均已落实；零 CR 字节、零 frontmatter 修改、零受保护路径（`references/`、`IDEO-modes/`、`ATTRIBUTION.md`、`hooks/`、`dsh/`、`CLAUDE.md` 等）改动。核对 §1.1 承诺原文后，依 PO 委托放行 H10 落源与本分支本地提交；正式 Test 仍未放行。
+
+- **Designer Identity 单句（单列，待 PO 在正式 Review 前最终确认）**：[Designer](../../plugins/ideo-scrum/commands/designer.md#identity) 的 Identity 仅将与 PBI-79 相抵的「用完即丢／转作规格」句段替换为「the prototype is for learning and stays with the design material; if a Sprint builds its conclusions, that Sprint uses it by reference as a specification, never as an Increment（design-log 第 19 条）」，其余原文一字未动。此前「原句与拟替换句均不再改」的停点记录由本条依 PO 委托更新；该句随 H10 落入本分支，正式 Review 前一并明示 PO 作最终合入确认。
+
+**2026-11-21 · H10 落源与自检（正式 Test 未运行）**。18 份已审稿逐字节落入生效路径（SHA256 落源前后 18/18 一致），临时 `draft/` 目录已删除；本日志内原指向 `draft/` 的审阅链接改指生效路径，落源文字与当时审阅稿逐字相同。
+
+- `python -X utf8 -I scripts/check_docs.py`：5 份文档、103 处链接、0 错误；`--selftest` 17/17。
+- `python -X utf8 -I scripts/board_check/check.py selftest`：42/42。
+- `node --test scripts/check_dsh.mjs`：6/6。
+- `claude plugin validate --strict plugins/ideo-scrum`：Validation passed。
+- 18 份生效文件零 CR 字节；`git diff 00c224b` 与已审稿 1:1（以落源前后哈希比对为证）。
+- 本分支本地提交见紧接本条入库的 `git log`（提交信息 `docs(Sprint 23): H10 落源 18 份已审稿`）；未改版本号、`CLAUDE.md`、hooks、`dsh/` 或第三方原文，未合并、tag、推送或发布。
+- **当前停点**：H10 已提交；最后一轮流程 Test 方案另交 Master 冻结与放行，未获放行前不运行正式 Test，Test 通过也不自动收官。
 
 ## 5. Test
 

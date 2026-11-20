@@ -1,10 +1,10 @@
 # Sprint Backlog — Sprint <NN> (<short name>)
 
 > Started: <date> | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: <branch> | Product Owner: <name> | Scrum Master: <who> | Developer: <who>
-> Now: <the stage the Sprint is in, and the last decision the Product Owner made> — keep it current; a session that picks up the Sprint reads it first (sprint-log.md, convention 22).
+> Now: <the stage the Sprint is in, and the last decision the Product Owner made> — keep it current; read it first on resuming, then check the entry or return permission in the log (sprint-log.md, conventions 22 and 24).
 > Waiting for PO: <number and short question; separate several with a semicolon; None when there are none>
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
-> Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
+> Keep every heading, even the ones filled later; add none. Work remarks go in chapter 4, Increment notes; an optional explanation of the commitment may follow its table (`overview.md` in the scrum-kernel skill folder, conventions 16 and 17).
 
 ## 1. Why
 
@@ -13,11 +13,11 @@
 | Commitment | <Sprint Goal> |
 | --- | --- |
 
-<!-- The Product Owner decides it: this Sprint's one commitment (sprint-log.md, conventions 4 and 20). -->
+<!-- The Product Owner decides the Sprint Goal: one unifying project value goal, or one commitment that may list the lines of work if this Sprint serves as their index (sprint-log.md, convention 4). Keep the exact text in the one-row table; optional prose below can explain it without becoming part of it. -->
 
 ### 1.2 Definition of Done
 
-<!-- The Product Owner picks them: the Definition of Done items that matter to this Sprint (convention 5 in `product-log.md`, in the scrum-kernel skill's `conventions/` folder). The chapter ends with the Product Owner's decision on the Sprint Goal (sprint-log.md, convention 24). -->
+<!-- Link to the complete Definition of Done in the product log (§1.3); record the Product Owner’s verification priorities for this Sprint, not a reduced standard (product-log convention 5; sprint-log convention 4). Record permission to start Why when opening; end the chapter with the Sprint Goal decision and note whether What has been authorized (sprint-log.md, convention 24). -->
 
 ## 2. What
 
@@ -30,7 +30,7 @@
 
 ### 2.2 Refinement
 
-<!-- The Scrum Master leads. What refinement settled, each point with who decided it; the acceptance criteria; the tests' method and pass lines (sprint-log.md, conventions 6 and 13). The chapter ends with the Product Owner's decision that refinement is over (sprint-log.md, convention 24). -->
+<!-- The Scrum Master leads. What refinement settled, each point with who decided it; the acceptance criteria; the method and pass lines set before Test, including the evidence to be checked (sprint-log.md, conventions 6 and 13). End with the Product Owner’s refinement decision and note whether How has been authorized (sprint-log.md, convention 24). -->
 
 ## 3. How
 
@@ -43,12 +43,12 @@
 
 **Risks and open points**
 
-Go-ahead: <date, who gave it, and how far it reaches — for example: commit on the Sprint branch; merge, tag, and release decided at Review; no push>
+Go-ahead: <date; who authorized building, or still waiting; what the permission covers — for example: commit on the Sprint branch; merge, tag, and release decided at Review; no push. Record the goal at the time as convention 24 says. Plan approval alone is not permission to start.>
 
 ## 4. Increment notes
 
-<!-- Whoever does the work writes the notes, in whatever form helps: each change and its reason, and what a new session needs to pick the Sprint up; they may refine the How (sprint-log.md, conventions 9 and 20). A session that picks up the Sprint reads these first. The chapter ends with the Product Owner's decision that the Increment can go into testing (sprint-log.md, convention 24). -->
+<!-- Whoever does the work writes the notes, in whatever form helps: each change and its reason, and what a new session needs to pick the Sprint up; they may refine the How (sprint-log.md, conventions 9 and 20). A session that picks up the Sprint reads these first. Record the Product Owner’s decision on the Increment and whether the Sprint Test has been authorized. Developer checks inside building are not this Test (sprint-log.md, convention 24). -->
 
 ## 5. Test
 
-<!-- Record here the Developer's tests, the reviewer's check (by default the Scrum Master), the Product Owner's end-to-end test, and the result of each Definition of Done item and acceptance criterion. Fix a problem on the spot and test again (sprint-log.md, convention 16). The chapter ends with the Product Owner's decision: close, or go back (sprint-log.md, convention 24). -->
+<!-- Record the Developer’s tests, the independent review and any required Product Owner acceptance. Trace each Output Done standard and item criterion to new evidence, still-valid earlier evidence and why it holds, or a stated condition that did not arise and why. Keep missing evidence visible; record outcome signals separately and judge the Test against the pass lines set beforehand (sprint-log.md, convention 16). End with the Product Owner’s close or return decision (convention 24). -->

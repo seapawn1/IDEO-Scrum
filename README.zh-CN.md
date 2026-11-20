@@ -18,7 +18,7 @@ IDEO-Scrum 给这份工作配一支 Scrum 团队。你当 Product Owner：方向
 
 ## 一次会话大概什么样
 
-这是 Claude Code 里的简化示例，不是实录；措辞会不一样。要看的是它在哪儿停：每个阶段结束，工作都等你。
+这是 Claude Code 里的简化示例，不是实录；措辞会不一样。要看的是它在哪儿停：进入或返回冲刺、设计冲刺的阶段前，工作都等你放行，不把认可上个结果当成继续做的许可。
 
 ```text
 你：           /ideo-scrum:scrum-master
@@ -27,14 +27,14 @@ Scrum Master： 先写产品日志：这个产品是什么，接下来要做到�
 你：           每天早上打印一句名言。一个月后我还乐意用，就算做到了。
 Scrum Master： 已写进 scrum/ProductBacklog.md：产品、Product Goal、三条条目。
                要开一个冲刺吗？
-你：           开。
+你：           开，先开始 Why。
 Scrum Master： Why，Sprint Goal：「每日一句：从清单里打印一句名言；加一句名言只要一条命令。」
                这就是目标。你来定，然后进 What？
-你：           定了。
-               ……What：你选条目、一起精化。How：Developer 写计划……
+你：           目标定了，开始 What。
+               ……What：你选条目、一起精化；再放行 How，Developer 写计划……
 Developer：    计划写在冲刺日志第 3 章。你说「放行」之前，我不动手。
 你：           放行。
-               ……Developer 动手、记笔记；别人来审阅；你定什么时候收官……
+               ……Developer 动手、自检、记笔记；你放行 Test，别人来审阅；你定什么时候收官……
 ```
 
 留在你仓库里的是可以直接读、直接改的纯 Markdown：`scrum/ProductBacklog.md` 和 `scrum/sprint-01-<名字>/SprintBacklog.md`。[快速上手](docs/quick-start.zh-CN.md)一步一步带你走完全程。
@@ -49,7 +49,7 @@ Developer：    计划写在冲刺日志第 3 章。你说「放行」之前，�
 不适合：
 
 - 你要接 JIRA 或 Linear，或者要一个给整个团队用的平台。
-- 你想让 AI 自己把项目跑完：默认每个阶段结束，工作都停下来等你。
+- 你想让 AI 自己把项目跑完：默认进入或返回冲刺、设计冲刺的阶段前，都停下来等你放行。
 - 你要一字不差的 Scrum Guide：见[和教科书上的 Scrum 有什么不同](#和教科书上的-scrum-有什么不同)。
 
 ## 安装
@@ -87,7 +87,7 @@ claude plugin update ideo-scrum@ideo-scrum
 ```text
 /ideo-scrum:scrum-master    # 主持 Planning、检查点、Review 和 Retro；审阅工作；服务你这位 Product Owner
 /ideo-scrum:developer       # 跑一个冲刺：计划、增量、冲刺日志
-/ideo-scrum:designer        # 研究与原型：五模式和设计冲刺；你没定之前不动手做
+/ideo-scrum:designer        # 五模式不设阶段门；设计冲刺先定发散安排、放行 Ideate，再出方案
 /ideo-scrum:stakeholder     # 对产品的外部视角，或者常驻做看板之类杂务的助手
 ```
 
@@ -136,7 +136,7 @@ claude plugin update ideo-scrum@ideo-scrum
 | `scrum/design-<名字>/DesignBacklog.md` | 一次设计：研究和原型 |
 | `scrum/ideo-<名字>/IdeoBacklog.md` | 一轮五模式 |
 | `scrum/ScrumBoard.html` | 看板：一页看清项目走到哪，由日志写成，自己不存状态 |
-| `scrum/documents/` | 已结束的冲刺和设计的归档，以及整个项目共用的文件 |
+| `scrum/documents/` | 归档日志、已结束设计的材料原件，以及整个项目共用的文件 |
 
 插件把这些文件叫日志：产品日志就是 Product Backlog，冲刺日志就是 Sprint Backlog。真实的例子就是本仓库自己的 `scrum/` 文件夹，中文写的：先看 [`ProductBacklog.md`](scrum/ProductBacklog.md) 和一份归档的冲刺日志 [`sprint-19-board-hook.md`](scrum/documents/sprint/sprint-19-board-hook.md)。
 
@@ -150,10 +150,10 @@ claude plugin update ideo-scrum@ideo-scrum
 
 ![同一张看板，深色](docs/images/board-overview.png)
 
-**承诺。** 产品、Product Goal、开着的 Sprint Goal 和设计目标都以日志原文为准。
+**承诺。** 产品、Product Goal、Sprint Goal 和设计目标都逐字来自日志的承诺表。提醒按 `scrum/` 下的活动路径（`scrum/sprint-*/`、`scrum/design-*/`）发现冲刺和设计日志，已经结束、尚待归档的日志也可能仍在那里；现行多日志提示仍把数量写为「开着」，因此发现日志或报出数量，都不代表工作仍开放或阶段已放行：要查 `Now` 和日志中的授权。
 
 - **Claude Code：** 会话开始、恢复、压缩或承诺变化时，一个小 hook 把承诺逐字放进上下文。它要 POSIX 的 `sh`：Windows 上要装 Git for Windows。没在 macOS 上试过。
-- **DSH：** 每次模型执行前，插件读取当前项目的日志。在首次使用、文字变化或压缩移除了上次快照时，把承诺快照补进上下文。开着的冲刺或设计不止一个时，只报数量，不替你选目标。自动读不到承诺时，让角色重读原日志。不用 shell hook。
+- **DSH：** 每次模型执行前，插件读取当前检出的日志。在首次使用、文字变化或压缩移除了上次快照时，把承诺快照补进上下文。活动路径下发现的冲刺日志或设计日志不止一份时，只报该数量，不替你选目标。自动读不到承诺时，让角色重读原日志。不用 shell hook。
 - 要关闭此功能，Claude Code 可把 `IDEO_SCRUM_COMMITMENTS=off` 设在设置文件的 `env` 或 shell 里；DSH 在启动前设置这个环境变量。
 
 ## 了解更多

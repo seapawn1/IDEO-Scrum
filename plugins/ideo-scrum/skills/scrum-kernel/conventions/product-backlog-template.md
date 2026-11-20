@@ -10,14 +10,14 @@
 | Commitment | <product statement> |
 | --- | --- |
 
-<!-- What the product is, in a sentence or two, and its boundary: what it will not do. -->
+<!-- The table holds the product statement, in a sentence or two. Optional prose below can explain its boundary: what it will not do. -->
 
 ### 1.2 Product Goal
 
 | Commitment | <Product Goal> |
 | --- | --- |
 
-<!-- An optional vision line; the current Product Goal; the directions after it (product-log.md, conventions 4 and 18). -->
+<!-- The table holds the current Product Goal. The optional vision line, reasons for the goal, and the directions after it are outside the commitment (product-log.md, conventions 4 and 18). -->
 
 ### 1.3 Definition of Done
 
