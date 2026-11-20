@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 25 (dsh-docs)
 
 > Started: 2026-11-19 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: claude/sprint-25-dsh-docs-4f4070 | Product Owner: SeaPawn | Scrum Master: IDEO-Scrum Master | Developer: Sprint 25 Developer
-> Now: Increment — 2026-11-20 PO 直接授权本会话原样迁移根规则（`AGENTS.md` + `CLAUDE.md` 单向 `@AGENTS.md` 已落盘校验）；中英维护说明送审稿及 Test 隔离预算前置已备，待 Master 审稿并决定 Test 放行。
-> Waiting for PO: None
+> Now: Test（部分放行：仅 H4） — 2026-11-20 Master 依 PO 委托审过 H1–H3 交付（`90aff9a`、`ab4061c`），局部放行 Claude Code 侧 `H4`（`H4-A`、`H4-B` 及压缩后补入取证）；DSH 侧 `H5` 因 `PATH` 无 `dsh` 且缺已确认安全的 `0.2.2-rc.5` Web/Standard 入口暂不放行。
+> Waiting for PO: 1. 明确可安全使用的 DSH 0.2.2-rc.5 Web/Standard 启动入口，以决定 H5 放行及 DSH 压缩后补入取证口径（当前先执行已获放行的 H4）
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
 
@@ -115,6 +115,10 @@ Go-ahead（2026-11-20，SeaPawn）：原话「可以放行吧。」按已审计�
 **PO 委托（2026-11-20，UTC+8，Master 转达）：**「现在他们全部都开跑了，这样子我跟你讲。嗯，每一个对话，我现在给你权限，每一个对话，等到他们 review 之前向我报告就可以了。不意是每一个对话哦。因为他们现在都已经开始跑了。」
 
 Sprint 21–25 的 Review 前阶段门和常规事项交 Master；本期安全隔离、安装前置与证据方案齐备后，请 Master 决定是否进入 Test。目前尚未放行。更改 Product Goal、取消 Sprint、推翻 PO 决定、PO 点名的品味、正式 Review／Retro／收官及推送发布仍交 PO；本仓库 `CLAUDE.md` 仍须 PO 直接授权实际执行会话。这不扩大任何工具权限或提交、安装范围。
+
+**Master 审阅与 Test 阶段门裁定（2026-11-20，依 PO 对 Sprint 21–25 Review 前阶段门委托）：** 已审 `90aff9a`、`ab4061c` 与 `2800cc0`；核对静态／单元测试全过，`docs/maintaining*.md` 与 `host-evidence.md` 当前无必改项（草稿提示、`PAIRS` 并入、README／快速上手定稿同步留待 H2 最终收口）。决定时的 Sprint Goal 原文：「换宿主不换规矩：使用 Claude Code 或 DSH 的人，照各自的说明就能装好 0.6.3、叫出角色，用上同一套方法论；已装 6.0.3 的人知道怎样迁移，维护者只需维护一份共用规则。」
+- **放行 `H4`（仅 Claude Code 侧 `H4-A` 新装、`H4-B` `v6.0.3 → 0.6.3` 迁移与至少一组的 `/compact` 压缩后承诺复注取证）**：先跑最小隔离冒烟（确认 Git 市场仅写入独立 `CLAUDE_CONFIG_DIR` 零写入 `~/.claude`、`/context all` 无上级或用户指令文件、`claude-magpie` 白名单隔离、`commitments.sh` 显式设本轮独立 `TMPDIR` 且 `sh` 来自 Git for Windows 而非 WSL）；`H4-A`/`H4-B` 均走经过版本缓存的 Git 市场夹具（不用 `--plugin-dir` 或本地目录市场替代迁移），原始流存仓外 `S:\IDEO-Scrum-Archives\sprint-25-dsh-docs\test-runs\`，入仓只留脱敏汇总。
+- **暂不放行 `H5`（DSH `0.2.2-rc.5` 侧）**：前置缺口已报 PO；在 PO 明确安全入口前，不探测或触碰 PO 常用 DSH 配置、不擅自安装 `dsh`、不用 `dsh --profile headless` 冒充 Web／Standard。H4 期间暂不修改 README／快速上手／`check_docs.py` 及 `CLAUDE.md`，不降通过线，不进正式 Review、合并、打 tag、推送或发布。
 
 ## 5. Test
 
