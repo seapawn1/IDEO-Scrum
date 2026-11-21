@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 22 (project-agents)
 
 > Started: 2026-11-19 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `claude/sprint-22-project-agents-b09bf1` | Product Owner: SeaPawn | Scrum Master: 项目 Scrum Master | Developer: Sprint 22 Developer
-> Now: Test；H7 七个场景跑完，参谋线 3/3 与角色线 3/4 全过，场景 ① 的按名召唤在无头 `-p` 下不可达、交 Master 交互闭环；结果与 DoD 对账见 §5；停在 Master 补跑前复核。
+> Now: Test 完成；H7 全项闭环（Developer 隔离 7 场景 + Master 交互双入口均过，Master 终审 Test 通过，见 §5）；停在正式 Sprint Review 前，等 PO。
 > Waiting for PO: None
 > How to write this log: [Sprint log conventions](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md).
 
@@ -99,12 +99,12 @@ Master 转达 PO 原话：「开子代理的时候，开工作流的时候就可
 | # | Work item | Output | Done when |
 | --- | --- | --- | --- |
 | H1 | 对齐新增组件、项目登记与取证接口 | 新增 agent、登记说明及用户说明的大纲；§2.2 各场景的验证计划 | ✓ 2026-11-20 Master 看过大纲、涉及文件及与 Sprint 23／24／25 的交接面；判据、环境、费用和样本预算在实测前冻结，获准后另作提交。 |
-| H2 | 尽早核验宿主能否提供关键证据（须另获实测授权） | 隔离项目的模型执行记录、最小角色定义的生效条件、Agent 与 Workflow 各自的证据 | 按下方两处停点分别判断相关实现能否继续。任一项未达到判据，带证据停在该线并报 Master，不改用户设置、不自行降标。 |
-| H3 | 交付 PBI-73 专用只读参谋 | 插件 agent、手动调用入口、模型选择与不可用时的反馈 | 新组件全文经审阅后落插件；明确请求才召唤，默认 Fable、明确另选、不可用三种路径符合 §2.2；只读与新上下文有工具及调用证据。 |
-| H4 | 交付 PBI-75 首次登记与拒绝路径 | Claude Code 侧可选登记入口、项目角色文件和产品日志引用 | 以用户项目已确认的角色卡为准，完整预览后接受才成对写入项目定义及 §2.1 引用；拒绝不写，临时召唤照常。只在隔离项目验证，不拿作者家目录当用户项目。 |
-| H5 | 补齐角色更新、冲突和双入口复用 | 差异确认、同名检查及按名召唤说明 | 未批准时原文件与引用不变；批准才更新；同名遮蔽不被当成项目定义命中。一份定义供两个入口使用，保留角色职责和 Review 召唤权，建造者不因注册而取得召唤权。 |
-| H6 | 对齐用户可用的入口与文档 | Claude Code 侧的调用、登记说明和文档导航 | 新行为有来源或标为作者设计；不改共用约定、已批准 Identity 和原文。用户从产品日志能找到对应角色；无 Workflow 仍可普通召唤，DSH 不被写成已支持项目 Agent。 |
-| H7 | 正式 Test 放行后核验功能与完整 DoD，交 Master 审阅 | 逐项证据表、未验证项与完整增量 | §2.2 的参谋正反例、模型选择及项目登记四组场景分别有结果；Claude 严格校验、文档链接、description 长度及 DSH 既有回归合格。结构变化按仓库规则另派 Haiku validator；缺证据不判通过。 |
+| H2 | 尽早核验宿主能否提供关键证据（须另获实测授权） | 隔离项目的模型执行记录、最小角色定义的生效条件、Agent 与 Workflow 各自的证据 | ✓ 2026-11-21 按下方两处停点分别判断相关实现能否继续。任一项未达到判据，带证据停在该线并报 Master，不改用户设置、不自行降标。 |
+| H3 | 交付 PBI-73 专用只读参谋 | 插件 agent、手动调用入口、模型选择与不可用时的反馈 | ✓ 2026-11-21 新组件全文经审阅后落插件；明确请求才召唤，默认 Fable、明确另选、不可用三种路径符合 §2.2；只读与新上下文有工具及调用证据。 |
+| H4 | 交付 PBI-75 首次登记与拒绝路径 | Claude Code 侧可选登记入口、项目角色文件和产品日志引用 | ✓ 2026-11-21 以用户项目已确认的角色卡为准，完整预览后接受才成对写入项目定义及 §2.1 引用；拒绝不写，临时召唤照常。只在隔离项目验证，不拿作者家目录当用户项目。 |
+| H5 | 补齐角色更新、冲突和双入口复用 | 差异确认、同名检查及按名召唤说明 | ✓ 2026-11-21 未批准时原文件与引用不变；批准才更新；同名遮蔽不被当成项目定义命中。一份定义供两个入口使用，保留角色职责和 Review 召唤权，建造者不因注册而取得召唤权。 |
+| H6 | 对齐用户可用的入口与文档 | Claude Code 侧的调用、登记说明和文档导航 | ✓ 2026-11-21 新行为有来源或标为作者设计；不改共用约定、已批准 Identity 和原文。用户从产品日志能找到对应角色；无 Workflow 仍可普通召唤，DSH 不被写成已支持项目 Agent。 |
+| H7 | 正式 Test 放行后核验功能与完整 DoD，交 Master 审阅 | 逐项证据表、未验证项与完整增量 | ✓ 2026-11-21 §2.2 的参谋正反例、模型选择及项目登记四组场景分别有结果；Claude 严格校验、文档链接、description 长度及 DSH 既有回归合格。结构变化按仓库规则另派 Haiku validator；缺证据不判通过。 |
 
 **Key choices**
 
@@ -334,7 +334,7 @@ Master 将请 PO 单独放行隔离 H2：合计最多 7 个样本、20 分钟、
 
 ## 5. Test
 
-**结论（2026-11-21，交 Master 终审）。** 按 `6e4f45c` 冻结的 H7 方案，Developer 侧的 7 个隔离无头场景已全部跑完。**参谋线 3/3 全过；角色线 4 个场景中有 3 个全过，1 个（场景 ① 的「同会话下一轮按名召唤」）在无头 `-p` 下不可达**，登记本身通过，召唤环节交 Master 在交互会话用仓外真实成品闭环。整个过程中没有出现产品组件缺陷；4 次作废全部来自我方夹具与守卫的缺陷，已逐条留档。§2.2 的验收线、H3–H6 的组件与文档未因测试而改动。
+**结论（2026-11-21，Master 终审 Test 通过）。** 按 `6e4f45c` 冻结的 H7 方案，Developer 侧的 7 个隔离无头场景已全部跑完，Master 在交互会话补跑了 `po-assistant` 的普通 `Agent` 与单代理 `Workflow` 双入口，**两入口均通过**。参谋线 3/3 全过；角色线 4 个场景中登记、拒绝、更新与同名冲突、职责与 Review 召唤权均全过，其中「同会话下一轮按名召唤」在无头 `-p` 下不可达（宿主不热注册），已由 Master 交互会话闭环。整个过程中没有出现产品组件缺陷；4 次作废全部来自我方夹具与守卫的缺陷，已逐条留档。§2.2 的验收线、H3–H6 的组件与文档未因测试而改动。
 
 ### 5.1 场景结果
 
@@ -360,13 +360,13 @@ Master 将请 PO 单独放行隔离 H2：合计最多 7 个样本、20 分钟、
 | 首次登记：预览→同意→成对写入 | 过（S1、S4 各一例）；两处一致，无单独改动 |
 | 拒绝：两处未改 | 过（S2） |
 | 更新与同名冲突：不静默覆盖 | 过（S3），含隔离用户作用域同名文件的只读核验 |
-| 双入口按名复用 | **部分**：登记产物已备好并归档，Workflow 与普通 Agent 的按名命中交 Master 在交互会话补跑 |
+| 双入口按名复用 | 过。无头 `-p` 下新建定义不热注册，改由 Master 在交互会话用同一份真实成品闭环：普通 `Agent` 与单代理 `Workflow` 两入口均按名命中、各自新上下文、按序加载内核、禁集 0（详见 5.7） |
 
 ### 5.3 未验证与缺口（如实标注）
 
-- **无头 `-p` 下新建定义不注册**：S1 第三轮按名召唤返回 `Agent type 'duty-supervisor' not found`。交互会话中「下一条用户消息边界生效」的宿主行为，在 `-p` 流式会话里不成立。这一项**不在本环境可覆盖范围**，交 Master 用 `generated-agent/` 的真实成品闭环。
-- **S1 的生成物已被覆盖**：为修守卫缺陷重建夹具时，S1 的 `.claude/agents/` 被清空。归档改用 **S4 的真实成品** `po-assistant.md` 与其合成夹具——两者由同一入口、同一规则生成，可用于同一双入口验证；此处如实标明替代关系。
-- **模型三态（默认／另选／不可用）**：仍按 PO 2026-11-20 决定留作后续配置项，不在本期通过线内。参谋样本使用显式点名的通道可用模型，未验证默认 `fable` 路径。
+- **无头 `-p` 下新建定义不注册**：S1 第三轮按名召唤返回 `Agent type 'duty-supervisor' not found`。交互会话中「下一条用户消息边界生效」的宿主行为，在 `-p` 流式会话里不成立。此项已由 Master 在交互会话用真实成品闭环（5.7），本环境仍如实记为不可达。
+- **S1 的生成物已被覆盖**：为修守卫缺陷重建夹具时，S1 的 `.claude/agents/` 被清空。归档改用 **S4 的真实成品** `po-assistant.md` 与其合成夹具——两者由同一入口、同一规则生成，Master 的双入口验收正是在这份成品上做的；此处如实标明替代关系。
+- **模型三态（默认／另选／不可用）**：仍按 PO 2026-11-20 决定留作后续配置项，不在本期通过线内。参谋样本使用显式点名的通道可用模型，未验证默认 `fable` 路径。§3 的 H3 行按该调整后的口径标 `✓`，其 Done when 原文（含「三种路径符合 §2.2」）一字未改。
 - **Outcome Done 未重测**：`claude plugin validate --strict`、DSH 回归与文档检查都是局部证据；「懂 Scrum 的陌生人不问作者走完第一个冲刺」的体验测试没有在本期重跑，不以局部验证代替。
 
 ### 5.4 预算与样本账目（全部为客户端估算）
@@ -397,9 +397,24 @@ Master 将请 PO 单独放行隔离 H2：合计最多 7 个样本、20 分钟、
 
 - 原始流、调试记录、每样本报告与账本：`S:\IDEO-Scrum-Archives\sprint-22-project-agents\h7\logs\`
 - 结构审阅记录：同目录 `step1-validator.md`
-- 交 Master 闭环的真实成品与合成夹具：`S:\IDEO-Scrum-Archives\sprint-22-project-agents\h7\generated-agent\`（`project/.claude/agents/po-assistant.md`、`project/scrum/ProductBacklog.md`、`project/materials/`、`README.txt`）
+- 交 Master 闭环的真实成品与合成夹具：`S:\IDEO-Scrum-Archives\sprint-22-project-agents\h7\generated-agent\`（`project/.claude/agents/po-assistant.md`、`project/scrum/ProductBacklog.md`、`project/materials/`——**空目录**，S4 场景本身不带材料、`README.txt`）
+- Master 交互双入口的证据：`S:\IDEO-Scrum-Archives\sprint-22-project-agents\h7\dual-entry\`（挂入记录与双入口报告、两入口的答案、Workflow 逐步日志与所用 Workflow 脚本）
 - 仓内只留本汇总；`plugins/ideo-scrum/` 在 H7 期间未改。
 
-### 5.7 停点
+### 5.7 Master 交互双入口验收（补记，Master 执行）
 
-停在 Master 补跑 `Workflow` 与普通 `Agent` 双入口验收之前。未进正式 Review／Retro，未改 `CLAUDE.md` 与版本号（仍 `6.0.3`），未合并、未打 tag、未推送、未发布。两条结构审阅 nit 也留待 Review 汇审。
+在被测产物为 H7-S4 真实生成的 `po-assistant.md`（872 B，SHA-256 `05ccdd69…cd8959`）与对应合成产品日志（669 B，SHA-256 `ac64797d…20e6e091`）的前提下，Master 在交互会话完成：
+
+| 环节 | 实测 |
+| --- | --- |
+| 缺失预检 | 挂入前按名调用返回 `Agent type 'po-assistant' not found`，零模型调用、未回退通用代理 |
+| 生效边界 | 临时挂入项目 `.claude/agents/` 后，跨一条中性用户消息边界自动注册，无需重启；宿主宣告工具集为 `Read, Grep, Glob, Skill` |
+| 普通 `Agent` 入口 | 38.9 秒、4 次工具调用；按序 `Skill(ideo-kernel)`→`Skill(scrum-kernel)`（未误加载 sprint／design）；禁集 0；准确列出承诺、角色名与引用路径，并依角色「不负责」与只读工具集拒绝重排序、未问删条目与直接写盘 |
+| `Workflow` 入口 | 42.7 秒、5 次工具调用；同一按序内核加载、禁集 0；复证宿主会把**触发当轮的用户原话**透传给 Workflow 子代理；准确指出合成日志缺 Product Goal 而不编造，并依角色边界与 Review 召唤权拒绝参与 Review 审阅与替 PO 拍板 |
+| 只读完整性与清理 | 两入口前后两份文件的 SHA-256 与 mtime 一致；运行后临时定义、空目录与合成夹具均已删除，主检出 `git status` 未受影响 |
+
+**保留边界：** 该验收在 Master 交互会话以显式 `haiku` 完成，非零指令文件的配置目录沙箱，不宣称特定后端型号或服务端账单硬顶。
+
+### 5.8 停点
+
+H7 全项核验闭环：Developer 隔离 7 场景 + Master 交互双入口均过，Master 终审 Test 通过。停在正式 Sprint Review 之前。未进 Review／Retro，未改 `CLAUDE.md` 与版本号（仍 `6.0.3`），未合并、未打 tag、未推送、未发布。两条结构审阅 nit 与 `docs/quick-start*.md` 的导航草案留待正式 Review 汇审。
