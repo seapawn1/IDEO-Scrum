@@ -138,10 +138,14 @@
   .r .t { flex:1 1 12rem; }
   .r em { font-style:normal; font-size:.7rem; color:var(--dim); }
   .r.g-later { opacity:var(--later); }
-  .vmap { display:flex; flex-direction:column; gap:.4rem; margin-left:1rem; font-size:.82rem; }
-  .vmap div { position:relative; padding:.3rem .7rem; border-radius:6px; background:var(--panel); }
-  .vmap div + div::before { content:"↓"; position:absolute; left:-.95rem; top:.3rem; color:var(--node); }
-  .story { display:flex; flex-wrap:wrap; gap:.5rem; }
+  .design-solution { padding-left:.8rem; border-left:3px solid var(--design); }
+  .design-solution strong { display:block; font-size:1.08rem; line-height:1.4; }
+  .design-solution p { max-width:65ch; margin:0; font-size:.9rem; white-space:pre-line; }
+  .design-solution strong + p { margin-top:.35rem; }
+  .design-empty { margin:0; font-size:.84rem; color:var(--dim); }
+  .design-story { margin-top:.75rem; }
+  .design-story summary { cursor:pointer; font-size:.82rem; color:var(--dim); }
+  .story { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.4rem; }
   .story div { flex:1 1 10rem; padding:.6rem .7rem; border-radius:8px; background:var(--panel); font-size:.78rem; line-height:1.5; color:var(--dim); }
   .story b { display:block; margin-bottom:.2rem; font-size:.82rem; color:var(--text); }
   .foot { margin-top:1.2rem; padding-top:.7rem; border-top:1px solid var(--rule); font-size:.72rem; color:var(--dim); }
@@ -209,7 +213,8 @@
       l1: '① 承诺', designGoal: '设计目标',
       productL2: '② 路线 · 架构（主干）', productL3: function (n) { return '③ 条目 · 没做完的 ' + n + ' 条'; },
       sprintL2: '② 路线 · 条目往前走', sprintL3: function (d, t) { return '③ How · 工作块 ✓ ' + d + ' / ' + t; },
-      designL2: '② 路线 · 地图', designL3: '③ 方案',
+      designL2: '② 路线 · 地图', designL3: '③ 方案', designStory: '故事板',
+      noDesignMap: '尚未记录地图主线', noSolution: '尚未选定方案', missingSolution: '没有方案数据',
       doneOf: function (d, t) { return '✓ ' + d + ' / ' + t; }, perItem: function (d, t) { return '✓ ' + d + ' / ' + t + ' 块'; },
       now: '现在 · Now', ideo: 'IDEO 日志', notHere: '不在这个工作区',
       emptyItems: '写好产品日志的条目，它们会从这里长出来', emptyNodes: '没有开着的冲刺或设计'
@@ -222,7 +227,8 @@
       l1: '① Commitments', designGoal: 'Design goal',
       productL2: '② Route · architecture (backbone)', productL3: function (n) { return '③ Items · ' + n + ' not done'; },
       sprintL2: '② Route · items in order', sprintL3: function (d, t) { return '③ How · work items ✓ ' + d + ' / ' + t; },
-      designL2: '② Route · map', designL3: '③ Plan',
+      designL2: '② Route · map', designL3: '③ Solution', designStory: 'Storyboard',
+      noDesignMap: 'No route recorded yet', noSolution: 'No solution chosen yet', missingSolution: 'Solution data unavailable',
       doneOf: function (d, t) { return '✓ ' + d + ' / ' + t; }, perItem: function (d, t) { return '✓ ' + d + ' / ' + t; },
       now: 'Now', ideo: 'IDEO log', notHere: 'not in this working copy',
       emptyItems: 'Write items in the product log; they will grow from here.', emptyNodes: 'No Sprint or design is open.'
@@ -547,15 +553,34 @@
   }
 
   function designCard(d) {
-    var c = card(d.id), f = arr(d['for']);
+    var c = card(d.id);
     add(c, bar(S.design + ' · ' + designName(d), 'var(--design)'));
-    add(c, add(layer(S.l1), commit(S.designGoal + (f.length ? ' · ' + S.forItem + ' ' + f.join(zh ? '、' : ', ') : ''), d.goal, 'var(--design)')));
-    var l2 = layer(S.designL2), vm = h('div', 'vmap');
-    arr(d.map).forEach(function (t) { vm.appendChild(h('div', '', t)); });
-    if (arr(d.map).length) { l2.appendChild(vm); c.appendChild(l2); }
-    var l3 = layer(S.designL3), st = h('div', 'story');
-    arr(d.story).forEach(function (x) { st.appendChild(add(h('div'), h('b', '', x.title), document.createTextNode(x.text || ''))); });
-    if (arr(d.story).length) { l3.appendChild(st); c.appendChild(l3); }
+    add(c, add(layer(S.l1), commit(S.designGoal, d.goal, 'var(--design)')));
+
+    var l2 = layer(S.designL2), route = h('ol', 'metro'), stops = arr(d.map);
+    route.setAttribute('role', 'list');
+    stops.forEach(function (t) { add(route, add(h('li'), h('span', '', t))); });
+    add(c, add(l2, stops.length ? route : h('p', 'design-empty', S.noDesignMap)));
+
+    var l3 = layer(S.designL3), solution = d.solution;
+    var title = solution && typeof solution.title === 'string' && solution.title.trim();
+    var usage = solution && typeof solution.text === 'string' && solution.text.trim();
+    if (title || usage) {
+      l3.setAttribute('data-solution', 'chosen');
+      add(l3, add(h('div', 'design-solution'), title ? h('strong', '', title) : null, usage ? h('p', '', usage) : null));
+      var frames = arr(d.story).filter(function (x) {
+        return x && typeof x.title === 'string' && x.title.trim() && typeof x.text === 'string' && x.text.trim();
+      });
+      if (frames.length) {
+        var story = h('div', 'story');
+        frames.forEach(function (x) { add(story, add(h('div'), h('b', '', x.title), document.createTextNode(x.text || ''))); });
+        add(l3, add(h('details', 'design-story'), h('summary', '', S.designStory), story));
+      }
+    } else {
+      l3.setAttribute('data-solution', solution === null ? 'undecided' : 'unavailable');
+      add(l3, h('p', 'design-empty', solution === null ? S.noSolution : S.missingSolution));
+    }
+    add(c, l3);
     foot(c, [nowBlock(d.now)].concat(ideoLines(d.ideo), [sourceLine(d.source, d.id + '/DesignBacklog.md', 'DesignBacklog.md', d.id)]));
   }
 

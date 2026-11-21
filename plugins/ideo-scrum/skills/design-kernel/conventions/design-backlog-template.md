@@ -1,16 +1,16 @@
 # Design Backlog — <suffix>
 
 > Opened <date> | From: <the product backlog item, the Sprint and the hard point that raised it, or the blank page> | Branch: <branch> | Product Owner: <name> | Designer: <who; takes over at Ideate> | Scrum Master: <who; settles Empathize and Define with the Product Owner and writes them down>
-> Now: <the stage the design is in, and the next step> — keep it current; a session that picks up the design reads this first (convention 24).
+> Now: <the stage the design is in, and the next step> — keep it current; a session that picks up the design reads this first, then checks the recorded stage and git permissions (conventions 24 and 26); neither `Now` nor stage permission authorizes committing by itself.
 > Waiting for PO: <number and short question; separate several with a semicolon; None when there are none>
-> Ends when the design questions are answered or the Product Owner stops the design (convention 19 in `design-log.md`); its conclusions flow back to the product log — a blank page's design fills it — and the first Sprint Review after that archives this file (convention 17 in `sprint-log.md`, in the sprint-kernel skill's `conventions/` folder).
+> Ends when the Product Owner decides the design questions are answered, or stops it (convention 19 in `design-log.md`); its conclusions flow back to the product log — a blank page's design fills it — and the first Sprint Review that can read the complete log and original material in its own checkout archives them (`../sprint-kernel/conventions/sprint-log.md`, convention 17). Until then use `Now` to show that the design has ended and awaits archival.
 > Methods: the stage excerpts in the design-kernel skill (excerpt paths below are relative to that skill's folder), and in every stage the ideo-kernel's IDEO mode and methods, as the design-kernel `SKILL.md` requires.
 > This log records what each stage produced, not every step taken to get there (convention 22 in `design-log.md`).
 > How to write this log: `design-log.md` in the design-kernel skill's `conventions/` folder.
 
 ## 1. Empathize
 
-<!-- Excerpts: steps/1-1-define-the-challenge.md, steps/1-2-start-at-the-end.md, steps/1-3-ask-the-experts.md. IDEO mode: empathize. Start with the people concerned (convention 6); write the challenge, the design goal, and the design questions from what they told you, each finding with its source (convention 6); ask the experts and research only when needed (convention 7); write what they change into the sections below and into the map. The chapter ends with the Product Owner's decision on its result (convention 26). -->
+<!-- Excerpts: steps/1-1-define-the-challenge.md, steps/1-2-start-at-the-end.md, steps/1-3-ask-the-experts.md. IDEO mode: empathize. Record permission to start Empathize when opening (convention 26). Once authorized, start with the people concerned (convention 6); write the challenge, the design goal, and the design questions from what they told you, each finding with its source (convention 6); ask the experts and research only when needed (convention 7); write what they change into the sections below and into the map. The chapter ends with the Product Owner's decision on its result (convention 26). -->
 
 ### 1.1 Challenge
 
@@ -21,7 +21,7 @@
 | Commitment | <design goal> |
 | --- | --- |
 
-<!-- Optimistic: why are we doing this, and where do we want to be? The Product Owner decides. A vision, not how (convention 6). -->
+<!-- Optimistic: why are we doing this, and where do we want to be? The Product Owner decides. A vision, not how (convention 6). An optional explanation can follow the table; it is not part of the goal. -->
 
 ### 1.3 Design questions
 
@@ -41,7 +41,7 @@
 
 ## 3. Ideate
 
-<!-- Excerpts: steps/3-1-remix-and-improve.md, steps/3-2-sketch.md, steps/3-3-decide.md, steps/3-4-rumble.md, steps/3-5-storyboard.md. IDEO mode: ideate. The book's steps are one way to reach a solution, not the only one: use the ideo-kernel's Ideate methods as `SKILL.md` requires, and have whoever sketches diverge before converging (convention 10); Lightning Demos and subagent sketches are optional (conventions 9 and 11). The chapter ends with the Product Owner's decision on its result (convention 26). -->
+<!-- Excerpts: steps/3-1-remix-and-improve.md, steps/3-2-sketch.md, steps/3-3-decide.md, steps/3-4-rumble.md, steps/3-5-storyboard.md. IDEO mode: ideate. The book's steps are one way to reach a solution, not the only one: use the ideo-kernel's Ideate methods as `SKILL.md` requires, and have whoever sketches diverge before converging (convention 10); Before doing the work, record how the Product Owner decided to run this round of divergence and whether Ideate is authorized (convention 26). Lightning Demos and subagent sketches are optional (conventions 9 and 11). The chapter ends with the Product Owner's decision on its result (convention 26). -->
 
 ### 3.1 Solution
 
@@ -53,15 +53,15 @@
 
 ## 4. Prototype
 
-<!-- Excerpts: steps/4-1-fake-it.md, steps/4-2-prototype.md. IDEO mode: prototype. The chapter ends with the Product Owner's decision on its result (convention 26). -->
+<!-- Excerpts: steps/4-1-fake-it.md, steps/4-2-prototype.md. IDEO mode: prototype. A chosen solution alone does not start Prototype; check its permission (convention 26). The chapter ends with the Product Owner's decision on its result (convention 26). -->
 
-<!-- Each part of the prototype and the design question it tests (convention 16); where it is: the design folder, or, once it is handed to the Sprint that builds the conclusions, that Sprint's folder; and, once it is deleted, the commit that holds it (convention 19). -->
+<!-- List each prototype part, the question it tests, and the usable path to the preserved original. When archiving, verify that the original is readable at its new path before updating the reference. A commit ID or a summary alone is not the location (design-log.md, conventions 16 and 19). -->
 
 | Part | The design question it tests | Where it is |
 | --- | --- | --- |
 
 ## 5. Test
 
-<!-- Excerpts: steps/5-1-small-data.md, steps/5-2-interview.md, steps/5-3-learn.md. IDEO mode: test. Write the criteria here before the test (convention 18), with the role cards you will test with and why (convention 17). The chapter ends with the Product Owner's decision: end the design, or go back to the stage whose answer was wrong (convention 26). Next to it, a line or two on what the design taught about how to work, kept for the Retrospective of the Sprint that archives this log (convention 19). -->
+<!-- Excerpts: steps/5-1-small-data.md, steps/5-2-interview.md, steps/5-3-learn.md. IDEO mode: test. A trial run does not start Test; check its permission (convention 26). Write the criteria here before testing (convention 18), with the role cards you will test with and why (convention 17). The chapter ends with the Product Owner's decision: end the design, or go back to the stage whose answer was wrong (convention 26). Next to it, a line or two on what the design taught about how to work, as input to the Retrospective of the Sprint that archives this log (convention 19). Link to the working material in the chapters it belongs to; keep it whether the conclusions will be built or not. -->
 
 <!-- Who tested and what showed up, and what the trial run found; then answer each design question in 1.3 — yes, no, or not yet, with the evidence — and say where each conclusion flows back. -->

@@ -18,7 +18,7 @@ It is not a project-management tool: no JIRA or Linear integration, and not a pl
 
 ## A session, shortened
 
-A shortened Claude Code example, not a transcript; the wording will differ. The stops are the point: at the end of each stage the work waits for you.
+A shortened Claude Code example, not a transcript; the wording will differ. The stops are the point: the work waits for your permission before starting or returning to a Sprint or design stage, not just for approval of the previous result.
 
 ```text
 You:            /ideo-scrum:scrum-master
@@ -27,14 +27,14 @@ Scrum Master:   First the product log: what is the product, and what should it a
 You:            It prints a quote every morning. Done means I still enjoy it after a month.
 Scrum Master:   Written to scrum/ProductBacklog.md: the product, the Product Goal, three items.
                 Shall we open a Sprint?
-You:            Yes.
+You:            Open it and start Why.
 Scrum Master:   Why, the Sprint Goal: "Daily quote: it prints one quote from a list; adding a quote
                 takes one command." That is the goal. Do you decide it, and move on to What?
-You:            Yes.
-                ... What: you pick and refine the items. How: the Developer writes a plan ...
+You:            Set that goal and start What.
+                ... What: you pick and refine the items; you then authorize How, and the Developer writes a plan ...
 Developer:      The plan is in chapter 3 of the sprint log. I won't build until you give the go-ahead.
 You:            Go ahead.
-                ... the Developer builds and keeps notes; someone else reviews; you decide when to close ...
+                ... the Developer builds, checks, and keeps notes; you authorize Test; someone else reviews; you decide when to close ...
 ```
 
 What this leaves in your repository is plain Markdown you can read and edit: `scrum/ProductBacklog.md` and `scrum/sprint-01-<name>/SprintBacklog.md`. The [quick start](docs/quick-start.md) walks through the whole thing, step by step.
@@ -49,7 +49,7 @@ A good fit:
 Not a fit:
 
 - You need JIRA or Linear integration, or a platform for a whole team.
-- You want the AI to run a project on its own: by default the work stops for you at the end of every stage.
+- You want the AI to run a project on its own: by default, starting or returning to a Sprint or design stage waits for your permission.
 - You want Scrum to the letter of the Scrum Guide: see [How it differs from textbook Scrum](#how-it-differs-from-textbook-scrum).
 
 ## Install
@@ -89,9 +89,11 @@ In a Claude Code session, call a role:
 ```text
 /ideo-scrum:scrum-master    # facilitates Planning, checkpoints, Review and Retro; reviews the work; serves you, the Product Owner
 /ideo-scrum:developer       # runs a Sprint: the plan, the Increment, the sprint log
-/ideo-scrum:designer        # research and prototypes: the five modes and design sprints; builds nothing before you decide
+/ideo-scrum:designer        # five modes without stage gates; in a design sprint, agree how to diverge and authorize Ideate before ideas
 /ideo-scrum:stakeholder     # an outside view of the product, or a standing assistant for chores such as the board
 ```
+
+Each Claude Code role command calls its required kernels in order before starting work (see the [role convention](plugins/ideo-scrum/skills/scrum-kernel/overview.md#who-does-what)).
 
 In a DSH **Standard** session, use its native skill entries:
 
@@ -102,7 +104,7 @@ In a DSH **Standard** session, use its native skill entries:
 /stakeholder
 ```
 
-Type the entry or choose it from the `/` suggestions. You can add the request in the same message: `/scrum-master Help me plan the next Sprint.` The role brings in IDEO and Scrum in order; Sprint and Design load only as needed. To explicitly load both for a task that spans them, start with `/scrum-master /sprint-kernel /design-kernel`. DSH also recognizes a standalone `/name` in the middle of a sentence; wrap it in backticks when you are only mentioning it.
+Type the entry or choose it from the `/` suggestions. You can add the request in the same message: `/scrum-master Help me plan the next Sprint.` In DSH, the role brings in IDEO and Scrum in order; Sprint and Design load only as needed. To explicitly load both for a task that spans them, start with `/scrum-master /sprint-kernel /design-kernel`. DSH also recognizes a standalone `/name` in the middle of a sentence; wrap it in backticks when you are only mentioning it.
 
 In Claude Code, you can also say it in your own words:
 
@@ -138,7 +140,7 @@ Your project grows a `scrum/` folder. This is the author's layout; use your proj
 | `scrum/design-<name>/DesignBacklog.md` | One design: research and prototypes |
 | `scrum/ideo-<name>/IdeoBacklog.md` | One run of the five modes |
 | `scrum/ScrumBoard.html` | The board: a one-page view of where the project stands, written from the logs; it keeps no state of its own |
-| `scrum/documents/` | Archives of finished Sprints and designs, and files that serve the whole project |
+| `scrum/documents/` | Archived logs, the original material of finished designs, and files serving the whole project |
 
 The plugin calls these files logs: the product log is the Product Backlog, the sprint log is the Sprint Backlog. A real example is this repository's own `scrum/` folder, written in Chinese: start with [`ProductBacklog.md`](scrum/ProductBacklog.md) and one archived sprint log, [`sprint-19-board-hook.md`](scrum/documents/sprint/sprint-19-board-hook.md).
 
@@ -146,22 +148,23 @@ The plugin calls these files logs: the product log is the Product Backlog, the s
 
 Two small things help you find your place when a project has several logs.
 
-**The board.** Ask the Scrum Master, or a standing helper session, for the board: it writes `scrum/ScrumBoard.html` from your logs. Open it in a browser. A flow diagram shows the product, the items not done, and the Sprint or design each one flows into; pressing a Sprint or a design opens its card with the goal, the route, and the work items done so far. It is made to be read at a glance, on a wide screen, a portrait screen, or a phone, and it follows your system's light or dark setting. A cheap model can write it, following [`board-log.md`](plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md); delete it any time and ask again.
+**The board.** Ask the Scrum Master, or a standing helper session, for the board: it writes `scrum/ScrumBoard.html` from your logs. Open it in a browser. A flow diagram shows the product, the items not done, and the Sprint or design each one flows into. Open a Sprint card for its goal, route, and work items done so far, or a design card for its goal, map, and chosen solution, with or without a storyboard. It is made to be read at a glance, on a wide screen, a portrait screen, or a phone, and it follows your system's light or dark setting. A cheap model can write it, following [`board-log.md`](plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md); delete it any time and ask again.
 
 ![The board of this repository, drawn from its own logs, in the light setting](docs/images/board-overview-light.png)
 
 ![The same board in the dark setting](docs/images/board-overview.png)
 
-**Commitments.** The product, Product Goal, open Sprint Goal and design goal come from your logs, word for word.
+**Commitments.** The product, Product Goal, Sprint Goal and design goal come from the logs’ commitment tables, word for word. The reminders look for Sprint and design logs at active paths (`scrum/sprint-*/`, `scrum/design-*/`), where a concluded log awaiting archival may still sit; current multiple-log notices still phrase that count as `"open"`, so neither presence nor that count proves work is open or authorized: check `Now` and the recorded permission.
 
 - **Claude Code:** A small hook puts them in context when a session starts, resumes, or is compacted, and when a commitment changes. The hook needs a POSIX `sh`: on Windows, install Git for Windows. It has not been tried on macOS.
-- **DSH:** Before a model step, the plugin reads the current project's logs. It adds the commitment snapshot on first use, when the text changes, or when compaction removes the previous snapshot; on DSH `0.2.2-rc.5` with `0.6.3`, the post-compaction re-injection was verified live. If several Sprints or designs are open, it gives a count rather than picking one goal. If the automatic read cannot supply a commitment, have the role reread its source log. No shell hook is needed.
+- **DSH:** Before a model step, the plugin reads the current checkout's logs. It adds the commitment snapshot on first use, when the text changes, or when compaction removes the previous snapshot. Compaction re-injection was verified live on DSH `0.2.2-rc.5` with plugin `0.6.3`. If it finds several Sprint logs or several design logs at active paths, it gives that count rather than picking one goal. If the automatic read cannot supply a commitment, have the role reread its source log. No shell hook is needed.
 - To switch this off, set `IDEO_SCRUM_COMMITMENTS=off` in the `env` of a Claude Code settings file or in its shell. For DSH, set it in the environment before starting DSH.
 
 ## Learn more
 
 - [Quick start](docs/quick-start.md): one page, from installing to your first closed Sprint
 - [Glossary](docs/glossary.md): the plugin's own terms
+- [Project agents and second opinions](docs/project-agents.md): register a stakeholder or ask an advisor in Claude Code
 - [Maintaining IDEO-Scrum](docs/maintaining.md): two hosts on one source, where repository rules load from, and how to migrate and check a candidate
 - [`overview.md`](plugins/ideo-scrum/skills/scrum-kernel/overview.md): how the pieces fit, and every departure from the official guides
 - [Changelog](CHANGELOG.md): what changed in each release
@@ -191,7 +194,7 @@ Found a problem, or have an idea? Open an [issue](https://github.com/seapawn1/ID
 | --- | --- |
 | `plugins/ideo-scrum/` | The Claude Code plugin and the shared source for the four roles and the four kernels (ideo, scrum, sprint, design) |
 | `dsh/`, `package.json`, `cordis.patch.yml` | The DSH integration and bundle entry points |
-| `docs/` | The quick start, the glossary and the maintenance guide |
+| `docs/` | Quick start, glossary, project-agent guide, and maintenance guide |
 | `scrum/` | This project's own Scrum work, in Chinese: its product log and its archived sprint logs |
 | `scripts/` | Documentation and board checks, and tests for a first Sprint |
 | `.claude-plugin/` | The Claude Code marketplace list |
