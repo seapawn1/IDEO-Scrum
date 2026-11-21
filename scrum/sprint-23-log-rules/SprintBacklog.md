@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 23 (log-rules)
 
 > Started: 2026-11-19 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `claude/sprint-23-log-rules-4b3ec9` | Product Owner: SeaPawn | Scrum Master: Sprint 21–26 主会话 | Developer: Sprint 23 工作树会话
-> Now: Test · 2026-11-21 二轮流程 Test 完成：9/10 样本达线，`s10`（PBI-69）两次有效运行均未达线，整体 Test 不判通过；Developer 结果已记 §5，待 Master 复核与 PO 裁定，未进 Review／Retro。
-> Waiting for PO: 1) PBI-69 未达线的处置（回 Increment 补约定，还是接受为缺口）；2) 正式 Review 前的报告，含 Designer Identity 替换句的最终合入确认。当前无需 PO 立即处理的其他事项。
+> Now: Increment · 2026-11-21 二轮 Test 不通过后，Master 依 PO 委托放行 Test → Increment 定向小修：只改 `sprint-log.md` 第 18 条，补「非要点丢弃」判据；修订待 Master 复核，三轮 Test（定向复测 `s10`）未放行，未进 Review／Retro。
+> Waiting for PO: 1) 正式 Review 前的报告，含 Designer Identity 替换句的最终合入确认；2) 正式 Review／Retro／收官及合并、tag、推送、发布仍回 PO。当前无需 PO 立即处理的其他事项。
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
 
@@ -368,3 +368,5 @@ Go-ahead: **2026-11-21（UTC+8）· H10 落源与本分支本地提交**。Maste
 **审阅与 PO 验收**：独立审阅待 Master 复核；PO 端到端未运行（§2.2 事前未约定固定动作）。本条只是 Developer 的测试结果。
 
 **仓外归档**：第二轮原始 `stdout`／`stderr`、`summary.json`、`answers.md`、冒烟记录在 `S:/IDEO-Scrum-Archives/sprint-23-log-rules/final-test/round2/`；第一轮原档在 `final-test/` 未动。
+
+**2026-11-21 · Test → Increment 退回决定（Master 依 PO Review 前全权委托）**。独立复核维持二轮 Test 不通过：`s10` 两次有效运行都遵守结构约束（无汇总、无指令文件、单条独立、仓库笔记兜底），但都把缺少根因说明的一次性备注「这次开了两个窗口，有点乱」推演成可复用教训。根因定为 `sprint-log.md` 第 18 条的边界缺口：只写「只存重要、可复用教训」，未写哪些要丢弃。定向范围：仅改第 18 条，补 1–2 句通用判据（丢弃一次性会话细节、偶发摩擦、缺少已证实可复用原因的随手记；不得推演原因把每条备注写成通则），不写样本特化词；其余 17 份已审文件、Designer Identity、`CLAUDE.md`、`hooks/`、`dsh/`、第三方原文与版本号（仍 6.0.3）不动；§2.2 冻结通过线不改。三轮 Test（只定向复测 `s10`，`s01`–`s09` 沿用二轮有效证据）未放行，待修订交 Master 复核后另行放行。§1.1 当时原文快照：「照着日志接手：接手的人能分清承诺原文和定目标的理由，查到本期重点验什么、完整 DoD 是否满足，以及下一步是否已获 PO 放行；收尾后，能找回选定和否决方案的依据，也能在项目记忆里逐条找到 Retro 的重要教训。」
