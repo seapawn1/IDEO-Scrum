@@ -144,7 +144,7 @@ The plugin calls these files logs: the product log is the Product Backlog, the s
 
 Two small things help you find your place when a project has several logs.
 
-**The board.** Ask the Scrum Master, or a standing helper session, for the board: it writes `scrum/ScrumBoard.html` from your logs. Open it in a browser. A flow diagram shows the product, the items not done, and the Sprint or design each one flows into; pressing a Sprint or a design opens its card with the goal, the route, and the work items done so far. It is made to be read at a glance, on a wide screen, a portrait screen, or a phone, and it follows your system's light or dark setting. A cheap model can write it, following [`board-log.md`](plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md); delete it any time and ask again.
+**The board.** Ask the Scrum Master, or a standing helper session, for the board: it writes `scrum/ScrumBoard.html` from your logs. Open it in a browser. A flow diagram shows the product, the items not done, and the Sprint or design each one flows into. Open a Sprint card for its goal, route, and work items done so far, or a design card for its goal, map, and chosen solution, with or without a storyboard. It is made to be read at a glance, on a wide screen, a portrait screen, or a phone, and it follows your system's light or dark setting. A cheap model can write it, following [`board-log.md`](plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md); delete it any time and ask again.
 
 ![The board of this repository, drawn from its own logs, in the light setting](docs/images/board-overview-light.png)
 

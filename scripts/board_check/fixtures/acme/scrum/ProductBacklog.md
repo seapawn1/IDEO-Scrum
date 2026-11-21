@@ -25,6 +25,7 @@ flowchart TD
     U["店员"] --> A["① 下单<br/>付款"]
     A --> B["② 发货"]
     B --> E["结局：客户收到货"]
+    A -- "需要研究" --> D["设计冲刺"]
 ```
 
 # 三、Product Backlog Items

@@ -4,7 +4,7 @@
 
 ## 六期分工
 
-**六个 Sprint，各一名 Developer。** 按共同交付结果分，不按“凡有品味要求就交给 PO 施工”分。先建 21 的 Developer（PO 指定 Sonnet、与 Master 相同的思考强度、Ultracode），其他逐个建。PO、Master 和各期 Developer 先把六期的 Planning 逐期做齐，再由 PO 一期一期放行施工；已分别放行的工作可在独立工作树并行，互不等待 Memory。
+**六个 Sprint，各一名 Developer。** 按共同交付结果分，不按“凡有品味要求就交给 PO 施工”分。先建 21 的 Developer（PO 指定 Sonnet、与 Master 相同的思考强度、Ultracode），其他 Developer 逐个接入，已接入的各期并行准备 Planning，不必等上一期定完。PO、Master 与各期 Developer 分别确认本期目标、范围和 How；六期先把 Planning 备齐，再由 PO 一期一期放行施工。已分别放行的工作可在独立工作树并行，互不等待 Memory。
 
 | Sprint · 文件夹／分支短名 | PBI | 做成什么；哪些不在范围内 | 三方要谈清、验清的事 |
 | --- | --- | --- | --- |
