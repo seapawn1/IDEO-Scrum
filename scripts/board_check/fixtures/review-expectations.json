@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "scope": "Sprint 21 H3 的独立读卡对照；只记录 SprintBacklog.md §2.2 已定范围，不是测试结果。",
-  "basis": "scrum/sprint-21-design-board/SprintBacklog.md §2.2",
+  "scope": "Sprint 21 H3 的独立读卡对照；只记录 sprint-21-design-board.md §2.2 已定范围，不是测试结果。",
+  "basis": "scrum/documents/sprint/sprint-21-design-board.md §2.2",
   "source_root": "scripts/board_check/fixtures/acme",
   "notes": [
     "下列期待从源夹具逐项核对，不从 ACME_SUMM、参考数据、模板或生成页面推导。",
@@ -63,7 +63,7 @@
             "失败的批次单独重试，成功的批次不动。PO 已选定这个方案。",
             "店员只重试失败批次，成功批次无需重试。"
           ],
-          "basis": "SprintBacklog.md §2.2 场景 A"
+          "basis": "sprint-21-design-board.md §2.2 场景 A"
         }
       ]
     },
@@ -182,7 +182,7 @@
             "Ideate：比较「原路退回」与「退回余额」的草图，尚未选定方案",
             "PO 尚未选定方案，草图不是定案。"
           ],
-          "basis": "SprintBacklog.md §2.2 场景 C"
+          "basis": "sprint-21-design-board.md §2.2 场景 C"
         },
         {
           "meaning": "两种退款去向都只是候选，不能把任一草图或推测说成定案；不要求卡片一定列出候选。",
