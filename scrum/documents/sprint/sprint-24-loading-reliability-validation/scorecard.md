@@ -1,6 +1,6 @@
 # Sprint 24 独立判卷表
 
-未运行。复用下表逐试次记录，不以一项通过替代另一项。[材料和通过线](../SprintBacklog.md#22-refinement)是判据；[试次索引](trial-index.md)只分配输入与证据位置。通过、行为失败和证据不足分开；只为有记录的非插件技术失败用共享补测额度。
+历史空白判卷模板（逐试次原始记录见归档所列仓外目录）。复用下表逐试次记录，不以一项通过替代另一项。[材料和通过线](../sprint-24-loading-reliability.md#22-refinement)是判据；[试次索引](trial-index.md)只分配输入与证据位置。通过、行为失败和证据不足分开；只为有记录的非插件技术失败用共享补测额度。
 
 ## PBI-80：先读全，且首稿用对
 
@@ -8,7 +8,7 @@
 | --- | --- | --- | --- | --- | --- |
 | — | — | — | — | — | 未运行 |
 
-- **A**：核全 [§2.2 四题必读清单](../SprintBacklog.md#22-refinement)，包括共读项和实际使用的其他方法。等价全文实际到达可以按范围累计；标题或路径、Skill 请求、截断、与草稿并行但未返回的结果都不算。聊天首稿和落盘稿以最先出现的实质产物为准。
+- **A**：核全 [§2.2 四题必读清单](../sprint-24-loading-reliability.md#22-refinement)，包括共读项和实际使用的其他方法。等价全文实际到达可以按范围累计；标题或路径、Skill 请求、截断、与草稿并行但未返回的结果都不算。聊天首稿和落盘稿以最先出现的实质产物为准。
 - **B**：G1 判单一中期价值目标，不把短信交付当目标；G2 判一个推进 Product Goal 的本期价值，不代选 What；D1 判挑战缘由及证据来源、目标不预设解法、可回答的失败问题、不虚构访谈；R1 判逐字 POV、开放 HMW、三类决定与可核对的验收草案，不擅自定案或进 How。每项引到草稿中的文字，不判关键词或形式。
 - **纠偏**：只用 G1 同进程续轮。A 看收到纠偏后、交重拟稿前再次获得 `Commitment: Product Goal` 原文，B 再按 G1 判；不替换首稿。每题及纠偏分别汇总 B/C 两臂的 A、B、A+B；候选每组 A+B 至少 2/3，三个计数各不低于基线，不跨题平均。
 
@@ -26,7 +26,7 @@ Master `ideo→scrum→sprint→design`；Developer `ideo→scrum→sprint`；De
 | --- | --- | --- | --- | --- |
 | — | — | — | — | 未运行 |
 
-只用 LOAD 三对，候选 3/3。在该次结果里核 [Sprint Backlog 原文](../../../plugins/ideo-scrum/skills/scrum-kernel/references/scrum-artifact-sprint-backlog.md)从 `## Sprint Backlog` 到文末，含 `### Commitment: Sprint Goal`；链接、后续读取、截断均不算。取不到实际交付证据时停报不足。静态一致性检查不替代此表。
+只用 LOAD 三对，候选 3/3。在该次结果里核 [Sprint Backlog 原文](../../../../plugins/ideo-scrum/skills/scrum-kernel/references/scrum-artifact-sprint-backlog.md)从 `## Sprint Backlog` 到文末，含 `### Commitment: Sprint Goal`；链接、后续读取、截断均不算。取不到实际交付证据时停报不足。静态一致性检查不替代此表。
 
 ## PBI-83：提示语义与常态耗时
 
@@ -38,4 +38,4 @@ Master `ideo→scrum→sprint→design`；Developer `ideo→scrum→sprint`；De
 
 常态两夹具分别按同日 `00c224b` 基线判：P50 降至少 50%，P95 ≤基线且 ≤1 秒；不把超时当短样本。基线不复现旧慢，停报 Master。另按 §2.2 把脚本与宿主所覆盖的语义逐项核全，脚本层的 `clear`、`compact`、`fork` 不给宿主层打勾；stdout 或模型复述不是宿主交付证据。DSH 不套用此表的耗时指标。
 
-完整 DoD 另记入 [§5](../SprintBacklog.md#5-test)；不以本页任一专项替代严格校验、链接与署名或 DSH 回归。
+完整 DoD 另记入 [§5](../sprint-24-loading-reliability.md#5-test)；不以本页任一专项替代严格校验、链接与署名或 DSH 回归。
