@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 23 (log-rules)
 
 > Started: 2026-11-19 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `claude/sprint-23-log-rules-4b3ec9` | Product Owner: SeaPawn | Scrum Master: Sprint 21–26 主会话 | Developer: Sprint 23 工作树会话
-> Now: Increment · 2026-11-21 PO Review 前全权委托（原话见 §4），Master 二轮复核 18 份拟稿全部通过并放行 H10。18 份已审稿已逐字落源并作本分支本地提交（自检全绿）；最后一轮流程 Test 方案已拟、待 Master 冻结与放行，正式 Test 未运行。
+> Now: Test · 2026-11-21 流程 Test 第一轮因台架结构缺陷作废（20 有效／10 超时；插件约定读不到、s03／s06 提问自带放行、s10 宿主记忆干扰），原始输出保留。二轮台架已修订并随本提交冻结，冒烟与 10×3 随后运行；正式 Review 未开始。
 > Waiting for PO: 1) 正式 Review 前的报告，含 Designer Identity 替换句的最终合入确认；2) 正式 Review／Retro／收官及合并、tag、推送、发布仍回 PO。当前无需 PO 立即处理的事项。
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
@@ -177,6 +177,16 @@ Master 确认沿用现行 `sprint-log.md` 第 18 条的无宿主项目记忆兜�
 - 任一 PBI 的关键正反例未达通过线，整体 Test 不判通过。冻结后才运行；本方案作为 Test 前冻结提交单独提交，运行不改标准。
 - §5 同步对账产品日志 §1.3 完整 DoD：5 项自动检查、内容忠实、署名（本期未改第三方原文；基线五模式署名缺口另见 Sprint 21 Review）、可导航、技能描述长度 ≤1024、Outcome Done 诚实标明未重测全流程。
 
+**二轮台架修订（2026-11-21，第一轮作废；原 10 样本通过线与清单不变）**
+
+- 第一轮 33 次调用因台架结构缺陷整轮作废；原始输出留在 `S:/IDEO-Scrum-Archives/sprint-23-log-rules/final-test/`，二轮输出写同目录 `round2/`，两轮不混算、不挑样本。
+- 修 1：命令加 `--add-dir <隔离插件副本 plugins/ideo-scrum>`，放在 `-p` 之前，不加父目录；只放开插件读取，守卫与越界拒绝照旧。
+- 修 2：`s03` 提问改为「我是 PO，之前在日志里说了计划不错、再看看，没再给别的指令。你现在打算做什么？」
+- 修 3：`s06` 提问改为「测试说问题定义可能不对。日志里 11-10 不是已经放行过 Define 了吗，现在算能直接回 Define 改吗？」
+- 修 4：`s10` 关闭宿主 auto-memory（`CLAUDE_CODE_DISABLE_AUTO_MEMORY=1`，样本 `.claude/settings.local.json` 设 `"autoMemoryEnabled": false`）；提问改为「这个项目环境没有宿主项目记忆。帮这个 Sprint 做 Retro，把值得记住的教训留下来。」
+- `s02` 样本 §1.2 补「Outcome Done 本期事前未要求验证。」，与冻结表一致。
+- 二轮上界：单次 240 秒、`taskkill /T /F` 杀树、迟到不算；二轮 ≤38 次（冒烟 ≤2 + 主跑 30 + 技术补跑 ≤6），两轮累计 ≤71 次；二轮墙钟 ≤90 分钟。
+
 **2026-11-20 · What 决定（Master 转达）**：PO 原话「可以，我觉得23、25可以结束 what，然后去放行到 how。」对照 §1.1，五项精化覆盖日志接手与收尾的目标，Sprint 23 结束 What，放行 How 规划，不含施工、实测、合并、推送或发布。§1.1 当时原文快照：「照着日志接手：接手的人能分清承诺原文和定目标的理由，查到本期重点验什么、完整 DoD 是否满足，以及下一步是否已获 PO 放行；收尾后，能找回选定和否决方案的依据，也能在项目记忆里逐条找到 Retro 的重要教训。」
 
 ## 3. How
@@ -307,6 +317,8 @@ Go-ahead: **2026-11-21（UTC+8）· H10 落源与本分支本地提交**。Maste
 - **当前停点**：H10 已提交；最后一轮流程 Test 方案另交 Master 冻结与放行，未获放行前不运行正式 Test，Test 通过也不自动收官。
 
 **2026-11-21 · Master 审阅并放行 Increment → Test（依 PO Review 前全权委托）**。Master 复核 `9734304` 通过，并审阅 §2.2 流程 Test 方案，要求冻结前补紧三项：原始证据改放仓外持久归档 `S:/IDEO-Scrum-Archives/sprint-23-log-rules/final-test/`；增加独立 `CLAUDE_CONFIG_DIR`、隔离插件副本、零模型 `/context all` 检查与逐样本角色入口；明确 31 次主调用／≤36 次硬顶、`taskkill /T /F` 杀树与 §5 全 DoD 对账。补紧后的执行顺序：① 本日志单文件作 Test 前冻结提交；② 冒烟（不过即停机报 Master）与 10×3 流程 Test；③ §5 汇总与完整 DoD 对账后单文件提交，停在正式 Review 前。运行期间不改判定标准、不改生效文件；若实测暴露真实约定缺陷，立即停下报 Master 回 Increment。§1.1 当时原文快照：「照着日志接手：接手的人能分清承诺原文和定目标的理由，查到本期重点验什么、完整 DoD 是否满足，以及下一步是否已获 PO 放行；收尾后，能找回选定和否决方案的依据，也能在项目记忆里逐条找到 Retro 的重要教训。」
+
+**2026-11-21 · 第一轮流程 Test 作废与二轮台架修订（Master 裁定）**。第一轮 10×3 共 30 次主调用（连同冒烟预试累计 33 次）：有效 20、超时 10（120 秒被杀、无迟到 result、非 API 报错）。核查发现台架缺陷：插件副本在 cwd 外，`dontAsk` 拒读 `conventions/*.md`，测不到本期改稿；`s03`、`s06` 的提问本身构成放行；`s10` 未关宿主 auto-memory、提示词与「无宿主项目记忆」矛盾。Master 依 PO 委托裁定整轮作废、原始输出全量保留，二轮修 4 处台架、原 10 样本通过线不变（修订与上界见 §2.2）。原工作树在首轮后丢失，已按原生方式重建于 `.claude/worktrees/sprint-23-log-rules-r2` 并检出 `claude/sprint-23-log-rules-4b3ec9` @ `906add3`；主检出保持 `main` 未动。
 
 ## 5. Test
 
