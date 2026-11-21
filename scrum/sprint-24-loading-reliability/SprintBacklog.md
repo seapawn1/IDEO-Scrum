@@ -1,7 +1,7 @@
 # Sprint Backlog · Sprint 24（加载可靠性）
 
 > Started: 2026-11-19 | 达成 Sprint Goal 或 PO 停止时收官 | Branch: `claude/sprint-24-loading-reliability-012ded` | Product Owner: SeaPawn | Scrum Master: IDEO-Scrum Master | Developer: Sprint 24 Developer
-> Now: Test，第一步完成（H10 通过、H11 无必改、SMOKE-01 两次完成），等 Master 裁定余下 54 次与费用上限。
+> Now: Test，第一步通过、PO 将本通道上限上调至 US$15；第二步（余下 54 次 H8、H9、HOST-01..03）执行中。
 > Waiting for PO: None
 > 日志写法见 [sprint-log.md](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md)。
 
@@ -266,9 +266,9 @@ Go-ahead: 2026-11-20（UTC+8），PO SeaPawn（由 Master 转达）： 「你觉
   1. **H10 正式本机重放**（US$0，≤204 次本机调用，≤20 分钟）：L1／L2 各 30 对交替计时、`startup`／变更计时与 §2.2 全部脚本层语义（`clear`／`compact`／`fork` 仅标脚本层）。若同日 `00c224b` 不复现旧慢、任一夹具未达 P50 降 ≥50% 且 P95 ≤ 基线且 ≤1 s、或任一语义失败，立即停报，**不跑冒烟**。
   2. **H11 静态 DoD + `plugin-dev:plugin-validator`**（显式 `model: "haiku"`）：核 §1.3 静态项与四个 `description` ≤1024、`ATTRIBUTION.md` Source／License、≤2 跳、零死链、validate 与 `check_dsh`；validator 结果存仓外，出现必改项先停报。
   3. **仅 `SMOKE-01`（2 次宿主启动：B→C）**：沙箱 `C:\Users\Public\s24-h8-h11\…`，开跑前核实上级零指令文件；每臂独立 `CLAUDE_PLUGIN_DATA`、`TEMP`／`TMP`；按 [headless-testing.md](../documents/headless-testing.md) 白名单 env、`cygpath -w`、`taskkill /T /F`（单回合 150 s）；`--tools Read,Grep,Glob,Skill`、禁 Bash／PowerShell／Write／Edit／NotebookEdit／Workflow／SendMessage／WebFetch／WebSearch／`mcp__*`、`--strict-mcp-config`、`--permission-mode dontAsk`、`--setting-sources project,local`、`--include-hook-events`、stream-json 两回合、`--debug`；夹具 `.claude/settings.local.json` 装故障即拒的 `PreToolUse` 守卫（封禁作者真实用户目录、`S:\IDEO-Scrum`、`SeaPawn-Memory`、`IDEO-Scrum-Archives`、`guard.py`／`rules.json`，只放策略内夹具与仓外插件副本只读），先零成本跑 `guard-selftest`。输入：G1 副本，回合 1 发 `/ideo-scrum:stakeholder`，回合 2 发只读追问；核 `init.tools`、`permissionMode=dontAsk`、两臂实际模型一致（只记布尔）、`permission_denials`／越界拦截、原生入口与 `SessionStart`／`UserPromptSubmit` 的 hook 事件及 debug 上下文交付。
-- **费用口径**：`claude-magpie` 走 magpie 便宜模型代理，无独立网关账单；以每试次 CLI `total_cost_usd`（保守列表价上界）＋ token 用量记账，硬守累计 ≤ **US$5.00**、≤180 分钟。两次 `SMOKE-01` 完成后立即停报：H10 结论、H11 结论、冒烟隔离／取证／模型／守卫结果、单次 `total_cost_usd`／耗时与余下 54 次相对上限的投射。
+- **费用口径**：`claude-magpie` 走 magpie 便宜模型代理，无独立网关账单；以每试次 CLI `total_cost_usd`（保守列表价上界）＋ token 用量记账，硬守累计 ≤ **US$5.00**、≤180 分钟（2026-11-21 PO 已将本通道上限上调至 **US$15.00**；时长按 §2.2 的 200 分钟）。两次 `SMOKE-01` 完成后立即停报：H10 结论、H11 结论、冒烟隔离／取证／模型／守卫结果、单次 `total_cost_usd`／耗时与余下 54 次相对上限的投射。
 - **阶段门承诺原文（逐字）**：「先读原文再动笔：叫出角色就能调齐该用的内核；定目标、写设计问题或精化条目前，AI 先读并用上对应的原文、约定和模板注释，不用 PO 反复提醒；承诺照常提示，发消息时不再为检查未变的承诺等上几秒。」
-- **停点**：收到第一步报告并经 Master 放行前，不启动余下 54 次（H8、H9、H10 宿主 `HOST-01..03`）。仍未放行：修改源码、放宽通过线、可选预载、超 US$5.00／60 次／200 分钟、正式 Review、合并、打 tag、推送、发布、改版本号或 `CLAUDE.md`。
+- **停点**：收到第一步报告并经 Master 放行前，不启动余下 54 次（H8、H9、H10 宿主 `HOST-01..03`）。仍未放行：修改源码、放宽通过线、可选预载、超 US$5.00（后上调 US$15.00）／60 次／200 分钟、正式 Review、合并、打 tag、推送、发布、改版本号或 `CLAUDE.md`。
 
 ## 5. Test
 
@@ -302,6 +302,7 @@ Go-ahead: 2026-11-20（UTC+8），PO SeaPawn（由 Master 转达）： 「你觉
 - `init`：`tools` 仅 `Glob/Grep/Read/Skill`，`permissionMode` 为 `dontAsk`，`mcp_servers` 空；两臂实际模型**相同**（只记布尔，模型名与提供方仅在仓外原始流）。
 - 原生入口：回合 1 `/ideo-scrum:stakeholder` 成功；每臂 `Skill` 调用 2 次（`ideo-kernel`、`scrum-kernel`，与 Stakeholder 的 2 内核相符）；流中出现 `isSynthetic` 的技能正文（含 `# IDEO Kernel`、`## The Shared Toolbox` 等），证明完整正文交付，而非只有「Launching skill」。
 - hook 交付：`SessionStart:startup` 的 `hook_started`／`hook_response` 各 1，stdout 为承诺原文、exit 0；`UserPromptSubmit` 每臂 2 次，stdout 均空、exit 0（未变静默）。第二回合原生 `UserPromptSubmit` 事件存在。
-- 费用与耗时（CLI `total_cost_usd`，保守列表价上界）：B `$0.343297`／39.9 s，C `$0.347736`／41.4 s，合计 **$0.691033**。
-- **投射与停点**：按 2 回合均值约 `$0.3455/次`，余下 54 次约 **$18.7**，总计约 **$19.4**，远超 US$5.00；即便按每回合约 `$0.17` 计，54 次也约 **$9.2**。时间约 54×40 s ≈ 36 min，低于 180 min。**不启动余下 54 次**，等 Master／PO 裁定缩规模、改回合数或调整上限。
+- 费用与耗时（CLI `total_cost_usd`，保守列表价上界）：B 回合累计 `$0.163597 → $0.179700`，C `$0.163957 → $0.183779`；两次冒烟真实合计 **`$0.363479`**、均值 **`$0.181740/次`**（原 `$0.691033` 系把累计值逐回合相加所致，已更正）。`total_cost_usd` 是整会话累计，不是单回合增量；后续脚本改取最后一条 `result` 的累计值并另记回合增量。
+- **停点与预算裁定（2026-11-21，UTC+8；Master 转达，PO 原话逐字）**：「为什么有额度限制？都用的haiku跑的对吧，如果是的，那无所谓haiku我有无限额度，上调就是」。已从原始流核实本期（及 22、23）走 `claude-magpie` 的 `haiku` 映射通道、未动 Opus／Sonnet；本通道 CLI 列表价防失控上限由 **US$5.00 上调至 US$15.00**，其余硬边界不变（总启动 ≤60 次含 4 次技术补测余量、总时长 ≤200 分钟、单回合 150 s＋`taskkill /T /F`、原样本与原通过线不变）。据此放行 Test 第二步（余下 54 次）。
+- 更正后的余下 54 次投射：54×`$0.18174`≈`$9.8`，G1 六次第三回合约 +`$0.12`，总计约 **`$10.3`**（`costBasis: unknown`，magpie 便宜通道的列表价保守估算）。两处脚本修正：① 费用取最后一条 `result` 的累计值、另记回合增量；② 宿主命令改用 `--add-dir <arm_dir/plugin>` 放 `-p` 之前（用 `-p` 结束 `--add-dir` 的值列表）并去掉宽泛的 `--allowedTools`，使插件 `conventions/`／`references/` 可读；后续 H8／H9／H10 宿主脚本沿用。
 - 技术失败说明：首轮 `--run` 在准备阶段因脚本 `make_env` 重复建目录报错，未启动模型、未计费；修正后按上述两次冒烟重跑，准备期的旧沙箱未用于证据。
