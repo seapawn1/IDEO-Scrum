@@ -22,7 +22,7 @@ Whether a question needs a design sprint or the five modes, how the two relate, 
 
 Design Thinking is a **human-centered approach to innovation** that integrates the needs of people, the possibilities of technology, and the requirements for business success. Originating from IDEO and formalized at Stanford's Hasso Plattner Institute of Design (the d.school, founded by David Kelley), it is an iterative, non-linear methodology for tackling complex, ill-defined problems. Its core ethos is **bias toward action** — learning by doing rather than analysis alone.
 
-**Bias toward fast prototype validation.** The design work optimizes for speed of learning, not polish: a prototype must feel like a prototype — rough, quick, and disposable — built to learn, never a formal result. In a design sprint test, this describes how the prototype is made and treated — quickly, and thrown away after; the surface the tester sees should still appear real enough for honest reactions (design-kernel skill, `../design-kernel/steps/4-1-fake-it.md`).
+**Bias toward fast prototype validation.** The design work optimizes for speed of learning, not polish: a prototype must feel like a prototype — rough, quick, and disposable — built to learn, never a formal result. In a design sprint test, keep the surface real enough for honest reactions (`../design-kernel/steps/4-1-fake-it.md`). In a design sprint, disposable describes the prototype’s purpose and cost, not deleting the evidence: preserve the original as `../design-kernel/conventions/design-log.md`, convention 19, says. A standalone run of the five modes follows its own prototype handoff and disposal rule (`conventions/ideo-log.md`, convention 4), with no gates between modes.
 
 IDEO's five-mode model:
 

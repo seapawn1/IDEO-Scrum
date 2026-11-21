@@ -21,20 +21,20 @@ flowchart TD
     PO --> A["Write the product log: product, architecture, items<br/>product-log.md"]
     SM --> A
     A -- "an item needs design" --> X0["A design question: design sprint or the five modes?<br/>ideo-log.md"]
-    BP["A blank page<br/>product-log.md"] --> X
-    A --> S1["Why: the Sprint Goal<br/>sprint-log.md"]
-    S1 -- "PO decides" --> S2["What: the items, refined<br/>sprint-log.md"]
+    BP["A blank page<br/>product-log.md"] -- "PO authorizes Empathize" --> X
+    A -- "PO authorizes Why" --> S1["Why: the Sprint Goal<br/>sprint-log.md"]
+    S1 -- "PO authorizes What" --> S2["What: the items, refined<br/>sprint-log.md"]
     S2 -- "refinement hits a hard point" --> X0
-    S2 -- "PO decides" --> S3["How: a plan<br/>sprint-log.md"]
+    S2 -- "PO authorizes How" --> S3["How: a plan<br/>sprint-log.md"]
     S3 -- "PO gives the go-ahead" --> S4["Increment: build, with notes<br/>sprint-log.md"]
     DEV --> S4
-    S4 -- "PO decides" --> S5["Test: tests, review, the PO's end-to-end test<br/>sprint-log.md"]
-    S5 -. "PO decides: go back" .-> S4
+    S4 -- "PO authorizes Test" --> S5["Test: tests, review, PO acceptance when required<br/>sprint-log.md"]
+    S5 -. "PO authorizes a return to building" .-> S4
     S5 -- "PO decides: close" --> V["Close: Review (archive the logs, refresh the product log) and Retro<br/>sprint-log.md"]
     DES --> X
     SH --> X
     SH --> V
-    X0 -- "a design sprint" --> X["Design sprint: five stages, each standing on one IDEO mode<br/>design-log.md"]
+    X0 -- "PO authorizes starting a design sprint" --> X["Design sprint: five stages, each standing on one IDEO mode<br/>design-log.md"]
     X0 -- "the five modes" --> X2["The five modes: one or two methods, recorded in the log they serve;<br/>or an IDEO log for a run of its own<br/>ideo-log.md"]
     X -- "conclusions flow back — a blank page's design fills the product log" --> A
     X2 -- "conclusions flow back" --> A
@@ -55,12 +55,12 @@ flowchart TD
    | 2 | Sprint log | Sprint Goal | Developer | Scrum Master |
    | 2 | Design log | Design goal | Designer | Scrum Master |
    | 3 | Increment: code or documents, as the Definition of Done says | Definition of Done | Developer | — |
-   | 3 | Prototype: kept in the design or IDEO log folder until its conclusions are built, then in the folder of the Sprint that builds them, as its specification; never in an Increment | Design questions | Designer | — |
+   | 3 | Prototype: built to learn, never in an Increment; a design’s prototype stays with its design evidence | Design questions | Designer | — |
 
-   The third layer is not a log and has no prescribed method; it relies on the skills of whoever does the work. Increments add up into the product; a prototype is thrown away once it has done its work: when the design or IDEO log ends, unless its conclusions will be built — then when the Sprint that builds them closes — and only what was learned flows back.
-4. **Folders** — `scrum/` holds all of the Scrum work: `ProductBacklog.md`; `ScrumBoard.html`, the board written from the logs, which keeps no state of its own (`conventions/board-log.md`); one folder for each Sprint, design, or IDEO log in progress — `sprint-NN-<suffix>/` with its `SprintBacklog.md` and working files, `design-<suffix>/`, unnumbered, with its `DesignBacklog.md`, prototypes, and working files, `ideo-<suffix>/`, unnumbered, with its `IdeoBacklog.md`, prototypes, and working files; and `documents/` (convention 5). This is the author's layout; use your project's own places if it has them.
-5. **Where files go** — A file that serves only one Sprint, design, or IDEO log stays in its folder and is deleted when that Sprint, design, or IDEO log ends; git keeps it. A file that serves the whole Scrum goes into `scrum/documents/`, and the logs reference it: design documents, background material, long content written for the product log, and the archives made at each Review — compressed sprint logs, design logs, and IDEO logs. The Review makes those archives and keeps `scrum/documents/` fresh (`../sprint-kernel/conventions/sprint-log.md`, convention 17). The project's own documentation, such as a user manual or API notes, is outside these conventions; keep it where the project keeps it, such as `docs/` at the root.
-6. **Working material** — Keep working material out of the logs; what is truly key can go into the project's memory or instructions file, and a large important file goes into `scrum/documents/`.
+   The third layer is not a log and has no prescribed method; it relies on the skills of whoever does the work. Increments add up into the product. The design’s conclusions flow back; its working material, including the prototype, stays with the design and can be referenced by the Sprint that builds those conclusions (`../design-kernel/conventions/design-log.md`, convention 19). The standalone IDEO log has its own rule (`../ideo-kernel/conventions/ideo-log.md`, convention 4).
+4. **Folders** — `scrum/` holds all of the Scrum work: `ProductBacklog.md`; `ScrumBoard.html`, the board written from the logs, which keeps no state of its own (`conventions/board-log.md`); `sprint-NN-<suffix>/` with `SprintBacklog.md` and its working files; `design-<suffix>/`, unnumbered, with `DesignBacklog.md`, prototypes, and other working material; `ideo-<suffix>/`, unnumbered, with `IdeoBacklog.md`, prototypes, and working files; and `documents/` (convention 5). The active folders may still hold work that ended and is awaiting Review; read the log’s `Now` before resuming. This is the author’s layout; use your project’s own places if it has them.
+5. **Where files go** — A file that serves only one log usually stays in its working folder and can be cleaned up when that work ends. The design’s original working material is the exception: retain it with the design, then move it with its log into the existing `scrum/documents/` archive at Review (`../design-kernel/conventions/design-log.md`, convention 19; `../sprint-kernel/conventions/sprint-log.md`, convention 17). Files serving the whole Scrum also go into `scrum/documents/`, and the logs reference them. A project can use its existing archive subfolders. The project’s own documentation, such as a user manual or API notes, stays where the project keeps it, such as `docs/` at the root.
+6. **Working material** — Keep working material out of the log itself; link to the retained design originals as convention 5 says. Key material of general use can go into the project’s memory or instructions, and a large important file goes into `scrum/documents/`. Retro lessons go only where `../sprint-kernel/conventions/sprint-log.md`, convention 18, says, never in instructions.
 7. **Names** — The terms used in all the conventions are defined here once:
    - the **product log** is the Product Backlog, kept in `ProductBacklog.md`; the **sprint log** is the Sprint Backlog, kept in `SprintBacklog.md`; the **design log** is kept in `DesignBacklog.md` — a file made from a template takes these names, whatever the template is called;
    - an **IDEO log** is the log of a run of the five modes, kept in `IdeoBacklog.md`;
@@ -74,7 +74,7 @@ flowchart TD
 
    | Role | Home turf | Accountable for | Claude Code entry kernels, in order |
    | --- | --- | --- | --- |
-   | Product Owner | The product log and its handoffs | Value direction; the Product Goal and Sprint Goals; which items enter a Sprint; the go-ahead; the items, decided with the Scrum Master; the decision at the end of each stage (convention 12) | — (a person) |
+   | Product Owner | The product log and its handoffs | Value direction; the Product Goal and Sprint Goals; which items enter a Sprint; the go-ahead; the items, decided with the Scrum Master; stage results and permissions to start or return (convention 12) | — (a person) |
    | Scrum Master | Sprint logs and design logs | Facilitating Planning and refinement; recording; tracking; reviewing the How and the Increment; serves the Product Owner; acts for them within a written handover, and the accountability stays with the Product Owner; decisions made under it are recorded | ideo → scrum → sprint → design |
    | Developer | The Sprint | The sprint log, the How, the Increment; the last check that nothing in refinement is unclear | ideo → scrum → sprint |
    | Designer | The design | Ideas, prototypes, and tests for a design, from Ideate on (the Product Owner and the Scrum Master settle its research and definition); conclusions back to the product log and the Sprint that asked | ideo → scrum → design |
@@ -86,7 +86,7 @@ flowchart TD
 9. **Only the Product Owner must be human** — The other roles may all be AI. This departs from the Scrum Guide Expansion Pack: see Departures.
 10. **Ask the Product Owner** — Whoever is unsure asks the Product Owner, unless the Product Owner has sent that kind of question elsewhere.
 11. **Product Owner as Developer** — When the Product Owner builds, they take part as a Developer, and the How is worked out with them.
-12. **Product Owner decides between stages** — At the end of each stage of a Sprint or a design, the Product Owner decides: they settle the result of the stage and decide whether to move on to the next one, unless the Product Owner has handed this to the Scrum Master in writing. Record the handover's scope and the decisions made within it; the Product Owner keeps the accountability. It is a decision, not a review or an acceptance: checking that the work was done right is the Scrum Master's job. It reaches the level of the stage, not each step inside it. Write the decision as the last line of the stage's chapter. A Sprint has five stages (`../sprint-kernel/conventions/sprint-log.md`, convention 24) and a design has five (`../design-kernel/conventions/design-log.md`, convention 26).
+12. **Product Owner decides between stages** — The Product Owner settles each stage’s result. Before starting or returning to a stage of a Sprint or a design sprint, wait for explicit permission for that stage and scope. Approving a result is not permission to move on, though one message can say both clearly. While waiting, record the result or why a return is needed, but do not start or delegate that stage’s work. A new session may resume the same stage within its recorded permission and scope; earlier permission does not carry over to a return. The Scrum Master acts for the Product Owner only within a written handover covering the particular decision; handing over a review or a choice inside a stage does not hand over a stage transition. Record who decided, the date and basis, and the stage and scope authorized, including the written handover if used. Keep the decision at the end of its stage chapter; if permission arrives later, add that dated decision without replacing the earlier one. Record first entry when opening the log. These are stage decisions, not reviews, formal acceptance, or approval of each step. Sprint decisions: `../sprint-kernel/conventions/sprint-log.md`, convention 24; design decisions: `../design-kernel/conventions/design-log.md`, convention 26.
 
 ### Sessions
 
@@ -96,12 +96,12 @@ flowchart TD
 ### About these conventions
 
 15. **Working conventions** — Reference, not law. Each convention has a short name, for use in conversation, and only the exceptions carry a source label: a convention with no label is the author's practice — how the author works; **Supplement** — inferred by the author's assistant, not yet confirmed in practice; **Decide on the spot** — no fixed rule, decide when it comes up. When you override a convention, write what you did and why in the log's notes: the sprint log's Increment notes, or the chapter of the design log it concerns. The templates carry the flow; the convention files say how, and when a step may be skipped. They describe roles and steps, not the mechanics of any tool.
-16. **Templates record outputs** — A template's chapters follow the flow, and its sections hold only what each step produced; how to do a step belongs in the conventions. A log made from a template keeps all of the template's headings, including the chapters filled in later, and adds no sections of its own; remarks go in the sprint log's Increment notes, or in the chapter of the design log they belong to.
+16. **Templates record outputs** — A template's chapters follow the flow, and its sections hold only what each step produced; how to do a step belongs in the conventions. A log made from a template keeps all of the template's headings, including the chapters filled in later, and adds no sections of its own; put work remarks in the sprint log’s Increment notes or the relevant design chapter. An optional explanation below a commitment table belongs in the commitment’s own section (convention 17).
 
 ### What stays fixed
 
 17. **Goal fixed, plan flexible** — Each log has one fixed commitment: the Product Goal, the Sprint Goal, the design goal; the Definition of Done is not weakened either. Everything under a commitment — items, refinement points, acceptance criteria, the How, the chosen design solution — may change as you learn, and each log records what changed and why. Only the Product Owner changes a commitment, and only the Product Owner cancels a Sprint whose goal can no longer be met.
-    Keep the product statement in the product log's section 1.1, the Product Goal in its section 1.2, the Sprint Goal in the sprint log's section 1.1, and the design goal in the design log's section 1.2. Each has one one-row table: the first cell is `Commitment` (`承诺` in a Chinese log), the second is the exact text, without bold. Keep one copy, not another at the file's top; its section heading identifies it. Give each goal one short name and keep using that name. An IDEO log has no commitment of its own: its For field points to the log it serves.
+    Keep the product statement in the product log's section 1.1, the Product Goal in its section 1.2, the Sprint Goal in the sprint log's section 1.1, and the design goal in the design log's section 1.2. Each has one one-row table: the first cell is `Commitment` (`承诺` in a Chinese log), the second is the exact text, without bold. Keep one copy, not another at the file’s top; its section heading identifies it. The table is the only source of the current commitment. Optional reasons can follow below it; they are not part of the commitment or what a reader extracts from the table. Exact text on a stage decision line is a snapshot of the commitment at that time, not a second source; do not update it when the current goal changes. Give each goal one short name and keep using that name. An IDEO log has no commitment of its own: its For field points to the log it serves.
     The Scrum Guide says it this way. On the Product Goal: "They must fulfill (or abandon) one objective before taking on the next." During the Sprint: "No changes are made that would endanger the Sprint Goal", "Quality does not decrease", and "Scope may be clarified and renegotiated with the Product Owner as more is learned." And: "Only the Product Owner has the authority to cancel the Sprint."
 
 ## Departures from the official guides

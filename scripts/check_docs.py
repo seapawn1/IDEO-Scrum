@@ -26,6 +26,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PAIRS = [
     ("README.md", "README.zh-CN.md"),
     ("docs/quick-start.md", "docs/quick-start.zh-CN.md"),
+    ("docs/project-agents.md", "docs/project-agents.zh-CN.md"),
 ]
 GLOSSARY = "docs/glossary.md"
 SINGLES = [GLOSSARY]
