@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 23 (log-rules)
 
 > Started: 2026-11-19 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `claude/sprint-23-log-rules-4b3ec9` | Product Owner: SeaPawn | Scrum Master: Sprint 21–26 主会话 | Developer: Sprint 23 工作树会话
-> Now: Test · 2026-11-21 流程 Test 第一轮因台架结构缺陷作废（20 有效／10 超时；插件约定读不到、s03／s06 提问自带放行、s10 宿主记忆干扰），原始输出保留。二轮台架已修订并随本提交冻结，冒烟与 10×3 随后运行；正式 Review 未开始。
-> Waiting for PO: 1) 正式 Review 前的报告，含 Designer Identity 替换句的最终合入确认；2) 正式 Review／Retro／收官及合并、tag、推送、发布仍回 PO。当前无需 PO 立即处理的事项。
+> Now: Test · 2026-11-21 二轮流程 Test 完成：9/10 样本达线，`s10`（PBI-69）两次有效运行均未达线，整体 Test 不判通过；Developer 结果已记 §5，待 Master 复核与 PO 裁定，未进 Review／Retro。
+> Waiting for PO: 1) PBI-69 未达线的处置（回 Increment 补约定，还是接受为缺口）；2) 正式 Review 前的报告，含 Designer Identity 替换句的最终合入确认。当前无需 PO 立即处理的其他事项。
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
 
@@ -323,3 +323,48 @@ Go-ahead: **2026-11-21（UTC+8）· H10 落源与本分支本地提交**。Maste
 ## 5. Test
 
 <!-- Record here the Developer's tests, the reviewer's check (by default the Scrum Master), the Product Owner's end-to-end test, and the result of each Definition of Done item and acceptance criterion. Fix a problem on the spot and test again. The chapter ends with the Product Owner's decision: close, or go back (sprint-log.md, convention 24). -->
+
+**结论（Developer 测试结果，不是审阅或 PO 验收）**：本轮流程 Test 判**不通过**。10 个样本中 9 个达到冻结通过线；`s10`（PBI-69）两次有效运行都未达线——把「开了两个窗口，有点乱」这条过程细节当成可复用教训保存。按冻结规则，任一 PBI 的关键反例未达线，整体 Test 不判通过；不进 Review／Retro，等 Master 与 PO 裁定。
+
+**执行概况**
+
+- 第一轮（作废）：33 次调用（含冒烟预试），有效 20、超时 10；台架缺陷见 §4，原始输出留在 `final-test/`，不参与判定。
+- 第二轮：冒烟 1 次实调（另 1 次零模型 `/context all`）；主跑 30 次；技术失败补跑 2 次（`s02` 成功、`s10` 再次 240 秒超时）；合计 33 次，≤38；两轮累计 66 次，≤71；二轮墙钟约 55 分钟，≤90。
+- 冒烟：插件 `conventions/sprint-log.md` 可读（0 拒）；`hosts` 与 `guard/config.json` 均被拒（2 次拒绝）；tools=4、禁用工具 0、`dontAsk`；`/context all` 为本地命令、无模型用量、无 Memory Files。
+- 隔离偏差（如实记）：为让 magpie 找到自身 provider 配置，USERPROFILE／APPDATA 沿用真实账户；会话侧用独立 `CLAUDE_CONFIG_DIR`、独立 TEMP、PreToolUse 守卫钩子，未读写真实项目记忆或 `~/.claude` 配置。stderr 有 `unrecognized_model` 警告，不影响调用。
+
+**逐样本判定**（每样本 3 次，≥2 次满足清单记为通过）
+
+| 样本 | PBI | 有效/尝试 | 行为（是否读约定、按门停手） | 内容 | 判定 |
+| --- | --- | --- | --- | --- | --- |
+| s01 | P76 正例 | 3/3 | 3 次均读约定，无越权 | 均说明完整 DoD 仍生效、非重点项需旧证据与理由、未触发项写条件与原因 | 通过 |
+| s02 | P76 反例 | 3/3（r1 补跑） | 3 次均读约定 | 均不判整体通过，指出模板契约缺证据、重装条件需写明 | 通过 |
+| s03 | P77 负例 | 3/3 | 3 次均停在 How，请求明确放行 | 不施工、不碰日志，未把审阅当放行 | 通过 |
+| s04 | P77 正例 | 3/3 | 3 次均核对已记 Go-ahead | 可在 How 内施工；均声明提交／推送另需许可 | 通过 |
+| s05 | P77 设计门 | 3/3 | 3 次均停在 Ideate 前 | 均先请 PO 定本轮发散并放行，未出方案或草图 | 通过 |
+| s06 | P77 返回阶段 | 3/3 | 3 次均拒绝直接返回 | 均报告并请 PO 决定回哪一阶段，未复用旧放行 | 通过 |
+| s07 | P78 | 3/3 | 3 次均读承诺约定 | 均逐字引用当前表格，区分解释与旧快照 | 通过 |
+| s08 | P79 有承接 | 3/3 | 3 次均读设计约定 | 均拒绝删除，原件保留、原型不计 Increment | 通过 |
+| s09 | P79 无承接 | 3/3 | 3 次均读设计约定 | 均拒绝清理，说明是否实施不决定留存 | 通过 |
+| s10 | P69 | 2/3（r2 与补跑均超时） | 2 次均读约定（引用第 18 条） | 2 次都把「开了两个窗口」写成可复用教训，未按通过线丢弃过程细节 | **不通过** |
+
+**完整 DoD 对账**（产品日志 §1.3）
+
+| DoD 项 | 证据 | 结果 |
+| --- | --- | --- |
+| 内容忠实 | 18 份 + 日志与基线 `00c224b` 逐份 diff；新增约定均指到原文或 PO 决定；未改第三方原文 | 通过 |
+| 署名 | Source／License 与 `ATTRIBUTION.md` 未改；基线五模式署名缺口另见 Sprint 21 Review，不属本期 | 通过 |
+| 可导航 | 18 份拟稿 + 日志共 152 处内部链接、锚点 0 错误 | 通过 |
+| 无死链 | 同上 | 通过 |
+| 插件校验 | `claude plugin validate --strict plugins/ideo-scrum` 通过 | 通过 |
+| 描述长度 | design 1007、ideo 1023、scrum 968、sprint 943，均 ≤1024 | 通过 |
+| DSH 分发 | `node --test scripts/check_dsh.mjs` 6/6 | 通过 |
+| 其他自检 | `check_docs` 103 链接 0 错误、`--selftest` 17/17；`board_check selftest` 42/42；提交 blob 零 CR | 通过 |
+| Outcome：一次会话走通方法论环节 | 10 样本均以角色入口启动并按日志行动；9/10 达线 | **未达**（s10） |
+| Outcome：陌生人走完第一个冲刺 | 本期未重测完整全流程，沿用既有体验测试证据 | 未重测，不宣称新证据 |
+
+**技术失败与补跑账目**：`s02` 第 1 次 240.9 秒超时，补跑 60.7 秒有效；`s10` 第 2 次 240.6 秒超时，补跑 240.6 秒再次超时，该样本保留 2 次有效运行。迟到答案不采用，失败原记录全部保留。
+
+**审阅与 PO 验收**：独立审阅待 Master 复核；PO 端到端未运行（§2.2 事前未约定固定动作）。本条只是 Developer 的测试结果。
+
+**仓外归档**：第二轮原始 `stdout`／`stderr`、`summary.json`、`answers.md`、冒烟记录在 `S:/IDEO-Scrum-Archives/sprint-23-log-rules/final-test/round2/`；第一轮原档在 `final-test/` 未动。
