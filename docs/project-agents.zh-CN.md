@@ -46,7 +46,7 @@
 Agent, subagent_type: "security-reviewer"
 ```
 
-- **普通 Agent 按名调用**，来自 Claude Code 或 Developer 会话。
+- **普通 Agent 按名调用**，来自 Claude Code 会话或 Developer 会话；Review 的外部视角仍只由 PO 或 Scrum Master 召唤。
 - **Workflow 的 agent 步骤**，写同一个 agent 类型，不把角色正文粘贴进脚本。
 - **临时看一眼**，由 `stakeholder` 入口按同一张角色卡起一个新子代理，不落任何文件。
 

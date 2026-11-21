@@ -46,7 +46,7 @@ Once registered, the same file serves both entries:
 Agent, subagent_type: "security-reviewer"
 ```
 
-- **A plain agent call by name**, from Claude Code or from a Developer session.
+- **A plain agent call by name**, from a Claude Code session or a Developer session; the outside view at Sprint Review is still summoned only by the Product Owner or the Scrum Master.
 - **A Workflow's agent step**, naming the same agent type, without pasting the role's text into the script.
 - **A temporary view**, where the `stakeholder` entry summons a fresh subagent with the same role card, without any file.
 
