@@ -1,8 +1,8 @@
 # Sprint Backlog · Sprint 24（加载可靠性）
 
 > Started: 2026-11-19 | 达成 Sprint Goal 或 PO 停止时收官 | Branch: `claude/sprint-24-loading-reliability-012ded` | Product Owner: SeaPawn | Scrum Master: IDEO-Scrum Master | Developer: Sprint 24 Developer
-> Now: Test 完成（H8–H11 全部记录、§1.3 DoD 对账完毕），交 Master 终审；正式 Review 前停住。
-> Waiting for PO: None
+> Now: Test 完成（Master 终审通过），停在正式 Sprint Review 前。
+> Waiting for PO: 正式 Sprint Review 前过目与 Review／Retro／收官裁定
 > 日志写法见 [sprint-log.md](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md)。
 
 ## 1. Why
@@ -311,7 +311,7 @@ Go-ahead: 2026-11-20（UTC+8），PO SeaPawn（由 Master 转达）： 「你觉
 
 - **规模与账**：宿主启动共 **60/60**（2 smoke＋2 G1-01＋35＋17＋4 补测）；本通道 CLI 列表价累计 **`$19.630688`/US$30**。4 次技术超时按原口径补测（`R1-01/C`、`DES-02/B`、`DES-03/B`、`DES-03/C`，原名加 `.retry1`，原始流保留）；未改样本、未改通过线。
 - **中途停点与再上调**：第二批在 35 次时累计 **`$15.513034`** 触发 US$15 停点——分配剩余预算 14.02 时只扣了 G1-01、漏扣 smoke 的 `$0.363479`，最后一次启动跨线；如实停报。PO 2026-11-21 依同一原话再上调本通道上限至 **US$30.00**（Master 转达并核实均走同一 `haiku` 映射通道），余下 17＋4 次按剩余 `14.48` 继续。
-- **隔离与权限**：沙箱在 `C:\Users\Public\s24-h8-h11\…`，上级零指令文件；每臂独立状态／`TEMP` 与插件副本；守卫 `PreToolUse` 的 `names` 加入 `guard.json`；保持 `dontAsk`、不恢复 `--allowedTools`。3 次 Read／Grep 拒绝均为模型自行拼出的沙箱外路径（如漏写试次目录、`guard/` 内部），未触及真实环境；另 1 次发生在已完成的 `DEV-02/C`，继续跑完。
+- **隔离与权限**：沙箱在 `C:\Users\Public\s24-h8-h11\…`，上级零指令文件；每臂独立状态／`TEMP` 与插件副本；守卫 `PreToolUse` 的 `names` 加入 `guard.json`；保持 `dontAsk`、不恢复 `--allowedTools`。全 60 次共 3 次沙箱外路径拒绝（`DES-03/C`、`R1-01/C` 发生于原超时试次，`DEV-02/C` 发生于完成试次），余下 17 次与 4 次补测零新增拒绝；均未触及真实环境。
 - **模型**：全部 `init.model` 一致（只记布尔）；走 `claude-magpie` 的便宜模型通道（非 Haiku）；`init.tools` 均为 `Glob/Grep/Read/Skill`，`permissionMode=dontAsk`，`mcp_servers` 空。
 
 **PBI-80（H8）首稿前读全与首稿判断**
@@ -334,14 +334,14 @@ Go-ahead: 2026-11-20（UTC+8），PO SeaPawn（由 Master 转达）： 「你觉
 | Designer（DES-01～03） | 3/3 | `ideo→scrum→design` | 同上 |
 | Stakeholder（STK-01～03） | 3/3 | `ideo→scrum` | `STK-01/reuse` 第二回合只新调 `sprint-kernel`，1/1 |
 
-- LOAD（PBI-82）：候选 3/3。首次成功 `Skill` 的交付正文中，`## Sprint Backlog` 至文末（含 `### Commitment: Sprint Goal`）共 **2,485 字符**，与 `scrum-artifact-sprint-backlog.md` 逐字一致（忽略换行）；基线 3 次只有 6,012 字符的技能正文，不含该节，0/3。
+- LOAD（PBI-82）：候选 3/3。首次成功 `Skill` 的交付正文中，`## Sprint Backlog` 至文末（含 `### Commitment: Sprint Goal`）共 **2,499 字符**（含该标题至文末、去尾换行），与 `scrum-artifact-sprint-backlog.md` 逐字一致（忽略换行）；基线 3 次只有 6,012 字符的技能正文，不含该节，0/3。
 
 **PBI-83 宿主层（HOST-01～03）**
 
 | 试次 | 臂 | 证据 | 结果 |
 | --- | --- | --- | --- |
-| HOST-01 | B、C 各 1 | `SessionStart:startup` stdout 含 Product／Product Goal／Sprint Goal（185 字节）；前两条提示静默；`续借`→同字节长`展期`并保留 mtime 后，下一条 stdout 为更新后的全文；再下一条静默 | 两臂均过 |
-| HOST-02 | C、B 各 1 | 同一 `session_id` 用 `--resume` 恢复；`SessionStart` 输出全文（185 字节），随后提示静默 | 两臂均过 |
+| HOST-01 | B、C 各 1 | `SessionStart:startup` stdout 含 Product／Product Goal／Sprint Goal（185 字符／337 字节；`--debug` 日志上下文交付已核并归档）；前两条提示静默；`续借`→同字节长`展期`并保留 mtime 后，下一条 stdout 为更新后的全文；再下一条静默 | 两臂均过 |
+| HOST-02 | C、B 各 1 | 同一 `session_id` 用 `--resume` 恢复；`SessionStart` 输出全文（185 字符／337 字节），随后提示静默 | 两臂均过 |
 | HOST-03 | B、C 各 1 | `IDEO_SCRUM_COMMITMENTS=off`：`SessionStart` 与两条提示 stdout 均为空、exit 0 | 两臂均过 |
 
 - `clear`／`compact`／`fork` 仍只记脚本层（H10 本机），不报宿主通过。
@@ -359,3 +359,5 @@ Go-ahead: 2026-11-20（UTC+8），PO SeaPawn（由 Master 转达）： 「你觉
 | DSH 分发 | `node --test scripts/check_dsh.mjs` 7/7 | 过 |
 
 - Outcome Done（一次会话走通、陌生人走完第一个冲刺）不属本期专项测试，未在本 Sprint 记通过；按产品日志由后续体验测试负责。
+
+**Master Test 终审（2026-11-21，UTC+8；依 PO Review 前全权委托）**：独立复核 `8a3d3eb`、`a482a52`、全部 60 次原始流、12 份候选首稿与 3 份 G1 纠偏稿、`HOST-01..03` 原生事件与 `--debug` 日志，并复跑 `claude plugin validate --strict`、`node --test scripts/check_dsh.mjs`（7/7）、`scripts/check_docs.py`（107 链 0 错、`--selftest` 17/17）。裁定：**PBI-80／81／82／83 与 H11 全部通过，Test 通过**，准予收口并停在正式 Sprint Review 前；4 次补测系 Master 依 60 次硬顶核准对 4 个超时臂的定向补测，原始流均保留。`HOST-01`／`HOST-03` 的 `--debug` 日志已归档到 `h8-h11\raw\streams\20261121-140156\` 下各自 `debug/`。产品源码保持 `a482a52` 零改动。
