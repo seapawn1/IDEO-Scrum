@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 23 (log-rules)
 
 > Started: 2026-11-19 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `claude/sprint-23-log-rules-4b3ec9` | Product Owner: SeaPawn | Scrum Master: Sprint 21–26 主会话 | Developer: Sprint 23 工作树会话
-> Now: Test · 2026-11-21 Master 复核 `bf5e360` 通过，放行 Increment → Test 定向复测 `s10`（三轮方案随本提交冻结，尚未运行）；`s01`–`s09` 沿用二轮证据，未进 Review／Retro。
+> Now: Test · 2026-11-21 三轮定向复测完成：`s10` 3/3 达线，连同二轮 `s01`–`s09` 计 10/10，按冻结标准整体 Test 判通过；结果已记 §5，待 Master 复核与 PO 裁定 Review／Retro。未进 Review／Retro。
 > Waiting for PO: 1) 正式 Review 前的报告，含 Designer Identity 替换句的最终合入确认；2) 正式 Review／Retro／收官及合并、tag、推送、发布仍回 PO。当前无需 PO 立即处理的其他事项。
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none — remarks go in chapter 4, Increment notes (`overview.md` in the scrum-kernel skill folder, convention 16).
@@ -324,7 +324,9 @@ Go-ahead: **2026-11-21（UTC+8）· H10 落源与本分支本地提交**。Maste
 
 <!-- Record here the Developer's tests, the reviewer's check (by default the Scrum Master), the Product Owner's end-to-end test, and the result of each Definition of Done item and acceptance criterion. Fix a problem on the spot and test again. The chapter ends with the Product Owner's decision: close, or go back (sprint-log.md, convention 24). -->
 
-**结论（Developer 测试结果，不是审阅或 PO 验收）**：本轮流程 Test 判**不通过**。10 个样本中 9 个达到冻结通过线；`s10`（PBI-69）两次有效运行都未达线——把「开了两个窗口，有点乱」这条过程细节当成可复用教训保存。按冻结规则，任一 PBI 的关键反例未达线，整体 Test 不判通过；不进 Review／Retro，等 Master 与 PO 裁定。
+**最终结论（2026-11-21，含三轮定向复测；Developer 测试结果，不是审阅或 PO 验收）**：10 个样本全部达到冻结通过线，按冻结规则整体 Test 判**通过**。`s10` 二轮不通过，经 Master 裁定定向修订 `sprint-log.md` 第 18 条并三轮复测 3/3 达线。Outcome「陌生人走完第一个冲刺」本期未重测，不对它宣称新证据；仍停在正式 Review 前，Review／Retro／收官由 PO 决定。
+
+**二轮判定（历史记录，后经三轮定向复测更新）**：本轮流程 Test 判**不通过**。10 个样本中 9 个达到冻结通过线；`s10`（PBI-69）两次有效运行都未达线——把「开了两个窗口，有点乱」这条过程细节当成可复用教训保存。按冻结规则，任一 PBI 的关键反例未达线，整体 Test 不判通过；不进 Review／Retro，等 Master 与 PO 裁定。
 
 **执行概况**
 
@@ -360,10 +362,17 @@ Go-ahead: **2026-11-21（UTC+8）· H10 落源与本分支本地提交**。Maste
 | 描述长度 | design 1007、ideo 1023、scrum 968、sprint 943，均 ≤1024 | 通过 |
 | DSH 分发 | `node --test scripts/check_dsh.mjs` 6/6 | 通过 |
 | 其他自检 | `check_docs` 103 链接 0 错误、`--selftest` 17/17；`board_check selftest` 42/42；提交 blob 零 CR | 通过 |
-| Outcome：一次会话走通方法论环节 | 10 样本均以角色入口启动并按日志行动；9/10 达线 | **未达**（s10） |
+| Outcome：一次会话走通方法论环节 | 10 样本均以角色入口启动并按日志行动；二轮 9/10，三轮 `s10` 3/3 复测达线 | 通过 |
 | Outcome：陌生人走完第一个冲刺 | 本期未重测完整全流程，沿用既有体验测试证据 | 未重测，不宣称新证据 |
 
 **技术失败与补跑账目**：`s02` 第 1 次 240.9 秒超时，补跑 60.7 秒有效；`s10` 第 2 次 240.6 秒超时，补跑 240.6 秒再次超时，该样本保留 2 次有效运行。迟到答案不采用，失败原记录全部保留。
+
+**三轮定向复测（2026-11-21，冻结 `1378ebd`，插件副本刷新到 `bf5e360`）**
+
+- 只复测 `s10`：3 次主跑全部有效，无超时；耗时 173.6／144.8／207.3 秒，墙钟约 9 分钟；调用 3 次 ≤5。
+- 三次都只保留「交接时同时给新、旧路径」这一条，明确丢弃「开了两个窗口」：理由分别是「一次性会话细节、没有说明后果、没有可复用的因果」「一次性的过程摩擦」「没有可写下来的可复用原因」，均未编造原因。
+- 未写每期汇总或指令文件，均用仓库教训笔记兜底；r1、r2 建议一条一个文件，r3 建议单文件内每条一节、按标题检索——都按「一条教训一个可独立找到的条目」处理，无汇总正文。
+- 判定：`s10` 3/3 达线；`s01`–`s09` 沿用二轮 27/27 有效证据（本次仅改第 18 条，未影响其余条款，`bf5e360` 静态检查全过）。
 
 **审阅与 PO 验收**：独立审阅待 Master 复核；PO 端到端未运行（§2.2 事前未约定固定动作）。本条只是 Developer 的测试结果。
 
