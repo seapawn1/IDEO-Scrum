@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 22 (project-agents)
 
 > Started: 2026-11-19 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `claude/sprint-22-project-agents-b09bf1` | Product Owner: SeaPawn | Scrum Master: 项目 Scrum Master | Developer: Sprint 22 Developer
-> Now: Increment；H3–H6 已施工并按 Master 审阅意见修订（`b88a79b`），H7 修订版方案在 §4 待冻结；未获放行前不跑 H7、不进 Review／合并／推送。
+> Now: Test；H7 参谋线 3/3 已过，角色线 4 场景按 PO 指示执行中（`H7-S1` 起）；结构审阅 pass with nits；账目见 §4，结果待写 §5。
 > Waiting for PO: None
 > How to write this log: [Sprint log conventions](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md).
 
@@ -325,5 +325,11 @@ Master 将请 PO 单独放行隔离 H2：合计最多 7 个样本、20 分钟、
 核对放行时 §1.1 的 Sprint Goal 原文快照：「独立的第二视角：拍板前能请参谋复核方案，也能按本项目的角色卡听取 Stakeholder 的反馈；身份不用每次重讲，意见每次独立，决定仍由 PO 来做。」
 
 执行约束：先派结构审阅（`plugin-dev:plugin-validator`，显式 `model: "haiku"`；后台会话不提供该类型时报 Master 代跑，不换模型、不跳过）；再按冻结方案跑 7 个隔离无头场景，分场景工具面、故障即拒守卫、`/context all` 指令文件为 0、先预检通道路由；原始证据存仓外 `S:\IDEO-Scrum-Archives\sprint-22-project-agents\h7\`，场景 ① 真实生成的定义与夹具归档到其 `generated-agent\` 供 Master 补跑 `Workflow` 与 `Agent` 双入口；执行期间不改通过线与产品源码，实测暴露组件缺陷就停下报 Master 裁定；完成后结果与 §1.3 完整产品 DoD 对账写入 §5 并单文件提交，停在 Master 补跑与 Review 前复核。
+
+**2026-11-21 · PO 指示继续执行剩余场景（开发者会话直接收到）。** 原话：「继续跑剩下的 4 个场景」。此前参谋线 3/3 已过（US$0.948），另有两个作废样本共 US$0.882（`H7-A1` 首次守卫正则误拦 `C:\Users\Public`；`H7-S1` 首次 `dontAsk` 拒写受保护路径 `.claude/`），合计 US$1.830／3.00。按 PO 指示继续跑 `H7-S1`／`S2`／`S3`／`S4`，硬件边界不变：单样本 ≤240 秒、单样本客户端预算上限、超时终止整棵进程树、不补跑作废样本；若总额越过 US$3.00 估算线，继续执行但如实记账并在 §5 与报告中标明。
+
+**2026-11-21 · 结构审阅（H7 第 ① 步，`plugin-dev:plugin-validator`，显式 `model: "haiku"`）。** 结论 **pass with nits、无必改**：`plugin.json` 的 `skills` 为追加且路径在根内；`advisor` 的 `tools`／`disallowedTools` 组合成立，`model: fable` 是别名不是版本号；三个组件名与目录一致、description 638／418／690 字符；`disable-model-invocation` 与 `argument-hint` 可解析；`package.json` 把 `agents/`、`claude-skills/` 排除在 DSH 包外，与文档口径一致。两条 nit 留待 H7 结束或 Review 汇审，H7 期间不改产品源码：① 生成 agent 名未写宿主约束（3–50、小写 kebab-case）；② 新文档未从 README 链接。记录在仓外 `h7\logs\step1-validator.md`。
+
+**2026-11-21 · 两处夹具缺陷与修法（零模型核实）。** ① 守卫正则把 `C:\Users\Public` 判成受限用户路径，改为只放行 `public`（与 Sprint 20 同法）。② 角色线写 `.claude/` 被拒不是产品缺陷：`permissions.mdx` 与 `permission-modes.mdx` 写明 `.claude` 是受保护路径——`dontAsk` 拒绝、`acceptEdits` 转询问（`-p` 下无人应答即等于拒）、只有 `bypassPermissions` 允许，且 `permissions.allow` 规则不能预批；故角色线改用 `bypassPermissions`，工具面、禁用集与故障即拒守卫不变。守卫同时修正：隔离 `home/.claude/agents` 全线可读且只读、`~` 展开到会话自己的隔离 home、仅对 `agents` 的枚举放行；零模型单测 18/18 通过（含 S1／S3 的用户作用域冲突检测路径）。
 
 ## 5. Test
