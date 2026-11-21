@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 22 (project-agents)
 
 > Started: 2026-11-19 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `claude/sprint-22-project-agents-b09bf1` | Product Owner: SeaPawn | Scrum Master: 项目 Scrum Master | Developer: Sprint 22 Developer
-> Now: Test；H7 参谋线 3/3 已过，角色线 4 场景按 PO 指示执行中（`H7-S1` 起）；结构审阅 pass with nits；账目见 §4，结果待写 §5。
+> Now: Test；H7 七个场景跑完，参谋线 3/3 与角色线 3/4 全过，场景 ① 的按名召唤在无头 `-p` 下不可达、交 Master 交互闭环；结果与 DoD 对账见 §5；停在 Master 补跑前复核。
 > Waiting for PO: None
 > How to write this log: [Sprint log conventions](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md).
 
@@ -333,3 +333,73 @@ Master 将请 PO 单独放行隔离 H2：合计最多 7 个样本、20 分钟、
 **2026-11-21 · 两处夹具缺陷与修法（零模型核实）。** ① 守卫正则把 `C:\Users\Public` 判成受限用户路径，改为只放行 `public`（与 Sprint 20 同法）。② 角色线写 `.claude/` 被拒不是产品缺陷：`permissions.mdx` 与 `permission-modes.mdx` 写明 `.claude` 是受保护路径——`dontAsk` 拒绝、`acceptEdits` 转询问（`-p` 下无人应答即等于拒）、只有 `bypassPermissions` 允许，且 `permissions.allow` 规则不能预批；故角色线改用 `bypassPermissions`，工具面、禁用集与故障即拒守卫不变。守卫同时修正：隔离 `home/.claude/agents` 全线可读且只读、`~` 展开到会话自己的隔离 home、仅对 `agents` 的枚举放行；零模型单测 18/18 通过（含 S1／S3 的用户作用域冲突检测路径）。
 
 ## 5. Test
+
+**结论（2026-11-21，交 Master 终审）。** 按 `6e4f45c` 冻结的 H7 方案，Developer 侧的 7 个隔离无头场景已全部跑完。**参谋线 3/3 全过；角色线 4 个场景中有 3 个全过，1 个（场景 ① 的「同会话下一轮按名召唤」）在无头 `-p` 下不可达**，登记本身通过，召唤环节交 Master 在交互会话用仓外真实成品闭环。整个过程中没有出现产品组件缺陷；4 次作废全部来自我方夹具与守卫的缺陷，已逐条留档。§2.2 的验收线、H3–H6 的组件与文档未因测试而改动。
+
+### 5.1 场景结果
+
+| 场景 | 用时／估算 | 结果 |
+| --- | --- | --- |
+| H7-A1 纠正前提 | 109.2s／$0.318 | 过。第 1 轮自动召唤 0；第 2 轮 1 次命中 `ideo-scrum:advisor` 并传入 `model: haiku`；子代理 `Skill(ideo-kernel)`→`Skill(scrum-kernel)`→`Read`；禁集 0；旧评议 0 泄漏；结论据原文指出固件与回退两项独立阻塞 |
+| H7-A2 独立赞同 | 140.2s／$0.356 | 过。同一工具序列；判「方向有支持但不足以构成充分依据」，不附和旧意见也不盲从 |
+| H7-A3 缺少材料 | 93.4s／$0.273 | 过。判「不能确定」，列出预算上限与停机天数两项缺失；守卫 2 次拦截均为父会话 Glob 到沙箱配置 `memory/`，属预期 |
+| H7-S1 接受登记（中文转置表） | 106.1s／$0.309 | **登记部分过，召唤部分不可达**。入口被正确调用；展示预览；同意后成对写入 `.claude/agents/duty-supervisor.md` 与产品日志 §2.1「值班主管」的「何时召唤」格（采购员列未动）；定义含按序内核加载；旧评议未进定义。第三轮按名召唤返回 `Agent type 'duty-supervisor' not found`，模型如实报告并**拒绝用别的 Agent 冒充**——见 5.3 |
+| H7-S2 拒绝 | 186.5s／$0.604 | 过。正确读出「角色在列上、逐行是事实」的转置表；重名检查三处；拒绝后两处都不写；临时 `stakeholder` 召唤仍可用，干净上下文、只带卡与材料 |
+| H7-S3 更新与同名冲突 | 103.8s／$0.337 | 过。同时报出项目与隔离用户作用域两份同名定义并说明项目覆盖；展示差异后才写；只改项目文件与日志引用，隔离用户作用域文件未改 |
+| H7-S4 角色职责与 Review 召唤权 | 91.1s／$0.260 | 过。生成 `po-assistant.md` 并写入引用，正文含卡上「负责／不负责」与前序内核加载；第三轮明确答「不能」，三层理由为卡上「不负责」含审阅、常驻会话不具独立性、Review 应由 PO 或 SM 临时召唤全新子代理 |
+
+### 5.2 通过线对照（§2.2）
+
+| 通过线 | 结果 |
+| --- | --- |
+| 参谋三场景（纠正前提／独立赞同／缺少材料） | 3/3 过，且均不代决定、不写回、不编造缺料依据 |
+| 非显式请求不误召唤 | 三个参谋样本第 1 轮自动召唤均为 0 |
+| 全新上下文、无旧评议 | 三次均为新普通实例；派单、子代理实收与落盘记录中旧评议标记均为 0 |
+| 实际只读、不转派 | 子代理实际调用仅 `Skill`、`Skill`、`Read`；禁集与 MCP 为 0；夹具 SHA-256 与 mtime 前后一致 |
+| 不把未验证的型号说成已验证 | A1 的返回明确写「宿主是否实际采用该模型，插件侧无法确认，如需该保证请视为未核实」 |
+| 首次登记：预览→同意→成对写入 | 过（S1、S4 各一例）；两处一致，无单独改动 |
+| 拒绝：两处未改 | 过（S2） |
+| 更新与同名冲突：不静默覆盖 | 过（S3），含隔离用户作用域同名文件的只读核验 |
+| 双入口按名复用 | **部分**：登记产物已备好并归档，Workflow 与普通 Agent 的按名命中交 Master 在交互会话补跑 |
+
+### 5.3 未验证与缺口（如实标注）
+
+- **无头 `-p` 下新建定义不注册**：S1 第三轮按名召唤返回 `Agent type 'duty-supervisor' not found`。交互会话中「下一条用户消息边界生效」的宿主行为，在 `-p` 流式会话里不成立。这一项**不在本环境可覆盖范围**，交 Master 用 `generated-agent/` 的真实成品闭环。
+- **S1 的生成物已被覆盖**：为修守卫缺陷重建夹具时，S1 的 `.claude/agents/` 被清空。归档改用 **S4 的真实成品** `po-assistant.md` 与其合成夹具——两者由同一入口、同一规则生成，可用于同一双入口验证；此处如实标明替代关系。
+- **模型三态（默认／另选／不可用）**：仍按 PO 2026-11-20 决定留作后续配置项，不在本期通过线内。参谋样本使用显式点名的通道可用模型，未验证默认 `fable` 路径。
+- **Outcome Done 未重测**：`claude plugin validate --strict`、DSH 回归与文档检查都是局部证据；「懂 Scrum 的陌生人不问作者走完第一个冲刺」的体验测试没有在本期重跑，不以局部验证代替。
+
+### 5.4 预算与样本账目（全部为客户端估算）
+
+| 项 | 数字 |
+| --- | --- |
+| 有效样本 | 7 个，合计 830.3 秒、**US$2.457** |
+| 作废样本 | 4 次，合计 647.4 秒、**US$1.887**：`H7-A1` 首次（守卫把 `C:\Users\Public` 判成受限路径，$0.342）、`H7-S1` 首次（`dontAsk` 拒写受保护路径，$0.540）、`H7-S1` 第二次（改脚本后未重建夹具，守卫读到旧规则，$0.719）、`H7-S4` 首次（守卫按控制台编码读 stdin，中文载荷解码失败，$0.286） |
+| 总计 | 1478 秒（约 24.6 分钟）／**US$4.345**，未超 US$6.00 与 30 分钟；单样本最长 186.5 秒，未超 240 秒 |
+| 补跑 | 未对任何生效样本补跑；4 次作废均为夹具／守卫缺陷，作废记录留在 `h7/logs/*.voided.*` |
+
+作废的 3 次上线前缺陷与 1 次操作失误都已定位到具体原因并修复，其中守卫从「遇错放行」改为「故障即拒」，且修完后 18 项零模型单测与 7 个场景实测均未再出现同类问题。
+
+### 5.5 §1.3 完整产品 DoD 对账
+
+| 维度 | 结果 |
+| --- | --- |
+| 内容忠实 | 新增组件与文档均为作者自写，未改第三方原文；基线五模式的署名缺口另见 Sprint 21，不在本期范围 |
+| 署名 | 新增文件无第三方摘录，不需 `Source`／`License` 两行，不入 `ATTRIBUTION.md` |
+| 可导航 | 插件内从各 `SKILL.md` 入口到 reference 的跳数未变；**两份新文档尚未从 README 链接**（结构审阅 nit ②），留待 H7 结束后或 Review 汇审 |
+| 无死链 | `python -X utf8 -I scripts/check_docs.py`：7 文档、103 链、0 错；`--selftest` 17/17 |
+| 插件校验 | `claude plugin validate --strict plugins/ideo-scrum` 通过（6 skills／4 commands／1 agent） |
+| 描述长度 | 11 个组件全部 ≤1024：最长 `ideo-kernel` 1023，新增 `advisor` 638、`project-stakeholder` 690、`second-opinion` 418 |
+| DSH 分发 | `node --test scripts/check_dsh.mjs` 6/6；共用正文与四个角色命令未改；DSH 包不含两处新入口，未作项目级 Agent 支持声明 |
+| Outcome Done | 见 5.3：未重测全流程，如实标注 |
+
+### 5.6 原始证据与归档
+
+- 原始流、调试记录、每样本报告与账本：`S:\IDEO-Scrum-Archives\sprint-22-project-agents\h7\logs\`
+- 结构审阅记录：同目录 `step1-validator.md`
+- 交 Master 闭环的真实成品与合成夹具：`S:\IDEO-Scrum-Archives\sprint-22-project-agents\h7\generated-agent\`（`project/.claude/agents/po-assistant.md`、`project/scrum/ProductBacklog.md`、`project/materials/`、`README.txt`）
+- 仓内只留本汇总；`plugins/ideo-scrum/` 在 H7 期间未改。
+
+### 5.7 停点
+
+停在 Master 补跑 `Workflow` 与普通 `Agent` 双入口验收之前。未进正式 Review／Retro，未改 `CLAUDE.md` 与版本号（仍 `6.0.3`），未合并、未打 tag、未推送、未发布。两条结构审阅 nit 也留待 Review 汇审。
