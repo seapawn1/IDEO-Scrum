@@ -25,7 +25,7 @@ The entry takes the open question, the constraints, and the exact files to read:
 - **The context is clean.** The entry passes only your question, your constraints and the file paths — not the discussion so far, not a draft answer, and not a leaning of yours.
 - **The answer is the advisor's.** It comes back with the verdict and the evidence, and the decision stays yours.
 
-**On the model.** The advisor's definition asks for Fable. If you name another model in the call, that model is used for this call only, and no setting is saved. Whether the host actually ran that model is **not verified** by this entry — the three-case check (requested, substituted, unavailable) is a later configuration item, and until then the answer is not presented as a particular model's work.
+**On the model.** The advisor's definition asks for Fable. If you name another model, the entry requests it for that call only and changes no settings. It **does not verify** which model the host actually ran. Checking whether the requested model ran, was substituted, or was unavailable is left for later; the entry does not attribute the answer to a specific model.
 
 ## Register a stakeholder from the product log
 
@@ -50,7 +50,7 @@ Agent, subagent_type: "security-reviewer"
 - **A Workflow's agent step**, naming the same agent type, without pasting the role's text into the script.
 - **A temporary view**, where the `stakeholder` entry summons a fresh subagent with the same role card, without any file.
 
-A definition written just now is not visible in the same turn: it takes effect at the next user message boundary in that session. A Workflow also passes the request that started it to its agent, so keep leanings out of the prompt that starts a review.
+In the tested interactive session, a newly written definition became available at the next user message, not in the same turn. The tested headless `-p` streaming session did not load the new definition at that boundary. A Workflow also passes the request that started it to its agent, so keep leanings out of the prompt that starts a review.
 
 ## Host boundaries
 

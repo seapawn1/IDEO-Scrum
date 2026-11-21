@@ -73,7 +73,7 @@ If a write fails halfway, say exactly which of the two parts landed and which di
 ## 5. How the two entries reach it
 
 - A **plain agent call by name** and a **Workflow's agent step** both read the same file; neither needs a copy of its text, and neither should be given the role's content inline instead.
-- **Host behaviour measured on Claude Code 2.1.329** (Sprint 22, H2): a newly written `.claude/agents/<name>.md` is not picked up in the same turn. It takes effect at the **next user-message boundary in the same session** — no restart needed. Tell the user this when a summon right after writing reports the agent as not found.
+- **Host behaviour measured on Claude Code 2.1.329** (Sprint 22, H2 and H7): in an interactive session, a newly written `.claude/agents/<name>.md` was picked up at the **next user-message boundary in that session**, not in the same turn, without a restart. In the tested headless `-p` streaming session, the new definition was not picked up at that boundary. If a summon reports the agent as not found just after writing, explain the distinction rather than promising a reload on the next turn in headless mode.
 - **A Workflow passes the request that triggered it to its agent** as `[Workflow harness — user request]`. So whoever writes the prompt that starts a Workflow-based review must keep leanings and earlier opinions out of that prompt, or they travel with it.
 
 ## Not for this entry
