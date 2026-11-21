@@ -1,7 +1,7 @@
 # Sprint Backlog · Sprint 24（加载可靠性）
 
 > Started: 2026-11-19 | 达成 Sprint Goal 或 PO 停止时收官 | Branch: `claude/sprint-24-loading-reliability-012ded` | Product Owner: SeaPawn | Scrum Master: IDEO-Scrum Master | Developer: Sprint 24 Developer
-> Now: Test，第一步通过、PO 将本通道上限上调至 US$15；第二步（余下 54 次 H8、H9、HOST-01..03）执行中。
+> Now: Test 完成（H8–H11 全部记录、§1.3 DoD 对账完毕），交 Master 终审；正式 Review 前停住。
 > Waiting for PO: None
 > 日志写法见 [sprint-log.md](../../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md)。
 
@@ -160,10 +160,10 @@
 | H5 | 把必读要求放到设计起草入口（PBI-80） | 设计挑战／目标／问题的按需读用指引 | ✓ 2026-11-20 入口明确指向该阶段原文、IDEO 模式、约定和模板注释；不把可选访谈或设计推进写成必做。 |
 | H6 | 复核承诺 hook 基线（PBI-83，须先获本机实测放行） | 同条件基线记录与瓶颈证据 | ✓ 2026-11-20 分清命令启动与其余开销；若 `00c224b` 不复现旧慢，停在这里报 Master，不改 hook、不改线。 |
 | H7 | 降低不变提示的 hook 开销（PBI-83，H6 支持且获准后） | ✓ 2026-11-21 落盘 `commitments.sh`（SHA-256 `77821628…`）；按 Master 审定的 3 处必改修正后施工 | 只消除证据指出的重复工作；承诺选择、原文、触发时机、开关和异常退出行为不变，候选留待双层验证。 |
-| H8 | 验证首稿与纠偏（PBI-80，实测放行后） | 四类场景与纠偏回合的双证据报告，并留存 G1 首回合的角色调用证据 | 各场景按 §2.2 分判读全和用对，首稿不被续轮覆盖；入口调用证据不替代任何一栏。 |
-| H9 | 验证角色入口与载入原文（PBI-81／82，实测放行后） | 四角色顺序和首次加载正文的分项报告 | Master 固定复用 H8 的 G1 首回合；冷启动、复用和必带原文各按 §2.2 判。链接或读文件不冒充加载结果。 |
-| H10 | 验证承诺行为与耗时（PBI-83，实测放行后） | 两个夹具的 P50／P95 与脚本层、宿主层分列报告 | 两夹具各自达 §2.2 性能线；两层各自覆盖的承诺语义全过；`clear`、`compact`、`fork` 不报宿主通过。 |
-| H11 | 核对完整 DoD 并交审（实测放行后） | 质量证据与 Master 审阅所需差异 | 原文、署名、描述长度、两跳和死链逐条核对，Claude 严格校验与 DSH 既有回归通过；如改 `hooks/`，严格校验后按仓库规矩交 validator。无证据的项不记通过。 |
+| H8 | 验证首稿与纠偏（PBI-80，实测放行后） | ✓ 2026-11-21 四题各 3 对，候选首稿前读全、首稿不被续轮覆盖 | 各场景按 §2.2 分判读全和用对，首稿不被续轮覆盖；入口调用证据不替代任何一栏。 |
+| H9 | 验证角色入口与载入原文（PBI-81／82，实测放行后） | ✓ 2026-11-21 四角色 3/3；LOAD 3/3 原文逐字一致 | Master 固定复用 H8 的 G1 首回合；冷启动、复用和必带原文各按 §2.2 判。链接或读文件不冒充加载结果。 |
+| H10 | 验证承诺行为与耗时（PBI-83，实测放行后） | ✓ 2026-11-21 两夹具 P50/P95 与脚本层、宿主层分列；HOST-01～03 通过 | 两夹具各自达 §2.2 性能线；两层各自覆盖的承诺语义全过；`clear`、`compact`、`fork` 不报宿主通过。 |
+| H11 | 核对完整 DoD 并交审（实测放行后） | ✓ 2026-11-21 静态 DoD 全过；validator 无必改 | 原文、署名、描述长度、两跳和死链逐条核对，Claude 严格校验与 DSH 既有回归通过；如改 `hooks/`，严格校验后按仓库规矩交 validator。无证据的项不记通过。 |
 
 **Key choices**
 
@@ -306,3 +306,56 @@ Go-ahead: 2026-11-20（UTC+8），PO SeaPawn（由 Master 转达）： 「你觉
 - **停点与预算裁定（2026-11-21，UTC+8；Master 转达，PO 原话逐字）**：「为什么有额度限制？都用的haiku跑的对吧，如果是的，那无所谓haiku我有无限额度，上调就是」。已从原始流核实本期（及 22、23）走 `claude-magpie` 的 `haiku` 映射通道、未动 Opus／Sonnet；本通道 CLI 列表价防失控上限由 **US$5.00 上调至 US$15.00**，其余硬边界不变（总启动 ≤60 次含 4 次技术补测余量、总时长 ≤200 分钟、单回合 150 s＋`taskkill /T /F`、原样本与原通过线不变）。据此放行 Test 第二步（余下 54 次）。
 - 更正后的余下 54 次投射：54×`$0.18174`≈`$9.8`，G1 六次第三回合约 +`$0.12`，总计约 **`$10.3`**（`costBasis: unknown`，magpie 便宜通道的列表价保守估算）。两处脚本修正：① 费用取最后一条 `result` 的累计值、另记回合增量；② 宿主命令改用 `--add-dir <arm_dir/plugin>` 放 `-p` 之前（用 `-p` 结束 `--add-dir` 的值列表）并去掉宽泛的 `--allowedTools`，使插件 `conventions/`／`references/` 可读；后续 H8／H9／H10 宿主脚本沿用。
 - 技术失败说明：首轮 `--run` 在准备阶段因脚本 `make_env` 重复建目录报错，未启动模型、未计费；修正后按上述两次冒烟重跑，准备期的旧沙箱未用于证据。
+
+**Test 第二步记录（2026-11-21，UTC+8；PO 将本通道上限上调至 US$30；产品源码仍冻结 `a482a52`）**
+
+- **规模与账**：宿主启动共 **60/60**（2 smoke＋2 G1-01＋35＋17＋4 补测）；本通道 CLI 列表价累计 **`$19.630688`/US$30**。4 次技术超时按原口径补测（`R1-01/C`、`DES-02/B`、`DES-03/B`、`DES-03/C`，原名加 `.retry1`，原始流保留）；未改样本、未改通过线。
+- **中途停点与再上调**：第二批在 35 次时累计 **`$15.513034`** 触发 US$15 停点——分配剩余预算 14.02 时只扣了 G1-01、漏扣 smoke 的 `$0.363479`，最后一次启动跨线；如实停报。PO 2026-11-21 依同一原话再上调本通道上限至 **US$30.00**（Master 转达并核实均走同一 `haiku` 映射通道），余下 17＋4 次按剩余 `14.48` 继续。
+- **隔离与权限**：沙箱在 `C:\Users\Public\s24-h8-h11\…`，上级零指令文件；每臂独立状态／`TEMP` 与插件副本；守卫 `PreToolUse` 的 `names` 加入 `guard.json`；保持 `dontAsk`、不恢复 `--allowedTools`。3 次 Read／Grep 拒绝均为模型自行拼出的沙箱外路径（如漏写试次目录、`guard/` 内部），未触及真实环境；另 1 次发生在已完成的 `DEV-02/C`，继续跑完。
+- **模型**：全部 `init.model` 一致（只记布尔）；走 `claude-magpie` 的便宜模型通道（非 Haiku）；`init.tools` 均为 `Glob/Grep/Read/Skill`，`permissionMode=dontAsk`，`mcp_servers` 空。
+
+**PBI-80（H8）首稿前读全与首稿判断**
+
+| 题 | 臂 | A（首稿前读全指定原文与注释） | B（首稿用对） | A+B |
+| --- | --- | --- | --- | --- |
+| G1／G2／D1／R1（各 3 对） | B（基线） | 0/3、0/3、0/3、0/3 | 各 3/3 | 各 0/3 |
+| 同上 | C（候选） | **各 3/3** | 各 3/3 | **各 3/3** |
+
+- 关键差异：G1 候选在首稿前读到 `references/scrum-artifact-product-backlog.md`、`conventions/product-log.md` 与模板 §1.2 注释，基线三次都到纠偏后才读原文；G2 候选首稿前读齐 planning event、Sprint Backlog 原文与模板 §§1.1–1.2，基线普遍缺；D1 候选三次都读 `ideo-log.md`，基线三次都缺；R1 候选读齐 product-backlog 原文、`define.md`、HMW 与 §2.2 注释，基线只读 HMW。`R1-01/C` 原超时不计，使用 `.retry1`。
+- 纠偏（G1 同进程续轮）：两臂重拟前都重读 `Commitment: Product Goal` 原文与相关约定；A／B／A+B 均 3/3；首稿不替换。
+- 首稿内容：G1 均为单一中期价值目标、未把短信当目标；G2 均为本期价值、未代选 What（候选更明确把短信提醒留在 What）；D1 均标注证据来源、目标不预设解法、问题可回答、未虚构访谈；R1 均逐字保留 POV、HMW 开放、区分 PO／Developer／研究三类决定、给出可核对验收草案且未擅自进 How。
+
+**PBI-81／82（H9）角色入口与载入原文**
+
+| 入口 | 候选通过 | 实际顺序 | 备注 |
+| --- | --- | --- | --- |
+| Scrum Master（G1-01～03） | 3/3 | `ideo→scrum→sprint→design` | 首个角色动作前四项全部成功 |
+| Developer（DEV-01～03） | 3/3 | `ideo→scrum→sprint` | 冷启动无额外内核 |
+| Designer（DES-01～03） | 3/3 | `ideo→scrum→design` | 同上 |
+| Stakeholder（STK-01～03） | 3/3 | `ideo→scrum` | `STK-01/reuse` 第二回合只新调 `sprint-kernel`，1/1 |
+
+- LOAD（PBI-82）：候选 3/3。首次成功 `Skill` 的交付正文中，`## Sprint Backlog` 至文末（含 `### Commitment: Sprint Goal`）共 **2,485 字符**，与 `scrum-artifact-sprint-backlog.md` 逐字一致（忽略换行）；基线 3 次只有 6,012 字符的技能正文，不含该节，0/3。
+
+**PBI-83 宿主层（HOST-01～03）**
+
+| 试次 | 臂 | 证据 | 结果 |
+| --- | --- | --- | --- |
+| HOST-01 | B、C 各 1 | `SessionStart:startup` stdout 含 Product／Product Goal／Sprint Goal（185 字节）；前两条提示静默；`续借`→同字节长`展期`并保留 mtime 后，下一条 stdout 为更新后的全文；再下一条静默 | 两臂均过 |
+| HOST-02 | C、B 各 1 | 同一 `session_id` 用 `--resume` 恢复；`SessionStart` 输出全文（185 字节），随后提示静默 | 两臂均过 |
+| HOST-03 | B、C 各 1 | `IDEO_SCRUM_COMMITMENTS=off`：`SessionStart` 与两条提示 stdout 均为空、exit 0 | 两臂均过 |
+
+- `clear`／`compact`／`fork` 仍只记脚本层（H10 本机），不报宿主通过。
+
+**§1.3 完整 DoD 对账（H11）**
+
+| DoD 项 | 证据 | 结果 |
+| --- | --- | --- |
+| 内容忠实 | `check_dsh` 的 Sprint Backlog 节选逐字对比通过；75 份带 `Source` 的摘录均与源一致 | 过 |
+| 署名 | 75 份摘录均有 `Source`／`License` 两行，许可族与 `ATTRIBUTION.md` 一致 | 过 |
+| 可导航 | 四个 `SKILL.md` 入口 ≤2 跳覆盖全部同目录 `.md`，无缺失 | 过 |
+| 无死链 | `check_docs.py` 0 错、`--selftest` 全过 | 过 |
+| 插件校验 | `claude plugin validate --strict plugins/ideo-scrum` 通过；`plugin-dev:plugin-validator`（haiku）无必改、4 条 nits（两条沿用 `00c224b`、一条范围表述、一条版本节奏） | 过 |
+| 描述长度 | 1023／1007／968／943（技能）；858／725／557／476（命令），均 ≤1024 | 过 |
+| DSH 分发 | `node --test scripts/check_dsh.mjs` 7/7 | 过 |
+
+- Outcome Done（一次会话走通、陌生人走完第一个冲刺）不属本期专项测试，未在本 Sprint 记通过；按产品日志由后续体验测试负责。
