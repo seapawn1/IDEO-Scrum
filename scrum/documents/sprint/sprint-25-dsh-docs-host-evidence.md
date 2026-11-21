@@ -1,6 +1,6 @@
 # PBI-72 · 宿主证据与验收样例
 
-这是 Sprint 25 的工作材料，不是 `0.6.3` 的测试报告。以下记录已查实的源码、旧端和供 Test 使用的样例；`H4`（Claude Code）与 `H5`（DSH）均已跑完，结果见 [SprintBacklog §5](SprintBacklog.md#5-test)；H5 在 PO 提供的隔离实例上由 Stakeholder 代操，未触碰 PO 日常实例。
+这是 Sprint 25 的工作材料，不是 `0.6.3` 的测试报告。以下记录已查实的源码、旧端和供 Test 使用的样例；`H4`（Claude Code）与 `H5`（DSH）均已跑完，结果见 [SprintBacklog §5](sprint-25-dsh-docs.md#5-test)；H5 在 PO 提供的隔离实例上由 Stakeholder 代操，未触碰 PO 日常实例。
 
 | 要核的事 | 已有证据 | 仍待实机验证 |
 | --- | --- | --- |
@@ -8,7 +8,7 @@
 | DSH 项目级 Agent | [Cordis 预设注册](https://github.com/deepseek-ai/deepseek-harness/blob/9c2670d3bce5275e0d1610272958121af87787bb/packages/preset/agent-preset/src/index.ts#L11-L29)与[子代理预设选择](https://github.com/deepseek-ai/deepseek-harness/blob/9c2670d3bce5275e0d1610272958121af87787bb/packages/subagent/tool-subagent/README.md#L50-L71)分别证明宿主能声明命名 preset、受配置约束让进程内 spawn 选 preset。它们不证明按项目自动发现 Agent 文件，也不等于 `.agents/skills` 或本 bundle 的 `/stakeholder`。 | 项目级自动发现或注册目前未证实；将有版本的结论交 Sprint 22 参考，不替该期实现。 |
 | `6.0.3 → 0.6.3` | Claude 旧端为 `v6.0.3`（`d681c69`），Git 市场相对源 `./plugins/ideo-scrum`；DSH 旧端为 `b2679aa`，根包 `@seapawn/ideo-scrum` 为 private 的本地 bundle。DSH 的[注册表更新候选](https://github.com/deepseek-ai/deepseek-harness/blob/9c2670d3bce5275e0d1610272958121af87787bb/packages/boot/plugin-manager/src/versions.ts#L32-L48)只列 SemVer 更高项，不能用它推断本地目录链接重启后加载哪一版。 | Claude 查市场缓存中新旧实际路径；DSH 查 Web 安装后链接／加载来源和新 Standard 会话。常规路径失败才单独查替代路径；两端都要保全项目日志。 |
 
-**隔离条件与环境白名单。** 当前 Windows 有 Claude CLI、Git、Node `v26.13.0`、npm；`PATH` 未找到 `dsh`，未检查用户配置。固定的 [`@deepseek-ai/dsh@0.2.2-rc.5` 元数据](https://registry.npmjs.org/@deepseek-ai%2Fdsh/0.2.2-rc.5)要求 Node `>=24.9.0`。进入 H4–H5 前必须满足以下隔离硬条件（参考[无头回归测试手册](../documents/headless-testing.md)）：
+**隔离条件与环境白名单。** 当前 Windows 有 Claude CLI、Git、Node `v26.13.0`、npm；`PATH` 未找到 `dsh`，未检查用户配置。固定的 [`@deepseek-ai/dsh@0.2.2-rc.5` 元数据](https://registry.npmjs.org/@deepseek-ai%2Fdsh/0.2.2-rc.5)要求 Node `>=24.9.0`。进入 H4–H5 前必须满足以下隔离硬条件（参考[无头回归测试手册](../headless-testing.md)）：
 
 - **中性父目录**：所有测试仓库与隔离配置均放在上级目录不含任何 `CLAUDE.md`／`AGENTS.md` 的中性路径（如 `C:\Users\Public\s25-test\`），严禁放在 `%TEMP%` 或作者家目录下，也不得指向本工作树或主仓库。
 - **Claude 隔离**：按运行分别准备互不复用的 `CLAUDE_CONFIG_DIR`（零写入 `~/.claude`）；子进程环境变量采用白名单（`SystemRoot`、去除了作者家目录仅保留工具目录的 `PATH`、独立 `HOME`/`USERPROFILE`/`APPDATA`/`LOCALAPPDATA`、全新空 `TEMP`/`TMP`、`CLAUDE_CODE_GIT_BASH_PATH`、`MSYS_NO_PATHCONV`、`GIT_CONFIG_GLOBAL` 空文件、`GIT_CONFIG_NOSYSTEM=1`）；禁用 shell 时同时禁用 `Bash` 与 `PowerShell`；带 `--strict-mcp-config`、`--permission-mode dontAsk`、`--setting-sources user,project,local`（`claude plugin install` 把 `enabledPlugins` 写进用户级设置，缺 `user` 则不挂载插件；冒烟见 SprintBacklog §5）；若用 `scripts/stranger_test/guard.py`，不得再传入与 `claude-magpie` 冲突的额外 `--settings`。每次模型调用前先运行 `/context all`，一旦加载任何上级或用户指令文件立即停机。

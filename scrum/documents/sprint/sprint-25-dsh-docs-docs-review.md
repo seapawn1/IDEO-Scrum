@@ -1,6 +1,6 @@
 # PBI-72 · 文档候选交审
 
-本页是冲刺工作材料。中英维护说明全文（[`docs/maintaining.md`](../../docs/maintaining.md)、[`docs/maintaining.zh-CN.md`](../../docs/maintaining.zh-CN.md)）已按下方大纲定稿并并入 `check_docs.py` 的 `PAIRS`；中英 README 与双语快速上手已按本页最小化改动落盘（2026-11-21），Claude Code `H4` 证据已写入，DSH `H5` 仍待实机。本页不是发布文档。宿主事实、隔离要求与 H5 前置见 [host-evidence.md](host-evidence.md)，H4 结果见 [SprintBacklog §5](SprintBacklog.md#5-test)。
+本页保留 Sprint 25 的文档交审时点，文中的「待实机」不是最终状态；实际结果以 Sprint 25 归档 §5 为准。中英维护说明全文（[`docs/maintaining.md`](../../../docs/maintaining.md)、[`docs/maintaining.zh-CN.md`](../../../docs/maintaining.zh-CN.md)）已按下方大纲定稿并并入 `check_docs.py` 的 `PAIRS`；中英 README 与双语快速上手已按本页最小化改动落盘（2026-11-21），Claude Code `H4` 证据已写入，DSH `H5` 仍待实机。本页不是发布文档。宿主事实、隔离要求与 H5 前置见 [host-evidence.md](sprint-25-dsh-docs-host-evidence.md)，H4 结果见 [SprintBacklog §5](sprint-25-dsh-docs.md#5-test)。
 
 **需审的改动**
 
@@ -8,8 +8,8 @@
 | --- | --- | --- |
 | 中英 README 的安装、升级两节 | DSH 宿主号容易和插件号混淆；现有普通升级说明没有覆盖这次版本号下调。 | 保留两宿主的安装入口，标清版本号分别指什么。升级节链接到迁移说明；只把通过实机的路径写成操作指引。**已改（2026-11-21）**：DSH 安装加宿主号说明；升级节写入 Claude Code 已验证的 `6.0.3 → 0.6.3` 并链到维护说明；DSH 压缩后补入加未实机范围注。 |
 | 双语快速上手的「开始之前」 | 现在只有「已安装」的前提；从旧版来的读者可能找不到版本迁移说明。 | 在原来的一条前提里同时链安装与升级，不重复命令，不动角色入口和流程。**已改（2026-11-21）**。 |
-| 新维护说明 | 规则和方法论为何都只有一份、两宿主怎样读取，以及接手维护者怎么复核，目前缺一个落点。 | 已定稿 [`docs/maintaining.md`](../../docs/maintaining.md) 与 [`docs/maintaining.zh-CN.md`](../../docs/maintaining.zh-CN.md)（H1 + 4 H2）；草稿提示已删，Claude Code 证据已写入，DSH 实机项标明待验；已加入 `check_docs.py` 的 `PAIRS`。 |
-| 本仓库共用规则 | 复制现有 `CLAUDE.md` 正文而不改原文件，会留下两套生效规则。 | **已完成原样迁移（2026-11-20，PO 直接授权本执行会话）**：将 `HEAD:CLAUDE.md` 原样迁至根 [`AGENTS.md`](../../AGENTS.md)（5691 字节，blob `65e2c4e`，保留原文及授权边界），[`CLAUDE.md`](../../CLAUDE.md) 仅留单向导入 `@AGENTS.md`（11 字节，blob `43c994c`，无循环引用）。 |
+| 新维护说明 | 规则和方法论为何都只有一份、两宿主怎样读取，以及接手维护者怎么复核，目前缺一个落点。 | 已定稿 [`docs/maintaining.md`](../../../docs/maintaining.md) 与 [`docs/maintaining.zh-CN.md`](../../../docs/maintaining.zh-CN.md)（H1 + 4 H2）；草稿提示已删，Claude Code 证据已写入，DSH 实机项标明待验；已加入 `check_docs.py` 的 `PAIRS`。 |
+| 本仓库共用规则 | 复制现有 `CLAUDE.md` 正文而不改原文件，会留下两套生效规则。 | **已完成原样迁移（2026-11-20，PO 直接授权本执行会话）**：将 `HEAD:CLAUDE.md` 原样迁至根 [`AGENTS.md`](../../../AGENTS.md)（5691 字节，blob `65e2c4e`，保留原文及授权边界），[`CLAUDE.md`](../../../CLAUDE.md) 仅留单向导入 `@AGENTS.md`（11 字节，blob `43c994c`，无循环引用）。 |
 
 **现有用户文档拟用文字**
 
