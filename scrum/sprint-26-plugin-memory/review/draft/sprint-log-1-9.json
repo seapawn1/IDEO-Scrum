@@ -1,7 +1,7 @@
 [
   {
     "id": "sprint-log#1",
-    "line": "- **sprint-folder** One branch and one folder per Sprint, scrum/sprint-NN-<suffix>/; NN is the last number plus one; the tag has the same name. → long/sprint-stages.md",
+    "line": "- **sprint-folder** One branch and folder per Sprint, scrum/sprint-NN-<suffix>/; the tag has the same name. → long/sprint-stages.md",
     "lines": null,
     "section": "sprint",
     "long_file": "sprint-stages",
@@ -93,8 +93,8 @@
     "id": "sprint-log#8",
     "line": null,
     "lines": [
-      "- **go-ahead** [dev,po] Build only after the PO's go-ahead, written with its date and reach; approving a plan is not a go-ahead. → long/sprint-stages.md",
-      "- **review-handover** [po,sm] The PO may hand the review of the How, new structures and full texts to the Scrum Master, in writing; that is not the go-ahead."
+      "- **go-ahead** Build only on the PO's go-ahead, with its date and reach (commit … push); approving a plan is not one. → long/sprint-stages.md",
+      "- **review-handover** [po,sm] The PO may hand the review of the How, new structures and full texts to the Scrum Master in writing; not the go-ahead."
     ],
     "section": "sprint",
     "long_file": "sprint-stages",

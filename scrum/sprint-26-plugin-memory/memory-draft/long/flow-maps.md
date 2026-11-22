@@ -27,7 +27,7 @@ flowchart TD
     DES --> X
     SH --> X
     SH --> V
-    X0 -- "PO authorizes starting a design sprint" --> X["Design sprint: five stages, each standing on one IDEO mode<br/>question-needs-design, open-a-design, design-gates, ideate-arrangement"]
+    X0 -- "PO authorizes starting a design sprint" --> X["Design sprint: five stages, each standing on one IDEO mode<br/>question-needs-design, open-a-design, ideate-arrangement"]
     X0 -- "the five modes" --> X2["The five modes: one or two methods, recorded in the log they serve;<br/>or an IDEO log for a run of its own<br/>open-ideo-log, read-mode-file"]
     X -- "conclusions flow back — a blank page's design fills the product log" --> A
     X2 -- "conclusions flow back" --> A
@@ -75,7 +75,7 @@ flowchart TD
     E -- "PO chooses; separately authorizes Prototype" --> F["Prototype<br/>design-stages"]
     F -- "PO authorizes Test" --> G["Test<br/>design-stages, criteria-before-test"]
     G -- "PO decides" --> H["Ending<br/>design-ends, design-conclusions"]
-    G -. "PO authorizes a return" .-> R["Resume the stage that needs work<br/>design-gates, ideate-arrangement"]
+    G -. "PO authorizes a return" .-> R["Resume the stage that needs work<br/>ideate-arrangement"]
 ```
 
 ## The five modes and the IDEO log

@@ -3,8 +3,8 @@
     "id": "sprint-log#19",
     "line": null,
     "lines": [
-      "- **one-closing-commit** [sm] Close with one commit after clearing old paths project-wide; then tag, merge, delete the branch. → long/sprint-closing.md",
-      "- **outward-needs-po** Pushing and other outward actions, such as a release, need the PO's consent."
+      "- **one-closing-commit** Close with one commit after clearing old paths project-wide; then tag, merge, delete the branch. → long/sprint-closing.md",
+      "- **outward-needs-po** Push, release and other outward actions need the PO's consent; a stage permission never covers commit, merge or push."
     ],
     "section": "sprint",
     "long_file": "sprint-closing",
@@ -40,7 +40,7 @@
   },
   {
     "id": "sprint-log#22",
-    "line": "- **log-is-the-handoff** In a sprint, design or IDEO log keep the header current and write what matters into the log before a session ends. → long/handoff.md",
+    "line": "- **log-is-the-handoff** Keep a log's header current and write what matters into it before a session ends. → long/handoff.md",
     "lines": null,
     "section": "sprint",
     "long_file": "handoff",
@@ -69,32 +69,27 @@
   },
   {
     "id": "sprint-log#24",
-    "line": null,
-    "lines": [
-      "- **sprint-stage-decisions** [po,sm] The PO decides each Sprint stage change: goal, end of refinement, go-ahead, Test, close or return. → long/stage-gates.md",
-      "- **read-the-goal** Before each stage decision, read the exact Sprint Goal from its table; if you cannot, stop. → long/stage-gates.md"
-    ],
+    "line": "- **read-the-goal** Before each stage decision, read the exact goal (Sprint or design) from its table; if you cannot, stop. → long/stage-gates.md",
+    "lines": null,
     "section": "sprint",
     "long_file": "stage-gates",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
     "where_else": null,
-    "note": "Long file: no placeholder is recorded as a commitment while no Sprint Goal is set; the goal's exact text goes in the section 1.1 table; its wording is kept on the dated decision line as a record, not as a source; show the text to the PO only when the goal changed, direction is at issue, or they ask; after Test the PO decides to close or to return; a Developer's checks while building are not Sprint Test."
+    "note": "The old first line sprint-stage-decisions (the PO sets the goal before What, ends refinement before How, gives the go-ahead before building, authorizes Test apart from approving the Increment, then decides close or return) is the umbrella stage-gates line plus the Sprint section of the stage-gates long file. Long file: no placeholder is recorded as a commitment while no Sprint Goal is set; the goal's exact text goes in the section 1.1 table; its wording is kept on the dated decision line as a record, not as a source; show the text to the PO only when the goal changed, direction is at issue, or they ask; after Test the PO decides to close or to return; a Developer's checks while building are not Sprint Test."
   },
   {
     "id": "sprint-log#25",
-    "line": "- **po-decisions** Ask the PO whenever unsure, and always for goals, items, go-ahead, stage ends and gates, design choices, scope changes, git and outward actions.",
-    "lines": null,
+    "line": null,
+    "lines": [],
     "section": "sprint",
     "long_file": null,
-    "merged_into": null,
-    "adds_to_target": null,
-    "absorbed": [
-      "design-log#21"
-    ],
+    "merged_into": "overview#10",
+    "adds_to_target": "What goes to the PO: whenever you are unsure, and in any case to set the Sprint Goal, select the items, say when refinement is over, give the go-ahead, decide at the end of each stage, renegotiate the acceptance criteria, decide whether new work enters the Sprint and renegotiate the scope, give formal acceptance when it is written, consent to outward actions such as a push, and cancel a Sprint whose goal can no longer be met.",
+    "absorbed": [],
     "where_else": null,
-    "note": "An index of decisions that each have their own line; it absorbs design-log#21 (the design version of the same index: stage results and entry, how Ideate diverges, the design goal, the How Might We questions that matter, the solution and combine-or-rumble, how real the prototype must be, the design's end, git actions). The PO may drop it as a duplicate."
+    "note": "The index of what the PO decides. Merged into ask-the-po with the design version (design-log#21); each decision still has its own line (sprint-goal, select-items, refinement, go-ahead, new-work-registered, acceptance-when-written, outward-needs-po, po-owns-commitments), so the index adds nothing to the list. Marked for the 27 sync with ask-the-po."
   },
   {
     "id": "sprint-log#26",

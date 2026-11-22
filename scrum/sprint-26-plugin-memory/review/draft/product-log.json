@@ -1,7 +1,7 @@
 [
   {
     "id": "product-log#1",
-    "line": "- **write-product-log** Write the product log from the template, usually the Scrum Master with the PO; for an old project, from its README, issues and old plans.",
+    "line": "- **write-product-log** Write the product log from the template, usually the Scrum Master with the PO; for an old project, from README, issues, plans.",
     "lines": null,
     "section": "product-log",
     "long_file": null,

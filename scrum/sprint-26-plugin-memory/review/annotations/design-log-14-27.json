@@ -120,8 +120,8 @@
     "kind": "规矩",
     "home": "不进 Memory",
     "recommend": "并",
-    "merge_into": "sprint-log#25",
-    "reason": "Developer 改：并入 sprint-log#25（po-decisions 一行索引）。两条都是「PO 决定清单」的索引，各自的决定在各自的规矩里（#8、#13–14、#16、#19、#26）；一份总索引比两份好，设计特有的几项（各阶段结果与进出、Ideate 怎么发散、挑 How Might We 问题、选方案与合并/Rumble、原型要多真、设计结束、git 许可）并进那一行。",
+    "merge_into": "overview#10",
+    "reason": "Developer 改（Master 2026-11-22 要合并重叠）：并入 overview#10（ask-the-po），不再并入 sprint-log#25（它自己也并进 overview#10 了）。设计特有的几项（各阶段结果与进出、Ideate 怎么发散、设计目标、挑 How Might We 问题、选方案与合并/Rumble、原型要多真、设计结束、git 许可）随并入带进 roles-and-routing 长文件。",
     "dups": [
       "design-log#14",
       "design-log#16",
@@ -132,6 +132,7 @@
     "confidence": "中",
     "checked": [
       "verified: home, reason, recommend",
+      "verified: confidence, home, merge_into, reason, recommend",
       "verified: confidence, home, merge_into, reason, recommend"
     ]
   },

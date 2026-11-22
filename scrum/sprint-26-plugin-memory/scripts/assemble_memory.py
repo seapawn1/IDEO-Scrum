@@ -65,19 +65,21 @@ def role_slices(entries: list[tuple[str, str]]) -> dict[str, int]:
     return out
 
 
-def build(rows: dict[str, dict]) -> tuple[str, list[tuple[str, str]]]:
+def build(rows: dict[str, dict], mark_pending: bool = True) -> tuple[str, list[tuple[str, str]]]:
     by_section: dict[str, list[tuple[tuple[int, int], str, str]]] = {s: [] for s in cd.SECTIONS}
     for i, o in rows.items():
         for ln in lines_of(o):
-            by_section.setdefault(o.get("section") or "meta", []).append((rank(i), i, ln))
+            m = cd.LINE.match(ln)
+            shown = ln + " [pending S27]" if mark_pending and m and m.group(1) in (o.get("pending") or {}) else ln
+            by_section.setdefault(o.get("section") or "meta", []).append((rank(i), i, ln, shown))
     out, flat = [HEADER], []
     for s in cd.SECTIONS:
         items = sorted(by_section.get(s, []), key=lambda x: (x[0], x[1]))  # stable: a rule's own lines keep their order
         if not items:
             continue
         out.append(f"\n## {TITLES[s]}\n")
-        for _, i, ln in items:
-            out.append(ln)
+        for _, i, ln, shown in items:
+            out.append(shown)
             flat.append((i, ln))
     return "\n".join(out) + "\n", flat
 
@@ -189,7 +191,7 @@ def main(argv: list[str]) -> int:
         print("draft file problems:", *problems, sep="\n  ")
         return 1
     ann = cd.annotations()
-    text, flat = build(rows)
+    text, flat = build(rows, mark_pending="--no-pending-marks" not in argv)
     out.mkdir(parents=True, exist_ok=True)
     (out / "MEMORY.md").write_text(text, encoding="utf-8", newline="\n")
     long_src = d / "long"

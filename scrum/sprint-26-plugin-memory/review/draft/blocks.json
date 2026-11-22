@@ -296,7 +296,7 @@
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
-    "where_else": "Dropped: a pointer to 'Throughout'; the entry and return rules at each transition are design-gates.",
+    "where_else": "Dropped: a pointer to 'Throughout'; the entry and return rules at each transition are the stage-gates line and long/stage-gates.md.",
     "note": ""
   },
   {

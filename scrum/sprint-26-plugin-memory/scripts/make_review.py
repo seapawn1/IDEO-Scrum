@@ -53,6 +53,8 @@ def new_part(o: dict | None) -> list[str]:
         out += ["", f"**别处已有**：{o['where_else']}"]
     if o.get("note"):
         out += ["", f"**备注**：{o['note']}"]
+    for h, why in (o.get("pending") or {}).items():
+        out += ["", f"**待 27（`{h}`）**：{why}"]
     return out
 
 

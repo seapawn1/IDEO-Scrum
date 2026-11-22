@@ -32,7 +32,7 @@ LONG_FILES = {"roles-and-routing", "stage-gates", "goal-fixed", "layers-and-fold
 REQUIRED = ["id", "line", "lines", "section", "long_file", "merged_into", "adds_to_target", "absorbed", "where_else", "note"]
 LINE = re.compile(r"^- \*\*([a-z0-9]+(?:-[a-z0-9]+){0,4})\*\*(?: \[([a-z,]+)\])? (.+)$")
 CJK = re.compile(r"[㐀-鿿　-〿＀-￯]")
-LIMIT_SOFT, LIMIT_HARD = 130, 170
+LIMIT_SOFT, LIMIT_HARD = 130, 150
 
 
 def ledger_ids() -> list[str]:

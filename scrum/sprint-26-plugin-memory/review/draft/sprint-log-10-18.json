@@ -1,7 +1,7 @@
 [
   {
     "id": "sprint-log#10",
-    "line": "- **checkpoints** Check the work against the Sprint Goal at each stage end, when stuck, and when the PO asks (departs from the Daily Scrum). → long/sprint-stages.md",
+    "line": "- **checkpoints** Check the work against the Sprint Goal at each stage end, when stuck, and when the PO asks (a departure). → long/sprint-stages.md",
     "lines": null,
     "section": "sprint",
     "long_file": "sprint-stages",
@@ -13,7 +13,7 @@
   },
   {
     "id": "sprint-log#11",
-    "line": "- **outline-first** Before a new lasting document or template, show its outline (every heading, one line each) to its reviewer; write the full text once they agree.",
+    "line": "- **outline-first** For a new lasting document or template, first show the reviewer its outline (headings, one line each); write it once they agree.",
     "lines": null,
     "section": "sprint",
     "long_file": null,
@@ -25,7 +25,7 @@
   },
   {
     "id": "sprint-log#12",
-    "line": "- **full-text-review** Give the reviewer the full text to annotate, with problems and recommendations; change sources only after approval; the disk version wins.",
+    "line": "- **full-text-review** Give the reviewer the full text to annotate, with problems and advice; edit sources only after approval; the disk version wins.",
     "lines": null,
     "section": "sprint",
     "long_file": null,
@@ -52,7 +52,7 @@
   },
   {
     "id": "sprint-log#14",
-    "line": "- **reviewer-required** The builder never reviews: the Scrum Master does, or a fresh subagent if the Scrum Master built it (a departure). → long/sprint-stages.md",
+    "line": "- **reviewer-required** The builder never reviews: the Scrum Master does, or a fresh subagent if the Scrum Master built it. → long/sprint-stages.md",
     "lines": null,
     "section": "sprint",
     "long_file": "sprint-stages",
@@ -64,7 +64,7 @@
   },
   {
     "id": "sprint-log#15",
-    "line": "- **acceptance-when-written** Ask the PO for formal acceptance only when the Definition of Done or the acceptance criteria call for it; sometimes a glance is enough.",
+    "line": "- **acceptance-when-written** Ask the PO for formal acceptance only when the DoD or acceptance criteria call for it; sometimes a glance is enough.",
     "lines": null,
     "section": "sprint",
     "long_file": null,
@@ -76,7 +76,7 @@
   },
   {
     "id": "sprint-log#16",
-    "line": "- **record-the-tests** [dev] In chapter 5, show valid evidence for every applicable standard and criterion; without it, no pass. → long/sprint-stages.md",
+    "line": "- **record-the-tests** [dev] In chapter 5, show valid evidence for every applicable standard and criterion, else no pass. → long/sprint-stages.md",
     "lines": null,
     "section": "sprint",
     "long_file": "sprint-stages",
@@ -88,7 +88,7 @@
   },
   {
     "id": "sprint-log#17",
-    "line": "- **review-at-close** Close with a Review: compress the sprint log to key decisions, archive it in scrum/documents/, refresh the product log. → long/sprint-closing.md",
+    "line": "- **review-at-close** At close, a Review: compress the sprint log to key decisions, archive it, refresh the product log. → long/sprint-closing.md",
     "lines": null,
     "section": "sprint",
     "long_file": "sprint-closing",
@@ -100,7 +100,7 @@
   },
   {
     "id": "sprint-log#18",
-    "line": "- **retro-in-memory** Retro saves only important reusable lessons, one memory entry each; no Retro summary, nothing in instruction files. → long/sprint-closing.md",
+    "line": "- **retro-in-memory** Retro saves only important reusable lessons, one memory entry each; no summary, no instruction files. → long/sprint-closing.md",
     "lines": null,
     "section": "sprint",
     "long_file": "sprint-closing",

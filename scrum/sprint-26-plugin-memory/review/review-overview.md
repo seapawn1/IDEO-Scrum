@@ -291,13 +291,15 @@
 
 **与它重复或相邻**：sprint-log#25
 
-**新行**
+**新行**（长文件 `roles-and-routing`）
 
 ```text
-- **ask-the-po** Whoever is unsure asks the PO, unless the PO sent that kind of question elsewhere.
+- **ask-the-po** Whoever is unsure asks the PO, unless the PO sent that kind of question elsewhere. → long/roles-and-routing.md
 ```
 
-**备注**：Sprint 27 adds where each kind of question goes (a three-step routing); add that line when syncing.
+**备注**：Absorbs sprint-log#25 and design-log#21 (the two indexes of what the PO decides): that list now sits in the roles-and-routing long file under this line, so there is one index, not three lines that overlap. The old 'always ask the PO for ... git and outward actions' is stricter than the convention (which only asks that a commit stay inside the go-ahead's reach) and is not carried as it stood.
+
+**待 27（`ask-the-po`）**：Sprint 27 changes where a question goes: three tiers (decide and log it yourself; process questions to the Scrum Master; what only the PO decides goes to the Supporter, who collects it for the PO), and a PO opinion relayed by the Supporter counts as the PO's, with exceptions. Rewrite this line and the list in the long file when 27 is merged.
 
 ---
 
@@ -401,10 +403,12 @@
 **新行**（长文件 `roles-and-routing`）
 
 ```text
-- **who-gets-which-work** The Scrum Master reviews; a standing helper does upkeep; a Developer builds and never reviews its own work. → long/roles-and-routing.md
+- **who-gets-which-work** Scrum Master reviews, a helper does upkeep, a Developer builds and never reviews itself. → long/roles-and-routing.md
 ```
 
 **备注**：Long file keeps all five assignments: review, the other-session or other-tool Developer, upkeep, the Scrum Master's own small edit, and building. The words PO assistant are gone; Sprint 27 replaces them with the Supporter and adds the question routing: sync later.
+
+**待 27（`who-gets-which-work`）**：Sprint 27 replaces the words PO assistant with the Supporter and adds the question routing. Rewrite when 27 is merged.
 
 ---
 

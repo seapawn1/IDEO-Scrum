@@ -4,7 +4,7 @@ Read this file when you end a design, decide what happens to its material, or ha
 
 ## Ending
 
-- End the design when the Product Owner decides its questions are answered, or stops it (`po-decisions`, `design-gates`, `ideate-arrangement`).
+- End the design when the Product Owner decides its questions are answered, or stops it (`ask-the-po`, `ideate-arrangement`).
 - A design has no Review or Retro of its own.
 
 ## Conclusions

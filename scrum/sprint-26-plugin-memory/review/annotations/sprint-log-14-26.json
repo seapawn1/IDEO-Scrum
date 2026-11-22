@@ -215,10 +215,10 @@
       "archive scrum/documents/sprint/sprint-08-design-kernel.md：第 40 行，团队做法：拿不准就问 PO"
     ],
     "kind": "规矩",
-    "home": "清单",
-    "recommend": "改",
-    "merge_into": null,
-    "reason": "overview#10 只有「拿不准就问 PO」，不含 PO 事项清单；清单各项虽分散在 sprint-log#4/#6/#8/#15/#19/#20/#21 与 product-log#12、overview#17，但这里的一处索引不能随并入删掉。保留为一行索引，待 20、24 并入后更新指向。",
+    "home": "不进 Memory",
+    "recommend": "并",
+    "merge_into": "overview#10",
+    "reason": "Developer 改（Master 2026-11-22 要合并重叠）：并入 overview#10（ask-the-po）。PO 决定清单的索引与各条规矩里的决定重复，且 Sprint 27 要改「问谁」的分流；清单只留 ask-the-po 一行，清单本身放 roles-and-routing 长文件。核验说「overview#10 不含清单所以不能并」，现在清单随并入带过去，不丢。设计版的索引（design-log#21）同样并入 overview#10。",
     "dups": [
       "overview#10",
       "overview#12",
@@ -229,7 +229,8 @@
     ],
     "confidence": "中",
     "checked": [
-      "verified: home, merge_into, reason, recommend"
+      "verified: home, merge_into, reason, recommend",
+      "verified: confidence, home, merge_into, reason, recommend"
     ]
   },
   {

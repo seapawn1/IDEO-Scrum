@@ -7,11 +7,11 @@
 
 - **role-entry** On a role command, load that role's kernels in order before any work; stop and report a failed load. → long/roles-and-routing.md
 - **only-po-human** Only the Product Owner must be human; the other roles may all be AI.
-- **ask-the-po** Whoever is unsure asks the PO, unless the PO sent that kind of question elsewhere.
+- **ask-the-po** Whoever is unsure asks the PO, unless the PO sent that kind of question elsewhere. → long/roles-and-routing.md [pending S27]
 - **po-as-developer** When the PO builds, they take part as a Developer and the How is worked out with them.
 - **stage-gates** Wait for the PO's explicit permission to start or return to a stage; approving a result is not permission. → long/stage-gates.md
 - **one-scrum-master** One Scrum Master session per project leads its other roles; a session above several projects only summarizes.
-- **who-gets-which-work** The Scrum Master reviews; a standing helper does upkeep; a Developer builds and never reviews its own work. → long/roles-and-routing.md
+- **who-gets-which-work** Scrum Master reviews, a helper does upkeep, a Developer builds and never reviews itself. → long/roles-and-routing.md [pending S27]
 - **goal-fixed** Each log's commitment (a Goal, the Definition of Done) stays fixed; the plan under it may change. → long/goal-fixed.md
 - **po-owns-commitments** Only the PO changes a commitment or cancels a Sprint whose goal can no longer be met.
 - **commitment-table** Keep each commitment in a one-row table, the only source of it. → long/goal-fixed.md
@@ -19,7 +19,7 @@
 ## The product log
 
 - **one-product-log** Start every project, new or old, from one product log.
-- **write-product-log** Write the product log from the template, usually the Scrum Master with the PO; for an old project, from its README, issues and old plans.
+- **write-product-log** Write the product log from the template, usually the Scrum Master with the PO; for an old project, from README, issues, plans.
 - **blank-page** If the product cannot be written yet, start from a design and let its conclusions fill the log. → long/product-log-details.md
 - **facts-then-questions** [sm] *Supplement.* Look up facts yourself; ask the PO in one numbered message, each with a recommended answer.
 - **product-log-header** Keep the product statement (1.1) and Product Goal (1.2) each in a one-row commitment table; no Now line.
@@ -41,7 +41,7 @@
 
 ## Running a Sprint
 
-- **sprint-folder** One branch and one folder per Sprint, scrum/sprint-NN-<suffix>/; NN is the last number plus one; the tag has the same name. → long/sprint-stages.md
+- **sprint-folder** One branch and folder per Sprint, scrum/sprint-NN-<suffix>/; the tag has the same name. → long/sprint-stages.md
 - **no-end-date** A Sprint closes when its goal is met or the PO stops it; the PO watches for one that drags on (departs from the Guide).
 - **small-sprint** Even half an hour of work gets a Sprint, each step a line or two; stage gates, review and close still apply.
 - **sprint-goal** [po,sm] The PO sets the Sprint Goal in their own style, usually with the Scrum Master: one unifying value goal.
@@ -50,52 +50,49 @@
 - **refinement** [sm,po] The Scrum Master leads refinement with the PO; seven steps; the PO says when it is over. → long/sprint-refinement.md
 - **how-is-a-plan** [dev] The How is a plan of work items, each done within one session, each with its output and a done test. → long/sprint-stages.md
 - **no-steps** [dev] Keep the How at the level of approach: no steps, no file contents, no polishing; if you can write the steps, do the work.
-- **go-ahead** [dev,po] Build only after the PO's go-ahead, written with its date and reach; approving a plan is not a go-ahead. → long/sprint-stages.md
-- **review-handover** [po,sm] The PO may hand the review of the How, new structures and full texts to the Scrum Master, in writing; that is not the go-ahead.
+- **go-ahead** Build only on the PO's go-ahead, with its date and reach (commit … push); approving a plan is not one. → long/sprint-stages.md
+- **review-handover** [po,sm] The PO may hand the review of the How, new structures and full texts to the Scrum Master in writing; not the go-ahead.
 - **increment-notes** [dev] Keep chapter 4 as the full record, so a new session can pick the Sprint up from the log alone.
 - **mark-done** [dev] Mark a finished work item by prefixing its Done when cell with ✓ <date>; an unmarked row is not done.
-- **checkpoints** Check the work against the Sprint Goal at each stage end, when stuck, and when the PO asks (departs from the Daily Scrum). → long/sprint-stages.md
-- **outline-first** Before a new lasting document or template, show its outline (every heading, one line each) to its reviewer; write the full text once they agree.
-- **full-text-review** Give the reviewer the full text to annotate, with problems and recommendations; change sources only after approval; the disk version wins.
+- **checkpoints** Check the work against the Sprint Goal at each stage end, when stuck, and when the PO asks (a departure). → long/sprint-stages.md
+- **outline-first** For a new lasting document or template, first show the reviewer its outline (headings, one line each); write it once they agree.
+- **full-text-review** Give the reviewer the full text to annotate, with problems and advice; edit sources only after approval; the disk version wins.
 - **tests-criteria-first** Before the Test, set the method and pass lines in 2.2 and commit them; do not change them after seeing results.
 - **check-script-misses** Check a script's wrong calls one by one and write down why.
-- **reviewer-required** The builder never reviews: the Scrum Master does, or a fresh subagent if the Scrum Master built it (a departure). → long/sprint-stages.md
-- **acceptance-when-written** Ask the PO for formal acceptance only when the Definition of Done or the acceptance criteria call for it; sometimes a glance is enough.
-- **record-the-tests** [dev] In chapter 5, show valid evidence for every applicable standard and criterion; without it, no pass. → long/sprint-stages.md
-- **review-at-close** Close with a Review: compress the sprint log to key decisions, archive it in scrum/documents/, refresh the product log. → long/sprint-closing.md
-- **retro-in-memory** Retro saves only important reusable lessons, one memory entry each; no Retro summary, nothing in instruction files. → long/sprint-closing.md
-- **one-closing-commit** [sm] Close with one commit after clearing old paths project-wide; then tag, merge, delete the branch. → long/sprint-closing.md
-- **outward-needs-po** Pushing and other outward actions, such as a release, need the PO's consent.
+- **reviewer-required** The builder never reviews: the Scrum Master does, or a fresh subagent if the Scrum Master built it. → long/sprint-stages.md
+- **acceptance-when-written** Ask the PO for formal acceptance only when the DoD or acceptance criteria call for it; sometimes a glance is enough.
+- **record-the-tests** [dev] In chapter 5, show valid evidence for every applicable standard and criterion, else no pass. → long/sprint-stages.md
+- **review-at-close** At close, a Review: compress the sprint log to key decisions, archive it, refresh the product log. → long/sprint-closing.md
+- **retro-in-memory** Retro saves only important reusable lessons, one memory entry each; no summary, no instruction files. → long/sprint-closing.md
+- **one-closing-commit** Close with one commit after clearing old paths project-wide; then tag, merge, delete the branch. → long/sprint-closing.md
+- **outward-needs-po** Push, release and other outward actions need the PO's consent; a stage permission never covers commit, merge or push.
 - **new-work-registered** New work goes into the product log first; the PO decides whether it enters this Sprint; the Sprint Goal stays.
-- **log-is-the-handoff** In a sprint, design or IDEO log keep the header current and write what matters into the log before a session ends. → long/handoff.md
+- **log-is-the-handoff** Keep a log's header current and write what matters into it before a session ends. → long/handoff.md
 - **outside-blocker** [sm] When something outside the team blocks the work, tell the PO at once.
 - **mid-sprint-release** A release ready mid-Sprint goes out with the PO's consent; the Sprint does not end.
-- **sprint-stage-decisions** [po,sm] The PO decides each Sprint stage change: goal, end of refinement, go-ahead, Test, close or return. → long/stage-gates.md
-- **read-the-goal** Before each stage decision, read the exact Sprint Goal from its table; if you cannot, stop. → long/stage-gates.md
-- **po-decisions** Ask the PO whenever unsure, and always for goals, items, go-ahead, stage ends and gates, design choices, scope changes, git and outward actions.
+- **read-the-goal** Before each stage decision, read the exact goal (Sprint or design) from its table; if you cannot, stop. → long/stage-gates.md
 - **developer-elsewhere** With a Developer elsewhere, the sprint log stays the record: talk directly if you can, else take turns. → long/handoff.md
 
 ## Running a design sprint
 
-- **question-needs-design** For a question of what people want or what counts as good, look for a ready answer; if none, choose a design sprint or the five modes.
-- **open-a-design** When it needs a design sprint, open a design and start with Empathize once the PO authorizes it, never with solutions; a blank page is a case of this.
+- **question-needs-design** A question of what people want or what is good: look for a ready answer, else pick a design sprint or the five modes.
+- **open-a-design** Open a design for a design sprint and start with Empathize on the PO's permission, never with solutions; a blank page is one.
 - **hard-point-only** From a Sprint, take out only the hard point that needs design; the rest of the Sprint goes on.
-- **design-roles** [po,sm,des] The Designer owns the design; the PO and the Scrum Master settle Empathize and Define, the Designer takes over at Ideate.
-- **one-session-both-roles** [po,sm,des] The PO decides whether the Designer's session also plays the Scrum Master; if so, write the same name in both header fields.
-- **design-branch** A design opens its own branch, based on the Sprint branch or main; never name it <sprint-branch>/<name>: git cannot hold both a and a/b.
-- **design-folder** A design lives in scrum/design-<suffix>/, the suffix saying what it is about, no number; prototypes and working material never go into an Increment.
+- **design-roles** [po,sm,des] The PO and Scrum Master settle Empathize and Define; the Designer owns the design from Ideate on.
+- **one-session-both-roles** [po,sm,des] The PO decides if one session plays Designer and Scrum Master; if so, write its name in both header fields.
+- **design-branch** A design opens its own branch off the Sprint branch or main; never name it <sprint-branch>/<name> (git cannot hold a and a/b).
+- **design-folder** A design lives in scrum/design-<suffix>/ (a suffix saying what it is about, no number); its prototypes never go into an Increment.
 - **design-stages** Details of each design stage: people first, experts if unclear, the map, ideas, prototype, role-card test. → long/design-stages.md
-- **diverge-first** Whoever sketches diverges first (two methods, one an ideo-kernel Ideate method; quantity, no judgment), then converges; brief subagents so.
-- **talk-with-po** The main thread talks ideas over with the PO and merges all the lines before converging; if the PO has none, it sketches one direction for them.
-- **choose-with-po** [po,sm] The Scrum Master leads the choice and the PO decides, with no hunt for consensus; a straw poll by role cards only if the PO wants one.
+- **diverge-first** Sketchers diverge first: two methods, one of them an ideo-kernel Ideate method, quantity, no judgment. → long/design-stages.md
+- **talk-with-po** The main thread talks ideas over with the PO and merges all lines before converging; with none from the PO, it sketches one.
+- **choose-with-po** [po,sm] The Scrum Master leads the choice and the PO decides, no consensus hunt; a role-card straw poll only if the PO asks.
 - **combine-or-rumble** Combine winners that fit; when two conflict, prototype both and let the test decide; the PO decides which.
 - **storyboard** Write a storyboard of about fifteen steps in 3.2 only when the solution needs one before the prototype; the Designer writes it.
 - **criteria-before-test** Before testing, write what counts as a yes, a no or a not yet for each design question, and what role cards cannot show.
-- **design-ends** A design ends when the PO says its questions are answered or stops it; the next Review archives its log and original material. → long/design-ending.md
+- **design-ends** A design ends when the PO says its questions are answered or stops it; the next Review archives it. → long/design-ending.md
 - **design-conclusions** At its end, write the conclusions into the product log and pass them to the Sprint that asked. → long/design-ending.md
 - **ideo-in-every-stage** Each design stage takes its methods from the IDEO mode it stands on.
-- **design-gates** The PO's permission to enter or return to a design stage covers only that stage's design work, not commits, merges or pushes. → long/stage-gates.md
-- **ideate-arrangement** Before Ideate, the PO settles how this round will diverge; until then gather no ideas, sketch nothing, delegate nothing. → long/stage-gates.md
+- **ideate-arrangement** Before Ideate, the PO settles how the round diverges; until then no gathering, sketching or delegating. → long/stage-gates.md
 - **small-design** A small design is still a design: keep the log, shrink each stage to a line or two, skip no stage, keep the stage permissions.
 
 ## The five modes and the IDEO log
@@ -112,7 +109,7 @@
 
 - **one-board** Keep one board page for the whole project that shows at a glance where it stands and what each line of work is doing.
 - **board-owns-nothing** The board only reads the logs: no state, no log changed from it; whether to commit it is the project's call.
-- **board-writer** A cheap model writes scrum/ScrumBoard.html when the PO wants to look or a log changed.
+- **board-writer** A cheap model writes scrum/ScrumBoard.html when the PO wants to look or a log changed. [pending S27]
 - **board-rules** What the board reads, the data it holds, how to copy and check it: read the long file before writing one. → long/board-writing.md
 
 ## About these rules

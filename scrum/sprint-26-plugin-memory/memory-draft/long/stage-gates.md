@@ -1,6 +1,6 @@
 # Stage gates: the Product Owner decides between stages
 
-Read this file before you start a stage, return to one, or record a stage decision, in a Sprint or in a design. The list lines that point here are `stage-gates`, `sprint-stage-decisions`, `read-the-goal`, `design-gates` and `ideate-arrangement`. The text is the old rules word for word, cut into bullets; the old pointers to convention numbers became handles.
+Read this file before you start a stage, return to one, or record a stage decision, in a Sprint or in a design. The list lines that point here are `stage-gates`, `read-the-goal` and `ideate-arrangement`. The text is the old rules word for word, cut into bullets; the old pointers to convention numbers became handles.
 
 ## The rule, for both (`stage-gates`)
 
@@ -11,9 +11,10 @@ Read this file before you start a stage, return to one, or record a stage decisi
 - The Scrum Master acts for the Product Owner only within a written handover covering the particular decision; handing over a review or a choice inside a stage does not hand over a stage transition.
 - Record who decided, the date and basis, and the stage and scope authorized, including the written handover if used. Keep the decision at the end of its stage chapter; if permission arrives later, add that dated decision without replacing the earlier one. Record first entry when opening the log.
 - These are stage decisions, not reviews, formal acceptance, or approval of each step.
+- A stage permission does not by itself authorize a commit, merge or push: in a Sprint the go-ahead says how far it reaches (`go-ahead`); in a design the stage or ending decision line records how far git permission reaches; push, release and other outward actions need the Product Owner's consent (`outward-needs-po`).
 - The Sprint decisions are below under "In a Sprint"; the design decisions under "In a design".
 
-## In a Sprint (`sprint-stage-decisions`, `read-the-goal`)
+## In a Sprint (`read-the-goal`)
 
 - Follow the rule above, at entry and on return. Record explicit permission to start Why when opening; if no Sprint Goal is set yet, do not record a placeholder as a commitment. Closing is a separate decision from the stage transitions.
 - The Product Owner sets the goal before What, ends refinement before How, authorizes building with the go-ahead (`go-ahead`), authorizes Sprint Test separately from approving the Increment, and after Test decides to close or authorizes a return to the stage that needs work.
@@ -22,7 +23,7 @@ Read this file before you start a stage, return to one, or record a stage decisi
 - Keep the exact wording on the dated decision line as a record of the goal at the time, not a source for future decisions.
 - Show the text to the Product Owner only when the goal has changed (including when Why sets it), when product direction is at issue, or when they ask.
 
-## In a design (`design-gates`, `ideate-arrangement`)
+## In a design (`ideate-arrangement`)
 
 - Wait for explicit permission to enter or return, as the rule above says. Record permission to start Empathize when opening; if there is no design goal yet, do not record a placeholder as a commitment.
 - Stage entry or return permission covers only that stage's design work and does not by itself authorize a commit, merge, or push; if git actions are permitted, record how far that permission reaches (for example, commit on the design branch; merge at ending decided separately; no push) on the stage or ending decision line.

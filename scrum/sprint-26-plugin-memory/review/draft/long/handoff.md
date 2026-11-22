@@ -6,7 +6,7 @@ How a Sprint, a design or an IDEO run passes from one session to another, or fro
 
 - The header carries `Now` with the stage the Sprint is in (the stage and next step of a design, the mode and next step of an IDEO log) and the last decision the Product Owner made, followed immediately by `Waiting for PO` with each pending decision's number and short question, separated by semicolons, or `None` (each log's template has the format).
 - Update both with the log change that causes them.
-- A session that picks up the log reads them first, then checks the recorded permission for the stage and scope; the header is not itself permission to act (`sprint-stage-decisions`).
+- A session that picks up the log reads them first, then checks the recorded permission for the stage and scope; the header is not itself permission to act (`stage-gates`).
 - Write no separate handoff documents: before a session ends or its context is shortened, write what matters into the log and update the header.
 
 ### At a handoff or a pause
@@ -18,7 +18,7 @@ How a Sprint, a design or an IDEO run passes from one session to another, or fro
 ### In a design
 
 - Before a session ends or its context is shortened, write the half-finished work into the chapter it belongs to and update the header.
-- `Now`, and permission to enter or resume a stage, do not by themselves authorize committing, merging or pushing; a session that picks the design up also checks any recorded git permission (`design-gates`).
+- `Now`, and permission to enter or resume a stage, do not by themselves authorize committing, merging or pushing; a session that picks the design up also checks any recorded git permission (`stage-gates`, `outward-needs-po`).
 - Commit within the authorized scope only if the Product Owner explicitly recorded commit permission for it; otherwise keep the uncommitted changes and record that status and where to resume.
 
 ## A Developer in another session or tool (`developer-elsewhere`)

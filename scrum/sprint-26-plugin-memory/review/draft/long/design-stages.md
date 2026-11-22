@@ -1,6 +1,6 @@
 # The stages of a design: the details
 
-The detail behind the design lines that point here, stage by stage. Read it when you run a design sprint, together with the design-kernel skill's step files (`steps/…` below are that skill's). The list lines that point here are `design-stages`. The text is the old rules word for word, cut into bullets; the old pointers to convention numbers became handles.
+The detail behind the design lines that point here, stage by stage. Read it when you run a design sprint, together with the design-kernel skill's step files (`steps/…` below are that skill's). The list lines that point here are `design-stages` and `diverge-first`. The text is the old rules word for word, cut into bullets; the old pointers to convention numbers became handles.
 
 ## How these rules sit beside the book
 
@@ -37,6 +37,12 @@ The detail behind the design lines that point here, stage by stage. Read it when
 ## Ideate: Lightning Demos (optional)
 
 When existing ideas would help, have subagents search for them in parallel; keep the list as working material, not part of the log. If subagents sketch (see Isolated solutions below), the list is split among them, so that each starts from different ideas.
+
+## Ideate: diverge before you converge (`diverge-first`)
+
+- Whoever sketches a solution — a subagent (see Isolated solutions below), or the main thread with the Product Owner (`talk-with-po`) — diverges first: use at least two methods, at least one of them from the ideo-kernel's Ideate methods, as the design-kernel's `SKILL.md` requires (the first steps of the book's sketch, `design-kernel/steps/3-2-sketch.md` — notes, ideas, Crazy 8s — may be used alongside), go for quantity, and hold judgment back — and only then converge into a sketch.
+- When you brief a subagent, tell it so.
+- The ideas are working material; they do not go into the log.
 
 ## Ideate: isolated solutions (optional)
 

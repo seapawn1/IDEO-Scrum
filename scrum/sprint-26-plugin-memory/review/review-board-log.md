@@ -86,6 +86,8 @@
 
 **备注**：The long file says who writes it: a fresh subagent told to read the board rules and the template, or a standing helper session of the PO's (the wording of that helper waits for the secretary role of PBI-86 / Sprint 27).
 
+**待 27（`board-writer`）**：Sprint 27: the Supporter writes the board. Rewrite the line (and the 'who writes it' paragraph of the board-writing long file) when 27 is merged.
+
 ---
 
 ### board-log#4 · The logs

@@ -3,7 +3,7 @@
 每条旧规矩一节：先是原文（逐字），再是出处与依据、核验后的建议与理由，最后是它现在的样子（清单里的一行，或并到哪、删在哪）。
 读法：只看「旧规矩原文」和「新行」两块就能审；出处、理由是我和核验员写的依据，供你判断「留不留、改得对不对」。
 
-本文件 26 条：并 1、改 19、留 6；另有 5 个非编号块（文末）。
+本文件 26 条：并 2、改 18、留 6；另有 5 个非编号块（文末）。
 
 ---
 
@@ -26,7 +26,7 @@
 **新行**（长文件 `sprint-stages`）
 
 ```text
-- **sprint-folder** One branch and one folder per Sprint, scrum/sprint-NN-<suffix>/; NN is the last number plus one; the tag has the same name. → long/sprint-stages.md
+- **sprint-folder** One branch and folder per Sprint, scrum/sprint-NN-<suffix>/; the tag has the same name. → long/sprint-stages.md
 ```
 
 **备注**：'With a separate working copy if wanted' is dropped (optional); the folder layout under scrum/ is in the layers-and-folders long file.
@@ -219,8 +219,8 @@
 **新行**（长文件 `sprint-stages`）
 
 ```text
-- **go-ahead** [dev,po] Build only after the PO's go-ahead, written with its date and reach; approving a plan is not a go-ahead. → long/sprint-stages.md
-- **review-handover** [po,sm] The PO may hand the review of the How, new structures and full texts to the Scrum Master, in writing; that is not the go-ahead.
+- **go-ahead** Build only on the PO's go-ahead, with its date and reach (commit … push); approving a plan is not one. → long/sprint-stages.md
+- **review-handover** [po,sm] The PO may hand the review of the How, new structures and full texts to the Scrum Master in writing; not the go-ahead.
 ```
 
 **备注**：A thing the PO stopped in an earlier Sprint, so both halves stay.
@@ -274,7 +274,7 @@
 **新行**（长文件 `sprint-stages`）
 
 ```text
-- **checkpoints** Check the work against the Sprint Goal at each stage end, when stuck, and when the PO asks (departs from the Daily Scrum). → long/sprint-stages.md
+- **checkpoints** Check the work against the Sprint Goal at each stage end, when stuck, and when the PO asks (a departure). → long/sprint-stages.md
 ```
 
 **备注**：Long file: what stuck means (waiting for a decision or information only the PO can give, a block from outside the team, the same approach tried twice and failed, or the current How no longer showing how to reach the Sprint Goal; anything else is an adjustment inside the plan). The pointer 'see the Departures section' is dropped; the reason is in the departures long file.
@@ -300,7 +300,7 @@
 **新行**
 
 ```text
-- **outline-first** Before a new lasting document or template, show its outline (every heading, one line each) to its reviewer; write the full text once they agree.
+- **outline-first** For a new lasting document or template, first show the reviewer its outline (headings, one line each); write it once they agree.
 ```
 
 ---
@@ -323,7 +323,7 @@
 **新行**
 
 ```text
-- **full-text-review** Give the reviewer the full text to annotate, with problems and recommendations; change sources only after approval; the disk version wins.
+- **full-text-review** Give the reviewer the full text to annotate, with problems and advice; edit sources only after approval; the disk version wins.
 ```
 
 **备注**：'The problems and recommendations format' can live in a template; the three rules stay in the line.
@@ -376,7 +376,7 @@
 **新行**（长文件 `sprint-stages`）
 
 ```text
-- **reviewer-required** The builder never reviews: the Scrum Master does, or a fresh subagent if the Scrum Master built it (a departure). → long/sprint-stages.md
+- **reviewer-required** The builder never reviews: the Scrum Master does, or a fresh subagent if the Scrum Master built it. → long/sprint-stages.md
 ```
 
 **备注**：Long file keeps: a Stakeholder or fresh subagent when the PO names one, and a named Stakeholder checks item by item against the Definition of Done and the acceptance criteria; a fresh subagent that reviews work the Scrum Master built checks only whether it was done right; a Developer that only shares the Scrum Master's context does not make the Scrum Master the builder; how to brief a review subagent (the task, the project's rules, the decisions already issued); the Scrum Master may send a subagent to review or read a long diff and still owns the conclusion.
@@ -403,7 +403,7 @@
 **新行**
 
 ```text
-- **acceptance-when-written** Ask the PO for formal acceptance only when the Definition of Done or the acceptance criteria call for it; sometimes a glance is enough.
+- **acceptance-when-written** Ask the PO for formal acceptance only when the DoD or acceptance criteria call for it; sometimes a glance is enough.
 ```
 
 **备注**：The verifiers asked to keep 'sometimes a glance is enough' (the author's sentence) rather than turn it into 'never otherwise'; kept as written.
@@ -429,7 +429,7 @@
 **新行**（长文件 `sprint-stages`）
 
 ```text
-- **record-the-tests** [dev] In chapter 5, show valid evidence for every applicable standard and criterion; without it, no pass. → long/sprint-stages.md
+- **record-the-tests** [dev] In chapter 5, show valid evidence for every applicable standard and criterion, else no pass. → long/sprint-stages.md
 ```
 
 **备注**：Long file keeps the whole rule: chapter 5 keeps the Developer's tests, the independent check and any PO acceptance; the result of each Output Done standard and item acceptance criterion, with the new evidence linked or the old evidence cited and why it still holds; a condition that did not arise is recorded with why it did not apply; Outcome Done signals are recorded apart from Output Done (an outcome required by the Sprint Goal, an item or a pass line set beforehand blocks the pass if unmet or unproven; otherwise a signal without evidence is 'not yet observed', contrary evidence 'not met' with its effect; do not claim the full DoD passed on those signals); the Increment's quality can pass on its own evidence, the Sprint Test passes only when all its required checks, review and acceptance pass; fix within Test and test again, a return to an earlier stage needs a stage decision.
@@ -457,7 +457,7 @@
 **新行**（长文件 `sprint-closing`）
 
 ```text
-- **review-at-close** Close with a Review: compress the sprint log to key decisions, archive it in scrum/documents/, refresh the product log. → long/sprint-closing.md
+- **review-at-close** At close, a Review: compress the sprint log to key decisions, archive it, refresh the product log. → long/sprint-closing.md
 ```
 
 **备注**：Long file: the whole Review rule word for word (the archiving of ended designs and IDEO logs, the relay to a Sprint working elsewhere, the checks before updating references). The product-log freshening is fresh-at-review.
@@ -486,7 +486,7 @@
 **新行**（长文件 `sprint-closing`）
 
 ```text
-- **retro-in-memory** Retro saves only important reusable lessons, one memory entry each; no Retro summary, nothing in instruction files. → long/sprint-closing.md
+- **retro-in-memory** Retro saves only important reusable lessons, one memory entry each; no summary, no instruction files. → long/sprint-closing.md
 ```
 
 **备注**：Long file keeps: no chapter in the log; the Developer saves; enough to use each principle alone (what broke or worked, why, what to do next time); with no project memory use the repository notes, still one entry per lesson; do not mix lessons with the plugin's conventions; an index may point to the entries but not copy them; discard one-off details, passing friction and notes without a demonstrated reusable reason, and infer no cause to make a remark a principle; an especially good improvement goes into the Definition of Done with the PO's consent; check whether the product log is still fresh. The *Supplement* sentence (ask where the PO held up the AI) goes there too, labelled.
@@ -522,8 +522,8 @@
 **新行**（长文件 `sprint-closing`）
 
 ```text
-- **one-closing-commit** [sm] Close with one commit after clearing old paths project-wide; then tag, merge, delete the branch. → long/sprint-closing.md
-- **outward-needs-po** Pushing and other outward actions, such as a release, need the PO's consent.
+- **one-closing-commit** Close with one commit after clearing old paths project-wide; then tag, merge, delete the branch. → long/sprint-closing.md
+- **outward-needs-po** Push, release and other outward actions need the PO's consent; a stage permission never covers commit, merge or push.
 ```
 
 **备注**：Long file: the six steps in order; the closing commit holds only what Review and Retro changed in the repository (no copying of outside memory, no Retro file made up to fill it); the tag's message says what the Sprint achieved; the project's health is judged by scrum/ alone, usually only the README needs updating.
@@ -599,7 +599,7 @@
 **新行**（长文件 `handoff`）
 
 ```text
-- **log-is-the-handoff** In a sprint, design or IDEO log keep the header current and write what matters into the log before a session ends. → long/handoff.md
+- **log-is-the-handoff** Keep a log's header current and write what matters into it before a session ends. → long/handoff.md
 ```
 
 **别处已有**：The Now and Waiting for PO header fields and reading them first are in the sprint log template (lines 4-5).
@@ -663,11 +663,10 @@
 **新行**（长文件 `stage-gates`）
 
 ```text
-- **sprint-stage-decisions** [po,sm] The PO decides each Sprint stage change: goal, end of refinement, go-ahead, Test, close or return. → long/stage-gates.md
-- **read-the-goal** Before each stage decision, read the exact Sprint Goal from its table; if you cannot, stop. → long/stage-gates.md
+- **read-the-goal** Before each stage decision, read the exact goal (Sprint or design) from its table; if you cannot, stop. → long/stage-gates.md
 ```
 
-**备注**：Long file: no placeholder is recorded as a commitment while no Sprint Goal is set; the goal's exact text goes in the section 1.1 table; its wording is kept on the dated decision line as a record, not as a source; show the text to the PO only when the goal changed, direction is at issue, or they ask; after Test the PO decides to close or to return; a Developer's checks while building are not Sprint Test.
+**备注**：The old first line sprint-stage-decisions (the PO sets the goal before What, ends refinement before How, gives the go-ahead before building, authorizes Test apart from approving the Increment, then decides close or return) is the umbrella stage-gates line plus the Sprint section of the stage-gates long file. Long file: no placeholder is recorded as a commitment while no Sprint Goal is set; the goal's exact text goes in the section 1.1 table; its wording is kept on the dated decision line as a record, not as a source; show the text to the PO only when the goal changed, direction is at issue, or they ask; after Test the PO decides to close or to return; a Developer's checks while building are not Sprint Test.
 
 ---
 
@@ -683,19 +682,15 @@
 - commit 87bd0db fix(PBI-49): 照 Master 审停点 2 改七处（sprint-log 加 25 Ask the PO 等）
 - archive scrum/documents/sprint/sprint-08-design-kernel.md：第 40 行，团队做法：拿不准就问 PO
 
-**建议**：改；去处：清单（一行）
+**建议**：并 → overview#10；去处：不进 Memory
 
-**理由**：overview#10 只有「拿不准就问 PO」，不含 PO 事项清单；清单各项虽分散在 sprint-log#4/#6/#8/#15/#19/#20/#21 与 product-log#12、overview#17，但这里的一处索引不能随并入删掉。保留为一行索引，待 20、24 并入后更新指向。
+**理由**：Developer 改（Master 2026-11-22 要合并重叠）：并入 overview#10（ask-the-po）。PO 决定清单的索引与各条规矩里的决定重复，且 Sprint 27 要改「问谁」的分流；清单只留 ask-the-po 一行，清单本身放 roles-and-routing 长文件。核验说「overview#10 不含清单所以不能并」，现在清单随并入带过去，不丢。设计版的索引（design-log#21）同样并入 overview#10。
 
 **与它重复或相邻**：overview#10、overview#12、sprint-log#15、sprint-log#20、sprint-log#21、sprint-log#24
 
-**新行**
+**新**：并入 `overview#10`。这条独有、要带过去的内容：What goes to the PO: whenever you are unsure, and in any case to set the Sprint Goal, select the items, say when refinement is over, give the go-ahead, decide at the end of each stage, renegotiate the acceptance criteria, decide whether new work enters the Sprint and renegotiate the scope, give formal acceptance when it is written, consent to outward actions such as a push, and cancel a Sprint whose goal can no longer be met.
 
-```text
-- **po-decisions** Ask the PO whenever unsure, and always for goals, items, go-ahead, stage ends and gates, design choices, scope changes, git and outward actions.
-```
-
-**备注**：An index of decisions that each have their own line; it absorbs design-log#21 (the design version of the same index: stage results and entry, how Ideate diverges, the design goal, the How Might We questions that matter, the solution and combine-or-rumble, how real the prototype must be, the design's end, git actions). The PO may drop it as a duplicate.
+**备注**：The index of what the PO decides. Merged into ask-the-po with the design version (design-log#21); each decision still has its own line (sprint-goal, select-items, refinement, go-ahead, new-work-registered, acceptance-when-written, outward-needs-po, po-owns-commitments), so the index adds nothing to the list. Marked for the 27 sync with ask-the-po.
 
 ---
 

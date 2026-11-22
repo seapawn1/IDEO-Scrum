@@ -28,7 +28,7 @@
 **新行**
 
 ```text
-- **write-product-log** Write the product log from the template, usually the Scrum Master with the PO; for an old project, from its README, issues and old plans.
+- **write-product-log** Write the product log from the template, usually the Scrum Master with the PO; for an old project, from README, issues, plans.
 ```
 
 **备注**：The sentence 'what cannot be written yet follows the blank-page rule' is the blank-page line. overview#1 keeps the one-product-log rule.

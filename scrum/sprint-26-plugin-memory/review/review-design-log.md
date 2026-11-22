@@ -26,8 +26,8 @@
 **新行**
 
 ```text
-- **question-needs-design** For a question of what people want or what counts as good, look for a ready answer; if none, choose a design sprint or the five modes.
-- **open-a-design** When it needs a design sprint, open a design and start with Empathize once the PO authorizes it, never with solutions; a blank page is a case of this.
+- **question-needs-design** A question of what people want or what is good: look for a ready answer, else pick a design sprint or the five modes.
+- **open-a-design** Open a design for a design sprint and start with Empathize on the PO's permission, never with solutions; a blank page is one.
 ```
 
 **备注**：The pointers become handles: sprint-or-modes, stage-gates and blank-page. Line 1 is over the soft limit on purpose; it keeps the 'ready answer first' test.
@@ -78,8 +78,8 @@
 **新行**
 
 ```text
-- **design-roles** [po,sm,des] The Designer owns the design; the PO and the Scrum Master settle Empathize and Define, the Designer takes over at Ideate.
-- **one-session-both-roles** [po,sm,des] The PO decides whether the Designer's session also plays the Scrum Master; if so, write the same name in both header fields.
+- **design-roles** [po,sm,des] The PO and Scrum Master settle Empathize and Define; the Designer owns the design from Ideate on.
+- **one-session-both-roles** [po,sm,des] The PO decides if one session plays Designer and Scrum Master; if so, write its name in both header fields.
 ```
 
 **备注**：The old rule also pointed at the list of what the PO decides (design-log#21); that list is the stage-gates and design-stage lines. The loss lens found the 'same name in both fields' sentence only here, so it stays in a line.
@@ -105,7 +105,7 @@
 **新行**
 
 ```text
-- **design-branch** A design opens its own branch, based on the Sprint branch or main; never name it <sprint-branch>/<name>: git cannot hold both a and a/b.
+- **design-branch** A design opens its own branch off the Sprint branch or main; never name it <sprint-branch>/<name> (git cannot hold a and a/b).
 ```
 
 ---
@@ -129,7 +129,7 @@
 **新行**
 
 ```text
-- **design-folder** A design lives in scrum/design-<suffix>/, the suffix saying what it is about, no number; prototypes and working material never go into an Increment.
+- **design-folder** A design lives in scrum/design-<suffix>/ (a suffix saying what it is about, no number); its prototypes never go into an Increment.
 ```
 
 ---
@@ -241,13 +241,13 @@
 
 **理由**：核心行为规矩：先发散、至少两种方法且其中一种来自 ideo-kernel、发散时不做判断，然后才收敛。删了会丢「不跳过发散直接出方案」的防线，故留。
 
-**新行**
+**新行**（长文件 `design-stages`）
 
 ```text
-- **diverge-first** Whoever sketches diverges first (two methods, one an ideo-kernel Ideate method; quantity, no judgment), then converges; brief subagents so.
+- **diverge-first** Sketchers diverge first: two methods, one of them an ideo-kernel Ideate method, quantity, no judgment. → long/design-stages.md
 ```
 
-**备注**：The ideas are working material and stay out of the log (covered by working-material and design-folder).
+**备注**：The sentence 'when you brief a subagent, tell it so' and 'the ideas are working material and stay out of the log' are in the design-stages long file (section Ideate: diverge before you converge).
 
 ---
 
@@ -293,7 +293,7 @@
 **新行**
 
 ```text
-- **talk-with-po** The main thread talks ideas over with the PO and merges all the lines before converging; if the PO has none, it sketches one direction for them.
+- **talk-with-po** The main thread talks ideas over with the PO and merges all lines before converging; with none from the PO, it sketches one.
 ```
 
 ---
@@ -316,7 +316,7 @@
 **新行**
 
 ```text
-- **choose-with-po** [po,sm] The Scrum Master leads the choice and the PO decides, with no hunt for consensus; a straw poll by role cards only if the PO wants one.
+- **choose-with-po** [po,sm] The Scrum Master leads the choice and the PO decides, no consensus hunt; a role-card straw poll only if the PO asks.
 ```
 
 **备注**：Only the chosen solution goes into 3.1 (the template has it).
@@ -461,7 +461,7 @@
 **新行**（长文件 `design-ending`）
 
 ```text
-- **design-ends** A design ends when the PO says its questions are answered or stops it; the next Review archives its log and original material. → long/design-ending.md
+- **design-ends** A design ends when the PO says its questions are answered or stops it; the next Review archives it. → long/design-ending.md
 - **design-conclusions** At its end, write the conclusions into the product log and pass them to the Sprint that asked. → long/design-ending.md
 ```
 
@@ -505,13 +505,13 @@
 - commit b49278d feat(PBI-28): 设计日志约定 v1 与模板（「Ask the PO whenever you are unsure」首次成文）
 - archive scrum/documents/sprint/sprint-14-conventions-tuning.md：阶段之间由 PO 决定的一段（PO 决定清单的来源）
 
-**建议**：并 → sprint-log#25；去处：不进 Memory
+**建议**：并 → overview#10；去处：不进 Memory
 
-**理由**：Developer 改：并入 sprint-log#25（po-decisions 一行索引）。两条都是「PO 决定清单」的索引，各自的决定在各自的规矩里（#8、#13–14、#16、#19、#26）；一份总索引比两份好，设计特有的几项（各阶段结果与进出、Ideate 怎么发散、挑 How Might We 问题、选方案与合并/Rumble、原型要多真、设计结束、git 许可）并进那一行。
+**理由**：Developer 改（Master 2026-11-22 要合并重叠）：并入 overview#10（ask-the-po），不再并入 sprint-log#25（它自己也并进 overview#10 了）。设计特有的几项（各阶段结果与进出、Ideate 怎么发散、设计目标、挑 How Might We 问题、选方案与合并/Rumble、原型要多真、设计结束、git 许可）随并入带进 roles-and-routing 长文件。
 
 **与它重复或相邻**：design-log#14、design-log#16、design-log#19、design-log#26、overview#10
 
-**新**：并入 `sprint-log#25`。这条独有、要带过去的内容：Design decisions the PO makes: each stage result and entry or return (including how this round of Ideate will diverge), set or change the design goal, pick the How Might We questions that matter, choose the solution and decide between combining and a rumble, agree how real the prototype must be, decide that the design ends, and explicitly permit git actions (commit, merge, branch deletion, push) before they run.
+**新**：并入 `overview#10`。这条独有、要带过去的内容：Design decisions the PO makes: each stage result and entry or return (including how this round of Ideate will diverge), set or change the design goal, pick the How Might We questions that matter, choose the solution and decide between combining and a rumble, agree how real the prototype must be, decide that the design ends, and explicitly permit git actions (commit, merge, branch deletion, push) before they run.
 
 ---
 
@@ -629,11 +629,10 @@
 **新行**（长文件 `stage-gates`）
 
 ```text
-- **design-gates** The PO's permission to enter or return to a design stage covers only that stage's design work, not commits, merges or pushes. → long/stage-gates.md
-- **ideate-arrangement** Before Ideate, the PO settles how this round will diverge; until then gather no ideas, sketch nothing, delegate nothing. → long/stage-gates.md
+- **ideate-arrangement** Before Ideate, the PO settles how the round diverges; until then no gathering, sketching or delegating. → long/stage-gates.md
 ```
 
-**备注**：Long file: the four-row table (what the log holds and the check at each stage) word for word, and 'would someone who never learned design have produced the same thing?'; record permission to start Empathize when opening and no placeholder goal as a commitment; record how far git permission reaches on the stage or ending decision line; record the Ideate arrangement in chapter 3 before the solution section; choosing a solution is not permission for Prototype and a trial run is not permission for Test; the goal's exact text goes in the 1.2 table and is read before each stage decision (the Product Goal too if direction is at issue), stop if it cannot be read, the wording on the dated decision line is a record not a source, show it to the PO only when the goal changed, direction is at issue or they ask; when a stage shows an earlier answer was wrong, report it and wait for permission to return; after Test the PO decides whether to end the design or return. The full text is in the ledger.
+**备注**：The old first line design-gates (a stage permission covers only that stage's design work, not a commit, merge or push) is folded into outward-needs-po and the stage-gates long file. Long file: the four-row table (what the log holds and the check at each stage) word for word, and 'would someone who never learned design have produced the same thing?'; record permission to start Empathize when opening and no placeholder goal as a commitment; record how far git permission reaches on the stage or ending decision line; record the Ideate arrangement in chapter 3 before the solution section; choosing a solution is not permission for Prototype and a trial run is not permission for Test; the goal's exact text goes in the 1.2 table and is read before each stage decision (the Product Goal too if direction is at issue), stop if it cannot be read, the wording on the dated decision line is a record not a source, show it to the PO only when the goal changed, direction is at issue or they ask; when a stage shows an earlier answer was wrong, report it and wait for permission to return; after Test the PO decides whether to end the design or return.
 
 ---
 
@@ -709,7 +708,7 @@
 
 > Conventions 20–27 hold at every step; see Throughout, below. Apply the entry and return rules in convention 26 at each transition.
 
-**新**：不进清单。去处或不要的理由：Dropped: a pointer to 'Throughout'; the entry and return rules at each transition are design-gates.
+**新**：不进清单。去处或不要的理由：Dropped: a pointer to 'Throughout'; the entry and return rules at each transition are the stage-gates line and long/stage-gates.md.
 
 ---
 

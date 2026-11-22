@@ -24,11 +24,11 @@ The detail behind the Sprint lines that point here: opening, the How, the go-ahe
 - Start building only after the Product Owner's go-ahead; approving a plan is not a go-ahead.
 - Write it as the last line of chapter 3, with the date and how far it reaches: commit, merge, tag, release, push.
 - The Product Owner may hand the review of the How, of new structures, and of full texts to the Scrum Master; write the handover in the log.
-- The right to review the How is not the right to give the go-ahead (`sprint-stage-decisions`).
+- The right to review the How is not the right to give the go-ahead (`stage-gates`).
 
 ## Checkpoints (`checkpoints`)
 
-- Stop and check the work against the Sprint Goal at the end of each stage (`sprint-stage-decisions`), whenever the AI is stuck, and whenever the Product Owner asks how things stand.
+- Stop and check the work against the Sprint Goal at the end of each stage (`stage-gates`), whenever the AI is stuck, and whenever the Product Owner asks how things stand.
 - Stuck means one of these: waiting for a decision or a piece of information only the Product Owner can give, a block from outside the team, the same approach tried twice and failed, or the current How no longer showing how to reach the Sprint Goal; anything else is an adjustment inside the plan.
 - This departs from the Scrum Guide's Daily Scrum; the reason is in `long/departures.md`.
 
@@ -54,7 +54,7 @@ The detail behind the Sprint lines that point here: opening, the How, the go-ahe
 - Show the result of every Output Done standard and item acceptance criterion: link the new evidence or cite the old evidence and why it still holds. When a stated condition did not arise, record it and why it did not apply. An applicable standard without valid evidence does not pass, even if it was not a focus.
 - Record the result of each Outcome Done signal separately from Output Done. An outcome required for this Test by the Sprint Goal, an item’s outcome or acceptance criteria, or another pass line set beforehand blocks a Test pass if unmet or unproven. Otherwise record a signal without evidence as not yet observed; report contrary evidence as not met and explain its effect. Do not claim the full DoD has passed on those signals.
 - The Increment’s quality can pass on its own evidence; the Sprint Test passes only when all its required checks, review, and acceptance pass.
-- Fix a problem within Test and test again; a return to an earlier stage needs a decision under `sprint-stage-decisions`.
+- Fix a problem within Test and test again; a return to an earlier stage needs a decision under `stage-gates`.
 
 ## Open points for the Product Owner
 

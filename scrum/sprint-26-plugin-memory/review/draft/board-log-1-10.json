@@ -19,7 +19,9 @@
     "long_file": null,
     "merged_into": null,
     "adds_to_target": null,
-    "absorbed": ["board-log#19"],
+    "absorbed": [
+      "board-log#19"
+    ],
     "where_else": null,
     "note": "board-log#19 adds: nothing becomes true because it is on the board; it goes into the board-writing long file. The reason for not committing it (delete it and write it again, every fact is the same; only the time differs) also goes there."
   },
@@ -36,7 +38,10 @@
     "adds_to_target": null,
     "absorbed": [],
     "where_else": null,
-    "note": "The long file says who writes it: a fresh subagent told to read the board rules and the template, or a standing helper session of the PO's (the wording of that helper waits for the secretary role of PBI-86 / Sprint 27)."
+    "note": "The long file says who writes it: a fresh subagent told to read the board rules and the template, or a standing helper session of the PO's (the wording of that helper waits for the secretary role of PBI-86 / Sprint 27).",
+    "pending": {
+      "board-writer": "Sprint 27: the Supporter writes the board. Rewrite the line (and the 'who writes it' paragraph of the board-writing long file) when 27 is merged."
+    }
   },
   {
     "id": "board-log#4",

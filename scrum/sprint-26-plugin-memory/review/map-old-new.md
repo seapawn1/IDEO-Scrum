@@ -15,7 +15,7 @@
 | overview#7 | 改 | `names`、`fresh-subagent`（长文件 `names`） |
 | overview#8 | 改 | `role-entry`（长文件 `roles-and-routing`） |
 | overview#9 | 留 | `only-po-human` |
-| overview#10 | 留 | `ask-the-po` |
+| overview#10 | 留 | `ask-the-po`（长文件 `roles-and-routing`） |
 | overview#11 | 留 | `po-as-developer` |
 | overview#12 | 留 | `stage-gates`（长文件 `stage-gates`） |
 | overview#13 | 留 | `one-scrum-master` |
@@ -64,8 +64,8 @@
 | sprint-log#21 | 留 | `new-work-registered` |
 | sprint-log#22 | 改 | `log-is-the-handoff`（长文件 `handoff`） |
 | sprint-log#23 | 留 | `outside-blocker`、`mid-sprint-release` |
-| sprint-log#24 | 改 | `sprint-stage-decisions`、`read-the-goal`（长文件 `stage-gates`） |
-| sprint-log#25 | 改 | `po-decisions` |
+| sprint-log#24 | 改 | `read-the-goal`（长文件 `stage-gates`） |
+| sprint-log#25 | 并 | 并入 overview#10 `ask-the-po` |
 | sprint-log#26 | 改 | `developer-elsewhere`（长文件 `handoff`） |
 | design-log#1 | 改 | `question-needs-design`、`open-a-design` |
 | design-log#2 | 留 | `hard-point-only` |
@@ -76,7 +76,7 @@
 | design-log#7 | 留 | 只在长文件 `design-stages`，由 `design-stages` 一行索引 |
 | design-log#8 | 改 | 只在长文件 `design-stages`，由 `design-stages` 一行索引 |
 | design-log#9 | 改 | 只在长文件 `design-stages`，由 `design-stages` 一行索引 |
-| design-log#10 | 留 | `diverge-first` |
+| design-log#10 | 留 | `diverge-first`（长文件 `design-stages`） |
 | design-log#11 | 改 | 只在长文件 `design-stages`，由 `design-stages` 一行索引 |
 | design-log#12 | 留 | `talk-with-po` |
 | design-log#13 | 改 | `choose-with-po` |
@@ -87,12 +87,12 @@
 | design-log#18 | 留 | `criteria-before-test` |
 | design-log#19 | 改 | `design-ends`、`design-conclusions`（长文件 `design-ending`） |
 | design-log#20 | 留 | `ideo-in-every-stage` |
-| design-log#21 | 并 | 并入 sprint-log#25 `po-decisions` |
+| design-log#21 | 并 | 并入 overview#10 `ask-the-po` |
 | design-log#22 | 删 | plugins/ideo-scrum/skills/design-kernel/conventions/design-backlog-template.md has the five chapters, one per stage, and says each records what its stage produced, not the steps taken (line 8). |
 | design-log#23 | 删 | plugins/ideo-scrum/skills/design-kernel/SKILL.md, first paragraph, lists the renamed terms. |
 | design-log#24 | 并 | 并入 sprint-log#22 `log-is-the-handoff` |
 | design-log#25 | 并 | 并入 overview#17 `goal-fixed`、`po-owns-commitments`、`commitment-table` |
-| design-log#26 | 改 | `design-gates`、`ideate-arrangement`（长文件 `stage-gates`） |
+| design-log#26 | 改 | `ideate-arrangement`（长文件 `stage-gates`） |
 | design-log#27 | 留 | `small-design` |
 | ideo-log#1 | 改 | `sprint-or-modes` |
 | ideo-log#2 | 改 | `modes-are-not-the-sprint`、`research-as-empathize` |
@@ -159,7 +159,7 @@
 | `acceptance-when-written` | sprint-log#15 |
 | `acceptance-written-once` | product-log#15 |
 | `architecture-map` | product-log#7 |
-| `ask-the-po` | overview#10 |
+| `ask-the-po` | overview#10、sprint-log#25、design-log#21 |
 | `blank-page` | product-log#2 |
 | `board-owns-nothing` | board-log#2、board-log#19 |
 | `board-rules` | board-log#3 |
@@ -175,7 +175,6 @@
 | `design-conclusions` | design-log#19 |
 | `design-ends` | design-log#19 |
 | `design-folder` | design-log#5 |
-| `design-gates` | design-log#26 |
 | `design-roles` | design-log#3 |
 | `design-stages` | design-log#6 |
 | `designs-beside-sprints` | overview#2 |
@@ -222,7 +221,6 @@
 | `outside-blocker` | sprint-log#23 |
 | `outward-needs-po` | sprint-log#19 |
 | `po-as-developer` | overview#11 |
-| `po-decisions` | sprint-log#25、design-log#21 |
 | `po-owns-commitments` | overview#17、sprint-log#20、design-log#25 |
 | `product-log-changes` | product-log#18 |
 | `product-log-header` | product-log#4 |
@@ -247,7 +245,6 @@
 | `sprint-folder` | sprint-log#1 |
 | `sprint-goal` | sprint-log#4 |
 | `sprint-or-modes` | ideo-log#1 |
-| `sprint-stage-decisions` | sprint-log#24 |
 | `stage-gates` | overview#12 |
 | `stakeholder-table` | product-log#6 |
 | `status-lives-here` | product-log#13 |
