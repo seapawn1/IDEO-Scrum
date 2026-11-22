@@ -36,7 +36,7 @@ SINGLES = [GLOSSARY]
 GLOSSARY_TERMS = [
     "product log", "sprint log", "design log", "IDEO log", "PBI", "Commitment", "Now / Waiting for PO",
     "Increment notes", "role card", "the Map", "board", "scrum/documents/",
-    "Product Owner", "Scrum Master", "Developer", "Designer", "Stakeholder", "PO assistant", "fresh subagent",
+    "Product Owner", "Scrum Master", "Developer", "Designer", "Stakeholder", "Supporter", "fresh subagent",
     "written handover", "go-ahead", "checkpoint",
     "the five stages of a Sprint", "refinement", "Review / Retro / closing commit", "small Sprint", "kernel",
     "commitments hook", "Definition of Outcome Done / Output Done", "design sprint", "the five modes",

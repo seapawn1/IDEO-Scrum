@@ -67,7 +67,7 @@ tools: Read, Grep, Glob, Skill
 
 **Do not put earlier reviews, opinions or meeting notes into the definition.** A definition that carries old verdicts stops being an independent view.
 
-**Keep the Review summoning right where it is.** At Sprint Review the Product Owner or Scrum Master summons the Stakeholder through a fresh subagent; registering a definition does not make the builder its summoner, and does not turn a standing PO assistant into an independent reviewer.
+**Keep the Review summoning right where it is.** At Sprint Review the Product Owner or Scrum Master summons the Stakeholder through a fresh subagent; registering a definition does not make the builder its summoner, and does not turn a standing Supporter into an independent reviewer.
 
 **Expect the host's own prompt.** Claude Code may ask separately for permission to write under `.claude/`. That prompt is the host's and does not replace the user's yes to the preview: get the yes here first, then let the write reach the host's prompt.
 
@@ -83,5 +83,5 @@ If a write fails halfway, say exactly which of the two parts landed and which di
 
 ## Not for this entry
 
-- A one-off outside view, or the PO assistant's chores — the `stakeholder` entry covers both.
+- A one-off outside view — the `stakeholder` entry covers it; the Supporter's chores — the `supporter` entry covers them.
 - Writing to the shared `commands/stakeholder.md`, the kernels, or the DSH bundle. This entry only adds a project-level definition and its product-log reference.

@@ -12,7 +12,7 @@ A plugin for Claude Code and DeepSeek Harness (DSH) that brings Design Thinking 
 
 When you build a project alone with an AI, the rules and the state of the work live in your head and in the chat. A session ends or is compacted, and they go with it. The AI can drift, and no one but the builder looks at what it built.
 
-IDEO-Scrum puts a Scrum team around the work. You are the Product Owner: you decide the direction, the goals, which items enter a Sprint, and when building may start. The AI plays the Scrum Master, the Developer, the Designer and the Stakeholder, one role per command. When the question is what people want, or what counts as good, it brings the design thinking of IDEO and Stanford's d.school: the five modes, or a design sprint. Everything is written into plain Markdown logs in your repository, so a new session reads the log and carries on.
+IDEO-Scrum puts a Scrum team around the work. You are the Product Owner: you decide the direction, the goals, which items enter a Sprint, and when building may start. The AI plays the Scrum Master, the Developer, the Designer, the Stakeholder and the Supporter, one role per command. When the question is what people want, or what counts as good, it brings the design thinking of IDEO and Stanford's d.school: the five modes, or a design sprint. Everything is written into plain Markdown logs in your repository, so a new session reads the log and carries on.
 
 It is not a project-management tool: no JIRA or Linear integration, and not a platform for a team.
 
@@ -90,7 +90,8 @@ In a Claude Code session, call a role:
 /ideo-scrum:scrum-master    # facilitates Planning, checkpoints, Review and Retro; reviews the work; serves you, the Product Owner
 /ideo-scrum:developer       # runs a Sprint: the plan, the Increment, the sprint log
 /ideo-scrum:designer        # five modes without stage gates; in a design sprint, agree how to diverge and authorize Ideate before ideas
-/ideo-scrum:stakeholder     # an outside view of the product, or a standing assistant for chores such as the board
+/ideo-scrum:stakeholder     # an outside view of the product
+/ideo-scrum:supporter       # chores that touch no source: the board, summaries, relaying what is already decided
 ```
 
 Each Claude Code role command calls its required kernels in order before starting work (see the [role convention](plugins/ideo-scrum/skills/scrum-kernel/overview.md#who-does-what)).
@@ -102,6 +103,7 @@ In a DSH **Standard** session, use its native skill entries:
 /developer
 /designer
 /stakeholder
+/supporter
 ```
 
 Type the entry or choose it from the `/` suggestions. You can add the request in the same message: `/scrum-master Help me plan the next Sprint.` In DSH, the role brings in IDEO and Scrum in order; Sprint and Design load only as needed. To explicitly load both for a task that spans them, start with `/scrum-master /sprint-kernel /design-kernel`. DSH also recognizes a standalone `/name` in the middle of a sentence; wrap it in backticks when you are only mentioning it.
@@ -148,7 +150,7 @@ The plugin calls these files logs: the product log is the Product Backlog, the s
 
 Two small things help you find your place when a project has several logs.
 
-**The board.** Ask the Scrum Master, or a standing helper session, for the board: it writes `scrum/ScrumBoard.html` from your logs. Open it in a browser. A flow diagram shows the product, the items not done, and the Sprint or design each one flows into. Open a Sprint card for its goal, route, and work items done so far, or a design card for its goal, map, and chosen solution, with or without a storyboard. It is made to be read at a glance, on a wide screen, a portrait screen, or a phone, and it follows your system's light or dark setting. A cheap model can write it, following [`board-log.md`](plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md); delete it any time and ask again.
+**The board.** Ask the Supporter, or the Scrum Master, for the board: it writes `scrum/ScrumBoard.html` from your logs. Open it in a browser. A flow diagram shows the product, the items not done, and the Sprint or design each one flows into. Open a Sprint card for its goal, route, and work items done so far, or a design card for its goal, map, and chosen solution, with or without a storyboard. It is made to be read at a glance, on a wide screen, a portrait screen, or a phone, and it follows your system's light or dark setting. A cheap model can write it, following [`board-log.md`](plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md); delete it any time and ask again.
 
 ![The board of this repository, drawn from its own logs, in the light setting](docs/images/board-overview-light.png)
 
@@ -192,7 +194,7 @@ Found a problem, or have an idea? Open an [issue](https://github.com/seapawn1/ID
 
 | Path | What it is |
 | --- | --- |
-| `plugins/ideo-scrum/` | The Claude Code plugin and the shared source for the four roles and the four kernels (ideo, scrum, sprint, design) |
+| `plugins/ideo-scrum/` | The Claude Code plugin and the shared source for the five roles and the four kernels (ideo, scrum, sprint, design) |
 | `dsh/`, `package.json`, `cordis.patch.yml` | The DSH integration and bundle entry points |
 | `docs/` | Quick start, glossary, project-agent guide, and maintenance guide |
 | `scrum/` | This project's own Scrum work, in Chinese: its product log and its archived sprint logs |

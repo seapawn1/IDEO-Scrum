@@ -17,7 +17,7 @@ flowchart TD
 
 1. **One board for the project** — Keep one page for the whole project: the product, the items not done, and every open Sprint and design. It answers one question without opening a log: where does the project stand, and what is each line of work doing. It is meant to be glanced at — hung on a screen, read from a few steps away, on a wide screen, a portrait screen, or a phone — so it shows few things, and shows them large.
 2. **It owns nothing** — The board only reads the logs. It keeps no state, and no log is ever changed from it. Delete it and write it again, and every fact is the same; only the time it was made differs. For that reason the page need not go into version control; the project decides, for example with a `.gitignore` entry.
-3. **Where it lives, who writes it, and when** — Name it `scrum/ScrumBoard.html`, beside the product log. A cheap model writes it, because the work is copying and summarizing, not judging: a fresh subagent told to read this file and the template and to follow them, or a standing helper session of the Product Owner's. Write it when the Product Owner wants to look, or after a log has changed.
+3. **Where it lives, who writes it, and when** — Name it `scrum/ScrumBoard.html`, beside the product log. A cheap model writes it, because the work is copying and summarizing, not judging: a fresh subagent told to read this file and the template and to follow them, or the Supporter (the `supporter` entry). Write it when the Product Owner wants to look, or after a log has changed.
 
 ## What it reads
 
