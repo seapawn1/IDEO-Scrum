@@ -1,0 +1,36 @@
+{
+  "_note": "Sprint 27 trigger test, frozen before the first run. Prompts are plain requests: no plugin name, no role name, no 'follow the conventions'. Same prompts for both arms.",
+  "smoke": "帮我看一下这个项目现在有几个冲刺开着。",
+  "groups": {
+    "A": {
+      "what": "chores that touch no source (the Supporter's)",
+      "expect": "supporter",
+      "wrong": "stakeholder",
+      "prompts": [
+        "帮我把项目现在的看板更新一下，我想看看各条线走到哪了。",
+        "把现在各个冲刺和设计的进展汇总成一段话发给我。",
+        "给我讲讲这套 Scrum 冲刺的机制是怎么运转的：日志、阶段、谁管什么，我刚接手这个项目。"
+      ]
+    },
+    "B": {
+      "what": "an outside view of the product (the Stakeholder's)",
+      "expect": "stakeholder",
+      "wrong": "supporter",
+      "prompts": [
+        "我画了个订单页的草图，想听听店员会怎么看。你能站在他们的角度评一评吗？",
+        "假设你是第一次用这个订单台的新店员，看看这个设计哪里会让你困惑。",
+        "从外部利益相关者的角度，评价一下这一期做出来的东西满不满意。"
+      ]
+    },
+    "C": {
+      "what": "Scrum Master business (the Master's)",
+      "expect": "scrum-master",
+      "wrong": null,
+      "prompts": [
+        "我想开一个新冲刺，帮我主持一下 Planning。",
+        "现在冲刺里有什么阻碍吗？按检查点帮我过一遍。",
+        "这个冲刺差不多做完了，带我走 Review 和 Retro。"
+      ]
+    }
+  }
+}
