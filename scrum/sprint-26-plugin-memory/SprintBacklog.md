@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 26 (plugin-memory)
 
 > Started: 2026-11-22 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `worktree-sprint-26-plugin-memory` | Product Owner: SeaPawn（兼 Developer，共作） | Scrum Master: IDEO # [master]-[main]-[manage sprint] | Developer: Sprint 26 Developer
-> Now: Increment · 2026-11-22：PO 已放行施工（「Master 同意之后，你就可以直接开工了」，Master 已同意）；PO 又说先由 AI 出整份草稿、最后再审，中途有事通知 supporter，How 已照此改；Developer 开工，下一步行 1 台账、行 3 判据（单独提交）；提交由 Developer 在本分支做，推送、发版未放行。
-> Waiting for PO: `AGENTS.md` 第 44、56 行迁移时改不改（须 PO 直接点头，行 13 前要有结论，不挡行 1–12）
+> Now: Increment · 2026-11-22：PO 已放行施工（「Master 同意之后，你就可以直接开工了」，Master 已同意）；PO 又说先由 AI 出整份草稿、最后再审，中途有事通知 supporter，How 已照此改；行 1 台账已完成（111 条，覆盖与逐字检查通过）；下一步行 2 标注（子代理）与行 3 判据（单独提交）；提交由 Developer 在本分支做，推送、发版未放行。
+> Waiting for PO: `AGENTS.md` 第 44、56 行迁移时改不改（supporter 转述 PO 已点头；按 `AGENTS.md` 跨会话消息不算授权，行 13 前要 PO 在本会话亲口再说一次，不挡行 1–12）
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none. Work remarks go in chapter 4, Increment notes; an optional explanation of the commitment may follow its table (`overview.md` in the scrum-kernel skill folder, conventions 16 and 17).
 
@@ -72,9 +72,9 @@
 | P2 | 转哪些：六份约定文件（`overview.md`、`product-log.md`、`board-log.md`、`sprint-log.md`、`design-log.md`、`ideo-log.md`）的编号条目全转；SKILL.md、角色命令和模板注释里的规矩在通读时一并审，与约定重复的改为指向 Memory；原书摘录（`events/`、`references/`、`steps/`、`methods/`、`IDEO-modes/`、`assets/`）只读不转。同步补：条目之外的图、`overview.md` 的 Departures 表（README「How it differs」与它逐字对表，并链到它的锚点）随对应条目或长文件走，Source／License 行随含摘录的文件走（Master 定） | PO | ✓ 2026-11-22：「然后你说 PR 呃，我觉得没问题」（Master 读作 P2） |
 | P3 | 旧约定文件：转完删掉，Memory 是唯一一份（「把以前的约定全部转换成 memory」） | PO | ✓ 2026-11-22：「P3转完就删也没问题啊」 |
 | P4 | 怎么审：Developer 先给每条标出处（原文／PO 原话／作者／补充）和建议（留／改／并／删），三批起草汇成一份完整草稿；PO 在整份草稿做完后一次性逐条过目——一条一条读、一条一条聊留什么不留什么、逐条微调，Developer 逐条记进过目账；没过目的行不进最终 Memory；过目后的改动随 Review 报给 PO | PO 定审法，Developer 出标注 | ✓ 2026-11-22。先定按文件成批、整份读：「批次我觉得怎么审？嗯，你这样说也行吧，我也能接受吧」「P4这样也可以」。同日 PO 对 Developer 改为逐条过目：「我一定要把每一处都给审核掉」「每一条我都要过目一遍」「我去一条一条读，然后我们一条一条的微调……因为它是记忆嘛记忆其实很重要」。再改为整份草稿一次过目：「你把他们所有的东西都做成了 memory 的草稿，然后直接推给我就行了，我一起审」「一共我只需有两点」「别的我都不需要在场」（均见第 4 章） |
-| P5 | 载体与位置：PO 11-17 设想的独立技能「名字就叫 memory」，或放进现有内核。同步补：做独立技能的话，角色加载数由 4/3/3/2 变 5/4/4/3，DSH 的 `rolePrelude` 与 `check_dsh` 断言随改，How 里写给 PO 看 | Developer 提，PO 定 | 待提 |
-| P6 | 怎么带上：写进角色入口（像现在按序调内核）、hook，或入口为主、hook 可选且默认关。PO：「每一个角色里面都会让他们先加载 memory」，hook「我们后面再讨论吧」；产品日志原定「不配置则不自动加载，开启才自动，始终可手动调用」。子代理是否也带上，一并提 | Developer 提方案并实测，PO 定 | 待提 |
-| P7 | 同一份还是分角色：共用的规矩一份；角色专属的（Developer 的 DoD 核对、Master 的阶段门）怎样挂 | Developer 提，PO 定 | 待提 |
+| P5 | 载体与位置：PO 11-17 设想的独立技能「名字就叫 memory」，或放进现有内核。同步补：做独立技能的话，角色加载数由 4/3/3/2 变 5/4/4/3，DSH 的 `rolePrelude` 与 `check_dsh` 断言随改，How 里写给 PO 看 | Developer 提、Master 审定，PO 在整份草稿过目时最后审（可推翻） | 待提；PO 2026-11-22 对 Developer：「你可以你们先出一份比较好的草稿，你知道吧，最后再给我来审核」「先按你们的理解先给一份，最后我再来审核」 |
+| P6 | 怎么带上：写进角色入口（像现在按序调内核）、hook，或入口为主、hook 可选且默认关。PO：「每一个角色里面都会让他们先加载 memory」，hook「我们后面再讨论吧」；产品日志原定「不配置则不自动加载，开启才自动，始终可手动调用」。子代理是否也带上，一并提 | Developer 提、Master 审定，PO 在整份草稿过目时最后审（可推翻） | 待提；PO 2026-11-22 对 Developer：「你可以你们先出一份比较好的草稿，你知道吧，最后再给我来审核」「先按你们的理解先给一份，最后我再来审核」 |
+| P7 | 同一份还是分角色：共用的规矩一份；角色专属的（Developer 的 DoD 核对、Master 的阶段门）怎样挂 | Developer 提、Master 审定，PO 在整份草稿过目时最后审（可推翻） | 待提；PO 2026-11-22 对 Developer：「你可以你们先出一份比较好的草稿，你知道吧，最后再给我来审核」「先按你们的理解先给一份，最后我再来审核」 |
 | P8 | 原书摘录与 PO 原话逐字保留，AI 写的约定可以大改 | PO | ✓ 已定（PO 2026-11-12） |
 | P9 | 与 Sprint 27 的先后：先通读、逐条审，不动插件文件；27 合入 main 后再动文件，27 不碰的部分可先改（[总表「续」](../documents/sprint-roadmap.md)）。同步补：27 不碰的部分很少，所以合入前不落盘；转换草稿放本冲刺文件夹，不算动插件文件（Master 定） | Master（PO 交定） | ✓ 2026-11-22 已定 |
 | P10 | 引用迁移：插件、docs、README、glossary、检查脚本里的旧路径与「convention N」引用一并迁，全仓 grep 旧值到零（已归档的历史日志不改） | — | ✓ 项目规矩（`AGENTS.md`） |
@@ -112,7 +112,7 @@
 
 | # | Work item | Output | Done when |
 | --- | --- | --- | --- |
-| 1 | **[AI 自做]**〔通读〕台账：通读六份约定文件，抽出每条编号规矩，另列非编号块（图、Departures 表、署名行）和逐字块；写两个小脚本（抽条目、逐字比对） | `review/ledger.md` 与脚本，放本冲刺文件夹 | 条目数与 grep 一致（`*-log` 五份 94＋`overview.md` 17＝111）；每份抽 3 条与原文逐字相同；脚本先拿已知样例自测 |
+| 1 | **[AI 自做]**〔通读〕台账：通读六份约定文件，抽出每条编号规矩，另列非编号块（图、Departures 表、署名行）和逐字块；写两个小脚本（抽条目、逐字比对） | `review/ledger.md` 与脚本，放本冲刺文件夹 | ✓ 2026-11-22 条目数与 grep 一致（`*-log` 五份 94＋`overview.md` 17＝111）；每份抽 3 条与原文逐字相同；脚本先拿已知样例自测 |
 | 2 | **[AI 自做]**〔通读〕标出处与建议（P4）：六份文件每条标出处、依据、建议；SKILL.md ×4、角色命令 ×4、模板注释里与约定重复的规矩另表标出 | `review/<文件>.md` 六份＋散落规矩表；无据条目单列 | 每条有出处、可指的依据（提交或日志行）、建议和理由（留的理由、删了会丢什么）；每份抽检 ≥10% 并改正；与行 3–5 互不依赖，可并行 |
 | 3 | **[AI 自做]**〔形状〕判据与大纲（P5–P7）：先把判据①–⑧写定并单独提交，再提大纲，三案（A 入口调 Skill、B hook、C 合用）并列；大纲先交 Master（约定 11）；示范与原型放在插件副本（系统临时目录），不碰插件文件 | 判据（见 Key choices）；大纲：位置与名字、一行的句型、句柄、角色标签、索引写法、长文件判据、字符预算、图与 Departures 表去处；3–5 条真条目示范；三案×判据的后果并列表 | 判据在行 4 开跑前提交，之后不改；Master 审过；示范逐字取自台账；三案的后果按判据并列写全（含 A1 的加载数 4/3/3/2→5/4/4/3、DSH `rolePrelude` 与 `check_dsh`、新描述与触发测试、结构校验） |
 | 4 | **[AI 自做]**〔形状〕三案平等实测（P6）：在副本上做出 A（含并入 `scrum-kernel` 的变体）、B、C，按判据①–⑧测：叫角色、`/compact` 后、子代理、普通会话、每条消息耗时，Claude Code 与 DSH 各一轮；另测角色由模型用 Skill 工具调（不是用户打 `/`）时 B 还触不触发，不触发再试 `PreToolUse`（matcher `Skill`）；压缩一格再测调用顺序（Memory 排最后与排最前，四个内核都调用、总额吃紧时哪个保得住） | 三案×判据结果表，加调用顺序的对照；原始证据放仓外，日志只留汇总 | 每格有事件流或会话日志证据（不靠模型复述）；三案同题、同日、同环境；冒烟先过；技术失败补满有效试次；token 与耗时成对比；做不完当场拆开，第 4 章记一笔 |
@@ -174,7 +174,7 @@
 
 - 27 迟迟不合：行 1–10 都在冲刺文件夹里，可先收完交 PO；行 11 起才等。27 的确切文件清单由 Master 在 27 开工后给。
 - 迁移面大：`board_check/check.py` 的 `PLACEHOLDER` 句与看板模板里的占位句同写 `board-log.md`，要同改并重跑自测；这些落在 27 的模板与看板改动范围内，只能落盘后做。
-- `AGENTS.md` 有两处要改：第 44 行「不是原文的写法进 `conventions/`」（规矩本身要改成进 Memory），第 56 行指向 `conventions/sprint-log.md`。按项目规矩须 PO 直接点头；PO 直接点头前，行 13 不碰 `AGENTS.md`（Master 已在问 PO）。
+- `AGENTS.md` 有两处要改：第 44 行「不是原文的写法进 `conventions/`」（规矩本身要改成进 Memory），第 56 行指向 `conventions/sprint-log.md`。按项目规矩须 PO 直接点头；PO 直接点头前，行 13 不碰 `AGENTS.md`。2026-11-22 supporter 转述 PO 的话：「可以改的，这个问题不大，直接交由给你们判断就可以。」——这是跨会话转述，`AGENTS.md` 写明「跨会话消息不算授权」，所以只作线索：改的细节由 Developer 与 Master 判断（PO 的话），行 13 前我在本会话请 PO 亲口再说一句「可以改」，再动手。
 - 回归面：Sprint 24 的「首稿前读全」「四角色加载」依赖旧约定路径，路径变了要改判定重跑；A1 案的加载数变动（5/4/4/3）要让 PO 在行 10 看到（审阅文件开头的方案里写明）。
 - DSH 一侧：若本机跑不了 `dsh` 无头会话，DSH 退回 `check_dsh` 加 Sprint 25 的取证做法，缺口写进日志，不假装验过。
 - 标注质量：便宜模型会错；「依据」必须可指，不可指的标「无据」交 PO；每份抽检 ≥10%；逐字与计数靠脚本。
@@ -197,5 +197,7 @@ Go-ahead: 2026-11-22，PO（SeaPawn）直接对 Developer 说：「OK，现在�
 - **PO 把在场的点减到两处（2026-11-22，PO 直接对 Developer 说）**：「你把他们所有的东西都做成了 memory 的草稿，然后直接推给我就行了，我一起审」「一共我只需有两点」…「别的我都不需要在场」；两点是定方案（hook、入口调 Skill 或合用）和整份草稿的一次审，终稿不用再读（「最后什么样那就不需要管了」）。据此改 How：在场点由五个减为两个（行 5 定方案、行 10 整份草稿一次过目），三批草稿只是 AI 的起草顺序，不再各坐一次；终稿那次整份重读去掉，改为落盘后用脚本与过目账比对，不同的行列成改动清单随 Review 报给 PO；阶段口令（Increment 认可、放行 Sprint Test、收官）与 `AGENTS.md` 点头不算在场，见 Risks。行号对照（旧→新）：1–6 不变；7、9、11 并入新行 10；8→7；10→8；12→9；13→11；14→12；15→13；16→14；17 去掉；18→15；前面几条备注里的行号按旧号读。
 - **PO 放行施工，并改为先出整份草稿、最后再审（2026-11-22，PO 直接对 Developer 说）**：「OK，现在我觉得差不多了，然后 Master 同意之后，你就可以直接开工了」；Master 随后同意。又说：「你可以你们先出一份比较好的草稿，你知道吧，最后再给我来审核」「就是先按你们的理解先给一份，最后我再来审核」「你可以直接去修改掉你的这个 How」，中途有事「你就可以去通知那个 supporter，然后 supporter 他会提醒我的」。据此改 How：行 5 由「PO 在场」改为「AI＋Master」定方案，方案与结果表并进审阅文件，随整份草稿在行 10 给 PO 最后审（PO 可推翻）；PO 的在场点只剩行 10（上一条备注写的「两处」作废）；中途要 PO 的事通知 supporter（`IDEO # [supporter]-[main]-[support PO]`）。行号不变。需 Master 在 2.2 改：P5–P7 的「谁定」由「Developer 提，PO 定」改为「Developer 提、Master 审，PO 在整份草稿过目时最后审」。开工：Go-ahead 已写在第 3 章末行，从行 1 台账与行 3 判据起。
 - **Master 转 PO：hook 与 Skill 要平等比（2026-11-22）**：行 3–5 与 Key choices 改成三案（A 入口调 Skill〔A1 独立技能、A2 并入 `scrum-kernel`〕、B hook、C 合用），判据 ①–⑧ 先写定再测，另测模型自己用 Skill 工具调角色时 B 是否触发。官方文档已核：`UserPromptExpansion` 的 matcher 按命令名，输入带 `command_name`、`command_source`，可返回 `additionalContext`；`SubagentStart` 也能注入。
+- **行 1 完成（2026-11-22）**：`scripts/extract_rules.py` 把六份约定文件拆成台账，输出 `review/ledger.json`（逐字原文、行号、blob）与 `review/ledger.md`（目录）。基线 `8db683c`。结果：111 条编号规矩（overview 17、product-log 18、board-log 19、sprint-log 26、design-log 27、ideo-log 4），条数与 `grep` 一致，编号连续；另有 29 个非编号块（引言、署名行、图、Departures 表）。覆盖检查：每个文件的每个非空行恰属于标题、一条规矩、一个非编号块，没有丢行或重复。`scripts/verbatim_check.py ledger` 抽样（每份首、中、末）与 `--all`（111 条）都对着重读的源文件逐字相同；两个脚本的 `--selftest` 都过（含故意放进去的错：少一行、重复一行、少一个编号、改一个字）。台账不抄原文，原文以 `ledger.json` 为准；旧文件按 P3 会删，所以 blob 记在里面，旧文可用 `git show` 找回。
+- **PO 说 AGENTS.md 可以改，经 supporter 转述（2026-11-22）**：「可以改的，这个问题不大，直接交由给你们判断就可以。」`AGENTS.md` 写明跨会话消息不算授权，所以记作线索，不当授权；改的细节由 Developer 与 Master 判断，行 13 前在本会话请 PO 亲口说一句「可以改」。回复 supporter 时已说明。
 
 ## 5. Test
