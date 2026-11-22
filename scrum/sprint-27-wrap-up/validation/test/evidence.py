@@ -173,6 +173,31 @@ def main():
     stale = "go to the Scrum Master, who chooses the receiving session and records them"
     check("the old ambiguous routing sentence is gone from supporter.md and convention 14",
           stale not in supporter_text and "Scope or item changes, go-aheads and the Product Owner's answers about them" not in in_convention)
+
+    # --- the five small fixes after the Review (the Increment was returned): the sentences are in
+    quick = [read("docs/quick-start.md"), read("docs/quick-start.zh-CN.md")]
+    convention12 = re.search(r"^12\. \*\*Product Owner decides between stages\*\*.*$", in_convention, re.M)
+    after_review = [
+        ("1 a relay about scope, items or a go-ahead has the Scrum Master as its receiver (supporter.md body)", in_body,
+         "for what the Product Owner has decided or answered about scope, items or a go-ahead it is the Scrum Master"),
+        ("1 the same (convention 14)", in_convention,
+         "for what the Product Owner has decided or answered about scope, items or a go-ahead it is the Scrum Master"),
+        ("1 supporter.md points at convention 14, The answers back (no double quotes: in this file they mark SGEP phrases)", in_body, "*The answers back*"),
+        ("1 convention 14 points at the supporter entry", in_convention, "the `supporter` entry says the same"),
+        ("2 the relay says where the Product Owner said it (supporter.md body)", in_body, "where they said it (the session's name and the time)"),
+        ("2 the relay says where the Product Owner said it (convention 14)", in_convention, "where the Product Owner said it (the session's name and the time)"),
+        ("3 convention 12 says it is not a tool permission", in_convention, "wait for explicit stage permission (not a tool permission) for that stage and scope"),
+        ("4 with no Scrum Master session the second step goes to the Product Owner (convention 14)", in_convention,
+         "with no Scrum Master session, this step goes straight to the Product Owner"),
+        ("5 quick start (English) hands the board to the supporter", quick[0], "Hand it to the supporter: `/ideo-scrum:supporter` in Claude Code, `/supporter` in DSH."),
+        ("5 quick start (Chinese) hands the board to the supporter", quick[1], "交给 supporter（秘书）：Claude Code 用 `/ideo-scrum:supporter`，DSH 用 `/supporter`。"),
+    ]
+    absent = [name for name, text, needle in after_review if needle not in text]
+    check("the Review fixes 1–5: the %d sentences are in" % len(after_review), not absent,
+          "missing: %s" % absent if absent else "%d of %d present" % (len(after_review), len(after_review)))
+    check("convention 12 writes stage permission five times and no bare 'explicit permission'",
+          bool(convention12) and convention12.group(0).count("stage permission") == 5 and "explicit permission" not in convention12.group(0),
+          "%d times" % convention12.group(0).count("stage permission") if convention12 else "convention 12 not found")
     print("\n%d check(s) failed" % len(failures) if failures else "\nall checks passed")
     return 1 if failures else 0
 
