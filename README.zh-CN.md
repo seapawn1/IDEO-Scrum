@@ -177,7 +177,7 @@ claude plugin update ideo-scrum@ideo-scrum
 | --- | --- |
 | *The Scrum Guide* 2020，Ken Schwaber 与 Jeff Sutherland | CC BY-SA 4.0 |
 | *Scrum Guide Expansion Pack* 2026.1，Ralph Jocham、John Coleman 与 Jeff Sutherland | CC BY-SA 4.0 |
-| *Design Thinking Bootleg*，Stanford d.school | CC BY-NC-SA 4.0（非商业） |
+| *Design Process Mini-Guide*（2010）与 *Design Thinking Bootleg*（2018），Stanford d.school | CC BY-NC-SA 3.0 Unported 与 4.0（非商业） |
 | *Sprint*，Jake Knapp 与 John Zeratsky、Braden Kowitz（Simon & Schuster，2016） | 保留全部权利 |
 
 d.school 的许可禁止商业使用，所以本仓库不算 OSI 意义上的开源软件。打算商业使用的话，先读 [ATTRIBUTION.md](ATTRIBUTION.md)。

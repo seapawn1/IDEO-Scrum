@@ -39,19 +39,44 @@
 
 ---
 
-## 3. Stanford d.school — Design Thinking Bootleg
+## 3. Stanford d.school — Design Process Mini-Guide (2010) 与 Design Thinking Bootleg (2018)
+
+五模式（`IDEO-modes/`）由 d.school 的两份材料合并而成：2010 年的 *Design Process Mini-Guide* 是底本，2018 年的 *Design Thinking Bootleg* 补料。两份的许可版本不同，分列如下；方法库（`methods/`）只来自 2018 年的 Bootleg。
+
+### 3.1 Design Process Mini-Guide（2010，五模式的底本）
+
+| 项 | 内容 |
+|---|---|
+| 出品 | Hasso Plattner Institute of Design at Stanford University (d.school)；PDF 封面题 *An Introduction to Design Thinking — Process Guide*，所在维基页题 *Design Process MiniGuide* |
+| 许可 | **CC BY-NC-SA 3.0 Unported** — https://creativecommons.org/licenses/by-nc-sa/3.0/legalcode |
+| 许可依据 | d.school「Design Resources」维基首页的声明：「The resources in this wiki by Hasso Plattner Institute of Design at Stanford are licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.」声明在维基首页（覆盖该维基里的资源），不在该页或 PDF 内；原站已下线，以下面的存档为证；未另向 d.school 取得书面确认。 |
+| 原始出处 | 维基页 https://dschool.stanford.edu/groups/designresources/wiki/36873/Design_Process_MiniGuide.html（已下线）。存档：[维基首页（2016-03-15）](https://web.archive.org/web/20160315073719/https://dschool.stanford.edu/groups/designresources/)、[PDF `ModeGuideBOOTCAMP2010L.pdf`（2016-01-18）](https://web.archive.org/web/20160118010517/https://dschool.stanford.edu/sandbox/groups/designresources/wiki/36873/attachments/74b3d/ModeGuideBOOTCAMP2010L.pdf) |
+| 本仓库位置 | `plugins/ideo-scrum/skills/ideo-kernel/IDEO-modes/`（五个文件的底本） |
+| 修改说明 | 五模式内容重组为 WHAT / WHY / HOW 三层结构并补充模式间衔接。 |
+
+### 3.2 Design Thinking Bootleg（2018，五模式的补料与方法库）
 
 | 项 | 内容 |
 |---|---|
 | 出品 | Hasso Plattner Institute of Design at Stanford University (d.school) |
 | 许可 | **CC BY-NC-SA 4.0** — https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode |
-| 原始出处 | https://dschool.stanford.edu/tools/design-thinking-bootleg |
-| 本仓库位置 | `plugins/ideo-scrum/skills/ideo-kernel/IDEO-modes/`（五模式 WHAT/WHY/HOW；设计冲刺的原书摘录在 `design-kernel/`，属第 4 节 Knapp 来源）<br>`plugins/ideo-scrum/skills/ideo-kernel/methods/`（方法库） |
-| 修改说明 | 五模式内容重组为 WHAT / WHY / HOW 三层结构并补充模式间衔接；方法库条目补充 Use Before / Use Notes / Do Not Use When 字段。 |
+| 原始出处 | https://dschool.stanford.edu/tools/design-thinking-bootleg（许可标注在这个页面上；它指向的 PDF 本身没写许可，第 90 页标 Bootleg 2018） |
+| 本仓库位置 | `plugins/ideo-scrum/skills/ideo-kernel/IDEO-modes/`（五模式的补料，见下表；设计冲刺的原书摘录在 `design-kernel/`，属第 4 节 Knapp 来源）<br>`plugins/ideo-scrum/skills/ideo-kernel/methods/`（方法库） |
+| 修改说明 | 方法库条目补充 Use Before / Use Notes / Do Not Use When 字段。 |
+
+五模式里 2018 补料的对应（对 2018 PDF 逐词比对）：
+
+| 模式 | 补料文本块 | 2018 PDF 页 | 当前文件里的情况 |
+| --- | --- | --- | --- |
+| Empathize | 8 | 3–4 | Immerse 一段由两块拼接，不声称原件有这一整段 |
+| Define | 6 | 5–6 | 其中一处由两项合并改写，不是逐字抄录 |
+| Ideate | 9 | 7–8 | 含两处拼接 |
+| Prototype | 7 | 9–10 | 含两处压缩改写 |
+| Test | 8 | 11–12 | 合并结果没有保留 2018 的独有表述，正文以 2010 底本为本 |
 
 > **⚠️ NonCommercial 提示**
 >
-> 上述文件采用的许可**含非商业限制**。这意味着以本仓库的 `ideo-kernel` 内容为主要目的的商业使用（如作为付费咨询或培训的交付物）不在该许可授权范围内。
+> 上述两份许可都**含非商业限制**。这意味着以本仓库的 `ideo-kernel` 内容为主要目的的商业使用（如作为付费咨询或培训的交付物）不在该许可授权范围内。
 >
 > 本仓库整体因此**不构成 OSI 定义下的开源软件**。若你的使用场景涉及商业用途，请自行评估或直接联系 d.school。
 

@@ -177,7 +177,7 @@ The original parts of this repository (the plugin's structure, how its skills ar
 | --- | --- |
 | *The Scrum Guide* 2020, Ken Schwaber and Jeff Sutherland | CC BY-SA 4.0 |
 | *Scrum Guide Expansion Pack* 2026.1, Ralph Jocham, John Coleman and Jeff Sutherland | CC BY-SA 4.0 |
-| *Design Thinking Bootleg*, Stanford d.school | CC BY-NC-SA 4.0 (non-commercial) |
+| *Design Process Mini-Guide* (2010) and *Design Thinking Bootleg* (2018), Stanford d.school | CC BY-NC-SA 3.0 Unported and 4.0 (non-commercial) |
 | *Sprint*, Jake Knapp with John Zeratsky and Braden Kowitz (Simon & Schuster, 2016) | All rights reserved |
 
 The d.school license forbids commercial use, so this repository is not open-source software in the OSI sense. If you plan a commercial use, read [ATTRIBUTION.md](ATTRIBUTION.md) first (it is in Chinese).
