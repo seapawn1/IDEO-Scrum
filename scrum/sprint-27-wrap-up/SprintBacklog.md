@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 27 (wrap-up)
 
 > Started: 2026-11-22 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `worktree-sprint-27-wrap-up` | Product Owner: SeaPawn | Scrum Master: IDEO # [master]-[main]-[manage sprint] | Developer: Sprint 27 Developer
-> Now: Increment（Review 后退回，五处小改已修）· 2026-11-23：Test 已判通过；Review 里全新的「熟手」视角基本满意，有两处说法打架，Master 按 PO 全面放权定退回 Increment、范围只五处（第 4 章「Review 发现、Master 定退回」）；五处已修并分开提交，`description` 一律没动，重跑静态检查与两条 grep 全过（第 5 章最后一段），待 Master 审 diff。之后：先把 main 合进分支（合并提交单独算），再做 3.2、§2.1、§2.2 的改动并出一个收官提交，报 Master 审 diff 后才打 tag、合入；收官等 PO 放行，推送另等 PO。PO 最近一次决定（2026-11-23）：Review 交 Master 与 Codex，PO 只管放行（第 4 章「PO：Review 交 Master 与 Codex」）。
-> Waiting for PO: None
+> Now: Review · 2026-11-23：Test 已判通过；Review 里「熟手」视角提出的五处小改已修，Master 审过 diff、没有问题（项 ②③ 不重测，理由成立）。已经 Supporter 请 PO 放行收官（本地合入 main、打 tag、关工作树、删分支，不推送）；放行到了 Master 转 Developer，照这个顺序做：先把 main 合进分支（合并提交单独算），再在合好的产品日志上做 3.2、§2.1、§2.2 的改动并出一个收官提交，报 Master 扫 diff，审过才打 tag、合入。PO 最近一次决定（2026-11-23）：Review 交 Master 与 Codex，PO 只管放行（第 4 章「PO：Review 交 Master 与 Codex」）。
+> Waiting for PO: ① 收官放行（本地合入 main、tag、关工作树、删分支；不推送）
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none. Work remarks go in chapter 4, Increment notes; an optional explanation of the commitment may follow its table (`overview.md` in the scrum-kernel skill folder, conventions 16 and 17).
 
@@ -316,6 +316,7 @@ Go-ahead: 2026-11-22，Master 按 PO 的书面授权（见第 4 章）放行 H1�
   - **④ 没有 Scrum Master 会话时去哪（不阻塞）**：约定 14 分流第二级加半句：没有 Scrum Master 会话时，这一级直接问 PO。
   - **⑤ 文档没提 Supporter（不阻塞）**：`docs/quick-start.md` 与中文版第 87 行附近「Ask for the board」一句，补上「交给 supporter」。
   - **不改的，只记在这里**：约定 14 跟 `sprint-log.md` 的约定 14 同号（引用都带了文件名，26 改句柄后自然消失）；地图里没有 Supporter 节点（交给 26 的 flow-maps 长文件）；Supporter 能登记条目（本来就写了要照 PO 或 Master 的话）；缓存里的旧版 0.6.3 还指旧位置（发版更新后就好，记进 `CHANGELOG.md` 的未发布条目）。
+- **Master 审过五处修复的 diff，请 PO 放行收官（2026-11-23，Master 按 PO 全面放权）**：Master 审过 `git diff 778b767 HEAD -- plugins docs CHANGELOG.md`，没有问题；认可 Developer 自己拿主意的三处（`supporter.md` 里「日期」写了两处，两处都补「在哪里说的」以保持一致；`supporter.md` 里新写的条目名引用从双引号改成斜体，因为双引号在这个文件里只标 SGEP 引文；约定 12 实际写了五处 stage permission，`d2d615d` 的提交说明写成四处，已在第 5 章更正）；项 ②③ 不重测，理由成立：五处改动都没碰它们验的前提。已经 Supporter 请 PO 放行收官：本地合入 main、打 tag、关工作树、删分支，不推送。放行到了 Master 转 Developer，顺序是：先把 main 合进分支（main 在 Developer 开工后又有 4 个产品日志提交：`6ea0d65`、`0232702`、`8f25f61`、`2cb9420`，不先合，移 3.2 时会与 Master 插在 PBI-51 后面的 92–98 撞在相邻行上），合并提交单独算；再在合好的产品日志上做 3.2（本期写一行，照现有格式：冲刺、条目、结果、出处）、§2.1、§2.2 的改动，出一个收官提交；做好先报 Master 扫 diff，审过再打 tag、合入。Retro 的要点 Master 已挑好（五条），放行后由 Developer 写进 `S:\SeaPawn-Memory\memory\IDEO-Scrum\`，一条一个文件、`MEMORY.md` 加一行索引。
 
 ## 5. Test
 
