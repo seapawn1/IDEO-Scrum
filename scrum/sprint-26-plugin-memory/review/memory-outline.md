@@ -47,12 +47,12 @@ Developer 提，Master 审定。PO 2026-11-23 定了 A1（「26那就选择A1把
 - 句柄：2–4 个英文词、短横线连接，全清单唯一，只起名字作用；别的行、长文件、旧「convention N」引用迁成句柄，用反引号引。
 - 角色标签可无；`→` 只在细节在长文件时写；`[pending S27]` 只在等 Sprint 27 的行上，27 合入后去掉。
 - 一行只管一件事、照着能做；理由与例外进长文件，不进清单。
-- 示范（逐字取自 `memory-draft/MEMORY.md`）：
-  1. `- **role-entry** On a role command, load that role's kernels in order before any work; stop and report a failed load. → long/roles-and-routing.md`
-  2. `- **stage-gates** Wait for the PO's explicit permission to start or return to a stage; approving a result is not permission. → long/stage-gates.md`
-  3. `- **outward-needs-po** Push, release and other outward actions need the PO's consent; a stage permission never covers commit, merge or push.`
-  4. `- **facts-then-questions** [sm] *Supplement.* Look up facts yourself; ask the PO in one numbered message, each with a recommended answer.`
-  5. `- **board-writer** A cheap model writes scrum/ScrumBoard.html when the PO wants to look or a log changed. [pending S27]`
+- 示范（新行逐字取自 `memory-draft/MEMORY.md`；括号里是旧规矩，原文逐字在对应的 `review/review-<文件>.md`）：
+  1. `- **role-entry** On a role command, load that role's kernels in order before any work; stop and report a failed load. → long/roles-and-routing.md`（overview#8）
+  2. `- **stage-gates** Wait for the PO's explicit permission to start or return to a stage; approving a result is not permission. → long/stage-gates.md`（overview#12）
+  3. `- **outward-needs-po** Push, release and other outward actions need the PO's consent; a stage permission never covers commit, merge or push.`（sprint-log#19）
+  4. `- **facts-then-questions** [sm] *Supplement.* Look up facts yourself; ask the PO in one numbered message, each with a recommended answer.`（product-log#3）
+  5. `- **board-writer** A cheap model writes scrum/ScrumBoard.html when the PO wants to look or a log changed. [pending S27]`（board-log#3）
 
 ## 5 长文件的判据
 

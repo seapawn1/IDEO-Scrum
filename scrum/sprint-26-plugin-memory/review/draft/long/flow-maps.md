@@ -11,6 +11,7 @@ flowchart TD
     DEV["Developer"]
     DES["Designer"]
     SH["Stakeholders"]
+    SU["Supporter (Sprint 27, pending)"]
     PO --> A["Write the product log: product, architecture, items<br/>‹product-log#1›, ‹product-log#4›"]
     SM --> A
     A -- "an item needs design" --> X0["A design question: design sprint or the five modes?<br/>‹ideo-log#1›"]
@@ -27,6 +28,8 @@ flowchart TD
     DES --> X
     SH --> X
     SH --> V
+    SM -- "what only the PO decides" --> SU
+    SU -- "collects it for the PO; relays the answer" --> PO
     X0 -- "PO authorizes starting a design sprint" --> X["Design sprint: five stages, each standing on one IDEO mode<br/>‹design-log#1›, ‹design-log#26›"]
     X0 -- "the five modes" --> X2["The five modes: one or two methods, recorded in the log they serve;<br/>or an IDEO log for a run of its own<br/>‹ideo-log#3›"]
     X -- "conclusions flow back — a blank page's design fills the product log" --> A
@@ -102,8 +105,9 @@ flowchart TD
     D --> G["Put it in the template<br/>‹board-log#17›"]
     G --> B["scrum/ScrumBoard.html<br/>‹board-log#1›, ‹board-log#2›, ‹board-log#3›, ‹board-log#8›, ‹board-log#9›, ‹board-log#10›"]
     B -. "delete it, write it again" .-> L
+    SU["Supporter (Sprint 27, pending)"] -. "writes the board" .-> R
 ```
 
 ## Open points for the Product Owner
 
-- (none yet)
+- PENDING SPRINT 27: the Supporter's place in the whole-flow map and the board map follows what Sprint 27 has drafted (the Supporter collects what only the Product Owner decides, and writes the board); redraw the edges when 27 is merged.

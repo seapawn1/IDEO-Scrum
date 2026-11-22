@@ -29,6 +29,7 @@ import statistics
 import subprocess
 import sys
 import tempfile
+import threading
 import time
 
 HERE = pathlib.Path(__file__).resolve().parent
@@ -463,6 +464,50 @@ def cmd_smoke(a) -> int:
     return 0
 
 
+def free_mb() -> int:
+    """Free physical memory in MB, as Windows reports it (the same number the watchdog reads)."""
+    out = subprocess.run(["powershell", "-NoProfile", "-Command", "(Get-CimInstance Win32_OperatingSystem).FreePhysicalMemory"],
+                         capture_output=True, text=True, timeout=60).stdout.strip()
+    return int(out) // 1024
+
+
+class Gate:
+    """Concurrency drops to 1 while free memory is under the soft floor (Master 2026-11-23: under 3 GB, one session at a time).
+    A trial starts when nothing else is running, or when free memory is at the floor or above; a running trial is never stopped.
+    The hard floor (2 GB) is the watchdog's: it stops the whole run."""
+
+    def __init__(self, soft_mb: int, free=free_mb, poll_s: float = 15.0):
+        self.soft_mb, self.free, self.poll_s = soft_mb, free, poll_s
+        self.active = 0
+        self.lock = threading.Lock()
+        self.low = False  # under the floor right now
+        self.dropped = False  # was under the floor at some trial start
+        self.lowest = None
+
+    def enter(self) -> None:
+        while True:
+            with self.lock:
+                if self.active == 0:
+                    self.active = 1
+                    return
+                f = self.free()
+                self.lowest = f if self.lowest is None else min(self.lowest, f)
+                if f >= self.soft_mb:
+                    self.active += 1
+                    if self.low:
+                        self.low = False
+                        print(f"[gate] free {f} MB: back to the full concurrency", flush=True)
+                    return
+                if not self.low:
+                    self.low = self.dropped = True
+                    print(f"[gate] free {f} MB under {self.soft_mb} MB: one session at a time until it recovers", flush=True)
+            time.sleep(self.poll_s)
+
+    def leave(self) -> None:
+        with self.lock:
+            self.active -= 1
+
+
 def cmd_run(a) -> int:
     out = pathlib.Path(a.out)
     c = json.loads((out / "canaries.json").read_text(encoding="utf-8"))
@@ -483,9 +528,22 @@ def cmd_run(a) -> int:
                 keep.append(j)
         print(f"skip-done: {len(jobs) - len(keep)} of {len(jobs)} trials already have valid evidence")
         jobs = keep
+    gate = Gate(a.soft_free_mb) if a.soft_free_mb else None
+
+    def one(j):
+        if gate:
+            gate.enter()
+        try:
+            return run_trial(out, *j, c)
+        finally:
+            if gate:
+                gate.leave()
+
     with concurrent.futures.ThreadPoolExecutor(max_workers=a.parallel) as ex:
-        for res in ex.map(lambda j: run_trial(out, *j, c), jobs):
+        for res in ex.map(one, jobs):
             print(res["tag"], res["status"], res["seconds"])
+    if gate:
+        print(f"[gate] lowest free memory seen at a trial start: {gate.lowest} MB; dropped to one session at a time: {'yes' if gate.dropped else 'no'}")
     return 0
 
 
@@ -652,6 +710,26 @@ def cmd_selftest(a) -> int:
     check(ev["skills"] == [{"skill": "ideo-scrum:memory", "ok": True, "i": 2, "chars": len("body " + c["MEMORY-END"]), "canaries": ["MEMORY-END"]}], "scan: a Skill call and the canary in its result")
     check(ev["hooks"][0]["len"] > 0 and ev["hits"]["MEMORY-START"]["subtype"] == "hook_response", "scan: a hook's output and where the canary first appeared")
     check(ev["boundary_at"] == 3, "scan: the compaction boundary")
+    g = Gate(3000, free=lambda: 1000, poll_s=0.05)
+    g.enter()
+    started = []
+
+    def second():
+        g.enter()
+        started.append(1)
+        g.leave()
+
+    th = threading.Thread(target=second)
+    th.start()
+    time.sleep(0.4)
+    check(not started and g.dropped, "gate: free memory under the floor, a second trial waits for the first")
+    g.leave()
+    th.join(timeout=5)
+    check(started == [1] and g.active == 0, "gate: it starts once the first has left")
+    g2 = Gate(3000, free=lambda: 5000, poll_s=0.05)
+    g2.enter()
+    g2.enter()
+    check(g2.active == 2 and not g2.dropped, "gate: with enough free memory two run together")
     tmp = pathlib.Path(tempfile.mkdtemp(prefix="s26-selftest-"))
     try:
         build_plugin("A1", tmp / "A1", c)
@@ -751,6 +829,7 @@ def main(argv: list[str]) -> int:
     p.add_argument("--n", type=int, default=3)
     p.add_argument("--parallel", type=int, default=4)
     p.add_argument("--skip-done", action="store_true", help="do not run a trial that already has valid evidence (resume after a stop)")
+    p.add_argument("--soft-free-mb", type=int, default=0, help="while free memory is under this, start a trial only when nothing else is running (0: off)")
     p.add_argument("--chars", type=int, default=TARGET_CHARS, help="size of the stand-in Memory in characters (the default is the committed criteria's)")
     a = ap.parse_args(argv)
     if getattr(a, "chars", None):
