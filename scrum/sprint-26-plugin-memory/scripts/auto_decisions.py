@@ -28,9 +28,11 @@ def main(argv: list[str]) -> int:
     out = pathlib.Path(argv[argv.index("--out") + 1])
     manual = pathlib.Path(argv[argv.index("--manual") + 1])
     got, problems = av.load(d)
-    if problems:
+    if problems and "--partial" not in argv:
         print("file problems:", *problems, sep="\n  ")
         return 1
+    if "--partial" in argv:  # a preview while files are still coming in: only rules with both lenses present
+        got = {i: v for i, v in got.items() if len(v) == 2}
     ann, _ = av.annotations()
     decisions: dict[str, dict] = {}
     manual_lines: list[str] = []
@@ -43,7 +45,7 @@ def main(argv: list[str]) -> int:
             continue
         fixes = {lens: (o.get("fix") or {}) for lens, o in by.items() if o["verdict"] == "fix"}
         doubts = [lens for lens, o in by.items() if o["verdict"] == "doubt"]
-        accept, conflicts = [], []
+        accept, conflicts, setv = [], [], {}
         for field in av.FIX_FIELDS:
             vals = {lens: fx[field] for lens, fx in fixes.items() if field in fx}
             if not vals:
@@ -52,6 +54,11 @@ def main(argv: list[str]) -> int:
                 accept.append(field)
             elif len(vals) == 1 and not (field == "recommend" and ann[i]["recommend"] in ("留", "改") and next(iter(vals.values())) in ("删", "并")):
                 accept.append(field)
+            elif field == "reason":
+                # both lenses wrote a reason: the loss lens judges what the drafter must keep, so its text wins
+                setv["reason"] = vals.get("loss") or vals["facts"]
+            elif field == "confidence":
+                setv["confidence"] = min(vals.values(), key=lambda v: ["低", "中", "高"].index(v))  # the more careful of the two
             else:
                 conflicts.append(field)
         if conflicts or doubts:
@@ -66,11 +73,14 @@ def main(argv: list[str]) -> int:
                 if o.get("fix"):
                     manual_lines.append("    fix: " + json.dumps(o["fix"], ensure_ascii=False))
             manual_lines.append(f"    auto-accepted fields: {accept or '-'}; conflicts: {conflicts or '-'}; doubts: {doubts or '-'}")
-            if accept:
-                decisions[i] = {"accept": accept, "_manual": True}
+            if accept or setv:
+                decisions[i] = {"accept": accept, "set": setv, "_manual": True}
         else:
             n_auto += 1
-            decisions[i] = {"accept": accept} if accept else {"keep": "verifier flagged, no field to change"}
+            if accept or setv:
+                decisions[i] = {"accept": accept, **({"set": setv} if setv else {})}
+            else:
+                decisions[i] = {"keep": "verifier flagged, no field to change"}
     out.write_text(json.dumps(decisions, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
     manual.write_text("\n".join(manual_lines) + "\n", encoding="utf-8", newline="\n")
     print(f"{len(order)} rules: {n_ok} ok in both lenses, {n_auto} auto, {n_man} manual (details in {manual.name})")
