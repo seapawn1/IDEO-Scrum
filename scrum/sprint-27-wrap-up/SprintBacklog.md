@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 27 (wrap-up)
 
 > Started: 2026-11-22 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `worktree-sprint-27-wrap-up` | Product Owner: SeaPawn | Scrum Master: IDEO # [master]-[main]-[manage sprint] | Developer: Sprint 27 Developer
-> Now: How · 2026-11-22：精化已结束（PO 认可，Developer 同步无疑问）；第 3 章 How 已写（H1–H7），待 Master 审，施工未放行。PO 最近一次决定：新角色定名 `supporter`，86 的 Q1–Q3 已定。
+> Now: Increment · 2026-11-22：Master 按授权放行 H1–H7（带两个条件，见第 3 章末行）；先做不依赖位置的 H4、H6，H1 的模板与看板位置等 DSH 探测。PO 最近一次决定：新角色定名 `supporter`，86 的 Q1–Q3 已定。
 > Waiting for PO: None
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none. Work remarks go in chapter 4, Increment notes; an optional explanation of the commitment may follow its table (`overview.md` in the scrum-kernel skill folder, conventions 16 and 17).
@@ -117,7 +117,7 @@
 - **grep 为零**：旧模板与看板路径（`conventions/` 下的 `*-backlog-template.md`、`scrum-board-template.html`、`board-log.md`）、旧称法（`PO assistant`、`PO 助手`、「常驻的助手」「standing assistant」）在 `plugins/`、`dsh/`、`docs/`、`README*`、`scripts/`、`package.json`、`.gitignore` 内为零；`scrum/` 下的归档与在办日志、产品日志（Q7 由 Master 收官时改）和 `CHANGELOG.md` 的历史条目不在范围内。
 - **84**：对基线提交 `1145382` 逐文件比，五个 `IDEO-modes/*.md` 去掉头部引注行后的正文逐字相同（脚本比）；头与 `ATTRIBUTION.md` 第 3 节逐项对上两源，许可有可达链接或存档出处。
 - **描述长度**：改过与新增的 `description` 逐条用脚本量，全部 ≤1024，并在第 5 章写出数值。
-- **触发**（同日、同环境、同一脚本；改前臂取自基线提交的 `git archive`，改后臂取冲刺分支；题不带引导词）：三组各 3 题、每题 3 次，每臂 27 次——A 杂活（更新看板、汇总进度、讲解机制）、B 外部视角（以用户或利益相关者身份看原型）、C Master 事务（开 Sprint 计划、查阻碍）。行为栏与内容栏分列。过线：A 组改后臂加载 `supporter` ≥6/9；B、C 两组改后臂命中数各 ≥ 改前臂 −1；混用——B 组中 `supporter` 被加载 ≤1 次，A 组中 `stakeholder` 被加载 ≤1 次。技术失败按手册补足有效试次，不挑样本。
+- **触发**（同日、同环境、同一脚本；改前臂取自基线提交的 `git archive`，改后臂取冲刺分支；题不带引导词）：三组各 3 题、每题 3 次，每臂 27 次——A 杂活（更新看板、汇总进度、讲解机制）、B 外部视角（以用户或利益相关者身份看原型）、C Master 事务（开 Sprint 计划、查阻碍）。行为栏与内容栏分列。过线：A 组改后臂加载 `supporter` ≥6/9；B、C 两组改后臂命中数各 ≥ 改前臂（Master 2026-11-22 改，依据 AGENTS.md「改了描述就重跑触发测试，结果不能比改前差」；不降线）；某组只差一次未过的，该组两臂同补一轮（每题再 3 次），按合并计数重判一次，补跑规则现在写定，不算挑样本；混用——B 组中 `supporter` 被加载 ≤1 次，A 组中 `stakeholder` 被加载 ≤1 次。技术失败按手册补足有效试次，不挑样本。
 - **加载**：Claude Code 无头，`/ideo-scrum:supporter` 的 Skill 调用顺序为 ideo-kernel → scrum-kernel，3/3，且不加载 sprint-kernel、design-kernel。DSH：交 IDEO 秘书会话（Master 转），在 Standard 会话看到 `/supporter`、按 ideo → scrum 预载、读得到新位置的模板；证据取原生事件，不取模型复述（手册第 28 条）。
 - **89**：`selftest` 新增正例（`Test: Concluded — awaiting archive`；带阶段前缀、无「已」的 `收官 · …`）与负例（进行中写法里出现 closed、待收官）各至少 1 个，原有场景不变，全过；三态合成日志（开放、`Concluded — awaiting archive`、迁出活动路径）重跑通过。
 - **90**：九条各有结论与理由；做了的各有 diff；中英对照页 `check_docs.py` 通过。
@@ -156,7 +156,7 @@
 
 **Risks and open points**
 
-- 触发测试有随机性：便宜模型、每臂 27 次，通过线留 −1 余量，已在 2.2 写定；两臂同日同环境跑，技术失败补足不挑样本。
+- 触发测试有随机性：便宜模型、每臂 27 次；B、C 组的线是「≥ 改前臂」，不留余量（Master 定），只差一次的组两臂同补一轮，已在 2.2 写定；两臂同日同环境跑，技术失败补足不挑样本。
 - 与 26 的接口：26 稍后会改所有角色入口（含 supporter）的加载方式；`supporter.md` 与其余入口保持同一版式，让 26 的改动可以机械地做。27 合入 main 后，Master 把改动文件与规矩列给 26。
 - 约定改在冲刺内（项目规矩是约定攒着集中改）：`overview.md` 约定 8、14，`board-log.md` 第 12 条，`ideo-backlog-template.md` 的 `For` 占位，都是 PO 交给本期的条目所需；改动限于一行表项、一句替换和一句补明，不改规则本身。Master 已判不算大改约定：Master 审，Test 里加全新子代理对角色边界文字做对抗核对，不走 PO 强审。
 - 版本号不动（仍是未发布的 0.6.3 候选），`CHANGELOG.md` 的 Unreleased 补记；要给新角色升号，另议，单独提交。
@@ -164,7 +164,7 @@
 - 90 的「不做 ③」要 Master 认可：PBI-90 的验收是「九条每条有结论与理由」，不做也算结论。
 - 产品日志里的「PO 助手」卡与图（Q7）归 Master 收官时改，不在本期 grep 范围内。
 
-Go-ahead: 尚未给出；等 Master 审过 How，按书面授权给，范围由 Master 写明。
+Go-ahead: 2026-11-22，Master 按 PO 的书面授权（见第 4 章）放行 H1–H7。范围：在本分支提交，按 Key choices 分开提交；不推送、不改版本号、不发版；合入 main 在收官时另定；Sprint Test 另等 Master 放行。条件：① 触发测试 B、C 组的通过线改成「≥ 改前」（AGENTS.md：结果不能比改前差），Risks 里「留 −1 余量」同改，改完再冻结；② H1 的模板与看板位置等 DSH 探测结果定：读得到包内 `skills/` 之外的路径，就用插件根的 `template/`、`board/`；读不到，就退回各内核自己的 `template/`，看板放 `skills/scrum-kernel/board/`。结果回来前可以先做不依赖位置的 H4、H6。90 不做 ③，Master 认可。当时的目标原文：「秘书管杂活：看板、传话这类杂活交给秘书，PO 不用操心，各角色的叫法不再混；模板、看板各归其位，留下的小毛病补齐，熟手照着就能用。」
 
 ## 4. Increment notes
 
@@ -184,7 +184,8 @@ Go-ahead: 尚未给出；等 Master 审过 How，按书面授权给，范围由 
   - 85：四个 `SKILL.md`；`sprint-log.md`、`design-log.md`、`product-log.md`、`board-log.md`、`overview.md`；`scripts/board_check/check.py`（`TEMPLATE`）、`prepare_review.py`、`scripts/stranger_test/driver.py`；`docs/glossary.md`、`docs/maintaining*.md`、`README*.md`；`.gitignore` 的注释；`package.json` 的 `files`。`CHANGELOG.md` 里的旧路径是历史条目，不改。
   - 86：`commands/stakeholder.md` 与 `scrum-master.md` 的 description（「PO assistant」写在第 2 行，现约 860、730 字符）；`overview.md` 约定 8、14；`docs/glossary.md`；`check_docs.py` 的 `GLOSSARY_TERMS`；`claude-skills/project-stakeholder/SKILL.md` 第 67、81 行；`README*.md` 第 93、151 行；`dsh/index.js` 与 `scripts/check_dsh.mjs` 的 `roles`；`dsh/locale/*.json`；`docs/maintaining*.md`。`package.json` 的 `files` 含 `commands/`、`skills/`，不含 `claude-skills/`、`agents/`（这两处只给 Claude Code）。
 - **Master 对三问的答复（2026-11-22，Master 按授权）**：① 模板放置倾向插件根一处共用 `template/`（合 PO 原话），How 须写清相对路径、`files`、DSH 读取三点，一点走不通就退回各内核自己的 `template/`；② 中文叫法用「秘书」（PO 自己的叫法，不转 PO），glossary 写 Supporter｜秘书，再注一句只取 SGEP Supporter「照请求做事」这一面；③ `overview.md` 约定 8、14 与 `board-log.md` 第 12 条的改动是新角色带来的称法与分工更新，不算大改约定：Master 审，Test 里再加一个全新子代理对角色边界文字做对抗核对，不用 PO 强审。90 不做 ③、Q4 入口不钉 `model`，Master 都同意。
-- **接手点**：How 已写，待 Master 审；施工放行由 Master 审后按授权给，H1 先行；放行前不动插件文件。放行前待办：DSH 读 `skills/` 之外路径的探针（交 IDEO 秘书会话，Master 转），结果决定模板放置。
+- **接手点**：施工已放行（第 3 章末行：H1–H7，本分支提交，不推送、不改版本号、不发版；Test 另等放行）。H4、H6 不依赖位置，先做；H1，以及依赖它的 H5、H2 里引用看板约定的一处，等 Master 转来的 DSH 探测结果——读得到 `skills/` 之外的包内路径就用插件根的 `template/`、`board/`，读不到就退回各内核自己的 `template/`、看板放 `skills/scrum-kernel/board/`。做完一项，在第 3 章该行 Done when 前加 `✓ <日期>`，并在这里记改了什么、为什么。
+- **Master 放行 How（2026-11-22）**：条件 ① B、C 组触发通过线改成「≥ 改前臂」，依据 AGENTS.md「改了描述就重跑触发测试，结果不能比改前差」，担心噪声就加次数、不降线——已改 2.2 与 Risks，只差一次的组两臂同补一轮的规则现在写定；条件 ② H1 位置等探测。A 组 ≥6/9 与两条混用线照旧。
 
 - **Master 写第 1、2 章（2026-11-22）**：PO：「你把 S7也先写出来吧。然后这两个我一起审掉。」Developer 原计划的头部与 1.2 改动由 Master 代写；提交等 PO 审后再定。
 
