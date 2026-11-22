@@ -398,9 +398,34 @@ SCENARIOS = {
 }
 
 
+def archive_attempt(out: pathlib.Path, d: pathlib.Path, carrier: str, scenario: str, role: str, n: int) -> None:
+    """A trial that is run again starts clean (the driver appends to its stream file). The earlier attempt is kept as
+    trials/<tag>.attempt-K, where the report counts it as a technical failure (a stub says 'incomplete' when the run was
+    stopped before it wrote its evidence); a valid one is kept under superseded/, outside the report."""
+    old = None
+    if (d / "evidence.json").exists():
+        try:
+            old = json.loads((d / "evidence.json").read_text(encoding="utf-8")).get("status")
+        except ValueError:
+            old = None
+    root = out / ("superseded" if old == "ok" else "trials")
+    root.mkdir(parents=True, exist_ok=True)
+    k = 1
+    while (root / f"{d.name}.attempt-{k}").exists():
+        k += 1
+    dest = root / f"{d.name}.attempt-{k}"
+    shutil.move(str(d), str(dest))
+    if old is None:
+        stub = {"tag": dest.name, "carrier": carrier, "scenario": scenario, "role": role, "n": n,
+                "status": "incomplete (stopped before it wrote its evidence)", "seconds": None, "evidence": {}}
+        (dest / "evidence.json").write_text(json.dumps(stub, ensure_ascii=False, indent=1), encoding="utf-8")
+
+
 def run_trial(out: pathlib.Path, carrier: str, scenario: str, role: str, n: int, c: dict) -> dict:
     tag = f"{scenario}-{carrier}-{role}-{n}"
     d = out / "trials" / tag
+    if d.exists():
+        archive_attempt(out, d, carrier, scenario, role, n)
     d.mkdir(parents=True, exist_ok=True)
     root = pathlib.Path(tempfile.mkdtemp(prefix="s26-", dir=driver.neutral_parent()))
     t0 = time.time()
@@ -529,11 +554,22 @@ def cmd_run(a) -> int:
         print(f"skip-done: {len(jobs) - len(keep)} of {len(jobs)} trials already have valid evidence")
         jobs = keep
     gate = Gate(a.soft_free_mb) if a.soft_free_mb else None
+    # a time box (--max-seconds): no trial starts after it; the trials left are for the next call (exit code 4). It lets the
+    # run go in foreground calls of a few minutes, each one a point where the free memory can be read and the run adjusted.
+    deadline = time.time() + a.max_seconds if getattr(a, "max_seconds", 0) else None
+    left = []
 
     def one(j):
+        tag = f"{a.scenario}-{j[0]}-{j[2]}-{j[3]}"
+        if deadline and time.time() > deadline:
+            left.append(tag)
+            return {"tag": tag, "status": "not started (time box)", "seconds": 0}
         if gate:
             gate.enter()
         try:
+            if deadline and time.time() > deadline:  # the wait at the gate ate the time
+                left.append(tag)
+                return {"tag": tag, "status": "not started (time box)", "seconds": 0}
             return run_trial(out, *j, c)
         finally:
             if gate:
@@ -544,6 +580,9 @@ def cmd_run(a) -> int:
             print(res["tag"], res["status"], res["seconds"])
     if gate:
         print(f"[gate] lowest free memory seen at a trial start: {gate.lowest} MB; dropped to one session at a time: {'yes' if gate.dropped else 'no'}")
+    if left:
+        print(f"[box] time box reached: {len(left)} trials not started, for the next call")
+        return 4
     return 0
 
 
@@ -676,7 +715,7 @@ def cmd_report(a) -> int:
         md += ["", "## 没过的试次（含对照 N 本来就应不过的）", ""] + [f"- {r['tag']}" + (f"：ctx_chars {r['ctx_chars']}" if r.get("ctx_chars") else "") + (f"：探针 {r.get('probe_suffix')}、结尾暗号 {r.get('end_marker')}、压缩 {r.get('compacted')}" if r["scenario"] == "compact" else "") for r in bad]
     tech = [r["tag"] + " " + r["status"] for r in rows if r.get("technical_failure")]
     if tech:
-        md += ["", "## 技术失败（要补跑）", ""] + [f"- {x}" for x in tech]
+        md += ["", "## 技术失败（补跑过的也列在这里：超时、被系统停掉、接口错；补满有效试次）", ""] + [f"- {x}" for x in tech]
     (out / "report.json").write_text(json.dumps(rows, ensure_ascii=False, indent=1), encoding="utf-8")
     (out / "report.md").write_text("\n".join(md) + "\n", encoding="utf-8", newline="\n")
     print("\n".join(md))
@@ -730,6 +769,37 @@ def cmd_selftest(a) -> int:
     g2.enter()
     g2.enter()
     check(g2.active == 2 and not g2.dropped, "gate: with enough free memory two run together")
+    box_dir = pathlib.Path(tempfile.mkdtemp(prefix="s26-selftest-box-"))
+    try:
+        (box_dir / "canaries.json").write_text("{}", encoding="utf-8")
+        ns = argparse.Namespace(out=str(box_dir), scenario="plain", carrier="N", role="developer", n=8, parallel=1, skip_done=False, soft_free_mb=0, max_seconds=0.35)
+        calls = []
+        real_run_trial = globals()["run_trial"]
+        globals()["run_trial"] = lambda out, carrier, scenario, role, n, c: (calls.append(n), time.sleep(0.12), {"tag": f"t{n}", "status": "ok", "seconds": 0.12})[2]
+        try:
+            rc_box = cmd_run(ns)
+            ns.max_seconds = 0
+            ns.n = 2
+            rc_free = cmd_run(ns)
+        finally:
+            globals()["run_trial"] = real_run_trial
+        check(rc_box == 4 and 0 < len(calls) - 2 < 8, f"time box: trials stop starting when it is over, exit code 4 ({len(calls) - 2} of 8 started)")
+        check(rc_free == 0, "no time box: every trial runs, exit code 0")
+        t1 = box_dir / "trials" / "role-A1-developer-1"
+        t1.mkdir(parents=True)
+        (t1 / "stream.jsonl").write_text("{}\n", encoding="utf-8")
+        archive_attempt(box_dir, t1, "A1", "role", "developer", 1)
+        stub = box_dir / "trials" / "role-A1-developer-1.attempt-1" / "evidence.json"
+        check(not t1.exists() and stub.exists() and json.loads(stub.read_text(encoding="utf-8"))["status"].startswith("incomplete"),
+              "a stopped trial that is run again is kept as an attempt, with a stub that the report counts as a technical failure")
+        t2 = box_dir / "trials" / "role-A1-developer-2"
+        t2.mkdir(parents=True)
+        (t2 / "evidence.json").write_text(json.dumps({"status": "ok"}), encoding="utf-8")
+        archive_attempt(box_dir, t2, "A1", "role", "developer", 2)
+        check(not t2.exists() and (box_dir / "superseded" / "role-A1-developer-2.attempt-1" / "evidence.json").exists()
+              and not (box_dir / "trials" / "role-A1-developer-2.attempt-1").exists(), "a valid trial that is run again is kept outside the report")
+    finally:
+        shutil.rmtree(box_dir, ignore_errors=True)
     tmp = pathlib.Path(tempfile.mkdtemp(prefix="s26-selftest-"))
     try:
         build_plugin("A1", tmp / "A1", c)
@@ -830,6 +900,7 @@ def main(argv: list[str]) -> int:
     p.add_argument("--parallel", type=int, default=4)
     p.add_argument("--skip-done", action="store_true", help="do not run a trial that already has valid evidence (resume after a stop)")
     p.add_argument("--soft-free-mb", type=int, default=0, help="while free memory is under this, start a trial only when nothing else is running (0: off)")
+    p.add_argument("--max-seconds", type=int, default=0, help="start no new trial after this many seconds; exit code 4 when trials are left (0: no time box)")
     p.add_argument("--chars", type=int, default=TARGET_CHARS, help="size of the stand-in Memory in characters (the default is the committed criteria's)")
     a = ap.parse_args(argv)
     if getattr(a, "chars", None):
