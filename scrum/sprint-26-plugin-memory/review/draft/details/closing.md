@@ -1,6 +1,6 @@
 # Closing a Sprint
 
-Read this file when you close a Sprint: the Review, the Retrospective and the closing commit. The list lines that point here are `review-at-close`, `fresh-at-review`, `retro-in-memory` and `one-closing-commit`. The text is the old rules word for word, cut into bullets; the old pointers to convention numbers became handles.
+Read this file when you close a Sprint: the Review, the Retrospective and the closing commit. The list lines that point here are `review-at-close`, `fresh-at-review`, `retro-in-memory` and `one-closing-commit`; `disputed-points` stands beside them. The text is the old rules word for word, cut into bullets; the old pointers to convention numbers became handles.
 
 ## Review (`review-at-close`)
 
@@ -30,6 +30,12 @@ Read this file when you close a Sprint: the Review, the Retrospective and the cl
 - An especially good improvement goes into the Definition of Done with the Product Owner’s consent.
 - Check whether the product log is still fresh.
 - *Supplement:* ask where the Product Owner held up the AI — waiting for a decision, waiting for a go-ahead.
+
+## Disputed and to-research points (`disputed-points`)
+
+- At every Review and every Retro, the Scrum Master lists the points of the Sprint or design that were disputed, or that need deep research.
+- The Product Owner picks which of them go into `scrum/documents/` and which into memory (as lessons, one entry each, as `retro-in-memory` says).
+- Anything that has to be done about a point still goes into the product log first, as an item (`no-tbd`, `new-work-registered`).
 
 ## One closing commit (`one-closing-commit`)
 

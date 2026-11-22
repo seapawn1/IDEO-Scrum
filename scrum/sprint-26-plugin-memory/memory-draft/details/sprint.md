@@ -36,7 +36,7 @@ The detail behind the Sprint lines that point here: opening, the How, the go-ahe
 
 - In section 2.2, set the method and pass lines: what needs fresh evidence, what earlier evidence is expected to still hold, and which outcome signals must be shown in this Test.
 - Commit the method and pass lines before running the Test; do not change them after seeing results.
-- Check a script’s wrong calls one by one and write down why.
+- Check a script’s wrong calls — its false alarms and its misses — one by one and write down why.
 
 ## Outline first, then the full text (`outline-first`, `full-text-review`)
 

@@ -1,0 +1,34 @@
+[
+  {
+    "handle": "ask-the-po",
+    "source": "PO 2026-11-23 (via Supporter): 只有 PO 能定的问题交「PO 或 Supporter」（review/po-review-2026-11-23.md §一）"
+  },
+  {
+    "handle": "sprint-or-modes",
+    "source": "PO 2026-11-23 (via Supporter) 改写：由 PO 说用哪种；完整的设计一般走设计冲刺；五模式是一切的基础，零散着用（§一）"
+  },
+  {
+    "handle": "acceptance-when-written",
+    "source": "PO 2026-11-23 (via Supporter) 改写：去掉 only；验收照 DoD 和验收条件走，没要求的 PO 看一眼就够（§一）"
+  },
+  {
+    "handle": "ideate-arrangement",
+    "source": "PO 2026-11-23 (via Supporter)：这一行只强调关卡，PO 放行之前不召集、不画、不派人，不写「先提方案」；Master 定的写法（§二）"
+  },
+  {
+    "handle": "disputed-points",
+    "source": "PO 2026-11-23 新加（via Supporter，§二：「这个还挺重要的」）；Master 定放在收官那几行旁边，不加标签"
+  },
+  {
+    "handle": "check-script-misses",
+    "source": "PO 2026-11-23 (via Supporter)：留着，但「没看懂」；Master 要求写得好懂、意思不变（§三）"
+  },
+  {
+    "handle": "ideo-in-every-stage",
+    "source": "Master 2026-11-23：并进原 modes-are-not-the-sprint 里还对的一点——在设计里用的方法，产出写进那个阶段的设计日志章节"
+  },
+  {
+    "handle": "relay-limits",
+    "source": "PO 2026-11-23（审 Memory 时经 Supporter；又在 Master 会话亲口）：经 PO 授权的 Supporter 转达工具权限与设置、CLAUDE.md／AGENTS.md、推送与发布也算 PO 的话；Master 更正（先前「不放宽」作废）"
+  }
+]

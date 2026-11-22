@@ -350,10 +350,10 @@
 
 ```text
 - **tests-criteria-first** Before the Test, set the method and pass lines in 2.2 and commit them; do not change them after seeing results.
-- **check-script-misses** Check a script's wrong calls one by one and write down why.
+- **check-script-misses** When a check script judges wrongly (false alarm or miss), go through the cases one by one and write down why.
 ```
 
-**备注**：The annotation asked to split the second sentence into a rule of its own (or move it to the headless testing notes); it is a line here. The detail of what the pass lines hold (what needs fresh evidence, what earlier evidence still holds, which outcome signals must be shown) is in sprint-stages.
+**备注**：The annotation asked to split the second sentence into a rule of its own (or move it to the headless testing notes); it is a line here. The detail of what the pass lines hold (what needs fresh evidence, what earlier evidence still holds, which outcome signals must be shown) is in sprint-stages. PO 2026-11-23（经 Supporter，Master 转来；原话在 review/po-review-2026-11-23.md）：check-script-misses 留着，但「没看懂」；改写得好懂，意思不变。
 
 ---
 
@@ -403,10 +403,10 @@
 **新行**
 
 ```text
-- **acceptance-when-written** Ask the PO for formal acceptance only when the DoD or acceptance criteria call for it; sometimes a glance is enough.
+- **acceptance-when-written** PO acceptance follows the DoD and the acceptance criteria; where they ask for none, a glance from the PO is enough.
 ```
 
-**备注**：The verifiers asked to keep 'sometimes a glance is enough' (the author's sentence) rather than turn it into 'never otherwise'; kept as written.
+**备注**：The verifiers asked to keep 'sometimes a glance is enough' (the author's sentence) rather than turn it into 'never otherwise'; kept as written. PO 2026-11-23（经 Supporter，Master 转来；原话在 review/po-review-2026-11-23.md）：acceptance-when-written 去掉「only」（PO 读成「只在这里让我验收」，跟别处矛盾）；改成验收照 DoD 和验收条件走，没要求的 PO 看一眼就够。
 
 ---
 
@@ -458,9 +458,10 @@
 
 ```text
 - **review-at-close** At close, review: compress the sprint log to key decisions, archive it, refresh the product log. Read details/closing.md first.
+- **disputed-points** At Review and Retro the Scrum Master lists disputed or research-worthy points; the PO picks scrum/documents/ or memory for each.
 ```
 
-**备注**：Long file: the whole Review rule word for word (the archiving of ended designs and IDEO logs, the relay to a Sprint working elsewhere, the checks before updating references). The product-log freshening is fresh-at-review.
+**备注**：Long file: the whole Review rule word for word (the archiving of ended designs and IDEO logs, the relay to a Sprint working elsewhere, the checks before updating references). The product-log freshening is fresh-at-review. PO 2026-11-23（经 Supporter，Master 转来；原话在 review/po-review-2026-11-23.md）：新加一行 disputed-points（每期有异议的点、要深入研究的点，Review 和 Retro 时由 Scrum Master 列出，PO 挑落进 scrum/documents/ 还是记忆）；原文见 details/closing.md。不加标签（PO 定的，算作者的做法）。
 
 ---
 
@@ -728,7 +729,7 @@
 
 > > Working conventions: reference, not law — follow what fits, override what doesn't, note why. Source labels and short names are explained in convention 15 of `../scrum-kernel/overview.md`, in the scrum-kernel skill folder, beside its `SKILL.md`. A convention with no label is the author's practice.
 
-**新**：不进清单。去处或不要的理由：The MEMORY.md header carries it: working conventions, follow what fits, override what doesn't, say why in the log's notes.
+**新**：不进清单。去处或不要的理由：The MEMORY.md header carries it: working conventions, follow what fits, depart from what doesn't, say why in the log's notes.
 
 ---
 

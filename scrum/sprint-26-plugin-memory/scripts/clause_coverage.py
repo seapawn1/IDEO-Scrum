@@ -3,6 +3,9 @@
     python -X utf8 -I scripts/clause_coverage.py              write review/clause-coverage.md and print the counts
     python -X utf8 -I scripts/clause_coverage.py --show N     print the uncovered clauses of the first N rules (a working view)
     python -X utf8 -I scripts/clause_coverage.py --reverse    the other direction: parts of a list line that no old rule says
+    python -X utf8 -I scripts/clause_coverage.py --plugin [DIR]   the same check on the files that landed in the plugin
+                                                              (default plugins/ideo-scrum/skills/memory/; the list is its SKILL.md);
+                                                              writes review/clause-coverage-plugin.md
     python -X utf8 -I scripts/clause_coverage.py --selftest
 
 Each of the 111 old rules (review/ledger.json) is split into clauses: sentences, and the parts of a sentence between
@@ -29,10 +32,23 @@ HERE = pathlib.Path(__file__).resolve().parent
 SPRINT = HERE.parent
 LEDGER = SPRINT / "review" / "ledger.json"
 DRAFT = SPRINT / "review" / "draft"
-DETAILS = SPRINT / "memory-draft" / "details"
-LIST = SPRINT / "memory-draft" / "MEMORY.md"
+ROOT = SPRINT.parents[1]
+
+
+def _memory_files() -> tuple[pathlib.Path, pathlib.Path, bool]:
+    """The details folder and the list file: the draft, or (with --plugin [DIR]) the files that landed in the plugin."""
+    if "--plugin" in sys.argv:
+        i = sys.argv.index("--plugin")
+        arg = sys.argv[i + 1] if i + 1 < len(sys.argv) and not sys.argv[i + 1].startswith("--") else None
+        mem = pathlib.Path(arg) if arg else ROOT / "plugins" / "ideo-scrum" / "skills" / "memory"
+        return mem / "details", (mem / "SKILL.md" if (mem / "SKILL.md").exists() else mem / "MEMORY.md"), True
+    return SPRINT / "memory-draft" / "details", SPRINT / "memory-draft" / "MEMORY.md", False
+
+
+DETAILS, LIST, PLUGIN = _memory_files()
 DECISIONS = SPRINT / "review" / "clause-decisions.json"
-OUT = SPRINT / "review" / "clause-coverage.md"
+SOURCED = SPRINT / "review" / "po-sourced.json"  # list lines (re)written on the PO's word or the Master's, not from an old rule
+OUT = SPRINT / "review" / ("clause-coverage-plugin.md" if PLUGIN else "clause-coverage.md")
 COVERED, PARTIAL = 0.62, 0.45  # share of a clause's content words found together in one target sentence
 
 STOP = set("""a an the of to in on at by for with from and or nor but if then else than as is are was were be been being it its this that
@@ -103,6 +119,18 @@ def load_rows() -> dict[str, dict]:
     for fp in sorted(glob.glob(str(DRAFT / "*.json"))):
         for o in json.loads(pathlib.Path(fp).read_text(encoding="utf-8")):
             rows[o["id"]] = o
+    if PLUGIN:  # check what landed, not what was drafted: each draft line is replaced by the landed line of the same handle
+        live = {m.group(1): ln for ln in list_lines() for m in [re.match(r"^- \*\*([a-z0-9-]+)\*\*", ln)] if m}
+
+        def land(ln: str) -> str:
+            m = re.match(r"^- \*\*([a-z0-9-]+)\*\*", ln)
+            return live.get(m.group(1), f"- **{m.group(1)}** (this line did not land in the plugin)") if m else ln
+
+        for o in rows.values():
+            if o.get("line"):
+                o["line"] = land(o["line"])
+            if o.get("lines"):
+                o["lines"] = [land(x) for x in o["lines"]]
     return rows
 
 
@@ -302,7 +330,19 @@ def write_report(items: list[dict]) -> None:
                 dec = "**还没有**"
             lines.append(f"| {x['id']}#{x['k']} | {x['clause'][:150].replace('|', '/')} | {x['where']}：{x['snippet'][:90].replace('|', '/')} | {x['score']} | {dec.replace('|', '/')} |")
         lines.append("")
+    po = [x for x in items if x["decision"] and x["decision"].get("po")]
+    if po:
+        lines += [f"## PO 改过的分句（{len(po)}）", "", "PO 的话（`review/po-review-2026-11-23.md`，Master 转来）改了这些分句：脚本按词看它们可能「覆盖」，但意思已经不是旧文的意思；这里单列，决定里写着怎么改、为什么。", "",
+                  "| 规矩 | 旧分句 | 决定 |", "| --- | --- | --- |"]
+        for x in po:
+            d = x["decision"]
+            lines.append(f"| {x['id']}#{x['k']} | {x['clause'][:150].replace('|', '/')} | {d['decision']}（{x['vscore']}）：{d.get('where') or ''} {d.get('reason') or ''} |".replace("|  |", "| |"))
+        lines.append("")
     OUT.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
+
+
+def sourced() -> dict[str, str]:
+    return {x["handle"]: x["source"] for x in json.loads(SOURCED.read_text(encoding="utf-8"))} if SOURCED.exists() else {}
 
 
 def reverse() -> list[tuple[str, str, float, str]]:
@@ -368,10 +408,13 @@ def main(argv: list[str]) -> int:
     if "--selftest" in argv:
         return selftest()
     if "--reverse" in argv:
-        rv = reverse()
-        for h, part, sc, bs in rv:
+        rv, src = reverse(), sourced()
+        flagged = [x for x in rv if x[0] not in src]
+        for h, part, sc, bs in flagged:
             print(f"{h} [{sc}] {part}\n      nearest old: {bs}")
-        print(f"{len(rv)} parts of list lines with little support in their old rules")
+        for h, why in src.items():
+            print(f"sourced: {h} - {why}")
+        print(f"{len(flagged)} parts of list lines with little support in their old rules; {len(rv) - len(flagged)} more parts are on a named source ({len(src)} lines in review/po-sourced.json)")
         return 0
     items = analyse()
     write_report(items)

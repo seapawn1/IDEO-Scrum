@@ -118,7 +118,7 @@
   },
   {
     "id": "design-log#10",
-    "line": "- **diverge-first** Sketchers diverge first: two methods, one an ideo-kernel Ideate method, quantity, no judgment. Read details/design.md first.",
+    "line": "- **diverge-first** Diverge first: at least two methods, at least one ideo-kernel Ideate method; quantity, no judgment. Read details/design.md first.",
     "lines": null,
     "section": "design",
     "long_file": "design",
@@ -126,7 +126,7 @@
     "adds_to_target": null,
     "absorbed": [],
     "where_else": null,
-    "note": "The sentence 'when you brief a subagent, tell it so' and 'the ideas are working material and stay out of the log' are in the design-stages long file (section Ideate: diverge before you converge)."
+    "note": "The sentence 'when you brief a subagent, tell it so' and 'the ideas are working material and stay out of the log' are in the design-stages long file (section Ideate: diverge before you converge). PO 2026-11-23（经 Supporter，Master 转来；原话在 review/po-review-2026-11-23.md）：diverge-first 补回「至少」（at least two methods, at least one from Ideate），上一稿写成「two methods, one…」丢了。"
   },
   {
     "id": "design-log#11",

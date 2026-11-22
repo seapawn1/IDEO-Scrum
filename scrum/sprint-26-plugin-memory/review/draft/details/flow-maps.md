@@ -93,7 +93,6 @@ flowchart TD
     DS --> R["Conclusions flow back to<br/>the log that asked"]
     SEQ --> R
     SPOT --> R
-    SEQ -. "a prototype must be tested<br/>with role cards first" .-> DS
 ```
 
 ## The board

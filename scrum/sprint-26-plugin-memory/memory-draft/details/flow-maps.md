@@ -24,14 +24,14 @@ flowchart TD
     DEV --> S4
     S4 -- "PO authorizes Test" --> S5["Test: tests, review, PO acceptance when required<br/>tests-criteria-first, check-script-misses, reviewer-required, acceptance-when-written, record-the-tests"]
     S5 -. "PO authorizes a return to building" .-> S4
-    S5 -- "PO decides: close" --> V["Close: Review (archive the logs, refresh the product log) and Retro<br/>review-at-close, retro-in-memory, one-closing-commit, outward-needs-po"]
+    S5 -- "PO decides: close" --> V["Close: Review (archive the logs, refresh the product log) and Retro<br/>review-at-close, disputed-points, retro-in-memory, one-closing-commit, outward-needs-po"]
     DES --> X
     SH --> X
     SH --> V
     SM -- "what only the PO decides ask-the-po" --> SU
     SU -- "asks the PO in one go; carries the answer back (answers-back)" --> PO
     X0 -- "PO authorizes starting a design sprint" --> X["Design sprint: five stages, each standing on one IDEO mode<br/>question-needs-design, open-a-design, ideate-arrangement"]
-    X0 -- "the five modes" --> X2["The five modes: one or two methods, recorded in the log they serve;<br/>or an IDEO log for a run of its own<br/>open-ideo-log, read-mode-file"]
+    X0 -- "the five modes" --> X2["The five modes: one or two methods, recorded in the log they serve;<br/>or an IDEO log for a run of its own<br/>open-ideo-log"]
     X -- "conclusions flow back — a blank page's design fills the product log" --> A
     X2 -- "conclusions flow back" --> A
     V --> E["End: Sprint Goal met, Increment delivered, Product Goal one step closer"]
@@ -63,7 +63,7 @@ flowchart TD
     P -- "PO gives the go-ahead" --> I["Increment<br/>increment-notes, mark-done, checkpoints, outline-first, full-text-review"]
     I -- "PO authorizes Sprint Test" --> T["Test<br/>tests-criteria-first, check-script-misses, reviewer-required, acceptance-when-written, record-the-tests"]
     T -- "fix on the spot, test again" --> T
-    T -- "PO decides: close" --> C["Closing<br/>review-at-close, retro-in-memory, one-closing-commit, outward-needs-po"]
+    T -- "PO decides: close" --> C["Closing<br/>review-at-close, disputed-points, retro-in-memory, one-closing-commit, outward-needs-po"]
     T -. "PO authorizes a return to building" .-> I
 ```
 
@@ -93,7 +93,6 @@ flowchart TD
     DS --> R["Conclusions flow back to<br/>the log that asked"]
     SEQ --> R
     SPOT --> R
-    SEQ -. "a prototype must be tested<br/>with role cards first" .-> DS
 ```
 
 ## The board

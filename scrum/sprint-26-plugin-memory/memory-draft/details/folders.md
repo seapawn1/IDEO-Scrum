@@ -24,7 +24,7 @@ This departs from the Scrum Guide; the reason is in `details/departures.md`.
 | 3 | Increment: code or documents, as the Definition of Done says | Definition of Done | Developer | — |
 | 3 | Prototype: built to learn, never in an Increment; a design’s prototype stays with its design evidence | Design questions | Designer | — |
 
-The third layer is not a log and has no prescribed method; it relies on the skills of whoever does the work. Increments add up into the product. The design’s conclusions flow back; its working material, including the prototype, stays with the design and can be referenced by the Sprint that builds those conclusions (`details/design-ending.md`). The standalone IDEO log has its own rule (`ideo-log-home`, `ideo-log-ends`).
+The third layer is not a log and has no prescribed method; it relies on the skills of whoever does the work. Increments add up into the product. The design’s conclusions flow back; its working material, including the prototype, stays with the design and can be referenced by the Sprint that builds those conclusions (`details/design-ending.md`). The standalone IDEO log has its own rule (`open-ideo-log`, `ideo-log-ends`).
 
 ## Folders (`scrum-folders`)
 

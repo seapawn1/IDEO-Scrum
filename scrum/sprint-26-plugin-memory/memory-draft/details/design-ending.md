@@ -27,7 +27,7 @@ When the Product Owner explicitly permits the commit, merge, and branch cleanup,
 
 ## Archiving
 
-- After it ends, the first Sprint Review that can read its complete log and all original material in its own checkout archives them (`review-at-close`).
+- After it ends, the first Sprint Review that can read its complete log and all original material in its own checkout archives them (`review-at-close`, `disputed-points`).
 - A Review without that complete set leaves the design pending archival; it does not move material from another worktree.
 
 ## Handing off to a Sprint working elsewhere

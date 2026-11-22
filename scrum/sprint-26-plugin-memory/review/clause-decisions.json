@@ -8,6 +8,31 @@
     "force": true
   },
   {
+    "id": "overview#14",
+    "clause": "The relay does not cover tool permissions and settings, chan",
+    "decision": "reworded",
+    "po": true,
+    "where": "line relay-limits",
+    "reason": "PO 2026-11-23 改：经 PO 授权的 Supporter 转达工具权限与设置、CLAUDE.md／AGENTS.md、推送与发布也算 PO 的话（原为「要 PO 亲口」），转达要写明何时何地授权",
+    "force": true
+  },
+  {
+    "id": "overview#14",
+    "clause": "Third, what only the Product Owner can decide or do goes to ",
+    "decision": "reworded",
+    "po": true,
+    "where": "details/roles.md",
+    "reason": "PO 2026-11-23 改：只有 PO 能定的问题交 PO 或 Supporter（原为只交 Supporter）"
+  },
+  {
+    "id": "overview#15",
+    "clause": "When you override a convention, write what you did and why i",
+    "decision": "reworded",
+    "po": true,
+    "where": "details/names.md",
+    "reason": "PO 2026-11-23 改：override → depart from（插件是封闭的，AI 改不了它；偏离并在日志备注写明）"
+  },
+  {
     "id": "overview#13",
     "clause": "Each project has one session as its Scrum Master, leading it",
     "decision": "reworded",
@@ -198,6 +223,22 @@
     "where": "details/sprint.md"
   },
   {
+    "id": "sprint-log#13",
+    "clause": "Check a script’s wrong calls one by one and write down why.",
+    "decision": "elsewhere",
+    "po": true,
+    "where": "details/sprint.md",
+    "reason": "the line is the PO-asked clearer wording (false alarm or miss); sprint.md keeps the old sentence with the same words"
+  },
+  {
+    "id": "sprint-log#15",
+    "clause": "Ask for formal acceptance only when the Definition of Done o",
+    "decision": "reworded",
+    "po": true,
+    "where": "line acceptance-when-written",
+    "reason": "PO 改写：去掉 only，验收照 DoD 和验收条件走"
+  },
+  {
     "id": "sprint-log#20",
     "clause": "Hold the Sprint Goal and the Definition of Done  .",
     "decision": "reworded",
@@ -367,13 +408,19 @@
     "id": "ideo-log#1",
     "clause": "When they do not, the default split is: open a design sprint",
     "decision": "reworded",
-    "where": "line sprint-or-modes"
+    "po": true,
+    "where": "line sprint-or-modes",
+    "reason": "PO 改写：默认改成「完整的设计一般走设计冲刺；五模式是一切的基础，零散着用」，不再是「只有原型必须用角色卡测才默认设计冲刺」",
+    "force": true
   },
   {
     "id": "ideo-log#1",
     "clause": "otherwise use the five modes",
     "decision": "reworded",
-    "where": "line question-needs-design"
+    "po": true,
+    "where": "line sprint-or-modes",
+    "reason": "PO 改写：五模式是一切的基础，零散着用",
+    "force": true
   },
   {
     "id": "ideo-log#1",
@@ -422,8 +469,9 @@
   {
     "id": "ideo-log#2",
     "clause": "Do not mix them: an IDEO log does not run the design sprint'",
-    "decision": "reworded",
-    "where": "line modes-are-not-the-sprint"
+    "decision": "dropped",
+    "po": true,
+    "reason": "PO 2026-11-23 反对（「谁说的 ideo 不做闪电演示啊，不做故事板啊……这个不对」）；后半「设计冲刺不开 IDEO 日志」改成正面说法：在设计里用的方法，产出写进那个阶段的设计日志章节（ideo-in-every-stage、details/ideo-ending.md）"
   },
   {
     "id": "ideo-log#2",
@@ -432,41 +480,6 @@
     "where": "line research-as-empathize",
     "reason": "IDEO-log research counts as Empathize material for a design sprint; the 'prototype must be tested with role cards' trigger is the line sprint-or-modes",
     "force": true
-  },
-  {
-    "id": "ideo-log#3",
-    "clause": "Use one or two methods when that is enough",
-    "decision": "reworded",
-    "where": "line open-ideo-log",
-    "reason": "the line says 1-2 methods in one session are noted in the log served",
-    "force": true
-  },
-  {
-    "id": "ideo-log#3",
-    "clause": "their output goes into the log they serve — a Sprint's Incre",
-    "decision": "reworded",
-    "where": "line open-ideo-log"
-  },
-  {
-    "id": "ideo-log#3",
-    "clause": "When the five modes make a run of their own — more than one ",
-    "decision": "reworded",
-    "where": "line open-ideo-log",
-    "reason": "the line: 1-2 methods in one session, more (methods or sessions) opens an IDEO log",
-    "force": true
-  },
-  {
-    "id": "ideo-log#3",
-    "clause": "Each chapter holds what that mode produced, not every step t",
-    "decision": "reworded",
-    "where": "line read-mode-file; plugins/ideo-scrum/template/ideo-backlog-template.md"
-  },
-  {
-    "id": "ideo-log#3",
-    "clause": "before a method, read the method's file, as this skill's Use",
-    "decision": "elsewhere",
-    "where": "plugins/ideo-scrum/skills/design-kernel/SKILL.md; line read-mode-file",
-    "reason": "the ideo-kernel Use Protocol step 3 says it too"
   },
   {
     "id": "ideo-log#4",

@@ -244,10 +244,10 @@
 **新行**（长文件 `design`）
 
 ```text
-- **diverge-first** Sketchers diverge first: two methods, one an ideo-kernel Ideate method, quantity, no judgment. Read details/design.md first.
+- **diverge-first** Diverge first: at least two methods, at least one ideo-kernel Ideate method; quantity, no judgment. Read details/design.md first.
 ```
 
-**备注**：The sentence 'when you brief a subagent, tell it so' and 'the ideas are working material and stay out of the log' are in the design-stages long file (section Ideate: diverge before you converge).
+**备注**：The sentence 'when you brief a subagent, tell it so' and 'the ideas are working material and stay out of the log' are in the design-stages long file (section Ideate: diverge before you converge). PO 2026-11-23（经 Supporter，Master 转来；原话在 review/po-review-2026-11-23.md）：diverge-first 补回「至少」（at least two methods, at least one from Ideate），上一稿写成「two methods, one…」丢了。
 
 ---
 
@@ -488,8 +488,10 @@
 **新行**
 
 ```text
-- **ideo-in-every-stage** Each design stage takes its methods from the IDEO mode it stands on.
+- **ideo-in-every-stage** Each design stage takes its methods from the IDEO mode it stands on; output goes in that stage's design-log chapter.
 ```
+
+**备注**：Master 2026-11-23：并进了原 modes-are-not-the-sprint 里还对的一点——在设计里用的方法，产出写进那个阶段的设计日志章节，不另开 IDEO 日志。
 
 ---
 
@@ -629,10 +631,10 @@
 **新行**（长文件 `gates`）
 
 ```text
-- **ideate-arrangement** Until the PO settles how Ideate diverges, no gathering, sketching or delegating. Read details/gates.md first.
+- **ideate-arrangement** Before the PO's go-ahead for Ideate, nobody gathers ideas, sketches or sends out subagents. Read details/gates.md first.
 ```
 
-**备注**：The old first line design-gates (a stage permission covers only that stage's design work, not a commit, merge or push) is folded into outward-needs-po and the stage-gates long file. Long file: the four-row table (what the log holds and the check at each stage) word for word, and 'would someone who never learned design have produced the same thing?'; record permission to start Empathize when opening and no placeholder goal as a commitment; record how far git permission reaches on the stage or ending decision line; record the Ideate arrangement in chapter 3 before the solution section; choosing a solution is not permission for Prototype and a trial run is not permission for Test; the goal's exact text goes in the 1.2 table and is read before each stage decision (the Product Goal too if direction is at issue), stop if it cannot be read, the wording on the dated decision line is a record not a source, show it to the PO only when the goal changed, direction is at issue or they ask; when a stage shows an earlier answer was wrong, report it and wait for permission to return; after Test the PO decides whether to end the design or return.
+**备注**：The old first line design-gates (a stage permission covers only that stage's design work, not a commit, merge or push) is folded into outward-needs-po and the stage-gates long file. Long file: the four-row table (what the log holds and the check at each stage) word for word, and 'would someone who never learned design have produced the same thing?'; record permission to start Empathize when opening and no placeholder goal as a commitment; record how far git permission reaches on the stage or ending decision line; record the Ideate arrangement in chapter 3 before the solution section; choosing a solution is not permission for Prototype and a trial run is not permission for Test; the goal's exact text goes in the 1.2 table and is read before each stage decision (the Product Goal too if direction is at issue), stop if it cannot be read, the wording on the dated decision line is a record not a source, show it to the PO only when the goal changed, direction is at issue or they ask; when a stage shows an earlier answer was wrong, report it and wait for permission to return; after Test the PO decides whether to end the design or return. PO 2026-11-23（经 Supporter，Master 转来；原话在 review/po-review-2026-11-23.md）：ideate-arrangement 只强调关卡（PO 放行之前不召集、不画、不派人），不写「先提方案」；gates.md 里的旧文照留。
 
 ---
 
@@ -666,7 +668,7 @@
 
 > > Working conventions: reference, not law — follow what fits, override what doesn't, note why. Source labels and the rest: `../scrum-kernel/overview.md`, convention 15. A convention with no label is the author's practice.
 
-**新**：不进清单。去处或不要的理由：The MEMORY.md header carries it: working conventions, follow what fits, override what doesn't, say why in the log's notes.
+**新**：不进清单。去处或不要的理由：The MEMORY.md header carries it: working conventions, follow what fits, depart from what doesn't, say why in the log's notes.
 
 ---
 

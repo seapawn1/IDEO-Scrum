@@ -1,6 +1,14 @@
 # An IDEO log: where it lives and how it ends
 
-Where a run of the five modes keeps its work, where its conclusions go, and what happens to its prototypes when the work is done. Read this file when you open an IDEO log, finish one, or decide what to do with a prototype from one. The list lines that point here are `ideo-log-home` and `ideo-log-ends`.
+When to open an IDEO log, where a run of the five modes keeps its work, where its conclusions go, and what happens to its prototypes when the work is done. Read this file when you open an IDEO log, finish one, or decide what to do with a prototype from one. The list lines that point here are `open-ideo-log` and `ideo-log-ends`.
+
+## When to open an IDEO log (`open-ideo-log`)
+
+- Outside a design, use one or two methods when that is enough; their output goes into the log they serve — a Sprint's Increment notes, the product log's Notes.
+- When the five modes make a run of their own — more than one or two methods, or more than one session — open an IDEO log: `scrum/ideo-<suffix>/IdeoBacklog.md`, five chapters, one per mode, with no Product Owner gate between them.
+- Inside a design, the methods a stage uses (`ideo-in-every-stage`) write their output into that stage's chapter of the design log; no IDEO log is opened for them.
+- Each chapter holds what that mode produced, not every step taken.
+- Before a mode, read its file in `../ideo-kernel/IDEO-modes/`; before a method, read the method's file, as the ideo-kernel skill's Use Protocol says.
 
 ## Where it lives
 

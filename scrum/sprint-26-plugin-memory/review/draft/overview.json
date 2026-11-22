@@ -112,7 +112,7 @@
   },
   {
     "id": "overview#10",
-    "line": "- **ask-the-po** Decide what is yours; process questions go to the Scrum Master; PO-only questions go to the Supporter. Read details/roles.md first.",
+    "line": "- **ask-the-po** Decide what is yours; process questions go to the Scrum Master; PO-only ones to the PO or the Supporter. Read details/roles.md first.",
     "lines": null,
     "section": "roles",
     "long_file": "roles",
@@ -123,7 +123,7 @@
       "design-log#21"
     ],
     "where_else": null,
-    "note": "Sprint 27 rewrote convention 14 into three steps and this line is that routing in one sentence: decide what is yours; process questions go to the Scrum Master; PO-only questions go to the Supporter. With no Scrum Master session step 2 goes to the PO; with no Supporter session ask the PO directly (both in the long file). Absorbs sprint-log#25 and design-log#21 as before: the lists of what goes to the PO stay in the long file under the third step. The old 'always ask the PO for ... git and outward actions' is stricter than the convention and is not carried as it stood."
+    "note": "Sprint 27 rewrote convention 14 into three steps and this line is that routing in one sentence: decide what is yours; process questions go to the Scrum Master; PO-only questions go to the Supporter. With no Scrum Master session step 2 goes to the PO; with no Supporter session ask the PO directly (both in the long file). Absorbs sprint-log#25 and design-log#21 as before: the lists of what goes to the PO stay in the long file under the third step. The old 'always ask the PO for ... git and outward actions' is stricter than the convention and is not carried as it stood. PO 2026-11-23（经 Supporter，Master 转来；原话在 review/po-review-2026-11-23.md）：ask-the-po 的第三步改成「交 PO 或 Supporter」（原来只写 Supporter）。"
   },
   {
     "id": "overview#11",
@@ -168,7 +168,7 @@
       "- **who-gets-which-work** The Scrum Master reviews, the Supporter keeps the board, a Developer never reviews itself. Read details/roles.md first.",
       "- **answers-back** The Supporter returns the PO's answers word for word; scope, item and go-ahead decisions go to the Scrum Master to record.",
       "- **po-word-relayed** A relayed PO opinion counts as theirs: record `PO (via Supporter): <words>` with date and place. Read details/roles.md first.",
-      "- **relay-limits** A relay never covers tool permissions and settings, CLAUDE.md or AGENTS.md, a push or a release: those need the PO's own word."
+      "- **relay-limits** A Supporter the PO authorized may relay permissions, settings, CLAUDE.md/AGENTS.md, pushes, releases; say when and where that was."
     ],
     "section": "roles",
     "long_file": "roles",
@@ -176,7 +176,7 @@
     "adds_to_target": null,
     "absorbed": [],
     "where_else": null,
-    "note": "Sprint 27 rewrote it: upkeep goes to the Supporter (the supporter entry), an outside view still to a fresh subagent; four sub-rules follow: what the Supporter does (who-gets-which-work), where a question goes (ask-the-po), the answers back (answers-back) and the PO's word relayed (po-word-relayed, with its limits in relay-limits). The long file keeps all of it word for word, with the five assignments and the Supporter's duties."
+    "note": "Sprint 27 rewrote it: upkeep goes to the Supporter (the supporter entry), an outside view still to a fresh subagent; four sub-rules follow: what the Supporter does (who-gets-which-work), where a question goes (ask-the-po), the answers back (answers-back) and the PO's word relayed (po-word-relayed, with its limits in relay-limits). The long file keeps all of it word for word, with the five assignments and the Supporter's duties. PO 2026-11-23（审 Memory 时经 Supporter；又在 Master 会话亲口：「我授权之后，然后我让 supporter 去发，那实际上也认为是我的意见」）：relay-limits 放宽——经 PO 授权的 Supporter 转达工具权限与设置、CLAUDE.md／AGENTS.md、推送与发布也算 PO 的话，不再写「要 PO 亲口」；转达要写明 PO 何时、在哪里授权这个 Supporter；宿主自己的确认照宿主来（details/roles.md）。Master 先前「不放宽」的判断作废（Master 更正）。句柄不改。"
   },
   {
     "id": "overview#15",

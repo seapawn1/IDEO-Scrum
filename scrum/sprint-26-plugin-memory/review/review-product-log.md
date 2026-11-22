@@ -486,7 +486,7 @@
 
 > > Working conventions: reference, not law — follow what fits, override what doesn't, note why. Source labels and short names are explained in convention 15 of `overview.md`, in the skill folder, beside `SKILL.md`. A convention with no label is the author's practice.
 
-**新**：不进清单。去处或不要的理由：The MEMORY.md header carries it: working conventions, follow what fits, override what doesn't, say why in the log's notes.
+**新**：不进清单。去处或不要的理由：The MEMORY.md header carries it: working conventions, follow what fits, depart from what doesn't, say why in the log's notes.
 
 ---
 

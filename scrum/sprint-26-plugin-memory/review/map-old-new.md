@@ -57,7 +57,7 @@
 | sprint-log#14 | 改 | `reviewer-required`（长文件 `sprint`） |
 | sprint-log#15 | 改 | `acceptance-when-written` |
 | sprint-log#16 | 改 | `record-the-tests`（长文件 `sprint`） |
-| sprint-log#17 | 改 | `review-at-close`（长文件 `closing`） |
+| sprint-log#17 | 改 | `review-at-close`、`disputed-points`（长文件 `closing`） |
 | sprint-log#18 | 改 | `retro-in-memory`（长文件 `closing`） |
 | sprint-log#19 | 改 | `one-closing-commit`、`outward-needs-po`（长文件 `closing`） |
 | sprint-log#20 | 并 | 并入 overview#17 `goal-fixed`、`po-owns-commitments`、`commitment-table` |
@@ -95,9 +95,9 @@
 | design-log#26 | 改 | `ideate-arrangement`（长文件 `gates`） |
 | design-log#27 | 留 | `small-design` |
 | ideo-log#1 | 改 | `sprint-or-modes` |
-| ideo-log#2 | 改 | `modes-are-not-the-sprint`、`research-as-empathize` |
-| ideo-log#3 | 留 | `open-ideo-log`、`read-mode-file` |
-| ideo-log#4 | 改 | `ideo-log-home`、`ideo-log-ends`（长文件 `ideo-ending`） |
+| ideo-log#2 | 改 | `research-as-empathize` |
+| ideo-log#3 | 留 | `open-ideo-log`（长文件 `ideo-ending`） |
+| ideo-log#4 | 改 | `ideo-log-ends`（长文件 `ideo-ending`） |
 | board-log#1 | 改 | `one-board` |
 | board-log#2 | 留 | `board-owns-nothing` |
 | board-log#3 | 改 | `board-writer`、`board-rules`（长文件 `board-log`） |
@@ -122,33 +122,33 @@
 
 | 块 | 去向 |
 | --- | --- |
-| overview@1 | The MEMORY.md header carries it: working conventions, follow what fits, override what doesn't, say why in the log's notes. |
+| overview@1 | The MEMORY.md header carries it: working conventions, follow what fits, depart from what doesn't, say why in the log's notes. |
 | overview@2 | The Source and License lines are at the top of each long file that quotes a guide (departures, goal-fixed, sprint-stages); ATTRIBUTION.md holds the registry. |
 | overview@3 | The line rule-labels explains the labels; the pointer to a convention number goes with the numbers. |
 | overview@4 | A pointer list to the other convention files and templates; the sections and long files of MEMORY.md replace it. Since Sprint 27 the four log templates sit together in the plugin's template/ folder and the board's files in board/. |
 | overview@5 | `flow-maps`（长文件 `flow-maps`） |
 | overview@6 | In details/departures.md, as its intro. |
 | overview@7 | `departures`（长文件 `departures`） |
-| product-log@1 | The MEMORY.md header carries it: working conventions, follow what fits, override what doesn't, say why in the log's notes. |
+| product-log@1 | The MEMORY.md header carries it: working conventions, follow what fits, depart from what doesn't, say why in the log's notes. |
 | product-log@2 | details/goal-fixed.md carries the Scrum Guide quotations with their Source and License lines. |
 | product-log@3 | The line write-product-log (the template; the Scrum Master usually writes the product log with the PO). |
 | product-log@4 | Drawn in details/flow-maps.md, with the handles in the boxes; the list line flow-maps points there. |
 | product-log@5 | Dropped: a pointer to 'Throughout', which the numbering of the old file made. |
-| sprint-log@1 | The MEMORY.md header carries it: working conventions, follow what fits, override what doesn't, say why in the log's notes. |
+| sprint-log@1 | The MEMORY.md header carries it: working conventions, follow what fits, depart from what doesn't, say why in the log's notes. |
 | sprint-log@2 | details/sprint.md carries the Scrum Guide quotation (rule 7) with its Source and License lines. |
 | sprint-log@3 | Dropped: the sprint log template's section comments say who writes each section; that a Sprint turns selected items into an Increment is the Scrum Guide's own definition. |
 | sprint-log@4 | Drawn in details/flow-maps.md, with the handles in the boxes; the list line flow-maps points there. |
 | sprint-log@5 | details/gates.md, Sprint part: closing is a separate decision from the stage transitions. |
-| design-log@1 | The MEMORY.md header carries it: working conventions, follow what fits, override what doesn't, say why in the log's notes. |
+| design-log@1 | The MEMORY.md header carries it: working conventions, follow what fits, depart from what doesn't, say why in the log's notes. |
 | design-log@2 | The first section of details/design.md: the template, and where the book describes its room (whiteboards, sticky notes, dot voting, a team at a table) these rules say how a solo + AI team does that step. |
 | design-log@3 | Drawn in details/flow-maps.md, with the handles in the boxes; the list line flow-maps points there. |
 | design-log@4 | The section The three loops of details/design.md, word for word. |
 | design-log@5 | Dropped: a pointer to 'Throughout'; the entry and return rules at each transition are the stage-gates line and details/gates.md. |
 | design-log@6 | The first section of details/design.md: these rules cover only what differs from the book or adds what it leaves out; for the rest follow the book's excerpts. |
-| ideo-log@1 | The MEMORY.md header carries it: working conventions, follow what fits, override what doesn't, say why in the log's notes. |
+| ideo-log@1 | The MEMORY.md header carries it: working conventions, follow what fits, depart from what doesn't, say why in the log's notes. |
 | ideo-log@2 | Dropped: the paths are relative to the skill folders; which kernel owns what is in the SKILL.md files. |
 | ideo-log@3 | Drawn in details/flow-maps.md, with the handles in the boxes; the list line flow-maps points there. |
-| board-log@1 | The MEMORY.md header carries it: working conventions, follow what fits, override what doesn't, say why in the log's notes. |
+| board-log@1 | The MEMORY.md header carries it: working conventions, follow what fits, depart from what doesn't, say why in the log's notes. |
 | board-log@2 | The intro of board-log.md itself, which stays in place in the plugin's board/ folder as the board's long file (the board is one page; its template; this brief). |
 | board-log@3 | Drawn in details/flow-maps.md, with the handles in the boxes; the list line flow-maps points there. |
 
@@ -180,6 +180,7 @@
 | `design-stages` | design-log#6 |
 | `designs-beside-sprints` | overview#2 |
 | `developer-elsewhere` | sprint-log#26 |
+| `disputed-points` | sprint-log#17 |
 | `diverge-first` | design-log#10 |
 | `dod-in-product-log` | product-log#5 |
 | `dod-standards` | product-log#5 |
@@ -195,14 +196,12 @@
 | `ideate-arrangement` | design-log#26 |
 | `ideo-in-every-stage` | design-log#20 |
 | `ideo-log-ends` | ideo-log#4 |
-| `ideo-log-home` | ideo-log#4 |
 | `increment-notes` | sprint-log#9 |
 | `item-columns` | product-log#10 |
 | `items-with-sm` | product-log#12 |
 | `log-is-the-handoff` | sprint-log#22、design-log#24 |
 | `mark-done` | sprint-log#9 |
 | `mid-sprint-release` | sprint-log#23 |
-| `modes-are-not-the-sprint` | ideo-log#2 |
 | `names` | overview#7 |
 | `new-work-registered` | sprint-log#21 |
 | `no-end-date` | sprint-log#2 |
@@ -227,7 +226,6 @@
 | `product-log-changes` | product-log#18 |
 | `product-log-header` | product-log#4 |
 | `question-needs-design` | design-log#1 |
-| `read-mode-file` | ideo-log#3 |
 | `read-the-goal` | sprint-log#24 |
 | `record-the-tests` | sprint-log#16 |
 | `refine-in-sprint` | product-log#14 |

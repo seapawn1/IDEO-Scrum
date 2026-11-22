@@ -36,7 +36,7 @@ TITLES = {
 }
 HEADER = """# IDEO-Scrum Memory
 
-> The rules every role follows, one line each. A line marked `[dev,sm]` binds those roles; a line with no mark binds every role. A line that ends in `Read details/<file>.md first.` has its detail in that file: read it before you do what the line is about. These are working conventions: follow what fits; when you override one, write what you did and why in the log's notes (a Sprint's Increment notes, or the chapter of the design log it concerns).
+> The rules every role follows, one line each. A line marked `[dev,sm]` binds those roles; a line with no mark binds every role. A line that ends in `Read details/<file>.md first.` has its detail in that file: read it before you do what the line is about. These are working conventions: follow what fits; where one does not fit, depart from it and write what you did and why in the log's notes (a Sprint's Increment notes, or the chapter of the design log it concerns).
 """
 
 

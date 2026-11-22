@@ -26,10 +26,10 @@
 **新行**
 
 ```text
-- **sprint-or-modes** The PO picks a design sprint or the five modes; default to a design sprint only if a prototype must be tested with role cards.
+- **sprint-or-modes** The PO picks: a full design is usually a design sprint; the five modes are the base of everything, used piecemeal elsewhere.
 ```
 
-**备注**：The tail 'a chat's research can count as Empathize material' is in research-as-empathize (drafted under ideo-log#2, which carries the same sentence); 'then still run that stage' (do not skip Empathize) is in open-a-design.
+**备注**：The tail 'a chat's research can count as Empathize material' is in research-as-empathize (drafted under ideo-log#2, which carries the same sentence); 'then still run that stage' (do not skip Empathize) is in open-a-design. PO 2026-11-23（经 Supporter，Master 转来；原话在 review/po-review-2026-11-23.md）：sprint-or-modes 按 PO 的意思重写——由 PO 说用哪种；完整的设计一般走设计冲刺；五模式是一切的基础，零散着用。删掉「只有原型必须拿角色卡测才默认设计冲刺」（清单行、flow-maps 的虚线）。
 
 ---
 
@@ -52,13 +52,12 @@
 **新行**
 
 ```text
-- **modes-are-not-the-sprint** Keep modes and sprint apart: an IDEO log runs no map, Lightning Demos or storyboard; a design sprint opens no IDEO log.
 - **research-as-empathize** Chat or IDEO-log research can count as Empathize material, but a design sprint still starts on the PO's permission.
 ```
 
 **别处已有**：What the five modes and the design sprint's stages are (stages stand on modes, the book's steps, a PO decision between stages, role-card tests) is in plugins/ideo-scrum/skills/design-kernel/SKILL.md and plugins/ideo-scrum/skills/ideo-kernel/SKILL.md.
 
-**备注**：The annotation asked to keep 'IDEO log counts as Empathize material' and 'no map, Lightning Demos, storyboard'; both are kept. The old 'Do not mix them' lost its referent once the line stands alone, so the line now says what is kept apart.
+**备注**：The annotation asked to keep 'IDEO log counts as Empathize material' and 'no map, Lightning Demos, storyboard'; both are kept. The old 'Do not mix them' lost its referent once the line stands alone, so the line now says what is kept apart. PO 2026-11-23（经 Supporter，Master 转来；原话在 review/po-review-2026-11-23.md）：整条 modes-are-not-the-sprint 删（PO：「谁说的 ideo 不做闪电演示啊，不做故事板啊……这个不对」）。还对的两点：①「IDEO 五阶段法」指五模式本身→details/names.md；②在设计里用的方法，产出写进那个阶段的设计日志章节→ideo-in-every-stage。
 
 ---
 
@@ -79,14 +78,13 @@
 
 **理由**：PO 要的「标准五节」与这条一致，开日志的规矩要留。「一两个方法就够、多于一两个或多于一次会话才开」的门槛是作者定的，PO 可再定。写法已够短；指向 IDEO-modes/ 与 convention 2 的尾巴保留。
 
-**新行**
+**新行**（长文件 `ideo-ending`）
 
 ```text
-- **open-ideo-log** 1-2 methods in one session: note them in the log served (Increment notes, Notes); more: an IDEO log, five chapters, no PO gate.
-- **read-mode-file** Read a mode's or method's file in the ideo-kernel before using it; a chapter holds what its mode produced.
+- **open-ideo-log** Outside a design: 1-2 methods in one session go in the log served; more opens an IDEO log. Read details/ideo-ending.md first.
 ```
 
-**备注**：The threshold (one or two methods, or one session) is the author's; the PO may set it again.
+**备注**：The threshold (one or two methods, or one session) is the author's; the PO may set it again. PO 2026-11-23（经 Supporter，Master 转来；原话在 review/po-review-2026-11-23.md）（IDEO 日志这一节去重）：open-ideo-log 合进原 ideo-log-home（文件夹）与 read-mode-file（章里放什么、先读模式与方法的文件）；清单行只留「在设计之外」的触发，细则放 details/ideo-ending.md；先读模式与方法文件的规矩 ideo-kernel 的 Use Protocol 里有。
 
 ---
 
@@ -112,13 +110,12 @@
 **新行**（长文件 `ideo-ending`）
 
 ```text
-- **ideo-log-home** An IDEO log, its prototypes and working material live in scrum/ideo-<suffix>/; no commitment. Read details/ideo-ending.md first.
 - **ideo-log-ends** Conclusions flow back to the log that asked and the PO decides; archive at the next Review. Read details/ideo-ending.md first.
 ```
 
 **别处已有**：The Now and Waiting for PO header format is in plugins/ideo-scrum/template/ideo-backlog-template.md (lines 4-5); the archiving of an IDEO log is also in sprint-log#17 (the Review rule).
 
-**备注**：Long file keeps the prototype handoff word for word: a prototype whose conclusions will be built goes to the Sprint that builds them, as that Sprint's specification; if that Sprint is not open yet it stays in the IDEO folder until the handoff; any other standalone IDEO prototype is deleted when the work is done. ideo-kernel's SKILL.md points back to this rule.
+**备注**：Long file keeps the prototype handoff word for word: a prototype whose conclusions will be built goes to the Sprint that builds them, as that Sprint's specification; if that Sprint is not open yet it stays in the IDEO folder until the handoff; any other standalone IDEO prototype is deleted when the work is done. ideo-kernel's SKILL.md points back to this rule. PO 2026-11-23（经 Supporter，Master 转来；原话在 review/po-review-2026-11-23.md）（ideo-log-home 与上面某条重复）：ideo-log-home 并入 open-ideo-log；文件夹、For 格、无承诺都在 details/ideo-ending.md「Where it lives」，文件夹清单在 details/folders.md。
 
 ---
 
@@ -128,7 +125,7 @@
 
 > > Working conventions: reference, not law — follow what fits, override what doesn't, note why. Source labels and the rest: `../scrum-kernel/overview.md`, convention 15. A convention with no label is the author's practice.
 
-**新**：不进清单。去处或不要的理由：The MEMORY.md header carries it: working conventions, follow what fits, override what doesn't, say why in the log's notes.
+**新**：不进清单。去处或不要的理由：The MEMORY.md header carries it: working conventions, follow what fits, depart from what doesn't, say why in the log's notes.
 
 ---
 

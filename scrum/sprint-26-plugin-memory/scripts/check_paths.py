@@ -1,6 +1,6 @@
 """Sprint 26, Codex review follow-up: every file path the draft Memory names must resolve from the memory skill's folder.
 
-    python -X utf8 -I scripts/check_paths.py
+    python -X utf8 -I scripts/check_paths.py [--plugin [DIR]]     --plugin: the files that landed in plugins/ideo-scrum/skills/memory/
 
 The memory skill will live at plugins/ideo-scrum/skills/memory/; its list line says `Read details/x.md first.` and the details
 files name other files by paths written from that same folder (`../design-kernel/steps/2-1-make-a-map.md`,
@@ -20,8 +20,14 @@ import sys
 HERE = pathlib.Path(__file__).resolve().parent
 SPRINT = HERE.parent
 ROOT = SPRINT.parents[1]
-MEM = SPRINT / "memory-draft"
 SKILL_DIR = ROOT / "plugins" / "ideo-scrum" / "skills" / "memory"
+if "--plugin" in sys.argv:  # the files that landed: details/ and the list (SKILL.md) in the plugin's memory skill
+    _i = sys.argv.index("--plugin")
+    MEM = pathlib.Path(sys.argv[_i + 1]) if _i + 1 < len(sys.argv) and not sys.argv[_i + 1].startswith("--") else SKILL_DIR
+    LISTFILE = MEM / "SKILL.md" if (MEM / "SKILL.md").exists() else MEM / "MEMORY.md"
+else:
+    MEM = SPRINT / "memory-draft"
+    LISTFILE = MEM / "MEMORY.md"
 
 TOKEN = re.compile(r"`([^`\n]+)`|(?<![\w/.-])((?:\.\./)+[\w./-]+|details/[\w-]+\.md)")
 
@@ -48,7 +54,7 @@ def resolves(tok: str) -> tuple[bool, str]:
 
 def check() -> list[str]:
     problems = []
-    files = [MEM / "MEMORY.md"] + sorted(pathlib.Path(p) for p in glob.glob(str(MEM / "details" / "*.md")))
+    files = [LISTFILE] + sorted(pathlib.Path(p) for p in glob.glob(str(MEM / "details" / "*.md")))
     for f in files:
         for n, line in enumerate(f.read_text(encoding="utf-8").splitlines(), start=1):
             for tok in paths_in(line):
