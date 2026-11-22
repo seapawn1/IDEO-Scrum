@@ -39,7 +39,7 @@ On a Claude Code role command, invoke the skills in the order shown before doing
 
 ## What only the Product Owner decides, by stage (the third step of `ask-the-po`)
 
-The old texts listed what goes to the Product Owner in any case, once for a Sprint and once for a design; they are kept here as bullets (they were two rules, now part of `ask-the-po`).
+The old texts listed what goes to the Product Owner in any case, once for a Sprint and once for a design; they are kept here as bullets (they were two rules, now part of `ask-the-po`). They go to the Product Owner unless a written handover has passed the decision to the Scrum Master; the Scrum Master then decides and records it (`stage-gates`).
 
 **In a Sprint:**
 

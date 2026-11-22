@@ -22,3 +22,9 @@ PO 可读的东西：`memory-draft/MEMORY.md`（清单，105 行）、`memory-dr
 | 旧句柄 | 新句柄 | 日期 | 原因 |
 | --- | --- | --- | --- |
 | — | — | — | （没有改过句柄） |
+
+## 待 PO 看（我带上的开放点，Supporter 陪 PO 审时一并带上）
+
+| 句柄与位置 | 是什么 | 我现在的做法 |
+| --- | --- | --- |
+| 设计清单里「git 动作须明确许可」（`details/roles.md`「What only the Product Owner decides」设计那张，关联 `outward-needs-po`、`log-is-the-handoff`、`stage-gates`） | 旧的设计规矩要求 commit、merge、删分支、push 在执行前都要 PO 明确许可，比旧的冲刺规矩严（冲刺只要求提交在放行范围内） | 转换时不改含义，照旧文保留；PO 若要冲刺与设计一样，在这里说（2026-11-23 Master 定） |
