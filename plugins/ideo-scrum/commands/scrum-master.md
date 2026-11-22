@@ -2,11 +2,11 @@
 description: "Use when working as the Scrum Master — facilitating Sprint Planning, checkpoints, Review and Retrospective, removing impediments, and serving the Product Owner and Scrum Team. It serves the Product Owner; acts for them within a written handover, and the accountability stays with the Product Owner; decisions made under it are recorded. It does not act for the PO without a written handover, rank the backlog for the PO or implement for Developers. It dispatches work, tracks progress and reviews; log chores such as keeping the board, organizing the product log, summarizing progress and relaying settled work go to the Supporter. At Sprint Review the Scrum Master or PO summons a fresh Stakeholder subagent for an outside view."
 ---
 
-**Claude Code only — load the kernels first.** Before replying or starting any other work, call the Skill tool in this order: `ideo-scrum:ideo-kernel` → `ideo-scrum:scrum-kernel` → `ideo-scrum:sprint-kernel` → `ideo-scrum:design-kernel`. Wait for each successful result before calling the next. Skip only a kernel whose Skill call already succeeded in this conversation. If a required call fails or the tool is unavailable, stop and report which kernel did not load. Reading its file or seeing its description does not count.
+**Claude Code only — load the kernels first.** Before replying or starting any other work, call the Skill tool in this order: `ideo-scrum:ideo-kernel` → `ideo-scrum:scrum-kernel` → `ideo-scrum:sprint-kernel` → `ideo-scrum:design-kernel` → `ideo-scrum:memory`. Wait for each successful result before calling the next. Skip only a kernel whose Skill call already succeeded in this conversation. If a required call fails or the tool is unavailable, stop and report which kernel did not load. Reading its file or seeing its description does not count.
 
 **DeepSeek Harness (DSH):** Follow the DSH host adapter's preloads and routing instead of the Claude Code sequence.
 
-Subagents you dispatch load the ideo-kernel and scrum-kernel skills too.
+Subagents you dispatch load the ideo-kernel, scrum-kernel and memory skills too.
 
 **Conventions**: how the product log, Sprints, and designs fit together, and who does what, is in `overview.md` in the scrum-kernel skill's folder; it points to the templates and the other conventions.
 

@@ -48,7 +48,7 @@ function canonical(path) {
 
 test('register the five role bodies and kernels with resolvable resource bases', () => {
   const { skills, contexts, dispose } = mount()
-  assert.deepEqual([...skills.keys()], [...kernels, ...roles])
+  assert.deepEqual([...skills.keys()], [...kernels, 'memory', ...roles])
   for (const [name, entry] of skills) {
     const role = roles.includes(name)
     const expected = canonical(entry.path)
@@ -60,9 +60,11 @@ test('register the five role bodies and kernels with resolvable resource bases',
       assert.deepEqual(entry.invocation, { userInvocable: true, modelInvocable: false })
       const ideo = canonical(join(plugin, 'skills', 'ideo-kernel', 'SKILL.md')).content
       const scrum = canonical(join(plugin, 'skills', 'scrum-kernel', 'SKILL.md')).content
+      const memory = canonical(join(plugin, 'skills', 'memory', 'SKILL.md')).content
       const i = entry.content.indexOf(ideo)
       const s = entry.content.indexOf(scrum)
-      assert.ok(i >= 0 && s > i, `${name} must preload the two verbatim bodies in order`)
+      const m = entry.content.indexOf(memory)
+      assert.ok(i >= 0 && s > i && m > s, `${name} must preload the ideo and scrum bodies and the Memory, in that order`)
       assert.doesNotMatch(entry.content, /Preloaded kernel: (?:sprint|design)-kernel/)
     }
     if (!role && name !== 'design-kernel') assert.equal(entry.content, expected.content)
@@ -123,13 +125,15 @@ test('the log templates and the board files sit in template/ and board/, are pac
       assert.ok(packed(rel), `${rel} must be listed in the package files`)
     }
   }
-  // A skill folder is the base of the paths in its SKILL.md, its conventions and (for scrum-kernel) overview.md.
+  // A skill folder is the base of the paths in its SKILL.md and in the files beside it: a kernel's conventions/ (if it still has
+  // any), the memory skill's details/.
   const skills = join(plugin, 'skills')
   const written = []
-  for (const kernel of kernels) {
+  for (const kernel of [...kernels, 'memory']) {
     const base = join(skills, kernel)
-    const files = [join(base, 'SKILL.md'), ...readdirSync(join(base, 'conventions')).map(name => join(base, 'conventions', name))]
-    if (kernel === 'scrum-kernel') files.push(join(base, 'overview.md'))
+    const folders = ['conventions', 'details'].map(name => join(base, name)).filter(dir => existsSync(dir))
+    const files = [join(base, 'SKILL.md'), ...folders.flatMap(dir => readdirSync(dir).map(name => join(dir, name)))]
+    if (kernel === 'scrum-kernel' && existsSync(join(base, 'overview.md'))) files.push(join(base, 'overview.md'))
     for (const file of files.filter(f => f.endsWith('.md'))) {
       const text = readFileSync(file, 'utf8')
       // the old places: a template or a board file named under a kernel's conventions/ folder
@@ -226,4 +230,16 @@ test('runtime section re-reads current workspace, preserves braces and respects 
   assert.match(section.text(context), /Product Goal: Second\./)
   process.env.IDEO_SCRUM_COMMITMENTS = 'off'
   assert.equal(section.text(context), '')
+})
+
+test('replay the Memory reload hint as a named context, only for an agent', () => {
+  const { contexts, dispose } = mount()
+  const section = contexts.get('ideo-scrum:memory')
+  assert.equal(section.interpolate, false)
+  assert.equal(section.text({}), '')
+  const text = section.text({ agent: { session: { cwd: tmpdir() } } })
+  assert.match(text, /`memory`/)
+  assert.match(text, /compacted/)
+  dispose()
+  assert.equal(contexts.size, 0)
 })

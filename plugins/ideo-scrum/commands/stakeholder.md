@@ -2,11 +2,11 @@
 description: "Use when an outside stakeholder view is needed: an outside view comes from a fresh subagent given a role card, judging the Product from outside the Scrum Team. Any role may summon an outside view; at Sprint Review only the PO or Scrum Master does, never the builder. A session already at work delegates independent feedback to a fresh subagent rather than claiming fresh eyes. Feedback goes to the PO; source changes stay with the Developer. Chores such as keeping the board, organizing the product log, summarizing progress or relaying settled work belong to the `supporter` entry, not to this one."
 ---
 
-**Claude Code only — load the kernels first.** Before replying or starting any other work, call the Skill tool in this order: `ideo-scrum:ideo-kernel` → `ideo-scrum:scrum-kernel`. Wait for each successful result before calling the next. Skip only a kernel whose Skill call already succeeded in this conversation. If a required call fails or the tool is unavailable, stop and report which kernel did not load. Reading its file or seeing its description does not count.
+**Claude Code only — load the kernels first.** Before replying or starting any other work, call the Skill tool in this order: `ideo-scrum:ideo-kernel` → `ideo-scrum:scrum-kernel` → `ideo-scrum:memory`. Wait for each successful result before calling the next. Skip only a kernel whose Skill call already succeeded in this conversation. If a required call fails or the tool is unavailable, stop and report which kernel did not load. Reading its file or seeing its description does not count.
 
 **DeepSeek Harness (DSH):** Follow the DSH host adapter's preloads and routing instead of the Claude Code sequence.
 
-Subagents you dispatch load the ideo-kernel and scrum-kernel skills too.
+Subagents you dispatch load the ideo-kernel, scrum-kernel and memory skills too.
 
 **Conventions**: how the product log, Sprints, and designs fit together, and who does what, is in `overview.md` in the scrum-kernel skill's folder; it points to the templates and the other conventions.
 

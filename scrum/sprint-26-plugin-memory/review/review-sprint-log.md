@@ -458,7 +458,7 @@
 
 ```text
 - **review-at-close** At close, review: compress the sprint log to key decisions, archive it, refresh the product log. Read details/closing.md first.
-- **disputed-points** At Review and Retro the Scrum Master lists disputed or research-worthy points; the PO picks scrum/documents/ or memory for each.
+- **disputed-points** At Review and Retro the Scrum Master lists disputed or deep-research points; the PO may keep any in scrum/documents/ or memory.
 ```
 
 **备注**：Long file: the whole Review rule word for word (the archiving of ended designs and IDEO logs, the relay to a Sprint working elsewhere, the checks before updating references). The product-log freshening is fresh-at-review. PO 2026-11-23（经 Supporter，Master 转来；原话在 review/po-review-2026-11-23.md）：新加一行 disputed-points（每期有异议的点、要深入研究的点，Review 和 Retro 时由 Scrum Master 列出，PO 挑落进 scrum/documents/ 还是记忆）；原文见 details/closing.md。不加标签（PO 定的，算作者的做法）。

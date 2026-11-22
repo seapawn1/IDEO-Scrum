@@ -91,7 +91,7 @@
     "line": null,
     "lines": [
       "- **review-at-close** At close, review: compress the sprint log to key decisions, archive it, refresh the product log. Read details/closing.md first.",
-      "- **disputed-points** At Review and Retro the Scrum Master lists disputed or research-worthy points; the PO picks scrum/documents/ or memory for each."
+      "- **disputed-points** At Review and Retro the Scrum Master lists disputed or deep-research points; the PO may keep any in scrum/documents/ or memory."
     ],
     "section": "sprint",
     "long_file": "closing",

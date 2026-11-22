@@ -412,7 +412,7 @@
 - **who-gets-which-work** The Scrum Master reviews, the Supporter keeps the board, a Developer never reviews itself. Read details/roles.md first.
 - **answers-back** The Supporter returns the PO's answers word for word; scope, item and go-ahead decisions go to the Scrum Master to record.
 - **po-word-relayed** A relayed PO opinion counts as theirs: record `PO (via Supporter): <words>` with date and place. Read details/roles.md first.
-- **relay-limits** A Supporter the PO authorized may relay permissions, settings, CLAUDE.md/AGENTS.md, pushes, releases; say when and where that was.
+- **relay-limits** Permissions, settings, CLAUDE.md/AGENTS.md, pushes, releases: only an authorized Supporter may relay. Read details/roles.md first.
 ```
 
 **备注**：Sprint 27 rewrote it: upkeep goes to the Supporter (the supporter entry), an outside view still to a fresh subagent; four sub-rules follow: what the Supporter does (who-gets-which-work), where a question goes (ask-the-po), the answers back (answers-back) and the PO's word relayed (po-word-relayed, with its limits in relay-limits). The long file keeps all of it word for word, with the five assignments and the Supporter's duties. PO 2026-11-23（审 Memory 时经 Supporter；又在 Master 会话亲口：「我授权之后，然后我让 supporter 去发，那实际上也认为是我的意见」）：relay-limits 放宽——经 PO 授权的 Supporter 转达工具权限与设置、CLAUDE.md／AGENTS.md、推送与发布也算 PO 的话，不再写「要 PO 亲口」；转达要写明 PO 何时、在哪里授权这个 Supporter；宿主自己的确认照宿主来（details/roles.md）。Master 先前「不放宽」的判断作废（Master 更正）。句柄不改。

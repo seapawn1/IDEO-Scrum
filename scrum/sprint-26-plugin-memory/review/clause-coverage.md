@@ -92,7 +92,7 @@ PO 的话（`review/po-review-2026-11-23.md`，Master 转来）改了这些分�
 | 规矩 | 旧分句 | 决定 |
 | --- | --- | --- |
 | overview#14#14 | Third, what only the Product Owner can decide or do goes to the Supporter, who gathers it and puts it to the Product Owner in one go, each question wi | reworded（0.96）：details/roles.md PO 2026-11-23 改：只有 PO 能定的问题交 PO 或 Supporter（原为只交 Supporter） |
-| overview#14#30 | The relay does not cover tool permissions and settings, changes to `CLAUDE.md` or `AGENTS.md`, or outward actions such as a push or a release: those n | reworded（0.46）：line relay-limits PO 2026-11-23 改：经 PO 授权的 Supporter 转达工具权限与设置、CLAUDE.md／AGENTS.md、推送与发布也算 PO 的话（原为「要 PO 亲口」），转达要写明何时何地授权 |
+| overview#14#30 | The relay does not cover tool permissions and settings, changes to `CLAUDE.md` or `AGENTS.md`, or outward actions such as a push or a release: those n | reworded（0.38）：line relay-limits PO 2026-11-23 改：经 PO 授权的 Supporter 转达工具权限与设置、CLAUDE.md／AGENTS.md、推送与发布也算 PO 的话（原为「要 PO 亲口」），转达要写明何时何地授权 |
 | overview#15#4 | When you override a convention, write what you did and why in the log's notes: the sprint log's Increment notes, or the chapter of the design log it c | reworded（0.8）：details/names.md PO 2026-11-23 改：override → depart from（插件是封闭的，AI 改不了它；偏离并在日志备注写明） |
 | sprint-log#13#4 | Check a script’s wrong calls one by one and write down why. | elsewhere（1.0）：details/sprint.md the line is the PO-asked clearer wording (false alarm or miss); sprint.md keeps the old sentence with the same words |
 | sprint-log#15#1 | Ask for formal acceptance only when the Definition of Done or the acceptance criteria call for it | reworded（0.5）：line acceptance-when-written PO 改写：去掉 only，验收照 DoD 和验收条件走 |

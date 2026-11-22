@@ -168,7 +168,7 @@
       "- **who-gets-which-work** The Scrum Master reviews, the Supporter keeps the board, a Developer never reviews itself. Read details/roles.md first.",
       "- **answers-back** The Supporter returns the PO's answers word for word; scope, item and go-ahead decisions go to the Scrum Master to record.",
       "- **po-word-relayed** A relayed PO opinion counts as theirs: record `PO (via Supporter): <words>` with date and place. Read details/roles.md first.",
-      "- **relay-limits** A Supporter the PO authorized may relay permissions, settings, CLAUDE.md/AGENTS.md, pushes, releases; say when and where that was."
+      "- **relay-limits** Permissions, settings, CLAUDE.md/AGENTS.md, pushes, releases: only an authorized Supporter may relay. Read details/roles.md first."
     ],
     "section": "roles",
     "long_file": "roles",

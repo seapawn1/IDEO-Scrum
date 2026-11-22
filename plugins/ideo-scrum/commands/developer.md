@@ -2,11 +2,11 @@
 description: "Use when working as the Developer executing a Sprint — planning the Sprint Backlog, creating usable Increments, honoring the Definition of Done, and adapting the day's plan against the Sprint Goal. It decides how the work gets done; priorities, scope, and value calls stay with the Product Owner, and impediments go to the Scrum Master. While working it may summon the Stakeholder through a fresh subagent for formative feedback, but not on its own Increment at Sprint Review."
 ---
 
-**Claude Code only — load the kernels first.** Before replying or starting any other work, call the Skill tool in this order: `ideo-scrum:ideo-kernel` → `ideo-scrum:scrum-kernel` → `ideo-scrum:sprint-kernel`. Wait for each successful result before calling the next. Skip only a kernel whose Skill call already succeeded in this conversation. If a required call fails or the tool is unavailable, stop and report which kernel did not load. Reading its file or seeing its description does not count.
+**Claude Code only — load the kernels first.** Before replying or starting any other work, call the Skill tool in this order: `ideo-scrum:ideo-kernel` → `ideo-scrum:scrum-kernel` → `ideo-scrum:sprint-kernel` → `ideo-scrum:memory`. Wait for each successful result before calling the next. Skip only a kernel whose Skill call already succeeded in this conversation. If a required call fails or the tool is unavailable, stop and report which kernel did not load. Reading its file or seeing its description does not count.
 
 **DeepSeek Harness (DSH):** Follow the DSH host adapter's preloads and routing instead of the Claude Code sequence.
 
-Subagents you dispatch load the ideo-kernel and scrum-kernel skills too.
+Subagents you dispatch load the ideo-kernel, scrum-kernel and memory skills too.
 
 **Conventions**: how the product log, Sprints, and designs fit together, and who does what, is in `overview.md` in the scrum-kernel skill's folder; it points to the templates and the other conventions.
 

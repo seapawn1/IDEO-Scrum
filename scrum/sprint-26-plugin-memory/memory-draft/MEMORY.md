@@ -14,7 +14,7 @@
 - **who-gets-which-work** The Scrum Master reviews, the Supporter keeps the board, a Developer never reviews itself. Read details/roles.md first.
 - **answers-back** The Supporter returns the PO's answers word for word; scope, item and go-ahead decisions go to the Scrum Master to record.
 - **po-word-relayed** A relayed PO opinion counts as theirs: record `PO (via Supporter): <words>` with date and place. Read details/roles.md first.
-- **relay-limits** A Supporter the PO authorized may relay permissions, settings, CLAUDE.md/AGENTS.md, pushes, releases; say when and where that was.
+- **relay-limits** Permissions, settings, CLAUDE.md/AGENTS.md, pushes, releases: only an authorized Supporter may relay. Read details/roles.md first.
 - **goal-fixed** Each log's commitment (a Goal, the Definition of Done) stays fixed; the plan under it may change. Read details/goal-fixed.md first.
 - **po-owns-commitments** Only the PO changes a commitment or cancels a Sprint whose goal can no longer be met.
 - **commitment-table** Keep each commitment in a one-row table, the only source of it. Read details/goal-fixed.md first.
@@ -66,7 +66,7 @@
 - **acceptance-when-written** PO acceptance follows the DoD and the acceptance criteria; where they ask for none, a glance from the PO is enough.
 - **record-the-tests** [dev] In chapter 5, show valid evidence for each applicable standard and criterion, else no pass. Read details/sprint.md first.
 - **review-at-close** At close, review: compress the sprint log to key decisions, archive it, refresh the product log. Read details/closing.md first.
-- **disputed-points** At Review and Retro the Scrum Master lists disputed or research-worthy points; the PO picks scrum/documents/ or memory for each.
+- **disputed-points** At Review and Retro the Scrum Master lists disputed or deep-research points; the PO may keep any in scrum/documents/ or memory.
 - **retro-in-memory** Retro saves only key reusable lessons, one memory entry each; no summary, no instruction files. Read details/closing.md first.
 - **one-closing-commit** Close with one commit after clearing old paths everywhere; then tag, merge, delete the branch. Read details/closing.md first.
 - **outward-needs-po** Push, release and other outward actions need the PO's consent; a stage permission alone does not cover commit, merge or push.

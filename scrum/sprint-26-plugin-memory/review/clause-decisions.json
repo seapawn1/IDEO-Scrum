@@ -33,6 +33,20 @@
     "reason": "PO 2026-11-23 改：override → depart from（插件是封闭的，AI 改不了它；偏离并在日志备注写明）"
   },
   {
+    "id": "ideo-log#4",
+    "clause": "Keep `> Now:` on its own header line with the current mode a",
+    "decision": "elsewhere",
+    "where": "details/handoff.md; plugins/ideo-scrum/template/ideo-backlog-template.md",
+    "reason": "the Now and Waiting for PO header lines: the IDEO log template (lines 4-5) and handoff.md say it; the text that said so in the details file's Open points section goes with that section at landing"
+  },
+  {
+    "id": "ideo-log#4",
+    "clause": "Update both with the log change that causes them",
+    "decision": "elsewhere",
+    "where": "details/handoff.md",
+    "reason": "handoff.md: 'Update both with the log change that causes them'; the Open points section of ideo-ending.md said it too and goes at landing"
+  },
+  {
     "id": "overview#13",
     "clause": "Each project has one session as its Scrum Master, leading it",
     "decision": "reworded",

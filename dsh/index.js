@@ -7,10 +7,10 @@ export const name = 'ideo-scrum'
 export const inject = ['skills', 'systemPrompt', 'workingDirectory']
 
 const plugin = new URL('../plugins/ideo-scrum/', import.meta.url)
-const kernels = ['ideo-kernel', 'scrum-kernel', 'sprint-kernel', 'design-kernel']
+const kernels = ['ideo-kernel', 'scrum-kernel', 'sprint-kernel', 'design-kernel', 'memory']
 const roles = ['scrum-master', 'developer', 'designer', 'stakeholder', 'supporter']
 const toolMapping = 'DSH host adapter: Use `skill` with `{"name":"<skill-name>"}` for Skill calls. Drop the `ideo-scrum:` prefix from the name. Resolve resources relative to the base directory of the skill that references them.'
-const roleRouting = 'The IDEO and Scrum kernels are already loaded below, in that order; do not call `skill` again for those. Load `sprint-kernel` for Scrum Sprint work and `design-kernel` for design sprint work, unless their instructions are already in the conversation. When the work needs both, wait for `sprint-kernel` before loading `design-kernel`. Use `read` with an absolute file path based on the kernel that named the resource, not a search of the project.'
+const roleRouting = 'The IDEO and Scrum kernels and the Memory are already loaded below, in that order; do not call `skill` again for those. Load `sprint-kernel` for Scrum Sprint work and `design-kernel` for design sprint work, unless their instructions are already in the conversation. When the work needs both, wait for `sprint-kernel` before loading `design-kernel`. Use `read` with an absolute file path based on the kernel that named the resource, not a search of the project.'
 
 function readEntry(url, skillName) {
   const path = fileURLToPath(url)
@@ -34,7 +34,7 @@ function readEntry(url, skillName) {
 }
 
 function rolePrelude(entries) {
-  return entries.slice(0, 2).map(entry => [
+  return ['ideo-kernel', 'scrum-kernel', 'memory'].map(name => entries.find(entry => entry.name === name)).map(entry => [
     `Preloaded kernel: ${entry.name}`,
     `Base directory: ${entry.resourceBase.path.replaceAll('\\', '/')}`,
     entry.content,
@@ -66,5 +66,15 @@ export function apply(ctx) {
       if (!agent || process.env.IDEO_SCRUM_COMMITMENTS === 'off') return ''
       return readCommitments(ctx.workingDirectory.get(agent.session))
     },
+  }))
+  // DSH replays a named runtime context every turn, also after a compaction has replaced the role text with a summary;
+  // the hint to call `memory` again lives here and not in the role routing, which the summary would swallow.
+  ctx.effect(() => ctx.systemPrompt.context({
+    name: 'ideo-scrum:memory',
+    order: 120,
+    interpolate: false,
+    text: ({ agent }) => agent
+      ? 'ideo-scrum Memory: if you are working as an ideo-scrum role and the text of the `memory` skill is no longer in this conversation, for example because the conversation was compacted, call the `skill` tool with `{"name":"memory"}` before going on.'
+      : '',
   }))
 }
