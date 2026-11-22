@@ -91,7 +91,7 @@ claude plugin update ideo-scrum@ideo-scrum
 /ideo-scrum:developer       # 跑一个冲刺：计划、增量、冲刺日志
 /ideo-scrum:designer        # 五模式不设阶段门；设计冲刺先定发散安排、放行 Ideate，再出方案
 /ideo-scrum:stakeholder     # 对产品的外部视角
-/ideo-scrum:supporter       # 秘书：不碰源码的杂活——看板、汇总、传已定的事
+/ideo-scrum:supporter       # 秘书：不碰源码的杂活——看板、汇总、传已定的事、收齐等你定的问题
 ```
 
 每个 Claude Code 角色命令都会先按顺序调用所需内核，再开始工作（见[角色约定](plugins/ideo-scrum/skills/scrum-kernel/overview.md#who-does-what)）。

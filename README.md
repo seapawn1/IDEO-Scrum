@@ -91,7 +91,7 @@ In a Claude Code session, call a role:
 /ideo-scrum:developer       # runs a Sprint: the plan, the Increment, the sprint log
 /ideo-scrum:designer        # five modes without stage gates; in a design sprint, agree how to diverge and authorize Ideate before ideas
 /ideo-scrum:stakeholder     # an outside view of the product
-/ideo-scrum:supporter       # chores that touch no source: the board, summaries, relaying what is already decided
+/ideo-scrum:supporter       # chores that touch no source: the board, summaries, relaying what is decided, gathering what waits for you
 ```
 
 Each Claude Code role command calls its required kernels in order before starting work (see the [role convention](plugins/ideo-scrum/skills/scrum-kernel/overview.md#who-does-what)).
