@@ -1,6 +1,6 @@
 # Scrum Board Conventions
 
-> Working conventions: reference, not law — follow what fits, depart from what doesn't, note why. Source labels and short names are explained in Memory `rule-labels` (`details/names.md` in the memory skill). A convention with no label is the author's practice.
+> Working conventions: reference, not law — follow what fits, depart from what doesn't, note why. Source labels and short names are explained in Memory `rule-labels` (`../skills/memory/details/names.md`). A convention with no label is the author's practice.
 
 The Scrum board is one page that shows where the project stands. Its template is `scrum-board-template.html`, beside this file in `board/`; this file is also the brief for whoever writes the page.
 
