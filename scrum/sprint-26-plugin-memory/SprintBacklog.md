@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 26 (plugin-memory)
 
 > Started: 2026-11-22 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `worktree-sprint-26-plugin-memory` | Product Owner: SeaPawn（兼 Developer，共作） | Scrum Master: IDEO # [master]-[main]-[manage sprint] | Developer: Sprint 26 Developer
-> Now: How · 2026-11-22：精化已结束；Developer 写完第 3 章（How 草案），待 Master 审、再交 PO；施工、推送、发版未放行，提交由 Developer 在本分支做（PO 已定，见 2.2 末）。
+> Now: How · 2026-11-22：Master 审过 How，Developer 已按三处意见改完并提交，待 Master 交 PO 放行；施工、推送、发版未放行，提交由 Developer 在本分支做（PO 已定，见 2.2 末）。
 > Waiting for PO: None
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none. Work remarks go in chapter 4, Increment notes; an optional explanation of the commitment may follow its table (`overview.md` in the scrum-kernel skill folder, conventions 16 and 17).
@@ -38,9 +38,16 @@
 
 | # | Title | User story | Place | Size |
 | --- | --- | --- | --- | --- |
-| PBI-51 | 全插件审读与插件约定 Memory | 作为熟手，我想让审订过的插件约定有一处可按需调用的 Memory，以便既能遵守同一套规矩，又不用每次手动说明 | 插件：四内核与角色 | L |
+| PBI-51 | 通读：全插件约定逐条审去留 | 作为熟手，我想让插件的每条约定都有审过的去留和依据，以便转进 Memory 的都是该留的规矩 | 插件：四内核与角色 | M |
+| PBI-92 | Memory：形状、载体与带上方式 | 作为熟手，我想让 Memory 放在一处、照定好的样子写、叫出角色就带上，以便规矩只有一份又随叫随到 | 插件：四内核与角色 | M |
+| PBI-93 | Memory 草稿：sprint-log 与 ideo-log | 作为熟手，我想让 sprint-log 与 ideo-log 的规矩各转成一行或一个长文件，以便照着就能守 | 插件：sprint-kernel、ideo-kernel 的约定 | S |
+| PBI-94 | Memory 草稿：design-log 与 product-log | 作为熟手，我想让 design-log 与 product-log 的规矩各转成一行或一个长文件，以便照着就能守 | 插件：design-kernel、scrum-kernel 的约定 | M |
+| PBI-95 | Memory 草稿：board-log 与 overview | 作为熟手，我想让 board-log、overview 和角色命令里重复的规矩各转成一行或一个长文件，以便照着就能守 | 插件：scrum-kernel 的约定与角色命令 | M |
+| PBI-96 | Memory 草稿：汇总与对抗审查 | 作为熟手，我想让整份 Memory 草稿先过 Master 审和独立的对抗审查，以便落盘前就把错漏改掉 | 插件：四内核与角色 | S |
+| PBI-97 | Memory：落盘与引用迁移 | 作为熟手，我想让 Memory 落进插件、旧约定删掉、各处引用都指到新位置，以便只有一份规矩、链接都通 | 插件：四内核、角色入口、docs 与检查脚本 | M |
+| PBI-98 | Memory：角色带上与验证 | 作为熟手，我想叫出任一角色就带上同一套规矩，以便不用每次手动说明 | 插件：角色入口与 DSH | M |
 
-对照目标：51 已含 85 并入的「记忆与约定另立包」（产品日志 PBI-51 备注），目标的每一分句都落在 51 里，不缺条目。L 级，在 2.2 切开。
+对照目标：51 已含 85 并入的「记忆与约定另立包」（产品日志 PBI-51 备注），目标的每一分句都落在 51 里，不缺条目。51 原为 L 级，2.2 精化时切成上面八条，2026-11-22 登记进产品日志。
 
 ### 2.2 Refinement
 
@@ -108,7 +115,7 @@
 | 1 | **[AI 自做]**〔通读〕台账：通读六份约定文件，抽出每条编号规矩，另列非编号块（图、Departures 表、署名行）和逐字块；写两个小脚本（抽条目、逐字比对） | `review/ledger.md` 与脚本，放本冲刺文件夹 | 条目数与 grep 一致（`*-log` 五份 94＋`overview.md` 17＝111）；每份抽 3 条与原文逐字相同；脚本先拿已知样例自测 |
 | 2 | **[AI 自做]**〔通读〕标出处与建议（P4）：六份文件每条标出处、依据、建议；SKILL.md ×4、角色命令 ×4、模板注释里与约定重复的规矩另表标出 | `review/<文件>.md` 六份＋散落规矩表；无据条目单列 | 每条有出处、可指的依据（提交或日志行）、建议和一句理由；每份抽检 ≥10% 并改正；与行 3–5 互不依赖，可并行 |
 | 3 | **[AI 自做]**〔形状〕大纲与原型（P5–P7）：先把大纲交 Master（约定 11）；示范与原型放在插件副本（系统临时目录），不碰插件文件 | 大纲：位置与名字（独立技能／并入内核，两案后果并列）、一行的句型、句柄、角色标签、索引写法、长文件判据、字符预算、图与 Departures 表去处；3–5 条真条目示范 | Master 审过；示范逐字取自台账；两案后果写全（加载数 4/3/3/2→5/4/4/3、DSH `rolePrelude` 与 `check_dsh`、新描述与触发测试、结构校验） |
-| 4 | **[AI 自做]**〔形状〕带上方式实测（P6）：在副本上测叫角色、`/compact` 后、子代理三种情形，Claude Code 与 DSH 各一轮 | 方案×情形结果表；原始证据放仓外，日志只留汇总 | 每格有事件流或会话日志证据（不靠模型复述）；冒烟先过；技术失败补满有效试次；token 成对比 |
+| 4 | **[AI 自做]**〔形状〕带上方式实测（P6）：在副本上测叫角色、`/compact` 后、子代理三种情形，Claude Code 与 DSH 各一轮；压缩一格另测调用顺序：四个内核都调用、总额吃紧时，Memory 排最后与排最前，压缩后哪个保得住 | 方案×情形结果表，加调用顺序的对照；原始证据放仓外，日志只留汇总 | 每格有事件流或会话日志证据（不靠模型复述）；冒烟先过；技术失败补满有效试次；token 成对比 |
 | 5 | **[PO 在场]** 停点 1〔形状〕：读大纲与实测表，一次定位置与名字、带上方式（含子代理）、共用／分角色、一行写法与字符预算 | P5–P7 的决定，带日期与原话 | P5–P7 各有 PO 的决定；Master 把 2.2 的状态改为 ✓ |
 | 6 | **[AI 自做]**〔草稿 A〕`sprint-log.md`（26）＋`ideo-log.md`（4）：给每条保留的规矩写「转后的一行」，长的写长文件草稿；逐字块用脚本搬 | 审读记录加一列「转后的一行／去向」；`memory-draft/` 下草稿 | 每条保留的规矩恰好一行或一个长文件入口；逐字比对 0 差异；不超本批的预算份额 |
 | 7 | **[PO 在场]** 停点 2〔草稿 A〕批审：整份读，当场定去留与一行，我记 | 审读记录带 PO 的决定与日期 | 两份文件每条有 PO 的决定；PO 说行；口味（句型、删到什么程度）记下，供 B、C 照着 |
@@ -118,7 +125,7 @@
 | 11 | **[PO 在场]** 停点 4〔草稿 C〕批审 | 同行 7 | 同行 7 |
 | 12 | **[AI＋Master]**〔草稿〕汇总成完整草稿，跑检查，交 Master 审，派全新子代理对抗审查，按意见改 | 完整草稿；Master 意见、对抗审查报告、修订记录 | 预算、逐字、句柄唯一、索引无死链的检查通过；必改项改完或报 PO |
 | 13 | **[AI 自做]**〔落盘〕等 27 合入 main：把 main 同步进本分支，对 Master 给的「27 改了哪些文件与规矩」逐项对草稿 | 27 增量表 | 27 碰过的条、路径、术语在草稿里逐项处理；涉及已审规矩的差异单列，留给强审 |
-| 14 | **[AI 自做]**〔落盘〕Memory 入插件，旧约定文件按 P3 删；SKILL.md、角色入口（含 27 的秘书）、DSH 适配按停点 1 改 | 插件树里的 Memory；旧约定文件已删 | 逐字比对 0 差异；带摘录的文件有 Source／License 两行且与 `ATTRIBUTION.md` 一致；描述 ≤1024；`validate --strict` 通过；结构有变就派 `plugin-dev:plugin-validator`（Haiku） |
+| 14 | **[AI 自做]**〔落盘〕Memory 入插件，旧约定文件按 P3 删；SKILL.md、角色入口（含 27 的秘书；独立技能案里 Memory 排在入口调用顺序的最后）、DSH 适配按停点 1 改 | 插件树里的 Memory；旧约定文件已删 | 逐字比对 0 差异；带摘录的文件有 Source／License 两行且与 `ATTRIBUTION.md` 一致；描述 ≤1024；`validate --strict` 通过；结构有变就派 `plugin-dev:plugin-validator`（Haiku） |
 | 15 | **[AI 自做]**〔迁移〕迁引用：docs、README 中英、glossary、`check_docs.py`（含 Departures 对表来源与锚点）、`board_check` 与看板模板的占位句、`check_dsh` 等 | 旧句柄→新位置的替换表；改好的文件 | 旧路径与旧「convention N」引用 grep 为零（`scrum/documents/` 归档与 `references/` 除外）；`check_docs.py`（含 `--selftest`）、`check_dsh`、`board_check` 自测通过 |
 | 16 | **[AI 自做]**〔验证〕带上验证与回归（Developer 自测，不是 Sprint Test）：四个角色入口在两宿主各一轮；触发测试；Sprint 24「首稿前读全」按新位置改判定重跑 | 验证表，证据放仓外，汇总记入第 4 章 | 各项不比改前差；角色入口加载有事件流或会话日志证据；缺口如实写 |
 | 17 | **[PO 在场]** 停点 5〔验证〕强审：整份读落盘后的 Memory，连同 27 增量和检查汇总 | PO 的意见或「行」，记入第 4 章 | 意见已改或说明；PO 对 Increment 的决定已记；Sprint Test 另等放行 |
@@ -129,13 +136,13 @@
 - **草稿放冲刺文件夹，落盘等 27**（P9）：27 的 85、86、89 几乎盖住六份约定（五份提到模板，`overview.md` 有「PO assistant」，`board-log.md` 在 89 里），所以按「合入前不落盘」排。`review/` 与 `memory-draft/` 在本冲刺文件夹里，不算动插件文件；27 迟迟不合也不挡行 1–12。
 - **一次坐下，看去留也看成品**：批审表比 P4 多一列「转后的一行／去向」，PO 每份文件只坐一次，不先审标注、再审成品两遍。代价是被删的条目白写一行，AI 成本可忽略；所以形状要先定（行 5）。
 - **按文件批次切开，先定口味再往下**：A（`sprint-log`、`ideo-log`，30 条）→ B（`design-log`、`product-log`，45 条）→ C（`board-log`、`overview`，36 条）。27 要改的放最后，期间它可能已合入，少审一遍旧文。A 批审定下的口味，B、C 照着起草，避免整批返工。每批独立可续，PO 精力不够就停在批次边界。
-- **P5 两案，后果摆给 PO**：① 独立技能 `memory`（PO 11-17 的设想）：清单内联在 SKILL.md；代价是角色入口多一次 Skill 调用（Claude Code 的加载数 4/3/3/2 变 5/4/4/3，F07 口径要改）、DSH 的 `rolePrelude` 与 `check_dsh` 断言要改、新描述 ≤1024 且要测触发、结构有变要跑 `--strict` 再派 validator。② 并入 `scrum-kernel`：四个角色本来都加载它、DSH 本来逐字预载，加载数不变、改动最小；代价是 Stakeholder 也会带上团队内部规矩（它只按角色卡看）、`scrum-kernel` 混进作者约定、PO「名字就叫 memory」落空。我倾向 ①：HMW 3「不叫的时候不打扰」与 P7 的分角色都要入口能选；最终由行 4 的实测与 PO 定。
+- **P5 两案，后果摆给 PO**：① 独立技能 `memory`（PO 11-17 的设想）：清单内联在 SKILL.md；代价是角色入口多一次 Skill 调用（Claude Code 的加载数 4/3/3/2 变 5/4/4/3，F07 口径要改）、DSH 的 `rolePrelude` 与 `check_dsh` 断言要改、新描述 ≤1024 且要测触发、结构有变要跑 `--strict` 再派 validator。② 并入 `scrum-kernel`：四个角色本来都加载它、DSH 本来逐字预载，加载数不变、改动最小；代价是 Stakeholder 也会带上团队内部规矩（它只按角色卡看）、`scrum-kernel` 混进作者约定、PO「名字就叫 memory」落空，还要与 `scrum-kernel` 原有正文共用单个技能的 5,000 token 上限，且排在较早调用，压缩后总额吃紧时先被挤掉。我倾向 ①：HMW 3「不叫的时候不打扰」与 P7 的分角色都要入口能选；最终由行 4 的实测与 PO 定。
 - **P6 带上方式**：角色入口无条件带上为主（目标原话）；hook 可选、默认关，开关用环境变量 `IDEO_SCRUM_MEMORY=on`，与承诺 hook 的 `IDEO_SCRUM_COMMITMENTS` 同一路、按项目开；两宿主都有先例（Claude Code `hooks/commitments.sh`、DSH `systemPrompt.context`）。是否做 hook 由停点 1 定，不做就不留空壳。子代理默认不带全文，委托时只放相关几行；行 4 实测「带」与「不带」的差别后由 PO 定。
-- **清单预算 ≤8,000 字符**（提议，停点 1 定）：hook 输出超 10,000 字符会被转存成文件、只给 2,000 字预览（文档对 `additionalContext` 写明）；已调用的技能压缩后只回注，单个 ≤5,000 token、与三个内核共用 25,000 总额、最旧先丢。超了往长文件挪，仍装不下就回 PO 定再删，不加预算。
+- **清单预算 ≤8,000 字符**（提议，停点 1 定）：hooks 的 `additionalContext` 超 10,000 字符会被转存成文件，只给 2,000 字预览（[hooks](https://code.claude.com/docs/en/hooks#add-context-for-claude)）；自动压缩后，技能只重新附上最近一次调用，每个取前 5,000 token、合计 25,000，从最近调用的技能开始填，老的可能整个丢掉（[技能生命周期](https://code.claude.com/docs/en/skills#skill-content-lifecycle)、[压缩后留下什么](https://code.claude.com/docs/en/context-window#what-survives-compaction)）。所以独立技能案里 Memory 在角色入口里排最后调用，压缩后最先保住；行 4 的实测把这一点也测进去。超了往长文件挪，仍装不下就回 PO 定再删，不加预算。
 - **一行带稳定句柄**（如 `sprint-24`＝旧文件简称＋旧编号）：旧「convention N」引用在插件内约 150 行／18 个文件，仓库层对 `conventions/`、`overview.md` 的引用约 65 行／14 个文件，可按替换表机械迁移；并掉的留别名，删掉的在表里标「已删」并改引用处。句柄样式停点 1 定。
 - **做法**：逐字块（原书摘录、PO 原话、署名行）用脚本搬再比对，不手抄，便宜的模型抄长文会丢字，AI 写的约定才由模型改写（P8）。标注与起草每份文件一个子代理，显式 `model: Haiku`，我抽检，出错或判断不够再升档并写理由；对抗审查用全新子代理，Haiku 起步，按结果升档。
 - **PO 的分工（PO 兼 Developer，约定 11）**：PO 只在五个停点在场——停点 1 定形状，停点 2–4 成批审，停点 5 整份强审，当面定、我记；台账、标注、起草、迁引用、跑测试、对抗审查都由 AI 做。PO 不写命令、不逐行勾、不盯守，每个停点自带整份材料（F16、P4、P12）。Master 审三处：形状大纲、整份草稿、冻结方案。
-- **测试通过线**（提议；Master 审后放进 2.2，Test 前冻结提交）：`validate --strict`、`check_dsh`、`check_docs.py`（含 `--selftest`）、`board_check` 自测全过；旧引用 grep 0 处；摘录逐字 diff 0 处；每个 description ≤1024 字符。触发测试沿用现有题组与次数，改前同日同环境重测，每条路径改后 ≥ 改前 −1（改前可能满分，留余量，数字冻结时写死）。角色入口加载：每入口每宿主 3 次新会话，3/3 次在做其他事前带上 Memory（事件流或会话日志证据）。Sprint 24「首稿前读全」：题组与次数照旧，改后 ≥ 改前 −1。
+- **测试通过线**（提议；Master 审后放进 2.2，Test 前冻结提交）：`validate --strict`、`check_dsh`、`check_docs.py`（含 `--selftest`）、`board_check` 自测全过；旧引用 grep 0 处；摘录逐字 diff 0 处；每个 description ≤1024 字符。触发测试沿用现有题组与次数，改前同日同环境重测，每条路径改后 ≥ 改前（AGENTS.md：改了描述就重跑触发测试，结果不能比改前差）；担心噪声就加次数，不降线，次数冻结时写死。角色入口加载：每入口每宿主 3 次新会话，3/3 次在做其他事前带上 Memory（事件流或会话日志证据）。Sprint 24「首稿前读全」：题组与次数照旧，改后不比改前差（≥ 改前）；担心噪声同样加次数，不降线。
 - **Outcome 判据与样本量**（提议）：「不用每次手动说明」＝叫出角色后给一个不提规矩的自然任务，AI 自己照 Memory 的规矩做。
   - 探针 8 条，六份约定文件各至少 1 条（`sprint-log`、`design-log` 可各 2）；每条是不带引导词的短任务加一个「不守规矩就会错」的坑，由脚本读会话日志或落盘文件判定；清单在冻结时定，这里只给选法。
   - 两臂：对照臂＝27 合入后的 main（无 Memory），Memory 臂＝本分支；同一天、同环境、同一便宜模型（magpie）。
@@ -143,13 +150,13 @@
   - 入选：先用对照臂探路（每条 3 次），对照臂守规矩 ≤1/3 才入选，免得改前已满分（Sprint 14 教训）；探路结果不进 Test，Test 重跑新试次。
   - 过线：一条探针「3 次里 ≥2 次守规矩」算达标；Memory 臂 8 条中达标 ≥6，且比对照臂多 ≥3；对照臂已达标的探针，Memory 臂不得掉到 ≤1/3。入选不足 8 条按比例折算，并如实记「改前已守的规矩不靠 Memory」。
   - 限度：样本小，只能证明增益明显，给不出效应量；Outcome 写进了目标，没证明就不过 Test。
-- **切分对应**（供登记）：51·通读与逐条审＝行 1–2 加三次批审里的 PO 决定（M）；形状、载体与带上方式＝行 3–5（M）；转换草稿 批 A／B／C＝行 6、8、10 的起草加行 12 汇总（S／M／M＋S，合计仍是 L，已按文件批次切开）；落盘与引用迁移＝行 13–15（M）；角色带上与验证＝行 16–18（M）。
+- **切分对应**（已登记，PBI-51、92–98）：51 通读＝行 1–2 加三次批审里的 PO 决定（M）；92 形状、载体与带上方式＝行 3–5（M）；93／94／95 草稿 A／B／C＝行 6、8、10 的起草（S／M／M）；96 汇总与对抗审查＝行 12（S）；97 落盘与引用迁移＝行 13–15（M）；98 角色带上与验证＝行 16–18（M）。
 
 **Risks and open points**
 
 - 27 迟迟不合：行 1–12 都在冲刺文件夹里，可先收完交 PO；行 13 起才等。27 的确切文件清单由 Master 在 27 开工后给。
 - 迁移面大：`board_check/check.py` 的 `PLACEHOLDER` 句与看板模板里的占位句同写 `board-log.md`，要同改并重跑自测；这些落在 27 的模板与看板改动范围内，只能落盘后做。
-- `AGENTS.md` 有指向 `conventions/sprint-log.md` 的引用，迁移要改它；按项目规矩须 PO 直接点头，我不自改，行 15 前报 Master 转 PO。
+- `AGENTS.md` 有两处要改：第 44 行「不是原文的写法进 `conventions/`」（规矩本身要改成进 Memory），第 56 行指向 `conventions/sprint-log.md`。按项目规矩须 PO 直接点头；PO 直接点头前，行 15 不碰 `AGENTS.md`（Master 已在问 PO）。
 - 回归面：Sprint 24 的「首稿前读全」「四角色加载」依赖旧约定路径，路径变了要改判定重跑；独立技能案的加载数变动（5/4/4/3）要让 PO 在停点 1 看到。
 - DSH 一侧：若本机跑不了 `dsh` 无头会话，DSH 退回 `check_dsh` 加 Sprint 25 的取证做法，缺口写进日志，不假装验过。
 - 标注质量：便宜模型会错；「依据」必须可指，不可指的标「无据」交 PO；每份抽检 ≥10%；逐字与计数靠脚本。
@@ -163,5 +170,6 @@ Go-ahead: 尚未给出。拟请 PO 放行的范围：行 1–18 的 AI 工作与
 
 - **开张（2026-11-22）**：PO 定由 Master 先写第 1、2 章，PO 审后交 Developer 复述精化、写 How，再由 Master 审（PO：「我们现在直接把他的前两部分写好，然后让他们审过，然后再让他们写 how 你再审过就可以了」）。基线 `1145382`（等于 main）；本文件由 Master 建，Developer 在本分支提交（git 历史可查）。
 - **How 草案（2026-11-22，Developer）**：第 3 章已写，依据 PO 的有条件放行，基于 Master 同步补后的第 1、2 章。清单预算 8,000 字符、探针 8 条×每臂 3 次、各条通过线都是提议，Master 审后放进 2.2「测试」，Test 前冻结提交。等 Master 审，再交 PO；施工未放行。
+- **Master 审 How，改三处（2026-11-22，Developer 改）**：① 触发测试与「首稿前读全」的通过线改为 ≥ 改前（AGENTS.md 要求不能比改前差），担心噪声就加次数、不降线；② 清单预算的限制数字附官方文档链接，并补一条：独立技能案里 Memory 排角色入口调用顺序的最后，压缩后最先保住，行 4 的实测也测这一点；③ AGENTS.md 要改的两处（第 44、56 行）写进 Risks，PO 直接点头前行 15 不碰它。另：2.1 由 Master 换成登记后的八条（51、92–98），「切分对应」改为已登记。行 2、15、16 一次做不完就当场拆开，在此记一笔，不回头改 How。
 
 ## 5. Test
