@@ -31,6 +31,7 @@ PLACEHOLDER = '{"todo": "Replace this line with the board data (board-log.md lis
 # the data block runs to the next script, so a stray </script> inside the data cannot hide itself
 BLOCK_RE = re.compile(r'(<script type="application/json" id="board-data">)(.*?)(</script>\s*<script>)', re.S)
 LOG_FILES = {"sprint": "SprintBacklog.md", "design": "DesignBacklog.md", "ideo": "IdeoBacklog.md"}
+PRODUCT_LOG = "scrum/ProductBacklog.md"
 PATHS = {k: re.compile(r"^scrum/(%s-[^/]+)/%s$" % (k, v)) for k, v in LOG_FILES.items()}
 GROUPS = ("sprint", "design", "next", "later")
 BROWSERS = [r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
@@ -89,6 +90,29 @@ def read_log(root, path, source):
         out = git(root, "show", "%s:%s" % (m.group(2), path))
         return None if out is None else norm_nl(out)
     return None
+
+
+def find_product_log(root):
+    """(text, source) of the product log, read as board-log.md conventions 4 and 11 say: from the working copy when it
+    is there (source `working copy`), else from the branch whose latest commit is the newest and that holds it
+    (source `branch <name> @ <commit>`, the commit as its first seven characters). (None, None) when there is none."""
+    root = pathlib.Path(root)
+    in_copy = root / PRODUCT_LOG
+    if in_copy.is_file():
+        return norm_nl(in_copy.read_text(encoding="utf-8")), "working copy"
+    if (root / ".git").exists():
+        best = None
+        for branch in (git(root, "for-each-ref", "--format=%(refname:short)", "refs/heads") or "").split():
+            if not (git(root, "ls-tree", "--name-only", branch, "--", PRODUCT_LOG) or "").strip():
+                continue
+            sha = (git(root, "rev-parse", branch) or "").strip()
+            stamp = int((git(root, "log", "-1", "--format=%ct", branch) or "0").strip() or 0)
+            if best is None or stamp > best[0]:
+                best = (stamp, branch, sha)
+        if best:
+            source = "branch %s @ %s" % (best[1], best[2][:7])
+            return read_log(root, PRODUCT_LOG, source), source
+    return None, None
 
 
 def commitments(text):
@@ -249,16 +273,15 @@ def has_id(text, item_id):
 def read_project(root):
     root = pathlib.Path(root)
     P = {"product": None, "sprints": {}, "designs": {}, "ideo": {}}
-    pl = root / "scrum/ProductBacklog.md"
-    if not pl.is_file():
+    text, product_source = find_product_log(root)
+    if text is None:
         return P
-    text = norm_nl(pl.read_text(encoding="utf-8"))
     c = commitments(text)
     items = [(r[0], r[1], r[4] if len(r) > 4 else "", r[5] if len(r) > 5 else "")
              for r in table_after(text, r"^#{2,3}\s*3\.1\b") if r and r[0]]
     P["product"] = {"statement": c.get("product", ""), "goal": c.get("product_goal", ""), "items": items,
                     "closed": len([r for r in table_after(text, r"^#{2,3}\s*3\.2\b") if r and r[0]]),
-                    "map_labels": map_labels(text, r"^#{2,3}\s*2\.2\b")}
+                    "map_labels": map_labels(text, r"^#{2,3}\s*2\.2\b"), "source": product_source}
     for (kind, ident), info in discover(root).items():
         body = read_log(root, info["path"], info["source"])
         if body is None:
@@ -379,7 +402,7 @@ def check_data(D, P, errors, warnings, *, separate_solution=True):
     eq(errors, "product.goal", prod.get("goal"), pp["goal"])
     if not prod.get("name") or str(prod["name"]) not in pp["statement"]:
         errors.append("product.name %r is not found in the Product commitment" % prod.get("name"))
-    eq(errors, "product.source", prod.get("source"), "working copy")
+    eq(errors, "product.source", prod.get("source"), pp["source"])
     eq(errors, "product.closed", prod.get("closed"), pp["closed"])
 
     # items: the same rows, in the same order
@@ -571,7 +594,7 @@ def reference_data(root, summ):
         by_id[host].setdefault("ideo", []).append({"id": ident, "now": now})
     lang = "zh" if re.search(r"[\u4e00-\u9fff]", pp["statement"]) else "en"
     return {"lang": lang, "generated": "2026-11-14 12:00",
-            "product": {"name": name, "statement": pp["statement"], "goal": pp["goal"], "source": "working copy",
+            "product": {"name": name, "statement": pp["statement"], "goal": pp["goal"], "source": pp["source"],
                         "map": summ.get("map", []), "closed": pp["closed"]},
             "items": items, "sprints": sprints, "designs": designs}
 
@@ -605,9 +628,31 @@ ACME_SUMM = {
 }
 
 
-def build_fixture(name, workdir, branch=False):
+def build_fixture(name, workdir, branch=False, product_branches=()):
     dest = pathlib.Path(workdir) / name
     shutil.copytree(HERE / "fixtures" / name, dest)
+    if product_branches:
+        # main has no product log; each named branch holds it, committed one day after the one before
+        env = ["-c", "user.name=t", "-c", "user.email=t@example.com", "-c", "commit.gpgsign=false"]
+
+        def g(*a, day=None):
+            when = {} if day is None else {"GIT_COMMITTER_DATE": "2026-02-%02dT12:00:00 +0000" % day,
+                                          "GIT_AUTHOR_DATE": "2026-02-%02dT12:00:00 +0000" % day}
+            subprocess.run(["git", "-C", str(dest), *env, *a], capture_output=True, check=True, env={**os.environ, **when})
+        product = dest / PRODUCT_LOG
+        hold = pathlib.Path(workdir) / "hold-product"
+        shutil.move(str(product), str(hold))
+        g("init", "-q", "-b", "main")
+        g("add", "-A")
+        g("commit", "-q", "-m", "main", day=1)
+        for number, branch_name in enumerate(product_branches, start=2):
+            g("checkout", "-q", "-b", branch_name, "main")
+            shutil.copy(str(hold), str(product))
+            g("add", "-A")
+            g("commit", "-q", "-m", "product log on " + branch_name, day=number)
+            g("checkout", "-q", "main")
+            if product.exists():
+                product.unlink()
     if branch:
         env = ["-c", "user.name=t", "-c", "user.email=t@example.com", "-c", "commit.gpgsign=false"]
 
@@ -809,6 +854,37 @@ def selftest():
             d = copy.deepcopy(base)
             fn(d)
             check(label, d, project=project, want_ok=False, expect=expect)
+
+        # the product log in the working copy: its source is `working copy`, and a branch form is wrong (convention 4)
+        mutate("a branch source for a product log that is in the working copy",
+               lambda d: d["product"].update(source="branch main @ 1234567"), "product.source")
+
+        # the product log only on branches (conventions 4 and 11): `branch <name> @ <commit>`, the newest commit wins
+        pb_dir = pathlib.Path(tmp) / "productbranch"
+        pb_dir.mkdir()
+        pb = build_fixture("acme", pb_dir, product_branches=("product-old", "product-new"))
+
+        def tip(branch_name):
+            return subprocess.run(["git", "-C", str(pb), "rev-parse", branch_name], capture_output=True, text=True,
+                                  check=True).stdout.strip()
+
+        pbref = reference_data(pb, ACME_SUMM)
+        cases += 1
+        if (pb / PRODUCT_LOG).exists():
+            failures.append("product branch case: the working copy should not hold the product log")
+        want_source = "branch product-new @ " + tip("product-new")[:7]
+        if pbref["product"]["source"] != want_source:
+            failures.append("product branch case: expected the newest branch %r, reference wrote %r" % (
+                want_source, pbref["product"]["source"]))
+        check("product log only on a branch: the branch form passes", pbref, project=pb)
+        mutate("a product log only on a branch, but the source says working copy",
+               lambda d: d["product"].update(source="working copy"), "product.source", base=pbref, project=pb)
+        mutate("a product log on two branches, but the older one is named",
+               lambda d: d["product"].update(source="branch product-old @ " + tip("product-old")[:7]), "product.source",
+               base=pbref, project=pb)
+        mutate("a product log only on a branch, but the commit is not the branch's tip",
+               lambda d: d["product"].update(source="branch product-new @ 1234567"), "product.source",
+               base=pbref, project=pb)
 
         mutate("a character of the Product changed", lambda d: d["product"].update(statement=d["product"]["statement"] + "。"), "product.statement")
         mutate("the Product Goal changed", lambda d: d["product"].update(goal=d["product"]["goal"][1:]), "product.goal")
