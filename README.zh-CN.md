@@ -12,7 +12,7 @@
 
 一个人带着 AI 做项目，规矩和工作的进度都在你脑子里和聊天里。会话结束，或者被压缩，它们就跟着没了。AI 会跑偏，除了做的那一个，没有别人看它做了什么。
 
-IDEO-Scrum 给这份工作配一支 Scrum 团队。你当 Product Owner：方向、目标、哪些条目进冲刺、什么时候可以动手，都由你定。AI 扮演 Scrum Master、Developer、Designer 和 Stakeholder，一个角色一个命令。遇到「人要什么」「什么样算好」这类问题，它会带上 IDEO 和斯坦福 d.school 的设计思维：五模式，或者一次设计冲刺。所有东西都写进你仓库里的纯 Markdown 日志，换一个新会话，读日志就能接着干。
+IDEO-Scrum 给这份工作配一支 Scrum 团队。你当 Product Owner：方向、目标、哪些条目进冲刺、什么时候可以动手，都由你定。AI 扮演 Scrum Master、Developer、Designer、Stakeholder 和 Supporter（秘书），一个角色一个命令。遇到「人要什么」「什么样算好」这类问题，它会带上 IDEO 和斯坦福 d.school 的设计思维：五模式，或者一次设计冲刺。所有东西都写进你仓库里的纯 Markdown 日志，换一个新会话，读日志就能接着干。
 
 它不是项目管理工具：不接 JIRA 或 Linear，也不是给团队用的平台。
 
@@ -90,7 +90,8 @@ claude plugin update ideo-scrum@ideo-scrum
 /ideo-scrum:scrum-master    # 主持 Planning、检查点、Review 和 Retro；审阅工作；服务你这位 Product Owner
 /ideo-scrum:developer       # 跑一个冲刺：计划、增量、冲刺日志
 /ideo-scrum:designer        # 五模式不设阶段门；设计冲刺先定发散安排、放行 Ideate，再出方案
-/ideo-scrum:stakeholder     # 对产品的外部视角，或者常驻做看板之类杂务的助手
+/ideo-scrum:stakeholder     # 对产品的外部视角
+/ideo-scrum:supporter       # 秘书：不碰源码的杂活——看板、汇总、传已定的事、收齐等你定的问题
 ```
 
 每个 Claude Code 角色命令都会先按顺序调用所需内核，再开始工作（见[角色约定](plugins/ideo-scrum/skills/scrum-kernel/overview.md#who-does-what)）。
@@ -102,6 +103,7 @@ claude plugin update ideo-scrum@ideo-scrum
 /developer
 /designer
 /stakeholder
+/supporter
 ```
 
 可以直接输入，也可以从 `/` 提示里选。任务可以跟在同一条消息里：`/scrum-master 帮我规划下个冲刺。` 在 DSH 中，角色按顺序带入 IDEO 内核和 Scrum 内核，Sprint 和 Design 按需加载。任务横跨冲刺与设计冲刺时，可以用 `/scrum-master /sprint-kernel /design-kernel` 显式顺序加载。DSH 也会识别句中独立出现的 `/名称`；只是提及名称时，在输入里用反引号包住它。
@@ -148,7 +150,7 @@ claude plugin update ideo-scrum@ideo-scrum
 
 项目里日志一多，有两样小东西帮你找回方位。
 
-**看板。** 请 Scrum Master，或者一个常驻的助手会话，要一份看板：它照你的日志写出 `scrum/ScrumBoard.html`，用浏览器打开。一张流向图画出产品、没做完的条目，以及每条流进哪个冲刺或设计。点冲刺卡看目标、路线和已经做完的工作块；点设计卡看设计目标、地图主线和选定方案，有没有故事板都能看方案。它是为瞥一眼做的：宽屏、竖屏、手机上都读得顺，配色跟着系统的浅色或深色。便宜的模型就能写，照 [`board-log.md`](plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md)（英文）的约定；随时可以删掉再要一份。
+**看板。** 请 Supporter（秘书）或 Scrum Master 要一份看板：它照你的日志写出 `scrum/ScrumBoard.html`，用浏览器打开。一张流向图画出产品、没做完的条目，以及每条流进哪个冲刺或设计。点冲刺卡看目标、路线和已经做完的工作块；点设计卡看设计目标、地图主线和选定方案，有没有故事板都能看方案。它是为瞥一眼做的：宽屏、竖屏、手机上都读得顺，配色跟着系统的浅色或深色。便宜的模型就能写，照 [`board-log.md`](plugins/ideo-scrum/board/board-log.md)（英文）的约定；随时可以删掉再要一份。
 
 ![本仓库的看板，由它自己的日志画出，浅色](docs/images/board-overview-light.png)
 
@@ -177,7 +179,7 @@ claude plugin update ideo-scrum@ideo-scrum
 | --- | --- |
 | *The Scrum Guide* 2020，Ken Schwaber 与 Jeff Sutherland | CC BY-SA 4.0 |
 | *Scrum Guide Expansion Pack* 2026.1，Ralph Jocham、John Coleman 与 Jeff Sutherland | CC BY-SA 4.0 |
-| *Design Thinking Bootleg*，Stanford d.school | CC BY-NC-SA 4.0（非商业） |
+| *Design Process Mini-Guide*（2010）与 *Design Thinking Bootleg*（2018），Stanford d.school | CC BY-NC-SA 3.0 Unported 与 4.0（非商业） |
 | *Sprint*，Jake Knapp 与 John Zeratsky、Braden Kowitz（Simon & Schuster，2016） | 保留全部权利 |
 
 d.school 的许可禁止商业使用，所以本仓库不算 OSI 意义上的开源软件。打算商业使用的话，先读 [ATTRIBUTION.md](ATTRIBUTION.md)。
@@ -192,7 +194,7 @@ d.school 的许可禁止商业使用，所以本仓库不算 OSI 意义上的开
 
 | 路径 | 是什么 |
 | --- | --- |
-| `plugins/ideo-scrum/` | Claude Code 插件，也是四个角色和四个内核（ideo、scrum、sprint、design）的共用源 |
+| `plugins/ideo-scrum/` | Claude Code 插件，也是五个角色和四个内核（ideo、scrum、sprint、design）的共用源；四份日志模板在 `template/`，看板的文件在 `board/` |
 | `dsh/`、`package.json`、`cordis.patch.yml` | DSH 适配和插件包入口 |
 | `docs/` | 快速上手、词汇表、项目 Agent 指南和维护说明 |
 | `scrum/` | 本项目自己的 Scrum 工作，中文写的：它的产品日志和归档的冲刺日志 |

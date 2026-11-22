@@ -17,6 +17,8 @@
     "ATTRIBUTION.md",
     "plugins/ideo-scrum/commands/",
     "plugins/ideo-scrum/skills/",
+    "plugins/ideo-scrum/template/",
+    "plugins/ideo-scrum/board/",
     "plugins/ideo-scrum/icon.png"
   ],
   "dsh": { "bundle": { "patch": "./cordis.patch.yml" } }

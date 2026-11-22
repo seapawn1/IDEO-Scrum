@@ -202,7 +202,8 @@ def probe_memory_files(env: dict, cwd: pathlib.Path, extra: list):
 # Windows profile home", and the plugin session installed the tool, a .bashrc and a .bash_profile there. A guard hook
 # (guard.py) now refuses every tool call that names the real home; the stranger is told there is one computer; what
 # the session left behind in the real temp folder (its /tmp) is removed after the run.
-TEMPLATE_PATH = "plugins/ideo-scrum/skills/scrum-kernel/conventions/scrum-board-template.html"
+PLUGIN_DIR = "plugins/ideo-scrum"
+TEMPLATE_NAME = "scrum-board-template.html"
 SNAPSHOT_SKIP = {".claude", "AppData", ".cache", ".config", ".local"}  # .local: only .local/bin is kept
 
 
@@ -270,8 +271,15 @@ def cleanup_real_temp(rows: list, since: float) -> list:
 
 def template_at(commit: str):
     """The board template as it was in the tested commit: the page of the plugin session is compared with the
-    template it copied, not with whatever the repository holds now."""
-    r = subprocess.run(["git", "-C", str(REPO), "show", f"{commit}:{TEMPLATE_PATH}"], capture_output=True, text=True,
+    template it copied, not with whatever the repository holds now. It is found by its file name under the
+    plugin folder, so a commit from before the template moved (Sprint 27 moved it to board/) still gives its own
+    template, and nothing silently falls back to the current one."""
+    listing = subprocess.run(["git", "-C", str(REPO), "ls-tree", "-r", "--name-only", commit, "--", PLUGIN_DIR],
+                             capture_output=True, text=True, encoding="utf-8")
+    found = [line for line in listing.stdout.splitlines() if line.endswith("/" + TEMPLATE_NAME)]
+    if listing.returncode != 0 or len(found) != 1:
+        return None
+    r = subprocess.run(["git", "-C", str(REPO), "show", f"{commit}:{found[0]}"], capture_output=True, text=True,
                        encoding="utf-8")
     return r.stdout if r.returncode == 0 and r.stdout.strip() else None
 
@@ -1044,6 +1052,11 @@ def selftest() -> int:
             elif p.exists():
                 p.unlink()
     expect("the template of a commit", (template_at("HEAD") or "").startswith("<!DOCTYPE html>"), True)
+    # the template is found by name, so a commit from before it moved to board/ still gives its own (the tag v6.0.3
+    # is one; a clone without tags has nothing to check here)
+    if subprocess.run(["git", "-C", str(REPO), "rev-parse", "--verify", "--quiet", "v6.0.3^{commit}"],
+                      capture_output=True).returncode == 0:
+        expect("the template of a commit from before the move", (template_at("v6.0.3") or "").startswith("<!DOCTYPE html>"), True)
     # a project that passes, then planted defects
     work = pathlib.Path(tempfile.mkdtemp(prefix="st-selftest-"))
     env = {k: v for k, v in os.environ.items() if k.lower() in WHITELIST}

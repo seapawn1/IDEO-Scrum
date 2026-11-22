@@ -16,7 +16,7 @@ This kernel is the plugin's shared toolbox and the foundation of every stage: th
 
 ## Conventions
 
-Whether a question needs a design sprint or the five modes, how the two relate, when to open an IDEO log, and how one ends are in `conventions/ideo-log.md`; the log template is `conventions/ideo-backlog-template.md`.
+Whether a question needs a design sprint or the five modes, how the two relate, when to open an IDEO log, and how one ends are in `conventions/ideo-log.md`; the log template is `../../template/ideo-backlog-template.md`.
 
 ## IDEO design thinking
 

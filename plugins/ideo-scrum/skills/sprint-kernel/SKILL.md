@@ -14,19 +14,19 @@ A Sprint turns selected items into an Increment. This kernel holds what running 
 
 ## Conventions
 
-How a solo + AI team runs a Sprint — the five stages, the sprint log, who decides — is in `conventions/sprint-log.md`; the sprint log template is `conventions/sprint-backlog-template.md`. These are working conventions, not source text: follow what fits, override what doesn't, and note why. When you open, run, or close a Sprint, write a log, or answer a question about how to do any of these, read the matching convention first, even for a rough answer.
+How a solo + AI team runs a Sprint — the five stages, the sprint log, who decides — is in `conventions/sprint-log.md`; the sprint log template is `../../template/sprint-backlog-template.md`. These are working conventions, not source text: follow what fits, override what doesn't, and note why. When you open, run, or close a Sprint, write a log, or answer a question about how to do any of these, read the matching convention first, even for a rough answer.
 
 | File | What it covers | Read when |
 | --- | --- | --- |
 | `conventions/sprint-log.md` | The five stages of a Sprint — Why, What, How, Increment, Test — and its close | Opening, running, or closing a Sprint |
-| `conventions/sprint-backlog-template.md` | The sprint log template; the file made from it is `SprintBacklog.md` | Opening a Sprint |
+| `../../template/sprint-backlog-template.md` | The sprint log template; the file made from it is `SprintBacklog.md` | Opening a Sprint |
 
 **Before drafting a Sprint Goal or a refinement, even in chat:** read `../scrum-kernel/overview.md`, `conventions/sprint-log.md`, and `events/scrum-event-sprint-planning.md` in full. Then read the material for the task:
 
 | Draft | Also read before drafting | Use in the draft |
 | --- | --- | --- |
-| Sprint Goal (Why) | The full `../scrum-kernel/references/scrum-artifact-sprint-backlog.md` (the excerpt below covers only its Sprint Backlog section), the full comments in `conventions/sprint-backlog-template.md` §§1.1–1.2, and the project's Product Goal in §1.2 of the product log | One objective about the value of this Sprint, toward the Product Goal. Keep item selection and the plan out of the Why. |
-| Item refinement (What) | The full `../scrum-kernel/references/scrum-artifact-product-backlog.md`, `../scrum-kernel/conventions/product-log.md`, `../ideo-kernel/IDEO-modes/define.md`, and `../ideo-kernel/methods/how-might-we-questions.md`, plus the full §2.2 comment in `conventions/sprint-backlog-template.md` | Take the POV word for word from the item or goal, frame HMWs that leave more than one solution open, distinguish what the Product Owner decides, what the Developer can propose, and what needs research, and propose checkable acceptance criteria. |
+| Sprint Goal (Why) | The full `../scrum-kernel/references/scrum-artifact-sprint-backlog.md` (the excerpt below covers only its Sprint Backlog section), the full comments in `../../template/sprint-backlog-template.md` §§1.1–1.2, and the project's Product Goal in §1.2 of the product log | One objective about the value of this Sprint, toward the Product Goal. Keep item selection and the plan out of the Why. |
+| Item refinement (What) | The full `../scrum-kernel/references/scrum-artifact-product-backlog.md`, `../scrum-kernel/conventions/product-log.md`, `../ideo-kernel/IDEO-modes/define.md`, and `../ideo-kernel/methods/how-might-we-questions.md`, plus the full §2.2 comment in `../../template/sprint-backlog-template.md` | Take the POV word for word from the item or goal, frame HMWs that leave more than one solution open, distinguish what the Product Owner decides, what the Developer can propose, and what needs research, and propose checkable acceptance criteria. |
 
 Read any other method in full before using it. Material already present in the conversation counts only for the text it covers; a link, a Skill call without the text, or an unfinished read is not enough. If required text is missing, say what is missing and stop before drafting. When the Product Owner says a draft misapplies the method, reread the applicable source and instructions before redrafting. Drafting does not give the go-ahead for the next stage; follow the decisions in the sprint log conventions.
 

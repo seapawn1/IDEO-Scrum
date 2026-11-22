@@ -84,5 +84,6 @@ Test 阶段完成后，说「收官」。Review 把冲刺日志压缩后归档�
 ## 迷路了怎么办
 
 - 问「现在到哪了？」：Scrum Master 读 `Now` 和 `Waiting for PO` 两行，告诉你。
-- 要看板：一页看清项目走到哪，由日志写成 `scrum/ScrumBoard.html`。
+- 要看板：一页看清项目走到哪，由日志写成 `scrum/ScrumBoard.html`。交给 supporter（秘书）：Claude Code 用 `/ideo-scrum:supporter`，DSH 用 `/supporter`。
 - 想弄清人要什么，叫 Designer：Claude Code 用 `/ideo-scrum:designer`，DSH 用 `/designer`。
+- 想请一个外面的视角，或请参谋给第二意见，见[项目 Agent](project-agents.zh-CN.md)。

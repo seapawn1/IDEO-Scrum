@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import fs, { mkdirSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs'
+import fs, { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs'
 import { syncBuiltinESMExports } from 'node:module'
 import { tmpdir } from 'node:os'
 import { dirname, join } from 'node:path'
@@ -10,7 +10,7 @@ import { readCommitments } from '../dsh/commitments.js'
 
 const root = fileURLToPath(new URL('../', import.meta.url))
 const plugin = join(root, 'plugins', 'ideo-scrum')
-const roles = ['scrum-master', 'developer', 'designer', 'stakeholder']
+const roles = ['scrum-master', 'developer', 'designer', 'stakeholder', 'supporter']
 const kernels = ['ideo-kernel', 'scrum-kernel', 'sprint-kernel', 'design-kernel']
 
 function mount() {
@@ -46,7 +46,7 @@ function canonical(path) {
   return { description: JSON.parse(description), content }
 }
 
-test('register the original four role bodies and kernels with resolvable resource bases', () => {
+test('register the five role bodies and kernels with resolvable resource bases', () => {
   const { skills, contexts, dispose } = mount()
   assert.deepEqual([...skills.keys()], [...kernels, ...roles])
   for (const [name, entry] of skills) {
@@ -106,6 +106,51 @@ test('bundle, Claude version, existing icon and two locale exports agree', () =>
     const { meta } = JSON.parse(read(manifest.exports['./locale/*.json'].replace('*', language)))
     assert.equal(meta.title, 'IDEO-Scrum')
     assert.ok(roles.every(name => meta.description.includes(`/${name}`)))
+  }
+})
+
+test('the log templates and the board files sit in template/ and board/, are packed, and every reference to them resolves', () => {
+  const manifest = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'))
+  const packed = path => manifest.files.some(entry => (entry.endsWith('/') ? path.startsWith(entry) : path === entry))
+  const moved = {
+    template: ['product-backlog-template.md', 'sprint-backlog-template.md', 'design-backlog-template.md', 'ideo-backlog-template.md'],
+    board: ['board-log.md', 'scrum-board-template.html'],
+  }
+  for (const [folder, names] of Object.entries(moved)) {
+    for (const name of names) {
+      const rel = `plugins/ideo-scrum/${folder}/${name}`
+      assert.ok(existsSync(join(root, rel)), `${rel} must exist`)
+      assert.ok(packed(rel), `${rel} must be listed in the package files`)
+    }
+  }
+  // A skill folder is the base of the paths in its SKILL.md, its conventions and (for scrum-kernel) overview.md.
+  const skills = join(plugin, 'skills')
+  const written = []
+  for (const kernel of kernels) {
+    const base = join(skills, kernel)
+    const files = [join(base, 'SKILL.md'), ...readdirSync(join(base, 'conventions')).map(name => join(base, 'conventions', name))]
+    if (kernel === 'scrum-kernel') files.push(join(base, 'overview.md'))
+    for (const file of files.filter(f => f.endsWith('.md'))) {
+      const text = readFileSync(file, 'utf8')
+      // the old places: a template or a board file named under a kernel's conventions/ folder
+      assert.doesNotMatch(
+        text,
+        /conventions\/(?:(?:product|sprint|design|ideo)-backlog-template\.md|board-log\.md|scrum-board-template\.html)/,
+        `${file} still names a file at its old place`,
+      )
+      for (const match of text.matchAll(/\.\.\/\.\.\/(template|board)\/([A-Za-z0-9._-]+)/g)) {
+        const target = join(base, '..', '..', match[1], match[2])
+        assert.ok(existsSync(target), `${file}: ${match[0]} does not resolve`)
+        assert.ok(packed(`plugins/ideo-scrum/${match[1]}/${match[2]}`), `${file}: ${match[0]} is not packed`)
+        written.push({ kernel, file: file.endsWith('SKILL.md'), rel: `${match[1]}/${match[2]}` })
+      }
+    }
+  }
+  // Navigation: each moved file is named by a correct path from some SKILL.md, one hop from a kernel entry.
+  for (const [folder, names] of Object.entries(moved)) {
+    for (const name of names) {
+      assert.ok(written.some(w => w.file && w.rel === `${folder}/${name}`), `${folder}/${name} is not reachable from a SKILL.md`)
+    }
   }
 })
 

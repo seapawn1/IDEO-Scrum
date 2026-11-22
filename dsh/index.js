@@ -8,7 +8,7 @@ export const inject = ['skills', 'systemPrompt', 'workingDirectory']
 
 const plugin = new URL('../plugins/ideo-scrum/', import.meta.url)
 const kernels = ['ideo-kernel', 'scrum-kernel', 'sprint-kernel', 'design-kernel']
-const roles = ['scrum-master', 'developer', 'designer', 'stakeholder']
+const roles = ['scrum-master', 'developer', 'designer', 'stakeholder', 'supporter']
 const toolMapping = 'DSH host adapter: Use `skill` with `{"name":"<skill-name>"}` for Skill calls. Drop the `ideo-scrum:` prefix from the name. Resolve resources relative to the base directory of the skill that references them.'
 const roleRouting = 'The IDEO and Scrum kernels are already loaded below, in that order; do not call `skill` again for those. Load `sprint-kernel` for Scrum Sprint work and `design-kernel` for design sprint work, unless their instructions are already in the conversation. When the work needs both, wait for `sprint-kernel` before loading `design-kernel`. Use `read` with an absolute file path based on the kernel that named the resource, not a search of the project.'
 

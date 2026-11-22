@@ -1,8 +1,8 @@
 # MODE: Define
 
-> Merged from: Stanford Design Guides (base text) + IDEO Bootcamp Bootleg
-> Source: IDEO / Stanford d.school Design Guides
-> License: CC BY-NC-SA 4.0 (c) Stanford d.school — https://dschool.stanford.edu/tools/design-thinking-bootleg
+> Merged from: Stanford d.school *Design Process Mini-Guide* (2010, base text) + *Design Thinking Bootleg* (2018, supplementary passages)
+> Source: Hasso Plattner Institute of Design at Stanford (d.school) — *Design Process Mini-Guide* (2010; the original wiki is offline, archived: https://web.archive.org/web/20160118010517/https://dschool.stanford.edu/sandbox/groups/designresources/wiki/36873/attachments/74b3d/ModeGuideBOOTCAMP2010L.pdf) and *Design Thinking Bootleg* (2018, https://dschool.stanford.edu/tools/design-thinking-bootleg)
+> License: base text CC BY-NC-SA 3.0 Unported, supplementary passages CC BY-NC-SA 4.0 (c) Stanford d.school — https://creativecommons.org/licenses/by-nc-sa/3.0/legalcode ; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
 
 ---
 

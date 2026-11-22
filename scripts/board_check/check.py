@@ -26,11 +26,12 @@ from collections import Counter
 
 HERE = pathlib.Path(__file__).resolve().parent
 REPO = HERE.parents[1]
-TEMPLATE = REPO / "plugins/ideo-scrum/skills/scrum-kernel/conventions/scrum-board-template.html"
+TEMPLATE = REPO / "plugins/ideo-scrum/board/scrum-board-template.html"
 PLACEHOLDER = '{"todo": "Replace this line with the board data (board-log.md lists the fields)."}'
 # the data block runs to the next script, so a stray </script> inside the data cannot hide itself
 BLOCK_RE = re.compile(r'(<script type="application/json" id="board-data">)(.*?)(</script>\s*<script>)', re.S)
 LOG_FILES = {"sprint": "SprintBacklog.md", "design": "DesignBacklog.md", "ideo": "IdeoBacklog.md"}
+PRODUCT_LOG = "scrum/ProductBacklog.md"
 PATHS = {k: re.compile(r"^scrum/(%s-[^/]+)/%s$" % (k, v)) for k, v in LOG_FILES.items()}
 GROUPS = ("sprint", "design", "next", "later")
 BROWSERS = [r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
@@ -91,6 +92,29 @@ def read_log(root, path, source):
     return None
 
 
+def find_product_log(root):
+    """(text, source) of the product log, read as board-log.md conventions 4 and 11 say: from the working copy when it
+    is there (source `working copy`), else from the branch whose latest commit is the newest and that holds it
+    (source `branch <name> @ <commit>`, the commit as its first seven characters). (None, None) when there is none."""
+    root = pathlib.Path(root)
+    in_copy = root / PRODUCT_LOG
+    if in_copy.is_file():
+        return norm_nl(in_copy.read_text(encoding="utf-8")), "working copy"
+    if (root / ".git").exists():
+        best = None
+        for branch in (git(root, "for-each-ref", "--format=%(refname:short)", "refs/heads") or "").split():
+            if not (git(root, "ls-tree", "--name-only", branch, "--", PRODUCT_LOG) or "").strip():
+                continue
+            sha = (git(root, "rev-parse", branch) or "").strip()
+            stamp = int((git(root, "log", "-1", "--format=%ct", branch) or "0").strip() or 0)
+            if best is None or stamp > best[0]:
+                best = (stamp, branch, sha)
+        if best:
+            source = "branch %s @ %s" % (best[1], best[2][:7])
+            return read_log(root, PRODUCT_LOG, source), source
+    return None, None
+
+
 def commitments(text):
     """{kind: exact text} from the one-row tables whose first cell is Commitment / 承诺; the heading says which.
     A heading may be left in English or put into Chinese (产品, 产品目标, 冲刺目标, 设计目标): a stranger's AI writing
@@ -148,6 +172,13 @@ def ideo_host(text, log_path):
 MODE_PREFIX = re.compile(r"^(?:Empathize|Define|Ideate|Prototype|Test|共情|定义|构思|原型|测试)\s*[:：·]\s*", re.I)
 ENDED_EN = r"(?:concluded|closed|ended)"
 ENDED_ZH = r"已(?:收尾|结束|关闭)"
+# 「待归档」只认明确的等待说法（看板约定 16：同句写明日志在等归档）：awaiting／awaits／pending 紧挨着 archive、archival、
+# archiving（中间可夹 Review 或 PO 一个词），或「待」「等待」紧挨着「归档」（中间可夹 Review）。只是提到归档
+# （`archive this after PO review`、「归档旧原型」）不算。
+AWAITS_ARCHIVE = re.compile(
+    r"\b(?:awaiting|awaits?|pending)\s+(?:(?:Review|PO)\s+)?archiv(?:e|al|ing)\b|(?:待|等待)\s*(?:Review\s*)?归档",
+    re.I,
+)
 
 
 def matches_end_state(state, english, chinese):
@@ -171,13 +202,18 @@ def host_concluded(now, kind):
     if kind == "sprints":
         english_subject = r"sprint(?:\s+\d+)?"
         chinese_subject = r"(?:本(?:期|次|轮)?)?冲刺(?:\s*\d+)?"
-        chinese_state = r"已(?:收官|收尾|结束|关闭)"
+        # 冲刺日志收官时 Now 写「已收官 · …」，也有写「收官 · …」的；两种都认。
+        chinese_state = r"(?:(?:已\s*)?收官|已(?:收尾|结束|关闭))"
     else:
         english_subject = r"design(?:\s+sprint)?"
         chinese_subject = r"(?:本(?:次|轮)?)?设计(?:冲刺)?"
         chinese_state = ENDED_ZH
     state = MODE_PREFIX.sub("", now, count=1)
-    if state == now and matches_end_state(state, ENDED_EN, rf"(?:(?:本期|本次|本轮)\s*)?{chinese_state}"):
+    # 没有主语的「已结束」「Concluded」写在 Now 开头，就是宿主结束。前面带着阶段名时（设计日志约定 19 的
+    # `Test: Concluded — awaiting archive`），要同句明确写出在等归档才算：「Prototype: concluded; Test next」只是一个阶段完了，
+    # 「Test: Concluded; archive this after PO review」只是提到归档，都不算。
+    if (state == now or AWAITS_ARCHIVE.search(state)) and matches_end_state(
+            state, ENDED_EN, rf"(?:(?:本期|本次|本轮)\s*)?{chinese_state}"):
         return True
     return matches_end_state(
         state,
@@ -244,16 +280,15 @@ def has_id(text, item_id):
 def read_project(root):
     root = pathlib.Path(root)
     P = {"product": None, "sprints": {}, "designs": {}, "ideo": {}}
-    pl = root / "scrum/ProductBacklog.md"
-    if not pl.is_file():
+    text, product_source = find_product_log(root)
+    if text is None:
         return P
-    text = norm_nl(pl.read_text(encoding="utf-8"))
     c = commitments(text)
     items = [(r[0], r[1], r[4] if len(r) > 4 else "", r[5] if len(r) > 5 else "")
              for r in table_after(text, r"^#{2,3}\s*3\.1\b") if r and r[0]]
     P["product"] = {"statement": c.get("product", ""), "goal": c.get("product_goal", ""), "items": items,
                     "closed": len([r for r in table_after(text, r"^#{2,3}\s*3\.2\b") if r and r[0]]),
-                    "map_labels": map_labels(text, r"^#{2,3}\s*2\.2\b")}
+                    "map_labels": map_labels(text, r"^#{2,3}\s*2\.2\b"), "source": product_source}
     for (kind, ident), info in discover(root).items():
         body = read_log(root, info["path"], info["source"])
         if body is None:
@@ -374,7 +409,7 @@ def check_data(D, P, errors, warnings, *, separate_solution=True):
     eq(errors, "product.goal", prod.get("goal"), pp["goal"])
     if not prod.get("name") or str(prod["name"]) not in pp["statement"]:
         errors.append("product.name %r is not found in the Product commitment" % prod.get("name"))
-    eq(errors, "product.source", prod.get("source"), "working copy")
+    eq(errors, "product.source", prod.get("source"), pp["source"])
     eq(errors, "product.closed", prod.get("closed"), pp["closed"])
 
     # items: the same rows, in the same order
@@ -566,7 +601,7 @@ def reference_data(root, summ):
         by_id[host].setdefault("ideo", []).append({"id": ident, "now": now})
     lang = "zh" if re.search(r"[\u4e00-\u9fff]", pp["statement"]) else "en"
     return {"lang": lang, "generated": "2026-11-14 12:00",
-            "product": {"name": name, "statement": pp["statement"], "goal": pp["goal"], "source": "working copy",
+            "product": {"name": name, "statement": pp["statement"], "goal": pp["goal"], "source": pp["source"],
                         "map": summ.get("map", []), "closed": pp["closed"]},
             "items": items, "sprints": sprints, "designs": designs}
 
@@ -600,9 +635,31 @@ ACME_SUMM = {
 }
 
 
-def build_fixture(name, workdir, branch=False):
+def build_fixture(name, workdir, branch=False, product_branches=()):
     dest = pathlib.Path(workdir) / name
     shutil.copytree(HERE / "fixtures" / name, dest)
+    if product_branches:
+        # main has no product log; each named branch holds it, committed one day after the one before
+        env = ["-c", "user.name=t", "-c", "user.email=t@example.com", "-c", "commit.gpgsign=false"]
+
+        def g(*a, day=None):
+            when = {} if day is None else {"GIT_COMMITTER_DATE": "2026-02-%02dT12:00:00 +0000" % day,
+                                          "GIT_AUTHOR_DATE": "2026-02-%02dT12:00:00 +0000" % day}
+            subprocess.run(["git", "-C", str(dest), *env, *a], capture_output=True, check=True, env={**os.environ, **when})
+        product = dest / PRODUCT_LOG
+        hold = pathlib.Path(workdir) / "hold-product"
+        shutil.move(str(product), str(hold))
+        g("init", "-q", "-b", "main")
+        g("add", "-A")
+        g("commit", "-q", "-m", "main", day=1)
+        for number, branch_name in enumerate(product_branches, start=2):
+            g("checkout", "-q", "-b", branch_name, "main")
+            shutil.copy(str(hold), str(product))
+            g("add", "-A")
+            g("commit", "-q", "-m", "product log on " + branch_name, day=number)
+            g("checkout", "-q", "main")
+            if product.exists():
+                product.unlink()
     if branch:
         env = ["-c", "user.name=t", "-c", "user.email=t@example.com", "-c", "commit.gpgsign=false"]
 
@@ -733,6 +790,7 @@ def selftest():
             ("closed mentioned in ongoing work", design_path, "Test: review closed cases", "design-gamma"),
             ("host log absent", "../sprint-09-closed/SprintBacklog.md", active, None),
             ("a note is not a host log", "../design-gamma/Notes.md", active, None),
+            ("host log archived under documents", "../documents/design-gamma.md", active, None),
         ]
         for label, target, now, host in scenarios:
             text = body.replace("For: " + design_path, "For: " + target, 1).replace(
@@ -748,21 +806,60 @@ def selftest():
         placement("only the For field sets the host", with_question, active, "sprint-01-alpha")
 
         # 只改现有宿主的 Now，保持 IDEO 在办且 For 不变，宿主卡本身必须仍可发现。
+        # 每个宿主有几种「整个宿主结束」的写法（应不再挂 IDEO）和几种「只是一个阶段结束」的写法（仍挂）。
+        # 带阶段名的 `Test: Concluded — awaiting archive` 是设计日志约定 19 要求的写法（Sprint 23 合流回验里没识别出来）。
         host_states = [
-            ("sprint-01-alpha", sprint_path, sprint_body, "Test: Sprint 01 has ended; awaiting Review archive.",
-             "Test: The Sprint's first test has ended; next test pending."),
-            ("design-gamma", design_path, body, "测试：设计已结束（待 Review 归档）", "测试：第一轮已结束，继续核对设计问题"),
+            ("sprint-01-alpha", sprint_path, sprint_body,
+             ("Test: Sprint 01 has ended; awaiting Review archive.", "Test: Concluded — awaiting archive",
+              "收官 · 2026-11-14，Sprint Goal 达成", "已收官 · 2026-11-21，PO 确认 Review 通过",
+              "Closed · 2026-11-14 — Sprint Goal met",
+              "Test: Concluded; awaiting Review archive", "测试：已结束（待 Review 归档）"),
+             ("Test: The Sprint's first test has ended; next test pending.", "收官前待 PO 确认",
+              "Increment: first work item done; Test next",
+              "Test: Concluded; archive this after PO review", "测试：已结束，归档旧原型")),
+            ("design-gamma", design_path, body,
+             ("测试：设计已结束（待 Review 归档）", "Test: Concluded — awaiting archive", "测试：已结束，待归档",
+              "Test: Concluded — awaiting archival", "测试：已结束（待 Review 归档）"),
+             ("测试：第一轮已结束，继续核对设计问题", "Prototype: Concluded; Test next",
+              "Prototype: concluded — PO picks the prototype next",
+              "Test: Concluded; archive this after PO review", "测试：已结束，归档旧原型")),
         ]
-        for host, target, text, closed_now, stage_now in host_states:
+        for host, target, text, closed_nows, stage_nows in host_states:
             host_file = (lo.parent / target).resolve()
             original = host_file.read_text(encoding="utf-8")
             prefix = "> Now: "
-            for host_now, want_host, state in ((closed_now, None, "ended but not archived"),
-                                              (stage_now, host, "one stage of work ended")):
+            for host_now, want_host, state in ([(n, None, "ended but not archived") for n in closed_nows]
+                                               + [(n, host, "one stage of work ended") for n in stage_nows]):
                 updated = original.replace(prefix + now_line(original), prefix + host_now, 1)
                 host_file.write_text(updated, encoding="utf-8")
-                placement(host + " " + state, text, active, want_host, reject_on=host)
+                placement("%s %s: %s" % (host, state, host_now), text, active, want_host, reject_on=host)
             host_file.write_text(original, encoding="utf-8")
+
+        # 单句判断（不经夹具）：每种明确的「待归档」写法、每种「只是提到归档」的写法各一例，两种宿主都试。
+        # 阶段名后的「已结束」只在同句明确写出在等归档时才算宿主结束（看板约定 16）。
+        for kind in ("sprints", "designs"):
+            for now, want in (
+                ("Test: Concluded — awaiting archive", True), ("Test: Concluded; awaiting Review archive", True),
+                ("Test: Concluded — awaiting archival", True), ("Test: Concluded, pending archival", True),
+                ("Test: Concluded; awaits archiving", True), ("测试：已结束，待归档", True),
+                ("测试：已结束（待 Review 归档）", True), ("测试：已结束，等待归档", True),
+                ("Test: Concluded; archive this after PO review", False), ("Test: Concluded; will archive later", False),
+                ("Test: Concluded; archived the old runs", False), ("Test: Concluded; no archiving needed", False),
+                ("测试：已结束，归档旧原型", False), ("测试：已结束；已归档的旧原型另放", False),
+                ("Prototype: Concluded; Test next", False),
+            ):
+                cases += 1
+                if host_concluded(now, kind) is not want:
+                    failures.append("host_concluded(%r, %r) should be %s" % (now, kind, want))
+
+        # 第三态：设计日志已迁出活动路径、只剩归档，不出活动卡（board-log 第 4 条：`scrum/documents/` 里的不读）。
+        archived = lo.parent.parent / "documents/design-archived"
+        archived.mkdir(parents=True, exist_ok=True)
+        shutil.copy(lo.parent.parent / "design-gamma/DesignBacklog.md", archived / "DesignBacklog.md")
+        cases += 1
+        if any("archived" in ident for _, ident in discover(ideo)):
+            failures.append("an archived design under scrum/documents/ is found as an open log")
+        shutil.rmtree(lo.parent.parent / "documents")
 
         # 两张同类卡可交换遍历顺序；保留正确挂载再向错误卡复制，不能只测移走原条目。
         lo.write_text(sprint_body, encoding="utf-8")
@@ -785,6 +882,37 @@ def selftest():
             d = copy.deepcopy(base)
             fn(d)
             check(label, d, project=project, want_ok=False, expect=expect)
+
+        # the product log in the working copy: its source is `working copy`, and a branch form is wrong (convention 4)
+        mutate("a branch source for a product log that is in the working copy",
+               lambda d: d["product"].update(source="branch main @ 1234567"), "product.source")
+
+        # the product log only on branches (conventions 4 and 11): `branch <name> @ <commit>`, the newest commit wins
+        pb_dir = pathlib.Path(tmp) / "productbranch"
+        pb_dir.mkdir()
+        pb = build_fixture("acme", pb_dir, product_branches=("product-old", "product-new"))
+
+        def tip(branch_name):
+            return subprocess.run(["git", "-C", str(pb), "rev-parse", branch_name], capture_output=True, text=True,
+                                  check=True).stdout.strip()
+
+        pbref = reference_data(pb, ACME_SUMM)
+        cases += 1
+        if (pb / PRODUCT_LOG).exists():
+            failures.append("product branch case: the working copy should not hold the product log")
+        want_source = "branch product-new @ " + tip("product-new")[:7]
+        if pbref["product"]["source"] != want_source:
+            failures.append("product branch case: expected the newest branch %r, reference wrote %r" % (
+                want_source, pbref["product"]["source"]))
+        check("product log only on a branch: the branch form passes", pbref, project=pb)
+        mutate("a product log only on a branch, but the source says working copy",
+               lambda d: d["product"].update(source="working copy"), "product.source", base=pbref, project=pb)
+        mutate("a product log on two branches, but the older one is named",
+               lambda d: d["product"].update(source="branch product-old @ " + tip("product-old")[:7]), "product.source",
+               base=pbref, project=pb)
+        mutate("a product log only on a branch, but the commit is not the branch's tip",
+               lambda d: d["product"].update(source="branch product-new @ 1234567"), "product.source",
+               base=pbref, project=pb)
 
         mutate("a character of the Product changed", lambda d: d["product"].update(statement=d["product"]["statement"] + "。"), "product.statement")
         mutate("the Product Goal changed", lambda d: d["product"].update(goal=d["product"]["goal"][1:]), "product.goal")
@@ -830,6 +958,8 @@ def selftest():
                lambda d: card_data(d, "design-choosing").update(solution={"title": "退回余额"}), "section 3.1")
         mutate("a storyboard invented for a design without one",
                lambda d: card_data(d, "design-feedback-sample").update(story=[{"title": "x", "text": "y"}]), "section 3.2")
+        mutate("a storyboard kept for a design with no chosen solution",
+               lambda d: card_data(d, "design-choosing").update(story=[{"title": "x", "text": "y"}]), "chosen solution")
         mutate("a design story with a frame without text",
                lambda d: card_data(d, "design-gamma")["story"].append({"title": "x", "text": ""}), "story")
         mutate("an IDEO log omitted", lambda d: card_data(d, "design-gamma").pop("ideo"), "missing this log")
