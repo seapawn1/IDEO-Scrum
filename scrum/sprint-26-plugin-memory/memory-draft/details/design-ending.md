@@ -10,7 +10,7 @@ Read this file when you end a design, decide what happens to its material, or ha
 ## Conclusions
 
 - Write the conclusions into the product log as `blank-page` says, and pass them to the Sprint that asked.
-- For a blank page, pick the target (`design-kernel/steps/2-3-pick-a-target.md`), split it into items, and let the Product Owner order them.
+- For a blank page, pick the target (`../design-kernel/steps/2-3-pick-a-target.md`), split it into items, and let the Product Owner order them.
 - Next to the ending decision, leave a line or two on what the design taught about how to work, as input to the Retrospective of the Sprint that archives it, not as the Retro record itself.
 
 ## The material

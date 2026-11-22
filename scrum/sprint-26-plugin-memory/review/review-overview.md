@@ -167,10 +167,10 @@
 
 **与它重复或相邻**：overview#5、sprint-log#18
 
-**新行**
+**新行**（长文件 `folders`）
 
 ```text
-- **working-material** Keep working material out of the log and link to it; key general material may go to project memory, Retro lessons only there.
+- **working-material** Keep working material out of the log; big files in scrum/documents/; Retro lessons: memory only. Read details/folders.md first.
 ```
 
 **备注**：The Retro half repeats what the retro line says; kept short here on purpose.
@@ -374,7 +374,7 @@
 **新行**
 
 ```text
-- **one-scrum-master** One Scrum Master session per project leads its other roles; a session above several projects only summarizes.
+- **one-scrum-master** One Scrum Master session per project leads its roles; one above projects only summarizes; facts stay in each project's logs.
 ```
 
 **备注**：The annotation says the basis reaches only Sprint 10's archive; the PO may want to confirm.
@@ -435,10 +435,10 @@
 
 **理由**：标签定义（无标签即作者做法、Supplement、Decide on the spot）压成一行留清单；但「覆盖约定时在日志里写下做了什么与为什么（冲刺日志 Increment notes 或设计日志相应章）」是行为要求，必须一起保留；「reference, not law」等背景句可删。
 
-**新行**
+**新行**（长文件 `names`）
 
 ```text
-- **rule-labels** No label: the author's practice; *Supplement*: inferred, unconfirmed; *Decide on the spot*: no fixed rule.
+- **rule-labels** No label: author's practice; *Supplement*: inferred, unconfirmed; *Decide on the spot*: no fixed rule. Read details/names.md first.
 ```
 
 **备注**：Dropped as background: reference, not law; the templates carry the flow; no tool mechanics.
@@ -461,10 +461,10 @@
 
 **理由**：标题保留、不加节、工作备注位置的具体要求在 sprint-backlog-template.md:7、ideo-backlog-template.md:7、design-log.md:76（第22条）；但「模板的章按流程、节只放产出、做法归约定」只在此条与作者私人记忆（S:/SeaPawn-Memory/.../template-structure.md），私人记忆不能作为删除依据，应留清单一行或先写进模板约定。
 
-**新行**
+**新行**（长文件 `names`）
 
 ```text
-- **templates-record-outputs** Keep every template heading and add none; sections hold only what each step produced.
+- **templates-record-outputs** A template section holds only what its step produced; keep every heading, add none. Read details/names.md first.
 ```
 
 **备注**：The optional explanation under a commitment table is covered by goal-fixed.

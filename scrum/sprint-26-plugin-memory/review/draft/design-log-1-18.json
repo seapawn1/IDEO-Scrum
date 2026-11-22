@@ -30,11 +30,11 @@
     "id": "design-log#3",
     "line": null,
     "lines": [
-      "- **design-roles** [po,sm,des] The PO and Scrum Master settle Empathize and Define; the Designer owns the design from Ideate on.",
-      "- **one-session-both-roles** [po,sm,des] The PO decides if one session plays Designer and Scrum Master; if so, write its name in both header fields."
+      "- **design-roles** [po,sm,des] The PO and Scrum Master settle Empathize and Define; the Designer takes over at Ideate. Read details/design.md first.",
+      "- **one-session-both-roles** [po,sm,des] A design often needs one session; the PO decides if it plays both roles; its name goes in both header fields."
     ],
     "section": "design",
-    "long_file": null,
+    "long_file": "design",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
@@ -55,7 +55,7 @@
   },
   {
     "id": "design-log#5",
-    "line": "- **design-folder** A design lives in scrum/design-<suffix>/ (a suffix saying what it is about, no number); its prototypes never go into an Increment.",
+    "line": "- **design-folder** A design lives in scrum/design-<suffix>/ (suffix: subject, no number); prototypes and working material never go into an Increment.",
     "lines": null,
     "section": "design",
     "long_file": null,
@@ -155,7 +155,7 @@
   },
   {
     "id": "design-log#13",
-    "line": "- **choose-with-po** [po,sm] The Scrum Master leads the choice and the PO decides, no consensus hunt; a role-card straw poll only if the PO asks.",
+    "line": "- **choose-with-po** [po,sm] The Scrum Master leads the choice, the PO decides, no consensus hunt; role-card poll if asked; only the choice in 3.1.",
     "lines": null,
     "section": "design",
     "long_file": null,

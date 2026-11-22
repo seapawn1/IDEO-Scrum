@@ -132,7 +132,7 @@
 **新行**
 
 ```text
-- **select-items** [po,sm] Check each item against the Sprint Goal: add what it lacks, drop what does not serve it, never pad.
+- **select-items** [po,sm] Copy items into 2.1 word for word; each serves the Sprint Goal: add a missing one to the product log first; never pad.
 ```
 
 **备注**：The five columns and word-for-word copy are in the sprint log template (lines 26-28). This is the line product-log#12 refers to.
@@ -245,8 +245,8 @@
 **新行**
 
 ```text
-- **increment-notes** [dev] Keep chapter 4 as the full record, so a new session can pick the Sprint up from the log alone.
-- **mark-done** [dev] Mark a finished work item by prefixing its Done when cell with ✓ <date>; an unmarked row is not done.
+- **increment-notes** [dev] Keep chapter 4 as the full record: a new session goes by the notes alone and does not work everything out again.
+- **mark-done** [dev] Mark a finished work item by prefixing its Done when cell with ✓ <date>, keeping the condition; an unmarked row is not done.
 ```
 
 **别处已有**：That the notes take any form and that chapter 4 may refine the How is in the sprint log template (line 50).
@@ -297,10 +297,10 @@
 
 **理由**：写长期文档前先给大纲，PO 强审时加入，有依据，留。与 #12 同一流程的两步，#12 是全文审阅。
 
-**新行**
+**新行**（长文件 `sprint`）
 
 ```text
-- **outline-first** For a new lasting document or template, first show the reviewer its outline (headings, one line each); write it once they agree.
+- **outline-first** Before a new lasting document or template, show the reviewer its outline; write it once they agree. Read details/sprint.md first.
 ```
 
 ---
@@ -320,10 +320,10 @@
 
 **理由**：全文给审阅人标注、改源文件须经批准、以磁盘版本为准，三件事都是规矩，留。问题与建议的格式可归模板。
 
-**新行**
+**新行**（长文件 `sprint`）
 
 ```text
-- **full-text-review** Give the reviewer the full text to annotate, with problems and advice; edit sources only after approval; the disk version wins.
+- **full-text-review** Give the reviewer the full text, word for word, to annotate; edit sources only after approval. Read details/sprint.md first.
 ```
 
 **备注**：'The problems and recommendations format' can live in a template; the three rules stay in the line.
@@ -523,7 +523,7 @@
 
 ```text
 - **one-closing-commit** Close with one commit after clearing old paths everywhere; then tag, merge, delete the branch. Read details/closing.md first.
-- **outward-needs-po** Push, release and other outward actions need the PO's consent; a stage permission never covers commit, merge or push.
+- **outward-needs-po** Push, release and other outward actions need the PO's consent; a stage permission alone does not cover commit, merge or push.
 ```
 
 **备注**：Long file: the six steps in order; the closing commit holds only what Review and Retro changed in the repository (no copying of outside memory, no Retro file made up to fill it); the tag's message says what the Sprint achieved; the project's health is judged by scrum/ alone, usually only the README needs updating.
@@ -573,7 +573,7 @@
 **新行**
 
 ```text
-- **new-work-registered** New work goes into the product log first; the PO decides whether it enters this Sprint; the Sprint Goal stays.
+- **new-work-registered** New work goes in the product log first; the PO decides if it joins the Sprint; the Sprint Goal stays, scope is renegotiable.
 ```
 
 ---

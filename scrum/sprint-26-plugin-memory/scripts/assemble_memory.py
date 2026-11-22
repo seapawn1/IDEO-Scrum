@@ -36,7 +36,7 @@ TITLES = {
 }
 HEADER = """# IDEO-Scrum Memory
 
-> The rules every role follows, one line each. A line marked `[dev,sm]` binds those roles; a line with no mark binds every role. A line that ends in `Read details/<file>.md first.` has its detail in that file: read it before you do what the line is about. These are working conventions: follow what fits, override what doesn't, and say why in the log's notes.
+> The rules every role follows, one line each. A line marked `[dev,sm]` binds those roles; a line with no mark binds every role. A line that ends in `Read details/<file>.md first.` has its detail in that file: read it before you do what the line is about. These are working conventions: follow what fits; when you override one, write what you did and why in the log's notes (a Sprint's Increment notes, or the chapter of the design log it concerns).
 """
 
 
@@ -121,7 +121,19 @@ FENCE = re.compile(r"(```mermaid\n)(.*?)(\n```)", re.S)
 
 def strip_mermaid_ticks(text: str) -> str:
     """Handles resolved into a diagram label carry no backticks (a label in backticks is a Markdown string in Mermaid)."""
-    return FENCE.sub(lambda m: m.group(1) + m.group(2).replace("`", "") + m.group(3), text)
+    return FENCE.sub(lambda m: m.group(1) + dedupe_labels(m.group(2).replace("`", "")) + m.group(3), text)
+
+
+def dedupe_labels(block: str) -> str:
+    """Several old rules of one box may live under one handle: name it once per box (the part after <br/>)."""
+    def fix(m: re.Match) -> str:
+        seen, out = set(), []
+        for part in m.group(2).split(", "):
+            if part not in seen:
+                seen.add(part)
+                out.append(part)
+        return m.group(1) + ", ".join(out)
+    return re.sub(r"(<br/>)([^\"<\n]*)", fix, block)
 
 
 def handle_refs_unknown(out: pathlib.Path) -> dict[str, list[str]]:

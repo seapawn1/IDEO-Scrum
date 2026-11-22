@@ -1,7 +1,7 @@
 [
   {
     "id": "product-log#1",
-    "line": "- **write-product-log** Write the product log from the template, usually the Scrum Master with the PO; for an old project, from README, issues, plans.",
+    "line": "- **write-product-log** Write the product log from the template; for an old project, from README, issues, plans, leaving history to version control.",
     "lines": null,
     "section": "product-log",
     "long_file": null,
@@ -37,7 +37,7 @@
   },
   {
     "id": "product-log#4",
-    "line": "- **product-log-header** Keep the product statement (1.1) and Product Goal (1.2) each in a one-row commitment table; no Now line.",
+    "line": "- **product-log-header** Product statement (1.1) and Product Goal (1.2): one-row commitment tables; no Now or Waiting for PO line (other logs only).",
     "lines": null,
     "section": "product-log",
     "long_file": null,
@@ -52,7 +52,7 @@
     "line": null,
     "lines": [
       "- **dod-in-product-log** Keep the full Definition of Done in 1.3; a Sprint picks where to focus checks, never which standards apply.",
-      "- **dod-standards** Write standards precisely; keep only what holds across the product, the rest goes in acceptance criteria."
+      "- **dod-standards** Write standards precisely; keep only what holds across the product; item-specific or tentative ones go in acceptance criteria."
     ],
     "section": "product-log",
     "long_file": null,
@@ -64,7 +64,7 @@
   },
   {
     "id": "product-log#6",
-    "line": "- **stakeholder-table** [sm] List stakeholders in 2.1, one row each; a Stakeholder subagent gets one row; if empty, ask the PO.",
+    "line": "- **stakeholder-table** List stakeholders in 2.1 in a short table; a Stakeholder subagent gets one row, the AI fills in details; if empty, ask the PO.",
     "lines": null,
     "section": "product-log",
     "long_file": null,
@@ -76,7 +76,7 @@
   },
   {
     "id": "product-log#7",
-    "line": "- **architecture-map** Start 2.2 with one Mermaid flowchart TD map: actors on top, the ending at the bottom, five to fifteen steps.",
+    "line": "- **architecture-map** Open 2.2 with a Mermaid flowchart TD map: actors (AI too) on top, ending at the bottom, 5-15 steps; subsections only if needed.",
     "lines": null,
     "section": "product-log",
     "long_file": null,
@@ -136,10 +136,10 @@
   },
   {
     "id": "product-log#12",
-    "line": "- **items-with-sm** [sm,po] The PO decides the items with the Scrum Master; the Scrum Master and Developer say when it is too much.",
+    "line": "- **items-with-sm** The PO decides items with the Scrum Master; Scrum Master and Developer flag too much or little. Read details/product-log.md first.",
     "lines": null,
     "section": "product-log",
-    "long_file": null,
+    "long_file": "product-log",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
@@ -160,7 +160,7 @@
   },
   {
     "id": "product-log#14",
-    "line": "- **refine-in-sprint** In the product log only add detail; finish refinement in the sprint log's 2.2.",
+    "line": "- **refine-in-sprint** In the product log only add detail (it has no refinement section); finish refinement in the sprint log's 2.2.",
     "lines": null,
     "section": "product-log",
     "long_file": null,
@@ -184,7 +184,7 @@
   },
   {
     "id": "product-log#16",
-    "line": "- **where-refined-content** Split-off items are new rows; long design content goes in 2.2, notes in Notes, big files in scrum/documents/.",
+    "line": "- **where-refined-content** Splits become rows; long design in 2.2 (Place links it); notes in Notes; big files in scrum/documents/, linked in Notes.",
     "lines": null,
     "section": "product-log",
     "long_file": null,
@@ -196,10 +196,10 @@
   },
   {
     "id": "product-log#17",
-    "line": "- **fresh-at-review** At each Review move done items to 3.2, send unfinished ones back to 3.1, delete outdated text; keep no revision record.",
+    "line": "- **fresh-at-review** At each Review move done items to 3.2 with source, unfinished to 3.1; delete outdated text. Read details/closing.md first.",
     "lines": null,
     "section": "product-log",
-    "long_file": null,
+    "long_file": "closing",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],

@@ -1,6 +1,6 @@
 # Closing a Sprint
 
-Read this file when you close a Sprint: the Review, the Retrospective and the closing commit. The list lines that point here are `review-at-close`, `retro-in-memory` and `one-closing-commit`. The text is the old rules word for word, cut into bullets; the old pointers to convention numbers became handles.
+Read this file when you close a Sprint: the Review, the Retrospective and the closing commit. The list lines that point here are `review-at-close`, `fresh-at-review`, `retro-in-memory` and `one-closing-commit`. The text is the old rules word for word, cut into bullets; the old pointers to convention numbers became handles.
 
 ## Review (`review-at-close`)
 
@@ -12,6 +12,13 @@ Read this file when you close a Sprint: the Review, the Retrospective and the cl
 - Archive ended IDEO logs as `ideo-<suffix>.md`, handling their prototypes as `ideo-log-ends` says.
 - Clean up ordinary working files in `scrum/`, including outdated ones in `scrum/documents/`; check that this does not remove design originals or break links to them, even when the receiving Sprint closes.
 - Write the Stakeholders’ views and any changes to the product log or Product Goal into the product log and refresh it (`fresh-at-review`). For an outside view, the Product Owner or the Scrum Master — never the builder — summons Stakeholders from the product log’s table.
+
+## Fresh at every Review (`fresh-at-review`)
+
+- At every Review, move done items to section 3.2 of the product log, one line each, with the source, usually the archived sprint log in `scrum/documents/`; send unfinished items back to section 3.1.
+- Delete outdated architecture text and resolved open points; what counts as outdated is set out in *Review* above.
+- Keep no revision record; version control keeps the history.
+- Fresh means more than the items: the Review keeps the rest of `scrum/` fresh too (*Review* above).
 
 ## Retrospective (`retro-in-memory`)
 

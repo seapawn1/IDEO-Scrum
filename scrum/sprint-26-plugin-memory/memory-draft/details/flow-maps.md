@@ -71,7 +71,7 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    A["Opening<br/>question-needs-design, open-a-design, hard-point-only, design-roles, one-session-both-roles, design-branch, design-folder"] -- "PO authorizes Empathize" --> B["Empathize<br/>design-stages, design-stages"]
+    A["Opening<br/>question-needs-design, open-a-design, hard-point-only, design-roles, one-session-both-roles, design-branch, design-folder"] -- "PO authorizes Empathize" --> B["Empathize<br/>design-stages"]
     B -- "PO authorizes Define" --> C["Define<br/>design-stages"]
     C -- "PO settles how to diverge and authorizes Ideate" --> D["Ideate: diverge<br/>design-stages, diverge-first"]
     D --> E["Ideate: converge<br/>design-stages, talk-with-po, choose-with-po, combine-or-rumble, storyboard"]
@@ -100,10 +100,10 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    L["The logs<br/>product log, open Sprint, design, and IDEO logs"] --> R["Read<br/>board-rules, board-rules, board-rules"]
-    R --> D["Write the data<br/>board-rules, board-rules, board-rules, board-rules"]
+    L["The logs<br/>product log, open Sprint, design, and IDEO logs"] --> R["Read<br/>board-rules"]
+    R --> D["Write the data<br/>board-rules"]
     D --> G["Put it in the template<br/>board-rules"]
-    G --> B["scrum/ScrumBoard.html<br/>one-board, board-owns-nothing, board-writer, board-rules, board-rules, board-rules, board-rules"]
+    G --> B["scrum/ScrumBoard.html<br/>one-board, board-owns-nothing, board-writer, board-rules"]
     B -. "delete it, write it again" .-> L
     SU["Supporter"] -. "writes the board" .-> R
 ```

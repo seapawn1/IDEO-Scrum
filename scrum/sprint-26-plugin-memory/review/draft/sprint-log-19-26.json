@@ -4,7 +4,7 @@
     "line": null,
     "lines": [
       "- **one-closing-commit** Close with one commit after clearing old paths everywhere; then tag, merge, delete the branch. Read details/closing.md first.",
-      "- **outward-needs-po** Push, release and other outward actions need the PO's consent; a stage permission never covers commit, merge or push."
+      "- **outward-needs-po** Push, release and other outward actions need the PO's consent; a stage permission alone does not cover commit, merge or push."
     ],
     "section": "sprint",
     "long_file": "closing",
@@ -28,7 +28,7 @@
   },
   {
     "id": "sprint-log#21",
-    "line": "- **new-work-registered** New work goes into the product log first; the PO decides whether it enters this Sprint; the Sprint Goal stays.",
+    "line": "- **new-work-registered** New work goes in the product log first; the PO decides if it joins the Sprint; the Sprint Goal stays, scope is renegotiable.",
     "lines": null,
     "section": "sprint",
     "long_file": null,

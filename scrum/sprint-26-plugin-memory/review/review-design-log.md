@@ -75,11 +75,11 @@
 
 **理由**：清单保留一行：共情与定义由 PO 与 Scrum Master 当面定，Designer 从 Ideate 接手，是否另设 Scrum Master 会话由 PO 定。同一会话兼两角色时在表头两栏写同一名字的写法仍缺，要补进 design-backlog-template.md 第 3 行；Designer 负责、SM 记录的分工见 commands/designer.md:15 与 commands/scrum-master.md:52、57。
 
-**新行**
+**新行**（长文件 `design`）
 
 ```text
-- **design-roles** [po,sm,des] The PO and Scrum Master settle Empathize and Define; the Designer owns the design from Ideate on.
-- **one-session-both-roles** [po,sm,des] The PO decides if one session plays Designer and Scrum Master; if so, write its name in both header fields.
+- **design-roles** [po,sm,des] The PO and Scrum Master settle Empathize and Define; the Designer takes over at Ideate. Read details/design.md first.
+- **one-session-both-roles** [po,sm,des] A design often needs one session; the PO decides if it plays both roles; its name goes in both header fields.
 ```
 
 **备注**：The old rule also pointed at the list of what the PO decides (design-log#21); that list is the stage-gates and design-stage lines. The loss lens found the 'same name in both fields' sentence only here, so it stays in a line.
@@ -129,7 +129,7 @@
 **新行**
 
 ```text
-- **design-folder** A design lives in scrum/design-<suffix>/ (a suffix saying what it is about, no number); its prototypes never go into an Increment.
+- **design-folder** A design lives in scrum/design-<suffix>/ (suffix: subject, no number); prototypes and working material never go into an Increment.
 ```
 
 ---
@@ -316,7 +316,7 @@
 **新行**
 
 ```text
-- **choose-with-po** [po,sm] The Scrum Master leads the choice and the PO decides, no consensus hunt; a role-card straw poll only if the PO asks.
+- **choose-with-po** [po,sm] The Scrum Master leads the choice, the PO decides, no consensus hunt; role-card poll if asked; only the choice in 3.1.
 ```
 
 **备注**：Only the chosen solution goes into 3.1 (the template has it).

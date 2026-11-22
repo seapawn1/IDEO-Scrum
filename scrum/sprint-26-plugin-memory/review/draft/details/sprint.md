@@ -3,7 +3,7 @@
 > Source: quotations from The Scrum Guide 2020 (Ken Schwaber & Jeff Sutherland), marked where they appear.
 > License: the quotations are CC BY-SA 4.0 (© 2020 Ken Schwaber and Jeff Sutherland).
 
-The detail behind the Sprint lines that point here: opening, the How, the go-ahead, checkpoints, and the Test. Read it when you plan, build or test a Sprint. The list lines that point here are `sprint-folder`, `how-is-a-plan`, `go-ahead`, `checkpoints`, `reviewer-required` and `record-the-tests`. The text is the old rules word for word, cut into bullets; the old pointers to convention numbers became handles.
+The detail behind the Sprint lines that point here: opening, the How, the go-ahead, checkpoints, and the Test. Read it when you plan, build or test a Sprint. The list lines that point here are `sprint-folder`, `how-is-a-plan`, `go-ahead`, `checkpoints`, `outline-first`, `full-text-review`, `reviewer-required` and `record-the-tests`. The text is the old rules word for word, cut into bullets; the old pointers to convention numbers became handles.
 
 ## Opening a Sprint (`sprint-folder`)
 
@@ -37,6 +37,13 @@ The detail behind the Sprint lines that point here: opening, the How, the go-ahe
 - In section 2.2, set the method and pass lines: what needs fresh evidence, what earlier evidence is expected to still hold, and which outcome signals must be shown in this Test.
 - Commit the method and pass lines before running the Test; do not change them after seeing results.
 - Check a script’s wrong calls one by one and write down why.
+
+## Outline first, then the full text (`outline-first`, `full-text-review`)
+
+- Before writing a new lasting document or a new template, show its outline to whoever reviews it: the headings at every level, each with one line on what its part will hold. For a new template, the outline is its chapter list.
+- Write the full text once the reviewer agrees.
+- Put a new lasting document's full text — word for word, not an outline — where the reviewer can annotate it, with the problems you found and a recommendation for each; change the source files only after approval.
+- The version on disk wins: read before you overwrite.
 
 ## A reviewer is required (`reviewer-required`)
 

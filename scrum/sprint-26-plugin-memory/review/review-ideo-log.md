@@ -82,7 +82,7 @@
 **新行**
 
 ```text
-- **open-ideo-log** One or two methods write into the log they serve; a longer run gets scrum/ideo-<suffix>/IdeoBacklog.md, five chapters, no PO gate.
+- **open-ideo-log** 1-2 methods in one session: note them in the log served (Increment notes, Notes); more: an IDEO log, five chapters, no PO gate.
 - **read-mode-file** Read a mode's or method's file in the ideo-kernel before using it; a chapter holds what its mode produced.
 ```
 
@@ -112,7 +112,7 @@
 **新行**（长文件 `ideo-ending`）
 
 ```text
-- **ideo-log-home** An IDEO log lives in scrum/ideo-<suffix>/ with its prototypes; it has no commitment, its For cell names the log it serves.
+- **ideo-log-home** An IDEO log, its prototypes and working material live in scrum/ideo-<suffix>/; no commitment. Read details/ideo-ending.md first.
 - **ideo-log-ends** Conclusions flow back to the log that asked and the PO decides; archive at the next Review. Read details/ideo-ending.md first.
 ```
 

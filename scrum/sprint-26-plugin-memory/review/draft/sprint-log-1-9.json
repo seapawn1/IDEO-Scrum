@@ -52,7 +52,7 @@
   },
   {
     "id": "sprint-log#5",
-    "line": "- **select-items** [po,sm] Check each item against the Sprint Goal: add what it lacks, drop what does not serve it, never pad.",
+    "line": "- **select-items** [po,sm] Copy items into 2.1 word for word; each serves the Sprint Goal: add a missing one to the product log first; never pad.",
     "lines": null,
     "section": "sprint",
     "long_file": null,
@@ -108,8 +108,8 @@
     "id": "sprint-log#9",
     "line": null,
     "lines": [
-      "- **increment-notes** [dev] Keep chapter 4 as the full record, so a new session can pick the Sprint up from the log alone.",
-      "- **mark-done** [dev] Mark a finished work item by prefixing its Done when cell with ✓ <date>; an unmarked row is not done."
+      "- **increment-notes** [dev] Keep chapter 4 as the full record: a new session goes by the notes alone and does not work everything out again.",
+      "- **mark-done** [dev] Mark a finished work item by prefixing its Done when cell with ✓ <date>, keeping the condition; an unmarked row is not done."
     ],
     "section": "sprint",
     "long_file": null,

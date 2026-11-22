@@ -28,7 +28,7 @@
 **新行**
 
 ```text
-- **write-product-log** Write the product log from the template, usually the Scrum Master with the PO; for an old project, from README, issues, plans.
+- **write-product-log** Write the product log from the template; for an old project, from README, issues, plans, leaving history to version control.
 ```
 
 **备注**：The sentence 'what cannot be written yet follows the blank-page rule' is the blank-page line. overview#1 keeps the one-product-log rule.
@@ -116,7 +116,7 @@
 **新行**
 
 ```text
-- **product-log-header** Keep the product statement (1.1) and Product Goal (1.2) each in a one-row commitment table; no Now line.
+- **product-log-header** Product statement (1.1) and Product Goal (1.2): one-row commitment tables; no Now or Waiting for PO line (other logs only).
 ```
 
 **备注**：The optional vision line is dropped from the list (the template has it).
@@ -143,7 +143,7 @@
 
 ```text
 - **dod-in-product-log** Keep the full Definition of Done in 1.3; a Sprint picks where to focus checks, never which standards apply.
-- **dod-standards** Write standards precisely; keep only what holds across the product, the rest goes in acceptance criteria.
+- **dod-standards** Write standards precisely; keep only what holds across the product; item-specific or tentative ones go in acceptance criteria.
 ```
 
 **别处已有**：The two definitions (Outcome Done, Output Done) are in plugins/ideo-scrum/skills/scrum-kernel/references/scrum-artifact-increment.md.
@@ -168,7 +168,7 @@
 **新行**
 
 ```text
-- **stakeholder-table** [sm] List stakeholders in 2.1, one row each; a Stakeholder subagent gets one row; if empty, ask the PO.
+- **stakeholder-table** List stakeholders in 2.1 in a short table; a Stakeholder subagent gets one row, the AI fills in details; if empty, ask the PO.
 ```
 
 ---
@@ -191,7 +191,7 @@
 **新行**
 
 ```text
-- **architecture-map** Start 2.2 with one Mermaid flowchart TD map: actors on top, the ending at the bottom, five to fifteen steps.
+- **architecture-map** Open 2.2 with a Mermaid flowchart TD map: actors (AI too) on top, ending at the bottom, 5-15 steps; subsections only if needed.
 ```
 
 **备注**：The verifier found that steps/2-1 draws actors on the left and the ending on the right, so this line cannot just point there. 'Add a subsection only for a step that needs more words' is dropped as detail.
@@ -320,10 +320,10 @@
 
 **理由**：这是对官方指南的偏离（条文自标 Departs from the Scrum Guide，偏离表里已有对应行），PO 与 Master 一起定条目是我方选择，需要留在 Memory 里。
 
-**新行**
+**新行**（长文件 `product-log`）
 
 ```text
-- **items-with-sm** [sm,po] The PO decides the items with the Scrum Master; the Scrum Master and Developer say when it is too much.
+- **items-with-sm** The PO decides items with the Scrum Master; Scrum Master and Developer flag too much or little. Read details/product-log.md first.
 ```
 
 **备注**：A departure from the Scrum Guide (the Developers select the items); the departure is in the departures long file. The check when the rows are written is the sprint line select-items.
@@ -371,7 +371,7 @@
 **新行**
 
 ```text
-- **refine-in-sprint** In the product log only add detail; finish refinement in the sprint log's 2.2.
+- **refine-in-sprint** In the product log only add detail (it has no refinement section); finish refinement in the sprint log's 2.2.
 ```
 
 **备注**：Low confidence in the annotation: part of the original is signposting.
@@ -421,7 +421,7 @@
 **新行**
 
 ```text
-- **where-refined-content** Split-off items are new rows; long design content goes in 2.2, notes in Notes, big files in scrum/documents/.
+- **where-refined-content** Splits become rows; long design in 2.2 (Place links it); notes in Notes; big files in scrum/documents/, linked in Notes.
 ```
 
 ---
@@ -442,10 +442,10 @@
 
 **理由**：每次 Review 把完成的条目移到 3.2、未完成的退回 3.1，是收官动作，Sprint 14 收官时定下；留一行。
 
-**新行**
+**新行**（长文件 `closing`）
 
 ```text
-- **fresh-at-review** At each Review move done items to 3.2, send unfinished ones back to 3.1, delete outdated text; keep no revision record.
+- **fresh-at-review** At each Review move done items to 3.2 with source, unfinished to 3.1; delete outdated text. Read details/closing.md first.
 ```
 
 **备注**：'Fresh means more than the items: the Review keeps the rest of scrum/ fresh too' goes with the Review rule in the sprint-closing long file.

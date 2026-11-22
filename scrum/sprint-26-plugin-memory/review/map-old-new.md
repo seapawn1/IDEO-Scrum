@@ -11,7 +11,7 @@
 | overview#3 | 改 | `three-layers`（长文件 `folders`） |
 | overview#4 | 留 | `scrum-folders`（长文件 `folders`） |
 | overview#5 | 改 | `where-files-go`（长文件 `folders`） |
-| overview#6 | 改 | `working-material` |
+| overview#6 | 改 | `working-material`（长文件 `folders`） |
 | overview#7 | 改 | `names`、`fresh-subagent`（长文件 `names`） |
 | overview#8 | 改 | `role-entry`（长文件 `roles`） |
 | overview#9 | 留 | `only-po-human` |
@@ -20,8 +20,8 @@
 | overview#12 | 留 | `stage-gates`（长文件 `gates`） |
 | overview#13 | 留 | `one-scrum-master` |
 | overview#14 | 改 | `who-gets-which-work`、`answers-back`、`po-word-relayed`、`relay-limits`（长文件 `roles`） |
-| overview#15 | 改 | `rule-labels` |
-| overview#16 | 改 | `templates-record-outputs` |
+| overview#15 | 改 | `rule-labels`（长文件 `names`） |
+| overview#16 | 改 | `templates-record-outputs`（长文件 `names`） |
 | overview#17 | 改 | `goal-fixed`、`po-owns-commitments`、`commitment-table`（长文件 `goal-fixed`） |
 | product-log#1 | 留 | `write-product-log` |
 | product-log#2 | 留 | `blank-page`（长文件 `product-log`） |
@@ -34,12 +34,12 @@
 | product-log#9 | 留 | `no-technical-design` |
 | product-log#10 | 留 | `item-columns`（长文件 `product-log`） |
 | product-log#11 | 留 | `numbers-not-ranks` |
-| product-log#12 | 留 | `items-with-sm` |
+| product-log#12 | 留 | `items-with-sm`（长文件 `product-log`） |
 | product-log#13 | 留 | `status-lives-here` |
 | product-log#14 | 留 | `refine-in-sprint` |
 | product-log#15 | 改 | `acceptance-written-once` |
 | product-log#16 | 留 | `where-refined-content` |
-| product-log#17 | 留 | `fresh-at-review` |
+| product-log#17 | 留 | `fresh-at-review`（长文件 `closing`） |
 | product-log#18 | 留 | `product-log-changes` |
 | sprint-log#1 | 留 | `sprint-folder`（长文件 `sprint`） |
 | sprint-log#2 | 改 | `no-end-date` |
@@ -51,8 +51,8 @@
 | sprint-log#8 | 留 | `go-ahead`、`review-handover`（长文件 `sprint`） |
 | sprint-log#9 | 改 | `increment-notes`、`mark-done` |
 | sprint-log#10 | 改 | `checkpoints`（长文件 `sprint`） |
-| sprint-log#11 | 留 | `outline-first` |
-| sprint-log#12 | 留 | `full-text-review` |
+| sprint-log#11 | 留 | `outline-first`（长文件 `sprint`） |
+| sprint-log#12 | 留 | `full-text-review`（长文件 `sprint`） |
 | sprint-log#13 | 改 | `tests-criteria-first`、`check-script-misses` |
 | sprint-log#14 | 改 | `reviewer-required`（长文件 `sprint`） |
 | sprint-log#15 | 改 | `acceptance-when-written` |
@@ -69,7 +69,7 @@
 | sprint-log#26 | 改 | `developer-elsewhere`（长文件 `handoff`） |
 | design-log#1 | 改 | `question-needs-design`、`open-a-design` |
 | design-log#2 | 留 | `hard-point-only` |
-| design-log#3 | 改 | `design-roles`、`one-session-both-roles` |
+| design-log#3 | 改 | `design-roles`、`one-session-both-roles`（长文件 `design`） |
 | design-log#4 | 改 | `design-branch` |
 | design-log#5 | 改 | `design-folder` |
 | design-log#6 | 改 | `design-stages`（长文件 `design`） |

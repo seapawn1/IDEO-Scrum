@@ -1,6 +1,6 @@
 # Layers and folders
 
-How a project's Scrum work is laid out: what sits beside a Sprint, the three layers, and where files go. Read this file when you set up a project, open a design, or decide where a file belongs. The list lines that point here are `designs-beside-sprints`, `three-layers`, `scrum-folders` and `where-files-go`.
+How a project's Scrum work is laid out: what sits beside a Sprint, the three layers, and where files go. Read this file when you set up a project, open a design, or decide where a file belongs. The list lines that point here are `designs-beside-sprints`, `three-layers`, `scrum-folders`, `where-files-go` and `working-material`.
 
 ## Sprints and designs side by side (`designs-beside-sprints`)
 
@@ -46,6 +46,12 @@ The active folders may still hold work that ended and is awaiting Review; read t
 - Files serving the whole Scrum also go into `scrum/documents/`, and the logs reference them.
 - A project can use its existing archive subfolders.
 - The project’s own documentation, such as a user manual or API notes, stays where the project keeps it, such as `docs/` at the root.
+
+## Working material (`working-material`)
+
+- Keep working material out of the log itself; link to the retained design originals (`where-files-go`).
+- Key material of general use can go into the project’s memory or instructions, and a large important file goes into `scrum/documents/`.
+- Retro lessons go only where `retro-in-memory` says — the project’s memory, else the repository notes the project keeps for lessons — never in instructions.
 
 ## Open points for the Product Owner
 
