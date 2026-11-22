@@ -13,7 +13,7 @@ Groups: roles (C, 5 entries x 3), sub (C, the subagent probe), model (C, the mod
 Raw output goes to --out, outside the repository. Sessions are claude-magpie stream-json sessions with a throwaway home and a
 whitelist environment (the helpers of scripts/stranger_test/driver.py); evidence is read from the event stream, never from what
 the model says about itself. Memory rule (PO 2026-11-23): no start line and no one-at-a-time requirement; the one thing kept is
-a watchdog that stops the running sessions when free memory falls under 2,000 MB (a session it stops is a technical failure,
+a watchdog that stops the running sessions when free memory falls under --watchdog-mb (a session it stops is a technical failure,
 rerun once); nothing here changes an environment variable to dodge the system's memory reaping or detaches a process.
 """
 from __future__ import annotations
@@ -52,7 +52,7 @@ TOOLS_AGENT = ct.TOOLS
 LIMITS = ct.LIMITS
 MODEL = ct.MODEL
 DRAFT_MIN = 300  # characters: the first assistant text this long after the prompt is the first draft
-WATCHDOG_MB = 2000
+WATCHDOG_MB = 1200  # the default of --watchdog-mb; 2,000 MB (the carrier test's line) stopped every run once another session was testing DSH
 
 ENTRY_ORDER = {
     "developer": ["ideo-kernel", "scrum-kernel", "sprint-kernel", "memory"],
@@ -537,21 +537,21 @@ def run_trial(out: pathlib.Path, trial: dict, attempt: int = 1) -> dict:
     return res
 
 
-def watchdog_loop(stop: threading.Event) -> None:
+def watchdog_loop(stop: threading.Event, threshold_mb: int) -> None:
     low = 0
     while not stop.wait(5.0):
         try:
             f = ct.free_mb()
         except Exception:
             continue
-        low = low + 1 if f < WATCHDOG_MB else 0
+        low = low + 1 if f < threshold_mb else 0
         if low >= 2 and not WATCHDOG["tripped"]:
             WATCHDOG.update(tripped=True, free_mb=f)
             with ACTIVE_LOCK:
                 WATCHDOG["tags"] = list(ACTIVE)
                 for s in list(ACTIVE.values()):
                     driver.kill_tree(s.proc)
-            print(f"[watchdog] free {f} MB under {WATCHDOG_MB} MB twice: the running sessions were stopped: {WATCHDOG['tags']}", flush=True)
+            print(f"[watchdog] free {f} MB under {threshold_mb} MB twice: the running sessions were stopped: {WATCHDOG['tags']}", flush=True)
 
 
 def attempts_of(out: pathlib.Path, tag: str) -> int:
@@ -597,7 +597,7 @@ def cmd_run(a) -> int:
     deadline = time.time() + a.max_seconds if a.max_seconds else None
     left: list[str] = []
     stop = threading.Event()
-    threading.Thread(target=watchdog_loop, args=(stop,), daemon=True).start()
+    threading.Thread(target=watchdog_loop, args=(stop, a.watchdog_mb), daemon=True).start()
 
     def one(t):
         if deadline and time.time() > deadline:
@@ -776,6 +776,7 @@ def main(argv: list[str]) -> int:
     r.add_argument("--parallel", type=int, default=2)
     r.add_argument("--max-seconds", type=int, default=0)
     r.add_argument("--soft-free-mb", type=int, default=2765, help="below this the run drops to one session at a time (politeness, not a start condition); 0 = off")
+    r.add_argument("--watchdog-mb", type=int, default=WATCHDOG_MB, help="stop the running sessions when free memory is under this twice in a row")
     r.add_argument("--skip-done", action="store_true")
     r.add_argument("--retry-limit", type=int, default=1, help="how many times a stopped trial may be run again")
     r.add_argument("--only", default="")

@@ -57,3 +57,8 @@ B 臂的清单取 `432807e` 里三份 `SKILL.md` 的「Before drafting」段落�
 
 - 清单内容好不好、守不守规矩：那是行 15 冻结的探针（Outcome），这里只验**带上**和**读全**。
 - 清单字符数：`check_drafts.py` 与 `assemble_memory.py` 已管（≤16,000）。
+
+## 运行中的记录（2026-11-23；不属于过线、样本量、判卷方式，所以不算改标准）
+
+- **看门狗的线**：起初沿用载体测试的 2,000 MB。冒烟之后第一批两个会话在 1,899 MB 被它停掉（Supporter 同时在本机测 DSH，机器空闲内存本来就在 2.5 GB 上下）。这条线在这种状态下会停掉每一次运行，所以改成 1,200 MB（`--watchdog-mb`，默认 1200），并发 2、空闲不到 2.7 GiB 自动降到 1；被停的两个按规矩重跑一次，都跑成了。PO 的话是「直接跑，问题不大」，这条线只防真正的耗尽。
+- **V2 第一轮 0/3 之后改了入口里那一句，开第二轮**：第一轮（入口原句：「Subagents you dispatch load the ideo-kernel, scrum-kernel and memory skills too.」）3 个会话，子代理都没加载 memory，主会话照用户那句「不带规矩、不带背景」原样转交任务；事件流与证据留在 `round1-old-sentence/`（仓外）。照冻结的规矩改写，五个入口里同一句改成「A subagent you dispatch does not get these skills from you: begin its task with a line telling it to load the ideo-kernel, scrum-kernel and memory skills first, even when the task is small or was given to you word for word.」（不写 `ideo-scrum:` 前缀，两个宿主都读得通），第二轮再测 3 个会话，仍只报。**改后的插件树成了 C 臂**：V1、V3、V4、V5 都在改后的树上跑；改前冒烟的那一个 V1 会话一并留在 `round1-old-sentence/`，不计入。

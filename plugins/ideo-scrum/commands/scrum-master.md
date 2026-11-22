@@ -6,7 +6,7 @@ description: "Use when working as the Scrum Master — facilitating Sprint Plann
 
 **DeepSeek Harness (DSH):** Follow the DSH host adapter's preloads and routing instead of the Claude Code sequence.
 
-Subagents you dispatch load the ideo-kernel, scrum-kernel and memory skills too.
+A subagent you dispatch does not get these skills from you: begin its task with a line telling it to load the ideo-kernel, scrum-kernel and memory skills first, even when the task is small or was given to you word for word.
 
 **Memory**: how the product log, Sprints, and designs fit together, and who does what, is in the memory skill, loaded last above: one list of rules, a line each, with a details file behind the longer ones.
 
