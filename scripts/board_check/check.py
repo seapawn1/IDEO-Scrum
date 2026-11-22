@@ -172,7 +172,13 @@ def ideo_host(text, log_path):
 MODE_PREFIX = re.compile(r"^(?:Empathize|Define|Ideate|Prototype|Test|共情|定义|构思|原型|测试)\s*[:：·]\s*", re.I)
 ENDED_EN = r"(?:concluded|closed|ended)"
 ENDED_ZH = r"已(?:收尾|结束|关闭)"
-ARCHIVE_CUE = re.compile(r"archiv|归档", re.I)
+# 「待归档」只认明确的等待说法（看板约定 16：同句写明日志在等归档）：awaiting／awaits／pending 紧挨着 archive、archival、
+# archiving（中间可夹 Review 或 PO 一个词），或「待」「等待」紧挨着「归档」（中间可夹 Review）。只是提到归档
+# （`archive this after PO review`、「归档旧原型」）不算。
+AWAITS_ARCHIVE = re.compile(
+    r"\b(?:awaiting|awaits?|pending)\s+(?:(?:Review|PO)\s+)?archiv(?:e|al|ing)\b|(?:待|等待)\s*(?:Review\s*)?归档",
+    re.I,
+)
 
 
 def matches_end_state(state, english, chinese):
@@ -204,8 +210,9 @@ def host_concluded(now, kind):
         chinese_state = ENDED_ZH
     state = MODE_PREFIX.sub("", now, count=1)
     # 没有主语的「已结束」「Concluded」写在 Now 开头，就是宿主结束。前面带着阶段名时（设计日志约定 19 的
-    # `Test: Concluded — awaiting archive`），要同句写明待归档才算：「Prototype: concluded; Test next」只是一个阶段完了。
-    if (state == now or ARCHIVE_CUE.search(state)) and matches_end_state(
+    # `Test: Concluded — awaiting archive`），要同句明确写出在等归档才算：「Prototype: concluded; Test next」只是一个阶段完了，
+    # 「Test: Concluded; archive this after PO review」只是提到归档，都不算。
+    if (state == now or AWAITS_ARCHIVE.search(state)) and matches_end_state(
             state, ENDED_EN, rf"(?:(?:本期|本次|本轮)\s*)?{chinese_state}"):
         return True
     return matches_end_state(
@@ -805,13 +812,17 @@ def selftest():
             ("sprint-01-alpha", sprint_path, sprint_body,
              ("Test: Sprint 01 has ended; awaiting Review archive.", "Test: Concluded — awaiting archive",
               "收官 · 2026-11-14，Sprint Goal 达成", "已收官 · 2026-11-21，PO 确认 Review 通过",
-              "Closed · 2026-11-14 — Sprint Goal met"),
+              "Closed · 2026-11-14 — Sprint Goal met",
+              "Test: Concluded; awaiting Review archive", "测试：已结束（待 Review 归档）"),
              ("Test: The Sprint's first test has ended; next test pending.", "收官前待 PO 确认",
-              "Increment: first work item done; Test next")),
+              "Increment: first work item done; Test next",
+              "Test: Concluded; archive this after PO review", "测试：已结束，归档旧原型")),
             ("design-gamma", design_path, body,
-             ("测试：设计已结束（待 Review 归档）", "Test: Concluded — awaiting archive", "测试：已结束，待归档"),
+             ("测试：设计已结束（待 Review 归档）", "Test: Concluded — awaiting archive", "测试：已结束，待归档",
+              "Test: Concluded — awaiting archival", "测试：已结束（待 Review 归档）"),
              ("测试：第一轮已结束，继续核对设计问题", "Prototype: Concluded; Test next",
-              "Prototype: concluded — PO picks the prototype next")),
+              "Prototype: concluded — PO picks the prototype next",
+              "Test: Concluded; archive this after PO review", "测试：已结束，归档旧原型")),
         ]
         for host, target, text, closed_nows, stage_nows in host_states:
             host_file = (lo.parent / target).resolve()
@@ -823,6 +834,23 @@ def selftest():
                 host_file.write_text(updated, encoding="utf-8")
                 placement("%s %s: %s" % (host, state, host_now), text, active, want_host, reject_on=host)
             host_file.write_text(original, encoding="utf-8")
+
+        # 单句判断（不经夹具）：每种明确的「待归档」写法、每种「只是提到归档」的写法各一例，两种宿主都试。
+        # 阶段名后的「已结束」只在同句明确写出在等归档时才算宿主结束（看板约定 16）。
+        for kind in ("sprints", "designs"):
+            for now, want in (
+                ("Test: Concluded — awaiting archive", True), ("Test: Concluded; awaiting Review archive", True),
+                ("Test: Concluded — awaiting archival", True), ("Test: Concluded, pending archival", True),
+                ("Test: Concluded; awaits archiving", True), ("测试：已结束，待归档", True),
+                ("测试：已结束（待 Review 归档）", True), ("测试：已结束，等待归档", True),
+                ("Test: Concluded; archive this after PO review", False), ("Test: Concluded; will archive later", False),
+                ("Test: Concluded; archived the old runs", False), ("Test: Concluded; no archiving needed", False),
+                ("测试：已结束，归档旧原型", False), ("测试：已结束；已归档的旧原型另放", False),
+                ("Prototype: Concluded; Test next", False),
+            ):
+                cases += 1
+                if host_concluded(now, kind) is not want:
+                    failures.append("host_concluded(%r, %r) should be %s" % (now, kind, want))
 
         # 第三态：设计日志已迁出活动路径、只剩归档，不出活动卡（board-log 第 4 条：`scrum/documents/` 里的不读）。
         archived = lo.parent.parent / "documents/design-archived"
