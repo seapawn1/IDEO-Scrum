@@ -44,7 +44,35 @@
 | F14 · force-load-stage-text | 82／24 | 不全量预载所有方法和阶段文件；其余边界按测试证据定。 |
 | F15 · sprint-backlog-artifact-location | 82／24 | sprint-kernel 的加载内容包含 Sprint Backlog 原文；实现要避免原文漂移。 |
 | F16 · plugin-update-needs-full-energy | 51／26 | 是 PO 共作线的精力约束，不是其他五期的开工前置，更不是产品功能。 |
+| F17 · commitment-hook-sprint-anchor | 91／未排 | 承诺钩子只认产品日志，只有冲刺日志的小项目会注进上层项目的承诺；PO 2026-11-22 定先登记、本轮不收，体验后再定。 |
 
 **范围之外**：PBI-12 公开方法论分享留待以后；PBI-67 的自然触发专项按 PO 决定取消，从当前项撤下，不算已修好，不改写 Sprint 18 历史。
 
 **交接依据**：[产品日志及 DoD](../ProductBacklog.md)、[无头验证约定](headless-testing.md)、[看板约定](../../plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md)。看板使用模板和 `scripts/board_check/check.py`，源文档与用户说明使用 `scripts/check_docs.py`；插件／分发按现行 DoD 验证。各期先定自己的判据再测，不把某期专项测试当六期统一门槛。
+
+## 续：Sprint 26、27 两线并行（2026-11-22）
+
+2026-11-22，PO：SeaPawn。Sprint 21–25 已收官。26 照上表做插件 Memory；另开 27，把反馈和零碎项收尾。两期并行，各一名 Developer，会话由 PO 开。PO 说今天精力够（F16：「我精力精力今天可以的，所以说我要开 A 线」）。
+
+| Sprint · 文件夹／分支短名 | PBI | 谁做 | 关卡 |
+| --- | --- | --- | --- |
+| **26 · `sprint-26-plugin-memory`** | 51（含 85 的「记忆与约定另立包」） | PO 以 Developer 身份与 Developer 共作 | 照常由 PO 过；大改约定按 Developer 起草 → Master 审 → 对抗审查 → PO 强审 → 流程测试 |
+| **27 · `sprint-27-wrap-up`** | 84、85（模板与看板）、86、89、90 | Developer 自做，Master 审 | Master 按下面的书面授权代 PO 过 |
+
+**同一批文件不同时改**（并行的做法由 Master 定，PO：「你来想一种两全其美的办法吧」）：
+
+- 26 先通读插件，逐条定每条约定的最终样子，记进 26 的日志；这一段不动插件文件。
+- 27 照常施工，85 的迁路径排第一项。27 合入 main 后，Master 把改动的文件与规矩列给 26；26 合入 main，再动插件文件。
+- 27 没合完，26 先改 27 不碰的部分。27 碰的是：模板与看板（85、89）、角色入口与「PO assistant」的说法（86）、`IDEO-modes/` 与 `ATTRIBUTION.md`（84）、`project-stakeholder` 与参谋入口（90）。
+- 新的秘书角色照现有角色入口的加载方式写；26 定下 Memory 的加载方式后，所有角色入口（含秘书）在 26 里一起改。
+
+**Sprint 27 的书面授权**（PO 2026-11-22 原话，逐字；27 开张时抄进其日志第 4 章）：
+
+- 「B 线的话，我基本上就交给 AI 自己做了就是交给 Developer 自己做了，我就不参与 Developer 的团队了。」
+- 「我建议是能给 B 线的就给 B 线，这样我就不用操心了，让 B 线自己去重组。」
+- 「B 线的话就是 developer 自己做，然后你来审审核他，你们两个一块做就行」
+- 89、90 交 27：「交给他，交给他呗，可以啊，你觉得可以就行。」
+
+范围按 Master 提议、PO 认可（「OK，你定的这些就是这样子。」）：27 的各阶段决定——定 Sprint Goal、结束精化、施工放行、Sprint Test 放行、收官与本地合入 main——由 Master 代 PO 做，记进 27 的日志。仍回 PO：改 Product Goal；推送与发布；取消冲刺；推翻 PO 说过的话；86 的新称法与秘书定位（PO：「后面修改的话再说具体的那个修改内容」）。
+
+**不做与不收**：PBI-88（pi 版插件）PO 2026-11-22 定不做，已从产品日志删去，仓库保留 DSH 与 Claude Code 两套分发；87、91 等 PO 体验后再定；12 以后。
