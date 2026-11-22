@@ -40,6 +40,7 @@ import driver  # noqa: E402  (make_env, magpie_prefix, Session, neutral_parent, 
 PLUGIN_SRC = REPO / "plugins" / "ideo-scrum"
 LEDGER = SPRINT / "review" / "ledger.json"
 CARRIERS = ["N", "A1", "A2", "B", "C"]
+BUILD_ALSO = ["B2"]  # B plus a PreToolUse hook on Skill, built for the model-calls-a-role test only
 ROLES = {"developer": "DEV", "scrum-master": "SM", "designer": "DES", "stakeholder": "STK"}
 ROLE_TITLES = {"DEV": "Developer", "SM": "Scrum Master", "DES": "Designer", "STK": "Stakeholder"}
 TOOLS = "Read,Grep,Glob,Skill,Agent"
@@ -99,6 +100,7 @@ HOOK_SH = r'''#!/bin/sh
 #   expand   UserPromptExpansion: a role command was run; remember the role for this session, print that role's Memory
 #   compact  SessionStart (compact): print the Memory again if this session had it
 #   mark     PostToolUse (Skill): remember that this session loaded the memory skill
+#   skill    PreToolUse (Skill): the model itself called a role as a skill; print that role's Memory (variant B2)
 [ "$IDEO_SCRUM_MEMORY" = "off" ] && exit 0
 mode=$1
 part=$2   # a Memory over the host's 10,000-character limit is sent as several hooks, one part each: "expand 1", "expand 2"
@@ -179,6 +181,18 @@ case $mode in
       if [ -n "$part" ]; then cat "$here/memory-data/all.p$part.txt"; else cat "$here/memory-data/all.txt"; fi
     fi
     ;;
+  skill)
+    json_field "$input" skill || exit 0
+    case $__value in
+      *developer) role=dev ;;
+      *scrum-master) role=sm ;;
+      *designer) role=des ;;
+      *stakeholder) role=stk ;;
+      *) exit 0 ;;
+    esac
+    printf '%s' "$role" > "$state_dir/$session.role" 2>/dev/null
+    if [ -n "$part" ]; then cat "$here/memory-data/$role.pre.p$part.json"; else cat "$here/memory-data/$role.pre.json"; fi
+    ;;
   mark)
     case $input in
       *ideo-scrum:memory*) printf 'x' > "$state_dir/$session.mark" 2>/dev/null ;;
@@ -239,7 +253,7 @@ def build_plugin(carrier: str, dest: pathlib.Path, c: dict) -> None:
     if carrier == "A2":
         p = dest / "skills" / "scrum-kernel" / "SKILL.md"
         p.write_text(p.read_text(encoding="utf-8").rstrip("\n") + "\n\n" + full, encoding="utf-8", newline="\n")
-    if carrier in ("B", "C"):
+    if carrier in ("B", "B2", "C"):
         hooks = dest / "hooks"
         (hooks / "memory-data").mkdir()
         (hooks / "memory.sh").write_text(HOOK_SH, encoding="utf-8", newline="\n")
@@ -255,14 +269,19 @@ def build_plugin(carrier: str, dest: pathlib.Path, c: dict) -> None:
                 (hooks / "memory-data" / f"{key}{tag}.json").write_text(
                     json.dumps({"hookSpecificOutput": {"hookEventName": "UserPromptExpansion", "additionalContext": part}}, ensure_ascii=False) + "\n",
                     encoding="utf-8", newline="\n")
+                (hooks / "memory-data" / f"{key}.pre{tag}.json").write_text(
+                    json.dumps({"hookSpecificOutput": {"hookEventName": "PreToolUse", "additionalContext": part}}, ensure_ascii=False) + "\n",
+                    encoding="utf-8", newline="\n")
         fp = parts_of(full)
         n_parts = max(n_parts, len(fp))
         for i, part in enumerate(fp, start=1):
             (hooks / "memory-data" / ("all.txt" if len(fp) == 1 else f"all.p{i}.txt")).write_text(part, encoding="utf-8", newline="\n")
         cfg = json.loads((hooks / "hooks.json").read_text(encoding="utf-8"))
         h = cfg["hooks"]
-        if carrier == "B":
+        if carrier in ("B", "B2"):
             h["UserPromptExpansion"] = [{"matcher": "ideo-scrum:(developer|scrum-master|designer|stakeholder)", "hooks": hook_modes("expand", n_parts)}]
+            if carrier == "B2":
+                h["PreToolUse"] = h.get("PreToolUse", []) + [{"matcher": "Skill", "hooks": hook_modes("skill", n_parts)}]
         else:
             h["PostToolUse"] = [{"matcher": "Skill", "hooks": [sh_cmd("mark")]}]
         h["SessionStart"] = h["SessionStart"] + [{"matcher": "compact", "hooks": hook_modes("compact", n_parts)}]
@@ -274,10 +293,10 @@ def build_all(out: pathlib.Path) -> tuple[dict, dict]:
     base = out / "plugins"
     if base.exists():
         driver.rmtree(base)
-    for carrier in CARRIERS:
+    for carrier in CARRIERS + BUILD_ALSO:
         build_plugin(carrier, base / carrier / "ideo-scrum", c)
     (out / "canaries.json").write_text(json.dumps(c, indent=1), encoding="utf-8")
-    sizes = {carrier: sum(p.stat().st_size for p in (base / carrier).rglob("*") if p.is_file()) for carrier in CARRIERS}
+    sizes = {carrier: sum(p.stat().st_size for p in (base / carrier).rglob("*") if p.is_file()) for carrier in CARRIERS + BUILD_ALSO}
     return c, sizes
 
 
@@ -300,6 +319,19 @@ def text_of(content) -> str:
     return ""
 
 
+def context_chars(stdout) -> int:
+    """How many characters a hook put into the context: the additionalContext of its JSON output, or the plain text of
+    a SessionStart hook. The host moves anything over 10,000 characters to a file and gives a 2,000-character preview."""
+    s = text_of(stdout).strip()
+    if s.startswith("{"):
+        try:
+            d = json.loads(s)
+            return len(((d.get("hookSpecificOutput") or {}).get("additionalContext")) or "")
+        except ValueError:
+            pass
+    return len(s)
+
+
 def scan(rows: list[dict], c: dict) -> dict:
     """What the stream shows: Skill calls with their results, hook events, where each canary first appeared, whether a
     compaction happened and what came after it. Evidence only, no judgement."""
@@ -314,7 +346,8 @@ def scan(rows: list[dict], c: dict) -> dict:
             boundary_at = i
         if t == "system" and isinstance(st, str) and st.startswith("hook"):
             hooks.append({"i": i, "subtype": st, "event": r.get("hook_event"), "name": r.get("hook_name"), "exit": r.get("exit_code"),
-                          "outcome": r.get("outcome"), "len": len(text_of(r.get("stdout") or r.get("output") or ""))})
+                          "outcome": r.get("outcome"), "len": len(text_of(r.get("stdout") or r.get("output") or "")),
+                          "ctx_len": context_chars(r.get("stdout") or r.get("output") or "")})
         if t == "assistant":
             msg = r.get("message") or {}
             if first_usage is None and msg.get("usage"):
@@ -436,6 +469,20 @@ def cmd_run(a) -> int:
     roles = list(ROLES) if a.role == "all" else [a.role]
     carriers = CARRIERS if a.carrier == "all" else a.carrier.split(",")
     jobs = [(carrier, a.scenario, role, n) for carrier in carriers for role in roles for n in range(1, a.n + 1)]
+    if a.skip_done:  # a resumed run: a trial that already has valid evidence is not run again
+        keep = []
+        for j in jobs:
+            ev = out / "trials" / f"{a.scenario}-{j[0]}-{j[2]}-{j[3]}" / "evidence.json"
+            ok = False
+            if ev.exists():
+                try:
+                    ok = json.loads(ev.read_text(encoding="utf-8")).get("status") == "ok"
+                except ValueError:
+                    ok = False
+            if not ok:
+                keep.append(j)
+        print(f"skip-done: {len(jobs) - len(keep)} of {len(jobs)} trials already have valid evidence")
+        jobs = keep
     with concurrent.futures.ThreadPoolExecutor(max_workers=a.parallel) as ex:
         for res in ex.map(lambda j: run_trial(out, *j, c), jobs):
             print(res["tag"], res["status"], res["seconds"])
@@ -466,6 +513,115 @@ def cmd_timing(a) -> int:
             res[f"{carrier}/{mode}"] = {"runs": len(ts), "p50_ms": round(statistics.median(ts), 1), "p95_ms": round(pct(ts, 0.95), 1), "max_ms": round(max(ts), 1)}
             print(f"{carrier}/{mode}: {res[f'{carrier}/{mode}']}")
     (out / "timing.json").write_text(json.dumps(res, indent=1), encoding="utf-8")
+    return 0
+
+
+def skill_ok(ev: dict, name: str, hit: dict | None) -> bool:
+    """The skill was called, succeeded, and the text that carries the canary came after that call."""
+    return any(s["skill"] == name and s["ok"] and (hit is None or hit["i"] >= s["i"]) for s in ev.get("skills", []))
+
+
+def judge(res: dict, c: dict) -> dict:
+    """The criteria applied to one trial's evidence: what pass means for it, plus the numbers they ask to report.
+    Nothing here reads what the model says about itself, except the probe answer after a compaction (the criteria's
+    fallback: the log does not show what was re-attached, and a random end marker cannot survive a summary or a cut)."""
+    ev = res.get("evidence") or {}
+    sc, ca = res["scenario"], res["carrier"]
+    hits = ev.get("hits") or {}
+    start, end = hits.get("MEMORY-START"), hits.get("MEMORY-END")
+    out = {"tag": res["tag"], "carrier": ca, "scenario": sc, "role": res["role"], "status": res["status"]}
+    if res["status"] != "ok":
+        out["technical_failure"] = True
+        return out
+    hook_resp = [h for h in ev.get("hooks", []) if h["subtype"] == "hook_response"]
+    if sc == "role":
+        if ca == "N":
+            ok = not hits
+        elif ca in ("A1", "C"):
+            ok = bool(start and end and start["type"] == "user" and skill_ok(ev, "ideo-scrum:memory", start))
+        elif ca == "A2":
+            ok = bool(start and end and start["type"] == "user" and skill_ok(ev, "ideo-scrum:scrum-kernel", start))
+        else:  # B, B2: the hook's own output
+            exp = [h for h in hook_resp if h["event"] == "UserPromptExpansion"]
+            sizes = [h.get("ctx_len", 0) for h in exp]
+            out["ctx_chars"] = sizes
+            ok = bool(exp and all(h["exit"] == 0 for h in exp) and start and end and start["subtype"] == "hook_response" and max(sizes) <= 10000)
+        out["pass"] = ok
+        out["roles_seen"] = sorted(k for k in hits if k.startswith("ROLE-"))
+    elif sc == "compact":
+        ans = (ev.get("results") or [""])[-1]
+        out["compacted"] = ev.get("boundary_at") is not None
+        out["probe_suffix"] = PROBE_SUFFIX in ans
+        out["end_marker"] = c["MEMORY-END"] in ans
+        out["pass"] = bool(out["compacted"] and out["probe_suffix"] and out["end_marker"])
+    elif sc == "subagent":
+        out["pass"] = any(PROBE_SUFFIX in tx for tx in ev.get("subagent_text") or [])
+    elif sc in ("plain", "plain-compact"):
+        out["pass"] = not hits and not any("memory" in (s.get("skill") or "") for s in ev.get("skills", []))
+        if sc == "plain-compact":
+            out["compacted"] = ev.get("boundary_at") is not None
+        fu = ev.get("first_usage") or {}
+        out["first_request_tokens"] = sum(fu.get(k, 0) or 0 for k in ("input_tokens", "cache_creation_input_tokens", "cache_read_input_tokens"))
+    elif sc == "model":
+        out["pass"] = bool(start and end)
+    return out
+
+
+SCEN_TITLES = [("role", "① 叫出角色必带上（用户打 /ideo-scrum:<角色>）"), ("compact", "② 压缩后还在（探针答复含 -zq7 与确切结尾暗号）"),
+               ("subagent", "③ 子代理（产出里有 -zq7；只报）"), ("plain", "④ 普通会话不出现暗号"), ("plain-compact", "④ 子情形：普通会话里 /compact 不误注"),
+               ("model", "另测：模型自己调 Skill 叫角色（只报）")]
+
+
+def cmd_report(a) -> int:
+    out = pathlib.Path(a.out)
+    c = json.loads((out / "canaries.json").read_text(encoding="utf-8"))
+    rows = []
+    for f in sorted((out / "trials").glob("*/evidence.json")):
+        res = json.loads(f.read_text(encoding="utf-8"))
+        if (f.parent / "stream.jsonl").exists():  # read the raw stream again, so a better way of reading applies to trials already run
+            res["evidence"] = scan(read_stream(f.parent / "stream.jsonl"), c)
+        rows.append(judge(res, c))
+    carriers = [x for x in CARRIERS + BUILD_ALSO if any(r["carrier"] == x for r in rows)]
+    md = [f"# 载体测试结果：{getattr(a, 'label', None) or out.name}", "",
+          "单元格＝通过的试次／有效试次；括号里是技术失败的试次（超时、被杀、接口错，另补跑）。N 是对照：① ④ 应全过、② ③ 应为 0。", "",
+          "| 判据 | " + " | ".join(carriers) + " |", "| --- | " + " | ".join("---" for _ in carriers) + " |"]
+    for sc, title in SCEN_TITLES:
+        cells = []
+        for ca in carriers:
+            rs = [r for r in rows if r["scenario"] == sc and r["carrier"] == ca]
+            if not rs:
+                cells.append("—")
+                continue
+            tech = sum(1 for r in rs if r.get("technical_failure"))
+            good = sum(1 for r in rs if r.get("pass"))
+            cells.append(f"{good}/{len(rs) - tech}" + (f"（{tech} 次技术失败）" if tech else ""))
+        if any(x != "—" for x in cells):
+            md.append(f"| {title} | " + " | ".join(cells) + " |")
+    roles = sorted({r["role"] for r in rows if r["scenario"] == "role"})
+    if roles:
+        md += ["", "## ⑦ 每个角色带上了哪些暗号（① 的会话）", "", "| 角色 | " + " | ".join(carriers) + " |", "| --- | " + " | ".join("---" for _ in carriers) + " |"]
+        for role in roles:
+            cells = []
+            for ca in carriers:
+                seen = sorted({k.replace("ROLE-", "") for r in rows if r["scenario"] == "role" and r["carrier"] == ca and r["role"] == role for k in r.get("roles_seen", [])})
+                cells.append(",".join(seen) or "—")
+            md.append(f"| {role} | " + " | ".join(cells) + " |")
+    sizes = sorted({n for r in rows if r["scenario"] == "role" and r["carrier"] in ("B", "B2") for n in r.get("ctx_chars", [])})
+    if sizes:
+        md += ["", f"B 的每次 additionalContext 字符数：{sizes}（线：≤ 10,000）"]
+    plain = {ca: [r["first_request_tokens"] for r in rows if r["scenario"] == "plain" and r["carrier"] == ca and "first_request_tokens" in r] for ca in carriers}
+    if plain.get("N"):
+        base = statistics.mean(plain["N"])
+        md += ["", "④ 普通会话第一次请求的输入 token（含缓存）对 N 的差（只报）：" + "；".join(f"{ca} {statistics.mean(v) - base:+.0f}" for ca, v in plain.items() if v and ca != "N")]
+    bad = [r for r in rows if not r.get("technical_failure") and r.get("pass") is False]
+    if bad:
+        md += ["", "## 没过的试次（含对照 N 本来就应不过的）", ""] + [f"- {r['tag']}" + (f"：ctx_chars {r['ctx_chars']}" if r.get("ctx_chars") else "") + (f"：探针 {r.get('probe_suffix')}、结尾暗号 {r.get('end_marker')}、压缩 {r.get('compacted')}" if r["scenario"] == "compact" else "") for r in bad]
+    tech = [r["tag"] + " " + r["status"] for r in rows if r.get("technical_failure")]
+    if tech:
+        md += ["", "## 技术失败（要补跑）", ""] + [f"- {x}" for x in tech]
+    (out / "report.json").write_text(json.dumps(rows, ensure_ascii=False, indent=1), encoding="utf-8")
+    (out / "report.md").write_text("\n".join(md) + "\n", encoding="utf-8", newline="\n")
+    print("\n".join(md))
     return 0
 
 
@@ -524,6 +680,33 @@ def cmd_selftest(a) -> int:
         check(len(ps) > 1 and all(len(p) <= 500 for p in ps) and "".join(ps) == src, "a long text is cut at line ends and nothing is lost")
         two = hook_modes("expand", 2)
         check(hook_modes("expand", 1) == [sh_cmd("expand")] and "expand 1;" in two[0]["command"] and "expand 2;" in two[1]["command"], "one hook for one part, 'expand 1' and 'expand 2' for two")
+        build_plugin("B2", tmp / "B2", c)
+        cfg3 = json.loads((tmp / "B2" / "hooks" / "hooks.json").read_text(encoding="utf-8"))["hooks"]
+        check(cfg3["PreToolUse"][-1]["matcher"] == "Skill" and "skill" in cfg3["PreToolUse"][-1]["hooks"][0]["command"] and "UserPromptExpansion" in cfg3, "B2: B plus a PreToolUse hook on Skill")
+        r = subprocess.run([sh, str(tmp / "B2" / "hooks" / "memory.sh"), "skill"], input=json.dumps({"session_id": "t4", "hook_event_name": "PreToolUse", "tool_name": "Skill", "tool_input": {"skill": "ideo-scrum:developer"}}), capture_output=True, text=True, env={**os.environ, "CLAUDE_PLUGIN_DATA": str(tmp / "st")})
+        pre = json.loads(r.stdout)["hookSpecificOutput"] if r.stdout else {}
+        check(pre.get("hookEventName") == "PreToolUse" and c["ROLE-DEV"] in pre.get("additionalContext", ""), "B2: a model's call of the developer skill gets the developer text as PreToolUse context")
+        r = subprocess.run([sh, str(tmp / "B2" / "hooks" / "memory.sh"), "skill"], input=json.dumps({"session_id": "t5", "tool_name": "Skill", "tool_input": {"skill": "ideo-scrum:ideo-kernel"}}), capture_output=True, text=True, env={**os.environ, "CLAUDE_PLUGIN_DATA": str(tmp / "st")})
+        check(r.stdout == "", "B2: a kernel skill gets nothing")
+        check(context_chars(json.dumps({"hookSpecificOutput": {"hookEventName": "X", "additionalContext": "abc"}})) == 3 and context_chars("plain text\n") == 10, "context_chars: the additionalContext of the JSON, or the plain text")
+        good = {"tag": "role-A1-developer-0", "scenario": "role", "carrier": "A1", "role": "developer", "status": "ok",
+                "evidence": {"hits": {"MEMORY-START": {"i": 22, "type": "user", "subtype": None}, "MEMORY-END": {"i": 22, "type": "user", "subtype": None}, "ROLE-DEV": {"i": 22, "type": "user", "subtype": None}},
+                             "skills": [{"skill": "ideo-scrum:memory", "ok": True, "i": 21}]}}
+        check(judge(good, c)["pass"] is True, "judge: A1 passes when the memory skill succeeded and its text came after")
+        bad = json.loads(json.dumps(good))
+        bad["evidence"]["skills"] = []
+        check(judge(bad, c)["pass"] is False, "judge: A1 fails without a successful memory skill call")
+        bsz = {"tag": "role-B-developer-0", "scenario": "role", "carrier": "B", "role": "developer", "status": "ok",
+               "evidence": {"hits": {"MEMORY-START": {"i": 5, "type": "system", "subtype": "hook_response"}, "MEMORY-END": {"i": 5, "type": "system", "subtype": "hook_response"}},
+                            "hooks": [{"subtype": "hook_response", "event": "UserPromptExpansion", "exit": 0, "len": 12000, "ctx_len": 11000}]}}
+        check(judge(bsz, c)["pass"] is False, "judge: B fails when one hook put more than 10,000 characters into the context")
+        bsz["evidence"]["hooks"][0]["ctx_len"] = 9500
+        check(judge(bsz, c)["pass"] is True, "judge: B passes at 9,500")
+        cmp_ = {"tag": "compact-A2-developer-0", "scenario": "compact", "carrier": "A2", "role": "developer", "status": "ok",
+                "evidence": {"boundary_at": 100, "results": ["a", "b", f"The suffix ends with {PROBE_SUFFIX}. The last line is not known."]}}
+        check(judge(cmp_, c)["pass"] is False, "judge: a compaction answer without the exact end marker fails")
+        cmp_["evidence"]["results"][-1] += " " + c["MEMORY-END"]
+        check(judge(cmp_, c)["pass"] is True, "judge: with the probe suffix and the end marker it passes")
         old = TARGET_CHARS
         globals()["TARGET_CHARS"] = 20000  # the larger stand-in: the hook must send it in parts, each under the host's limit
         try:
@@ -567,6 +750,7 @@ def main(argv: list[str]) -> int:
     p.add_argument("--role", default="developer")
     p.add_argument("--n", type=int, default=3)
     p.add_argument("--parallel", type=int, default=4)
+    p.add_argument("--skip-done", action="store_true", help="do not run a trial that already has valid evidence (resume after a stop)")
     p.add_argument("--chars", type=int, default=TARGET_CHARS, help="size of the stand-in Memory in characters (the default is the committed criteria's)")
     a = ap.parse_args(argv)
     if getattr(a, "chars", None):
@@ -577,7 +761,7 @@ def main(argv: list[str]) -> int:
         c, sizes = build_all(pathlib.Path(a.out))
         print(sizes)
         return 0
-    return {"smoke": cmd_smoke, "run": cmd_run, "timing": cmd_timing}.get(a.cmd, lambda a: 2)(a)
+    return {"smoke": cmd_smoke, "run": cmd_run, "timing": cmd_timing, "report": cmd_report}.get(a.cmd, lambda a: 2)(a)
 
 
 if __name__ == "__main__":
