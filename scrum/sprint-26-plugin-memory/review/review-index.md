@@ -1,18 +1,18 @@
 # 审阅包入口（Sprint 26 行 9、行 10）
 
-给 Master 审定用。先读这页，再按下表的顺序读。行 9 还没做完（缺结果表与档位，见末尾），所以这是**草稿阶段的审阅包**，不是终版。
+给 Master 审定用。先读这页，再按下表的顺序读。行 9 还没做完（结果表与档位已出，还差 27 同步后的几行，见末尾），所以这是**草稿阶段的审阅包**，不是终版。
 
 ## 怎么读
 
 | 顺序 | 文件 | 是什么 | 状态 |
 | --- | --- | --- | --- |
 | 1 | `review/memory-outline.md` | 方案与大纲：位置与名字、带上方式（A1，PO 已定）、共用或分角色、一行句型与 5 条示范、长文件判据、图与 Departures 表去处、尺寸提议、落盘后果、被否的做法 | Master 审定 2026-11-23（行 3、5 已标 ✓） |
-| 2 | `review/carrier-criteria.md` | 载体判据（已冻结）与 PO 选 A1 后的收窄 | 已提交；正式测被内存紧张停掉，等续跑 |
+| 2 | `review/carrier-criteria.md`、`review/carrier-results.md` | 载体判据（已冻结）与 PO 选 A1 后的收窄；正式测的结果表 | 测完（2026-11-23）：A1 两档都过硬判据，建议尺寸上限 16,000 字符，等 Master 审定 |
 | 3 | `memory-draft/MEMORY.md`、`memory-draft/long/` | 装配后的完整草稿：102 行、14,156 字符；16 个长文件 | 3 行（`ask-the-po`、`who-gets-which-work`、`board-writer`）与 `roles-and-routing` 标「待 27」 |
 | 4 | `review/review-<文件>.md` × 6（overview、product-log、board-log、sprint-log、design-log、ideo-log） | 每条旧规矩一节：旧文逐字｜出处与依据｜建议（留／改／并／删）｜新行｜备注｜待 27；每份文末是该文件的非编号块（引言、署名、图、表，六份共 29 个）的去向 | 111 条＋29 个块，全部有去向 |
 | 5 | `review/map-old-new.md` | 旧→新、新→旧两张覆盖表 | 与草稿同步生成 |
 | 6 | `review/dsh-test-page.md` | 给秘书会话的 DSH 测页（只测 A1） | 已测完，判据 ⑥ 过；结果在大纲第 10 节 |
-| 7 | `review/s27-increment.md` | 27 增量表（行 11 的底稿）：27 改了哪些规矩对草稿的影响、board-log 的去处、Supporter 那块的草案 | 同步前的预读；等 A1 正式测跑完再同步 main |
+| 7 | `review/s27-increment.md` | 27 增量表（行 11 的底稿）：27 改了哪些规矩对草稿的影响、board-log 的去处、Supporter 那块的草案 | 同步前的预读；A1 正式测已跑完，等 Master 说同步 main |
 
 ## 检查结果（我跑的，2026-11-23）
 
@@ -35,5 +35,5 @@
 
 ## 行 9 还差
 
-- 载体测试：正式测 2026-11-23 00:36 开跑，被系统因内存紧张停掉（第 1 批 4/12 个试次完成）；按 Master 的安排，等 27 收官、内存腾出来后改并发 1 续跑，空闲 ≥ 3.5 GB 他叫我再开。结果表与档位出来后，「预算」一项才有可比的线，行 6–8 括号里的那一项也在这时核。
-- 27 合入后同步「待 27」的几行与 `roles-and-routing`（行 11）。
+- 载体测试已测完：结果表 `review/carrier-results.md`；档位与尺寸上限（20,000／16,000）等 Master 审定，之后「预算」一项（行 6–8 括号里的）已核：14,156 字符在 16,000 内。
+- 27 合入后同步「待 27」的几行与 `roles-and-routing`（行 11）；按 `review/s27-increment.md` 做，Master 说同步放在正式测之后。
