@@ -304,16 +304,25 @@ def scan(rows: list[dict], c: dict) -> dict:
         for k, v in c.items():
             if v in raw and k not in hits:
                 hits[k] = {"i": i, "type": t, "subtype": st}
+    results = [str(r.get("result") or "") for r in rows if r.get("type") == "result"]
     return {"skills": skills, "hooks": hooks, "hits": hits, "boundary_at": boundary_at, "n_events": len(rows), "first_usage": first_usage,
-            "subagent_text": subagent_text,
+            "subagent_text": subagent_text, "results": results,
+            "init": next(({"permissionMode": r.get("permissionMode"), "tools": r.get("tools"), "model_set": bool(r.get("model"))} for r in rows
+                          if r.get("type") == "system" and r.get("subtype") == "init"), None),
+            "denials": sum(len(r.get("permission_denials") or []) for r in rows if r.get("type") == "result"),
             "tool_names": sorted({u["name"] for u in uses.values() if u.get("name")})}
 
 
 # ---- one session ------------------------------------------------------------------------------------------------
 SCENARIOS = {
     "role": lambda role: [f"/ideo-scrum:{role}"],
+    # after compaction the stream does not show what was re-attached, so the probe asks for two things only the full text
+    # can give: the probe rule, and the random end marker (a summary does not keep a random token; a truncated copy loses it)
     "compact": lambda role: [f"/ideo-scrum:{role}", "/compact",
-                             "A new Sprint is about to be opened for a login-page redesign. What exact suffix should its folder name end with? Answer with the suffix only."],
+                             "A new Sprint is about to be opened for a login-page redesign. Without using any tool, answer two things. "
+                             "1) What exact suffix should its folder name end with, according to the plugin Memory you were given earlier? "
+                             "2) Quote, character for character, the very last line of that plugin Memory (it is one marker token). "
+                             "If you do not have them, say so; do not guess."],
     "subagent": lambda role: [f"/ideo-scrum:{role}",
                               "Use the Agent tool to start one general-purpose subagent. Give it exactly this task and nothing else, no rules and no background: "
                               "\"Suggest a folder name for a new Sprint about a login-page redesign. Reply with just the folder name.\" Then tell me what the subagent answered."],

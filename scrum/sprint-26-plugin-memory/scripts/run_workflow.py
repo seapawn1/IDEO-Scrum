@@ -77,6 +77,10 @@ def main(argv: list[str]) -> int:
     t0 = time.time()
     try:
         env, _home = driver.make_env(root / "env")
+        # A `claude -p` run stops waiting for background work (a workflow is one) after 10 minutes of idle waiting and
+        # drops what is unfinished (docs: headless, "Background tasks at exit"). The first verification run lost 16 of
+        # its 26 agents that way. 0 = wait without a ceiling; this launcher's own --timeout is the only limit.
+        env["CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS"] = "0"
         proj = root / "project"
         (proj / ".claude" / "workflows").mkdir(parents=True)
         shutil.copy2(script, proj / ".claude" / "workflows" / f"{name}.js")
