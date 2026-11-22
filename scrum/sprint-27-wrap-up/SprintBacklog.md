@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 27 (wrap-up)
 
 > Started: 2026-11-22 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `worktree-sprint-27-wrap-up` | Product Owner: SeaPawn | Scrum Master: IDEO # [master]-[main]-[manage sprint] | Developer: Sprint 27 Developer
-> Now: Increment（Review 后退回）· 2026-11-23：Test 已判通过，Review 里全新的「熟手」视角基本满意，但有两处说法打架；Master 按 PO 全面放权定退回 Increment，范围只五处小改（第 4 章「Review 发现、Master 定退回」）：go-ahead 的接收方说清、转达写明 PO 在哪里说的、约定 12 写成 stage permission、约定 14 补没有 Scrum Master 会话时去哪、快速上手补上 supporter；`description` 一律不动。修完分开提交、重跑静态检查与两条 grep，再报 Master 审 diff；收官（先把 main 合进分支，再出一个收官提交，Master 审过 diff 才打 tag、合入）等 PO 放行，推送另等 PO。PO 最近一次决定（2026-11-23）：Review 交 Master 与 Codex，PO 只管放行（第 4 章「PO：Review 交 Master 与 Codex」）。
+> Now: Increment（Review 后退回，五处小改已修）· 2026-11-23：Test 已判通过；Review 里全新的「熟手」视角基本满意，有两处说法打架，Master 按 PO 全面放权定退回 Increment、范围只五处（第 4 章「Review 发现、Master 定退回」）；五处已修并分开提交，`description` 一律没动，重跑静态检查与两条 grep 全过（第 5 章最后一段），待 Master 审 diff。之后：先把 main 合进分支（合并提交单独算），再做 3.2、§2.1、§2.2 的改动并出一个收官提交，报 Master 审 diff 后才打 tag、合入；收官等 PO 放行，推送另等 PO。PO 最近一次决定（2026-11-23）：Review 交 Master 与 Codex，PO 只管放行（第 4 章「PO：Review 交 Master 与 Codex」）。
 > Waiting for PO: None
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none. Work remarks go in chapter 4, Increment notes; an optional explanation of the commitment may follow its table (`overview.md` in the scrum-kernel skill folder, conventions 16 and 17).
@@ -462,3 +462,9 @@ Go-ahead: 2026-11-22，Master 按 PO 的书面授权（见第 4 章）放行 H1�
 - **Test 是否通过、收官还是退回（约定 24）**：Master 已判，见下面最后一段。
 
 Test 判定（2026-11-23，Master 按 PO 全面放权）：通过。四项都有结果：① 静态检查与 grep 全过；② 无头加载 3/3；③ DSH 实装三条全过；④ Codex 审阅，三处修复由 Master 审过 diff。Output Done 七条全过；Outcome 本期不设必须的信号，记为尚未观察到。当时的目标原文：『秘书管杂活：看板、传话这类杂活交给秘书，PO 不用操心，各角色的叫法不再混；模板、看板各归其位，留下的小毛病补齐，熟手照着就能用。』进 Review；收官等 PO 放行。
+
+Review 后退回修五处的重跑（2026-11-23）：Review 里全新的「熟手」视角基本满意，有两处说法打架，Master 按 PO 全面放权定退回 Increment、只修五处（第 4 章「Review 发现、Master 定退回、范围只这五处」）。五处与补正分开提交：① 转达的 PO 意见，范围、条目、go-ahead 这几类的接收方是 Master（`589b3c3`）；② 转达要写明 PO 在哪里说的（会话名、时间），接收方照记（`c62a93d`）；③ 约定 12 的 permission 写成 stage permission 并说明不是工具权限（`d2d615d`，提交说明写成了四处，实际五处）；④ 约定 14 分流第二级补一句：没有 Scrum Master 会话时直接问 PO（`96b7e12`）；⑤ 快速上手「要看板」一句中英各补「交给 supporter」（`bcd6d48`）；另有 `CHANGELOG.md` 一句（已装的旧版 0.6.3 还指旧位置，`a4e32e8`）与一处补正（`7d00eaf`：第 1 处新加的交叉引用把约定 14 的条目名写进了双引号，而 `supporter.md` 里双引号只标 SGEP 短语，改成斜体）。`description` 一律没动。
+
+重跑（`04ccff7`）：`validate --strict` 通过；`check_dsh` 8／8；`check_docs.py` 195 条链接 0 错、自测 17 例；`board_check selftest` 147 例；`npm pack` 101 个文件；两条 grep 仍是 2 处与 14 处，没有多出来的命中；死链 0；`evidence.py` 29 项全过，含 12 个 `description` 与 `52b42fa` 逐字相同（0／12 不同）、五处新写的 10 句文字都在、约定 12 里 `stage permission` 写了五次。`evidence.py` 首跑抓到两处：新交叉引用的双引号（文字确实该改，已改）与我把约定 12 的次数数成了四次（检查改成五）。自 `778b767` 起，发布文件里只动了 `supporter.md` 的第 25、34 行、`overview.md` 的约定 12 与约定 14 各一两处、两份快速上手各一行、`CHANGELOG.md` 一行（`git diff --stat 778b767 HEAD -- plugins docs CHANGELOG.md`）。
+
+项 ②③ 没有重测：五处没碰 `supporter.md` 的前 12 行（加载指令）、`description`、模板与看板文件、`dsh/`、`package.json`；项 ② 验的是前两个 Skill 调用的顺序，项 ③ 验的是入口被认出、预载顺序与模板位置，这些前提没变，所以沿用；Master 若要重测，说一声。这五处与补正待 Master 审 diff；没有请 Codex 再审（Master 没要求）。
