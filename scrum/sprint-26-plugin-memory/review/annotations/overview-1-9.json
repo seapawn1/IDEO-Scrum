@@ -8,11 +8,16 @@
     ],
     "kind": "规矩",
     "home": "清单",
-    "recommend": "并",
-    "merge_into": "product-log#1",
-    "reason": "一份产品日志起步，与 product-log#1（老项目怎么写）说的是同一件事；并入 product-log#1，只留一行。",
-    "dups": ["product-log#1"],
-    "confidence": "高"
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "product-log#1 也声明并入本条，两条互指成环，且它标为不进 Memory；本条留作清单一行（每个项目，无论新旧，都从一份产品日志起步），product-log#1 的模板写法与老项目写法并入本条的说明里。",
+    "dups": [
+      "product-log#1"
+    ],
+    "confidence": "中",
+    "checked": [
+      "verified: confidence, home, merge_into, reason, recommend"
+    ]
   },
   {
     "id": "overview#2",
@@ -22,12 +27,15 @@
       "archive scrum/documents/sprint/sprint-08-design-kernel.md：设计内核独立，与冲刺并列"
     ],
     "kind": "规矩",
-    "home": "清单",
+    "home": "长文件",
     "recommend": "改",
     "merge_into": null,
-    "reason": "与 Departures 表「Designs sit beside Sprints」一行说同一件事。改法：只留「设计与冲刺并列，设计的结论经冲刺落地」一句；删掉「This departs from the Scrum Guide: see Departures」尾巴和指向 ideo-log 的条号。",
+    "reason": "Departures 表（overview.md:114）只覆盖设计不交付 Increment、可跨 Sprint、Designer 与 Developer 并列；开设计的三种时机（product-log.md:27-38）、设计不属于 Sprint、逐项决定、Increment 不必是代码、结论经冲刺落地都要保留，取舍见 ideo-log.md:22。细则多，放长文件。",
     "dups": [],
-    "confidence": "中"
+    "confidence": "中",
+    "checked": [
+      "verified: confidence, home, reason, recommend"
+    ]
   },
   {
     "id": "overview#3",
@@ -56,7 +64,9 @@
     "recommend": "留",
     "merge_into": null,
     "reason": "这是本仓库的目录布局，写在长文件里；清单只留一行索引。末句「use your project's own places」保留，它是给其他项目用的。",
-    "dups": ["overview#5"],
+    "dups": [
+      "overview#5"
+    ],
     "confidence": "中"
   },
   {
@@ -67,12 +77,17 @@
       "archive scrum/documents/sprint/sprint-17-conventions-rewrite.md：Review 收官时冲刺日志归档进 scrum/documents/sprint/"
     ],
     "kind": "规矩",
-    "home": "清单",
+    "home": "长文件",
     "recommend": "改",
     "merge_into": null,
-    "reason": "规矩本身要留（单用一份的文件用完即清，整个 Scrum 的文件进 scrum/documents/）。改法：去掉指向 design-log 19、sprint-log 17 的条号，写成「归档时随 Review 移入 scrum/documents/」一句。",
-    "dups": ["overview#6"],
-    "confidence": "中"
+    "reason": "保留全部行为要求：只服务一份日志的文件留在工作文件夹、用完可清；设计原件是例外，随设计保留并在 Review 随日志移入 scrum/documents/；服务整个 Scrum 的文件进 scrum/documents/ 并由日志引用；项目可用已有归档子文件夹；项目自己的文档留在原处。细则多，放长文件。",
+    "dups": [
+      "overview#6"
+    ],
+    "confidence": "中",
+    "checked": [
+      "verified: confidence, home, reason, recommend"
+    ]
   },
   {
     "id": "overview#6",
@@ -85,9 +100,15 @@
     "home": "清单",
     "recommend": "改",
     "merge_into": null,
-    "reason": "与 overview#5 同说保留设计原件、链接归档。末句「Retro lessons go only where sprint-log convention 18 says」与 sprint-log#18 同一件事，改为指向 sprint-log#18 或删去末句，只留「工作材料不进日志，链接归档原件」。",
-    "dups": ["overview#5", "sprint-log#18"],
-    "confidence": "中"
+    "reason": "工作材料不进日志、链接归档原件；通用的关键材料可进项目记忆或指令；重要大文件进 scrum/documents/（overview.md:63 的这两句必须保留）；Retro 教训末句改为指向 sprint-log.md:72 的 convention 18。",
+    "dups": [
+      "overview#5",
+      "sprint-log#18"
+    ],
+    "confidence": "中",
+    "checked": [
+      "verified: confidence, home, reason, recommend"
+    ]
   },
   {
     "id": "overview#7",
@@ -97,12 +118,15 @@
       "archive scrum/documents/sprint/sprint-10-conventions.md：要一张术语表（go-ahead、PBI、DoD、SGEP、role card）"
     ],
     "kind": "说明",
-    "home": "不进 Memory",
+    "home": "长文件",
     "recommend": "改",
     "merge_into": null,
-    "reason": "这是词条定义，属说明，不进清单；词条应归 docs/glossary.md。其中「fresh subagent 的起点只是 brief，fork 不算」是一条规矩，改为清单一行，其余词条移入词汇表（先核对词汇表已有的条目）。",
+    "reason": "词条定义留在插件内的 Memory 长文件，不能移到插件包外的 docs/glossary.md（marketplace 只发 ./plugins/ideo-scrum，该目录无 docs）；fresh subagent 一句进清单一行；「模板文件一律用这些名字」的命名要求也保留。",
     "dups": [],
-    "confidence": "中"
+    "confidence": "中",
+    "checked": [
+      "verified: confidence, home, reason, recommend"
+    ]
   },
   {
     "id": "overview#8",
@@ -116,9 +140,12 @@
     "home": "长文件",
     "recommend": "改",
     "merge_into": null,
-    "reason": "角色表很长，属长文件。清单只留一行：「角色命令先按顺序加载内核（ideo → scrum → …），再做角色的活」。改法：把「In Claude Code, use the Skill tool one at a time…」的加载细则和表格一起放进长文件；Developer 与 Stakeholder 的加载顺序照现行写法保留。",
+    "reason": "角色表与加载细则放长文件，清单一行写角色命令按序加载内核；overview.md:85 末句（PO、SM、Developer 共同维护冲刺日志，无 Developer 时 PO 与 SM 两人跑冲刺）也要收进长文件，不能只留在被删的 overview。",
     "dups": [],
-    "confidence": "中"
+    "confidence": "中",
+    "checked": [
+      "verified: confidence, home, reason, recommend"
+    ]
   },
   {
     "id": "overview#9",

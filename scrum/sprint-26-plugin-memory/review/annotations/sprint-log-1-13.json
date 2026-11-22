@@ -10,9 +10,12 @@
     "home": "清单",
     "recommend": "留",
     "merge_into": null,
-    "reason": "开冲刺的基本做法，Memory 需要。命名规则（两位数编号、后缀、与分支同名）可以一句话写完；具体目录结构留模板。",
+    "reason": "命名规则（两位编号、上一期加一、后缀、与分支同名、tag 随收官）在 Memory 一行写全；模板 sprint-backlog-template.md 第 3 行只记 Branch，没有目录或编号规则，目录布局见 overview.md 第 4 条（第 61 行）`sprint-NN-<suffix>/`，不能说「留模板」。",
     "dups": [],
-    "confidence": "中"
+    "confidence": "中",
+    "checked": [
+      "verified: reason"
+    ]
   },
   {
     "id": "sprint-log#2",
@@ -23,11 +26,14 @@
     ],
     "kind": "规矩",
     "home": "清单",
-    "recommend": "留",
+    "recommend": "改",
     "merge_into": null,
-    "reason": "与 Scrum Guide 不同的做法（偏离），是 PO 要看的核心。结束条件一句话就能写清。尾句「see the Departures section」是指路，删掉，偏离表归 overview。",
+    "reason": "与 Scrum Guide 不同的做法是 PO 要看的核心，结束条件一句话写清；尾句「see the Departures section」只是指路，删掉，偏离理由保留在 overview.md 的 Departures 表第 119 行。",
     "dups": [],
-    "confidence": "高"
+    "confidence": "高",
+    "checked": [
+      "verified: reason, recommend"
+    ]
   },
   {
     "id": "sprint-log#3",
@@ -40,9 +46,12 @@
     "home": "清单",
     "recommend": "改",
     "merge_into": null,
-    "reason": "规矩本身有依据，且已在 Sprint 15 实践。要改的是括号里的「convention 24」，它是旧编号，现在指不到任何一条；改成指向对应条的名字（如 The Product Owner decides at the end of each stage）。",
+    "reason": "规矩本身有依据，且已在 Sprint 15 实践。原括号里的「convention 24」现指本文件第 95 行「The Product Owner decides at the end of each stage」，并非指不到；但旧约定文件删除后编号会失指，Memory 里应改写为条名（该行为在 overview 第 12 条「Product Owner decides between stages」），不要留编号。",
     "dups": [],
-    "confidence": "中"
+    "confidence": "中",
+    "checked": [
+      "verified: reason"
+    ]
   },
   {
     "id": "sprint-log#4",
@@ -55,9 +64,12 @@
     "home": "清单",
     "recommend": "改",
     "merge_into": null,
-    "reason": "一条装了六件事：PO 的写法、一个价值目标、总览式冲刺的例外、指向产品日志 DoD 的要求、ideo-kernel 兜底、分发给 Master 与 Developer。拆成一行一条：保留「PO 的写法、一个价值目标」，DoD 指路与分发归 Planning 模板，ideo-kernel 兜底那句删去或移到流程文档。",
+    "reason": "保留「PO 自己的写法、一个统合价值目标、PO 带 Master 定目标、把目标与检查分发给 Master 与 Developer」；总览式冲刺的例外与 DoD 指路、不降低标准已在 sprint-backlog-template.md 第 16、20 行，可归模板；ideo-kernel 兜底是说明，可删。分发这句模板没有（只在本条 sprint-log.md 第 36 行），必须留在清单。",
     "dups": [],
-    "confidence": "中"
+    "confidence": "中",
+    "checked": [
+      "verified: reason"
+    ]
   },
   {
     "id": "sprint-log#5",
@@ -69,9 +81,12 @@
     "home": "清单",
     "recommend": "改",
     "merge_into": null,
-    "reason": "「逐条对照 Sprint Goal、缺的补、不服务的删、不为凑数而加」是规矩，留。五列（编号、标题、用户故事、位置、大小）与「逐字复制」是格式，归模板 2.1。",
+    "reason": "「逐条对照 Sprint Goal，缺的补、不服务的删、不为凑数而加」留；五列与逐字复制在模板 sprint-backlog-template.md 第 26-28 行。最后「Add a missing item to the product log first」模板没有，应留在清单，或明确并入 sprint-log#21 并保留选条目时补缺的语境。",
     "dups": [],
-    "confidence": "中"
+    "confidence": "中",
+    "checked": [
+      "verified: reason"
+    ]
   },
   {
     "id": "sprint-log#6",
@@ -99,9 +114,12 @@
     "home": "清单",
     "recommend": "改",
     "merge_into": null,
-    "reason": "「方案，不是步骤」「一个 session 内做完」是 PO 要留的规矩，留。条内混了方案内容、Scrum Guide 一天度量的换算、检查人、偏离指路四件事：指路删掉，检查人与方案细节归模板或流程文档，一行留「方案到做法层级、一 session 一项」。",
+    "reason": "一行保留「方案到做法层级、每个工作项一个 session」；模板 sprint-backlog-template.md 第 37 行、commands/developer.md 第 33 行与 overview.md 第 116 行已覆盖方案内容、无分步和检查人。但「no file contents、不润色方案、能写出步骤就去做」和「设计给的是方案时，How 是把它造出来」只在原条（sprint-log.md 第 52 行），要留在清单或写进 developer.md 的 How 段。",
     "dups": [],
-    "confidence": "中"
+    "confidence": "中",
+    "checked": [
+      "verified: reason"
+    ]
   },
   {
     "id": "sprint-log#8",
@@ -113,9 +131,12 @@
     "home": "清单",
     "recommend": "留",
     "merge_into": null,
-    "reason": "「审方案不等于放行，放行只能 PO 给」是 PO 叫停过的事，Memory 必须留。后半句（审阅交 Master 时写交接）是流程细节，可归模板。",
+    "reason": "「审方案不等于放行，放行只能 PO 给」是 PO 叫停过的事，必须留；后半句「PO 可把 How、新结构、全文的审阅交 Master，并把交接写进日志」模板 sprint-backlog-template.md 第 46 行没有，overview.md 第 12 条（第 89 行）只讲一般书面交接，应一并留在清单，不能「归模板」。",
     "dups": [],
-    "confidence": "高"
+    "confidence": "高",
+    "checked": [
+      "verified: reason"
+    ]
   },
   {
     "id": "sprint-log#9",
@@ -127,9 +148,12 @@
     "home": "清单",
     "recommend": "改",
     "merge_into": null,
-    "reason": "「第四章是完整记录，新会话只靠日志接手」是规矩，留。Done when 行加 ✓ 日期的写法是模板格式，归模板；「笔记形式随意」一句可以删。",
+    "reason": "保留「第四章是完整记录、新会话靠日志接手且不从头重算」；「笔记形式随意」与「chapter 4 may refine the How」模板 sprint-backlog-template.md 第 50 行已有，可删。但「Done when 格加 ✓ 日期、保留完成条件、未标=未完成」模板没有（第 37-46 行），board-log.md 第 29 行与 scripts/board_check/check.py 第 265 行只读取该标记，必须留在清单。",
     "dups": [],
-    "confidence": "中"
+    "confidence": "中",
+    "checked": [
+      "verified: reason"
+    ]
   },
   {
     "id": "sprint-log#10",

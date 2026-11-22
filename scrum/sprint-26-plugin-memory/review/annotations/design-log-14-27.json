@@ -86,7 +86,10 @@
     "recommend": "改",
     "merge_into": null,
     "reason": "改：一条约一千五百字，混了结束决定、产出去向、归档、git 许可、教训五件事。清单留一行：设计由 PO 决定结束，日志与原始材料由结束后第一个冲刺 Review 归档；细则（产品日志写法、分支处理、断链检查）移长文件。删了会丢归档的时点和材料不能丢的规矩，所以不删。",
-    "dups": ["sprint-log#17", "sprint-log#19"],
+    "dups": [
+      "sprint-log#17",
+      "sprint-log#19"
+    ],
     "confidence": "中"
   },
   {
@@ -116,7 +119,13 @@
     "recommend": "改",
     "merge_into": null,
     "reason": "改：这条是 PO 决定清单的索引，和 design-log#14、#16、#19、#26 说的决定重复。改成「不确定就问 PO；每个阶段结束、每个门、每个 git 许可都由 PO 定，见阶段之间的门」，具体清单只留在门那一条里，免得两处不一致。",
-    "dups": ["design-log#14", "design-log#16", "design-log#19", "design-log#26", "overview#10"],
+    "dups": [
+      "design-log#14",
+      "design-log#16",
+      "design-log#19",
+      "design-log#26",
+      "overview#10"
+    ],
     "confidence": "中"
   },
   {
@@ -161,7 +170,9 @@
     "recommend": "改",
     "merge_into": null,
     "reason": "改：一条里有头部格式、接手顺序、git 许可、断线前的记法四件事。清单留「接手先读头部的 Now 与等待 PO，再查阶段许可」一句；头部格式归模板，「Now 和阶段许可都不授权提交」与 design-log#26 重复，只留在 26。",
-    "dups": ["design-log#26"],
+    "dups": [
+      "design-log#26"
+    ],
     "confidence": "中"
   },
   {
@@ -175,7 +186,9 @@
     "recommend": "并",
     "merge_into": "overview#17",
     "reason": "并入 overview#17：通用的「目标不变、其余可调」已在 overview#17 写过，本条只多了设计特有的「Empathize 中精化目标」一句，并进 overview#17 即可，免得两处各写一遍。",
-    "dups": ["overview#17"],
+    "dups": [
+      "overview#17"
+    ],
     "confidence": "高"
   },
   {
@@ -190,7 +203,10 @@
     "recommend": "改",
     "merge_into": null,
     "reason": "改：条文约一千五百字加一张四行表，是本设计最关键的门，留。但清单只留一行：阶段之间等 PO 明确许可，许可只覆盖该阶段的设计工作，不含提交、合并、推送；表与「读设计目标」的细则移长文件。删了会丢门的标准，不删。",
-    "dups": ["design-log#21", "design-log#24"],
+    "dups": [
+      "design-log#21",
+      "design-log#24"
+    ],
     "confidence": "中"
   },
   {
