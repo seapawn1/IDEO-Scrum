@@ -54,15 +54,15 @@
 
 > 召唤 Stakeholder 时报卡名，它按卡上的身份看、只看卡上写的东西；常驻会话另加「负责 / 不负责」两栏。派子代理做审阅、外部视角、测试、方案评议时，能用卡就用（PO 2026-11-08）。
 
-| | 熟手 | 陌生人 | 读者 | PO 助手（常驻会话） |
+| | 熟手 | 陌生人 | 读者 | Supporter（秘书，常驻会话） |
 | --- | --- | --- | --- | --- |
-| 是谁 | 像作者这样的 solo 开发者：用 Claude Code 和本插件做自己的项目，熟悉这套流程 | 懂 Scrum、第一次装本插件的 solo 开发者：会用 Claude Code，没见过本仓库，也没有作者的记忆和配置 | 不装插件、只看公开分享（文章、网页、视频）的人：想学 solo + AI 怎么用 Scrum 与设计思维 | 常驻的 Claude Code 会话，替 PO 整理产品日志 |
-| 要什么 | 流程跟着插件走，不用每次口述规矩；会话断了、压缩了能接上 | 装上就知道第一句说什么；插件自己的词有解释；很快进入干活 | 一套讲得清、能照着做的方法 | PO 或 Master 交代的改动说得清、有出处 |
-| 怎么算满意 | 不用反复提醒 AI 规矩；冲刺照约定开、记、收 | 不问作者也能走完第一个冲刺 | 读完能在自己的项目里用起来 | 产品日志与实际一致；PO 不用自己动手整理 |
+| 是谁 | 像作者这样的 solo 开发者：用 Claude Code 和本插件做自己的项目，熟悉这套流程 | 懂 Scrum、第一次装本插件的 solo 开发者：会用 Claude Code，没见过本仓库，也没有作者的记忆和配置 | 不装插件、只看公开分享（文章、网页、视频）的人：想学 solo + AI 怎么用 Scrum 与设计思维 | 常驻的 Claude Code 会话，做不碰源码的杂活（SGEP 里 Stakeholder 的一种），也是 PO 的联络点 |
+| 要什么 | 流程跟着插件走，不用每次口述规矩；会话断了、压缩了能接上 | 装上就知道第一句说什么；插件自己的词有解释；很快进入干活 | 一套讲得清、能照着做的方法 | PO 或 Master 交代的事说得清、有出处；等 PO 定的问题一次收齐、带着上下文问到 |
+| 怎么算满意 | 不用反复提醒 AI 规矩；冲刺照约定开、记、收 | 不问作者也能走完第一个冲刺 | 读完能在自己的项目里用起来 | 产品日志与实际一致；PO 不用自己动手整理；要 PO 定的事不漏、不一件件追着问 |
 | 看得到什么 | 全部：插件、产品日志、冲刺日志 | 插件、README，和 README 链到的文档（体验测试只给这些；Sprint 20 Master 定，快速上手和词汇表放在 `docs/`） | 只有公开发布的内容 | 全部：插件、产品日志、冲刺日志 |
-| 何时召唤 | Review 看增量；改约定前看顺不顺手 | 体验测试（PBI-63）；Review 涉及入口、说明、术语时 | 分享内容的草稿（PBI-12） | PO 或 Master 要登记 PBI、改状态与备注、要一份进度汇总时 |
-| 负责 | — | — | — | 照 PO 或 Master 的话改产品日志；汇总进度给 PO |
-| 不负责 | — | — | — | 排序、定目标、替 PO 拍板；改插件文件；审阅；没问过不删条目 |
+| 何时召唤 | Review 看增量；改约定前看顺不顺手 | 体验测试（PBI-63）；Review 涉及入口、说明、术语时 | 分享内容的草稿（PBI-12） | PO 或 Master 要登记 PBI、改状态与备注、要进度汇总、要看板、要讲机制，或有事要找 PO 时 |
+| 负责 | — | — | — | 照 PO 或 Master 的话改产品日志、写看板、汇总进度；收齐等 PO 的问题并把答复原话带回；转达 PO 的话（标明是 PO 的意见，附原话、日期、在哪里说的） |
+| 不负责 | — | — | — | 排序、定目标、替 PO 拍板与答复；改插件文件；审阅；没问过不删条目；工具权限与设置、`CLAUDE.md`／`AGENTS.md`、推送发布这些要 PO 亲口确认的事，转达也不算 |
 
 ## 2.2 架构
 
@@ -74,7 +74,7 @@ flowchart TD
     M["Master"]
     D["Developer"]
     G["Designer"]
-    S["Stakeholder（含 PO 助手）"]
+    S["Stakeholder（含 Supporter）"]
     U --> A["① 装插件，读 README 与快速上手（PBI-62、64）"]
     A --> A2["② 召唤角色进门（PBI-73、81）"]
     A2 --> B["③ 写产品日志：Product · 架构 · PBI（product-log）"]
@@ -119,11 +119,6 @@ flowchart TD
 | PBI-96 | Memory 草稿：汇总与对抗审查 | 作为熟手，我想让整份 Memory 草稿先过 Master 审和独立的对抗审查，以便落盘前就把错漏改掉 | 插件：四内核与角色 | 规划：Sprint 26 | S | 自 PBI-51 切出。字符预算、逐字、句柄唯一、索引无死链的检查都要通过；PO 2026-11-23 本期免审，Master 审定、对抗审查过即可落盘，PO 在 Review 时看结果。 |
 | PBI-97 | Memory：落盘与引用迁移 | 作为熟手，我想让 Memory 落进插件、旧约定删掉、各处引用都指到新位置，以便只有一份规矩、链接都通 | 插件：四内核、角色入口、docs 与检查脚本 | 规划：Sprint 26 | M | 自 PBI-51 切出。等 Sprint 27 合入 main 再做；旧约定转完就删（PO 2026-11-22）；全仓 grep 旧引用为零；改 `AGENTS.md` 里的引用须 PO 直接点头。 |
 | PBI-98 | Memory：角色带上与验证 | 作为熟手，我想叫出任一角色就带上同一套规矩，以便不用每次手动说明 | 插件：角色入口与 DSH | 规划：Sprint 26 | M | 自 PBI-51 切出。Claude Code 与 DSH 各验一次；触发测试不比改前差；Outcome「不用每次手动说明」按 Sprint 26 冲刺日志 2.2 定的判据过线。 |
-| PBI-84 | 署名：补齐 IDEO 五模式双源署名 | 作为熟手，我想要 IDEO 五模式摘录的来源与许可标注同时对上 2010 *Design Process Mini-Guide* 与 2018 *Bootleg*，以便插件的第三方署名与 `ATTRIBUTION.md` 逐项一致 | 插件：`ideo-kernel`（`IDEO-modes/`）与 `ATTRIBUTION.md` | 规划：Sprint 27 | S | 来源：Sprint 21 Test 署名核查与 PO 2026-11-21 Review 拍板 ①。核实 `IDEO-modes/*.md` 含两路底本：`89eb3dd` 主体出自 Stanford d.school 2010 *Design Process Mini-Guide*（`ModeGuideBOOTCAMP2010L.pdf`，官方维基首页存档标 `CC BY-NC-SA 3.0 Unported`），`0d2629f` 的 38 处补料出自 2018 *Design Thinking Bootleg*（`CC BY-NC-SA 4.0`）；仓外取证归档见 `S:/IDEO-Scrum-Archives/sprint-21-design-board/h6-9558a0a/checks/attribution-audit/publisher-wiki/`。须将 `ATTRIBUTION.md` 第 3 节与 `IDEO-modes/*.md` 补齐双源 Source / License 标注，不改原书摘录正文。 |
-| PBI-85 | 结构：模板与看板按用途收拢 | 作为熟手，我想在插件里按用途一眼找到模板和看板，以便引用和维护都井然有序 | 插件：目录结构 | 规划：Sprint 27 | M | 来源：PO 2026-11-21 Sprint 22 Review 讨论。原话：「模板专门拉一起放在template里面去，hh，然后看板专门放到board里面去，然后井然有条之。」「我应该添加一个memory包呢，专门放记忆和约定呢。」范围：模板集中到 `template/`、看板相关集中到 `board/`；「记忆与约定另立包」并入 PBI-51（PO 2026-11-22）。迁移类改动同一提交内全仓 grep 旧路径到零；技能之间按名字调用不受影响，但 SKILL.md 的相对引用、`board_check` 脚本与 fixtures、`package.json` 的 DSH 加包范围、`check_docs.py`／`check_dsh.mjs`、README 与 docs 链接须同步。迁完跑 `claude plugin validate --strict`、`check_dsh.mjs`、`check_docs.py`、`board_check selftest`。 |
-| PBI-86 | 角色：PO 秘书与「秘书」说辞统一 | 作为 PO，我想有一个全辅助的秘书角色（更新看板、讲解机制等），并把 SM 与 Stakeholder 入口里「秘书」的说法换成统一的新称法，以便角色边界与称呼不混淆 | Map ②、③；插件：commands／agents／docs | 规划：Sprint 27 | S～M | 来源：PO 2026-11-21 原话：「PO 加上秘书角色，全辅助角色--更新看板，介绍机制等等，并且更换sm得秘书说辞，变成其他说法，注意stakeholder也要变换说辞。这里还有一个点，也要计入PBI里面去，下午我们来做掉。」范围：新增 PO 秘书角色（全辅助，做更新看板、介绍机制等事务；非独立审阅者，不代 PO 决定）；统一 SM 命令／agent 与 stakeholder 命令／agent 中的「秘书」措辞，另起说法；保留 Review 召唤权与建造者边界。**删掉 `commands/stakeholder.md` 里原有的常驻「PO assistant」身份**（description、正文「PO assistant, not a second Scrum Master」段及 `skills/scrum-kernel/overview.md`、`docs/glossary.md` 等处相关说法一并清理或改写），由新的 PO 秘书承接。具体名称与落点待精化。PO 2026-11-22 补充原话：「其实不是把 master 改掉，你还是 master 没有问题，然后你你不是之前有个秘书吗，其实那个表达不准确嘛，应该把它变成一个别的表达，然后我想新建一个秘书的角色。那个秘书的角色就是非常简单的一个东西，大家可能更新看板啊，然后传达事情啊，等等，各种杂活都归他。……就是它一般用非常便宜的模型嘛」「86其实很重要」。新称法与秘书定位回 PO 定（「后面修改的话再说具体的那个修改内容」）。 |
-| PBI-89 | 看板：收尾态识别与三条说明 | 作为熟手，我想让看板认得收尾待归档的写法，说明与模板占位前后一致，以便收尾中的设计和 IDEO 日志挂在对的地方 | 插件：`board/board-log.md`、`template/ideo-backlog-template.md`；`scripts/board_check/` | 规划：Sprint 27 | 待估 | 来源：Sprint 23「21＋23 合流回验」复现的缺口——`Test: Concluded — awaiting archive` 识别不了；Sprint 21「熟手」Review 的三条非阻塞建议：① `check.py` 结束态兼容无「已」的 `收官 · …` 写法、`host_concluded` 剥离阶段前缀、避免阶段前缀跳过无主语规则；② `board-log.md` 第 12 条补明 `solution: null` 时亦省略 `story`；③ `ideo-backlog-template.md` 的 `For` 占位说明补提 `DesignBacklog.md`。出处：[Sprint 21](documents/sprint/sprint-21-design-board.md)、[Sprint 23](documents/sprint/sprint-23-log-rules.md) 归档。PO 2026-11-22 交 Sprint 27。 |
-| PBI-90 | 入口：Sprint 22 Review 的九条意见 | 作为熟手，我想让项目 Agent 与参谋入口的说明补齐写法、提示和后续路径，措辞前后一致，以便照着说明就能用 | 插件：`claude-skills/project-stakeholder`、`claude-skills/second-opinion`、`agents/advisor.md`；docs | 规划：Sprint 27 | 待估 | 来源：[Sprint 22 归档](documents/sprint/sprint-22-project-agents.md) Review 的非阻塞意见：① 另选模型缺少具体传参写法；② 角色卡无「何时召唤」栏时缺后续路径；③ 用户召唤 Agent 的示例是内部工具语法，可后续改成 @-mention 或自然语言（若改须按 Review 流程批准并验证）；④ `/project-stakeholder` 命令无参数提示；⑤ `.claude/` 写入另有权限确认；⑥ 新 docs 未进 README／quick-start 导航；⑦ 两入口／三条列项措辞不一致；⑧ `context is clean` 等绝对措辞考虑弱化；⑨ Advisor Fable access 需提醒。逐条由 Sprint 27 的 Developer 精化定去留；⑥ 先查 Sprint 25 是否已挂接。PO 2026-11-22 交 Sprint 27。 |
 | PBI-87 | 调研：Stakeholder 角色是否可选自动登记为 Agent | 作为 PO，我想评估让 Stakeholder 角色按需或自动登记为项目 Agent 的可能，以便少手工操作又能守住边界 | 插件：`project-stakeholder`／产品日志 §2.1 | 待选 | S | 来源：PO 2026-11-21 原话：「你记得stakeholder角色是否自动登记agent，计入一个反馈PBI里面吧？还是一个PBI？我觉得可以一类可能反馈，因为我可能要测试一下，未来有可能放开去自动创建agent去，这个你要记得最好。」内容：先测手动登记的实际使用体验；若合适，再研究可选的批量／自动登记（默认关闭，逐张预览或规则化确认），不改变「PO 定角色、登记不改共享命令、Review 召唤权不变」的边界。按想法／反馈类登记，暂不排期。**未来需测试**：召唤 subagent 与 Workflow 时，是否会局限在已给的 agent 角色列表和产品日志 Stakeholder 表格之内；能否跳出这个约定，新建角色来做 subagent／Workflow。PO 2026-11-22：要先体验，本轮不收。 |
 | PBI-91 | 钩子：承诺钩子的锚也认冲刺日志 | 作为在小项目里只建冲刺日志的熟手，我想让承诺钩子认出本项目的冲刺日志，以便注入的是自己的 Sprint Goal，不串到上层项目 | 插件：`hooks/commitments.sh` | 待选 | 待估 | 来源：反馈 2026-11-22（F17）：`find_root_set` 只认 `scrum/ProductBacklog.md`，找不到就往上找，小项目会注进上层项目的承诺。PO 2026-11-22：「这个钩子你把它记成一个新的条目吧，然后这次就不收好吧，这次就不收，它跟87一样，就是先不收，未来我再体验体验，真的有问题再收进去。」 |
 | PBI-99 | 审阅：PO 端到端审阅插件 Memory 与全插件 | 作为 PO，我想专门开一期端到端审一遍插件的 Memory 和各处措辞，以便亲自确认每条规矩和说法都合意 | 插件：全插件 | 待选 | 待估 | 来源：PO 2026-11-23 原话：「其实有一些小点的措辞，我最后看也能看出来的，甚至于什么时候我再专门开一个sprint，就是我端到端审阅的好不好。也就是说这次就不审阅了。」Sprint 26、27 本期免审，由 Master 监督审阅。 |
@@ -158,3 +153,4 @@ flowchart TD
 | Sprint 23（2026-11-21） | PBI-76 DoD、PBI-77 阶段放行、PBI-78 承诺、PBI-79 设计归档、PBI-69 Retro | DoD、阶段授权、承诺按原文、设计工作材料保全、Retro 分条记忆；按冻结口径 10/10，s10 定向复测 3/3。跨期核对及 Sprint 21 熟手提出的非阻塞留项见归档。 | [documents/sprint/sprint-23-log-rules.md](documents/sprint/sprint-23-log-rules.md) |
 | Sprint 24（2026-11-21） | PBI-80 起草前读原文、PBI-81 顺序加载、PBI-82 内联原文、PBI-83 承诺 hook | 候选四题首稿前读全 12/12 对基线 0/12；四角色 4／3／3／2；Sprint Backlog 原文加载 3/3。两夹具 hook 常态 P50 降约 91%，已测承诺语义不变；未重测全流程 Outcome。 | [documents/sprint/sprint-24-loading-reliability.md](documents/sprint/sprint-24-loading-reliability.md) |
 | Sprint 25（2026-11-21） | PBI-72 DSH 分发：验收与跨宿主维护说明 | 两个宿主的 0.6.3 新装、6.0.3 迁移与共用规则读取均在隔离环境取证；保留各自迁移步骤及实调角色边界。Claude 与 DSH 本地候选同为 0.6.3，尚未发布。 | [documents/sprint/sprint-25-dsh-docs.md](documents/sprint/sprint-25-dsh-docs.md) |
+| Sprint 27（2026-11-22～11-23，版本不动，仍是 0.6.3 的未发布候选） | PBI-84 署名（IDEO 五模式双源）、PBI-85 模板与看板归位、PBI-86 Supporter 角色与改称、PBI-89 看板收尾态、PBI-90 入口九条意见 | 新角色 Supporter（秘书）：杂活、PO 的联络点、转达的 PO 意见视同 PO 的、三级分流，各角色叫法统一；模板进插件根 `template/`、看板文件进 `board/`；看板认得收尾待归档的写法（检查脚本也认只在分支上的产品日志）；五个 IDEO 模式文件署名补齐 2010／2018 双源；项目 Agent 与参谋入口九条意见做了八条（不改召唤示例）。触发测试 A 组 9／9、B 组 4／9 对 3／9、C 组 9／9；无头加载 3／3；DSH 实装三条全过；Codex 与熟手视角各提的意见都已修；旧称法与旧路径 grep 只剩放行的归档里的历史记述。 | [documents/sprint/sprint-27-wrap-up.md](documents/sprint/sprint-27-wrap-up.md) |
