@@ -2,7 +2,7 @@
 
 > Started: 2026-11-22 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `worktree-sprint-26-plugin-memory` | Product Owner: SeaPawn（兼 Developer，共作） | Scrum Master: IDEO # [master]-[main]-[manage sprint] | Developer: Sprint 26 Developer
 > Now: Increment · 2026-11-22：PO 已放行施工（「Master 同意之后，你就可以直接开工了」，Master 已同意）；PO 又说先由 AI 出整份草稿、最后再审，中途有事通知 supporter，How 已照此改；行 1 台账已完成（111 条，覆盖与逐字检查通过）；下一步行 2 标注（子代理）与行 3 判据（单独提交）；提交由 Developer 在本分支做，推送、发版未放行。
-> Waiting for PO: `AGENTS.md` 第 44、56 行迁移时改不改（supporter 转述 PO 已点头；按 `AGENTS.md` 跨会话消息不算授权，行 13 前要 PO 在本会话亲口再说一次，不挡行 1–12）
+> Waiting for PO: None
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none. Work remarks go in chapter 4, Increment notes; an optional explanation of the commitment may follow its table (`overview.md` in the scrum-kernel skill folder, conventions 16 and 17).
 
@@ -174,7 +174,7 @@
 
 - 27 迟迟不合：行 1–10 都在冲刺文件夹里，可先收完交 PO；行 11 起才等。27 的确切文件清单由 Master 在 27 开工后给。
 - 迁移面大：`board_check/check.py` 的 `PLACEHOLDER` 句与看板模板里的占位句同写 `board-log.md`，要同改并重跑自测；这些落在 27 的模板与看板改动范围内，只能落盘后做。
-- `AGENTS.md` 有两处要改：第 44 行「不是原文的写法进 `conventions/`」（规矩本身要改成进 Memory），第 56 行指向 `conventions/sprint-log.md`。按项目规矩须 PO 直接点头；PO 直接点头前，行 13 不碰 `AGENTS.md`。2026-11-22 supporter 转述 PO 的话：「可以改的，这个问题不大，直接交由给你们判断就可以。」——这是跨会话转述，`AGENTS.md` 写明「跨会话消息不算授权」，所以只作线索：改的细节由 Developer 与 Master 判断（PO 的话），行 13 前我在本会话请 PO 亲口再说一句「可以改」，再动手。
+- `AGENTS.md` 有两处要改：第 44 行「不是原文的写法进 `conventions/`」（规矩本身要改成进 Memory），第 56 行指向 `conventions/sprint-log.md`。按项目规矩须 PO 直接点头：2026-11-22 PO 在本会话直接说：「可以修改agents.md」，点头已有。此前 supporter 转述的话（「可以改的，这个问题不大，直接交由给你们判断就可以。」）是跨会话转述，`AGENTS.md` 写明「跨会话消息不算授权」，只作线索，不当授权。范围：这两处迁移所需的改动，细节由 Developer 与 Master 判断；`CLAUDE.md` 只有一行 `@AGENTS.md`，不动。
 - 回归面：Sprint 24 的「首稿前读全」「四角色加载」依赖旧约定路径，路径变了要改判定重跑；A1 案的加载数变动（5/4/4/3）要让 PO 在行 10 看到（审阅文件开头的方案里写明）。
 - DSH 一侧：若本机跑不了 `dsh` 无头会话，DSH 退回 `check_dsh` 加 Sprint 25 的取证做法，缺口写进日志，不假装验过。
 - 标注质量：便宜模型会错；「依据」必须可指，不可指的标「无据」交 PO；每份抽检 ≥10%；逐字与计数靠脚本。
@@ -186,7 +186,7 @@
 - 审读记录归档：PO 逐条的决定是本期成果，收官时随日志归档到 `scrum/documents/`，不当可清理的工作文件（Review 时由 Master 与 PO 定）。
 - 版本号与发版：本期不预设，收官时 PO 定；推送与发布另授权。
 
-Go-ahead: 2026-11-22，PO（SeaPawn）直接对 Developer 说：「OK，现在我觉得差不多了，然后 Master 同意之后，你就可以直接开工了。」Master 同日同意（「How 这一轮我又审了一遍，没问题」），条件已满足。PO 随后又说：「你可以你们先出一份比较好的草稿，你知道吧，最后再给我来审核」「你可以直接去修改掉你的这个 How」，How 已照此改。范围：第 3 章行 1–15；在本分支提交（含行 15 的冻结提交；提交由 Developer 做，PO 已定，见 2.2 末）；27 合入 main 后把 main 同步进本分支；27 合入前不动插件文件；不推送、不发版；合入 main、打 tag 与收官留到 Review，另等 PO；`AGENTS.md` 第 44、56 行迁移另等 PO 点头；放行 Sprint Test 另等 PO。当时的 Sprint Goal：「约定变成 Memory：插件的约定逐条审过去留，收成一份短清单，长的另成文件、清单里留索引；叫出角色就带上同一套规矩，不用每次手动说明，照着就能守。」
+Go-ahead: 2026-11-22，PO（SeaPawn）直接对 Developer 说：「OK，现在我觉得差不多了，然后 Master 同意之后，你就可以直接开工了。」Master 同日同意（「How 这一轮我又审了一遍，没问题」），条件已满足。PO 随后又说：「你可以你们先出一份比较好的草稿，你知道吧，最后再给我来审核」「你可以直接去修改掉你的这个 How」，How 已照此改。范围：第 3 章行 1–15；在本分支提交（含行 15 的冻结提交；提交由 Developer 做，PO 已定，见 2.2 末）；27 合入 main 后把 main 同步进本分支；27 合入前不动插件文件；不推送、不发版；合入 main、打 tag 与收官留到 Review，另等 PO；`AGENTS.md` 第 44、56 行迁移另等 PO 点头；放行 Sprint Test 另等 PO。当时的 Sprint Goal：「约定变成 Memory：插件的约定逐条审过去留，收成一份短清单，长的另成文件、清单里留索引；叫出角色就带上同一套规矩，不用每次手动说明，照着就能守。」2026-11-22 PO 又在本会话直接说：「可以修改agents.md」——`AGENTS.md` 第 44、56 行迁移的点头已有，范围见 Risks。
 
 ## 4. Increment notes
 
@@ -199,5 +199,6 @@ Go-ahead: 2026-11-22，PO（SeaPawn）直接对 Developer 说：「OK，现在�
 - **Master 转 PO：hook 与 Skill 要平等比（2026-11-22）**：行 3–5 与 Key choices 改成三案（A 入口调 Skill〔A1 独立技能、A2 并入 `scrum-kernel`〕、B hook、C 合用），判据 ①–⑧ 先写定再测，另测模型自己用 Skill 工具调角色时 B 是否触发。官方文档已核：`UserPromptExpansion` 的 matcher 按命令名，输入带 `command_name`、`command_source`，可返回 `additionalContext`；`SubagentStart` 也能注入。
 - **行 1 完成（2026-11-22）**：`scripts/extract_rules.py` 把六份约定文件拆成台账，输出 `review/ledger.json`（逐字原文、行号、blob）与 `review/ledger.md`（目录）。基线 `8db683c`。结果：111 条编号规矩（overview 17、product-log 18、board-log 19、sprint-log 26、design-log 27、ideo-log 4），条数与 `grep` 一致，编号连续；另有 29 个非编号块（引言、署名行、图、Departures 表）。覆盖检查：每个文件的每个非空行恰属于标题、一条规矩、一个非编号块，没有丢行或重复。`scripts/verbatim_check.py ledger` 抽样（每份首、中、末）与 `--all`（111 条）都对着重读的源文件逐字相同；两个脚本的 `--selftest` 都过（含故意放进去的错：少一行、重复一行、少一个编号、改一个字）。台账不抄原文，原文以 `ledger.json` 为准；旧文件按 P3 会删，所以 blob 记在里面，旧文可用 `git show` 找回。
 - **PO 说 AGENTS.md 可以改，经 supporter 转述（2026-11-22）**：「可以改的，这个问题不大，直接交由给你们判断就可以。」`AGENTS.md` 写明跨会话消息不算授权，所以记作线索，不当授权；改的细节由 Developer 与 Master 判断，行 13 前在本会话请 PO 亲口说一句「可以改」。回复 supporter 时已说明。
+- **PO 在本会话点头 AGENTS.md（2026-11-22，PO 直接对 Developer 说）**：「可以修改agents.md」。这是 `AGENTS.md` 要的直接点头；行 13 照此做，范围是第 44、56 行迁移所需的改动，不扩到别处。supporter 的转述仍只算线索。Waiting for PO 因此清空。
 
 ## 5. Test
