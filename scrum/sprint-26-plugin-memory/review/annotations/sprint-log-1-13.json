@@ -210,8 +210,11 @@
     "home": "清单",
     "recommend": "改",
     "merge_into": null,
-    "reason": "「先写标准、先提交、跑过不改」有依据，留。第二句「检查脚本的错误调用逐条记下原因」是另一条规矩，拆成独立一条，或并入 headless-testing.md。",
+    "reason": "「先写标准、先提交、跑过不改」有依据，留；第二句「检查脚本的错误调用逐条记下原因」拆成独立一条进 Memory。headless-testing.md 在 scrum/documents/，第 3 行说「插件不要求用户照做」，不能作去处。",
     "dups": [],
-    "confidence": "中"
+    "confidence": "中",
+    "checked": [
+      "verified: reason"
+    ]
   }
 ]

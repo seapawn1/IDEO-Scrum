@@ -28,7 +28,7 @@ SECTIONS = ["roles", "product-log", "sprint", "design", "ideo", "board", "meta"]
 ROLES = {"dev", "sm", "des", "stk", "po"}
 LONG_FILES = {"roles-and-routing", "stage-gates", "goal-fixed", "layers-and-folders", "sprint-closing", "sprint-refinement",
               "design-ending", "design-stages", "board-writing", "departures", "names", "product-log-details",
-              "ideo-ending", "handoff", "sprint-stages"}
+              "ideo-ending", "handoff", "sprint-stages", "flow-maps"}
 REQUIRED = ["id", "line", "lines", "section", "long_file", "merged_into", "adds_to_target", "absorbed", "where_else", "note"]
 LINE = re.compile(r"^- \*\*([a-z0-9]+(?:-[a-z0-9]+){0,4})\*\*(?: \[([a-z,]+)\])? (.+)$")
 CJK = re.compile(r"[㐀-鿿　-〿＀-￯]")
@@ -38,6 +38,13 @@ LIMIT_SOFT, LIMIT_HARD = 130, 170
 def ledger_ids() -> list[str]:
     led = json.loads(LEDGER.read_text(encoding="utf-8"))
     return [r["id"] for f in led["files"] for r in f["rules"]]
+
+
+def block_ids() -> list[str]:
+    """The non-numbered blocks of the six files (quotes, paragraphs, diagrams, the Departures table): `overview@5` is the
+    fifth block of overview.md. Each needs a decision: a line, a long file that carries it, or where it went / why it goes."""
+    led = json.loads(LEDGER.read_text(encoding="utf-8"))
+    return [f"{f['short']}@{k}" for f in led["files"] for k in range(1, len(f["blocks"]) + 1)]
 
 
 def annotations() -> dict[str, dict]:
@@ -96,7 +103,30 @@ def run_check(d: pathlib.Path, complete: bool = True) -> int:
     ids = ledger_ids()
     handles: dict[str, str] = {}
     via_needs: list[tuple[str, str]] = []
+    blocks = set(block_ids())
     for i, o in rows.items():
+        if "@" in i:  # a non-numbered block: no annotation; it needs a line, or where_else saying where it went or why it goes
+            if i not in blocks:
+                problems.append(f"{i}: not a block in the ledger")
+                continue
+            miss = [k for k in REQUIRED if k not in o]
+            if miss:
+                problems.append(f"{i}: missing fields {miss}")
+                continue
+            bl = [o["line"]] if o["line"] else (o["lines"] or [])
+            if not bl and not o["where_else"]:
+                problems.append(f"{i}: a block with no line needs where_else (where it went, or why it is dropped)")
+            if bl and o["section"] not in SECTIONS:
+                problems.append(f"{i}: section {o['section']!r} not in {SECTIONS}")
+            for ln in bl:
+                for e in line_problems(ln):
+                    problems.append(f"{i}: {e}")
+                m = LINE.match(ln)
+                if m:
+                    if m.group(1) in handles:
+                        problems.append(f"{i}: handle {m.group(1)} is also used by {handles[m.group(1)]}")
+                    handles[m.group(1)] = i
+            continue
         if i not in ann:
             problems.append(f"{i}: not in the ledger")
             continue
@@ -143,7 +173,7 @@ def run_check(d: pathlib.Path, complete: bool = True) -> int:
         if h not in handles:
             problems.append(f"{i}: via {h!r} is not the handle of any drafted line")
     if complete:
-        problems += [f"{i}: not drafted" for i in ids if i not in rows]
+        problems += [f"{i}: not drafted" for i in ids + sorted(blocks) if i not in rows]
     # a rule that absorbs others must name them, and every 并 must be absorbed by its target
     for i, o in rows.items():
         t = o.get("merged_into")
@@ -184,7 +214,7 @@ def run_stats(d: pathlib.Path) -> int:
 def run_lines(d: pathlib.Path) -> int:
     rows, _ = load(d)
     by = defaultdict(list)
-    for i in sorted(rows, key=lambda s: (s.rsplit("#", 1)[0], int(s.rsplit("#", 1)[1]))):
+    for i in sorted(rows, key=lambda s: (s.replace("@", "#").rsplit("#", 1)[0], int(s.replace("@", "#").rsplit("#", 1)[1]) + (1000 if "@" in s else 0))):
         o = rows[i]
         for ln in ([o["line"]] if o.get("line") else (o.get("lines") or [])):
             by[o.get("section")].append((i, ln))

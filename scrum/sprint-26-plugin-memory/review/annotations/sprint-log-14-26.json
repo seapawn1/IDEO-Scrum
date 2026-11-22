@@ -7,12 +7,15 @@
       "archive scrum/documents/sprint/sprint-11-conventions-review.md：第 44 行，sprint-log 4 成立：SM 自己构建则全新子代理审；只共享上下文则 SM 照常审"
     ],
     "kind": "规矩",
-    "home": "清单",
+    "home": "长文件",
     "recommend": "改",
     "merge_into": null,
-    "reason": "核心行为有依据，但条文过长。压成一行：SM 默认审；SM 自己构建则全新子代理审；PO 点名的 Stakeholder 按 DoD 逐条核。细则（子代理简报、读长 diff）留长文件。",
+    "reason": "核心行为有依据，但条文过长。清单留一行：SM 默认审；SM 自己构建则全新子代理审；PO 点名的 Stakeholder 按 DoD 与验收标准逐条核；共享 SM 上下文的 Developer 不因此使 SM 成为构建者，SM 仍审；SM 可派子代理审阅或读长 diff，仍对结论负责（commands/scrum-master.md:58 有前半）。子代理简报等细则随全文进长文件 long/roles-and-routing.md。",
     "dups": [],
-    "confidence": "中"
+    "confidence": "中",
+    "checked": [
+      "verified: home, reason"
+    ]
   },
   {
     "id": "sprint-log#15",
@@ -24,11 +27,14 @@
     "home": "清单",
     "recommend": "改",
     "merge_into": null,
-    "reason": "来源只有作者的一句做法，「sometimes a glance is enough」没有判据，不可执行。改写成判据：DoD 或验收标准要求正式验收时才请 PO 正式验收，其余不请。",
+    "reason": "来源只有作者的一句做法；正式验收只在 DoD 或验收标准要求时请，其余不必正式验收，但「有时瞥一眼即可」要保留，不要改成一律不请。",
     "dups": [
       "sprint-log#25"
     ],
-    "confidence": "低"
+    "confidence": "低",
+    "checked": [
+      "verified: reason"
+    ]
   },
   {
     "id": "sprint-log#16",
@@ -38,12 +44,15 @@
       "archive scrum/documents/sprint/sprint-14-conventions-tuning.md：第 142 行，sprint-log 新增 Record the tests"
     ],
     "kind": "规矩",
-    "home": "清单",
+    "home": "长文件",
     "recommend": "改",
     "merge_into": null,
-    "reason": "有依据（Sprint 14 新增）。条文三四层，压成一行：每条完成标准和验收标准都要有有效证据，否则不算过；未观察到的信号记为未观察。细则留模板或长文件。",
+    "reason": "有依据（Sprint 14 新增）。清单留一行：每条完成标准和验收标准都要有有效证据，否则不算过；未观察到的信号记为未观察，反证记为未达并说明影响。其余细则（Outcome 与 Output 分开记、必需项未满足即拦下、不得声称整个 DoD 已通过、Sprint Test 须全部检查/审阅/验收通过、Test 内修复重测、退回上一阶段按阶段决定）逐条进长文件 long/stage-gates.md。",
     "dups": [],
-    "confidence": "中"
+    "confidence": "中",
+    "checked": [
+      "verified: home, reason"
+    ]
   },
   {
     "id": "sprint-log#17",
@@ -56,12 +65,15 @@
     "home": "长文件",
     "recommend": "改",
     "merge_into": null,
-    "reason": "有依据，但条文混了冲刺日志压缩归档、设计归档的时点与接力、产品日志保鲜、stakeholder 召唤四件事，远超一行。清单留一行：收官时用 Review 压缩、归档、刷新产品日志；细则（设计归档与接力）进长文件。",
+    "reason": "有依据，但条文混了冲刺日志压缩归档、设计归档与接力、IDEO 日志归档、清理 scrum/ 工作文件、Stakeholders 看法写入产品日志、outside view 的召唤六件事，远超一行。清单留一行：收官时用 Review 压缩、归档、刷新产品日志；其余细则全部进长文件 long/sprint-closing.md，尤其保留清理工作文件（勿删设计原件或断链）与 IDEO 日志以 ideo-<suffix>.md 归档；outside view 由 PO 或 SM 而非构建者召唤（commands/stakeholder.md:2 已有）。",
     "dups": [
       "sprint-log#18",
       "sprint-log#19"
     ],
-    "confidence": "中"
+    "confidence": "中",
+    "checked": [
+      "verified: reason"
+    ]
   },
   {
     "id": "sprint-log#18",
@@ -71,14 +83,17 @@
       "archive scrum/documents/sprint/sprint-23-log-rules.md：第 37 行，PBI-69：重要、可复用教训一条一条独立可找回；非要点丢弃"
     ],
     "kind": "规矩",
-    "home": "清单",
+    "home": "长文件",
     "recommend": "改",
     "merge_into": null,
-    "reason": "正文有依据（PBI-69）。条末的 *Supplement* 是助手推断、未经实践确认，标为补充；清单里只留「重要可复用的教训一条一条进项目记忆，没有就不写，不写 Retro 汇总，不进指令文件」，Supplement 那句（问 PO 在哪里卡住 AI）删去或另记。",
+    "reason": "正文有依据（PBI-69）。清单留一行：重要、可复用的教训一条一条独立可找回地进项目记忆；没有就不写，不写 Retro 汇总，不进 CLAUDE.md/AGENTS.md 等指令文件。其余细则进长文件 long/sprint-closing.md：工具无项目记忆时用仓库的教训笔记、每条写清什么坏了/为什么/下次怎么做、索引只指不抄、特别好的改进经 PO 同意进 DoD、检查产品日志是否保鲜。条末 *Supplement*（问 PO 在哪里卡住 AI）未经实践确认，作待 PO 确认的条目放进同一长文件，不要无声删去。",
     "dups": [
       "sprint-log#17"
     ],
-    "confidence": "中"
+    "confidence": "中",
+    "checked": [
+      "verified: home, reason"
+    ]
   },
   {
     "id": "sprint-log#19",

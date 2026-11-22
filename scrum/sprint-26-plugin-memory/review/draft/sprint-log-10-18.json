@@ -64,7 +64,7 @@
   },
   {
     "id": "sprint-log#15",
-    "line": "- **acceptance-when-written** Ask the PO for formal acceptance only when the Definition of Done or the acceptance criteria call for it.",
+    "line": "- **acceptance-when-written** Ask the PO for formal acceptance only when the Definition of Done or the acceptance criteria call for it; sometimes a glance is enough.",
     "lines": null,
     "section": "sprint",
     "long_file": null,
@@ -72,7 +72,7 @@
     "adds_to_target": null,
     "absorbed": [],
     "where_else": null,
-    "note": "The old 'sometimes a glance is enough' had no test; the annotation rewrote it as this criterion."
+    "note": "The verifiers asked to keep 'sometimes a glance is enough' (the author's sentence) rather than turn it into 'never otherwise'; kept as written."
   },
   {
     "id": "sprint-log#16",

@@ -40,6 +40,10 @@ HEADER = """# IDEO-Scrum Memory
 
 
 def rank(i: str) -> tuple[int, int]:
+    """Old file order, then rule number; a non-numbered block (`overview@5`) sorts after the rules of its file."""
+    if "@" in i:
+        f, n = i.rsplit("@", 1)
+        return FILE_ORDER.index(f), 1000 + int(n)
     f, n = i.rsplit("#", 1)
     return FILE_ORDER.index(f), int(n)
 
@@ -68,7 +72,7 @@ def build(rows: dict[str, dict]) -> tuple[str, list[tuple[str, str]]]:
             by_section.setdefault(o.get("section") or "meta", []).append((rank(i), i, ln))
     out, flat = [HEADER], []
     for s in cd.SECTIONS:
-        items = sorted(by_section.get(s, []))
+        items = sorted(by_section.get(s, []), key=lambda x: (x[0], x[1]))  # stable: a rule's own lines keep their order
         if not items:
             continue
         out.append(f"\n## {TITLES[s]}\n")
@@ -89,6 +93,8 @@ def handles_for(rows: dict[str, dict], i: str) -> list[str]:
     hs = [m.group(1) for ln in lines_of(o) for m in [cd.LINE.match(ln)] if m]
     if hs:
         return hs
+    if o.get("via"):  # kept only in a long file: it is cited by the line that points at it
+        return [o["via"]]
     return handles_for(rows, o["merged_into"]) if o.get("merged_into") else []
 
 
@@ -105,6 +111,14 @@ def resolve(text: str, rows: dict[str, dict]) -> tuple[str, list[str]]:
         return ", ".join(f"`{h}`" for h in hs)
 
     return PLACEHOLDER.sub(sub, text), bad
+
+
+FENCE = re.compile(r"(```mermaid\n)(.*?)(\n```)", re.S)
+
+
+def strip_mermaid_ticks(text: str) -> str:
+    """Handles resolved into a diagram label carry no backticks (a label in backticks is a Markdown string in Mermaid)."""
+    return FENCE.sub(lambda m: m.group(1) + m.group(2).replace("`", "") + m.group(3), text)
 
 
 def map_tables(rows: dict[str, dict], ann: dict[str, dict]) -> str:
@@ -124,7 +138,8 @@ def map_tables(rows: dict[str, dict], ann: dict[str, dict]) -> str:
                     new_to_old[h].append(i)
     out = ["# 旧规矩 ↔ Memory 对照表", "", "由 `scripts/assemble_memory.py` 生成。每条旧规矩一行：它去了哪一行（handle）、并入了谁、或删在哪里；再反过来，每个 handle 来自哪几条旧规矩。", "",
            "## 旧 → 新", "", "| 旧规矩 | 处理 | 去向 |", "| --- | --- | --- |"]
-    for i in sorted(rows, key=rank):
+    blocks = [i for i in rows if "@" in i]
+    for i in sorted((r for r in rows if "@" not in r), key=rank):
         o, a = rows[i], ann[i]
         if lines_of(o):
             out.append(f"| {i} | {a['recommend']} | " + "、".join(f"`{h}`" for h in handle_of.get(i, [])) + (f"（长文件 `{o['long_file']}`）" if o.get("long_file") else "") + " |")
@@ -135,6 +150,12 @@ def map_tables(rows: dict[str, dict], ann: dict[str, dict]) -> str:
             out.append(f"| {i} | 并 | 并入 {o['merged_into']} {hs} |")
         else:
             out.append(f"| {i} | 删 | {o.get('where_else') or '无'} |")
+    if blocks:
+        out += ["", "## 非编号块（引言、署名、图、Departures 表）", "", "| 块 | 去向 |", "| --- | --- |"]
+        for i in sorted(blocks, key=rank):
+            o = rows[i]
+            where = ("、".join(f"`{h}`" for h in handle_of.get(i, [])) + (f"（长文件 `{o['long_file']}`）" if o.get("long_file") else "")) if lines_of(o) else (o.get("where_else") or "无")
+            out.append(f"| {i} | {where} |")
     out += ["", "## 新 → 旧", "", "| handle | 来自的旧规矩 |", "| --- | --- |"]
     for h in sorted(new_to_old):
         out.append(f"| `{h}` | " + "、".join(sorted(new_to_old[h], key=rank)) + " |")
@@ -162,6 +183,7 @@ def main(argv: list[str]) -> int:
     if long_src.is_dir():
         for p in sorted(long_src.glob("*.md")):
             body, bad = resolve(p.read_text(encoding="utf-8"), rows)
+            body = strip_mermaid_ticks(body)
             (out / "long" / p.name).write_text(body, encoding="utf-8", newline="\n")
             have.add(p.stem)
             if bad:
