@@ -1,7 +1,7 @@
 [
   {
     "id": "board-log#11",
-    "line": "- **board-data** The board page draws itself from one JSON object (script id board-data); ★ fields are copied from a log, the rest are summaries or plain values. → long/board-writing.md",
+    "line": "- **board-data** The board page draws itself from one JSON object; ★ fields are copied from a log, the rest summarized. → long/board-writing.md",
     "lines": null,
     "section": "board",
     "long_file": "board-writing",
@@ -13,7 +13,7 @@
   },
   {
     "id": "board-log#12",
-    "line": "- **copy-not-retype** Copy each ★ field exactly as the log has it, by command or script, never retyped, reworded or tidied; only the maps, a design's solution and story are summaries. → long/board-writing.md",
+    "line": "- **copy-not-retype** Copy each ★ field exactly, by command or script, never retyped, reworded or tidied. → long/board-writing.md",
     "lines": null,
     "section": "board",
     "long_file": "board-writing",
@@ -25,10 +25,10 @@
   },
   {
     "id": "board-log#13",
-    "line": "- **item-groups** An item's group is sprint if it is in an open Sprint's section 2.1, else design if an open design's From names it, else later if its status says for later, else next; keep the product log's order.",
+    "line": "- **item-groups** Each board item is in sprint, design, later or next by fixed tests; keep the product log's order. → long/board-writing.md",
     "lines": null,
     "section": "board",
-    "long_file": null,
+    "long_file": "board-writing",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
@@ -61,7 +61,7 @@
   },
   {
     "id": "board-log#16",
-    "line": "- **board-left-out** The board shows no pending PO decisions and no Sprint stages, only counts done items, and leaves out IDEO logs with no open host or a concluded run; add no card and no log field.",
+    "line": "- **board-left-out** The board shows no pending PO decisions or Sprint stages, only counts done items; add no card or field.",
     "lines": null,
     "section": "board",
     "long_file": null,
@@ -73,7 +73,7 @@
   },
   {
     "id": "board-log#17",
-    "line": "- **board-steps** Write the board in five steps: read the template, find and read the logs, copy the template with a command, put the data in place of the one placeholder line, then check. → long/board-writing.md",
+    "line": "- **board-steps** Write the board in five steps: template, logs, copy, data, check. → long/board-writing.md",
     "lines": null,
     "section": "board",
     "long_file": "board-writing",
@@ -85,7 +85,7 @@
   },
   {
     "id": "board-log#18",
-    "line": "- **board-check** Check the page against the logs: the JSON reads, every ★ field is in its log character for character, every map stop and every number exists; open the page and see a board, not a message.",
+    "line": "- **board-check** Check the page against the logs and open it: it must show a board, not a message.",
     "lines": null,
     "section": "board",
     "long_file": null,

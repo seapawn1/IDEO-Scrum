@@ -41,9 +41,12 @@
     "home": "清单",
     "recommend": "改",
     "merge_into": null,
-    "reason": "分工与「当面定」的做法要留，但这一条超过一行：身份声明、同一会话兼两角色的写法、PO 决定由谁兼任都挤在里面。应拆成一行（共情与定义由 PO 与 Master 当面定，Designer 从 Ideate 接手），身份写法归设计日志模板。",
+    "reason": "清单保留一行：共情与定义由 PO 与 Scrum Master 当面定，Designer 从 Ideate 接手，是否另设 Scrum Master 会话由 PO 定。同一会话兼两角色时在表头两栏写同一名字的写法仍缺，要补进 design-backlog-template.md 第 3 行；Designer 负责、SM 记录的分工见 commands/designer.md:15 与 commands/scrum-master.md:52、57。",
     "dups": [],
-    "confidence": "中"
+    "confidence": "中",
+    "checked": [
+      "verified: home, reason, recommend"
+    ]
   },
   {
     "id": "design-log#4",
@@ -53,12 +56,15 @@
       "commit 7e3e5b6 feat(PBI-49)：设计日志修订稿，「定分支排在填表头之前」"
     ],
     "kind": "格式",
-    "home": "不进 Memory",
-    "recommend": "删",
+    "home": "清单",
+    "recommend": "改",
     "merge_into": null,
-    "reason": "分支命名与 git 的限制属于工具细节，应留在设计日志模板或 design-kernel 约定里，不进 Memory 清单。删了会丢「不要起 <sprint-branch>/<name>」这条禁令，故请在模板里保留它。",
+    "reason": "分支规则不能只留在模板：design-backlog-template.md 第 3 行只有 Branch 字段，没有「设计开自己的分支、基分支为 Sprint 分支或 main」，也没有「不要命名 <sprint-branch>/<name>」；convention 19 还引用 convention 4。清单留一行保留开分支、基分支与命名禁令。",
     "dups": [],
-    "confidence": "中"
+    "confidence": "中",
+    "checked": [
+      "verified: home, reason, recommend"
+    ]
   },
   {
     "id": "design-log#5",
@@ -67,13 +73,16 @@
       "commit b49278d feat(PBI-28)：设计日志约定 v1 与模板（design-kernel/conventions/），首次写入设计文件夹与模板的开设步骤",
       "archive scrum/documents/sprint/sprint-09-design-template.md：设计模板的结构与开设约定"
     ],
-    "kind": "格式",
+    "kind": "规矩",
     "home": "清单",
     "recommend": "改",
     "merge_into": null,
-    "reason": "目录命名、复制模板、填表头都是格式规定，应归设计日志模板；但「原型和工作材料不进 Increment」是要留的行为规矩，改成这一行留在清单里。",
+    "reason": "清单留一行：设计文件夹里放日志、原型和工作材料，原型与工作材料永不进 Increment。目录命名与复制见 SKILL.md:37，表头字段见 design-backlog-template.md:3-7，目录布局见 overview.md:61（overview#4 保留的长文件）；后缀「说明设计内容」只在 design-log.md:29，需并入 overview#4 的长文件。",
     "dups": [],
-    "confidence": "中"
+    "confidence": "中",
+    "checked": [
+      "verified: home, kind, reason, recommend"
+    ]
   },
   {
     "id": "design-log#6",
@@ -83,12 +92,15 @@
       "archive scrum/documents/sprint/sprint-14-conventions-tuning.md 第 144 行：列出「Start from the people」为设计日志条文之一"
     ],
     "kind": "规矩",
-    "home": "清单",
+    "home": "长文件",
     "recommend": "改",
     "merge_into": null,
-    "reason": "行为要留：先听当事人的具体经历、标注一手或二手来源。但条文同时写了 PO 是当事人时的提问顺序、愿景写法与表格位置，过长；清单里留「先听当事人，一手与二手分开标」一行，其余归阶段说明。",
+    "reason": "先听当事人、一手与二手分开标留清单一行；PO 是当事人时先问具体经历再问其对含义的判断、否则先找 PO 能带来的用户，以及「文件与角色卡在后」这两条顺序要求只在 design-log.md:37，模板与 SKILL.md 的 Empathize 说明没有，应随本条进长文件，不能只归阶段说明。",
     "dups": [],
-    "confidence": "中"
+    "confidence": "中",
+    "checked": [
+      "verified: home, reason, recommend"
+    ]
   },
   {
     "id": "design-log#7",
@@ -98,12 +110,15 @@
       "archive scrum/documents/ExpertNotes.md 第 21 行：「一条重要原则：先定 goal 和挑战，再做深度研究」"
     ],
     "kind": "规矩",
-    "home": "清单",
+    "home": "长文件",
     "recommend": "留",
     "merge_into": null,
-    "reason": "行为规矩明确，与 ExpertNotes 的原则一致，且区分了何时找专家、何时做研究，删了会丢这个先后顺序。",
+    "reason": "行为规矩保留：先听当事人，再写挑战、设计目标与问题；只在仍不清楚时才找专家或做研究，并在之后精化目标与重画地图。专家构成、每张角色卡用新子代理、先画粗地图与「只记变化不记访谈」是细则，放长文件，清单留一行索引。",
     "dups": [],
-    "confidence": "中"
+    "confidence": "中",
+    "checked": [
+      "verified: home, reason"
+    ]
   },
   {
     "id": "design-log#8",
@@ -113,12 +128,15 @@
       "memory S:/SeaPawn-Memory/memory/GlobalMemory/mermaid-td-and-tables.md：Mermaid 一律 flowchart TD"
     ],
     "kind": "格式",
-    "home": "清单",
+    "home": "长文件",
     "recommend": "改",
     "merge_into": null,
-    "reason": "地图用 Mermaid flowchart TD、只画想要达到的体验、五六框一个回环，这些要留成一行；条文里的「departs from the book」标签与 PO 选 How Might We 的写法应拆出，目标选择与分支、方案的界限归步骤文件。",
+    "reason": "地图画法与「只画想要达到的体验、五六框一个回环」留清单一行；「外行一眼读不懂就是塞了方案」「地图+挑战+目标+问题就是 point of view、不另写」「PO 选 HMW、不 dot voting」三条只在 design-log.md:42，必须随本条进长文件；分支与方案不进图在 design-backlog-template.md:36，目标选择见 steps/2-3-pick-a-target.md，步骤文件里没有这些。",
     "dups": [],
-    "confidence": "中"
+    "confidence": "中",
+    "checked": [
+      "verified: home, reason, recommend"
+    ]
   },
   {
     "id": "design-log#9",
@@ -127,12 +145,15 @@
       "commit c946ed7 feat(Sprint 20)：PBI-70 约定小修，首次出现「Lightning Demos (optional)」一条；未查到更早的出处"
     ],
     "kind": "规矩",
-    "home": "不进 Memory",
-    "recommend": "删",
+    "home": "清单",
+    "recommend": "改",
     "merge_into": null,
-    "reason": "可选步骤：并行找现成想法的做法属于书里的步骤，归流程文件。删了会丢「想法只是工作材料，不进日志」这层意思，请在步骤文件里保留。出处只查到 Sprint 20 的小修，把握低。",
+    "reason": "Lightning Demos 可选：需要现成想法时让子代理并行搜；清单只作工作材料、不进日志（已在 convention 10），子代理画方案时清单分开给（已在 convention 11）。并行搜这一条只在 design-log.md:46，步骤文件 3-1 是书里的轮流 tour，不能替代，应留清单一行。",
     "dups": [],
-    "confidence": "低"
+    "confidence": "低",
+    "checked": [
+      "verified: home, reason, recommend"
+    ]
   },
   {
     "id": "design-log#10",
@@ -158,12 +179,15 @@
       "archive scrum/documents/design/design-board.md 第 43 行：「两个画方案的子代理拿到同一份「模式小结」，方案趋同成一个思路」"
     ],
     "kind": "规矩",
-    "home": "清单",
+    "home": "长文件",
     "recommend": "改",
     "merge_into": null,
-    "reason": "隔离子代理互不可见、各拿自己的材料与小结、先发散，这些要留；但条文很长，且「是否用子代理、用几个、用什么模型」是 PO 按本轮定的（标签 Decide on the spot），不应进 Memory 的规矩。改为一行，其余归步骤。",
+    "reason": "隔离子代理互不可见、各拿自己的材料与小结、先发散、不提供当前设计/规则/代码并叫它别读项目文件，这些留清单一行；工具把项目指令传给每个子代理时记进设计日志，以及 Decide on the spot 由 PO 定是否用子代理/用几个/什么模型，随本条进长文件（design-ideate.md）；steps/3-2-sketch.md 是逐字书摘，不能承接这些。",
     "dups": [],
-    "confidence": "中"
+    "confidence": "中",
+    "checked": [
+      "verified: home, reason, recommend"
+    ]
   },
   {
     "id": "design-log#12",
@@ -189,8 +213,11 @@
     "home": "清单",
     "recommend": "改",
     "merge_into": null,
-    "reason": "「PO 拍板、不求共识」是要留的行为规矩；但条文里的「按 steps/3-3-decide.md 在对话里做」是步骤引用，「只把选中的方案写进 3.1 节」是模板格式。改为「PO 拍板，不求共识」一行，步骤与位置归流程和模板。",
+    "reason": "PO 拍板、不求共识，且由 Scrum Master 主持（书里的 Facilitator）；PO 想要时由角色卡 Stakeholder 做一次非约束性的 straw poll。步骤细节归 steps/3-3-decide.md，「只把选中方案写进 3.1」归 design-backlog-template.md:46，但主持人与 straw poll 这两条要留在清单一行。",
     "dups": [],
-    "confidence": "中"
+    "confidence": "中",
+    "checked": [
+      "verified: home, reason, recommend"
+    ]
   }
 ]

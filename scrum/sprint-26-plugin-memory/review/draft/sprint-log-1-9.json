@@ -1,10 +1,10 @@
 [
   {
     "id": "sprint-log#1",
-    "line": "- **sprint-folder** One branch and one folder per Sprint, scrum/sprint-NN-<suffix>/: NN is the previous Sprint's number plus one (first is 01); the folder's name is also the branch's and the closing tag's.",
+    "line": "- **sprint-folder** One branch and one folder per Sprint, scrum/sprint-NN-<suffix>/; NN is the last number plus one; the tag has the same name. → long/sprint-stages.md",
     "lines": null,
     "section": "sprint",
-    "long_file": null,
+    "long_file": "sprint-stages",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
@@ -13,7 +13,7 @@
   },
   {
     "id": "sprint-log#2",
-    "line": "- **no-end-date** A Sprint closes when its goal is met or the PO stops it; the PO watches at checkpoints for one that drags on (a departure from the Scrum Guide).",
+    "line": "- **no-end-date** A Sprint closes when its goal is met or the PO stops it; the PO watches for one that drags on (departs from the Guide).",
     "lines": null,
     "section": "sprint",
     "long_file": null,
@@ -25,7 +25,7 @@
   },
   {
     "id": "sprint-log#3",
-    "line": "- **small-sprint** Even half an hour to one session of work gets a Sprint, each step a line or two; the stage-gates, the review and the close still apply.",
+    "line": "- **small-sprint** Even half an hour of work gets a Sprint, each step a line or two; stage gates, review and close still apply.",
     "lines": null,
     "section": "sprint",
     "long_file": null,
@@ -39,7 +39,7 @@
     "id": "sprint-log#4",
     "line": null,
     "lines": [
-      "- **sprint-goal** [po,sm] Set the Sprint Goal in the PO's own style: one unifying value goal, even for several items; the PO leads, usually with the Scrum Master.",
+      "- **sprint-goal** [po,sm] The PO sets the Sprint Goal in their own style, usually with the Scrum Master: one unifying value goal.",
       "- **share-goal-and-checks** [po,sm] Share the Sprint Goal and the checks to focus on with the Scrum Master and the Developer."
     ],
     "section": "sprint",
@@ -52,7 +52,7 @@
   },
   {
     "id": "sprint-log#5",
-    "line": "- **select-items** [po,sm] As you write the rows, check the items against the Sprint Goal: each must serve it, add what it lacks, drop what does not fit, never pad; a missing item goes into the product log first.",
+    "line": "- **select-items** [po,sm] Check each item against the Sprint Goal: add what it lacks, drop what does not serve it, never pad.",
     "lines": null,
     "section": "sprint",
     "long_file": null,
@@ -64,7 +64,7 @@
   },
   {
     "id": "sprint-log#6",
-    "line": "- **refinement** [sm,po] The Scrum Master leads refinement with the PO, the Developer joins; it takes seven steps, and the PO says when it is over. → long/sprint-refinement.md",
+    "line": "- **refinement** [sm,po] The Scrum Master leads refinement with the PO; seven steps; the PO says when it is over. → long/sprint-refinement.md",
     "lines": null,
     "section": "sprint",
     "long_file": "sprint-refinement",
@@ -78,11 +78,11 @@
     "id": "sprint-log#7",
     "line": null,
     "lines": [
-      "- **how-is-a-plan** [dev] The How is a plan, not steps: work items in order, each done within one session (the Scrum Guide says one day), each with its output and how to tell it is done.",
-      "- **no-steps** [dev] Keep the How at the level of approach: no steps, no file contents, no polishing; if you can write the steps, do the work. If a design chose a solution, the How is how to build it."
+      "- **how-is-a-plan** [dev] The How is a plan of work items, each done within one session, each with its output and a done test. → long/sprint-stages.md",
+      "- **no-steps** [dev] Keep the How at the level of approach: no steps, no file contents, no polishing; if you can write the steps, do the work."
     ],
     "section": "sprint",
-    "long_file": null,
+    "long_file": "sprint-stages",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
@@ -93,11 +93,11 @@
     "id": "sprint-log#8",
     "line": null,
     "lines": [
-      "- **go-ahead** [dev,po] Build only after the PO's go-ahead, written as the last line of chapter 3 with its date and how far it reaches (commit, merge, tag, release, push); approving a plan is not a go-ahead.",
-      "- **review-handover** [po,sm] The PO may hand the review of the How, of new structures and of full texts to the Scrum Master, written in the log; the right to review is not the right to give the go-ahead."
+      "- **go-ahead** [dev,po] Build only after the PO's go-ahead, written with its date and reach; approving a plan is not a go-ahead. → long/sprint-stages.md",
+      "- **review-handover** [po,sm] The PO may hand the review of the How, new structures and full texts to the Scrum Master, in writing; that is not the go-ahead."
     ],
     "section": "sprint",
-    "long_file": null,
+    "long_file": "sprint-stages",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
@@ -108,8 +108,8 @@
     "id": "sprint-log#9",
     "line": null,
     "lines": [
-      "- **increment-notes** [dev] Keep chapter 4 as the full record, so a new session can pick the Sprint up from the log alone and does not work everything out again.",
-      "- **mark-done** [dev] When a work item is done, prefix its Done when cell with ✓ <date> and keep the completion condition after it; an unmarked row is not done."
+      "- **increment-notes** [dev] Keep chapter 4 as the full record, so a new session can pick the Sprint up from the log alone.",
+      "- **mark-done** [dev] Mark a finished work item by prefixing its Done when cell with ✓ <date>; an unmarked row is not done."
     ],
     "section": "sprint",
     "long_file": null,

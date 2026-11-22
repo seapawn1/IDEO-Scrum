@@ -1,7 +1,7 @@
 [
   {
     "id": "product-log#1",
-    "line": "- **write-product-log** Write the product log from the template; for an old project, write it from the README, open issues and old plans, and leave the history in version control.",
+    "line": "- **write-product-log** Write the product log from the template; for an old project, from its README, issues and old plans.",
     "lines": null,
     "section": "product-log",
     "long_file": null,
@@ -13,7 +13,7 @@
   },
   {
     "id": "product-log#2",
-    "line": "- **blank-page** If the product and its Product Goal cannot be written yet, start from a design and let its conclusions fill the product log; link the design, never copy its log. → long/product-log-details.md",
+    "line": "- **blank-page** If the product cannot be written yet, start from a design and let its conclusions fill the log. → long/product-log-details.md",
     "lines": null,
     "section": "product-log",
     "long_file": "product-log-details",
@@ -25,7 +25,7 @@
   },
   {
     "id": "product-log#3",
-    "line": "- **facts-then-questions** [sm] *Supplement.* Look up the facts yourself; put what the PO must decide into one numbered message, each question with a recommended answer.",
+    "line": "- **facts-then-questions** [sm] *Supplement.* Look up facts yourself; ask the PO in one numbered message, each with a recommended answer.",
     "lines": null,
     "section": "product-log",
     "long_file": null,
@@ -37,7 +37,7 @@
   },
   {
     "id": "product-log#4",
-    "line": "- **product-log-header** Keep the product statement in 1.1 and the Product Goal in 1.2, each in a one-row commitment table; the product log has no Now or Waiting for PO line, since it has no stage.",
+    "line": "- **product-log-header** Keep the product statement (1.1) and Product Goal (1.2) each in a one-row commitment table; no Now line.",
     "lines": null,
     "section": "product-log",
     "long_file": null,
@@ -51,8 +51,8 @@
     "id": "product-log#5",
     "line": null,
     "lines": [
-      "- **dod-in-product-log** Keep the full Definition of Done in section 1.3; a Sprint chooses where to focus its checks, never which standards apply.",
-      "- **dod-standards** Write standards precisely and keep only requirements that hold across the product; item-specific or tentative ones go in the item's acceptance criteria."
+      "- **dod-in-product-log** Keep the full Definition of Done in 1.3; a Sprint picks where to focus checks, never which standards apply.",
+      "- **dod-standards** Write standards precisely; keep only what holds across the product, the rest goes in acceptance criteria."
     ],
     "section": "product-log",
     "long_file": null,
@@ -64,7 +64,7 @@
   },
   {
     "id": "product-log#6",
-    "line": "- **stakeholder-table** [sm] List stakeholders in section 2.1 as a short table, one row each; a Stakeholder subagent gets one row as its identity; if the table is empty, ask the PO who belongs in it.",
+    "line": "- **stakeholder-table** [sm] List stakeholders in 2.1, one row each; a Stakeholder subagent gets one row; if empty, ask the PO.",
     "lines": null,
     "section": "product-log",
     "long_file": null,
@@ -76,7 +76,7 @@
   },
   {
     "id": "product-log#7",
-    "line": "- **architecture-map** Start section 2.2 with one Mermaid flowchart TD map: actors on top (AI roles included), the ending at the bottom, five to fifteen steps between.",
+    "line": "- **architecture-map** Start 2.2 with one Mermaid flowchart TD map: actors on top, the ending at the bottom, five to fifteen steps.",
     "lines": null,
     "section": "product-log",
     "long_file": null,
@@ -100,7 +100,7 @@
   },
   {
     "id": "product-log#9",
-    "line": "- **no-technical-design** Keep technical design out of the product log: modules and interfaces are the Developer's and live in the Increment.",
+    "line": "- **no-technical-design** Keep technical design out of the product log; modules and interfaces live in the Increment.",
     "lines": null,
     "section": "product-log",
     "long_file": null,
@@ -112,7 +112,7 @@
   },
   {
     "id": "product-log#10",
-    "line": "- **item-columns** An item has seven columns: #, Title, User story, Place, Status, Size, Notes; what goes in each, and the S, M, L sizes, are in the long file. → long/product-log-details.md",
+    "line": "- **item-columns** An item has seven columns: #, Title, User story, Place, Status, Size, Notes. → long/product-log-details.md",
     "lines": null,
     "section": "product-log",
     "long_file": "product-log-details",
@@ -124,7 +124,7 @@
   },
   {
     "id": "product-log#11",
-    "line": "- **numbers-not-ranks** Number items only to count them, keeping every number unique; ranking is separate, and the PO does it when an order is needed.",
+    "line": "- **numbers-not-ranks** Number items only to count them, every number unique; the PO ranks when an order is needed.",
     "lines": null,
     "section": "product-log",
     "long_file": null,
@@ -136,7 +136,7 @@
   },
   {
     "id": "product-log#12",
-    "line": "- **items-with-sm** [sm,po] The PO decides the items together with the Scrum Master; at Planning the PO leads the selection, and the Scrum Master and Developer say when it is too much or too little.",
+    "line": "- **items-with-sm** [sm,po] The PO decides the items with the Scrum Master; the Scrum Master and Developer say when it is too much.",
     "lines": null,
     "section": "product-log",
     "long_file": null,
@@ -148,7 +148,7 @@
   },
   {
     "id": "product-log#13",
-    "line": "- **status-lives-here** Write an item's status in the product log only; a sprint log names items by number.",
+    "line": "- **status-lives-here** An item's status lives in the product log only; a sprint log names items by number.",
     "lines": null,
     "section": "product-log",
     "long_file": null,
@@ -160,7 +160,7 @@
   },
   {
     "id": "product-log#14",
-    "line": "- **refine-in-sprint** Refine in the product log only to add detail; finish refinement in the sprint log's section 2.2; the product log has no refinement section.",
+    "line": "- **refine-in-sprint** In the product log only add detail; finish refinement in the sprint log's 2.2.",
     "lines": null,
     "section": "product-log",
     "long_file": null,
@@ -172,7 +172,7 @@
   },
   {
     "id": "product-log#15",
-    "line": "- **acceptance-written-once** Acceptance criteria already written in full in the product log are not repeated in the sprint log.",
+    "line": "- **acceptance-written-once** Acceptance criteria already in the product log are not repeated in the sprint log.",
     "lines": null,
     "section": "product-log",
     "long_file": null,
@@ -184,7 +184,7 @@
   },
   {
     "id": "product-log#16",
-    "line": "- **where-refined-content** Put refined content where it belongs: a split-off item is a new row, long design content goes in the architecture, short notes in Notes, large material in scrum/documents/.",
+    "line": "- **where-refined-content** Split-off items are new rows; long design content goes in the map, notes in Notes, big files in scrum/documents/.",
     "lines": null,
     "section": "product-log",
     "long_file": null,
@@ -196,7 +196,7 @@
   },
   {
     "id": "product-log#17",
-    "line": "- **fresh-at-review** At every Review, move done items to section 3.2 (one line each, with its source), send unfinished ones back to 3.1, and delete outdated text; keep no revision record.",
+    "line": "- **fresh-at-review** At each Review move done items to 3.2, send unfinished ones back to 3.1, delete outdated text; keep no revision record.",
     "lines": null,
     "section": "product-log",
     "long_file": null,
@@ -208,7 +208,7 @@
   },
   {
     "id": "product-log#18",
-    "line": "- **product-log-changes** Write an item's change and its reason in its Notes, and a Product Goal change with its date and reason in section 1.2; the PO changes the Product Goal only on evidence against it.",
+    "line": "- **product-log-changes** Write item changes in Notes; a Product Goal change goes in 1.2 with date and reason, and needs evidence against the old one.",
     "lines": null,
     "section": "product-log",
     "long_file": null,

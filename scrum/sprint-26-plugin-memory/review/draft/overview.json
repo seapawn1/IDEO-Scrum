@@ -13,7 +13,7 @@
   },
   {
     "id": "overview#2",
-    "line": "- **designs-beside-sprints** A design is a peer of a Sprint, not part of one: open it for an item that needs design, a hard point in refinement, or a blank page. → long/layers-and-folders.md",
+    "line": "- **designs-beside-sprints** A design sits beside a Sprint, not in it: open one for an item that needs design. → long/layers-and-folders.md",
     "lines": null,
     "section": "meta",
     "long_file": "layers-and-folders",
@@ -25,7 +25,7 @@
   },
   {
     "id": "overview#3",
-    "line": "- **three-layers** Product log, then a sprint log or design log, then the Increment or prototype; the table says who is accountable for each. → long/layers-and-folders.md",
+    "line": "- **three-layers** Product log, then a sprint or design log, then the Increment or prototype. → long/layers-and-folders.md",
     "lines": null,
     "section": "meta",
     "long_file": "layers-and-folders",
@@ -37,7 +37,7 @@
   },
   {
     "id": "overview#4",
-    "line": "- **scrum-folders** All Scrum work lives under scrum/ (product log, board, sprint-NN-<suffix>/, design-<suffix>/, ideo-<suffix>/, documents/); use your project's own places if it has them. → long/layers-and-folders.md",
+    "line": "- **scrum-folders** All Scrum work lives under scrum/; use your project's own places if it has them. → long/layers-and-folders.md",
     "lines": null,
     "section": "meta",
     "long_file": "layers-and-folders",
@@ -49,7 +49,7 @@
   },
   {
     "id": "overview#5",
-    "line": "- **where-files-go** A file serving one log stays in its working folder and is cleaned up when the work ends; design originals and files serving the whole Scrum go to scrum/documents/. → long/layers-and-folders.md",
+    "line": "- **where-files-go** One log's files stay in its folder; design originals and shared files go to scrum/documents/. → long/layers-and-folders.md",
     "lines": null,
     "section": "meta",
     "long_file": "layers-and-folders",
@@ -61,7 +61,7 @@
   },
   {
     "id": "overview#6",
-    "line": "- **working-material** Keep working material out of the log and link to it; a large important file goes in scrum/documents/, key general material in project memory, Retro lessons only in memory.",
+    "line": "- **working-material** Keep working material out of the log and link to it; Retro lessons go only in memory.",
     "lines": null,
     "section": "meta",
     "long_file": null,
@@ -75,8 +75,8 @@
     "id": "overview#7",
     "line": null,
     "lines": [
-      "- **names** Use the plugin's own terms (product log, sprint log, design log, IDEO log, PBI, role card) as defined once in the names file; a file made from a template takes these names. → long/names.md",
-      "- **fresh-subagent** A fresh subagent starts from its brief alone: a fork of a session does not count; without subagents, a new session given only the brief is the equivalent."
+      "- **names** Use the plugin's own terms (product log, sprint log, design log, IDEO log, PBI, role card) as defined. → long/names.md",
+      "- **fresh-subagent** A fresh subagent starts from its brief alone; a fork or copy of a session does not count."
     ],
     "section": "meta",
     "long_file": "names",
@@ -88,7 +88,7 @@
   },
   {
     "id": "overview#8",
-    "line": "- **role-entry** On a role command, load the kernels in that role's order before any role work, one Skill call at a time, and stop and report a failed load. → long/roles-and-routing.md",
+    "line": "- **role-entry** On a role command, load that role's kernels in order before any work; stop and report a failed load. → long/roles-and-routing.md",
     "lines": null,
     "section": "roles",
     "long_file": "roles-and-routing",
@@ -100,7 +100,7 @@
   },
   {
     "id": "overview#9",
-    "line": "- **only-po-human** Only the Product Owner must be human: the other roles may all be AI.",
+    "line": "- **only-po-human** Only the Product Owner must be human; the other roles may all be AI.",
     "lines": null,
     "section": "roles",
     "long_file": null,
@@ -112,7 +112,7 @@
   },
   {
     "id": "overview#10",
-    "line": "- **ask-the-po** Whoever is unsure asks the Product Owner, unless the PO has sent that kind of question elsewhere.",
+    "line": "- **ask-the-po** Whoever is unsure asks the PO, unless the PO sent that kind of question elsewhere.",
     "lines": null,
     "section": "roles",
     "long_file": null,
@@ -124,7 +124,7 @@
   },
   {
     "id": "overview#11",
-    "line": "- **po-as-developer** When the Product Owner builds, they take part as a Developer, and the How is worked out with them.",
+    "line": "- **po-as-developer** When the PO builds, they take part as a Developer and the How is worked out with them.",
     "lines": null,
     "section": "roles",
     "long_file": null,
@@ -136,7 +136,7 @@
   },
   {
     "id": "overview#12",
-    "line": "- **stage-gates** Wait for the PO's explicit permission before starting or returning to a stage; approving a result is not permission, and the Scrum Master acts only within a written handover. → long/stage-gates.md",
+    "line": "- **stage-gates** Wait for the PO's explicit permission to start or return to a stage; approving a result is not permission. → long/stage-gates.md",
     "lines": null,
     "section": "roles",
     "long_file": "stage-gates",
@@ -148,7 +148,7 @@
   },
   {
     "id": "overview#13",
-    "line": "- **one-scrum-master** Each project has one Scrum Master session, leading its Developer, Designer and Stakeholders; a session above several projects only summarizes.",
+    "line": "- **one-scrum-master** One Scrum Master session per project leads its other roles; a session above several projects only summarizes.",
     "lines": null,
     "section": "roles",
     "long_file": null,
@@ -160,7 +160,7 @@
   },
   {
     "id": "overview#14",
-    "line": "- **who-gets-which-work** Review goes to the Scrum Master, upkeep to a standing helper session, building to a Developer session that cannot review its own work. → long/roles-and-routing.md",
+    "line": "- **who-gets-which-work** The Scrum Master reviews; a standing helper keeps up the logs; a Developer builds, never reviews its own work. → long/roles-and-routing.md",
     "lines": null,
     "section": "roles",
     "long_file": "roles-and-routing",
@@ -172,7 +172,7 @@
   },
   {
     "id": "overview#15",
-    "line": "- **rule-labels** A rule with no label is the author's practice, *Supplement* is inferred and unconfirmed, *Decide on the spot* has no fixed rule; when you override a rule, write what you did and why in the log's notes.",
+    "line": "- **rule-labels** No label: the author's practice; *Supplement*: inferred, unconfirmed; *Decide on the spot*: no fixed rule.",
     "lines": null,
     "section": "meta",
     "long_file": null,
@@ -184,7 +184,7 @@
   },
   {
     "id": "overview#16",
-    "line": "- **templates-record-outputs** Keep every template heading and add none: sections hold only what each step produced, and work remarks go in the Increment notes or the design chapter.",
+    "line": "- **templates-record-outputs** Keep every template heading and add none; sections hold only what each step produced.",
     "lines": null,
     "section": "meta",
     "long_file": null,
@@ -198,15 +198,18 @@
     "id": "overview#17",
     "line": null,
     "lines": [
-      "- **goal-fixed** The commitment of each log (Product Goal, Sprint Goal, design goal) and the Definition of Done stay fixed; the plan under them may change, with the reason recorded. → long/goal-fixed.md",
-      "- **po-owns-commitments** Only the Product Owner changes a commitment, and only the Product Owner cancels a Sprint whose goal can no longer be met.",
-      "- **commitment-table** Keep each commitment in a one-row table (first cell Commitment, second the exact text) in its own section; the table is the only source of the current commitment. → long/goal-fixed.md"
+      "- **goal-fixed** Each log's commitment (a Goal, the Definition of Done) stays fixed; the plan under it may change. → long/goal-fixed.md",
+      "- **po-owns-commitments** Only the PO changes a commitment or cancels a Sprint whose goal can no longer be met.",
+      "- **commitment-table** Keep each commitment in a one-row table, the only source of it. → long/goal-fixed.md"
     ],
     "section": "roles",
     "long_file": "goal-fixed",
     "merged_into": null,
     "adds_to_target": null,
-    "absorbed": ["sprint-log#20", "design-log#25"],
+    "absorbed": [
+      "sprint-log#20",
+      "design-log#25"
+    ],
     "where_else": null,
     "note": "Long file carries the Scrum Guide quotations word for word with Source and License. The commitment-table line is relied on by the commitments hook, the board and the check script. sprint-log#20 adds: acceptance criteria may be renegotiated with the PO or the Scrum Master, changes and reasons go in the Increment notes. design-log#25 adds: sharpen the design goal during Empathize, then only the PO changes it."
   }

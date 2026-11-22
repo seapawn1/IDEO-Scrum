@@ -3,7 +3,7 @@
     "id": "sprint-log#19",
     "line": null,
     "lines": [
-      "- **one-closing-commit** [sm] Close with one commit: first search the whole project for old paths until none remain, then tag, merge into main, close the working copy, delete the branch. → long/sprint-closing.md",
+      "- **one-closing-commit** [sm] Close with one commit after clearing old paths project-wide; then tag, merge, delete the branch. → long/sprint-closing.md",
       "- **outward-needs-po** Pushing and other outward actions, such as a release, need the PO's consent."
     ],
     "section": "sprint",
@@ -28,7 +28,7 @@
   },
   {
     "id": "sprint-log#21",
-    "line": "- **new-work-registered** New work goes into the product log as an item first; the PO decides whether it enters this Sprint, and the scope can be renegotiated while the Sprint Goal stays.",
+    "line": "- **new-work-registered** New work goes into the product log first; the PO decides whether it enters this Sprint; the Sprint Goal stays.",
     "lines": null,
     "section": "sprint",
     "long_file": null,
@@ -40,7 +40,7 @@
   },
   {
     "id": "sprint-log#22",
-    "line": "- **log-is-the-handoff** Keep the header current and write what matters into the log before a session ends; no separate handoff files, and the header is not permission to act. → long/sprint-handoff.md",
+    "line": "- **log-is-the-handoff** Keep the header current and write what matters into the log before a session ends; no separate handoff files. → long/sprint-handoff.md",
     "lines": null,
     "section": "sprint",
     "long_file": "sprint-handoff",
@@ -54,8 +54,8 @@
     "id": "sprint-log#23",
     "line": null,
     "lines": [
-      "- **outside-blocker** [sm] When something outside the team blocks the work, the Scrum Master tells the PO at once.",
-      "- **mid-sprint-release** A release that is ready mid-Sprint goes out with the PO's consent for outward actions; the Sprint does not end."
+      "- **outside-blocker** [sm] When something outside the team blocks the work, tell the PO at once.",
+      "- **mid-sprint-release** A release ready mid-Sprint goes out with the PO's consent; the Sprint does not end."
     ],
     "section": "sprint",
     "long_file": null,
@@ -69,8 +69,8 @@
     "id": "sprint-log#24",
     "line": null,
     "lines": [
-      "- **sprint-stage-decisions** [po,sm] The PO sets the goal before What, ends refinement before How, gives the go-ahead before building, and authorizes Sprint Test apart from approving the Increment. → long/stage-gates.md",
-      "- **read-the-goal** Before each stage decision, read the exact Sprint Goal from its table (the Product Goal too if direction is at issue) and check the work against it; if you cannot, stop. → long/stage-gates.md"
+      "- **sprint-stage-decisions** [po,sm] The PO decides each Sprint stage change: goal, end of refinement, go-ahead, Test, close or return. → long/stage-gates.md",
+      "- **read-the-goal** Before each stage decision, read the exact Sprint Goal from its table; if you cannot, stop. → long/stage-gates.md"
     ],
     "section": "sprint",
     "long_file": "stage-gates",
@@ -82,7 +82,7 @@
   },
   {
     "id": "sprint-log#25",
-    "line": "- **po-decisions** Whenever unsure, ask the PO; always for the goal, the items, the end of refinement, the go-ahead, stage ends, acceptance and scope changes, formal acceptance, outward actions, cancelling a Sprint.",
+    "line": "- **po-decisions** Ask the PO whenever unsure, and always for goals, items, go-ahead, stage ends, scope changes, outward actions.",
     "lines": null,
     "section": "sprint",
     "long_file": null,
@@ -94,7 +94,7 @@
   },
   {
     "id": "sprint-log#26",
-    "line": "- **developer-elsewhere** With a Developer in another session or tool, the sprint log stays the record: talk directly if you can, otherwise take turns through the log. → long/sprint-handoff.md",
+    "line": "- **developer-elsewhere** With a Developer elsewhere, the sprint log stays the record: talk directly if you can, else take turns. → long/sprint-handoff.md",
     "lines": null,
     "section": "sprint",
     "long_file": "sprint-handoff",

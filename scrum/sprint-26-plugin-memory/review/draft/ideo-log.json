@@ -1,7 +1,7 @@
 [
   {
     "id": "ideo-log#1",
-    "line": "- **sprint-or-modes** The PO chooses a design sprint or the five modes; absent a choice, a design sprint when a prototype must be tested with role cards before anyone dares to act, else the five modes.",
+    "line": "- **sprint-or-modes** The PO picks a design sprint or the five modes; default to a design sprint only if a prototype must be tested with role cards.",
     "lines": null,
     "section": "ideo",
     "long_file": null,
@@ -15,8 +15,8 @@
     "id": "ideo-log#2",
     "line": null,
     "lines": [
-      "- **modes-are-not-the-sprint** The IDEO five-stage method is the five modes, not the design sprint: an IDEO log runs no map, Lightning Demos or storyboard, and a design sprint opens no IDEO log.",
-      "- **research-as-empathize** Research from a chat or an IDEO log can count as Empathize material, but a design sprint still runs its Empathize stage, started with the PO's permission."
+      "- **modes-are-not-the-sprint** Do not mix them: an IDEO log runs no map, Lightning Demos or storyboard, and a design sprint opens no IDEO log.",
+      "- **research-as-empathize** Chat or IDEO-log research can count as Empathize material, but a design sprint still starts on the PO's permission."
     ],
     "section": "ideo",
     "long_file": null,
@@ -30,8 +30,8 @@
     "id": "ideo-log#3",
     "line": null,
     "lines": [
-      "- **open-ideo-log** One or two methods write into the log they serve; a longer run, or one over more than one session, gets scrum/ideo-<suffix>/IdeoBacklog.md: five chapters, one per mode, no PO gate between them.",
-      "- **read-mode-file** Before using a mode or a method, read its file in the ideo-kernel (IDEO-modes/, methods/); a chapter holds what its mode produced, not every step taken."
+      "- **open-ideo-log** One or two methods write into the log they serve; a longer run gets scrum/ideo-<suffix>/IdeoBacklog.md, five chapters, no PO gate.",
+      "- **read-mode-file** Read a mode's or method's file in the ideo-kernel before using it; a chapter holds what its mode produced."
     ],
     "section": "ideo",
     "long_file": null,
@@ -45,8 +45,8 @@
     "id": "ideo-log#4",
     "line": null,
     "lines": [
-      "- **ideo-log-home** The IDEO log, its prototypes and working material live in scrum/ideo-<suffix>/; it has no commitment of its own, and its For cell points to the log it serves.",
-      "- **ideo-log-ends** Conclusions flow back to the log that asked, and the PO decides what changes; a finished log is archived at the next Review; prototypes go to the Sprint that builds them. → long/ideo-ending.md"
+      "- **ideo-log-home** An IDEO log lives in scrum/ideo-<suffix>/ with its prototypes; it has no commitment, its For cell names the log it serves.",
+      "- **ideo-log-ends** Conclusions flow back to the log that asked and the PO decides; archive at the next Review. → long/ideo-ending.md"
     ],
     "section": "ideo",
     "long_file": "ideo-ending",

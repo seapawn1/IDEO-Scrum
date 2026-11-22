@@ -40,9 +40,12 @@
     "home": "清单",
     "recommend": "改",
     "merge_into": null,
-    "reason": "改：一条里挤了三件事（做法、要多真、部件清单），清单留做法一句；「没有屏幕时要多真」的 Decide on the spot 留在条下或并进 PO 决定清单（design-log#21）；部件清单写进模板注释。Supplement 标签保留，表示未经实践确认。",
+    "reason": "清单留做法一句：在设计文件夹里按选定方案做、真到能引起诚实反应、为学得快不为上线；「没有屏幕时原型要多真」随本条进长文件，不要并进 #21（#21 计划删清单，门的 #26 不含此决定）；部件清单已在 design-backlog-template.md:58-60 的第4章表，trial run、子代理分件与缝合、设计证据不算 Increment 分别在 SKILL.md:25、模板:67 与保留的 #19（design-log.md:70），理由要写明。Supplement 标签保留。",
     "dups": [],
-    "confidence": "中"
+    "confidence": "中",
+    "checked": [
+      "verified: home, reason, recommend"
+    ]
   },
   {
     "id": "design-log#17",

@@ -42,9 +42,12 @@
     "home": "清单",
     "recommend": "改",
     "merge_into": null,
-    "reason": "位置（scrum/ScrumBoard.html）与「便宜的模型写」留。「PO 的常驻辅助会话」要改：PBI-86 的秘书角色定下后换成秘书，写法跟着改。",
+    "reason": "位置（scrum/ScrumBoard.html）、「便宜的模型写」并要它读本约定与模板、以及「PO 想看时或日志变了就写」都留；「PO 的常驻辅助会话」待 PBI-86 的秘书角色定下后按新说法改。",
     "dups": [],
-    "confidence": "中"
+    "confidence": "中",
+    "checked": [
+      "verified: reason"
+    ]
   },
   {
     "id": "board-log#4",
@@ -136,9 +139,12 @@
     "home": "不进 Memory",
     "recommend": "删",
     "merge_into": null,
-    "reason": "页面自算项（名称取文件夹、取冒号前、条目序号、计数）是模板与 check.py 的实现细节，数据里本就不写。删了不丢行为规矩。",
+    "reason": "页面自算项（名称取文件夹、取冒号前、条目序号、计数、排序、链接）由模板脚本实现（scrum-board-template.html 第269-299、305-319、484-496行），数据里不写；check.py 只把数据块之外的页面对模板逐字比（第315-318行），并不自己算这些。删了不丢行为规矩。",
     "dups": [],
-    "confidence": "中"
+    "confidence": "中",
+    "checked": [
+      "verified: reason"
+    ]
   },
   {
     "id": "board-log#10",
