@@ -78,6 +78,35 @@ def build(rows: dict[str, dict]) -> tuple[str, list[tuple[str, str]]]:
     return "\n".join(out) + "\n", flat
 
 
+PLACEHOLDER = re.compile(r"‹([a-z-]+#\d+)›")
+
+
+def handles_for(rows: dict[str, dict], i: str) -> list[str]:
+    """The handles an old rule lives under now: its own lines, or its merge target's."""
+    o = rows.get(i)
+    if not o:
+        return []
+    hs = [m.group(1) for ln in lines_of(o) for m in [cd.LINE.match(ln)] if m]
+    if hs:
+        return hs
+    return handles_for(rows, o["merged_into"]) if o.get("merged_into") else []
+
+
+def resolve(text: str, rows: dict[str, dict]) -> tuple[str, list[str]]:
+    """A long file may name an old rule as ‹sprint-log#10›; the finished file names its handle(s) instead. A rule
+    with no line and no merge target (a deletion, or one not drafted yet) stays as written and is reported."""
+    bad: list[str] = []
+
+    def sub(m: re.Match) -> str:
+        hs = handles_for(rows, m.group(1))
+        if not hs:
+            bad.append(m.group(1))
+            return m.group(0)
+        return ", ".join(f"`{h}`" for h in hs)
+
+    return PLACEHOLDER.sub(sub, text), bad
+
+
 def map_tables(rows: dict[str, dict], ann: dict[str, dict]) -> str:
     handle_of: dict[str, list[str]] = {}
     new_to_old: dict[str, list[str]] = {}
@@ -127,17 +156,21 @@ def main(argv: list[str]) -> int:
     (out / "MEMORY.md").write_text(text, encoding="utf-8", newline="\n")
     long_src = d / "long"
     (out / "long").mkdir(exist_ok=True)
-    have = set()
+    have, unresolved = set(), {}
     if long_src.is_dir():
         for p in sorted(long_src.glob("*.md")):
-            shutil.copy2(p, out / "long" / p.name)
+            body, bad = resolve(p.read_text(encoding="utf-8"), rows)
+            (out / "long" / p.name).write_text(body, encoding="utf-8", newline="\n")
             have.add(p.stem)
+            if bad:
+                unresolved[p.name] = sorted(set(bad))
     referenced = set(re.findall(r"long/([A-Za-z0-9_-]+)\.md", text))
     MAP_FILE.write_text(map_tables(rows, ann), encoding="utf-8", newline="\n")
     total = len(text)
     print(f"MEMORY.md: {len(flat)} lines, {total} characters; slices a hook would carry per role: {role_slices(flat)}")
     print("long files referenced but not written:", sorted(referenced - have) or "none")
     print("long files written but not referenced:", sorted(have - referenced) or "none")
+    print("rule placeholders left unresolved in long files:", unresolved or "none")
     return 0
 
 
@@ -165,6 +198,9 @@ def selftest() -> int:
     check("| sprint-log#25 | 并 | 并入 overview#10 `ask-the-po` |" in mp, "the map shows a merge with the target's handle")
     check("| `ask-the-po` | overview#10、sprint-log#25 |" in mp, "the map shows a handle with the rules that fed it")
     check("| design-log#4 | 删 | design template |" in mp, "the map shows where a deleted rule went")
+    body, bad = resolve("See ‹sprint-log#8›, ‹sprint-log#25› and ‹design-log#4›.", rows)
+    check(body == "See `go-ahead`, `ask-the-po` and ‹design-log#4›." and bad == ["design-log#4"],
+          "a placeholder becomes its handle, a merged rule its target's handle, a deleted rule stays and is reported")
     print("selftest:", "passed" if ok else "FAILED")
     return 0 if ok else 1
 
