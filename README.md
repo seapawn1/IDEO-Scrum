@@ -150,7 +150,7 @@ The plugin calls these files logs: the product log is the Product Backlog, the s
 
 Two small things help you find your place when a project has several logs.
 
-**The board.** Ask the Supporter, or the Scrum Master, for the board: it writes `scrum/ScrumBoard.html` from your logs. Open it in a browser. A flow diagram shows the product, the items not done, and the Sprint or design each one flows into. Open a Sprint card for its goal, route, and work items done so far, or a design card for its goal, map, and chosen solution, with or without a storyboard. It is made to be read at a glance, on a wide screen, a portrait screen, or a phone, and it follows your system's light or dark setting. A cheap model can write it, following [`board-log.md`](plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md); delete it any time and ask again.
+**The board.** Ask the Supporter, or the Scrum Master, for the board: it writes `scrum/ScrumBoard.html` from your logs. Open it in a browser. A flow diagram shows the product, the items not done, and the Sprint or design each one flows into. Open a Sprint card for its goal, route, and work items done so far, or a design card for its goal, map, and chosen solution, with or without a storyboard. It is made to be read at a glance, on a wide screen, a portrait screen, or a phone, and it follows your system's light or dark setting. A cheap model can write it, following [`board-log.md`](plugins/ideo-scrum/board/board-log.md); delete it any time and ask again.
 
 ![The board of this repository, drawn from its own logs, in the light setting](docs/images/board-overview-light.png)
 
@@ -194,7 +194,7 @@ Found a problem, or have an idea? Open an [issue](https://github.com/seapawn1/ID
 
 | Path | What it is |
 | --- | --- |
-| `plugins/ideo-scrum/` | The Claude Code plugin and the shared source for the five roles and the four kernels (ideo, scrum, sprint, design) |
+| `plugins/ideo-scrum/` | The Claude Code plugin and the shared source for the five roles and the four kernels (ideo, scrum, sprint, design), with the four log templates in `template/` and the board's files in `board/` |
 | `dsh/`, `package.json`, `cordis.patch.yml` | The DSH integration and bundle entry points |
 | `docs/` | Quick start, glossary, project-agent guide, and maintenance guide |
 | `scrum/` | This project's own Scrum work, in Chinese: its product log and its archived sprint logs |

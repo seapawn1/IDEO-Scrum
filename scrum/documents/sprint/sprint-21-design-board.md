@@ -60,7 +60,7 @@
 
 ## 4. Increment notes
 
-- **初交审（`7453a50`）**：更新[看板约定](../../../plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md)、[看板模板](../../../plugins/ideo-scrum/skills/scrum-kernel/conventions/scrum-board-template.html)、中英文 README、[检查脚本](../../../scripts/board_check/check.py)、[对照准备脚本](../../../scripts/board_check/prepare_review.py)及 `scripts/board_check/fixtures/` 隔离夹具与 `review-expectations.json`。
+- **初交审（`7453a50`）**：更新[看板约定](../../../plugins/ideo-scrum/board/board-log.md)、[看板模板](../../../plugins/ideo-scrum/board/scrum-board-template.html)、中英文 README、[检查脚本](../../../scripts/board_check/check.py)、[对照准备脚本](../../../scripts/board_check/prepare_review.py)及 `scripts/board_check/fixtures/` 隔离夹具与 `review-expectations.json`。
 - **Master 静态复审修订（`f030513`）**：PBI-74 无静态阻塞；PBI-71 修正三处——明确收尾的完整开头语义判定、宿主已结束但未归档时不挂在办 IDEO、`Question` 内含 `For:` 不抢实际头部字段（按引用头竖线分隔匹配）。复审通过后进 Test。
 
 ## 5. Test

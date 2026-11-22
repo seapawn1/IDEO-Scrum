@@ -26,7 +26,7 @@ from collections import Counter
 
 HERE = pathlib.Path(__file__).resolve().parent
 REPO = HERE.parents[1]
-TEMPLATE = REPO / "plugins/ideo-scrum/skills/scrum-kernel/conventions/scrum-board-template.html"
+TEMPLATE = REPO / "plugins/ideo-scrum/board/scrum-board-template.html"
 PLACEHOLDER = '{"todo": "Replace this line with the board data (board-log.md lists the fields)."}'
 # the data block runs to the next script, so a stray </script> inside the data cannot hide itself
 BLOCK_RE = re.compile(r'(<script type="application/json" id="board-data">)(.*?)(</script>\s*<script>)', re.S)

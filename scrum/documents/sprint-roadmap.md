@@ -48,7 +48,7 @@
 
 **范围之外**：PBI-12 公开方法论分享留待以后；PBI-67 的自然触发专项按 PO 决定取消，从当前项撤下，不算已修好，不改写 Sprint 18 历史。
 
-**交接依据**：[产品日志及 DoD](../ProductBacklog.md)、[无头验证约定](headless-testing.md)、[看板约定](../../plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md)。看板使用模板和 `scripts/board_check/check.py`，源文档与用户说明使用 `scripts/check_docs.py`；插件／分发按现行 DoD 验证。各期先定自己的判据再测，不把某期专项测试当六期统一门槛。
+**交接依据**：[产品日志及 DoD](../ProductBacklog.md)、[无头验证约定](headless-testing.md)、[看板约定](../../plugins/ideo-scrum/board/board-log.md)。看板使用模板和 `scripts/board_check/check.py`，源文档与用户说明使用 `scripts/check_docs.py`；插件／分发按现行 DoD 验证。各期先定自己的判据再测，不把某期专项测试当六期统一门槛。
 
 ## 续：Sprint 26、27 两线并行（2026-11-22）
 

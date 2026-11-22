@@ -1,8 +1,8 @@
 # Scrum Board Conventions
 
-> Working conventions: reference, not law — follow what fits, override what doesn't, note why. Source labels and short names are explained in convention 15 of `overview.md`, in the skill folder, beside `SKILL.md`. A convention with no label is the author's practice.
+> Working conventions: reference, not law — follow what fits, override what doesn't, note why. Source labels and short names are explained in convention 15 of `overview.md`, in the scrum-kernel skill folder, beside its `SKILL.md`. A convention with no label is the author's practice.
 
-The Scrum board is one page that shows where the project stands. Its template is `scrum-board-template.html`, beside this file; this file is also the brief for whoever writes the page. Paths starting with `../` are relative to the scrum-kernel skill folder.
+The Scrum board is one page that shows where the project stands. Its template is `scrum-board-template.html`, beside this file in `board/`; this file is also the brief for whoever writes the page. Paths in this file, such as `overview.md`, `conventions/product-log.md` and those starting with `../`, are relative to the scrum-kernel skill folder, not to `board/`.
 
 ```mermaid
 flowchart TD

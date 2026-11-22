@@ -23,7 +23,9 @@ HERE = pathlib.Path(__file__).resolve().parent
 REPO = HERE.parents[1]
 FIXTURE = HERE / "fixtures" / "acme"
 EXPECTATIONS = HERE / "fixtures" / "review-expectations.json"
-TEMPLATE_PATH = "plugins/ideo-scrum/skills/scrum-kernel/conventions/scrum-board-template.html"
+TEMPLATE_PATH = "plugins/ideo-scrum/board/scrum-board-template.html"
+PLUGIN_DIR = "plugins/ideo-scrum"
+TEMPLATE_NAME = "scrum-board-template.html"
 
 BLIND_TASK = """# 独立读卡任务
 
@@ -123,9 +125,31 @@ def load_checker():
 
 
 def baseline_template(baseline):
-    """只读指定 git 对象中的旧模板，不切分支，也不接触主检出。"""
+    """只读指定 git 对象中的旧模板，不切分支，也不接触主检出。
+
+    模板在插件目录里的哪个文件夹，按文件名在那个提交里找：它搬过位置（Sprint 27 从技能目录搬到 board/），
+    搬之前的旧提交也读得到它当时的模板，不会读成现在的，也不会读不到。
+    """
+    commit = subprocess.run(
+        ["git", "-C", str(REPO), "rev-parse", "--verify", "--end-of-options", baseline + "^{commit}"],
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+    )
+    if commit.returncode:
+        raise ValueError("--baseline 不是一个提交或分支：" + commit.stderr.strip())
+    sha = commit.stdout.strip()
+    listing = subprocess.run(
+        ["git", "-C", str(REPO), "ls-tree", "-r", "--name-only", sha, "--", PLUGIN_DIR],
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+    )
+    found = [line for line in listing.stdout.splitlines() if line.endswith("/" + TEMPLATE_NAME)]
+    if listing.returncode or len(found) != 1:
+        raise ValueError("--baseline 的提交里找不到唯一的 " + TEMPLATE_NAME + "：" + repr(found))
     result = subprocess.run(
-        ["git", "-C", str(REPO), "show", "--end-of-options", baseline + ":" + TEMPLATE_PATH],
+        ["git", "-C", str(REPO), "show", "--end-of-options", sha + ":" + found[0]],
         capture_output=True,
         text=True,
         encoding="utf-8",

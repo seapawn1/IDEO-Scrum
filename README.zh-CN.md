@@ -150,7 +150,7 @@ claude plugin update ideo-scrum@ideo-scrum
 
 项目里日志一多，有两样小东西帮你找回方位。
 
-**看板。** 请 Supporter（秘书）或 Scrum Master 要一份看板：它照你的日志写出 `scrum/ScrumBoard.html`，用浏览器打开。一张流向图画出产品、没做完的条目，以及每条流进哪个冲刺或设计。点冲刺卡看目标、路线和已经做完的工作块；点设计卡看设计目标、地图主线和选定方案，有没有故事板都能看方案。它是为瞥一眼做的：宽屏、竖屏、手机上都读得顺，配色跟着系统的浅色或深色。便宜的模型就能写，照 [`board-log.md`](plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md)（英文）的约定；随时可以删掉再要一份。
+**看板。** 请 Supporter（秘书）或 Scrum Master 要一份看板：它照你的日志写出 `scrum/ScrumBoard.html`，用浏览器打开。一张流向图画出产品、没做完的条目，以及每条流进哪个冲刺或设计。点冲刺卡看目标、路线和已经做完的工作块；点设计卡看设计目标、地图主线和选定方案，有没有故事板都能看方案。它是为瞥一眼做的：宽屏、竖屏、手机上都读得顺，配色跟着系统的浅色或深色。便宜的模型就能写，照 [`board-log.md`](plugins/ideo-scrum/board/board-log.md)（英文）的约定；随时可以删掉再要一份。
 
 ![本仓库的看板，由它自己的日志画出，浅色](docs/images/board-overview-light.png)
 
@@ -194,7 +194,7 @@ d.school 的许可禁止商业使用，所以本仓库不算 OSI 意义上的开
 
 | 路径 | 是什么 |
 | --- | --- |
-| `plugins/ideo-scrum/` | Claude Code 插件，也是五个角色和四个内核（ideo、scrum、sprint、design）的共用源 |
+| `plugins/ideo-scrum/` | Claude Code 插件，也是五个角色和四个内核（ideo、scrum、sprint、design）的共用源；四份日志模板在 `template/`，看板的文件在 `board/` |
 | `dsh/`、`package.json`、`cordis.patch.yml` | DSH 适配和插件包入口 |
 | `docs/` | 快速上手、词汇表、项目 Agent 指南和维护说明 |
 | `scrum/` | 本项目自己的 Scrum 工作，中文写的：它的产品日志和归档的冲刺日志 |
