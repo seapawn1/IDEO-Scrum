@@ -29,7 +29,7 @@ SKIP_PARTS = {"node_modules", ".git", "__pycache__", "fixtures"}
 TEXT_SUFFIX = {".md", ".py", ".js", ".mjs", ".json", ".yml", ".yaml", ".html", ".sh", ".txt", ""}
 SIX = {"overview": "overview.md", "product-log": "conventions/product-log.md", "board-log": "conventions/board-log.md",
        "sprint-log": "conventions/sprint-log.md", "design-log": "conventions/design-log.md", "ideo-log": "conventions/ideo-log.md"}
-PATH_RE = re.compile(r"(?:[\w./-]*?)(overview\.md|(?:product|board|sprint|design|ideo)-log\.md)")
+PATH_RE = re.compile(r"(?:[\w./-]*?)(overview\.md|(?:product|sprint|design|ideo)-log\.md)")  # board-log.md stays (Master 2026-11-23): its path and numbers are not migrated
 NUM_RE = re.compile(r"\bconventions?\s+((?:\d+(?:\s*[–-]\s*\d+)?)(?:\s*(?:,|and|and also)\s*\d+(?:\s*[–-]\s*\d+)?)*)", re.I)
 HEAD_RE = re.compile(r"Departures section|Departures from the official guides|#departures-from-the-official-guides|\bDepartures table\b", re.I)
 SHORT = {"overview.md": "overview", "product-log.md": "product-log", "board-log.md": "board-log", "sprint-log.md": "sprint-log",
@@ -58,6 +58,8 @@ def scan_line(rel: str, no: int, line: str) -> list[dict]:
     for _, short in paths:
         found.append({"file": rel, "line": no, "kind": "path", "target": short, "text": line.strip()[:160]})
     for m in NUM_RE.finditer(line):
+        if rel.endswith("board/board-log.md") or "board-log" in line[: m.start()]:
+            continue  # a number of board-log's own: that file stays, so the number stays valid
         before = [s for pos, s in paths if pos < m.start()]
         target = before[-1] if before else host_short(rel)
         for n in numbers(m.group(1)):
