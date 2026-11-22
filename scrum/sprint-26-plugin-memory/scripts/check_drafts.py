@@ -204,7 +204,7 @@ def run_stats(d: pathlib.Path) -> int:
                 soft += 1
         if o.get("long_file"):
             longs[o["long_file"]] += 1
-    print(f"{n} lines, {total} characters (the proposed budget is 8,000; the hook hard limit is 10,000); {long_idx} index lines; {soft} lines over {LIMIT_SOFT}")
+    print(f"{n} lines, {total} characters (the size tier is decided by the carrier test: stand-ins of about 10,000 and 20,000 characters); {long_idx} index lines; {soft} lines over {LIMIT_SOFT}")
     print("characters by section:", dict(sec))
     print("lines by role tag:", dict(roles))
     print("long files named:", dict(longs))
