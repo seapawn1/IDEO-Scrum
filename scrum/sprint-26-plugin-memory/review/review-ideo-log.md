@@ -52,13 +52,13 @@
 **新行**
 
 ```text
-- **modes-are-not-the-sprint** Do not mix them: an IDEO log runs no map, Lightning Demos or storyboard, and a design sprint opens no IDEO log.
+- **modes-are-not-the-sprint** Keep modes and sprint apart: an IDEO log runs no map, Lightning Demos or storyboard; a design sprint opens no IDEO log.
 - **research-as-empathize** Chat or IDEO-log research can count as Empathize material, but a design sprint still starts on the PO's permission.
 ```
 
 **别处已有**：What the five modes and the design sprint's stages are (stages stand on modes, the book's steps, a PO decision between stages, role-card tests) is in plugins/ideo-scrum/skills/design-kernel/SKILL.md and plugins/ideo-scrum/skills/ideo-kernel/SKILL.md.
 
-**备注**：The annotation asked to keep 'IDEO log counts as Empathize material' and 'no map, Lightning Demos, storyboard'; both are kept.
+**备注**：The annotation asked to keep 'IDEO log counts as Empathize material' and 'no map, Lightning Demos, storyboard'; both are kept. The old 'Do not mix them' lost its referent once the line stands alone, so the line now says what is kept apart.
 
 ---
 

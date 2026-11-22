@@ -98,7 +98,7 @@
 ## The five modes and the IDEO log
 
 - **sprint-or-modes** The PO picks a design sprint or the five modes; default to a design sprint only if a prototype must be tested with role cards.
-- **modes-are-not-the-sprint** Do not mix them: an IDEO log runs no map, Lightning Demos or storyboard, and a design sprint opens no IDEO log.
+- **modes-are-not-the-sprint** Keep modes and sprint apart: an IDEO log runs no map, Lightning Demos or storyboard; a design sprint opens no IDEO log.
 - **research-as-empathize** Chat or IDEO-log research can count as Empathize material, but a design sprint still starts on the PO's permission.
 - **open-ideo-log** One or two methods write into the log they serve; a longer run gets scrum/ideo-<suffix>/IdeoBacklog.md, five chapters, no PO gate.
 - **read-mode-file** Read a mode's or method's file in the ideo-kernel before using it; a chapter holds what its mode produced.
