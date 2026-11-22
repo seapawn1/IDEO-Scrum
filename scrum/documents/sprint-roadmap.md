@@ -86,7 +86,7 @@
 - **PO 中途审了 Memory 草稿**：PO 在 Supporter 会话里逐条审（2026-11-23 02:55–03:4x），口径是「只要与 Memory 其它条目、各技能的说法不矛盾，就算过、就保留」。
   - 意见：要改 7 处，要补 2 处，其中一处是新规矩——Review／Retro 时由 Master 列出异议点和待研点，PO 挑哪些落 `documents/`、哪些落记忆。
   - 处置：Master 全部转给 26 Developer。PO 交 Master 判的几点：ideate-arrangement 只强调放行这一关；sprint-or-modes 照 PO 的话重写；modes-are-not-the-sprint 整条删。
-  - relay-limits 不放宽：宿主不把别的会话的话当批准，PO 可以推翻。
+  - relay-limits：Master 原判不放宽（Supporter 把它误记成「交 Master 判断」），PO 已推翻。经 PO 授权的 Supporter 转达，在权限、设置、CLAUDE.md／AGENTS.md、推送发布上也算 PO 的话；PO 在 Master 会话亲口说：「我授权之后，然后我让 supporter 去发，那实际上也认为是我的意见」。宿主只认动手会话里确认的，照宿主来，写进细则。
   - 改完 PO 不看第二遍，Master 复核后落盘。原话与处置记在 26 的 `review/po-review-2026-11-23.md` 和日志第 4 章。
 - **Codex 对抗审查的修改**：26 Developer 在 `6a0bee9` 改完 15 条，并对 111 条规矩做了分句覆盖核查；Master 审过。附带一个条件：落盘后拿插件里的文件重跑覆盖核查。
 - **删两条 PBI**：PBI-91 是 PO 定不做；PBI-99 的原话是「我记得99这个肯定是要删的，因为我已经审略完了」（经 Supporter，2026-11-23 03:5x）。Supporter 在 `d143bbd` 删掉了这两条。照 answers-back，条目的增删本该交 Master 记，这次内容无误，不回改。
