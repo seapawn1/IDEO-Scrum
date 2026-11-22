@@ -90,6 +90,16 @@ SPEC: dict[str, dict] = {
             ("The board", ["board-log@3"]),
         ],
     },
+    "roles-and-routing": {
+        "title": "Roles and routing of work",
+        "intro": "PENDING SPRINT 27: this is the text as it stands today; Sprint 27 changes the role table (a Supporter role), the routing of questions and the board writer, and this file is rewritten when it is merged. Read it when you start as a role, split work between sessions, or are unsure whom to ask. The list lines that point here are `role-entry`, `who-gets-which-work` and `ask-the-po`.",
+        "sections": [
+            ("The roles (`role-entry`)", ["overview#8"]),
+            ("Who gets which work (`who-gets-which-work`)", ["overview#14"]),
+            ("What goes to the Product Owner (`ask-the-po`): the Sprint's list", ["sprint-log#25"]),
+            ("What goes to the Product Owner (`ask-the-po`): the design's list", ["design-log#21"]),
+        ],
+    },
     "sprint-closing": {
         "title": "Closing a Sprint",
         "intro": "Read this file when you close a Sprint: the Review, the Retrospective and the closing commit. The list lines that point here are `review-at-close`, `retro-in-memory` and `one-closing-commit`.",

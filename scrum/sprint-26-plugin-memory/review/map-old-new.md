@@ -143,7 +143,7 @@
 | design-log@2 | The first section of long/design-stages.md: the template, and where the book describes its room (whiteboards, sticky notes, dot voting, a team at a table) these rules say how a solo + AI team does that step. |
 | design-log@3 | Drawn in long/flow-maps.md, with the handles in the boxes; the list line flow-maps points there. |
 | design-log@4 | The section The three loops of long/design-stages.md, word for word. |
-| design-log@5 | Dropped: a pointer to 'Throughout'; the entry and return rules at each transition are design-gates. |
+| design-log@5 | Dropped: a pointer to 'Throughout'; the entry and return rules at each transition are the stage-gates line and long/stage-gates.md. |
 | design-log@6 | The first section of long/design-stages.md: these rules cover only what differs from the book or adds what it leaves out; for the rest follow the book's excerpts. |
 | ideo-log@1 | The MEMORY.md header carries it: working conventions, follow what fits, override what doesn't, say why in the log's notes. |
 | ideo-log@2 | Dropped: the paths are relative to the skill folders; which kernel owns what is in the SKILL.md files. |
