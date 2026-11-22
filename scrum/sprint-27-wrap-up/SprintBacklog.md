@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 27 (wrap-up)
 
 > Started: 2026-11-22 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `worktree-sprint-27-wrap-up` | Product Owner: SeaPawn | Scrum Master: IDEO # [master]-[main]-[manage sprint] | Developer: Sprint 27 Developer
-> Now: Increment · 2026-11-22：H1–H7 施工与自查都做完（第 3 章各行已标 ✓，H7 一行等 Master 审），等 Master 审 Increment、放行 Sprint Test；2.2 的测试方法与通过线冻结于 `d72b0a6`；DSH 实装验收待 IDEO 秘书会话。PO 最近一次决定：Supporter 加「联络点」、转达的 PO 意见视同 PO 的、三级分流。
+> Now: Test · 2026-11-22：Master 审过 Increment（`d4516ff`），按书面授权放行 Sprint Test（条件：补 board-log 第 4 条一句，随本提交）；Developer 按冻结的 2.2 跑静态检查与两条 grep、`/ideo-scrum:supporter` 无头加载 3/3（重批次，等 Master 叫）、DSH 实装验收、Codex 独立审阅进行中，结果记第 5 章（写在工作区，Test 结束前不提交）。PO 最近一次决定：Supporter 加「联络点」、转达的 PO 意见视同 PO 的、三级分流。
 > Waiting for PO: None
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none. Work remarks go in chapter 4, Increment notes; an optional explanation of the commitment may follow its table (`overview.md` in the scrum-kernel skill folder, conventions 16 and 17).
@@ -300,7 +300,14 @@ Go-ahead: 2026-11-22，Master 按 PO 的书面授权（见第 4 章）放行 H1�
   - **改了什么**（只放宽、不收紧）：`find_product_log` 按约定 4、11 的读法找产品日志——工作副本里有就读它，来源 `working copy`；没有就取「有它、且最新提交最晚」的那个分支，来源 `branch <名> @ <提交前 7 位>`；`read_project` 用它并记下来源，`check_data` 比对的是这个来源而不是常量，`reference_data` 也照它写。工作副本里有产品日志的项目，行为与改前完全相同（仍要 `working copy`，写成分支形式照旧判错：约定 4 说在工作副本里的日志来源就是 `working copy`）；改前被接受的页面，改后全部仍被接受。
   - **自测 99 → 105 例**：负例——产品日志在工作副本里却写分支来源、产品日志只在分支上却写 `working copy`、两个分支都有时写了较旧的那个分支、分支名对但提交不是该分支的尖；正例——产品日志只在两个分支上（`product-old`、`product-new`，提交日期相差一天，`build_fixture` 新增 `product_branches` 参数造出来），参考写法写出最新那个分支的来源并通过检查；另有一例核对这个夹具的工作副本里确实没有产品日志。把这些新例子放到旧逻辑上跑，参考写法崩在上面那处 `NoneType` 错（探针副本，用后即删），说明它们真依赖新逻辑。
   - **我留意到、没动的一处，请 Master 定要不要补**：`board-log.md` 第 4 条只写了「冲刺或设计开在别的分支上也算」，产品日志只在第 11 条的表里允许分支来源；脚本现在按「工作副本优先，否则最新提交最晚的分支」读产品日志，是我对第 4 条「同一份日志在几个分支上取最新提交」的延伸。要不要在第 4 条补一句，由你定；补的话是一句，我来改。
+- **Master 审过 Increment、放行 Sprint Test（2026-11-22，Master 按书面授权，见上面「授权范围」）**：
+  - **依据**：Master 在 `d4516ff` 上核过——`validate --strict` 通过，`check_dsh` 8/8，`check_docs` 0 错，`board_check selftest` 0 失败；supporter 入口、约定 10、12、14 与三个角色入口里的引用，都跟 PO 定的分工一致；我自己拿主意的四处认可：归档 Sprint 21 日志里两条看板链接改到新地址（约定 17 要求收官前修好断链，只改链接地址可以）、两个脚本按文件名找模板、CHANGELOG 里的旧叫法登记为第 14 处放行、README 文件表加两个文件夹。
+  - **条件**：board-log 第 4 条后面补一个指向——产品日志不在工作副本时同样读法，来源怎么写见第 11 条（`product.source`），让 `check.py` 的读法有约定的依据（回应上面 89 追加里留的那个问题）；补完**单独提交**，提交后到 Test 结束前**不再提交**，Codex 按这个提交审。本提交就是那一句，另含这份日志对放行的记录（头部、本条、第 5 章开头一行），没有别的改动。
+  - **放行范围：Sprint Test，四项**：① 我按冻结的 2.2 跑静态检查与两条 grep 命令，命中必须正好等于放行表；② `/ideo-scrum:supporter` 的 Claude Code 无头加载 3/3——重批次，Master 叫了再跑（26 正在跑它的批次）；③ DSH 实装验收——Master 经 Supporter 请 PO 重开 DSH，开了由 IDEO 秘书会话在该提交上测；④ 独立审阅交 Codex（PO 点名）：照 DoD 与验收条件逐条审 Increment，同时对角色边界文字做对抗核对（范围见 2.2「角色边界」）。结果都记第 5 章；第 5 章写完，Test 是否通过、收官，由 Master 按授权定。
+  - **提交状态（约定 22）**：本提交之后到 Test 结束前我不再提交；第 5 章与日志头部的后续更新留在工作区未提交，Test 结束、Master 说可以时一并提交（连同 `validation/test/` 里的证据脚本）。第 5 章里不写 2.2 放行表里的那些旧词，免得两条 grep 的命中多出来。接手的人先读头部的 `Now`，再读这一条。
 
 ## 5. Test
 
 <!-- Record the Developer’s tests, the independent review and any required Product Owner acceptance. Trace each Output Done standard and item criterion to new evidence, still-valid earlier evidence and why it holds, or a stated condition that did not arise and why. Keep missing evidence visible; record outcome signals separately and judge the Test against the pass lines set beforehand (sprint-log.md, convention 16). End with the Product Owner’s close or return decision (convention 24). -->
+
+**状态（2026-11-22）**：Test 进行中，结果逐项写在下面（写在工作区，Test 结束前不提交，Master 要求；Codex 按本提交审，不看工作区里的第 5 章草稿）。
