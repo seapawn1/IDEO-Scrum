@@ -123,12 +123,13 @@
     - 旧称法：`git grep -n -i -E "PO assistant|PO 助手|standing assistant|standing helper|\bstanding Stakeholder|常驻的助手|助手会话"`（`\bstanding Stakeholder` 带词界，免得把 SGEP 原文「understanding Stakeholders」算成命中）
   - **放行的命中，逐处列出**（冻结时的文件与行号；Test 里再跑上面两条命令，命中必须正好是这些：多一处或少一处都不过。CHANGELOG 与 `scrum/documents/design/` 里两条命令都没有命中，所以不设例外）：
     - 旧路径，共 2 处，都是归档里对当时路径的历史记述：`scrum/documents/sprint/sprint-09-design-template.md:60`（代码样式写的当时设计日志模板的路径）；`scrum/documents/conventions-review-log.md:24`（Sprint 11 审阅记录表里当时被审文件的路径，其中别的文件路径早已因 Sprint 12 变过，从未回改）。
-    - 旧称法，共 13 处：
+    - 旧称法，共 14 处：
       - `scrum/documents/sprint/sprint-18-rules-first.md:35`、`scrum/documents/sprint/sprint-22-project-agents.md:81`：已归档冲刺日志里对当时做法的记述，归档不回改；
       - `scrum/ProductBacklog.md:57`（§2.1 角色卡表头）与 `:77`（§2.2 地图节点）：Q7，Master 收官时改；
       - `scrum/ProductBacklog.md:117`：PBI-86 条目，PO 定的条目原文，要删的正是这个旧说法，收官时整条移进 3.2；
       - `scrum/ProductBacklog.md:145`：3.2 完成表里 Sprint 18 一行，历史；
       - `scrum/documents/sprint-roadmap.md:66`：总表「续」一节在 Sprint 27 开张前写的范围说明，那个说法正是 86 要改的东西；
+      - `CHANGELOG.md:11`：未发布条目里写「它原来兼作……」的改名说明，发布说明要让从旧版升上来的人认得出改的是哪个旧叫法，必须点出旧名；
       - `scrum/sprint-27-wrap-up/SprintBacklog.md` 的 6 处（行 60、61、65、77、119、123）：Q2、Q3、Q7 三行是 Master 写的问题原文，86 验收一条是本期的验收标准本身，「查什么」与「搜索命令」两行是词表本身——都是在点名那个旧说法，不是在用它。
     - 本日志第 3、4、5 章与别处的叙述我已改写成不含这些词的写法；Test 里若有别的命中就是新增，要么改写，要么回来在这里登记并说明理由。
 - **完整 DoD 逐条**（约定 4、16：本期重点之外的标准照样生效，逐条给证据；不声称完整 DoD 已过）：
@@ -288,6 +289,11 @@ Go-ahead: 2026-11-22，Master 按 PO 的书面授权（见第 4 章）放行 H1�
   - **grep 到零**：旧路径命令（2.2 里原样）在整个仓库只剩 2 处放行（`sprint-09-design-template.md:60`、`conventions-review-log.md:24`），其余 0；旧称法命令只剩 2.2 清单里的 13 处。第一次我只排除了几类目录，Master 要求逐处列出后，把叙述改成不含旧词，清单里列的是所有命中（文件与行号）。
   - **检查结果（H1 提交前，工作区；提交后我在提交上再核一遍并记在这里）**：`claude plugin validate --strict` 通过；`check_dsh` 8/8；`check_docs.py` 195 条链接无错、`--selftest` 17 例；`board_check selftest` 99 例；`npm pack --dry-run` 101 个文件，含 `template/` 四份、`board/` 两份与 `commands/supporter.md`，旧位置的文件 0 个；12 个入口与内核 `description` 与触发测试的候选 `52b42fa` 逐字相同（所以触发结果继续有效）；`validation/h1/dead_links.py`：扫了 153 个跟踪的 markdown、245 条相对链接，死链 0，「基线能通、现在不通」0；`validation/h1/resolve_refs.py`：预期的 2 处未解析（示例路径、模板里写明在 scrum-kernel 技能文件夹的 `overview.md`），其余都解析。
   - **两处自我纠正，如实记下**：① 第一次写 `dead_links.py` 时数错了仓库根的层级，只扫到了 `scrum/` 下的文件，报出的「0」是假的；发现后改对，并让脚本打印扫了多少文件与链接，再跑才得到上面的 0。② 暂存 H1 时我用了目录范围的 `git add -A -- plugins scripts docs …`，违反项目规矩「`git add` 逐个写文件」；当时工作区里只有我自己的改动，对暂存清单逐行核过没有夹带，之后都改回逐个文件。
+- **H7 · 收口（2026-11-22）**：
+  - **`CHANGELOG.md` 的 [Unreleased]** 补了七条：Supporter、问题往哪去、stakeholder 与 scrum-master 入口的变化、模板与看板的新位置（写明旧位置要改的人怎么办）、看板识别收尾待归档、署名两源、项目 Agent 与参谋入口的小改。版本号不动（仍是 0.6.3 的未发布候选）。其中第 11 行写了旧叫法（改名说明要让升级的人认得出改的是哪个旧名），已在 2.2 的放行清单登记。
+  - **`plugin-dev:plugin-validator`（我派的，`model: haiku` 显式写）**：无阻塞问题。12 个入口与内核的 `description` 都是单行、≤1024（supporter 977、ideo-kernel 1023）；`hooks.json` 与 `commitments.sh` 正常；19 处 `../../template/…`、`../../board/…` 引用（`template/` 16 处、`board/` 3 处，涉及四个 `SKILL.md`、四份约定与 `overview.md`）全部解析；旧位置在插件里 0 处，只在 `scrum/` 里剩 2 处归档里的历史记述（已在放行清单）。它的四条非阻塞意见的处置：① `../../` 只在从技能文件夹解析时成立——这是各文件声明的基准，与插件里 `../<内核>/…` 的写法一致，不改；② `advisor.md` 的 `model: fable`——是 PO 在 Sprint 22 定的（「默认 Fable，可另选」），不在本期，不改；③ 行尾混用——仓库里的 blob 全是 LF（对 `supporter.md`、`developer.md`、一份模板核过，CR 数都是 0），不同只在 Windows 工作区（autocrlf），不用处理；④ `icon` 字段——原有，`--strict` 通过，没动。
+  - **还差的一项证据**：H3 写的 DSH 实装验收条目（`/supporter` 出现、按 ideo → scrum 预载、读得到新位置的模板）要在最终提交上由 IDEO 秘书会话做，我这边没有 DSH 环境；Test 时有 Master 转来的原生事件证据就引用，没有就如实记「实装未验」，不拿静态检查顶替。
+  - **通过线冻结**：2.2 的测试方法与通过线（含触发题面 v2、脚本和 grep 放行清单）以最后一个改动 2.2 的提交为准，提交哈希记在下面一条；此后到 Test 跑完之前，2.2 不再改，要改须经 Master。
 
 ## 5. Test
 
