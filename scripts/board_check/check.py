@@ -148,6 +148,7 @@ def ideo_host(text, log_path):
 MODE_PREFIX = re.compile(r"^(?:Empathize|Define|Ideate|Prototype|Test|共情|定义|构思|原型|测试)\s*[:：·]\s*", re.I)
 ENDED_EN = r"(?:concluded|closed|ended)"
 ENDED_ZH = r"已(?:收尾|结束|关闭)"
+ARCHIVE_CUE = re.compile(r"archiv|归档", re.I)
 
 
 def matches_end_state(state, english, chinese):
@@ -171,13 +172,17 @@ def host_concluded(now, kind):
     if kind == "sprints":
         english_subject = r"sprint(?:\s+\d+)?"
         chinese_subject = r"(?:本(?:期|次|轮)?)?冲刺(?:\s*\d+)?"
-        chinese_state = r"已(?:收官|收尾|结束|关闭)"
+        # 冲刺日志收官时 Now 写「已收官 · …」，也有写「收官 · …」的；两种都认。
+        chinese_state = r"(?:(?:已\s*)?收官|已(?:收尾|结束|关闭))"
     else:
         english_subject = r"design(?:\s+sprint)?"
         chinese_subject = r"(?:本(?:次|轮)?)?设计(?:冲刺)?"
         chinese_state = ENDED_ZH
     state = MODE_PREFIX.sub("", now, count=1)
-    if state == now and matches_end_state(state, ENDED_EN, rf"(?:(?:本期|本次|本轮)\s*)?{chinese_state}"):
+    # 没有主语的「已结束」「Concluded」写在 Now 开头，就是宿主结束。前面带着阶段名时（设计日志约定 19 的
+    # `Test: Concluded — awaiting archive`），要同句写明待归档才算：「Prototype: concluded; Test next」只是一个阶段完了。
+    if (state == now or ARCHIVE_CUE.search(state)) and matches_end_state(
+            state, ENDED_EN, rf"(?:(?:本期|本次|本轮)\s*)?{chinese_state}"):
         return True
     return matches_end_state(
         state,
@@ -733,6 +738,7 @@ def selftest():
             ("closed mentioned in ongoing work", design_path, "Test: review closed cases", "design-gamma"),
             ("host log absent", "../sprint-09-closed/SprintBacklog.md", active, None),
             ("a note is not a host log", "../design-gamma/Notes.md", active, None),
+            ("host log archived under documents", "../documents/design-gamma.md", active, None),
         ]
         for label, target, now, host in scenarios:
             text = body.replace("For: " + design_path, "For: " + target, 1).replace(
@@ -748,21 +754,39 @@ def selftest():
         placement("only the For field sets the host", with_question, active, "sprint-01-alpha")
 
         # 只改现有宿主的 Now，保持 IDEO 在办且 For 不变，宿主卡本身必须仍可发现。
+        # 每个宿主有几种「整个宿主结束」的写法（应不再挂 IDEO）和几种「只是一个阶段结束」的写法（仍挂）。
+        # 带阶段名的 `Test: Concluded — awaiting archive` 是设计日志约定 19 要求的写法（Sprint 23 合流回验里没识别出来）。
         host_states = [
-            ("sprint-01-alpha", sprint_path, sprint_body, "Test: Sprint 01 has ended; awaiting Review archive.",
-             "Test: The Sprint's first test has ended; next test pending."),
-            ("design-gamma", design_path, body, "测试：设计已结束（待 Review 归档）", "测试：第一轮已结束，继续核对设计问题"),
+            ("sprint-01-alpha", sprint_path, sprint_body,
+             ("Test: Sprint 01 has ended; awaiting Review archive.", "Test: Concluded — awaiting archive",
+              "收官 · 2026-11-14，Sprint Goal 达成", "已收官 · 2026-11-21，PO 确认 Review 通过",
+              "Closed · 2026-11-14 — Sprint Goal met"),
+             ("Test: The Sprint's first test has ended; next test pending.", "收官前待 PO 确认",
+              "Increment: first work item done; Test next")),
+            ("design-gamma", design_path, body,
+             ("测试：设计已结束（待 Review 归档）", "Test: Concluded — awaiting archive", "测试：已结束，待归档"),
+             ("测试：第一轮已结束，继续核对设计问题", "Prototype: Concluded; Test next",
+              "Prototype: concluded — PO picks the prototype next")),
         ]
-        for host, target, text, closed_now, stage_now in host_states:
+        for host, target, text, closed_nows, stage_nows in host_states:
             host_file = (lo.parent / target).resolve()
             original = host_file.read_text(encoding="utf-8")
             prefix = "> Now: "
-            for host_now, want_host, state in ((closed_now, None, "ended but not archived"),
-                                              (stage_now, host, "one stage of work ended")):
+            for host_now, want_host, state in ([(n, None, "ended but not archived") for n in closed_nows]
+                                               + [(n, host, "one stage of work ended") for n in stage_nows]):
                 updated = original.replace(prefix + now_line(original), prefix + host_now, 1)
                 host_file.write_text(updated, encoding="utf-8")
-                placement(host + " " + state, text, active, want_host, reject_on=host)
+                placement("%s %s: %s" % (host, state, host_now), text, active, want_host, reject_on=host)
             host_file.write_text(original, encoding="utf-8")
+
+        # 第三态：设计日志已迁出活动路径、只剩归档，不出活动卡（board-log 第 4 条：`scrum/documents/` 里的不读）。
+        archived = lo.parent.parent / "documents/design-archived"
+        archived.mkdir(parents=True, exist_ok=True)
+        shutil.copy(lo.parent.parent / "design-gamma/DesignBacklog.md", archived / "DesignBacklog.md")
+        cases += 1
+        if any("archived" in ident for _, ident in discover(ideo)):
+            failures.append("an archived design under scrum/documents/ is found as an open log")
+        shutil.rmtree(lo.parent.parent / "documents")
 
         # 两张同类卡可交换遍历顺序；保留正确挂载再向错误卡复制，不能只测移走原条目。
         lo.write_text(sprint_body, encoding="utf-8")
@@ -830,6 +854,8 @@ def selftest():
                lambda d: card_data(d, "design-choosing").update(solution={"title": "退回余额"}), "section 3.1")
         mutate("a storyboard invented for a design without one",
                lambda d: card_data(d, "design-feedback-sample").update(story=[{"title": "x", "text": "y"}]), "section 3.2")
+        mutate("a storyboard kept for a design with no chosen solution",
+               lambda d: card_data(d, "design-choosing").update(story=[{"title": "x", "text": "y"}]), "chosen solution")
         mutate("a design story with a frame without text",
                lambda d: card_data(d, "design-gamma")["story"].append({"title": "x", "text": ""}), "story")
         mutate("an IDEO log omitted", lambda d: card_data(d, "design-gamma").pop("ideo"), "missing this log")
