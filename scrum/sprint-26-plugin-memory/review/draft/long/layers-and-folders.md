@@ -31,7 +31,7 @@ The third layer is not a log and has no prescribed method; it relies on the skil
 `scrum/` holds all of the Scrum work:
 
 - `ProductBacklog.md`;
-- `ScrumBoard.html`, the board written from the logs, which keeps no state of its own (`board-data`);
+- `ScrumBoard.html`, the board written from the logs, which keeps no state of its own (`board-owns-nothing`);
 - `sprint-NN-<suffix>/` with `SprintBacklog.md` and its working files;
 - `design-<suffix>/`, unnumbered, with `DesignBacklog.md`, prototypes, and other working material;
 - `ideo-<suffix>/`, unnumbered, with `IdeoBacklog.md`, prototypes, and working files;

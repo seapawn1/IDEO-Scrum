@@ -1,19 +1,25 @@
-# Handing a Sprint over
+# Handing a log over
 
-How a Sprint passes from one session to another, or from one tool to another, without losing anything. Read this file when you pause or end a session in the middle of a Sprint, pick a Sprint up, or work with a Developer in another session or tool. The list lines that point here are `log-is-the-handoff` and `developer-elsewhere`.
+How a Sprint, a design or an IDEO run passes from one session to another, or from one tool to another, without losing anything. Read this file when you pause or end a session in the middle of one, pick one up, or work with a Developer in another session or tool. The list lines that point here are `log-is-the-handoff` and `developer-elsewhere`.
 
 ## The log is the handoff (`log-is-the-handoff`)
 
-- The header carries `Now` with the stage the Sprint is in and the last decision the Product Owner made, followed immediately by `Waiting for PO` with each pending decision's number and short question, separated by semicolons, or `None` (the sprint log template has the format).
+- The header carries `Now` with the stage the Sprint is in (the stage and next step of a design, the mode and next step of an IDEO log) and the last decision the Product Owner made, followed immediately by `Waiting for PO` with each pending decision's number and short question, separated by semicolons, or `None` (each log's template has the format).
 - Update both with the log change that causes them.
-- A session that picks up the Sprint reads them first, then checks the recorded permission for the stage and scope; the header is not itself permission to act (`sprint-stage-decisions`).
+- A session that picks up the log reads them first, then checks the recorded permission for the stage and scope; the header is not itself permission to act (`sprint-stage-decisions`).
 - Write no separate handoff documents: before a session ends or its context is shortened, write what matters into the log and update the header.
 
 ### At a handoff or a pause
 
 - Commit within the authorized scope only if that commit is permitted; otherwise keep the uncommitted changes and record that status and where to resume.
-- This handoff rule does not waive the required pre-Test freeze commit (‹sprint-log#13›) or the closing commit (`one-closing-commit`): if commit permission is not recorded for those gates, ask for it before running the Test or closing.
+- This handoff rule does not waive the required pre-Test freeze commit (`tests-criteria-first`) or the closing commit (`one-closing-commit`): if commit permission is not recorded for those gates, ask for it before running the Test or closing.
 - Stop at a complete point.
+
+### In a design
+
+- Before a session ends or its context is shortened, write the half-finished work into the chapter it belongs to and update the header.
+- `Now`, and permission to enter or resume a stage, do not by themselves authorize committing, merging or pushing; a session that picks the design up also checks any recorded git permission (`design-gates`).
+- Commit within the authorized scope only if the Product Owner explicitly recorded commit permission for it; otherwise keep the uncommitted changes and record that status and where to resume.
 
 ## A Developer in another session or tool (`developer-elsewhere`)
 

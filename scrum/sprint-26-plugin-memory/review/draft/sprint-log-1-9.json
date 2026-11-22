@@ -87,7 +87,7 @@
     "adds_to_target": null,
     "absorbed": [],
     "where_else": "What the How holds (key choices and reasons, known risks and open points) is in the sprint log template (line 37) and commands/developer.md (line 33).",
-    "note": "The departure is carried by the parenthesis 'the Scrum Guide says one day'. 'The Scrum Master and the PO check the plan' is covered elsewhere (review-handover, role commands) and dropped."
+    "note": "The departure (the Scrum Guide's 'one day or less' becomes one session) is in the sprint-stages long file, where the rule is kept in full, and in the departures table. 'The Scrum Master and the PO check the plan' is covered elsewhere (review-handover, the role commands) and not repeated."
   },
   {
     "id": "sprint-log#8",

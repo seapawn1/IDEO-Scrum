@@ -121,6 +121,21 @@ def strip_mermaid_ticks(text: str) -> str:
     return FENCE.sub(lambda m: m.group(1) + m.group(2).replace("`", "") + m.group(3), text)
 
 
+def handle_refs_unknown(out: pathlib.Path) -> dict[str, list[str]]:
+    """A long file names handles in backticks (`go-ahead`). Every kebab-case token in backticks must be a handle of the
+    list or the name of a long file; anything else is a typo or a handle that was renamed."""
+    text = (out / "MEMORY.md").read_text(encoding="utf-8")
+    handles = set(re.findall(r"^- \*\*([a-z0-9-]+)\*\*", text, re.M))
+    longs = {p.stem for p in (out / "long").glob("*.md")}
+    bad: dict[str, list[str]] = {}
+    for p in [out / "MEMORY.md", *sorted((out / "long").glob("*.md"))]:
+        toks = set(re.findall(r"`([a-z0-9]+(?:-[a-z0-9]+)+)`", p.read_text(encoding="utf-8")))
+        miss = sorted(t for t in toks if t not in handles and t not in longs and not re.match(r"sprint-[0-9]", t))
+        if miss:
+            bad[p.name] = miss
+    return bad
+
+
 def map_tables(rows: dict[str, dict], ann: dict[str, dict]) -> str:
     handle_of: dict[str, list[str]] = {}
     new_to_old: dict[str, list[str]] = {}
@@ -195,6 +210,8 @@ def main(argv: list[str]) -> int:
     print("long files referenced but not written:", sorted(referenced - have) or "none")
     print("long files written but not referenced:", sorted(have - referenced) or "none")
     print("rule placeholders left unresolved in long files:", unresolved or "none")
+    bad = handle_refs_unknown(out)
+    print("backticked handles in the list or the long files that are no handle and no long file:", bad or "none")
     return 0
 
 

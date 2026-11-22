@@ -72,7 +72,7 @@
     "adds_to_target": null,
     "absorbed": [],
     "where_else": null,
-    "note": "How a concluded IDEO run is read from its Now line (and a host whose own Now says it ended) is applied by the board check script; if the board-writing long file wants it, it is rule board-log#16 word for word.",
+    "note": "The whole rule, including how a concluded IDEO run is read from its Now line and when a host counts as ended, is in the board-writing long file word for word.",
     "via": "board-rules"
   },
   {
@@ -98,7 +98,7 @@
     "adds_to_target": null,
     "absorbed": [],
     "where_else": null,
-    "note": "The annotation proposed pointing to the board check script, but it sits in the repository's scripts/, outside plugins/ideo-scrum, so an installed plugin does not have it; the line keeps the original check list.",
+    "note": "The annotation proposed pointing to the board check script, but it sits in the repository's scripts/, outside plugins/ideo-scrum, so an installed plugin does not have it; the board-writing long file keeps the original check list.",
     "via": "board-rules"
   },
   {
