@@ -1,0 +1,107 @@
+[
+  {
+    "id": "sprint-log#19",
+    "line": null,
+    "lines": [
+      "- **one-closing-commit** [sm] Close with one commit: first search the whole project for old paths until none remain, then tag, merge into main, close the working copy, delete the branch. → long/sprint-closing.md",
+      "- **outward-needs-po** Pushing and other outward actions, such as a release, need the PO's consent."
+    ],
+    "section": "sprint",
+    "long_file": "sprint-closing",
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "Long file: the six steps in order; the closing commit holds only what Review and Retro changed in the repository (no copying of outside memory, no Retro file made up to fill it); the tag's message says what the Sprint achieved; the project's health is judged by scrum/ alone, usually only the README needs updating."
+  },
+  {
+    "id": "sprint-log#20",
+    "line": null,
+    "lines": null,
+    "section": "sprint",
+    "long_file": null,
+    "merged_into": "overview#17",
+    "adds_to_target": "Acceptance criteria and refinement points may be renegotiated with the PO, or with the Scrum Master within a written handover; write each change and its reason in chapter 4, Increment notes.",
+    "absorbed": [],
+    "where_else": null,
+    "note": "Goes into the goal-fixed long file."
+  },
+  {
+    "id": "sprint-log#21",
+    "line": "- **new-work-registered** New work goes into the product log as an item first; the PO decides whether it enters this Sprint, and the scope can be renegotiated while the Sprint Goal stays.",
+    "lines": null,
+    "section": "sprint",
+    "long_file": null,
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": ""
+  },
+  {
+    "id": "sprint-log#22",
+    "line": "- **log-is-the-handoff** Keep the header current and write what matters into the log before a session ends; no separate handoff files, and the header is not permission to act. → long/sprint-handoff.md",
+    "lines": null,
+    "section": "sprint",
+    "long_file": "sprint-handoff",
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": "The Now and Waiting for PO header fields and reading them first are in the sprint log template (lines 4-5).",
+    "note": "Long file keeps: at a pause commit only within the authorized scope and only if permitted, otherwise keep the changes uncommitted and record the status and where to resume; this does not waive the pre-Test freeze commit or the closing commit (ask for commit permission before Test or closing if it is not recorded); stop at a complete point."
+  },
+  {
+    "id": "sprint-log#23",
+    "line": null,
+    "lines": [
+      "- **outside-blocker** [sm] When something outside the team blocks the work, the Scrum Master tells the PO at once.",
+      "- **mid-sprint-release** A release that is ready mid-Sprint goes out with the PO's consent for outward actions; the Sprint does not end."
+    ],
+    "section": "sprint",
+    "long_file": null,
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "The two rows of the old table, one line each."
+  },
+  {
+    "id": "sprint-log#24",
+    "line": null,
+    "lines": [
+      "- **sprint-stage-decisions** [po,sm] The PO sets the goal before What, ends refinement before How, gives the go-ahead before building, and authorizes Sprint Test apart from approving the Increment. → long/stage-gates.md",
+      "- **read-the-goal** Before each stage decision, read the exact Sprint Goal from its table (the Product Goal too if direction is at issue) and check the work against it; if you cannot, stop. → long/stage-gates.md"
+    ],
+    "section": "sprint",
+    "long_file": "stage-gates",
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "Long file: no placeholder is recorded as a commitment while no Sprint Goal is set; the goal's exact text goes in the section 1.1 table; its wording is kept on the dated decision line as a record, not as a source; show the text to the PO only when the goal changed, direction is at issue, or they ask; after Test the PO decides to close or to return; a Developer's checks while building are not Sprint Test."
+  },
+  {
+    "id": "sprint-log#25",
+    "line": "- **po-decisions** Whenever unsure, ask the PO; always for the goal, the items, the end of refinement, the go-ahead, stage ends, acceptance and scope changes, formal acceptance, outward actions, cancelling a Sprint.",
+    "lines": null,
+    "section": "sprint",
+    "long_file": null,
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "An index of decisions each of which has its own line (sprint-goal, select-items, refinement, go-ahead, sprint-stage-decisions, new-work-registered, outward-needs-po, po-owns-commitments); the PO may drop it as a duplicate. Updated to the handles now that 20 and 24 are settled."
+  },
+  {
+    "id": "sprint-log#26",
+    "line": "- **developer-elsewhere** With a Developer in another session or tool, the sprint log stays the record: talk directly if you can, otherwise take turns through the log. → long/sprint-handoff.md",
+    "lines": null,
+    "section": "sprint",
+    "long_file": "sprint-handoff",
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "Long file, without tool names: sessions that can talk (another session in the same tool, or a Developer forked from the Scrum Master's session) talk directly, a long review is a file and the message gives its path; otherwise one working copy and turns, the one with the turn commits only within the authorized scope and if permitted, writes what was done in the notes and says whose turn is next, the reviewer's findings reach the Developer as a file the PO passes on, which the Developer copies into the log, and the PO carries only the word that it is the other side's turn. 'These are examples, not rules.'"
+  }
+]

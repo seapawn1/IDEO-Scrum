@@ -36,7 +36,7 @@
 - **长文件**：只有 `home` 是“长文件”，或你的一句话塞不下关键细节时才用；索引行写“它管什么、什么时候读”，末尾 `→ long/<文件>.md`。长文件名从下表选，选不到就写 `NEW:<建议名>` 并在 `note` 里说明。
 - 原文里的引文（Scrum Guide、SGEP、d.school 等）和 PO 的原话**不进这一行**：它们进长文件，逐字不改。
 
-长文件名（可选）：`roles-and-routing`、`stage-gates`、`goal-fixed`、`layers-and-folders`、`sprint-closing`、`sprint-refinement`、`design-ending`、`design-ideate`、`board-writing`、`departures`。
+长文件名（可选）：`roles-and-routing`、`stage-gates`、`goal-fixed`、`layers-and-folders`、`sprint-closing`、`sprint-refinement`、`design-ending`、`design-ideate`、`board-writing`、`departures`、`names`、`product-log-details`、`ideo-ending`、`sprint-handoff`。
 
 **section**（这一行放哪一节）：`roles`（谁做什么、谁决定）｜`product-log`｜`sprint`｜`design`｜`ideo`｜`board`｜`meta`（约定本身、文件放哪、名词）。
 

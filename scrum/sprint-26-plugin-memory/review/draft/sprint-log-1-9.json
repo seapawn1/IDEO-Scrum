@@ -1,0 +1,122 @@
+[
+  {
+    "id": "sprint-log#1",
+    "line": "- **sprint-folder** One branch and one folder per Sprint, scrum/sprint-NN-<suffix>/: NN is the previous Sprint's number plus one (first is 01); the folder's name is also the branch's and the closing tag's.",
+    "lines": null,
+    "section": "sprint",
+    "long_file": null,
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "'With a separate working copy if wanted' is dropped (optional); the folder layout under scrum/ is in the layers-and-folders long file."
+  },
+  {
+    "id": "sprint-log#2",
+    "line": "- **no-end-date** A Sprint closes when its goal is met or the PO stops it; the PO watches at checkpoints for one that drags on (a departure from the Scrum Guide).",
+    "lines": null,
+    "section": "sprint",
+    "long_file": null,
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "The reason for the departure stays in the departures long file."
+  },
+  {
+    "id": "sprint-log#3",
+    "line": "- **small-sprint** Even half an hour to one session of work gets a Sprint, each step a line or two; the stage-gates, the review and the close still apply.",
+    "lines": null,
+    "section": "sprint",
+    "long_file": null,
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "The old '(convention 24)' becomes the handle stage-gates."
+  },
+  {
+    "id": "sprint-log#4",
+    "line": null,
+    "lines": [
+      "- **sprint-goal** [po,sm] Set the Sprint Goal in the PO's own style: one unifying value goal, even for several items; the PO leads, usually with the Scrum Master.",
+      "- **share-goal-and-checks** [po,sm] Share the Sprint Goal and the checks to focus on with the Scrum Master and the Developer."
+    ],
+    "section": "sprint",
+    "long_file": null,
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": "The summary-Sprint exception (several lines of work in one single-line commitment cell), the pointer to the full Definition of Done in section 1.3 and 'leaving out a check does not waive a standard' are in plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-backlog-template.md (lines 16, 20) and in dod-in-product-log.",
+    "note": "The ideo-kernel fallback sentence is dropped (explanation)."
+  },
+  {
+    "id": "sprint-log#5",
+    "line": "- **select-items** [po,sm] As you write the rows, check the items against the Sprint Goal: each must serve it, add what it lacks, drop what does not fit, never pad; a missing item goes into the product log first.",
+    "lines": null,
+    "section": "sprint",
+    "long_file": null,
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "The five columns and word-for-word copy are in the sprint log template (lines 26-28). This is the line product-log#12 refers to."
+  },
+  {
+    "id": "sprint-log#6",
+    "line": "- **refinement** [sm,po] The Scrum Master leads refinement with the PO, the Developer joins; it takes seven steps, and the PO says when it is over. → long/sprint-refinement.md",
+    "lines": null,
+    "section": "sprint",
+    "long_file": "sprint-refinement",
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "Long file: the seven steps word for word, what is written into section 2.2 (what was settled and who decided, acceptance criteria, tests), and step 4's pointer to the design-sprint-or-five-modes boundary as the sprint-or-modes handle."
+  },
+  {
+    "id": "sprint-log#7",
+    "line": null,
+    "lines": [
+      "- **how-is-a-plan** [dev] The How is a plan, not steps: work items in order, each done within one session (the Scrum Guide says one day), each with its output and how to tell it is done.",
+      "- **no-steps** [dev] Keep the How at the level of approach: no steps, no file contents, no polishing; if you can write the steps, do the work. If a design chose a solution, the How is how to build it."
+    ],
+    "section": "sprint",
+    "long_file": null,
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": "What the How holds (key choices and reasons, known risks and open points) is in the sprint log template (line 37) and commands/developer.md (line 33).",
+    "note": "The departure is carried by the parenthesis 'the Scrum Guide says one day'. 'The Scrum Master and the PO check the plan' is covered elsewhere (review-handover, role commands) and dropped."
+  },
+  {
+    "id": "sprint-log#8",
+    "line": null,
+    "lines": [
+      "- **go-ahead** [dev,po] Build only after the PO's go-ahead, written as the last line of chapter 3 with its date and how far it reaches (commit, merge, tag, release, push); approving a plan is not a go-ahead.",
+      "- **review-handover** [po,sm] The PO may hand the review of the How, of new structures and of full texts to the Scrum Master, written in the log; the right to review is not the right to give the go-ahead."
+    ],
+    "section": "sprint",
+    "long_file": null,
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "A thing the PO stopped in an earlier Sprint, so both halves stay."
+  },
+  {
+    "id": "sprint-log#9",
+    "line": null,
+    "lines": [
+      "- **increment-notes** [dev] Keep chapter 4 as the full record, so a new session can pick the Sprint up from the log alone and does not work everything out again.",
+      "- **mark-done** [dev] When a work item is done, prefix its Done when cell with ✓ <date> and keep the completion condition after it; an unmarked row is not done."
+    ],
+    "section": "sprint",
+    "long_file": null,
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": "That the notes take any form and that chapter 4 may refine the How is in the sprint log template (line 50).",
+    "note": "The board reads the done mark (board-log, and the board check script), so mark-done must stay in the list."
+  }
+]

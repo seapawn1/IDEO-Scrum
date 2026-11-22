@@ -22,12 +22,13 @@ HERE = pathlib.Path(__file__).resolve().parent
 SPRINT = HERE.parent
 ANN = SPRINT / "review" / "annotations"
 LEDGER = SPRINT / "review" / "ledger.json"
-DEFAULT_DIR = pathlib.Path("S:/IDEO-Scrum-Archives/sprint-26-plugin-memory/draft")
+DEFAULT_DIR = SPRINT / "review" / "draft"  # my own drafts are committed with the log; the cheap drafters' (if any) went to the archive
 
 SECTIONS = ["roles", "product-log", "sprint", "design", "ideo", "board", "meta"]
 ROLES = {"dev", "sm", "des", "stk", "po"}
 LONG_FILES = {"roles-and-routing", "stage-gates", "goal-fixed", "layers-and-folders", "sprint-closing", "sprint-refinement",
-              "design-ending", "design-ideate", "board-writing", "departures"}
+              "design-ending", "design-ideate", "board-writing", "departures", "names", "product-log-details",
+              "ideo-ending", "sprint-handoff"}
 REQUIRED = ["id", "line", "lines", "section", "long_file", "merged_into", "adds_to_target", "absorbed", "where_else", "note"]
 LINE = re.compile(r"^- \*\*([a-z0-9]+(?:-[a-z0-9]+){0,4})\*\*(?: \[([a-z,]+)\])? (.+)$")
 CJK = re.compile(r"[㐀-鿿　-〿＀-￯]")
@@ -216,7 +217,7 @@ def main(argv: list[str]) -> int:
     if "--selftest" in argv:
         return selftest()
     if argv[:1] == ["check"]:
-        return run_check(d)
+        return run_check(d, complete="--partial" not in argv)
     if argv[:1] == ["stats"]:
         return run_stats(d)
     if argv[:1] == ["lines"]:

@@ -1,0 +1,110 @@
+[
+  {
+    "id": "board-log#11",
+    "line": "- **board-data** The board page draws itself from one JSON object (script id board-data); ★ fields are copied from a log, the rest are summaries or plain values. → long/board-writing.md",
+    "lines": null,
+    "section": "board",
+    "long_file": "board-writing",
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "The whole field table goes into the long file word for word: nothing else in the repository lists the fields. Open point for PO or Sprint 27 (PBI-89): the board check script requires product.source to be 'working copy' always, but the table also allows 'branch <name> @ <commit>'."
+  },
+  {
+    "id": "board-log#12",
+    "line": "- **copy-not-retype** Copy each ★ field exactly as the log has it, by command or script, never retyped, reworded or tidied; only the maps, a design's solution and story are summaries. → long/board-writing.md",
+    "lines": null,
+    "section": "board",
+    "long_file": "board-writing",
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "The whole rule goes into the long file: the map-stop rules (five to eight stops, no step numbers, brackets or explanation after a colon, the examples), note and here, branch, a design's map, the solution with its null case, story."
+  },
+  {
+    "id": "board-log#13",
+    "line": "- **item-groups** An item's group is sprint if it is in an open Sprint's section 2.1, else design if an open design's From names it, else later if its status says for later, else next; keep the product log's order.",
+    "lines": null,
+    "section": "board",
+    "long_file": null,
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "The page puts the items of a Sprint or a design in that Sprint's or design's own order."
+  },
+  {
+    "id": "board-log#14",
+    "line": null,
+    "lines": null,
+    "section": "board",
+    "long_file": null,
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": "plugins/ideo-scrum/skills/scrum-kernel/conventions/scrum-board-template.html: names() (lines 283-289) and the no-bar case (lines 538-539) implement it.",
+    "note": ""
+  },
+  {
+    "id": "board-log#15",
+    "line": null,
+    "lines": null,
+    "section": "board",
+    "long_file": null,
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": "The template's header comment says to write every < as \\u003c.",
+    "note": ""
+  },
+  {
+    "id": "board-log#16",
+    "line": "- **board-left-out** The board shows no pending PO decisions and no Sprint stages, only counts done items, and leaves out IDEO logs with no open host or a concluded run; add no card and no log field.",
+    "lines": null,
+    "section": "board",
+    "long_file": null,
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "How a concluded IDEO run is read from its Now line (and a host whose own Now says it ended) is applied by the board check script; if the board-writing long file wants it, it is rule board-log#16 word for word."
+  },
+  {
+    "id": "board-log#17",
+    "line": "- **board-steps** Write the board in five steps: read the template, find and read the logs, copy the template with a command, put the data in place of the one placeholder line, then check. → long/board-writing.md",
+    "lines": null,
+    "section": "board",
+    "long_file": "board-writing",
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "The five steps go word for word into the long file, with the convention numbers replaced by handles."
+  },
+  {
+    "id": "board-log#18",
+    "line": "- **board-check** Check the page against the logs: the JSON reads, every ★ field is in its log character for character, every map stop and every number exists; open the page and see a board, not a message.",
+    "lines": null,
+    "section": "board",
+    "long_file": null,
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "The annotation proposed pointing to the board check script, but it sits in the repository's scripts/, outside plugins/ideo-scrum, so an installed plugin does not have it; the line keeps the original check list."
+  },
+  {
+    "id": "board-log#19",
+    "line": null,
+    "lines": null,
+    "section": "board",
+    "long_file": null,
+    "merged_into": "board-log#2",
+    "adds_to_target": "Nothing becomes true because it is on the board.",
+    "absorbed": [],
+    "where_else": null,
+    "note": "board-log#2 (the board changes nothing and keeps no state) is not drafted yet; it is in the not-yet-settled part."
+  }
+]

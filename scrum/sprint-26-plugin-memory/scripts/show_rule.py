@@ -13,9 +13,20 @@ from pathlib import Path
 LEDGER = Path(__file__).resolve().parent.parent / "review" / "ledger.json"
 
 
+def annotations() -> dict:
+    out = {}
+    for p in sorted((LEDGER.parent / "annotations").glob("*.json")):
+        for o in json.loads(p.read_text(encoding="utf-8")):
+            out[o["id"]] = o
+    return out
+
+
 def main(argv: list[str]) -> int:
     ledger = json.loads(LEDGER.read_text(encoding="utf-8"))
     files = {f["short"]: f for f in ledger["files"]}
+    with_ann = "--ann" in argv
+    argv = [a for a in argv if a != "--ann"]
+    ann = annotations() if with_ann else {}
     if argv[:1] == ["--blocks"] and len(argv) == 2 and argv[1] in files:
         for b in files[argv[1]]["blocks"]:
             print(f"--- {argv[1]} block, {b['kind']}, lines {b['line_start']}-{b['line_end']}, under: {b['heading'] or '(file head)'}")
@@ -41,6 +52,10 @@ def main(argv: list[str]) -> int:
         f, r = by_id[w]
         print(f"--- {r['id']} | {r['name']} | {f['path']} lines {r['line_start']}-{r['line_end']} | under: {r['heading']} | flags: {', '.join(r['flags']) or '-'}")
         print(r["text"])
+        if with_ann:
+            a = ann[w]
+            merge = f"→{a['merge_into']}" if a.get("merge_into") else ""
+            print(f"  [ann] {a['recommend']}{merge} · home={a['home']} · kind={a['kind']} · dups={a.get('dups') or '-'}\n  [ann] reason: {a['reason']}")
     return code
 
 

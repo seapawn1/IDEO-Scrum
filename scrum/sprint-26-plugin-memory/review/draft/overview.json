@@ -1,0 +1,213 @@
+[
+  {
+    "id": "overview#1",
+    "line": "- **one-product-log** Start every project, new or old, from one product log.",
+    "lines": null,
+    "section": "product-log",
+    "long_file": null,
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "product-log#1 keeps the how-to-write half as its own line (the verifiers found they are a split of rule and practice, not duplicates)."
+  },
+  {
+    "id": "overview#2",
+    "line": "- **designs-beside-sprints** A design is a peer of a Sprint, not part of one: open it for an item that needs design, a hard point in refinement, or a blank page. → long/layers-and-folders.md",
+    "lines": null,
+    "section": "meta",
+    "long_file": "layers-and-folders",
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "Long file must also carry: decide item by item; a design's conclusions still land through a Sprint; an Increment need not be code. The departure itself is in the departures long file."
+  },
+  {
+    "id": "overview#3",
+    "line": "- **three-layers** Product log, then a sprint log or design log, then the Increment or prototype; the table says who is accountable for each. → long/layers-and-folders.md",
+    "lines": null,
+    "section": "meta",
+    "long_file": "layers-and-folders",
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "The table and the closing paragraph go to the long file; the convention numbers in the paragraph become handles."
+  },
+  {
+    "id": "overview#4",
+    "line": "- **scrum-folders** All Scrum work lives under scrum/ (product log, board, sprint-NN-<suffix>/, design-<suffix>/, ideo-<suffix>/, documents/); use your project's own places if it has them. → long/layers-and-folders.md",
+    "lines": null,
+    "section": "meta",
+    "long_file": "layers-and-folders",
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": ""
+  },
+  {
+    "id": "overview#5",
+    "line": "- **where-files-go** A file serving one log stays in its working folder and is cleaned up when the work ends; design originals and files serving the whole Scrum go to scrum/documents/. → long/layers-and-folders.md",
+    "lines": null,
+    "section": "meta",
+    "long_file": "layers-and-folders",
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": ""
+  },
+  {
+    "id": "overview#6",
+    "line": "- **working-material** Keep working material out of the log and link to it; a large important file goes in scrum/documents/, key general material in project memory, Retro lessons only in memory.",
+    "lines": null,
+    "section": "meta",
+    "long_file": null,
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "The Retro half repeats what the retro line says; kept short here on purpose."
+  },
+  {
+    "id": "overview#7",
+    "line": null,
+    "lines": [
+      "- **names** Use the plugin's own terms (product log, sprint log, design log, IDEO log, PBI, role card) as defined once in the names file; a file made from a template takes these names. → long/names.md",
+      "- **fresh-subagent** A fresh subagent starts from its brief alone: a fork of a session does not count; without subagents, a new session given only the brief is the equivalent."
+    ],
+    "section": "meta",
+    "long_file": "names",
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "The definitions stay inside the plugin (a long file), not in docs/glossary.md: the marketplace ships only plugins/ideo-scrum, which has no docs."
+  },
+  {
+    "id": "overview#8",
+    "line": "- **role-entry** On a role command, load the kernels in that role's order before any role work, one Skill call at a time, and stop and report a failed load. → long/roles-and-routing.md",
+    "lines": null,
+    "section": "roles",
+    "long_file": "roles-and-routing",
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "Long file: the role table, the DSH variant, the subagent rule, and the last sentence (the PO, the Scrum Master and the Developer keep the sprint log together; without a Developer the other two run the Sprint). Sprint 27 changes the table (Supporter role); sync later."
+  },
+  {
+    "id": "overview#9",
+    "line": "- **only-po-human** Only the Product Owner must be human: the other roles may all be AI.",
+    "lines": null,
+    "section": "roles",
+    "long_file": null,
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": ""
+  },
+  {
+    "id": "overview#10",
+    "line": "- **ask-the-po** Whoever is unsure asks the Product Owner, unless the PO has sent that kind of question elsewhere.",
+    "lines": null,
+    "section": "roles",
+    "long_file": null,
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "Sprint 27 adds where each kind of question goes (a three-step routing); add that line when syncing."
+  },
+  {
+    "id": "overview#11",
+    "line": "- **po-as-developer** When the Product Owner builds, they take part as a Developer, and the How is worked out with them.",
+    "lines": null,
+    "section": "roles",
+    "long_file": null,
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": ""
+  },
+  {
+    "id": "overview#12",
+    "line": "- **stage-gates** Wait for the PO's explicit permission before starting or returning to a stage; approving a result is not permission, and the Scrum Master acts only within a written handover. → long/stage-gates.md",
+    "lines": null,
+    "section": "roles",
+    "long_file": "stage-gates",
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "The whole rule goes to the long file: record the result while waiting but do not start or delegate; a new session resumes only inside the recorded scope; earlier permission does not carry over to a return; record who, when, basis, stage and scope; a later permission is added, not replaced; these are stage decisions, not reviews."
+  },
+  {
+    "id": "overview#13",
+    "line": "- **one-scrum-master** Each project has one Scrum Master session, leading its Developer, Designer and Stakeholders; a session above several projects only summarizes.",
+    "lines": null,
+    "section": "roles",
+    "long_file": null,
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "The annotation says the basis reaches only Sprint 10's archive; the PO may want to confirm."
+  },
+  {
+    "id": "overview#14",
+    "line": "- **who-gets-which-work** Review goes to the Scrum Master, upkeep to a standing helper session, building to a Developer session that cannot review its own work. → long/roles-and-routing.md",
+    "lines": null,
+    "section": "roles",
+    "long_file": "roles-and-routing",
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "Long file keeps all five assignments: review, the other-session or other-tool Developer, upkeep, the Scrum Master's own small edit, and building. The words PO assistant are gone; Sprint 27 replaces them with the Supporter and adds the question routing: sync later."
+  },
+  {
+    "id": "overview#15",
+    "line": "- **rule-labels** A rule with no label is the author's practice, *Supplement* is inferred and unconfirmed, *Decide on the spot* has no fixed rule; when you override a rule, write what you did and why in the log's notes.",
+    "lines": null,
+    "section": "meta",
+    "long_file": null,
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "Dropped as background: reference, not law; the templates carry the flow; no tool mechanics."
+  },
+  {
+    "id": "overview#16",
+    "line": "- **templates-record-outputs** Keep every template heading and add none: sections hold only what each step produced, and work remarks go in the Increment notes or the design chapter.",
+    "lines": null,
+    "section": "meta",
+    "long_file": null,
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "The optional explanation under a commitment table is covered by goal-fixed."
+  },
+  {
+    "id": "overview#17",
+    "line": null,
+    "lines": [
+      "- **goal-fixed** The commitment of each log (Product Goal, Sprint Goal, design goal) and the Definition of Done stay fixed; the plan under them may change, with the reason recorded. → long/goal-fixed.md",
+      "- **po-owns-commitments** Only the Product Owner changes a commitment, and only the Product Owner cancels a Sprint whose goal can no longer be met.",
+      "- **commitment-table** Keep each commitment in a one-row table (first cell Commitment, second the exact text) in its own section; the table is the only source of the current commitment. → long/goal-fixed.md"
+    ],
+    "section": "roles",
+    "long_file": "goal-fixed",
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": ["sprint-log#20", "design-log#25"],
+    "where_else": null,
+    "note": "Long file carries the Scrum Guide quotations word for word with Source and License. The commitment-table line is relied on by the commitments hook, the board and the check script. sprint-log#20 adds: acceptance criteria may be renegotiated with the PO or the Scrum Master, changes and reasons go in the Increment notes. design-log#25 adds: sharpen the design goal during Empathize, then only the PO changes it."
+  }
+]
