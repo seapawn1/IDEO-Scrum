@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 27 (wrap-up)
 
 > Started: 2026-11-22 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `worktree-sprint-27-wrap-up` | Product Owner: SeaPawn | Scrum Master: IDEO # [master]-[main]-[manage sprint] | Developer: Sprint 27 Developer
-> Now: Test · 2026-11-23：Master 按书面授权放行 Sprint Test（四项见第 5 章）。项 ① 静态检查与两条 grep 全过（先在 `a2a9578` 上跑，Codex 审后修了三处，在 `778b767` 上重跑仍全过）；项 ③ DSH 实装验收三条全过（IDEO 秘书会话，`a2a9578`）；项 ④ Codex 审完（审 `a2a9578`），角色边界没找到越界，提了四条：第 1 条审阅时证据未齐、之后已补，另三条 Master 要求 Test 里当场修，已修并分开提交（`c0746c8`、`d428188`、`778b767`）；项 ② `/ideo-scrum:supporter` 无头 3 个会话等 Master 叫（26 在跑冒烟）。结果记第 5 章（写在工作区，Test 结束前不提交）。PO 最近一次决定（2026-11-23）：全面放权——Review 之前的决定与审阅由 Master 代做，PO 在 Review 时参与、看过之后才收官、合入、打 tag，推送与发布仍要 PO 亲口说（第 4 章「PO 全面放权」）。
+> Now: Test · 2026-11-23：Master 按书面授权放行 Sprint Test（四项见第 5 章）。四项都有结果：项 ① 静态检查与两条 grep 全过（`778b767` 上重跑）；项 ② `/ideo-scrum:supporter` 无头加载 3／3 过；项 ③ DSH 实装验收三条全过（`a2a9578`）；项 ④ Codex 审完（审 `a2a9578`），角色边界没找到越界，四条意见已处置（三处修复 Master 审过 diff、不再请 Codex）。结果记第 5 章；Test 是否通过由 Master 判，收官等 PO 在 Review 看过（第 4 章「PO 全面放权」）。PO 最近一次决定（2026-11-23）：全面放权——Review 之前的决定与审阅由 Master 代做，PO 在 Review 时参与、看过之后才收官、合入、打 tag，推送与发布仍要 PO 亲口说（第 4 章「PO 全面放权」）。
 > Waiting for PO: None
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none. Work remarks go in chapter 4, Increment notes; an optional explanation of the commitment may follow its table (`overview.md` in the scrum-kernel skill folder, conventions 16 and 17).
@@ -312,18 +312,18 @@ Go-ahead: 2026-11-22，Master 按 PO 的书面授权（见第 4 章）放行 H1�
 
 <!-- Record the Developer’s tests, the independent review and any required Product Owner acceptance. Trace each Output Done standard and item criterion to new evidence, still-valid earlier evidence and why it holds, or a stated condition that did not arise and why. Keep missing evidence visible; record outcome signals separately and judge the Test against the pass lines set beforehand (sprint-log.md, convention 16). End with the Product Owner’s close or return decision (convention 24). -->
 
-**状态（2026-11-23）**：Test 进行中。四项里：① 静态检查与两条 grep 全过（先在 `a2a9578` 上跑，Codex 审后修了三处，在 `778b767` 上重跑，仍全过）；③ DSH 实装验收由 IDEO 秘书会话在 `a2a9578` 上做完，三条全过，原生事件我也读过；④ Codex 审完 `a2a9578`，验收逐条基本都过、角色边界没找到越界的句子，提了四条意见，第 1 条审阅时证据未齐、之后已补，另三条 Master 要求 Test 里当场修，已修并分开提交；② 还没跑，等 Master 叫，见本章的「未取得的证据」。本章写在工作区，Test 结束前不提交（Master 要求）。Test 是否通过、收官还是退回，由 Master 按书面授权定，本章不下通过的结论。
+**状态（2026-11-23）**：Test 的四项都有结果了。① 静态检查与两条 grep 全过（先在 `a2a9578` 上跑，Codex 审后修了三处，在 `778b767` 上重跑，仍全过）；② `/ideo-scrum:supporter` 的 Claude Code 无头加载三个会话，3／3 过；③ DSH 实装验收由 IDEO 秘书会话在 `a2a9578` 上做完，三条全过，原生事件我也读过；④ Codex 审完 `a2a9578`，验收逐条基本都过、角色边界没找到越界的句子，提了四条意见，第 1 条审阅时证据未齐、之后已补，另三条已修并分开提交，Master 审过修复的 diff、不再请 Codex。本章随 `d806b06` 提交，项 ② 的结果随下一个提交。Test 是否通过、收官还是退回，由 Master 按书面授权定（收官要等 PO 在 Review 看过，见第 4 章「PO 全面放权」），本章不下通过的结论。
 
-**被测提交与冻结点**：被测提交现在是 `778b767`。Codex 审的是 `a2a9578`；审出的三处按约定 16「Test 里当场修、修完再测」修掉，三个提交：`c0746c8`（`check.py`）、`d428188`（转达的身份边界）、`778b767`（分流措辞）。`a2a9578` 之后只有这三个提交，`git diff --stat a2a9578 778b767` 只有三个文件：`supporter.md`（正文三行，第 24、25、33 行）、`overview.md`（约定 14 两行）、`check.py`。2.2 的测试方法与通过线冻结于 `d72b0a6`，此后 2.2 没有改（`git diff -U0 d72b0a6 778b767` 在本日志里只有头部、第 4 章、第 5 章开头三处改动）。冻结之后进来的有四样：89 追加（`d4516ff`：`scripts/board_check/check.py` 的 `product.source` 放宽，自测 99 → 105 例，另有 `CHANGELOG.md` 一句）、`board/board-log.md` 第 4 条补的一句（`a2a9578`，Master 放行 Test 的条件）、Codex 审后的三处修复、日志记录。下面的检查都在这些改动之后重跑，没有沿用冻结前的结果：项 ① 在 `778b767` 上，项 ③ 在 `a2a9578` 上（沿用理由见「DSH 实装验收」）；证据脚本在 `scrum/sprint-27-wrap-up/validation/test/`（`grep_compare.py`、`evidence.py`、`trigger_crosscheck.py`、`dsh_events.mjs`），Test 结束后连同本章一起提交。
+**被测提交与冻结点**：被测提交现在是 `778b767`。Codex 审的是 `a2a9578`；审出的三处按约定 16「Test 里当场修、修完再测」修掉，三个提交：`c0746c8`（`check.py`）、`d428188`（转达的身份边界）、`778b767`（分流措辞）。`a2a9578` 之后只有这三个提交，`git diff --stat a2a9578 778b767` 只有三个文件：`supporter.md`（正文三行，第 24、25、33 行）、`overview.md`（约定 14 两行）、`check.py`。2.2 的测试方法与通过线冻结于 `d72b0a6`，此后 2.2 没有改（`git diff -U0 d72b0a6 778b767` 在本日志里只有头部、第 4 章、第 5 章开头三处改动）。冻结之后进来的有四样：89 追加（`d4516ff`：`scripts/board_check/check.py` 的 `product.source` 放宽，自测 99 → 105 例，另有 `CHANGELOG.md` 一句）、`board/board-log.md` 第 4 条补的一句（`a2a9578`，Master 放行 Test 的条件）、Codex 审后的三处修复、日志记录。下面的检查都在这些改动之后重跑，没有沿用冻结前的结果：项 ① 在 `778b767` 上，项 ② 在 `cb27475` 上（`d806b06`、`cb27475` 只动日志与 `validation/`，插件树与 `778b767` 的相同，tree `6a5ce873…`），项 ③ 在 `a2a9578` 上（沿用理由见「DSH 实装验收」）；证据脚本在 `scrum/sprint-27-wrap-up/validation/test/`（`grep_compare.py`、`evidence.py`、`trigger_crosscheck.py`、`dsh_events.mjs`、`load_supporter.py`），随 `d806b06`、`cb27475` 提交。
 
 **Test 四项（第 4 章 Master 放行的四项）**
 
 | 项 | 内容 | 状态 |
 | --- | --- | --- |
 | ① | 按冻结的 2.2 在被测提交上跑静态检查与两条 grep，命中正好等于放行表 | **做完，全过**（Developer）：先在 `a2a9578` 上跑，Codex 审后修了三处，又在 `778b767` 上重跑，仍全过；见下 |
-| ② | `/ideo-scrum:supporter` 的 Claude Code 无头加载 3/3：顺序 ideo-kernel → scrum-kernel，不加载 sprint-kernel、design-kernel | **没跑**：重批次，等 Master 叫（26 在跑冒烟，并发 2；跑完 Master 放我）；Codex 审后的三处修复已先做完，②在 `778b767` 上跑 |
+| ② | `/ideo-scrum:supporter` 的 Claude Code 无头加载 3/3：顺序 ideo-kernel → scrum-kernel，不加载 sprint-kernel、design-kernel | **做完，3／3 过**（Developer）：Codex 审后的三处修复做完才跑，在 `cb27475` 的插件树（与 `778b767` 相同）上；三个会话一个接一个，每个之前核过空闲内存；结果见下面「项 ②」 |
 | ③ | DSH 实装验收：`/supporter` 出现、按 ideo → scrum 预载、读得到新位置的模板 | **做完，三条全过**（IDEO 秘书会话，在 `a2a9578` 上）：PO 决定临时链到 27 工作树，测完已改回；结果与原生事件见下面「DSH 实装验收」；`778b767` 之前的改动不碰它验的三件事，沿用、没重测，理由同节 |
-| ④ | 独立审阅：照 DoD 与验收条件逐条审 Increment，并对角色边界文字做对抗核对（范围见 2.2「角色边界」） | **做完**：Codex（PO 点名）审了 `a2a9578`，验收逐条基本都过，角色边界没找到越界的句子；四条意见——第 1 条审阅时证据未齐、之后已补，第 2–4 条已修；原文我读过，逐条处置见下面「Codex 独立审阅」 |
+| ④ | 独立审阅：照 DoD 与验收条件逐条审 Increment，并对角色边界文字做对抗核对（范围见 2.2「角色边界」） | **做完**：Codex（PO 点名）审了 `a2a9578`，验收逐条基本都过，角色边界没找到越界的句子；四条意见——第 1 条审阅时证据未齐、之后已补，第 2–4 条已修（Master 审过修复的 diff、不再请 Codex）；原文我读过，逐条处置见下面「Codex 独立审阅」 |
 
 **Developer 的测试（项 ①：先在 `a2a9578` 上跑，Codex 审后修了三处，再在 `778b767` 上重跑；下表是 `778b767` 的结果，与 `a2a9578` 上不同的只有自测的例数）**
 
@@ -373,7 +373,7 @@ Go-ahead: 2026-11-22，Master 按 PO 的书面授权（见第 4 章）放行 H1�
 
 | 条目 | 验收条件（2.2） | 结果与证据 |
 | --- | --- | --- |
-| 86 | 新入口能叫出、按定的顺序加载内核，Claude Code 与 DSH 各验一次 | **未齐，差 Claude Code 这一次（项 ②）**。能叫出：触发测试第 1 轮 A 组改后臂 9／9 把杂活叫进了 `ideo-scrum:supporter`。顺序：同一轮的补充数据——9 次里 8 次按 `supporter → ideo-kernel → scrum-kernel` 加载、没有加载 sprint-kernel、design-kernel；第 9 次只加载了 `supporter`（该试次以 `error_max_turns` 结束）。这是补充数据，不代替冻结的项 ② 3／3。DSH 那一次：**过**（项 ③，见「DSH 实装验收」） |
+| 86 | 新入口能叫出、按定的顺序加载内核，Claude Code 与 DSH 各验一次 | **过**。Claude Code：项 ② 3／3（`/ideo-scrum:supporter` 无头加载三个会话，内核依次是 ideo-kernel、scrum-kernel，没有 sprint-kernel、design-kernel，见「项 ②」）。另有触发测试第 1 轮的补充数据：A 组改后臂 9／9 把杂活叫进了 `ideo-scrum:supporter`，9 次里 8 次按 `supporter → ideo-kernel → scrum-kernel` 加载、没有加载 sprint-kernel、design-kernel，第 9 次只加载了 `supporter`（该试次以 `error_max_turns` 结束）；它是补充，不代替项 ②。DSH：**过**（项 ③，见「DSH 实装验收」） |
 | 86 | 旧叫法按 grep 范围与例外为零，新称法前后一致 | **过（我方证据）**：两条 grep 正好等于放行表（项 ①）；新称法我查到的只有英文 `Supporter`／`supporter` 与中文「秘书」（`git grep -i -E "secretary\|秘书"` 在插件、`dsh/`、docs、README、CHANGELOG、ATTRIBUTION、scripts 里共 5 处：README 中文 3 处、glossary 1 处、`scrum-master.md` 一句「you are the Master, not a secretary」）；叫法是否前后一致，项 ④ Codex 审过：新称法在入口、角色表与说明里采用同一称法，满足 |
 | 86 | Review 召唤权与建造者边界不变 | **过（我方证据）**：`evidence.py` 核 6 句——`stakeholder` 入口 4 句、`scrum-master` 描述 1 句、`sprint-log.md` 约定 17 的 1 句——基线上有、现在仍有（6／6）；`supporter.md` 写了同一条边界。项 ④ Codex 的对抗核对：没有发现与 Review 召唤权或建造者边界相冲的句子 |
 | 86 | 改过的描述 ≤1024，触发测试不比改前差 | **过**：长度见 Output Done；触发测试见下一节 |
@@ -394,6 +394,19 @@ Go-ahead: 2026-11-22，Master 按 PO 的书面授权（见第 4 章）放行 H1�
 - **做法**：同日、同环境、同一脚本（2026-11-22 的第 1 轮），两臂各 27 次有效，技术失败 0、没有补跑；原始输出在 `S:/IDEO-Scrum-Archives/sprint-27-wrap-up/trigger/20261122-212701-round1/`，仓库里只留这份汇总。按第 4 章的说明引用为 Test 的新证据：Master 同意引用、没有要求重跑，条件是 `description` 逐字没变（上一条已核）。
 - **B 组**两臂都偏低是 `stakeholder` 描述原有的缺口，不是本期引入的退步（第 4 章已记，未改线、未补跑）。
 
+**项 ②：Claude Code 无头加载（`/ideo-scrum:supporter`，三个会话，2026-11-23 00:10）**
+
+| 会话（接在命令后面的事务） | Skill 调用顺序 | 判 | 结束 |
+| --- | --- | --- | --- |
+| 1 更新看板（题面 A1） | `ideo-kernel` → `scrum-kernel` | ✓ | `error_max_turns`，17.3 秒，2 次权限拒绝 |
+| 2 收齐等拍板的事（A2） | `ideo-kernel` → `scrum-kernel` | ✓ | `error_max_turns`，18.8 秒，2 次权限拒绝 |
+| 3 讲机制（A3） | `ideo-kernel` → `scrum-kernel` | ✓ | `error_max_turns`，16.1 秒，2 次权限拒绝 |
+
+- **判定与结果**：3／3 过；技术失败 0，没有补跑。判定是 2.2 冻结的那一行，脚本先于跑批单独提交（`cb27475`）：三个会话里经 Skill 加载的内核依次是 `ideo-kernel`、`scrum-kernel`，没有 `sprint-kernel`、`design-kernel`。没有一个会话对 `supporter` 本身发 Skill 调用，说明命令是宿主展开的（init 的 `slash_commands` 里有 `ideo-scrum:supporter`）。
+- **做法**：`validation/test/load_supporter.py` 导入 `run_trigger.py` 的会话构造、不复制：magpie 的便宜模型（非 Haiku）、只读工具（init 里工具只有 `Glob`、`Grep`、`Read`、`Skill`）、`dontAsk`、白名单环境、全新家目录、运行目录在 `C:\Users\Public\s27-load\`；隔离探针（`/context all`）没有指令文件泄入；先冒烟一个会话（不计数，也过）。三条事务是冻结的触发题面 A 组的前三条，各接在命令后面，不带引导词。会话一个接一个跑，每个之前读空闲物理内存，低于 2.3 GiB 就停（Master 的条件：别把 26 的批次挤下去）；三次读到的空闲是 2.88、2.81、2.60 GiB，没有停。脚本自测 16 项（`cb27475` 的提交说明误写成 17）。
+- **会话确实被限制了**：每个会话各 2 次权限拒绝——模型加载完内核后想读插件目录里的文件，被测试自己的限制拒了（会话 1 读的是 `skills/scrum-kernel/overview.md` 与 `board/board-log.md`，后者就是搬到 `board/` 的新位置，被拒的是权限，不是文件不存在）。所以这个测试只证明加载顺序，不证明 Claude Code 会话里读得到插件目录里的文件；读到模板的证据是项 ③ 与早先的探测。三个会话都以 `error_max_turns`（4 轮上限）结束，按冻结规则算有效。
+- **测的是哪份插件**：`cb27475` 的 `plugins/ideo-scrum` 树（`6a5ce873…`），与 `778b767` 的相同，也就是修复之后的插件内容。原始输出在 `S:/IDEO-Scrum-Archives/sprint-27-wrap-up/load/20261123-001044/`（`results.jsonl`、`raw/`、`meta.json`）；我另读了三份原始流：Skill 调用序列、init、权限拒绝都与判定对得上，没有发现误判。
+
 **DSH 实装验收（项 ③：IDEO 秘书会话做，2026-11-22 23:15，被测提交 `a2a9578`；结果经 Master 转来，原生事件我自己读过）**
 
 | 验收条目（第 4 章 H3 交出的） | 结果 | 原生事件（会话记录共 40 个事件） |
@@ -403,7 +416,7 @@ Go-ahead: 2026-11-22，Master 按 PO 的书面授权（见第 4 章）放行 H1�
 | ③ 读得到新位置的模板 | ✓ | seq 29 `tool/call`：`read`，路径 `…/sprint-27-wrap-up/plugins/ideo-scrum/skills/scrum-kernel/../../template/sprint-backlog-template.md`；seq 30 `tool/result`：`isError:false`，解析到 `plugins\ideo-scrum\template\sprint-backlog-template.md`，返回第 1–3 行（共 54 行），与仓库里该文件的前三行相同 |
 
 - **环境**：DSH `0.2.3-alpha.2`（PO 指定用 alpha；早先的探测与 docs 写的是 `0.2.2-rc.5`，这里照实记新版本——我在会话记录里写明的 DSH 实现目录里核了 `@deepseek-ai/dsh` 与 `dsh-app-boot` 的 `package.json`，都是 `0.2.3-alpha.2`）；包 0.6.3，用 `link:` 临时链到 27 工作树（PO 定），测完已改回（我看了 web profile 的 `package.json`，现在是 `link:S:/IDEO-Scrum`）；会话 cwd `S:\IDEO-Scrum`，Standard 预设；会话起初是 `danger-full-access`，第一轮开始前用 `/permission workspace-write` 改成 `workspace-write`、approval `ask`（seq 4–7，在第一轮 `turn/start`（seq 11）之前）；模型 `agy-cli/gemini-4-hydrogen`（provider `magpie-anthropic`）。
-- **沿用到 `778b767` 的理由**：项 ③ 在 `a2a9578` 上测；之后插件里只动了 `supporter.md` 正文三行（第 24、25、33 行）与 `overview.md` 约定 14 两行，没碰 `supporter.md` 的前 12 行（frontmatter 与加载指令）、模板与看板文件、`dsh/`、`package.json`（`git diff --stat a2a9578 778b767` 只有 `supporter.md`、`overview.md`、`check.py` 三个文件）。三条验的是入口被认出、内核预载顺序、模板位置能读到，前提都没变，所以沿用，没有重测；若 Master 要在最终提交上再测一遍，说一声。
+- **沿用到 `778b767` 的理由**：项 ③ 在 `a2a9578` 上测；之后插件里只动了 `supporter.md` 正文三行（第 24、25、33 行）与 `overview.md` 约定 14 两行，没碰 `supporter.md` 的前 12 行（frontmatter 与加载指令）、模板与看板文件、`dsh/`、`package.json`（`git diff --stat a2a9578 778b767` 只有 `supporter.md`、`overview.md`、`check.py` 三个文件）。三条验的是入口被认出、内核预载顺序、模板位置能读到，前提都没变，所以沿用，没有重测；Master 认可沿用（理由成立：之后只动了正文五行，没碰它验的三件事）。
 - **只读**：整个会话只有一次工具调用（`read`），除 `/permission` 外没有运行任何命令；DSH 最后给出的文字回答不当证据用。
 - **证据与复核**：原始记录是 `~/.dsh/sessions/--S-IDEO-Scrum--/session-3ba7b516-0ac6-461e-9dbf-1cf3fb81fb78/session.v4.jsonl.zstd`；我复制了一份到 `S:/IDEO-Scrum-Archives/sprint-27-wrap-up/dsh/`（sha256 `4375d3d4…` 与原件相同，已扫过没有密钥类内容）；`validation/test/dsh_events.mjs` 读这份记录，核上面三条加「只读」「权限」共 6 项，全过；它自带 6 个自测，其中顺序反了、预载多一个、读取出错、多一次工具调用、权限不对，都会判不过。
 - **工作区之外的读取：早先证据覆盖，版本不同、未重测**（Master 按授权定：为这一点再请 PO 开一次 DSH 不值得，不补测）。这次包链在 `S:\IDEO-Scrum` 下面的工作树里，会话 cwd 也是 `S:\IDEO-Scrum`，读的模板路径在会话工作区之内；包在工作区之外的情形，早先 IDEO 秘书会话的第二次探测就是：cwd 是 `S:\SeaPawn`，包在 `S:\IDEO-Scrum`，权限是默认受限的 `workspace-write` 加 `ask`（第一轮前用 `/permission` 改成，seq 3–6）；两次 `read` 都成功、`isError:false`、记录里没有审批请求事件——seq 29–30 读 `S:/IDEO-Scrum/plugins/ideo-scrum/skills/scrum-kernel/overview.md`（前 3 行，共 119 行），seq 34–35 读 `S:/IDEO-Scrum/plugins/ideo-scrum/commands/developer.md`（在 `skills/` 之外，前 3 行，共 42 行）。记录是 `~/.dsh/sessions/--S-SeaPawn--/session-a3e7f38f-91e2-4ba5-baf2-304461a1956b/session.v4.jsonl.zstd`，我读过，也复制了一份到 `S:/IDEO-Scrum-Archives/sprint-27-wrap-up/dsh/`（sha256 `f57c2daf…`，与原件相同）；`dsh_events.mjs --reads` 能再列出这些读取。限度照实写：① 那次是 DSH 0.2.2-rc.5（Master 转告；记录不带版本号，我无从核对），本次 0.2.3-alpha.2 没有在工作区之外重测；② 两次包都是 `link` 到仓库的，不是装进 profile 的 `node_modules`；③ 那次读的是绝对路径，本次读的是 `../../template/` 的相对写法（两次结果里的路径都已规整成绝对路径）。
@@ -423,18 +436,18 @@ Go-ahead: 2026-11-22，Master 按 PO 的书面授权（见第 4 章）放行 H1�
 | 3 | P2 转达身份没有可验证的认证：标明、原话、日期这些字段本身证明不了消息来自指定的 Supporter；建议不要把文字标记说成认证，宿主有可信身份或会话来源信息就记录并使用，否则保留为明确的信任边界 | **修**（`d428188`）：`supporter.md` 正文与 `overview.md` 约定 14 各补一句——标记让转达可追溯，不等于验证了身份；转达可信，是因为 PO 设了这个 Supporter；宿主能显示发信会话时，接收方把会话名一并记在标记旁。只改正文，没碰任何 `description`。身份本身没有机制可验（宿主给什么用什么），所以这是文字上的信任边界，第 3 章 Risks 里已记的风险没有消除 | `evidence.py`「10 句文字都在」；`git show d428188` |
 | 4 | P2 分流与决定回传的措辞有歧义：约定 14 说没授权覆盖的放行问题由 Supporter 汇总交 PO、PO 的回答经 Master 记录；`supporter.md` 第 33 行与 description 却写「any go-ahead」「go-aheads」经 Scrum Master，读者可能把「申请放行」也送给 Master；建议区分「待 PO 决定的问题由 Supporter 收」和「PO 已给出的放行答复由 Master 记」 | **改正文，description 不改**（`778b767`）：`supporter.md` 第 33 条、「联络点」一条与约定 14「答复怎么回」改成同一说法——还在等 PO 决定的问题（含没授权覆盖的放行）由 Supporter 收齐交 PO；PO 已经决定或答复的、关于范围、条目或放行的话，交 Master，由 Master 选接收会话并记录。**取舍**：description 里那句 `scope or item changes and go-aheads go through the Scrum Master` 不改，是 Master 定的：改了就要重跑整轮触发测试（每臂 27 次，两臂同日同环境），而 description 只管入口被不被叫来，角色加载后以正文为准，正文写清楚已够用。代价：description 这一句仍是旧的含糊说法，只读 description 的人可能先读歪；兜底是各角色入口都指向约定 14，而且 12 个 `description` 仍与 `52b42fa` 逐字相同，触发结果继续有效 | `evidence.py`「10 句文字都在」「旧的含糊句已删」；`git show 778b767` |
 
-- **修后重跑**（`778b767`）：项 ① 全过（上表）；`evidence.py` 27 项全过，含 12 个 `description` 与 `52b42fa` 逐字相同（0／12 不同）、Review 召唤权 6 句仍在、新写的 10 句文字都在、旧的含糊句已删；两条 grep 仍是 2 处与 14 处，没有多出来的命中；死链 0（153 个 markdown、245 条链接）。**修复本身是我自检的，没有再请 Codex 或别人看一遍；要不要再审，Master 定。**
+- **修后重跑**（`778b767`）：项 ① 全过（上表）；`evidence.py` 27 项全过，含 12 个 `description` 与 `52b42fa` 逐字相同（0／12 不同）、Review 召唤权 6 句仍在、新写的 10 句文字都在、旧的含糊句已删；两条 grep 仍是 2 处与 14 处，没有多出来的命中；死链 0（153 个 markdown、245 条链接）。**Master 审过三处修复的 diff，不再请 Codex**（理由：改动小，静态检查、147 例自测和两条 grep 都重跑过，`description` 没动）。
 
 **未取得的证据（保持可见）**
 
-1. 项 ②：`/ideo-scrum:supporter` 的 Claude Code 无头加载 3/3——没跑，等 Master 叫（26 在跑冒烟，并发 2；跑完 Master 放我）；
+1. 项 ② 已做，3／3 过（见「项 ②」）；它只证明加载顺序，不证明 Claude Code 会话里读得到插件目录里的文件（测试自己的限制拒了那几次读取），读到模板的证据是项 ③ 与早先的探测；
 2. 项 ③ 已做；工作区之外的读取这次没有重测，靠早先的探测覆盖（版本不同，见「DSH 实装验收」），Master 定不补测；
-3. 项 ④ 已做（Codex 审的是 `a2a9578`）；Codex 审后的三处修复，我自检过，没有再请 Codex 或别人看——要不要再审，Master 定；
+3. 项 ④ 已做（Codex 审的是 `a2a9578`）；Codex 审后的三处修复，Master 审过 diff、不再请 Codex；
 4. 没有任何一项要求 PO 正式验收（2.2 与 DoD 都没写）；86 的名称与分界 PO 已在 2.2 Q1–Q3 定下，并认可 Master 复述的分界（原话在 2.2 Q2）。
 
 **判定与决定**
 
 - **Developer 的检查（项 ①）**：全部过线（`a2a9578` 与 `778b767` 上各一遍）；Test 里没有发现 Codex 之外的新缺陷。已记的两个已知点——B 组触发率两臂都偏低（原有缺口）、转达的 PO 意见没有身份验证（PO 的决定带来的风险，第 3 章 Risks 与第 4 章 H2 追加；Codex 也提了，已把「标记不等于验证」写进正文与约定 14，风险本身没有消除）——登记与否留给 Master 与 PO 定。
-- **Codex 审阅（项 ④）**：四条意见已逐条处置（见「Codex 独立审阅」）：第 1 条审阅时属实、之后已补；第 2–4 条已修，分开提交。角色边界没找到越界的句子。
-- **Sprint Test 整体**：未结。约定 16：Increment 的质量可以凭自己的证据过，Sprint Test 要所有必需的检查、审阅与验收都过；现在只差项 ②（项 ③ 已过，工作区之外的读取靠早先证据，见上）。
+- **Codex 审阅（项 ④）**：四条意见已逐条处置（见「Codex 独立审阅」）：第 1 条审阅时属实、之后已补；第 2–4 条已修，分开提交，Master 审过修复的 diff。角色边界没找到越界的句子。
+- **Sprint Test 整体**：四项都有结果，没有未过线的项（项 ③ 的工作区之外读取靠早先证据，Master 认可）；没有要求 PO 正式验收的项；Outcome Done 的信号本期不是必须，记「尚未观察到」，不据此声称完整 DoD 已过（约定 16）。约定 16：Increment 的质量可以凭自己的证据过，Sprint Test 要所有必需的检查、审阅与验收都过——这些都有了；通过与否由 Master 判，不由 Developer 下。
 - **Test 是否通过、收官还是退回（约定 24）**：待 Master 按书面授权定；定了写在这里，并更新头部 `Now`。
