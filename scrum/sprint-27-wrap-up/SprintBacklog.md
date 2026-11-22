@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 27 (wrap-up)
 
 > Started: 2026-11-22 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `worktree-sprint-27-wrap-up` | Product Owner: SeaPawn | Scrum Master: IDEO # [master]-[main]-[manage sprint] | Developer: Sprint 27 Developer
-> Now: Increment · 2026-11-22：H1–H6 已做完并提交（H1 的位置经 DSH 对照测定为插件根的 `template/`、`board/`）；剩 H7——CHANGELOG、全仓 grep 复核、`plugin-dev:plugin-validator`、通过线冻结、报 Master 请放行 Test。PO 最近一次决定：Supporter 加「联络点」、转达的 PO 意见视同 PO 的、三级分流。
+> Now: Increment · 2026-11-22：H1–H7 施工与自查都做完（第 3 章各行已标 ✓，H7 一行等 Master 审），等 Master 审 Increment、放行 Sprint Test；2.2 的测试方法与通过线冻结于 `d72b0a6`；DSH 实装验收待 IDEO 秘书会话。PO 最近一次决定：Supporter 加「联络点」、转达的 PO 意见视同 PO 的、三级分流。
 > Waiting for PO: None
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none. Work remarks go in chapter 4, Increment notes; an optional explanation of the commitment may follow its table (`overview.md` in the scrum-kernel skill folder, conventions 16 and 17).
@@ -294,6 +294,7 @@ Go-ahead: 2026-11-22，Master 按 PO 的书面授权（见第 4 章）放行 H1�
   - **`plugin-dev:plugin-validator`（我派的，`model: haiku` 显式写）**：无阻塞问题。12 个入口与内核的 `description` 都是单行、≤1024（supporter 977、ideo-kernel 1023）；`hooks.json` 与 `commitments.sh` 正常；19 处 `../../template/…`、`../../board/…` 引用（`template/` 16 处、`board/` 3 处，涉及四个 `SKILL.md`、四份约定与 `overview.md`）全部解析；旧位置在插件里 0 处，只在 `scrum/` 里剩 2 处归档里的历史记述（已在放行清单）。它的四条非阻塞意见的处置：① `../../` 只在从技能文件夹解析时成立——这是各文件声明的基准，与插件里 `../<内核>/…` 的写法一致，不改；② `advisor.md` 的 `model: fable`——是 PO 在 Sprint 22 定的（「默认 Fable，可另选」），不在本期，不改；③ 行尾混用——仓库里的 blob 全是 LF（对 `supporter.md`、`developer.md`、一份模板核过，CR 数都是 0），不同只在 Windows 工作区（autocrlf），不用处理；④ `icon` 字段——原有，`--strict` 通过，没动。
   - **还差的一项证据**：H3 写的 DSH 实装验收条目（`/supporter` 出现、按 ideo → scrum 预载、读得到新位置的模板）要在最终提交上由 IDEO 秘书会话做，我这边没有 DSH 环境；Test 时有 Master 转来的原生事件证据就引用，没有就如实记「实装未验」，不拿静态检查顶替。
   - **通过线冻结**：2.2 的测试方法与通过线（含触发题面 v2、脚本和 grep 放行清单）以最后一个改动 2.2 的提交为准，提交哈希记在下面一条；此后到 Test 跑完之前，2.2 不再改，要改须经 Master。
+- **通过线冻结于 `d72b0a6`（2026-11-22）**：这是最后一个改动 2.2 的提交，此后 2.2 不再改（要改须经 Master）。冻结内容：触发题面 v2 与判定脚本（`validation/trigger/`）、grep 的两条搜索命令与放行清单（旧路径 2 处、旧称法 14 处，逐处列出）、描述长度、DoD 逐条证据的做法、角色边界的对抗核对范围。冻结时已有的新证据（H1 提交后的各项自检、触发测试第 1 轮）已记在上面各条；第 5 章引用它们，Test 时对最终提交再跑一遍静态检查与两条 grep。
 
 ## 5. Test
 
