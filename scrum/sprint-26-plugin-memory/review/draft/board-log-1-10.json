@@ -1,0 +1,131 @@
+[
+  {
+    "id": "board-log#1",
+    "line": "- **one-board** Keep one board page for the whole project that shows at a glance where it stands and what each line of work is doing.",
+    "lines": null,
+    "section": "board",
+    "long_file": null,
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "The second half of the old rule (few things, shown large, for a screen read from a few steps away) is layout and stays with the template."
+  },
+  {
+    "id": "board-log#2",
+    "line": "- **board-owns-nothing** The board only reads the logs: no state, no log changed from it; whether to commit it is the project's call.",
+    "lines": null,
+    "section": "board",
+    "long_file": null,
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": ["board-log#19"],
+    "where_else": null,
+    "note": "board-log#19 adds: nothing becomes true because it is on the board; it goes into the board-writing long file. The reason for not committing it (delete it and write it again, every fact is the same; only the time differs) also goes there."
+  },
+  {
+    "id": "board-log#3",
+    "line": null,
+    "lines": [
+      "- **board-writer** A cheap model writes scrum/ScrumBoard.html when the PO wants to look or a log changed.",
+      "- **board-rules** What the board reads, the data it holds, how to copy and check it: read the long file before writing one. → long/board-writing.md"
+    ],
+    "section": "board",
+    "long_file": "board-writing",
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "The long file says who writes it: a fresh subagent told to read the board rules and the template, or a standing helper session of the PO's (the wording of that helper waits for the secretary role of PBI-86 / Sprint 27)."
+  },
+  {
+    "id": "board-log#4",
+    "line": null,
+    "lines": null,
+    "section": "board",
+    "long_file": "board-writing",
+    "via": "board-rules",
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "The log paths, the rule that a Sprint or design open on another branch counts (read as committed there; source `branch <name> @ <commit>`), the working-copy rule and the newest-commit rule go into the long file word for word. My override of the verifiers: they pointed at the board check script, which is not in the plugin."
+  },
+  {
+    "id": "board-log#5",
+    "line": null,
+    "lines": null,
+    "section": "board",
+    "long_file": "board-writing",
+    "via": "board-rules",
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "What to take from each log (six bullets) goes into the long file, convention numbers replaced by handles. My override of the verifiers, as for board-log#4."
+  },
+  {
+    "id": "board-log#6",
+    "line": null,
+    "lines": null,
+    "section": "board",
+    "long_file": "board-writing",
+    "via": "board-rules",
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "Maps: the product log's map is the Mermaid diagram in section 2.2, a design log's the one in its 2.1; a node's label is the text inside the quotation marks of the three bracket forms; arrows and their labels are not nodes."
+  },
+  {
+    "id": "board-log#7",
+    "line": null,
+    "lines": null,
+    "section": "board",
+    "long_file": null,
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": "plugins/ideo-scrum/skills/scrum-kernel/conventions/scrum-board-template.html draws the overview (flow, lighting, colours); the layout reasons are in the design archive of the board.",
+    "note": ""
+  },
+  {
+    "id": "board-log#8",
+    "line": null,
+    "lines": null,
+    "section": "board",
+    "long_file": "board-writing",
+    "via": "board-rules",
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "Only the kept part goes into the long file: a design card has its own solution section that shows what was chosen and how it is used, even without a storyboard, or says that none is chosen; it invents no storyboard. The three-layer card layout stays with the template."
+  },
+  {
+    "id": "board-log#9",
+    "line": null,
+    "lines": null,
+    "section": "board",
+    "long_file": "board-writing",
+    "via": "board-rules",
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "One or two sentences in the long file: the page works out a Sprint's name, short names, counts, order and links itself, so none of that is written in the data. My override of the verifiers' delete: that sentence is only here."
+  },
+  {
+    "id": "board-log#10",
+    "line": null,
+    "lines": null,
+    "section": "board",
+    "long_file": "board-writing",
+    "via": "board-rules",
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "A card links to its log relative to scrum/ only when its source is the working copy; a log only on another branch shows the branch and the commit, so no link is dead; every card's foot starts with its folder's name."
+  }
+]

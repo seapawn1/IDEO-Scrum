@@ -57,14 +57,17 @@
       "archive scrum/documents/sprint/sprint-20-presentable.md：「重写成 19 条」"
     ],
     "kind": "格式",
-    "home": "不进 Memory",
-    "recommend": "删",
+    "home": "长文件",
+    "recommend": "留",
     "merge_into": null,
-    "reason": "日志路径与分支读取是数据来源细则，check.py 按日志实际位置核对，模板注释也指向本约定。删旧约定前须先确认 check.py 留着这条，否则丢的是路径表。",
+    "reason": "Developer 改：进 board-writing 长文件。核验把去处写成 check.py，但它在仓库根 scripts/ 里，不在 plugins/ideo-scrum 里，装插件的人没有；board-log.md 同时是写看板那个模型的简报，日志在哪些路径、别的分支上的日志怎么读、来源怎么写，只在本条。",
     "dups": [
       "board-log#5"
     ],
-    "confidence": "中"
+    "confidence": "中",
+    "checked": [
+      "verified: confidence, home, reason, recommend"
+    ]
   },
   {
     "id": "board-log#5",
@@ -74,15 +77,18 @@
       "commit f030513 fix(PBI-71): 修正 IDEO 收尾、宿主状态和头部字段判定"
     ],
     "kind": "格式",
-    "home": "不进 Memory",
-    "recommend": "删",
+    "home": "长文件",
+    "recommend": "留",
     "merge_into": null,
-    "reason": "读哪几节取哪几项是数据契约，check.py 与字段表已覆盖；IDEO 的 For 与 Now 判定已由 PBI-71 落在检查脚本里。删前确认这两处仍在。",
+    "reason": "Developer 改：进 board-writing 长文件。核验写「check.py 与字段表已覆盖」，但 check.py 不在插件里；字段表只说取哪些字段、不说从日志的哪一节取（产品日志 3.1/3.2、冲刺日志 2.1 与第 3 章、设计日志 From/3.1/3.2、IDEO 日志 For 与 Now），写看板的模型要靠本条。",
     "dups": [
       "board-log#4",
       "board-log#11"
     ],
-    "confidence": "中"
+    "confidence": "中",
+    "checked": [
+      "verified: confidence, home, reason, recommend"
+    ]
   },
   {
     "id": "board-log#6",
@@ -136,14 +142,15 @@
       "commit ed53e1c feat(Sprint 20): 块 10——board-log.md 重写（19 条：数据的字段表、概括的规矩）"
     ],
     "kind": "格式",
-    "home": "不进 Memory",
-    "recommend": "删",
+    "home": "长文件",
+    "recommend": "留",
     "merge_into": null,
-    "reason": "页面自算项（名称取文件夹、取冒号前、条目序号、计数、排序、链接）由模板脚本实现（scrum-board-template.html 第269-299、305-319、484-496行），数据里不写；check.py 只把数据块之外的页面对模板逐字比（第315-318行），并不自己算这些。删了不丢行为规矩。",
+    "reason": "Developer 改：进 board-writing 长文件，压成一两句。页面自算项的实现在模板脚本里，但「这些不写进数据」只在本条，写看板的模型不知道就可能多写字段。",
     "dups": [],
     "confidence": "中",
     "checked": [
-      "verified: reason"
+      "verified: reason",
+      "verified: confidence, home, reason, recommend"
     ]
   },
   {

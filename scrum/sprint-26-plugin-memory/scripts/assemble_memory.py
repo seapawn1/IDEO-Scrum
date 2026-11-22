@@ -128,6 +128,8 @@ def map_tables(rows: dict[str, dict], ann: dict[str, dict]) -> str:
         o, a = rows[i], ann[i]
         if lines_of(o):
             out.append(f"| {i} | {a['recommend']} | " + "、".join(f"`{h}`" for h in handle_of.get(i, [])) + (f"（长文件 `{o['long_file']}`）" if o.get("long_file") else "") + " |")
+        elif o.get("via"):
+            out.append(f"| {i} | {a['recommend']} | 只在长文件 `{o.get('long_file')}`，由 `{o['via']}` 一行索引 |")
         elif o.get("merged_into"):
             hs = "、".join(f"`{h}`" for h in handle_of.get(o["merged_into"], []))
             out.append(f"| {i} | 并 | 并入 {o['merged_into']} {hs} |")
@@ -194,7 +196,10 @@ def selftest() -> int:
     check([i for i, _ in flat] == ["overview#10", "sprint-log#8"], "a line sits in its section, in old-file order")
     sl = role_slices(flat)
     check(sl["dev"] > sl["des"] and sl["des"] == len("- **ask-the-po** Ask the PO.") + 1, "a role slice has the untagged lines and its own tagged lines")
+    rows["board-log#5"] = {"id": "board-log#5", "line": None, "lines": None, "section": "board", "long_file": "board-writing", "via": "board-rules", "merged_into": None, "absorbed": []}
+    ann["board-log#5"] = {"recommend": "留"}
     mp = map_tables(rows, ann)
+    check("| board-log#5 | 留 | 只在长文件 `board-writing`，由 `board-rules` 一行索引 |" in mp, "the map shows a rule kept only in a long file with its index line")
     check("| sprint-log#25 | 并 | 并入 overview#10 `ask-the-po` |" in mp, "the map shows a merge with the target's handle")
     check("| `ask-the-po` | overview#10、sprint-log#25 |" in mp, "the map shows a handle with the rules that fed it")
     check("| design-log#4 | 删 | design template |" in mp, "the map shows where a deleted rule went")

@@ -61,7 +61,7 @@
   },
   {
     "id": "overview#6",
-    "line": "- **working-material** Keep working material out of the log and link to it; Retro lessons go only in memory.",
+    "line": "- **working-material** Keep working material out of the log and link to it; key general material may go to project memory, Retro lessons only there.",
     "lines": null,
     "section": "meta",
     "long_file": null,
@@ -160,7 +160,7 @@
   },
   {
     "id": "overview#14",
-    "line": "- **who-gets-which-work** The Scrum Master reviews; a standing helper keeps up the logs; a Developer builds, never reviews its own work. → long/roles-and-routing.md",
+    "line": "- **who-gets-which-work** The Scrum Master reviews; a standing helper does upkeep; a Developer builds and never reviews its own work. → long/roles-and-routing.md",
     "lines": null,
     "section": "roles",
     "long_file": "roles-and-routing",

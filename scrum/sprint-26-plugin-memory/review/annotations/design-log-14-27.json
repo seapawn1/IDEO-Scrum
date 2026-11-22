@@ -118,10 +118,10 @@
       "archive scrum/documents/sprint/sprint-14-conventions-tuning.md：阶段之间由 PO 决定的一段（PO 决定清单的来源）"
     ],
     "kind": "规矩",
-    "home": "清单",
-    "recommend": "改",
-    "merge_into": null,
-    "reason": "改：这条是 PO 决定清单的索引，和 design-log#14、#16、#19、#26 说的决定重复。改成「不确定就问 PO；每个阶段结束、每个门、每个 git 许可都由 PO 定，见阶段之间的门」，具体清单只留在门那一条里，免得两处不一致。",
+    "home": "不进 Memory",
+    "recommend": "并",
+    "merge_into": "sprint-log#25",
+    "reason": "Developer 改：并入 sprint-log#25（po-decisions 一行索引）。两条都是「PO 决定清单」的索引，各自的决定在各自的规矩里（#8、#13–14、#16、#19、#26）；一份总索引比两份好，设计特有的几项（各阶段结果与进出、Ideate 怎么发散、挑 How Might We 问题、选方案与合并/Rumble、原型要多真、设计结束、git 许可）并进那一行。",
     "dups": [
       "design-log#14",
       "design-log#16",
@@ -129,7 +129,11 @@
       "design-log#26",
       "overview#10"
     ],
-    "confidence": "中"
+    "confidence": "中",
+    "checked": [
+      "verified: home, reason, recommend",
+      "verified: confidence, home, merge_into, reason, recommend"
+    ]
   },
   {
     "id": "design-log#22",
@@ -169,14 +173,18 @@
       "archive plugins/ideo-scrum/skills/design-kernel/conventions/design-backlog-template.md 第 4 行：> Now 行与等待 PO 行的格式"
     ],
     "kind": "规矩",
-    "home": "清单",
-    "recommend": "改",
-    "merge_into": null,
-    "reason": "改：一条里有头部格式、接手顺序、git 许可、断线前的记法四件事。清单留「接手先读头部的 Now 与等待 PO，再查阶段许可」一句；头部格式归模板，「Now 和阶段许可都不授权提交」与 design-log#26 重复，只留在 26。",
+    "home": "不进 Memory",
+    "recommend": "并",
+    "merge_into": "sprint-log#22",
+    "reason": "Developer 改：并入 sprint-log#22（log-is-the-handoff）：冲刺日志、设计日志、IDEO 日志的头部与交接是同一件事。设计特有的（断线前把半成品写进所属章；Now 与阶段许可都不单独授权提交、合并、推送；只在 PO 明确记录提交许可时才提交，否则保留未提交并记下状态与续做点）并进交接长文件；核验指出这些别处没有，所以不能只说「归模板」。",
     "dups": [
       "design-log#26"
     ],
-    "confidence": "中"
+    "confidence": "中",
+    "checked": [
+      "verified: home, reason, recommend",
+      "verified: confidence, home, merge_into, reason, recommend"
+    ]
   },
   {
     "id": "design-log#25",
@@ -185,14 +193,17 @@
       "commit 9c9bd67 feat(PBI-39): scrum-kernel 约定总览 overview.md（目标不变其余可调）"
     ],
     "kind": "规矩",
-    "home": "清单",
+    "home": "不进 Memory",
     "recommend": "并",
     "merge_into": "overview#17",
-    "reason": "并入 overview#17：通用的「目标不变、其余可调」已在 overview#17 写过，本条只多了设计特有的「Empathize 中精化目标」一句，并进 overview#17 即可，免得两处各写一遍。",
+    "reason": "并进 overview#17，但 overview#17（overview.md:103-105）现文只有通用句，必须把设计特有的「Empathize 中精化设计目标」和「变动写进所属章」两句一并补进它的长文件，否则会丢；overview#17 自身是改/长文件、不并出，无环。",
     "dups": [
       "overview#17"
     ],
-    "confidence": "高"
+    "confidence": "高",
+    "checked": [
+      "verified: home, merge_into, reason, recommend"
+    ]
   },
   {
     "id": "design-log#26",

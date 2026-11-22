@@ -40,15 +40,17 @@
   },
   {
     "id": "sprint-log#22",
-    "line": "- **log-is-the-handoff** Keep the header current and write what matters into the log before a session ends; no separate handoff files. → long/sprint-handoff.md",
+    "line": "- **log-is-the-handoff** In a sprint, design or IDEO log keep the header current and write what matters into the log before a session ends. → long/handoff.md",
     "lines": null,
     "section": "sprint",
-    "long_file": "sprint-handoff",
+    "long_file": "handoff",
     "merged_into": null,
     "adds_to_target": null,
-    "absorbed": [],
+    "absorbed": [
+      "design-log#24"
+    ],
     "where_else": "The Now and Waiting for PO header fields and reading them first are in the sprint log template (lines 4-5).",
-    "note": "Long file keeps: at a pause commit only within the authorized scope and only if permitted, otherwise keep the changes uncommitted and record the status and where to resume; this does not waive the pre-Test freeze commit or the closing commit (ask for commit permission before Test or closing if it is not recorded); stop at a complete point."
+    "note": "Merged with design-log#24 (same rule for the design log). Long file keeps: a session that picks up reads the header first, then checks the recorded permission; no separate handoff documents; at a pause commit within the authorized scope only if permitted (otherwise keep changes uncommitted and record the status and where to resume); this does not waive the pre-Test freeze commit or the closing commit; stop at a complete point. design-log#24 adds: in a design, write the half-finished work into the chapter it belongs to before a session ends; Now and permission to enter a stage do not by themselves authorize committing, merging or pushing; commit only if the PO explicitly recorded commit permission for it."
   },
   {
     "id": "sprint-log#23",
@@ -82,22 +84,24 @@
   },
   {
     "id": "sprint-log#25",
-    "line": "- **po-decisions** Ask the PO whenever unsure, and always for goals, items, go-ahead, stage ends, scope changes, outward actions.",
+    "line": "- **po-decisions** Ask the PO whenever unsure, and always for goals, items, go-ahead, stage ends and gates, design choices, scope changes, git and outward actions.",
     "lines": null,
     "section": "sprint",
     "long_file": null,
     "merged_into": null,
     "adds_to_target": null,
-    "absorbed": [],
+    "absorbed": [
+      "design-log#21"
+    ],
     "where_else": null,
-    "note": "An index of decisions each of which has its own line (sprint-goal, select-items, refinement, go-ahead, sprint-stage-decisions, new-work-registered, outward-needs-po, po-owns-commitments); the PO may drop it as a duplicate. Updated to the handles now that 20 and 24 are settled."
+    "note": "An index of decisions that each have their own line; it absorbs design-log#21 (the design version of the same index: stage results and entry, how Ideate diverges, the design goal, the How Might We questions that matter, the solution and combine-or-rumble, how real the prototype must be, the design's end, git actions). The PO may drop it as a duplicate."
   },
   {
     "id": "sprint-log#26",
-    "line": "- **developer-elsewhere** With a Developer elsewhere, the sprint log stays the record: talk directly if you can, else take turns. → long/sprint-handoff.md",
+    "line": "- **developer-elsewhere** With a Developer elsewhere, the sprint log stays the record: talk directly if you can, else take turns. → long/handoff.md",
     "lines": null,
     "section": "sprint",
-    "long_file": "sprint-handoff",
+    "long_file": "handoff",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],

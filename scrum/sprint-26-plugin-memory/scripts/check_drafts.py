@@ -28,7 +28,7 @@ SECTIONS = ["roles", "product-log", "sprint", "design", "ideo", "board", "meta"]
 ROLES = {"dev", "sm", "des", "stk", "po"}
 LONG_FILES = {"roles-and-routing", "stage-gates", "goal-fixed", "layers-and-folders", "sprint-closing", "sprint-refinement",
               "design-ending", "design-stages", "board-writing", "departures", "names", "product-log-details",
-              "ideo-ending", "sprint-handoff", "sprint-stages"}
+              "ideo-ending", "handoff", "sprint-stages"}
 REQUIRED = ["id", "line", "lines", "section", "long_file", "merged_into", "adds_to_target", "absorbed", "where_else", "note"]
 LINE = re.compile(r"^- \*\*([a-z0-9]+(?:-[a-z0-9]+){0,4})\*\*(?: \[([a-z,]+)\])? (.+)$")
 CJK = re.compile(r"[㐀-鿿　-〿＀-￯]")
@@ -95,6 +95,7 @@ def run_check(d: pathlib.Path, complete: bool = True) -> int:
     ann = annotations()
     ids = ledger_ids()
     handles: dict[str, str] = {}
+    via_needs: list[tuple[str, str]] = []
     for i, o in rows.items():
         if i not in ann:
             problems.append(f"{i}: not in the ledger")
@@ -108,7 +109,11 @@ def run_check(d: pathlib.Path, complete: bool = True) -> int:
             problems.append(f"{i}: both line and lines are set")
         rec = ann[i]["recommend"]
         if rec in ("留", "改") and not lines:
-            problems.append(f"{i}: recommend {rec} but no line")
+            # a rule that lives only in a long file has no line of its own; the list line that points at it is `via`
+            if o.get("via") and o.get("long_file"):
+                via_needs.append((i, o["via"]))
+            else:
+                problems.append(f"{i}: recommend {rec} but no line (a rule kept only in a long file needs `via` and `long_file`)")
         if rec == "并":
             if lines:
                 problems.append(f"{i}: recommend 并 but a line was written")
@@ -134,6 +139,9 @@ def run_check(d: pathlib.Path, complete: bool = True) -> int:
                 if h in handles:
                     problems.append(f"{i}: handle {h} is also used by {handles[h]}")
                 handles[h] = i
+    for i, h in via_needs:
+        if h not in handles:
+            problems.append(f"{i}: via {h!r} is not the handle of any drafted line")
     if complete:
         problems += [f"{i}: not drafted" for i in ids if i not in rows]
     # a rule that absorbs others must name them, and every 并 must be absorbed by its target

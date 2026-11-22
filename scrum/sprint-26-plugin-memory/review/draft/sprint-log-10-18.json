@@ -1,0 +1,113 @@
+[
+  {
+    "id": "sprint-log#10",
+    "line": "- **checkpoints** Check the work against the Sprint Goal at each stage end, when stuck, and when the PO asks (departs from the Daily Scrum). → long/sprint-stages.md",
+    "lines": null,
+    "section": "sprint",
+    "long_file": "sprint-stages",
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "Long file: what stuck means (waiting for a decision or information only the PO can give, a block from outside the team, the same approach tried twice and failed, or the current How no longer showing how to reach the Sprint Goal; anything else is an adjustment inside the plan). The pointer 'see the Departures section' is dropped; the reason is in the departures long file."
+  },
+  {
+    "id": "sprint-log#11",
+    "line": "- **outline-first** Before a new lasting document or template, show its outline (every heading, one line each) to its reviewer; write the full text once they agree.",
+    "lines": null,
+    "section": "sprint",
+    "long_file": null,
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": ""
+  },
+  {
+    "id": "sprint-log#12",
+    "line": "- **full-text-review** Give the reviewer the full text to annotate, with problems and recommendations; change sources only after approval; the disk version wins.",
+    "lines": null,
+    "section": "sprint",
+    "long_file": null,
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "'The problems and recommendations format' can live in a template; the three rules stay in the line."
+  },
+  {
+    "id": "sprint-log#13",
+    "line": null,
+    "lines": [
+      "- **tests-criteria-first** Before the Test, set the method and pass lines in 2.2 and commit them; do not change them after seeing results.",
+      "- **check-script-misses** Check a script's wrong calls one by one and write down why."
+    ],
+    "section": "sprint",
+    "long_file": null,
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "The annotation asked to split the second sentence into a rule of its own (or move it to the headless testing notes); it is a line here. The detail of what the pass lines hold (what needs fresh evidence, what earlier evidence still holds, which outcome signals must be shown) is in sprint-stages."
+  },
+  {
+    "id": "sprint-log#14",
+    "line": "- **reviewer-required** The builder never reviews: the Scrum Master does, or a fresh subagent if the Scrum Master built it (a departure). → long/sprint-stages.md",
+    "lines": null,
+    "section": "sprint",
+    "long_file": "sprint-stages",
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "Long file keeps: a Stakeholder or fresh subagent when the PO names one, and a named Stakeholder checks item by item against the Definition of Done and the acceptance criteria; a fresh subagent that reviews work the Scrum Master built checks only whether it was done right; a Developer that only shares the Scrum Master's context does not make the Scrum Master the builder; how to brief a review subagent (the task, the project's rules, the decisions already issued); the Scrum Master may send a subagent to review or read a long diff and still owns the conclusion."
+  },
+  {
+    "id": "sprint-log#15",
+    "line": "- **acceptance-when-written** Ask the PO for formal acceptance only when the Definition of Done or the acceptance criteria call for it.",
+    "lines": null,
+    "section": "sprint",
+    "long_file": null,
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "The old 'sometimes a glance is enough' had no test; the annotation rewrote it as this criterion."
+  },
+  {
+    "id": "sprint-log#16",
+    "line": "- **record-the-tests** [dev] In chapter 5, show valid evidence for every applicable standard and criterion; without it, no pass. → long/sprint-stages.md",
+    "lines": null,
+    "section": "sprint",
+    "long_file": "sprint-stages",
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "Long file keeps the whole rule: chapter 5 keeps the Developer's tests, the independent check and any PO acceptance; the result of each Output Done standard and item acceptance criterion, with the new evidence linked or the old evidence cited and why it still holds; a condition that did not arise is recorded with why it did not apply; Outcome Done signals are recorded apart from Output Done (an outcome required by the Sprint Goal, an item or a pass line set beforehand blocks the pass if unmet or unproven; otherwise a signal without evidence is 'not yet observed', contrary evidence 'not met' with its effect; do not claim the full DoD passed on those signals); the Increment's quality can pass on its own evidence, the Sprint Test passes only when all its required checks, review and acceptance pass; fix within Test and test again, a return to an earlier stage needs a stage decision."
+  },
+  {
+    "id": "sprint-log#17",
+    "line": "- **review-at-close** Close with a Review: compress the sprint log to key decisions, archive it in scrum/documents/, refresh the product log. → long/sprint-closing.md",
+    "lines": null,
+    "section": "sprint",
+    "long_file": "sprint-closing",
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "Long file: the whole Review rule word for word (the archiving of ended designs and IDEO logs, the relay to a Sprint working elsewhere, the checks before updating references). The product-log freshening is fresh-at-review."
+  },
+  {
+    "id": "sprint-log#18",
+    "line": "- **retro-in-memory** Retro saves only important reusable lessons, one memory entry each; no Retro summary, nothing in instruction files. → long/sprint-closing.md",
+    "lines": null,
+    "section": "sprint",
+    "long_file": "sprint-closing",
+    "merged_into": null,
+    "adds_to_target": null,
+    "absorbed": [],
+    "where_else": null,
+    "note": "Long file keeps: no chapter in the log; the Developer saves; enough to use each principle alone (what broke or worked, why, what to do next time); with no project memory use the repository notes, still one entry per lesson; do not mix lessons with the plugin's conventions; an index may point to the entries but not copy them; discard one-off details, passing friction and notes without a demonstrated reusable reason, and infer no cause to make a remark a principle; an especially good improvement goes into the Definition of Done with the PO's consent; check whether the product log is still fresh. The *Supplement* sentence (ask where the PO held up the AI) goes there too, labelled."
+  }
+]
