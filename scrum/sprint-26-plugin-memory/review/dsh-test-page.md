@@ -1,5 +1,7 @@
 # DSH 要测的内容（Sprint 26 行 4，判据⑥，只测 A1）
 
+> 已测完（2026-11-23，DSH 0.2.3-alpha.2）：结果在 `review/memory-outline.md` 第 10 节，这页留作当时的测法记录；页里写的版本 0.2.2-rc.5 是起草时的，实测用的是 0.2.3-alpha.2。
+
 给秘书会话（`IDEO # [supporter]-[main]-[support PO]`）在本机 DSH（0.2.2-rc.5，web profile 在 127.0.0.1:3080）上测。**只读探测：不改仓库里任何文件，不动现有 profile。** PO 2026-11-23 选定 A1（「26那就选择A1把，然后dsh要支持要记得」），这页只写 A1。
 
 ## A1 在 DSH 里是什么（我读了 `dsh/index.js`、`scripts/check_dsh.mjs`，并在副本上做过）

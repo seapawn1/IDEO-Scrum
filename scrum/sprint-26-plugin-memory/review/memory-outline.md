@@ -85,6 +85,25 @@ Developer 提，Master 审定。PO 2026-11-23 定了 A1（「26那就选择A1把
 - **B hook**：不靠模型自觉、能按角色选段，但 Claude Code 与 DSH 各写一份，要再补一条 `PreToolUse` 才覆盖「模型自己调 Skill 叫角色」。
 - **C 合用**：A1 加压缩后补注的 hook；A1 若在实际尺寸上过不了 ② 才用得上，所以不先做；真过不了经 Supporter 报 PO，不自行改用。
 
-## 10 载体测试结果（待补）
+## 10 载体测试结果
 
-①②④ 与档位等正式测（Master 说空闲内存 ≥ 3 GB 再开）；⑥ 副本结果见 SprintBacklog 第 4 章；⑦⑧ 跟着补。
+### ⑥ DSH 能否等价：过（2026-11-23，秘书会话实测，Master 转述）
+
+环境：DSH 0.2.3-alpha.2，包 0.6.3；临时 profile `a1test` 指向我的副本（`dsh-a1-copy`），没动 web profile，测完已删；原始日志在 `~/.dsh/sessions/--S-IDEO-Scrum--/`（仓外）。
+
+| 题 | 结果 | 证据 |
+| --- | --- | --- |
+| 1 预载是否完整 | 是 | `user/message`（skill-invocation，30,386 字符）里，ideo、scrum 两个内核原文的首行和末尾 100 字符逐字命中 |
+| 2 压缩后还在吗 | **只剩摘要** | DSH 压缩后用 `compaction/summary`、`compact-checkpoint`（3,047 字符）替换原文，不像 Claude Code 那样重新附上技能；压缩后模型自己调了 `skill(memory)`（tool/call seq 48）重新载回；配置里没找到单个技能或预载总量的上限 |
+| 3 `long/` 走得通吗 | 是 | 按 `Base directory` 读 `scrum-kernel/references/…`，seq 29，`isError:false` |
+| 4 技能清单 | 每条描述截到 500 字符 | 四个内核都被截（`scrum-kernel` 原文 968 字符）；memory 的 353 字符放得下；清单总长 5,166 → 5,212。截断影响现有内核在 DSH 的触发，不是本期的事，Master 另登记 |
+| 5 子代理是否继承角色正文 | 否 | DSH 的子代理（origin:subagent）只拿到委托消息、技能清单和运行时上下文 |
+| A1 真跑 | 过 | 预载按 ideo → scrum → memory 成功（45,673 字符，开头 `# IDEO-Scrum Memory` 与结尾的 departures 行都在）；压缩后原文不在，模型调 `skill(memory)` 重载后，两行答案与原句逐字一致 |
+
+结论：DSH 做得出等价，没有新机制，只是压缩后行为不同：要靠模型重新加载 Memory。后果（Master 定）：DSH 的路由说明里加一句「对话压缩之后，继续前先重新调用 memory 技能」，与 `dsh/index.js` 那几行一起做；子代理那条照报：DSH 的子代理要靠委托消息里写明去加载 memory。
+
+我的一个担心，记在这里留给行 12、14：路由说明在角色正文里，而 DSH 压缩会把角色正文一起换成摘要，这句话压缩后可能跟着没了；所以行 14 的 DSH 验证要测「压缩后没人问起清单内容时，模型会不会自己重载」，不够稳再改放进 DSH 会一直回放的命名上下文里。
+
+### ①②④ 与档位、③、另测、⑦、⑧
+
+待正式测：被系统因内存紧张停掉（第 1 批 4/12 个试次完成）；Master 安排等 27 收官、内存腾出后并发 1 续跑，⑧ 的 `validate --strict` 在那之后跑。

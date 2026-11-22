@@ -11,7 +11,8 @@
 | 3 | `memory-draft/MEMORY.md`、`memory-draft/long/` | 装配后的完整草稿：102 行、14,156 字符；16 个长文件 | 3 行（`ask-the-po`、`who-gets-which-work`、`board-writer`）与 `roles-and-routing` 标「待 27」 |
 | 4 | `review/review-<文件>.md` × 6（overview、product-log、board-log、sprint-log、design-log、ideo-log） | 每条旧规矩一节：旧文逐字｜出处与依据｜建议（留／改／并／删）｜新行｜备注｜待 27；每份文末是该文件的非编号块（引言、署名、图、表，六份共 29 个）的去向 | 111 条＋29 个块，全部有去向 |
 | 5 | `review/map-old-new.md` | 旧→新、新→旧两张覆盖表 | 与草稿同步生成 |
-| 6 | `review/dsh-test-page.md` | 给秘书会话的 DSH 测页（只测 A1） | Master 已请 PO 开 DSH、同意建临时 profile，回音到了他转我 |
+| 6 | `review/dsh-test-page.md` | 给秘书会话的 DSH 测页（只测 A1） | 已测完，判据 ⑥ 过；结果在大纲第 10 节 |
+| 7 | `review/s27-increment.md` | 27 增量表（行 11 的底稿）：27 改了哪些规矩对草稿的影响、board-log 的去处、Supporter 那块的草案 | 同步前的预读；等 A1 正式测跑完再同步 main |
 
 ## 检查结果（我跑的，2026-11-23）
 
