@@ -1,0 +1,194 @@
+[
+  {
+    "id": "sprint-log#14",
+    "source": "作者",
+    "basis": [
+      "commit 6017ae0 docs: Sprint 10 结构稿——五份文件的章节与约定短名（给 PO 看）",
+      "archive scrum/documents/sprint/sprint-11-conventions-review.md：第 44 行，sprint-log 4 成立：SM 自己构建则全新子代理审；只共享上下文则 SM 照常审"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "核心行为有依据，但条文过长。压成一行：SM 默认审；SM 自己构建则全新子代理审；PO 点名的 Stakeholder 按 DoD 逐条核。细则（子代理简报、读长 diff）留长文件。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "sprint-log#15",
+    "source": "作者",
+    "basis": [
+      "commit be44889 feat(PBI-23): 冲刺日志约定 sprint-log.md 与模板 sprint-backlog-template.md"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "来源只有作者的一句做法，「sometimes a glance is enough」没有判据，不可执行。改写成判据：DoD 或验收标准要求正式验收时才请 PO 正式验收，其余不请。",
+    "dups": ["sprint-log#25"],
+    "confidence": "低"
+  },
+  {
+    "id": "sprint-log#16",
+    "source": "作者",
+    "basis": [
+      "commit 87bd0db fix(PBI-49): 照 Master 审停点 2 改七处（sprint-log 加 25 Ask the PO 等）",
+      "archive scrum/documents/sprint/sprint-14-conventions-tuning.md：第 142 行，sprint-log 新增 Record the tests"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "有依据（Sprint 14 新增）。条文三四层，压成一行：每条完成标准和验收标准都要有有效证据，否则不算过；未观察到的信号记为未观察。细则留模板或长文件。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "sprint-log#17",
+    "source": "作者",
+    "basis": [
+      "commit a8095ef feat(PBI-49): scrum 这边的修订稿——overview、product-log、sprint-log、分工一节（条号还没重排）",
+      "archive scrum/documents/sprint/sprint-14-conventions-tuning.md：第 38 行，Review 和 Retro 不设章，是收官动作"
+    ],
+    "kind": "规矩",
+    "home": "长文件",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "有依据，但条文混了冲刺日志压缩归档、设计归档的时点与接力、产品日志保鲜、stakeholder 召唤四件事，远超一行。清单留一行：收官时用 Review 压缩、归档、刷新产品日志；细则（设计归档与接力）进长文件。",
+    "dups": ["sprint-log#18", "sprint-log#19"],
+    "confidence": "中"
+  },
+  {
+    "id": "sprint-log#18",
+    "source": "补充",
+    "basis": [
+      "commit 9734304 docs(Sprint 23): H10 落源 18 份已审稿",
+      "archive scrum/documents/sprint/sprint-23-log-rules.md：第 37 行，PBI-69：重要、可复用教训一条一条独立可找回；非要点丢弃"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "正文有依据（PBI-69）。条末的 *Supplement* 是助手推断、未经实践确认，标为补充；清单里只留「重要可复用的教训一条一条进项目记忆，没有就不写，不写 Retro 汇总，不进指令文件」，Supplement 那句（问 PO 在哪里卡住 AI）删去或另记。",
+    "dups": ["sprint-log#17"],
+    "confidence": "中"
+  },
+  {
+    "id": "sprint-log#19",
+    "source": "作者",
+    "basis": [
+      "commit 72e08a2 fix(PBI-23, PBI-31, PBI-32, PBI-37, PBI-39): 照三份审查的 21 项清单修改",
+      "commit cbed055 docs(Sprint 14): 收官——Review、产品日志保鲜、Retro，发版 v5.2.0"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "一个收官提交、先全仓 grep 旧路径有依据。六步顺序属于流程，应放在 sprint-kernel 的收官流程或模板里；清单只留一行：收官只做一个提交，先清旧路径，再打 tag、合 main、关工作区、删分支；推送要 PO 同意。",
+    "dups": ["sprint-log#17"],
+    "confidence": "中"
+  },
+  {
+    "id": "sprint-log#20",
+    "source": "作者",
+    "basis": [
+      "commit 46959b6 docs: Sprint 10 结构稿第二版——How 是方案、目标不变其余可调、约定不写工具机制"
+    ],
+    "kind": "规矩",
+    "home": "不进 Memory",
+    "recommend": "并",
+    "merge_into": "overview#17",
+    "reason": "与 overview#17 同名同义（Goal fixed, plan flexible）。Sprint 特有的部分（验收标准可与 PO 或 SM 重谈、改动和原因写进第 4 章）并入 overview#17 或冲刺模板，本条删去。",
+    "dups": ["overview#17", "design-log#25", "product-log#18"],
+    "confidence": "中"
+  },
+  {
+    "id": "sprint-log#21",
+    "source": "作者",
+    "basis": [
+      "commit 664bf46 refactor(PBI-23, PBI-31, PBI-37, PBI-39): 精简四份约定——砍字不砍规矩"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "有依据，行为清楚：新工作先登记为产品日志条目，PO 定是否进本期；范围可重谈，Sprint Goal 不变。一行即可，与 25 的 PO 事项清单有重叠，见 25。",
+    "dups": ["sprint-log#25"],
+    "confidence": "高"
+  },
+  {
+    "id": "sprint-log#22",
+    "source": "作者",
+    "basis": [
+      "commit 9a4e950 docs: Sprint 10 结构稿第四版——补完 Master 审结构提出的六处，结构通过",
+      "archive scrum/documents/sprint/sprint-18-rules-first.md：第 33 行，冲刺、设计、IDEO 日志头部有 Now 和紧跟的 Waiting for PO"
+    ],
+    "kind": "格式",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "有依据（Sprint 18 统一头部）。条文混了头部格式、接手流程、暂停时的提交和收官的例外，应拆分：格式归模板；清单留一行：头部的 Now 与 Waiting for PO 随日志变化同步更新，头部本身不是授权；暂停时把要紧的写进日志。",
+    "dups": ["sprint-log#24"],
+    "confidence": "中"
+  },
+  {
+    "id": "sprint-log#23",
+    "source": "作者",
+    "basis": [
+      "commit 6017ae0 docs: Sprint 10 结构稿——五份文件的章节与约定短名（给 PO 看）",
+      "archive scrum/documents/sprint/sprint-14-conventions-tuning.md：第 142 行，特殊情况表删去重复的五行"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "表里剩两种没有别条覆盖的情况：外部阻塞立即告诉 PO；中途发版经 PO 同意，Sprint 不结束。有依据，保留，可写成一行。",
+    "dups": ["sprint-log#19"],
+    "confidence": "中"
+  },
+  {
+    "id": "sprint-log#24",
+    "source": "作者",
+    "basis": [
+      "commit a8095ef feat(PBI-49): scrum 这边的修订稿——overview、product-log、sprint-log、分工一节（条号还没重排）",
+      "memory S:/SeaPawn-Memory/memory/IDEO-Scrum/delegated-choice-not-gate.md：授权做选择不等于授权过关卡，阶段结束仍停下等 PO 说进下一阶段"
+    ],
+    "kind": "规矩",
+    "home": "不进 Memory",
+    "recommend": "并",
+    "merge_into": "overview#12",
+    "reason": "与 overview#12（Product Owner decides between stages）说同一件事。冲刺特有的阶段清单（目标、精化、放行、测试、收官或返回）并入 overview#12；读取目标原文的操作步骤放进冲刺模板或长文件，本条删去。",
+    "dups": ["overview#12", "sprint-log#22"],
+    "confidence": "中"
+  },
+  {
+    "id": "sprint-log#25",
+    "source": "作者",
+    "basis": [
+      "commit 87bd0db fix(PBI-49): 照 Master 审停点 2 改七处（sprint-log 加 25 Ask the PO 等）",
+      "archive scrum/documents/sprint/sprint-08-design-kernel.md：第 40 行，团队做法：拿不准就问 PO"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "并",
+    "merge_into": "overview#10",
+    "reason": "拿不准就问 PO 已在 overview#10；本条其余是 PO 事项的清单，与 15、20、21、24 各条重复。并入 overview#10，PO 事项清单只留一处，避免与各条重复。",
+    "dups": ["overview#10", "overview#12", "sprint-log#15", "sprint-log#20", "sprint-log#21", "sprint-log#24"],
+    "confidence": "中"
+  },
+  {
+    "id": "sprint-log#26",
+    "source": "作者",
+    "basis": [
+      "commit 7426b3d docs(Sprint 17): 冲刺侧 4 处必改照改；第 5 项连带改动与引用核对（171 处 0 缺）",
+      "archive scrum/documents/sprint/sprint-13-codex.md：第 35 行，协作办法：通道只有本日志；两边共用同一个工作目录，所以轮流动手"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "有依据（Sprint 13 与 Codex 协作办法）。条文里的做法仍在用，但写法要改：去掉工具名，只留两条：同一工具内的会话直接对话；另一工具只经日志轮流动手、写明轮到谁，PO 只传话说轮到谁。末尾「These are examples, not rules」删去。",
+    "dups": ["sprint-log#22"],
+    "confidence": "中"
+  }
+]

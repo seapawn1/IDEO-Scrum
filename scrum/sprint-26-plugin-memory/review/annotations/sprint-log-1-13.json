@@ -1,0 +1,193 @@
+[
+  {
+    "id": "sprint-log#1",
+    "source": "作者",
+    "basis": [
+      "commit be44889 feat(PBI-23): 冲刺日志约定 sprint-log.md 与模板 sprint-backlog-template.md",
+      "archive scrum/documents/sprint/sprint-14-conventions-tuning.md 第 3 行头部：分支与 worktree 同名，一期一个文件夹"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "开冲刺的基本做法，Memory 需要。命名规则（两位数编号、后缀、与分支同名）可以一句话写完；具体目录结构留模板。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "sprint-log#2",
+    "source": "作者",
+    "basis": [
+      "commit 6017ae0 docs: Sprint 10 结构稿——五份文件的章节与约定短名（给 PO 看）",
+      "archive scrum/documents/sprint/sprint-14-conventions-tuning.md 第 3 行头部：「Closes when the Sprint Goal is met or the Product Owner stops the Sprint」"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "与 Scrum Guide 不同的做法（偏离），是 PO 要看的核心。结束条件一句话就能写清。尾句「see the Departures section」是指路，删掉，偏离表归 overview。",
+    "dups": [],
+    "confidence": "高"
+  },
+  {
+    "id": "sprint-log#3",
+    "source": "作者",
+    "basis": [
+      "commit be44889 feat(PBI-23): 冲刺日志约定 sprint-log.md 与模板 sprint-backlog-template.md（正文「开冲刺……小冲刺」）",
+      "archive scrum/documents/sprint/sprint-15-feedback-loop.md 第 8 行：「每一步一两行」"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "规矩本身有依据，且已在 Sprint 15 实践。要改的是括号里的「convention 24」，它是旧编号，现在指不到任何一条；改成指向对应条的名字（如 The Product Owner decides at the end of each stage）。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "sprint-log#4",
+    "source": "作者",
+    "basis": [
+      "memory S:/SeaPawn-Memory/memory/IDEO-Scrum/po-writing-style.md：替 PO 起草 Sprint Goal 时「模仿 PO 以前的写法」",
+      "archive scrum/documents/sprint/sprint-10-conventions.md 第 1 章：Sprint Goal 的写法与 PO 定目标（1.1 节）"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "一条装了六件事：PO 的写法、一个价值目标、总览式冲刺的例外、指向产品日志 DoD 的要求、ideo-kernel 兜底、分发给 Master 与 Developer。拆成一行一条：保留「PO 的写法、一个价值目标」，DoD 指路与分发归 Planning 模板，ideo-kernel 兜底那句删去或移到流程文档。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "sprint-log#5",
+    "source": "作者",
+    "basis": [
+      "commit be44889 feat(PBI-23): 冲刺日志约定 sprint-log.md 与模板 sprint-backlog-template.md（Planning 选项目的做法）"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "「逐条对照 Sprint Goal、缺的补、不服务的删、不为凑数而加」是规矩，留。五列（编号、标题、用户故事、位置、大小）与「逐字复制」是格式，归模板 2.1。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "sprint-log#6",
+    "source": "作者",
+    "basis": [
+      "archive scrum/documents/sprint/sprint-14-conventions-tuning.md 第 5 章 sprint-log 段：「七步精化并入 Refine in seven steps」",
+      "archive scrum/documents/sprint/sprint-10-conventions.md 第 1 章：「精化定下的内容都写进 scrum-kernel 的约定」"
+    ],
+    "kind": "规矩",
+    "home": "长文件",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "七步是步骤，按约定「是步骤就归模板或流程文档」，移出 sprint-log 清单；清单留一行：精化由 Master 带、PO 定，问题清零后 PO 宣布结束。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "sprint-log#7",
+    "source": "作者",
+    "basis": [
+      "commit be44889 feat(PBI-23): 冲刺日志约定 sprint-log.md 与模板 sprint-backlog-template.md（Planning 三个阶段：How 是方案，不是步骤）",
+      "archive scrum/documents/sprint/sprint-14-conventions-tuning.md 第 5 章 sprint-log 段：「How 写成 plan」"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "「方案，不是步骤」「一个 session 内做完」是 PO 要留的规矩，留。条内混了方案内容、Scrum Guide 一天度量的换算、检查人、偏离指路四件事：指路删掉，检查人与方案细节归模板或流程文档，一行留「方案到做法层级、一 session 一项」。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "sprint-log#8",
+    "source": "作者",
+    "basis": [
+      "memory S:/SeaPawn-Memory/memory/IDEO-Scrum/delegated-choice-not-gate.md：PO 叫停时的原话「方案还没经 PO 确认，是我越过了关卡」（2026-11-11）"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "「审方案不等于放行，放行只能 PO 给」是 PO 叫停过的事，Memory 必须留。后半句（审阅交 Master 时写交接）是流程细节，可归模板。",
+    "dups": [],
+    "confidence": "高"
+  },
+  {
+    "id": "sprint-log#9",
+    "source": "作者",
+    "basis": [
+      "commit be44889 feat(PBI-23): 冲刺日志约定 sprint-log.md 与模板 sprint-backlog-template.md（施工：笔记、检查点）"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "「第四章是完整记录，新会话只靠日志接手」是规矩，留。Done when 行加 ✓ 日期的写法是模板格式，归模板；「笔记形式随意」一句可以删。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "sprint-log#10",
+    "source": "作者",
+    "basis": [
+      "archive scrum/documents/sprint/sprint-14-conventions-tuning.md 利益相关者的看法一节：写「whenever the AI is stuck」，没说什么算卡住，已登记 PBI-54",
+      "archive scrum/documents/sprint/sprint-10-conventions.md：「检查点没有固定的触发时机」"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "检查点的触发与「卡住」的定义已补全，规矩留。要改的是尾句「This departs from the Scrum Guide's Daily Scrum: see the Departures section ...」，是指路，删掉。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "sprint-log#11",
+    "source": "作者",
+    "basis": [
+      "archive scrum/documents/sprint/sprint-14-conventions-tuning.md 第 5 章 sprint-log 段：「写新的长期文档或新模板之前先给大纲」（PO 强审后第一阶段，commit aa473c6）",
+      "commit aa473c6 （同一文件 2026-11-10 记录的第一阶段提交）"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "写长期文档前先给大纲，PO 强审时加入，有依据，留。与 #12 同一流程的两步，#12 是全文审阅。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "sprint-log#12",
+    "source": "作者",
+    "basis": [
+      "archive scrum/documents/sprint/sprint-10-conventions.md 第 2 节 3 段：「先交结构：五份文件的章节和约定短名，Master 审过才写全文」"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "全文给审阅人标注、改源文件须经批准、以磁盘版本为准，三件事都是规矩，留。问题与建议的格式可归模板。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "sprint-log#13",
+    "source": "作者",
+    "basis": [
+      "archive scrum/documents/sprint/sprint-10-conventions.md 第 3 节：「测试判定标准每次都先写、单独提交再跑，跑过的标准不改。」",
+      "commit d85f6e5 （Sprint 10 判定标准先提交的一例，见该归档第 3 节）"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "「先写标准、先提交、跑过不改」有依据，留。第二句「检查脚本的错误调用逐条记下原因」是另一条规矩，拆成独立一条，或并入 headless-testing.md。",
+    "dups": [],
+    "confidence": "中"
+  }
+]

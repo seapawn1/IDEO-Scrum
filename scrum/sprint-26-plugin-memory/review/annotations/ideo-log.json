@@ -1,0 +1,64 @@
+[
+  {
+    "id": "ideo-log#1",
+    "source": "作者",
+    "basis": [
+      "commit 8e6dc95 docs(Sprint 17): 第 3 项——设计侧全文审阅稿与问题清单；记测试通道备忘（分界句首次出现，在 drafts/ 下的 design-sprint-or-five-modes.md）",
+      "archive scrum/documents/sprint/sprint-17-conventions-rewrite.md：PBI-56 的分界（PO 指定；PO 没指定时，要先做原型、拿角色卡测过才敢动手的开设计冲刺，其余用五模式）"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "规矩本身要留（分界是 PBI-56 的核心）。改写法：三句压成一行（PO 指定；未指定时，要原型经角色卡测过才敢动手的开设计冲刺，其余五模式）；去掉「convention 3 says how to record them」和指向 design-log 第 26 条的尾巴，去向由 design-kernel 自己写。作者定的默认分界，PO 逐条审时可改。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "ideo-log#2",
+    "source": "PO 原话",
+    "basis": [
+      "po scrum/documents/sprint/sprint-17-conventions-rewrite.md：「所以要注意区分，是ideo方法论还是design sprint」",
+      "commit 3d823bd docs(Sprint 17): 补 IDEO 日志与模板——ideo-log 四条、IdeoBacklog 模板；分界改名与 8 处指向；架构图与关系条；Codex 同步（首次写成本条）"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "PO 在停点 ② 明确要求区分「IDEO 方法论」与「design sprint」，核心留。条文过长（约六句，含「heavy research module」等描述），改成一行：五模式是基础与工具箱、没有固定顺序；设计冲刺是另一套五阶段；两者不互相套用（IDEO 日志不跑设计冲刺步骤，设计冲刺不开 IDEO 日志）。「IDEO 五阶段法 = 五模式」这一句是用词规定，建议保留。Master 写的「heavy research module」等修饰词可删。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "ideo-log#3",
+    "source": "作者",
+    "basis": [
+      "commit 3d823bd docs(Sprint 17): 补 IDEO 日志与模板——ideo-log 四条、IdeoBacklog 模板；分界改名与 8 处指向；架构图与关系条；Codex 同步（首次写成本条）",
+      "po scrum/documents/sprint/sprint-17-conventions-rewrite.md：「标准得五节，没有什么拆分」",
+      "archive scrum/documents/sprint/sprint-17-conventions-rewrite.md：IDEO 日志并入 PBI-56（Master 定：五章一模式一章，模式之间没有 PO 关卡，可以来回走）"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "PO 要的「标准五节」与这条一致，开日志的规矩要留。「一两个方法就够、多于一两个或多于一次会话才开」的门槛是作者定的，PO 可再定。写法已够短；指向 IDEO-modes/ 与 convention 2 的尾巴保留。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "ideo-log#4",
+    "source": "作者",
+    "basis": [
+      "commit 1e347b4 feat(Sprint 18): H2 交付 PBI-66 日志读取接口、目标引用与工作块完成标记（Now 与 Waiting for PO 行进入 ideo-log）",
+      "archive scrum/documents/sprint/sprint-18-rules-first.md：日志头部（PBI-66）——冲刺、设计、IDEO 三种日志头部有 Now 与 Waiting for PO",
+      "commit 9734304 docs(Sprint 23): H10 落源 18 份已审稿（「原型的去留」两句与归档句落入本条）"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "Now 与 Waiting for PO 的格式 Sprint 18 已在 overview 写定，本条重复写了一遍，应删去格式细节，只留「开日志后 Now 与 Waiting 随变化同步更新、不设门」。另有两件事：「做完保留、下次 Review 归档」与 sprint-log#17 同义，可并入；「其他独立原型做完即删」是 Sprint 23 落源时带进来的，依据只有落源提交，没有单独的 PO 原话或决定记录，PO 拿不准就定去留（确认的话改写成一句）。",
+    "dups": ["sprint-log#17"],
+    "confidence": "中"
+  }
+]

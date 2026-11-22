@@ -1,0 +1,123 @@
+[
+  {
+    "id": "overview#10",
+    "source": "作者",
+    "basis": [
+      "commit 9c9bd67 feat(PBI-39): scrum-kernel 约定总览 overview.md（当时在 conventions/overview.md，第 9 条标 Author's practice）",
+      "archive scrum/documents/sprint/sprint-10-conventions.md：谁做什么一节写「拿不准就问 PO」"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "拿不准就问 PO 是每个角色都要守的规矩；它是通用版，sprint-log#25 只是冲刺里的具体问法，两条不冲突，保留本条。",
+    "dups": ["sprint-log#25"],
+    "confidence": "高"
+  },
+  {
+    "id": "overview#11",
+    "source": "作者",
+    "basis": [
+      "commit 9c9bd67 feat(PBI-39): scrum-kernel 约定总览 overview.md（第 10 条 Author's practice，引 Scrum Guide 原句）",
+      "source plugins/ideo-scrum/skills/scrum-kernel/assets/scrum-guide-2020.md：「they participate as Developers」"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "PO 亲自施工时以 Developer 身份参与、How 与 PO 商量，是会影响日常分工的行为规矩；引文出自 Scrum Guide 2020，保留原句。",
+    "dups": [],
+    "confidence": "高"
+  },
+  {
+    "id": "overview#12",
+    "source": "作者",
+    "basis": [
+      "memory S:/SeaPawn-Memory/memory/IDEO-Scrum/delegated-choice-not-gate.md：「方案还没经 PO 确认，是我越过了关卡」",
+      "archive scrum/documents/sprint/sprint-23-log-rules.md：PO 原话「可以，我觉得23、25可以结束 what，然后去放行到 how。」",
+      "commit 9734304 docs(Sprint 23): H10 落源 18 份已审稿（此提交起出现「Approving a result is not permission to move on」）"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "规矩本身有 PO 原话依据，留；但这一条是一大段，多句并列。改成清单一行（每个阶段结束停下，等 PO 明说进下一阶段才进），记录谁决定、日期、范围的细则已在 sprint-log#24 与 design-log#26，删去重复部分。",
+    "dups": ["sprint-log#24", "design-log#26"],
+    "confidence": "中"
+  },
+  {
+    "id": "overview#13",
+    "source": "作者",
+    "basis": [
+      "commit 9c9bd67 feat(PBI-39): scrum-kernel 约定总览 overview.md（第 11 条 Author's practice）",
+      "archive scrum/documents/sprint/sprint-10-conventions.md：约定分组里列出「会话分工」"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "每个项目只有一个 Scrum Master 会话，决定了谁带 Developer 和 Stakeholder，是会话分工的基础；保留，一行即可。依据只到 Sprint 10 的归档，PO 可再确认。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "overview#14",
+    "source": "作者",
+    "basis": [
+      "commit 9c9bd67 feat(PBI-39): scrum-kernel 约定总览 overview.md（第 12 条 Author's practice，当时是一张分工表）",
+      "memory S:/SeaPawn-Memory/memory/IDEO-Scrum/master-helper-division.md：「Master 做判断和决定，费 token 的活（发散、原型、测试、落盘）交给辅助会话」"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "审阅、长期维护、小改、施工各交给谁，这个分工有依据，留；但写法要改：去掉「such as PO assistant」这类旧叫法（清单里只写角色，不写具体会话名），把整段压成一行，细则归 sprint-log#26 与 stakeholder 命令。与 sprint-log#26 部分重叠（跨会话协作），合并时保留本条的分工表述。",
+    "dups": ["sprint-log#26"],
+    "confidence": "中"
+  },
+  {
+    "id": "overview#15",
+    "source": "作者",
+    "basis": [
+      "commit 9c9bd67 feat(PBI-39): scrum-kernel 约定总览 overview.md（第 13 条 Author's practice，写明标签与短名）",
+      "archive scrum/documents/sprint/sprint-10-conventions.md：约定本身一节写「约定本身：标签与短名」"
+    ],
+    "kind": "说明",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "标签定义（无标签即作者做法、Supplement、Decide on the spot）是读其他条的前提，不能删，压成一行留在清单里；「reference, not law」和「不写工具机制」等背景句删去。删掉背景句不丢规矩。",
+    "dups": [],
+    "confidence": "高"
+  },
+  {
+    "id": "overview#16",
+    "source": "作者",
+    "basis": [
+      "commit 9c9bd67 feat(PBI-39): scrum-kernel 约定总览 overview.md（第 15 条 Author's practice）",
+      "memory S:/SeaPawn-Memory/memory/IDEO-Scrum/template-structure.md：「模板的章按流程分，节只放产出」"
+    ],
+    "kind": "格式",
+    "home": "不进 Memory",
+    "recommend": "删",
+    "merge_into": null,
+    "reason": "这是模板结构的规定，归模板与模板约定，不是角色行为；删出 Memory 不丢规矩，模板和 template-structure 的记忆仍管着它。",
+    "dups": [],
+    "confidence": "高"
+  },
+  {
+    "id": "overview#17",
+    "source": "作者",
+    "basis": [
+      "commit 9c9bd67 feat(PBI-39): scrum-kernel 约定总览 overview.md（第 16 条 Author's practice，引 Scrum Guide 原句）",
+      "commit ccd8257 feat(PBI-37): 设计日志开设计与接手——Open a design、Now 一行、Resume from the header、目标不变其余可调"
+    ],
+    "kind": "规矩",
+    "home": "长文件",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "核心规矩有用：只有 PO 改目标、其余随学习可变且要记变动；留一行进清单。承诺表、各日志对应哪个章节等细则归模板和日志约定。Scrum Guide 的三段引文按守则逐字保留，不改。",
+    "dups": [],
+    "confidence": "中"
+  }
+]

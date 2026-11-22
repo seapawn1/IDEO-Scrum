@@ -1,0 +1,139 @@
+[
+  {
+    "id": "overview#1",
+    "source": "作者",
+    "basis": [
+      "commit 87bd0db fix(PBI-49)：overview 1 与 product-log 1 并成一处",
+      "archive scrum/documents/sprint/sprint-14-conventions-tuning.md：⑦ 做了（product-log 1：老项目怎么写）"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "并",
+    "merge_into": "product-log#1",
+    "reason": "一份产品日志起步，与 product-log#1（老项目怎么写）说的是同一件事；并入 product-log#1，只留一行。",
+    "dups": ["product-log#1"],
+    "confidence": "高"
+  },
+  {
+    "id": "overview#2",
+    "source": "作者",
+    "basis": [
+      "commit 9c9bd67 feat(PBI-39)：overview 约定总览首次写入，三层与设计并列",
+      "archive scrum/documents/sprint/sprint-08-design-kernel.md：设计内核独立，与冲刺并列"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "与 Departures 表「Designs sit beside Sprints」一行说同一件事。改法：只留「设计与冲刺并列，设计的结论经冲刺落地」一句；删掉「This departs from the Scrum Guide: see Departures」尾巴和指向 ideo-log 的条号。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "overview#3",
+    "source": "作者",
+    "basis": [
+      "commit 9c9bd67 feat(PBI-39)：overview 三层表首次写入",
+      "archive scrum/documents/sprint/sprint-10-conventions.md：约定总览谁做什么（角色表）"
+    ],
+    "kind": "格式",
+    "home": "长文件",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "三层表是框架图，属长文件内容，清单只留一行索引。改法：表保留；末段「The third layer is not a log…」与指向 design-log 19、ideo-log 4 的条号去掉，改成相对链接。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "overview#4",
+    "source": "作者",
+    "basis": [
+      "commit 9c9bd67 feat(PBI-39)：overview 文件与文档文件夹一节首次写入",
+      "archive scrum/documents/sprint/sprint-10-conventions.md：文档文件夹的位置要 PO 定（Supplement 段）"
+    ],
+    "kind": "格式",
+    "home": "长文件",
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "这是本仓库的目录布局，写在长文件里；清单只留一行索引。末句「use your project's own places」保留，它是给其他项目用的。",
+    "dups": ["overview#5"],
+    "confidence": "中"
+  },
+  {
+    "id": "overview#5",
+    "source": "作者",
+    "basis": [
+      "commit 8d4ca85 docs(Sprint 17)：收官——Review（冲刺日志归档）",
+      "archive scrum/documents/sprint/sprint-17-conventions-rewrite.md：Review 收官时冲刺日志归档进 scrum/documents/sprint/"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "规矩本身要留（单用一份的文件用完即清，整个 Scrum 的文件进 scrum/documents/）。改法：去掉指向 design-log 19、sprint-log 17 的条号，写成「归档时随 Review 移入 scrum/documents/」一句。",
+    "dups": ["overview#6"],
+    "confidence": "中"
+  },
+  {
+    "id": "overview#6",
+    "source": "作者",
+    "basis": [
+      "commit 9c9bd67 feat(PBI-39)：overview 工作材料一条首次写入",
+      "archive AGENTS.md：Retro 只写记忆"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "与 overview#5 同说保留设计原件、链接归档。末句「Retro lessons go only where sprint-log convention 18 says」与 sprint-log#18 同一件事，改为指向 sprint-log#18 或删去末句，只留「工作材料不进日志，链接归档原件」。",
+    "dups": ["overview#5", "sprint-log#18"],
+    "confidence": "中"
+  },
+  {
+    "id": "overview#7",
+    "source": "作者",
+    "basis": [
+      "commit 9c9bd67 feat(PBI-39)：overview 名词一节首次写入",
+      "archive scrum/documents/sprint/sprint-10-conventions.md：要一张术语表（go-ahead、PBI、DoD、SGEP、role card）"
+    ],
+    "kind": "说明",
+    "home": "不进 Memory",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "这是词条定义，属说明，不进清单；词条应归 docs/glossary.md。其中「fresh subagent 的起点只是 brief，fork 不算」是一条规矩，改为清单一行，其余词条移入词汇表（先核对词汇表已有的条目）。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "overview#8",
+    "source": "作者",
+    "basis": [
+      "commit 9c9bd67 feat(PBI-39)：overview 角色表首次写入",
+      "commit 9ed7d6d feat: PBI-20 角色重定义——只有 PO 必须是人，SM 派活与审阅",
+      "archive scrum/documents/sprint/sprint-10-conventions.md：谁做什么，角色表"
+    ],
+    "kind": "规矩",
+    "home": "长文件",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "角色表很长，属长文件。清单只留一行：「角色命令先按顺序加载内核（ideo → scrum → …），再做角色的活」。改法：把「In Claude Code, use the Skill tool one at a time…」的加载细则和表格一起放进长文件；Developer 与 Stakeholder 的加载顺序照现行写法保留。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "overview#9",
+    "source": "作者",
+    "basis": [
+      "source plugins/ideo-scrum/skills/scrum-kernel/assets/scrum-guide-expansion-pack-2026.1.md：「The Product Owner must be human.」",
+      "commit 9ed7d6d feat: PBI-20 角色重定义——只有 PO 必须是人",
+      "archive scrum/documents/sprint/sprint-10-conventions.md：「只有 PO 必须是人」那段改成一句，指向总览"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "这是本插件与 SGEP 的主要偏离（SGEP 原文要求 PO 与 SM 都必须是人），Departures 表已有同一条，清单必留一行，理由写在 Departures 表。",
+    "dups": [],
+    "confidence": "高"
+  }
+]

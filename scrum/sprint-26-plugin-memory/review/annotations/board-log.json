@@ -1,0 +1,279 @@
+[
+  {
+    "id": "board-log#1",
+    "source": "作者",
+    "basis": [
+      "commit 1c2cdb2 feat(Sprint 19): 块 7——看板约定 board.md（16 条，自带给子代理的简报）与模板 board-template.html",
+      "archive scrum/documents/design/design-board.md：设计目标「看板挂在 PO 的屏上」"
+    ],
+    "kind": "说明",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "目的只要一句：一张页面看全项目，一眼看清。原文后半「few things, large」是版式，归模板，删去。",
+    "dups": [],
+    "confidence": "高"
+  },
+  {
+    "id": "board-log#2",
+    "source": "作者",
+    "basis": [
+      "commit 1c2cdb2 feat(Sprint 19): 块 7——看板约定 board.md（16 条，自带给子代理的简报）与模板 board-template.html",
+      "archive scrum/ProductBacklog.md 边界：「看板只读日志、不另存状态」"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "看板删了重写结果一致，所以不进版本库、不存状态；这是看板可信的前提，删了就没人知道能随手丢。",
+    "dups": ["board-log#19"],
+    "confidence": "高"
+  },
+  {
+    "id": "board-log#3",
+    "source": "作者",
+    "basis": [
+      "commit e578214 feat(Sprint 20): 块 9——看板新模板；看板改名 ScrumBoard.html / board-log.md / scrum-board-template.html",
+      "po scrum/ProductBacklog.md：「就是它一般用非常便宜的模型嘛」"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "位置（scrum/ScrumBoard.html）与「便宜的模型写」留。「PO 的常驻辅助会话」要改：PBI-86 的秘书角色定下后换成秘书，写法跟着改。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "board-log#4",
+    "source": "作者",
+    "basis": [
+      "commit ed53e1c feat(Sprint 20): 块 10——board-log.md 重写（19 条：数据的字段表、概括的规矩）",
+      "archive scrum/documents/sprint/sprint-20-presentable.md：「重写成 19 条」"
+    ],
+    "kind": "格式",
+    "home": "不进 Memory",
+    "recommend": "删",
+    "merge_into": null,
+    "reason": "日志路径与分支读取是数据来源细则，check.py 按日志实际位置核对，模板注释也指向本约定。删旧约定前须先确认 check.py 留着这条，否则丢的是路径表。",
+    "dups": ["board-log#5"],
+    "confidence": "中"
+  },
+  {
+    "id": "board-log#5",
+    "source": "作者",
+    "basis": [
+      "commit ed53e1c feat(Sprint 20): 块 10——board-log.md 重写（19 条：数据的字段表、概括的规矩）",
+      "commit f030513 fix(PBI-71): 修正 IDEO 收尾、宿主状态和头部字段判定"
+    ],
+    "kind": "格式",
+    "home": "不进 Memory",
+    "recommend": "删",
+    "merge_into": null,
+    "reason": "读哪几节取哪几项是数据契约，check.py 与字段表已覆盖；IDEO 的 For 与 Now 判定已由 PBI-71 落在检查脚本里。删前确认这两处仍在。",
+    "dups": ["board-log#4", "board-log#11"],
+    "confidence": "中"
+  },
+  {
+    "id": "board-log#6",
+    "source": "作者",
+    "basis": [
+      "commit ed53e1c feat(Sprint 20): 块 10——board-log.md 重写（19 条：数据的字段表、概括的规矩）"
+    ],
+    "kind": "格式",
+    "home": "长文件",
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "说明地图从产品日志 2.2 节、设计日志 2.1 节取，以及节点标签怎么取；地图概括与逐字核对都依赖它，不能只靠脚本。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "board-log#7",
+    "source": "作者",
+    "basis": [
+      "commit ed53e1c feat(Sprint 20): 块 10——board-log.md 重写（19 条：数据的字段表、概括的规矩）",
+      "archive scrum/documents/design/design-board.md：故事板第 3 版（固定页面 + 一块数据）为版式依据"
+    ],
+    "kind": "规矩",
+    "home": "不进 Memory",
+    "recommend": "删",
+    "merge_into": null,
+    "reason": "总览的版式与交互（流向、点亮去向、颜色）已由模板实现，check.py 对页面与模板逐字比。删了 Memory 不丢做事的规矩，版式依据留在设计卡里。",
+    "dups": [],
+    "confidence": "高"
+  },
+  {
+    "id": "board-log#8",
+    "source": "作者",
+    "basis": [
+      "commit ed53e1c feat(Sprint 20): 块 10——board-log.md 重写（19 条：数据的字段表、概括的规矩）"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "卡片三层的版式归模板。只留一条：设计卡的方案区，未选定就写明未选定，不编造故事板。其余删去。",
+    "dups": ["board-log#12"],
+    "confidence": "中"
+  },
+  {
+    "id": "board-log#9",
+    "source": "作者",
+    "basis": [
+      "commit ed53e1c feat(Sprint 20): 块 10——board-log.md 重写（19 条：数据的字段表、概括的规矩）"
+    ],
+    "kind": "格式",
+    "home": "不进 Memory",
+    "recommend": "删",
+    "merge_into": null,
+    "reason": "页面自算项（名称取文件夹、取冒号前、条目序号、计数）是模板与 check.py 的实现细节，数据里本就不写。删了不丢行为规矩。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "board-log#10",
+    "source": "作者",
+    "basis": [
+      "commit 930c065 feat(Sprint 19): 块 9、10——board.md 补「长文照抄会丢字」；本仓库现状的生成改按「还开着冲刺文件夹的分支」建",
+      "archive scrum/documents/sprint/sprint-19-board-hook.md：「链接写成」的死链被检查脚本抓到"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "分支上的日志不做死链，卡片写分支名与提交号，这是看板会不会坏的规矩。一行即可说清。",
+    "dups": [],
+    "confidence": "高"
+  },
+  {
+    "id": "board-log#11",
+    "source": "作者",
+    "basis": [
+      "commit ed53e1c feat(Sprint 20): 块 10——board-log.md 重写（19 条：数据的字段表、概括的规矩）",
+      "archive scrum/documents/sprint/sprint-20-presentable.md：「重写成 19 条」"
+    ],
+    "kind": "格式",
+    "home": "不进 Memory",
+    "recommend": "删",
+    "merge_into": null,
+    "reason": "字段表是数据契约，check.py 逐字段核对。注意：模板注释说字段在 board-log.md，若旧约定删掉，字段表须先随模板或检查脚本保下来，否则丢。",
+    "dups": ["board-log#5"],
+    "confidence": "中"
+  },
+  {
+    "id": "board-log#12",
+    "source": "作者",
+    "basis": [
+      "archive scrum/documents/sprint/sprint-19-board-hook.md：「长文手抄丢一个字符」",
+      "commit 930c065 feat(Sprint 19): 块 9、10——board.md 补「长文照抄会丢字，对地图逐行读回」"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "核心只有一句：★ 字段逐字照抄，长文用命令复制、不手抄，地图概括另说。压成一行；步骤与地图截取的细则留长文件。",
+    "dups": ["board-log#17", "board-log#8"],
+    "confidence": "高"
+  },
+  {
+    "id": "board-log#13",
+    "source": "作者",
+    "basis": [
+      "commit ed53e1c feat(Sprint 20): 块 10——board-log.md 重写（19 条：数据的字段表、概括的规矩）"
+    ],
+    "kind": "格式",
+    "home": "不进 Memory",
+    "recommend": "删",
+    "merge_into": null,
+    "reason": "条目分组（sprint、design、later、next）与顺序是 check.py 核对的派生规则，数据里不写；删了 Memory 不丢行为。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "board-log#14",
+    "source": "作者",
+    "basis": [
+      "commit ed53e1c feat(Sprint 20): 块 10——board-log.md 重写（19 条：数据的字段表、概括的规矩）"
+    ],
+    "kind": "格式",
+    "home": "不进 Memory",
+    "recommend": "删",
+    "merge_into": null,
+    "reason": "工作项归属（Work item 写条目号）是数据派生规则，check.py 与统计逻辑已用；删了不丢行为规矩。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "board-log#15",
+    "source": "作者",
+    "basis": [
+      "commit e578214 feat(Sprint 20): 块 9——看板新模板；看板改名 ScrumBoard.html / board-log.md / scrum-board-template.html"
+    ],
+    "kind": "格式",
+    "home": "不进 Memory",
+    "recommend": "删",
+    "merge_into": null,
+    "reason": "模板文件头注释已写明「每个 < 写成 \\u003c」，check.py 核对，Memory 不留。",
+    "dups": [],
+    "confidence": "高"
+  },
+  {
+    "id": "board-log#16",
+    "source": "PO 原话",
+    "basis": [
+      "po scrum/documents/design/design-board.md：「那种都是众所周知的呀」",
+      "archive scrum/documents/sprint/sprint-21-design-board.md：PBI-71 按 For 实际宿主与 Now 收尾态判定 IDEO 归属"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "不画五个阶段是 PO 定的，留；「等 PO 的事不显示」是 PO 的分工，留。IDEO 收尾态以 Now 行为准一句保留，其余拆开或删去。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "board-log#17",
+    "source": "作者",
+    "basis": [
+      "commit ed53e1c feat(Sprint 20): 块 10——board-log.md 重写（19 条：数据的字段表、概括的规矩）"
+    ],
+    "kind": "规矩",
+    "home": "不进 Memory",
+    "recommend": "并",
+    "merge_into": "board-log#12",
+    "reason": "五步流程是模板注释与 board-log.md 的步骤，写法归模板。其中「用命令复制、不手抄」的要求并入 #12。",
+    "dups": ["board-log#12"],
+    "confidence": "高"
+  },
+  {
+    "id": "board-log#18",
+    "source": "作者",
+    "basis": [
+      "commit ed53e1c feat(Sprint 20): 块 10——board-log.md 重写（19 条：数据的字段表、概括的规矩）",
+      "memory S:/SeaPawn-Memory/memory/IDEO-Scrum/board-check-only-what-conventions-ask.md：看板检查只查约定要求的"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "写完跑 scripts/board_check/check.py 并打开页面，确认是看板而不是报错页。核对项由脚本负责，不在 Memory 里重列。",
+    "dups": [],
+    "confidence": "高"
+  },
+  {
+    "id": "board-log#19",
+    "source": "作者",
+    "basis": [
+      "commit ed53e1c feat(Sprint 20): 块 10——board-log.md 重写（19 条：数据的字段表、概括的规矩）"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "并",
+    "merge_into": "board-log#2",
+    "reason": "与 #2 同一件事（不改日志、不存状态）。只多一句「挂上看板不等于事实」，并入 #2 时保留这句。",
+    "dups": ["board-log#2"],
+    "confidence": "高"
+  }
+]

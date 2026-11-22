@@ -1,0 +1,196 @@
+[
+  {
+    "id": "design-log#1",
+    "source": "作者",
+    "basis": [
+      "commit 7e3e5b6 feat(PBI-49)：设计日志修订稿，PO 决定、Master 提议，加入「开设计」相关条（PBI-50）",
+      "archive scrum/documents/sprint/sprint-14-conventions-tuning.md 第 144 行：写明「Open a design for a question with no ready answer 写明什么时候必须开设计（PBI-50）」"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "行为规矩要留（先问有没有现成答案，再定走设计冲刺还是五模式）；但一条里塞了四件事（触发、先 Empathize、待 PO 授权、白纸项目），应拆短；白纸一句与第 19 条的收官选目标重叠，留一处即可。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "design-log#2",
+    "source": "作者",
+    "basis": [
+      "commit b49278d feat(PBI-28)：设计日志约定 v1，设计与 Sprint 分开成两件事",
+      "archive scrum/documents/sprint/sprint-14-conventions-tuning.md 第 75 行：流程测试题 2「为它开设计、只取出这个难点、从共情起」"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "一句话的行为规矩，写不进别处又很短，留着；它划出设计与 Sprint 的边界，删了会丢「其余 Sprint 照常」这层意思。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "design-log#3",
+    "source": "作者",
+    "basis": [
+      "commit b49278d feat(PBI-28)：设计日志约定 v1，写入设计者负责、Scrum Master 记录的分工",
+      "memory S:/SeaPawn-Memory/memory/IDEO-Scrum/design-line-po-in-the-room.md：共情和定义由 PO 与 Master 当面定，一个会话就定完，Designer 从 Ideate 接手",
+      "archive scrum/documents/design/design-board.md 第 43 行：「共情、定义由 PO 和 Master 当面定，比交给一个新会话快、也准」"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "分工与「当面定」的做法要留，但这一条超过一行：身份声明、同一会话兼两角色的写法、PO 决定由谁兼任都挤在里面。应拆成一行（共情与定义由 PO 与 Master 当面定，Designer 从 Ideate 接手），身份写法归设计日志模板。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "design-log#4",
+    "source": "作者",
+    "basis": [
+      "commit b49278d feat(PBI-28)：设计日志约定 v1，首次写入设计分支的开设规则",
+      "commit 7e3e5b6 feat(PBI-49)：设计日志修订稿，「定分支排在填表头之前」"
+    ],
+    "kind": "格式",
+    "home": "不进 Memory",
+    "recommend": "删",
+    "merge_into": null,
+    "reason": "分支命名与 git 的限制属于工具细节，应留在设计日志模板或 design-kernel 约定里，不进 Memory 清单。删了会丢「不要起 <sprint-branch>/<name>」这条禁令，故请在模板里保留它。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "design-log#5",
+    "source": "作者",
+    "basis": [
+      "commit b49278d feat(PBI-28)：设计日志约定 v1 与模板（design-kernel/conventions/），首次写入设计文件夹与模板的开设步骤",
+      "archive scrum/documents/sprint/sprint-09-design-template.md：设计模板的结构与开设约定"
+    ],
+    "kind": "格式",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "目录命名、复制模板、填表头都是格式规定，应归设计日志模板；但「原型和工作材料不进 Increment」是要留的行为规矩，改成这一行留在清单里。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "design-log#6",
+    "source": "作者",
+    "basis": [
+      "commit 7e3e5b6 feat(PBI-49)：设计日志修订稿，新增「从当事人起」一条",
+      "archive scrum/documents/sprint/sprint-14-conventions-tuning.md 第 144 行：列出「Start from the people」为设计日志条文之一"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "行为要留：先听当事人的具体经历、标注一手或二手来源。但条文同时写了 PO 是当事人时的提问顺序、愿景写法与表格位置，过长；清单里留「先听当事人，一手与二手分开标」一行，其余归阶段说明。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "design-log#7",
+    "source": "作者",
+    "basis": [
+      "commit 7e3e5b6 feat(PBI-49)：设计日志修订稿，写入「先定挑战与目标，再找专家和做研究」",
+      "archive scrum/documents/ExpertNotes.md 第 21 行：「一条重要原则：先定 goal 和挑战，再做深度研究」"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "行为规矩明确，与 ExpertNotes 的原则一致，且区分了何时找专家、何时做研究，删了会丢这个先后顺序。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "design-log#8",
+    "source": "作者",
+    "basis": [
+      "commit b49278d feat(PBI-28)：设计日志约定 v1，写入地图与问题写在日志里的条文",
+      "memory S:/SeaPawn-Memory/memory/GlobalMemory/mermaid-td-and-tables.md：Mermaid 一律 flowchart TD"
+    ],
+    "kind": "格式",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "地图用 Mermaid flowchart TD、只画想要达到的体验、五六框一个回环，这些要留成一行；条文里的「departs from the book」标签与 PO 选 How Might We 的写法应拆出，目标选择与分支、方案的界限归步骤文件。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "design-log#9",
+    "source": "作者",
+    "basis": [
+      "commit c946ed7 feat(Sprint 20)：PBI-70 约定小修，首次出现「Lightning Demos (optional)」一条；未查到更早的出处"
+    ],
+    "kind": "规矩",
+    "home": "不进 Memory",
+    "recommend": "删",
+    "merge_into": null,
+    "reason": "可选步骤：并行找现成想法的做法属于书里的步骤，归流程文件。删了会丢「想法只是工作材料，不进日志」这层意思，请在步骤文件里保留。出处只查到 Sprint 20 的小修，把握低。",
+    "dups": [],
+    "confidence": "低"
+  },
+  {
+    "id": "design-log#10",
+    "source": "作者",
+    "basis": [
+      "commit 7e3e5b6 feat(PBI-49)：设计日志修订稿，「先发散后收敛」进入设计日志",
+      "archive scrum/documents/sprint/sprint-14-conventions-tuning.md 第 25 行：PBI-47「设计的构思——先发散后收敛」，要求每个草图至少两种方法发散"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "核心行为规矩：先发散、至少两种方法且其中一种来自 ideo-kernel、发散时不做判断，然后才收敛。删了会丢「不跳过发散直接出方案」的防线，故留。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "design-log#11",
+    "source": "作者",
+    "basis": [
+      "commit c946ed7 feat(Sprint 20)：PBI-70 约定小修，首次出现「Isolated solutions (optional)」一条",
+      "memory S:/SeaPawn-Memory/memory/IDEO-Scrum/design-line-po-in-the-room.md：两个子代理拿到同一份小结，方案趋同，材料连小结一起分开",
+      "archive scrum/documents/design/design-board.md 第 43 行：「两个画方案的子代理拿到同一份「模式小结」，方案趋同成一个思路」"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "隔离子代理互不可见、各拿自己的材料与小结、先发散，这些要留；但条文很长，且「是否用子代理、用几个、用什么模型」是 PO 按本轮定的（标签 Decide on the spot），不应进 Memory 的规矩。改为一行，其余归步骤。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "design-log#12",
+    "source": "作者",
+    "basis": [
+      "commit c946ed7 feat(Sprint 20)：PBI-70 约定小修，首次出现「Talk with the Product Owner」一条（-S 查到的最早提交；同类条文在 design-log 中的位置随后由 7e3e5b6 调整）"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "行为规矩：不论有没有子代理，主线程都先和 PO 谈想法，所有路线回到主线程合并后才收敛。删了会丢「PO 没想法时由主线程替他画一个方向」的规矩，故留。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "design-log#13",
+    "source": "作者",
+    "basis": [
+      "commit b49278d feat(PBI-28)：设计日志约定 v1与模板，「Choosing is the key step」一条首次出现（-S 查到的最早提交）"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "「PO 拍板、不求共识」是要留的行为规矩；但条文里的「按 steps/3-3-decide.md 在对话里做」是步骤引用，「只把选中的方案写进 3.1 节」是模板格式。改为「PO 拍板，不求共识」一行，步骤与位置归流程和模板。",
+    "dups": [],
+    "confidence": "中"
+  }
+]

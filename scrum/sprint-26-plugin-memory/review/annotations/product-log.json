@@ -1,0 +1,263 @@
+[
+  {
+    "id": "product-log#1",
+    "source": "作者",
+    "basis": [
+      "commit 87bd0db fix(PBI-49): 照 Master 审停点 2 改七处——…overview 1 与 product-log 1 并成一处",
+      "commit 0122f8e feat(PBI-31): 产品日志约定 product-log.md 与模板 product-backlog-template.md"
+    ],
+    "kind": "规矩",
+    "home": "不进 Memory",
+    "recommend": "并",
+    "merge_into": "overview#1",
+    "reason": "与 overview 1 说同一件事（一份产品日志），87bd0db 已把两条并成一处；并入 overview#1 后这条删掉。",
+    "dups": ["overview#1"],
+    "confidence": "中"
+  },
+  {
+    "id": "product-log#2",
+    "source": "作者",
+    "basis": [
+      "commit a8095ef feat(PBI-49): scrum 这边的修订稿——overview、product-log、sprint-log、分工一节（条号还没重排）",
+      "archive scrum/documents/conventions-review-log.md 表第 1 行（约定 2 白纸）：「不说用 IDEO 弄清楚，改成做一次设计」"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "写不出产品和目标时改做一次设计，是 PO 审约定时定的走向，删了就没有去向；指向 design-kernel 的那句可以保留。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "product-log#3",
+    "source": "补充",
+    "basis": [
+      "commit a8095ef feat(PBI-49): scrum 这边的修订稿——overview、product-log、sprint-log、分工一节（条号还没重排）"
+    ],
+    "kind": "规矩",
+    "home": "不进 Memory",
+    "recommend": "删",
+    "merge_into": null,
+    "reason": "条文自标 *Supplement*，助手推断，未经实践或 PO 确认；“先查事实、再一条提问”属于 Master 的做事方式，删了不丢已确认的规矩。",
+    "dups": [],
+    "confidence": "低"
+  },
+  {
+    "id": "product-log#4",
+    "source": "作者",
+    "basis": [
+      "commit 1e347b4 feat(Sprint 18): H2 交付 PBI-66 日志读取接口、目标引用与工作块完成标记（git -S 最早命中，与本条内容关系弱）",
+      "archive scrum/documents/sprint/sprint-10-conventions.md 第 174 行：Product Goal 这次不定，1.2 不动"
+    ],
+    "kind": "格式",
+    "home": "不进 Memory",
+    "recommend": "删",
+    "merge_into": null,
+    "reason": "主体是模板格式（一行一表、Vision 行可选）；「无 Now 或 Waiting for PO 行」这句是说明，留在约定或模板里即可，不进 Memory。",
+    "dups": [],
+    "confidence": "低"
+  },
+  {
+    "id": "product-log#5",
+    "source": "作者",
+    "basis": [
+      "source plugins/ideo-scrum/skills/scrum-kernel/references/scrum-artifact-increment.md：「The Definition of Output Done is the overall quality standard for the whole Increment, not the specific standard for each item」",
+      "commit a8095ef feat(PBI-49): scrum 这边的修订稿——overview、product-log、sprint-log、分工一节（条号还没重排）"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "前半两句是 Outcome Done 与 Output Done 的定义，属说明，可删；后半「标准写准确、只留跨产品的要求、单条要求进验收标准」是规矩，改成一行留下。SGEP 的定义原文在 references 里。",
+    "dups": [],
+    "confidence": "低"
+  },
+  {
+    "id": "product-log#6",
+    "source": "作者",
+    "basis": [
+      "commit a8095ef feat(PBI-49): scrum 这边的修订稿——overview、product-log、sprint-log、分工一节（条号还没重排）"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "短表而非人物简介、表空时问 PO，直接影响 Stakeholder 子代理的身份来源，Memory 里需要。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "product-log#7",
+    "source": "作者",
+    "basis": [
+      "commit a8095ef feat(PBI-49): scrum 这边的修订稿——overview、product-log、sprint-log、分工一节（条号还没重排）"
+    ],
+    "kind": "格式",
+    "home": "不进 Memory",
+    "recommend": "删",
+    "merge_into": null,
+    "reason": "地图的画法（actors 在上、五到十五步、flowchart TD）是步骤，归 design-kernel 的 steps/2-1 和模板；Memory 里不留。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "product-log#8",
+    "source": "作者",
+    "basis": [
+      "archive scrum/documents/conventions-review-log.md 表第 1 行（约定 2 白纸）：「不写 TBD，免得和约定 8 冲突」",
+      "commit a8095ef feat(PBI-49): scrum 这边的修订稿——overview、product-log、sprint-log、分工一节（条号还没重排）"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "不留 TBD、把不清楚的点变成条目，是一句话的规矩，在 PO 审约定时保留过。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "product-log#9",
+    "source": "作者",
+    "basis": [
+      "commit a8095ef feat(PBI-49): scrum 这边的修订稿——overview、product-log、sprint-log、分工一节（条号还没重排）"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "一句话划清界线：模块与接口归 Developer、不进产品日志，是 Memory 里需要的边界。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "product-log#10",
+    "source": "作者",
+    "basis": [
+      "commit 63d7c82 feat(PBI-32): 四个角色命令跟上约定；scrum-kernel SKILL.md 加约定短表；PBI 编号与冲刺日志 2.1 的写法"
+    ],
+    "kind": "格式",
+    "home": "不进 Memory",
+    "recommend": "删",
+    "merge_into": null,
+    "reason": "七列表是字段规定，归 product-backlog-template.md；模板还在，删掉 Memory 里的这条不丢规矩。",
+    "dups": [],
+    "confidence": "高"
+  },
+  {
+    "id": "product-log#11",
+    "source": "作者",
+    "basis": [
+      "archive scrum/documents/conventions-review-log.md 表第 3 行（约定 11 编号不是排名）：「编号必须唯一、排名即往上提」",
+      "archive scrum/documents/sprint/sprint-11-conventions-review.md 表：product-log 3「成立：编号唯一，排名是往上挪」"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "编号唯一、排名归 PO，PO 审约定时确认过，是 Memory 里需要的一行。",
+    "dups": [],
+    "confidence": "高"
+  },
+  {
+    "id": "product-log#12",
+    "source": "作者",
+    "basis": [
+      "archive scrum/documents/conventions-review-log.md 第 53 行：「Product Owner 与 Scrum Master 一起定条目」",
+      "commit a8095ef feat(PBI-49): scrum 这边的修订稿——overview、product-log、sprint-log、分工一节（条号还没重排）"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "这是对官方指南的偏离（条文自标 Departs from the Scrum Guide，偏离表里已有对应行），PO 与 Master 一起定条目是我方选择，需要留在 Memory 里。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "product-log#13",
+    "source": "作者",
+    "basis": [
+      "commit a8095ef feat(PBI-49): scrum 这边的修订稿——overview、product-log、sprint-log、分工一节（条号还没重排）"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "状态只写产品日志、冲刺日志只引编号，避免两处不一致，是一句话的规矩。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "product-log#14",
+    "source": "作者",
+    "basis": [
+      "commit a8095ef feat(PBI-49): scrum 这边的修订稿——overview、product-log、sprint-log、分工一节（条号还没重排）"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "产品日志里只补细节、精化在冲刺日志 2.2 完成，属于流程归属，不算格式；把握不高，因为条文里有指路成分。",
+    "dups": [],
+    "confidence": "低"
+  },
+  {
+    "id": "product-log#15",
+    "source": "作者",
+    "basis": [
+      "commit a8095ef feat(PBI-49): scrum 这边的修订稿——overview、product-log、sprint-log、分工一节（条号还没重排）"
+    ],
+    "kind": "说明",
+    "home": "清单",
+    "recommend": "改",
+    "merge_into": null,
+    "reason": "前半只是指向 sprint-log 约定 6 的指路，删掉；后半「已在此写全的验收标准不在冲刺日志里重复」是规矩，保留并写成一行。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "product-log#16",
+    "source": "作者",
+    "basis": [
+      "commit a8095ef feat(PBI-49): scrum 这边的修订稿——overview、product-log、sprint-log、分工一节（条号还没重排）"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "精化内容放哪（新行、架构、Notes、scrum/documents）是给 Master 的落点规矩，Memory 里留一行即可。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "product-log#17",
+    "source": "作者",
+    "basis": [
+      "commit a8095ef feat(PBI-49): scrum 这边的修订稿——overview、product-log、sprint-log、分工一节（条号还没重排）",
+      "commit cbed055 docs(Sprint 14): 收官——Review、产品日志保鲜、Retro，发版 v5.2.0"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "每次 Review 把完成的条目移到 3.2、未完成的退回 3.1，是收官动作，Sprint 14 收官时定下；留一行。",
+    "dups": [],
+    "confidence": "中"
+  },
+  {
+    "id": "product-log#18",
+    "source": "作者",
+    "basis": [
+      "commit 9c9bd67 feat(PBI-39): scrum-kernel 约定总览 overview.md——三层、文件与文档文件夹、角色、会话分工、约定本身、目标不变",
+      "archive scrum/documents/sprint/sprint-10-conventions.md 第 174 行：Product Goal 这次不定，PO 说以后可能要重构，1.2 不动"
+    ],
+    "kind": "规矩",
+    "home": "清单",
+    "recommend": "留",
+    "merge_into": null,
+    "reason": "只有 PO 能改 Product Goal、且要有证据，是核心规矩；与 overview 17 说的是同一件事，两边留一处即可，留哪边待 PO 定。",
+    "dups": ["overview#17"],
+    "confidence": "中"
+  }
+]
