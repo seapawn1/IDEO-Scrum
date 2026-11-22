@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 27 (wrap-up)
 
 > Started: 2026-11-22 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `worktree-sprint-27-wrap-up` | Product Owner: SeaPawn | Scrum Master: IDEO # [master]-[main]-[manage sprint] | Developer: Sprint 27 Developer
-> Now: Review · 2026-11-23：Master 已判 Test 通过（按 PO 全面放权，四项都有结果，见第 5 章最后一段）。进 Review：PO 交给 Master 与 Codex、只管放行，Master 派全新的「熟手」视角看本期的入口和说明；Retro 候选由 Master 挑。收官（一个提交、tag、本地合入 main、关工作树、删分支）等 PO 放行，Developer 等 Master 转来的放行再动；推送另等 PO。PO 最近一次决定（2026-11-23）：Review 交 Master 与 Codex，PO 只管放行（第 4 章「PO：Review 交 Master 与 Codex」）。
+> Now: Increment（Review 后退回）· 2026-11-23：Test 已判通过，Review 里全新的「熟手」视角基本满意，但有两处说法打架；Master 按 PO 全面放权定退回 Increment，范围只五处小改（第 4 章「Review 发现、Master 定退回」）：go-ahead 的接收方说清、转达写明 PO 在哪里说的、约定 12 写成 stage permission、约定 14 补没有 Scrum Master 会话时去哪、快速上手补上 supporter；`description` 一律不动。修完分开提交、重跑静态检查与两条 grep，再报 Master 审 diff；收官（先把 main 合进分支，再出一个收官提交，Master 审过 diff 才打 tag、合入）等 PO 放行，推送另等 PO。PO 最近一次决定（2026-11-23）：Review 交 Master 与 Codex，PO 只管放行（第 4 章「PO：Review 交 Master 与 Codex」）。
 > Waiting for PO: None
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none. Work remarks go in chapter 4, Increment notes; an optional explanation of the commitment may follow its table (`overview.md` in the scrum-kernel skill folder, conventions 16 and 17).
@@ -309,6 +309,13 @@ Go-ahead: 2026-11-22，Master 按 PO 的书面授权（见第 4 章）放行 H1�
 - **PO 全面放权（2026-11-23）**：PO 2026-11-23（Master 会话）原话：「这样子把，我不审了，后面自动过吧，你作为master监督审阅他们，然后最后进入review时候，我再来看各自的结果，中间我就不进来了。其实有一些小点的措辞，我最后看也能看出来的，甚至于什么时候我再专门开一个sprint，就是我端到端审阅的好不好。也就是说这次就不审阅了。」「所以说，现在我开始授权给你，你来监督审阅，然后我这边等到review时候再参与，然后中间有问题都可以通过supporter向我报告。好吧。」「中间调用codex进行审阅等等，你自由对各个冲刺进行组合就可以了，26也是可以调用的。」范围（Master 记）：Review 之前的各阶段决定与审阅都由 Master 代 PO 做——方案、Increment 认可、放行 Sprint Test、Test 判定；Master 可自由调用 Codex 审阅、自由安排两期的先后与组合。PO 在 Review 时参与，看各期结果；收官（关闭提交、本地合入 main、打 tag）在 PO 看过 Review 之后做。仍回 PO：改 Product Goal；推送与发布；取消冲刺；推翻 PO 说过的话；`CLAUDE.md`／`AGENTS.md` 的改动（Sprint 26 第 44、56 行已获 PO 直接点头）。途中的问题经 Supporter 报 PO。本期原已按书面授权由 Master 代过关卡，此条把 Review 写明为 PO 参与的一处。
 
 - **PO：Review 交 Master 与 Codex（2026-11-23）**：PO 2026-11-23（Master 会话）原话：「26 27的review这些交给你和codex就可以，我只负责放行什么的」「26那就选择A1把，然后dsh要支持要记得」。据此：本期 Review 由 Master 与 Codex 做，PO 不看结果细节，只管放行。收官（关闭提交、tag、本地合入 main、关工作树、删分支）等 PO 放行；推送另等 PO。
+- **Review 发现、Master 定退回、范围只这五处（2026-11-23，Master 按 PO 全面放权）**：Review 由 Master 派全新的「熟手」视角看本期的入口和说明（原文在 Master 的临时目录里，Master 转述，我没读）。结论基本满意，但有两处说法打架（熟手说阻塞）、三处小问题（不阻塞）。Master 按 PO 全面放权定：退回 Increment，只修下面五处，其余不动，`description` 一律不动；修完分开提交，重跑 `validate --strict`、`check_dsh`、`check_docs`、`board_check selftest` 与两条 grep（多出命中逐处说明），核一遍 12 个 `description` 没变，再报 Master 审 diff、走收官；收官前先把 main 合进分支照旧。
+  - **① go-ahead 有两条路（阻塞）**：`supporter.md` 第 25 行说 PO 的 decision 或 permission 可以直接转给接收方，第 24、33 行与约定 14「答复怎么回」又说 go-ahead 交 Master 记录。统一成：转达照样算 PO 的话，但范围、条目、go-ahead 这几类，接收方是 Master，由 Master 记录后再交给要做的会话；其余意见直接转给相关会话。改 `supporter.md` 第 25 行和约定 14「PO 的话经转达」一条，各加一句互相指向。
+  - **② 转达的可追溯性（阻塞，但「转达算数」是 PO 定的，不改这个决定）**：在「附 PO 原话与日期」之外，再要求写明 PO 是在哪里说的（会话名、时间），接收方照记。`supporter.md` 与约定 14 各改一处。
+  - **③「permission」一词两义（不阻塞）**：约定 12 讲的是阶段许可，写成 stage permission，并加半句说明不是工具权限。
+  - **④ 没有 Scrum Master 会话时去哪（不阻塞）**：约定 14 分流第二级加半句：没有 Scrum Master 会话时，这一级直接问 PO。
+  - **⑤ 文档没提 Supporter（不阻塞）**：`docs/quick-start.md` 与中文版第 87 行附近「Ask for the board」一句，补上「交给 supporter」。
+  - **不改的，只记在这里**：约定 14 跟 `sprint-log.md` 的约定 14 同号（引用都带了文件名，26 改句柄后自然消失）；地图里没有 Supporter 节点（交给 26 的 flow-maps 长文件）；Supporter 能登记条目（本来就写了要照 PO 或 Master 的话）；缓存里的旧版 0.6.3 还指旧位置（发版更新后就好，记进 `CHANGELOG.md` 的未发布条目）。
 
 ## 5. Test
 
