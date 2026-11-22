@@ -1,5 +1,5 @@
 {
-  "_note": "Sprint 27 trigger test, frozen before the first run. Prompts are plain requests: no plugin name, no role name, no 'follow the conventions'. Same prompts for both arms.",
+  "_note": "Sprint 27 trigger test, version 2, frozen before the first counted run. Version 1 (commit 91aac4e) was superseded before any result was read: A2 (summarize progress) became 'gather what waits for me' when the Product Owner added the contact-point duty to the Supporter. Prompts are plain requests: no plugin name, no role name, no 'follow the conventions'. Same prompts for both arms.",
   "smoke": "帮我看一下这个项目现在有几个冲刺开着。",
   "groups": {
     "A": {
@@ -8,7 +8,7 @@
       "wrong": "stakeholder",
       "prompts": [
         "帮我把项目现在的看板更新一下，我想看看各条线走到哪了。",
-        "把现在各个冲刺和设计的进展汇总成一段话发给我。",
+        "把现在各条线上等我拍板的事都收齐，一次问我，别一件一件来。",
         "给我讲讲这套 Scrum 冲刺的机制是怎么运转的：日志、阶段、谁管什么，我刚接手这个项目。"
       ]
     },
