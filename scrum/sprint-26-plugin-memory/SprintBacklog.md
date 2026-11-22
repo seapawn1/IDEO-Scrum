@@ -1,8 +1,8 @@
 # Sprint Backlog — Sprint 26 (plugin-memory)
 
 > Started: 2026-11-22 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `worktree-sprint-26-plugin-memory` | Product Owner: SeaPawn（兼 Developer，共作） | Scrum Master: IDEO # [master]-[main]-[manage sprint] | Developer: Sprint 26 Developer
-> Now: How · 2026-11-22：How 又按 PO 与 Master 的意见改了一轮（载体三案平等比较；PO 逐条过目、逐条微调），待 Master 审、交 PO 放行；施工、推送、发版未放行，提交由 Developer 在本分支做（PO 已定，见 2.2 末）。
-> Waiting for PO: None
+> Now: How · 2026-11-22：How 已按 PO 与 Master 的意见改完（载体三案平等比较；PO 逐条过目、逐条微调），Master 审过，待 PO 放行；施工、推送、发版未放行，提交由 Developer 在本分支做（PO 已定，见 2.2 末）。
+> Waiting for PO: ① 放行施工（第 3 章末行 Go-ahead 的拟定范围）；② `AGENTS.md` 第 44、56 行迁移时改不改（须 PO 直接点头）
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none. Work remarks go in chapter 4, Increment notes; an optional explanation of the commitment may follow its table (`overview.md` in the scrum-kernel skill folder, conventions 16 and 17).
 
@@ -71,7 +71,7 @@
 | P1 | 形状：以短清单为主，一行一条；长的单开文件，清单里留一行索引（「说白了就是 Claude.md 和 memory 这两个混合」） | PO | ✓ 2026-11-22 已定 |
 | P2 | 转哪些：六份约定文件（`overview.md`、`product-log.md`、`board-log.md`、`sprint-log.md`、`design-log.md`、`ideo-log.md`）的编号条目全转；SKILL.md、角色命令和模板注释里的规矩在通读时一并审，与约定重复的改为指向 Memory；原书摘录（`events/`、`references/`、`steps/`、`methods/`、`IDEO-modes/`、`assets/`）只读不转。同步补：条目之外的图、`overview.md` 的 Departures 表（README「How it differs」与它逐字对表，并链到它的锚点）随对应条目或长文件走，Source／License 行随含摘录的文件走（Master 定） | PO | ✓ 2026-11-22：「然后你说 PR 呃，我觉得没问题」（Master 读作 P2） |
 | P3 | 旧约定文件：转完删掉，Memory 是唯一一份（「把以前的约定全部转换成 memory」） | PO | ✓ 2026-11-22：「P3转完就删也没问题啊」 |
-| P4 | 怎么审：Developer 先给每条标出处（原文／PO 原话／作者／补充）和建议（留／改／并／删）；PO 按文件成批当面定，Developer 记；PO 整份读，不逐行打勾 | PO 定审法，Developer 出标注 | ✓ 2026-11-22：「批次我觉得怎么审？嗯，你这样说也行吧，我也能接受吧」「P4这样也可以」 |
+| P4 | 怎么审：Developer 先给每条标出处（原文／PO 原话／作者／补充）和建议（留／改／并／删），做成差不多的形态；PO 按文件批次逐条过目——一条一条读、一条一条聊留什么不留什么、逐条微调，Developer 逐条记进过目账；没过目的行不进最终 Memory | PO 定审法，Developer 出标注 | ✓ 2026-11-22。先定按文件成批、整份读：「批次我觉得怎么审？嗯，你这样说也行吧，我也能接受吧」「P4这样也可以」；同日 PO 对 Developer 改为逐条过目：「我一定要把每一处都给审核掉」「每一条我都要过目一遍」「我去一条一条读，然后我们一条一条的微调……因为它是记忆嘛记忆其实很重要」（第 4 章） |
 | P5 | 载体与位置：PO 11-17 设想的独立技能「名字就叫 memory」，或放进现有内核。同步补：做独立技能的话，角色加载数由 4/3/3/2 变 5/4/4/3，DSH 的 `rolePrelude` 与 `check_dsh` 断言随改，How 里写给 PO 看 | Developer 提，PO 定 | 待提 |
 | P6 | 怎么带上：写进角色入口（像现在按序调内核）、hook，或入口为主、hook 可选且默认关。PO：「每一个角色里面都会让他们先加载 memory」，hook「我们后面再讨论吧」；产品日志原定「不配置则不自动加载，开启才自动，始终可手动调用」。子代理是否也带上，一并提 | Developer 提方案并实测，PO 定 | 待提 |
 | P7 | 同一份还是分角色：共用的规矩一份；角色专属的（Developer 的 DoD 核对、Master 的阶段门）怎样挂 | Developer 提，PO 定 | 待提 |
@@ -87,9 +87,9 @@
 
 | 条目 | 做成什么 | 验收 |
 | --- | --- | --- |
-| 51 · 通读与逐条审 | 全插件约定逐条有去留决定 | 六份约定文件每条一行审读记录：出处、建议、PO 的决定与日期；SKILL.md、角色命令、模板注释里与约定重复的已标出；记录放本冲刺文件夹，PO 整份读后说行 |
+| 51 · 通读与逐条审 | 全插件约定逐条有去留决定 | 六份约定文件每条一行审读记录：出处、建议、PO 的决定与日期；SKILL.md、角色命令、模板注释里与约定重复的已标出；记录放本冲刺文件夹；PO 逐条过目，每条有 PO 的决定与日期（过目账） |
 | 新 · Memory 的形状、载体与带上方式 | P5–P7 有定案 | 先交大纲（`sprint-log.md` 约定 11）：放哪、叫什么、短清单样子（拿 3–5 条真条目示范）、长文件怎样索引、角色和 DSH 怎样带上；带上方式附实测（叫角色、压缩后、子代理三种情况）；PO 定稿后才进转换 |
-| 新 · 转换草稿 | 按审读结果写出 Memory 草稿，放本冲刺文件夹，不依赖 27 | 留下的每条规矩在草稿里恰好一处、一行读懂，长的有索引行；摘录与 PO 原话 diff 逐字不变；PO 整份读后说行。规模 L，按 P4 的文件批次再切 |
+| 新 · 转换草稿 | 按审读结果写出 Memory 草稿，放本冲刺文件夹，不依赖 27 | 留下的每条规矩在草稿里恰好一处、一行读懂，长的有索引行；摘录与 PO 原话 diff 逐字不变；PO 逐条过目，每个新行有 PO 定稿的文字与日期。规模 L，按 P4 的文件批次再切 |
 | 新 · 落盘与引用迁移 | 27 合入 main 后，草稿落进插件，旧约定按 P3 删 | 全仓 grep 旧引用为零；`validate --strict`、`check_dsh`、`check_docs.py`、`board_check` 自测通过；Sprint 24「首稿前读全」的判定按新位置改过并重跑 |
 | 新 · 角色带上与验证 | 叫出角色就带上同一套规矩 | 四个角色入口（27 合入后加秘书）在 Claude Code 与 DSH 各验一次；改过的描述 ≤1024，触发测试不比改前差；Outcome「不用每次手动说明」按下面「测试」定的判据与样本量过线 |
 
@@ -162,7 +162,7 @@
 - **清单预算 ≤8,000 字符**（提议，停点 1 定）：hooks 的 `additionalContext` 超 10,000 字符会被转存成文件，只给 2,000 字预览（[hooks](https://code.claude.com/docs/en/hooks#add-context-for-claude)）；自动压缩后，技能只重新附上最近一次调用，每个取前 5,000 token、合计 25,000，从最近调用的技能开始填，老的可能整个丢掉（[技能生命周期](https://code.claude.com/docs/en/skills#skill-content-lifecycle)、[压缩后留下什么](https://code.claude.com/docs/en/context-window#what-survives-compaction)）。所以 A1 案里 Memory 排角色入口最后调用，压缩后最先保住（PO 说的是「先加载」，两者有出入，顺序由行 4 的实测与 PO 定）。超了往长文件挪，仍装不下就回 PO 定再删，不加预算。预算按字符、技能上限按 token：英文约 4 字符一个 token（估），8,000 字符约 2,000 token，留有余量；清单若写中文要重算。按每行约 100–130 字符估，清单约放 60–80 行；111 条旧规矩融成多少行，要行 1 的台账与行 2 的标注出来才报数，条数由 PO 逐条定。
 - **一行带稳定句柄**（如 `sprint-24`＝旧文件简称＋旧编号）：旧「convention N」引用在插件内约 150 行／18 个文件，仓库层对 `conventions/`、`overview.md` 的引用约 65 行／14 个文件，可按替换表机械迁移；并掉的留别名，删掉的在表里标「已删」并改引用处。句柄样式停点 1 定。
 - **做法**：逐字块（原书摘录、PO 原话、署名行）用脚本搬再比对，不手抄，便宜的模型抄长文会丢字，AI 写的约定才由模型改写（P8）。标注与起草每份文件一个子代理，显式 `model: Haiku`，我抽检，出错或判断不够再升档并写理由；对抗审查用全新子代理，Haiku 起步，按结果升档。
-- **PO 的分工（PO 兼 Developer，约定 11）**：PO 的时间花在两处：形状（停点 1，读完回话即可，在不在场不要紧）和逐条过目（停点 2–4 与终稿停点 5，每一条旧规矩、每个新行都读、都聊、都微调）。台账、标注、起草、迁引用、跑测试、对抗审查都由 AI 做。PO 不写命令、不盯守，也不要求打勾，决定由我逐条记（F16、P12；P4 原写「整份读，不逐行打勾」，PO 2026-11-22 后补要逐条读、逐条聊，已请 Master 在 2.2 改）。Master 审三处：形状大纲、整份草稿、冻结方案。
+- **PO 的分工（PO 兼 Developer，约定 11）**：PO 的时间花在两处：形状（停点 1，读完回话即可，在不在场不要紧）和逐条过目（停点 2–4 与终稿停点 5，每一条旧规矩、每个新行都读、都聊、都微调）。台账、标注、起草、迁引用、跑测试、对抗审查都由 AI 做。PO 不写命令、不盯守，也不要求打勾，决定由我逐条记（F16、P12；P4 原写「整份读，不逐行打勾」，PO 2026-11-22 后补要逐条读、逐条聊，Master 已在 2.2 改）。Master 审三处：形状大纲、整份草稿、冻结方案。
 - **测试通过线**（提议；Master 审后放进 2.2，Test 前冻结提交）：`validate --strict`、`check_dsh`、`check_docs.py`（含 `--selftest`）、`board_check` 自测全过；旧引用 grep 0 处；摘录逐字 diff 0 处；每个 description ≤1024 字符。触发测试沿用现有题组与次数，改前同日同环境重测，每条路径改后 ≥ 改前（AGENTS.md：改了描述就重跑触发测试，结果不能比改前差）；担心噪声就加次数，不降线，次数冻结时写死。角色入口加载：每入口每宿主 3 次新会话，3/3 次在做其他事前带上 Memory（事件流或会话日志证据）。Sprint 24「首稿前读全」：题组与次数照旧，改后不比改前差（≥ 改前）；担心噪声同样加次数，不降线。
 - **Outcome 判据与样本量**（提议）：「不用每次手动说明」＝叫出角色后给一个不提规矩的自然任务，AI 自己照 Memory 的规矩做。
   - 探针 8 条，六份约定文件各至少 1 条（`sprint-log`、`design-log` 可各 2）；每条是不带引导词的短任务加一个「不守规矩就会错」的坑，由脚本读会话日志或落盘文件判定；清单在冻结时定，这里只给选法。
@@ -193,7 +193,7 @@ Go-ahead: 尚未给出。拟请 PO 放行的范围：行 1–18 的 AI 工作与
 - **开张（2026-11-22）**：PO 定由 Master 先写第 1、2 章，PO 审后交 Developer 复述精化、写 How，再由 Master 审（PO：「我们现在直接把他的前两部分写好，然后让他们审过，然后再让他们写 how 你再审过就可以了」）。基线 `1145382`（等于 main）；本文件由 Master 建，Developer 在本分支提交（git 历史可查）。
 - **How 草案（2026-11-22，Developer）**：第 3 章已写，依据 PO 的有条件放行，基于 Master 同步补后的第 1、2 章。清单预算 8,000 字符、探针 8 条×每臂 3 次、各条通过线都是提议，Master 审后放进 2.2「测试」，Test 前冻结提交。等 Master 审，再交 PO；施工未放行。
 - **Master 审 How，改三处（2026-11-22，Developer 改）**：① 触发测试与「首稿前读全」的通过线改为 ≥ 改前（AGENTS.md 要求不能比改前差），担心噪声就加次数、不降线；② 清单预算的限制数字附官方文档链接，并补一条：独立技能案里 Memory 排角色入口调用顺序的最后，压缩后最先保住，行 4 的实测也测这一点；③ AGENTS.md 要改的两处（第 44、56 行）写进 Risks，PO 直接点头前行 15 不碰它。另：2.1 由 Master 换成登记后的八条（51、92–98），「切分对应」改为已登记。行 2、15、16 一次做不完就当场拆开，在此记一笔，不回头改 How。
-- **PO 对 How 的意见（2026-11-22，PO 直接对 Developer 说）**：「我一定要把每一处都给审核掉」「每一条我都要过目一遍」「我去一条一条读，然后我们一条一条的微调……因为它是记忆嘛记忆其实很重要」；先读后读都行，其他的在场不在场问题不大。据此改 How：PO 的审改成逐条读、逐条聊、逐条微调（P4 原写「整份读，不逐行打勾」，请 Master 在 2.2 改）；新增「没过目的行不进最终 Memory」与两个方向的覆盖表；相关工作项、Key choices、Go-ahead 随改。
+- **PO 对 How 的意见（2026-11-22，PO 直接对 Developer 说）**：「我一定要把每一处都给审核掉」「每一条我都要过目一遍」「我去一条一条读，然后我们一条一条的微调……因为它是记忆嘛记忆其实很重要」；先读后读都行，其他的在场不在场问题不大。据此改 How：PO 的审改成逐条读、逐条聊、逐条微调（P4 原写「整份读，不逐行打勾」，Master 已在 2.2 改）；新增「没过目的行不进最终 Memory」与两个方向的覆盖表；相关工作项、Key choices、Go-ahead 随改。
 - **Master 转 PO：hook 与 Skill 要平等比（2026-11-22）**：行 3–5 与 Key choices 改成三案（A 入口调 Skill〔A1 独立技能、A2 并入 `scrum-kernel`〕、B hook、C 合用），判据 ①–⑧ 先写定再测，另测模型自己用 Skill 工具调角色时 B 是否触发。官方文档已核：`UserPromptExpansion` 的 matcher 按命令名，输入带 `command_name`、`command_source`，可返回 `additionalContext`；`SubagentStart` 也能注入。
 
 ## 5. Test
