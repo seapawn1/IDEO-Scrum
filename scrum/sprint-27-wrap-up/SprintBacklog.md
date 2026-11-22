@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 27 (wrap-up)
 
 > Started: 2026-11-22 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: `worktree-sprint-27-wrap-up` | Product Owner: SeaPawn | Scrum Master: IDEO # [master]-[main]-[manage sprint] | Developer: Sprint 27 Developer
-> Now: Test · 2026-11-23：Master 按书面授权放行 Sprint Test（四项见第 5 章）。四项都有结果：项 ① 静态检查与两条 grep 全过（`778b767` 上重跑）；项 ② `/ideo-scrum:supporter` 无头加载 3／3 过；项 ③ DSH 实装验收三条全过（`a2a9578`）；项 ④ Codex 审完（审 `a2a9578`），角色边界没找到越界，四条意见已处置（三处修复 Master 审过 diff、不再请 Codex）。结果记第 5 章；Test 是否通过由 Master 判，收官等 PO 在 Review 看过（第 4 章「PO 全面放权」）。PO 最近一次决定（2026-11-23）：全面放权——Review 之前的决定与审阅由 Master 代做，PO 在 Review 时参与、看过之后才收官、合入、打 tag，推送与发布仍要 PO 亲口说（第 4 章「PO 全面放权」）。
+> Now: Review · 2026-11-23：Master 已判 Test 通过（按 PO 全面放权，四项都有结果，见第 5 章最后一段）。进 Review：PO 交给 Master 与 Codex、只管放行，Master 派全新的「熟手」视角看本期的入口和说明；Retro 候选由 Master 挑。收官（一个提交、tag、本地合入 main、关工作树、删分支）等 PO 放行，Developer 等 Master 转来的放行再动；推送另等 PO。PO 最近一次决定（2026-11-23）：Review 交 Master 与 Codex，PO 只管放行（第 4 章「PO：Review 交 Master 与 Codex」）。
 > Waiting for PO: None
 > How to write this log: `sprint-log.md` in the sprint-kernel skill's `conventions/` folder.
 > Keep every heading, even the ones filled later; add none. Work remarks go in chapter 4, Increment notes; an optional explanation of the commitment may follow its table (`overview.md` in the scrum-kernel skill folder, conventions 16 and 17).
@@ -308,11 +308,13 @@ Go-ahead: 2026-11-22，Master 按 PO 的书面授权（见第 4 章）放行 H1�
 
 - **PO 全面放权（2026-11-23）**：PO 2026-11-23（Master 会话）原话：「这样子把，我不审了，后面自动过吧，你作为master监督审阅他们，然后最后进入review时候，我再来看各自的结果，中间我就不进来了。其实有一些小点的措辞，我最后看也能看出来的，甚至于什么时候我再专门开一个sprint，就是我端到端审阅的好不好。也就是说这次就不审阅了。」「所以说，现在我开始授权给你，你来监督审阅，然后我这边等到review时候再参与，然后中间有问题都可以通过supporter向我报告。好吧。」「中间调用codex进行审阅等等，你自由对各个冲刺进行组合就可以了，26也是可以调用的。」范围（Master 记）：Review 之前的各阶段决定与审阅都由 Master 代 PO 做——方案、Increment 认可、放行 Sprint Test、Test 判定；Master 可自由调用 Codex 审阅、自由安排两期的先后与组合。PO 在 Review 时参与，看各期结果；收官（关闭提交、本地合入 main、打 tag）在 PO 看过 Review 之后做。仍回 PO：改 Product Goal；推送与发布；取消冲刺；推翻 PO 说过的话；`CLAUDE.md`／`AGENTS.md` 的改动（Sprint 26 第 44、56 行已获 PO 直接点头）。途中的问题经 Supporter 报 PO。本期原已按书面授权由 Master 代过关卡，此条把 Review 写明为 PO 参与的一处。
 
+- **PO：Review 交 Master 与 Codex（2026-11-23）**：PO 2026-11-23（Master 会话）原话：「26 27的review这些交给你和codex就可以，我只负责放行什么的」「26那就选择A1把，然后dsh要支持要记得」。据此：本期 Review 由 Master 与 Codex 做，PO 不看结果细节，只管放行。收官（关闭提交、tag、本地合入 main、关工作树、删分支）等 PO 放行；推送另等 PO。
+
 ## 5. Test
 
 <!-- Record the Developer’s tests, the independent review and any required Product Owner acceptance. Trace each Output Done standard and item criterion to new evidence, still-valid earlier evidence and why it holds, or a stated condition that did not arise and why. Keep missing evidence visible; record outcome signals separately and judge the Test against the pass lines set beforehand (sprint-log.md, convention 16). End with the Product Owner’s close or return decision (convention 24). -->
 
-**状态（2026-11-23）**：Test 的四项都有结果了。① 静态检查与两条 grep 全过（先在 `a2a9578` 上跑，Codex 审后修了三处，在 `778b767` 上重跑，仍全过）；② `/ideo-scrum:supporter` 的 Claude Code 无头加载三个会话，3／3 过；③ DSH 实装验收由 IDEO 秘书会话在 `a2a9578` 上做完，三条全过，原生事件我也读过；④ Codex 审完 `a2a9578`，验收逐条基本都过、角色边界没找到越界的句子，提了四条意见，第 1 条审阅时证据未齐、之后已补，另三条已修并分开提交，Master 审过修复的 diff、不再请 Codex。本章随 `d806b06` 提交，项 ② 的结果随下一个提交。Test 是否通过、收官还是退回，由 Master 按书面授权定（收官要等 PO 在 Review 看过，见第 4 章「PO 全面放权」），本章不下通过的结论。
+**状态（2026-11-23）**：Test 的四项都有结果了。① 静态检查与两条 grep 全过（先在 `a2a9578` 上跑，Codex 审后修了三处，在 `778b767` 上重跑，仍全过）；② `/ideo-scrum:supporter` 的 Claude Code 无头加载三个会话，3／3 过；③ DSH 实装验收由 IDEO 秘书会话在 `a2a9578` 上做完，三条全过，原生事件我也读过；④ Codex 审完 `a2a9578`，验收逐条基本都过、角色边界没找到越界的句子，提了四条意见，第 1 条审阅时证据未齐、之后已补，另三条已修并分开提交，Master 审过修复的 diff、不再请 Codex。本章随 `d806b06`、`491ed61` 提交，Master 的判定随下一个提交。Master 已判通过（2026-11-23，按 PO 全面放权，见本章最后一段）；进 Review，PO 交给 Master 与 Codex、只管放行，收官等 PO 放行（第 4 章「PO：Review 交 Master 与 Codex」），Developer 不先动手。
 
 **被测提交与冻结点**：被测提交现在是 `778b767`。Codex 审的是 `a2a9578`；审出的三处按约定 16「Test 里当场修、修完再测」修掉，三个提交：`c0746c8`（`check.py`）、`d428188`（转达的身份边界）、`778b767`（分流措辞）。`a2a9578` 之后只有这三个提交，`git diff --stat a2a9578 778b767` 只有三个文件：`supporter.md`（正文三行，第 24、25、33 行）、`overview.md`（约定 14 两行）、`check.py`。2.2 的测试方法与通过线冻结于 `d72b0a6`，此后 2.2 没有改（`git diff -U0 d72b0a6 778b767` 在本日志里只有头部、第 4 章、第 5 章开头三处改动）。冻结之后进来的有四样：89 追加（`d4516ff`：`scripts/board_check/check.py` 的 `product.source` 放宽，自测 99 → 105 例，另有 `CHANGELOG.md` 一句）、`board/board-log.md` 第 4 条补的一句（`a2a9578`，Master 放行 Test 的条件）、Codex 审后的三处修复、日志记录。下面的检查都在这些改动之后重跑，没有沿用冻结前的结果：项 ① 在 `778b767` 上，项 ② 在 `cb27475` 上（`d806b06`、`cb27475` 只动日志与 `validation/`，插件树与 `778b767` 的相同，tree `6a5ce873…`），项 ③ 在 `a2a9578` 上（沿用理由见「DSH 实装验收」）；证据脚本在 `scrum/sprint-27-wrap-up/validation/test/`（`grep_compare.py`、`evidence.py`、`trigger_crosscheck.py`、`dsh_events.mjs`、`load_supporter.py`），随 `d806b06`、`cb27475` 提交。
 
@@ -450,4 +452,6 @@ Go-ahead: 2026-11-22，Master 按 PO 的书面授权（见第 4 章）放行 H1�
 - **Developer 的检查（项 ①）**：全部过线（`a2a9578` 与 `778b767` 上各一遍）；Test 里没有发现 Codex 之外的新缺陷。已记的两个已知点——B 组触发率两臂都偏低（原有缺口）、转达的 PO 意见没有身份验证（PO 的决定带来的风险，第 3 章 Risks 与第 4 章 H2 追加；Codex 也提了，已把「标记不等于验证」写进正文与约定 14，风险本身没有消除）——登记与否留给 Master 与 PO 定。
 - **Codex 审阅（项 ④）**：四条意见已逐条处置（见「Codex 独立审阅」）：第 1 条审阅时属实、之后已补；第 2–4 条已修，分开提交，Master 审过修复的 diff。角色边界没找到越界的句子。
 - **Sprint Test 整体**：四项都有结果，没有未过线的项（项 ③ 的工作区之外读取靠早先证据，Master 认可）；没有要求 PO 正式验收的项；Outcome Done 的信号本期不是必须，记「尚未观察到」，不据此声称完整 DoD 已过（约定 16）。约定 16：Increment 的质量可以凭自己的证据过，Sprint Test 要所有必需的检查、审阅与验收都过——这些都有了；通过与否由 Master 判，不由 Developer 下。
-- **Test 是否通过、收官还是退回（约定 24）**：待 Master 按书面授权定；定了写在这里，并更新头部 `Now`。
+- **Test 是否通过、收官还是退回（约定 24）**：Master 已判，见下面最后一段。
+
+Test 判定（2026-11-23，Master 按 PO 全面放权）：通过。四项都有结果：① 静态检查与 grep 全过；② 无头加载 3/3；③ DSH 实装三条全过；④ Codex 审阅，三处修复由 Master 审过 diff。Output Done 七条全过；Outcome 本期不设必须的信号，记为尚未观察到。当时的目标原文：『秘书管杂活：看板、传话这类杂活交给秘书，PO 不用操心，各角色的叫法不再混；模板、看板各归其位，留下的小毛病补齐，熟手照着就能用。』进 Review；收官等 PO 放行。
