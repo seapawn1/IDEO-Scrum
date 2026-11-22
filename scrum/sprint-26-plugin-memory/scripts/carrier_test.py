@@ -101,6 +101,7 @@ HOOK_SH = r'''#!/bin/sh
 #   mark     PostToolUse (Skill): remember that this session loaded the memory skill
 [ "$IDEO_SCRUM_MEMORY" = "off" ] && exit 0
 mode=$1
+part=$2   # a Memory over the host's 10,000-character limit is sent as several hooks, one part each: "expand 1", "expand 2"
 
 # Copy $1 into __path with every backslash turned into a slash (the plugin root can be a Windows path).
 to_slashes() {
@@ -168,14 +169,14 @@ case $mode in
       *) exit 0 ;;
     esac
     printf '%s' "$role" > "$state_dir/$session.role" 2>/dev/null
-    cat "$here/memory-data/$role.json"
+    if [ -n "$part" ]; then cat "$here/memory-data/$role.p$part.json"; else cat "$here/memory-data/$role.json"; fi
     ;;
   compact)
     if [ -r "$state_dir/$session.role" ]; then
       read -r role < "$state_dir/$session.role"
-      cat "$here/memory-data/$role.txt"
+      if [ -n "$part" ]; then cat "$here/memory-data/$role.p$part.txt"; else cat "$here/memory-data/$role.txt"; fi
     elif [ -r "$state_dir/$session.mark" ]; then
-      cat "$here/memory-data/all.txt"
+      if [ -n "$part" ]; then cat "$here/memory-data/all.p$part.txt"; else cat "$here/memory-data/all.txt"; fi
     fi
     ;;
   mark)
@@ -199,6 +200,28 @@ def sh_cmd(mode: str) -> dict:
     return {"type": "command", "command": f'sh "${{CLAUDE_PLUGIN_ROOT}}/hooks/memory.sh" {mode}; exit 0', "timeout": 10}
 
 
+SPLIT_AT = 9800  # a hook's additionalContext over 10,000 characters is moved to a file by the host; each part stays under it
+
+
+def parts_of(text: str, limit: int = SPLIT_AT) -> list[str]:
+    """Cut a text into parts of at most `limit` characters at line ends; the start of the text stays in the first part
+    and the end in the last. One part when it fits."""
+    if len(text) <= limit:
+        return [text]
+    parts, cur = [], ""
+    for ln in text.splitlines(keepends=True):
+        if cur and len(cur) + len(ln) > limit:
+            parts.append(cur)
+            cur = ""
+        cur += ln
+    parts.append(cur)
+    return parts
+
+
+def hook_modes(mode: str, n: int) -> list[dict]:
+    return [sh_cmd(mode)] if n == 1 else [sh_cmd(f"{mode} {i}") for i in range(1, n + 1)]
+
+
 def build_plugin(carrier: str, dest: pathlib.Path, c: dict) -> None:
     shutil.copytree(PLUGIN_SRC, dest)
     if carrier == "N":
@@ -220,21 +243,29 @@ def build_plugin(carrier: str, dest: pathlib.Path, c: dict) -> None:
         hooks = dest / "hooks"
         (hooks / "memory-data").mkdir()
         (hooks / "memory.sh").write_text(HOOK_SH, encoding="utf-8", newline="\n")
+        n_parts = 1
         for r in ROLE_TITLES:
             text = memory_text(c, [r])
             key = r.lower()
-            (hooks / "memory-data" / f"{key}.txt").write_text(text, encoding="utf-8", newline="\n")
-            (hooks / "memory-data" / f"{key}.json").write_text(
-                json.dumps({"hookSpecificOutput": {"hookEventName": "UserPromptExpansion", "additionalContext": text}}, ensure_ascii=False) + "\n",
-                encoding="utf-8", newline="\n")
-        (hooks / "memory-data" / "all.txt").write_text(full, encoding="utf-8", newline="\n")
+            ps = parts_of(text)
+            n_parts = max(n_parts, len(ps))
+            for i, part in enumerate(ps, start=1):
+                tag = "" if len(ps) == 1 else f".p{i}"
+                (hooks / "memory-data" / f"{key}{tag}.txt").write_text(part, encoding="utf-8", newline="\n")
+                (hooks / "memory-data" / f"{key}{tag}.json").write_text(
+                    json.dumps({"hookSpecificOutput": {"hookEventName": "UserPromptExpansion", "additionalContext": part}}, ensure_ascii=False) + "\n",
+                    encoding="utf-8", newline="\n")
+        fp = parts_of(full)
+        n_parts = max(n_parts, len(fp))
+        for i, part in enumerate(fp, start=1):
+            (hooks / "memory-data" / ("all.txt" if len(fp) == 1 else f"all.p{i}.txt")).write_text(part, encoding="utf-8", newline="\n")
         cfg = json.loads((hooks / "hooks.json").read_text(encoding="utf-8"))
         h = cfg["hooks"]
         if carrier == "B":
-            h["UserPromptExpansion"] = [{"matcher": "ideo-scrum:(developer|scrum-master|designer|stakeholder)", "hooks": [sh_cmd("expand")]}]
+            h["UserPromptExpansion"] = [{"matcher": "ideo-scrum:(developer|scrum-master|designer|stakeholder)", "hooks": hook_modes("expand", n_parts)}]
         else:
             h["PostToolUse"] = [{"matcher": "Skill", "hooks": [sh_cmd("mark")]}]
-        h["SessionStart"] = h["SessionStart"] + [{"matcher": "compact", "hooks": [sh_cmd("compact")]}]
+        h["SessionStart"] = h["SessionStart"] + [{"matcher": "compact", "hooks": hook_modes("compact", n_parts)}]
         (hooks / "hooks.json").write_text(json.dumps(cfg, indent=2) + "\n", encoding="utf-8", newline="\n")
 
 
@@ -487,6 +518,31 @@ def cmd_selftest(a) -> int:
         check(c["ROLE-DEV"] in r.stdout, "B: after compaction the same role's text comes back")
         r = subprocess.run([sh, str(tmp / "B" / "hooks" / "memory.sh"), "compact"], input=json.dumps({"session_id": "never-called"}), capture_output=True, text=True, env={**os.environ, "CLAUDE_PLUGIN_DATA": str(tmp / "st")})
         check(r.stdout == "", "B: a session that never called a role gets nothing after compaction")
+        check(parts_of("a\nb\n", 100) == ["a\nb\n"], "a short text is one part")
+        src = "".join(f"line {i}\n" for i in range(300))
+        ps = parts_of(src, 500)
+        check(len(ps) > 1 and all(len(p) <= 500 for p in ps) and "".join(ps) == src, "a long text is cut at line ends and nothing is lost")
+        two = hook_modes("expand", 2)
+        check(hook_modes("expand", 1) == [sh_cmd("expand")] and "expand 1;" in two[0]["command"] and "expand 2;" in two[1]["command"], "one hook for one part, 'expand 1' and 'expand 2' for two")
+        old = TARGET_CHARS
+        globals()["TARGET_CHARS"] = 20000  # the larger stand-in: the hook must send it in parts, each under the host's limit
+        try:
+            big = new_canaries()
+            build_plugin("B", tmp / "B20", big)
+            hl = json.loads((tmp / "B20" / "hooks" / "hooks.json").read_text(encoding="utf-8"))["hooks"]["UserPromptExpansion"][0]["hooks"]
+            check(len(hl) == 2, f"B at 20,000 characters: two hooks, one per part ({len(hl)})")
+            q1 = json.loads((tmp / "B20" / "hooks" / "memory-data" / "dev.p1.json").read_text(encoding="utf-8"))["hookSpecificOutput"]["additionalContext"]
+            q2 = json.loads((tmp / "B20" / "hooks" / "memory-data" / "dev.p2.json").read_text(encoding="utf-8"))["hookSpecificOutput"]["additionalContext"]
+            check(len(q1) <= 10000 and len(q2) <= 10000 and big["MEMORY-START"] in q1 and big["MEMORY-END"] in q2, f"each part is under 10,000 characters ({len(q1)}, {len(q2)}), the start in the first, the end in the last")
+            outs = []
+            for i in (1, 2):
+                r = subprocess.run([sh, str(tmp / "B20" / "hooks" / "memory.sh"), "expand", str(i)], input=json.dumps({"session_id": "t3", "command_name": "ideo-scrum:developer"}), capture_output=True, text=True, env={**os.environ, "CLAUDE_PLUGIN_DATA": str(tmp / "st")})
+                outs.append(r.stdout)
+            check(big["MEMORY-START"] in outs[0] and big["MEMORY-END"] in outs[1] and big["MEMORY-END"] not in outs[0], "B at 20,000: the hook script prints part 1 and part 2")
+            r = subprocess.run([sh, str(tmp / "B20" / "hooks" / "memory.sh"), "compact", "2"], input=json.dumps({"session_id": "t3"}), capture_output=True, text=True, env={**os.environ, "CLAUDE_PLUGIN_DATA": str(tmp / "st")})
+            check(big["MEMORY-END"] in r.stdout, "B at 20,000: after compaction part 2 comes back too")
+        finally:
+            globals()["TARGET_CHARS"] = old
     finally:
         driver.rmtree(tmp)
     print("selftest:", "passed" if ok else "FAILED")
