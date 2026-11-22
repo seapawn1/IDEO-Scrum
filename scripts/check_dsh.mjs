@@ -10,7 +10,7 @@ import { readCommitments } from '../dsh/commitments.js'
 
 const root = fileURLToPath(new URL('../', import.meta.url))
 const plugin = join(root, 'plugins', 'ideo-scrum')
-const roles = ['scrum-master', 'developer', 'designer', 'stakeholder']
+const roles = ['scrum-master', 'developer', 'designer', 'stakeholder', 'supporter']
 const kernels = ['ideo-kernel', 'scrum-kernel', 'sprint-kernel', 'design-kernel']
 
 function mount() {
@@ -46,7 +46,7 @@ function canonical(path) {
   return { description: JSON.parse(description), content }
 }
 
-test('register the original four role bodies and kernels with resolvable resource bases', () => {
+test('register the five role bodies and kernels with resolvable resource bases', () => {
   const { skills, contexts, dispose } = mount()
   assert.deepEqual([...skills.keys()], [...kernels, ...roles])
   for (const [name, entry] of skills) {

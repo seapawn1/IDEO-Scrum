@@ -1,6 +1,6 @@
 {
   "meta": {
     "title": "IDEO-Scrum",
-    "description": "Design thinking and Scrum Sprints for solo work with AI. In a Standard session, type /scrum-master, /developer, /designer or /stakeholder, optionally followed by your task. The roles and methods share the Claude Code edition's source. Commitments from the current project's logs enter model context, without a separate request. Start DSH with IDEO_SCRUM_COMMITMENTS=off to disable reminders. Some included third-party material is non-commercial only."
+    "description": "Design thinking and Scrum Sprints for solo work with AI. In a Standard session, type /scrum-master, /developer, /designer, /stakeholder or /supporter, optionally followed by your task. The roles and methods share the Claude Code edition's source. Commitments from the current project's logs enter model context, without a separate request. Start DSH with IDEO_SCRUM_COMMITMENTS=off to disable reminders. Some included third-party material is non-commercial only."
   }
 }
