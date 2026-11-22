@@ -94,7 +94,7 @@ claude plugin update ideo-scrum@ideo-scrum
 /ideo-scrum:supporter       # 秘书：不碰源码的杂活——看板、汇总、传已定的事、收齐等你定的问题
 ```
 
-每个 Claude Code 角色命令都会先按顺序调用所需内核，再开始工作（见[角色约定](plugins/ideo-scrum/skills/scrum-kernel/overview.md#who-does-what)）。
+每个 Claude Code 角色命令都会先按顺序调用所需内核和 Memory，再开始工作（见[角色规矩](plugins/ideo-scrum/skills/memory/details/roles.md)）。
 
 在 DSH **Standard** 会话里，用原生的技能入口：
 
@@ -106,7 +106,7 @@ claude plugin update ideo-scrum@ideo-scrum
 /supporter
 ```
 
-可以直接输入，也可以从 `/` 提示里选。任务可以跟在同一条消息里：`/scrum-master 帮我规划下个冲刺。` 在 DSH 中，角色按顺序带入 IDEO 内核和 Scrum 内核，Sprint 和 Design 按需加载。任务横跨冲刺与设计冲刺时，可以用 `/scrum-master /sprint-kernel /design-kernel` 显式顺序加载。DSH 也会识别句中独立出现的 `/名称`；只是提及名称时，在输入里用反引号包住它。
+可以直接输入，也可以从 `/` 提示里选。任务可以跟在同一条消息里：`/scrum-master 帮我规划下个冲刺。` 在 DSH 中，角色按顺序带入 IDEO 内核、Scrum 内核和 Memory，Sprint 和 Design 按需加载。任务横跨冲刺与设计冲刺时，可以用 `/scrum-master /sprint-kernel /design-kernel` 显式顺序加载。DSH 也会识别句中独立出现的 `/名称`；只是提及名称时，在输入里用反引号包住它。
 
 在 Claude Code 中，也可以用自己的话说：
 
@@ -115,11 +115,11 @@ claude plugin update ideo-scrum@ideo-scrum
 这个功能要不要做我拿不准，先做一轮用户访谈的设计
 ```
 
-什么时候加载什么：Scrum、冲刺、设计冲刺的材料只有召唤才来——叫出角色，点名 ideo-scrum 或它的某个内核，或者要求建改它的日志；泛泛问 Scrum，照常回答。在 Claude Code 里，做原型、做测试时，IDEO 的方法常会自己介入；发散、定义问题时，模型多半直接作答，想用它的方法就点名 `ideo-kernel`（已知的限制）。
+什么时候加载什么：Scrum、冲刺、设计冲刺的材料和 Memory 只有召唤才来——叫出角色，点名 ideo-scrum、它的某个内核或 Memory，或者要求建改它的日志；泛泛问 Scrum，照常回答。在 Claude Code 里，做原型、做测试时，IDEO 的方法常会自己介入；发散、定义问题时，模型多半直接作答，想用它的方法就点名 `ideo-kernel`（已知的限制）。
 
 ## 和教科书上的 Scrum 有什么不同
 
-插件有意在七处和官方指南不一样。每一处在 [`overview.md`](plugins/ideo-scrum/skills/scrum-kernel/overview.md#departures-from-the-official-guides) 里只写一次，连同理由（英文）；这里是简版。
+插件有意在七处和官方指南不一样。每一处在 [`departures.md`](plugins/ideo-scrum/skills/memory/details/departures.md#departures-from-the-official-guides) 里只写一次，连同理由（英文）；这里是简版。
 
 | 这里 | 为什么 |
 | --- | --- |
@@ -168,7 +168,7 @@ claude plugin update ideo-scrum@ideo-scrum
 - [词汇表](docs/glossary.md)：插件自己的词
 - [项目 Agent 与第二意见](docs/project-agents.zh-CN.md)：在 Claude Code 中登记 Stakeholder 或请参谋给意见
 - [维护 IDEO-Scrum](docs/maintaining.zh-CN.md)：两个宿主共用一份正文、仓库规则从哪里读、怎样迁移与核验候选版本
-- [`overview.md`](plugins/ideo-scrum/skills/scrum-kernel/overview.md)：各部分怎么配合，以及和官方指南的每一处不同（英文）
+- [Memory](plugins/ideo-scrum/skills/memory/SKILL.md)：各角色共用的规矩，一条一行；和官方指南的每一处不同在它的 `details/departures.md`（英文）
 - [更新记录](CHANGELOG.md)：每个版本改了什么（英文）
 
 ## 授权与署名
@@ -194,7 +194,7 @@ d.school 的许可禁止商业使用，所以本仓库不算 OSI 意义上的开
 
 | 路径 | 是什么 |
 | --- | --- |
-| `plugins/ideo-scrum/` | Claude Code 插件，也是五个角色和四个内核（ideo、scrum、sprint、design）的共用源；四份日志模板在 `template/`，看板的文件在 `board/` |
+| `plugins/ideo-scrum/` | Claude Code 插件，也是五个角色、四个内核（ideo、scrum、sprint、design）和 Memory（`skills/memory/`）的共用源；四份日志模板在 `template/`，看板的文件在 `board/` |
 | `dsh/`、`package.json`、`cordis.patch.yml` | DSH 适配和插件包入口 |
 | `docs/` | 快速上手、词汇表、项目 Agent 指南和维护说明 |
 | `scrum/` | 本项目自己的 Scrum 工作，中文写的：它的产品日志和归档的冲刺日志 |

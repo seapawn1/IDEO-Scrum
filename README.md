@@ -94,7 +94,7 @@ In a Claude Code session, call a role:
 /ideo-scrum:supporter       # chores that touch no source: the board, summaries, relaying what is decided, gathering what waits for you
 ```
 
-Each Claude Code role command calls its required kernels in order before starting work (see the [role convention](plugins/ideo-scrum/skills/scrum-kernel/overview.md#who-does-what)).
+Each Claude Code role command calls its required kernels, then the Memory, in order before starting work (see the [role rules](plugins/ideo-scrum/skills/memory/details/roles.md)).
 
 In a DSH **Standard** session, use its native skill entries:
 
@@ -106,7 +106,7 @@ In a DSH **Standard** session, use its native skill entries:
 /supporter
 ```
 
-Type the entry or choose it from the `/` suggestions. You can add the request in the same message: `/scrum-master Help me plan the next Sprint.` In DSH, the role brings in IDEO and Scrum in order; Sprint and Design load only as needed. To explicitly load both for a task that spans them, start with `/scrum-master /sprint-kernel /design-kernel`. DSH also recognizes a standalone `/name` in the middle of a sentence; wrap it in backticks when you are only mentioning it.
+Type the entry or choose it from the `/` suggestions. You can add the request in the same message: `/scrum-master Help me plan the next Sprint.` In DSH, the role brings in IDEO, Scrum and the Memory in order; Sprint and Design load only as needed. To explicitly load both for a task that spans them, start with `/scrum-master /sprint-kernel /design-kernel`. DSH also recognizes a standalone `/name` in the middle of a sentence; wrap it in backticks when you are only mentioning it.
 
 In Claude Code, you can also say it in your own words:
 
@@ -115,11 +115,11 @@ Use ideo-scrum to plan the next Sprint; I have five items to refine.
 I'm not sure this feature is worth building. Run a round of user research first.
 ```
 
-What loads, and when: the Scrum, Sprint and design-sprint material comes only when summoned, by a role, by naming ideo-scrum or one of its kernels, or by asking to create or change its logs; a general question about Scrum is answered as usual. In Claude Code, the IDEO methods often step in by themselves for prototyping and testing. For brainstorming and defining a problem the model usually answers directly: name `ideo-kernel` if you want its methods (a known limitation).
+What loads, and when: the Scrum, Sprint and design-sprint material, and the Memory, come only when summoned, by a role, by naming ideo-scrum, one of its kernels or the Memory, or by asking to create or change its logs; a general question about Scrum is answered as usual. In Claude Code, the IDEO methods often step in by themselves for prototyping and testing. For brainstorming and defining a problem the model usually answers directly: name `ideo-kernel` if you want its methods (a known limitation).
 
 ## How it differs from textbook Scrum
 
-The plugin departs from the official guides in seven places, on purpose. Each is stated once, with its reason, in [`overview.md`](plugins/ideo-scrum/skills/scrum-kernel/overview.md#departures-from-the-official-guides); this is the short version.
+The plugin departs from the official guides in seven places, on purpose. Each is stated once, with its reason, in [`departures.md`](plugins/ideo-scrum/skills/memory/details/departures.md#departures-from-the-official-guides); this is the short version.
 
 | Here | Why |
 | --- | --- |
@@ -168,7 +168,7 @@ Two small things help you find your place when a project has several logs.
 - [Glossary](docs/glossary.md): the plugin's own terms
 - [Project agents and second opinions](docs/project-agents.md): register a stakeholder or ask an advisor in Claude Code
 - [Maintaining IDEO-Scrum](docs/maintaining.md): two hosts on one source, where repository rules load from, and how to migrate and check a candidate
-- [`overview.md`](plugins/ideo-scrum/skills/scrum-kernel/overview.md): how the pieces fit, and every departure from the official guides
+- [Memory](plugins/ideo-scrum/skills/memory/SKILL.md): the rules every role follows, one line each; every departure from the official guides is in its `details/departures.md`
 - [Changelog](CHANGELOG.md): what changed in each release
 
 ## License and attribution
@@ -194,7 +194,7 @@ Found a problem, or have an idea? Open an [issue](https://github.com/seapawn1/ID
 
 | Path | What it is |
 | --- | --- |
-| `plugins/ideo-scrum/` | The Claude Code plugin and the shared source for the five roles and the four kernels (ideo, scrum, sprint, design), with the four log templates in `template/` and the board's files in `board/` |
+| `plugins/ideo-scrum/` | The Claude Code plugin and the shared source for the five roles, the four kernels (ideo, scrum, sprint, design) and the Memory (`skills/memory/`), with the four log templates in `template/` and the board's files in `board/` |
 | `dsh/`, `package.json`, `cordis.patch.yml` | The DSH integration and bundle entry points |
 | `docs/` | Quick start, glossary, project-agent guide, and maintenance guide |
 | `scrum/` | This project's own Scrum work, in Chinese: its product log and its archived sprint logs |

@@ -15,7 +15,7 @@
 /ideo-scrum:scrum-master
 ```
 
-这个 Claude Code 命令先依次调用 IDEO、Scrum、Sprint 和 Design 内核，再开始工作；不用你逐个调用。其他角色的顺序见[角色约定](../plugins/ideo-scrum/skills/scrum-kernel/overview.md#who-does-what)。
+这个 Claude Code 命令先依次调用 IDEO、Scrum、Sprint 和 Design 内核，再调用 Memory，然后开始工作；不用你逐个调用。其他角色的顺序见[角色规矩](../plugins/ideo-scrum/skills/memory/details/roles.md)。
 
 在项目目录里新开的 DSH **Standard** 会话中：
 
@@ -67,11 +67,11 @@ Test 阶段完成后，说「收官」。Review 把冲刺日志压缩后归档�
 
 ## 值得记住的规矩
 
-1. 阶段结果由你定；进入或返回阶段等你明确放行（[overview](../plugins/ideo-scrum/skills/scrum-kernel/overview.md)，第 12 条）。
-2. 你放行之后才动手（[冲刺日志约定](../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md)，第 8 条）。
-3. Sprint Goal 不变，计划可以调（overview，第 17 条）。
-4. 审阅的人不是做的人（冲刺日志约定，第 14 条）。
-5. 日志就是交接：冲刺日志开头的 `Now` 和 `Waiting for PO` 两行，写着冲刺到哪了、什么在等你（冲刺日志约定，第 22 条）。
+1. 阶段结果由你定；进入或返回阶段等你明确放行（[Memory](../plugins/ideo-scrum/skills/memory/SKILL.md) 的 `stage-gates`）。
+2. 你放行之后才动手（[Memory](../plugins/ideo-scrum/skills/memory/SKILL.md) 的 `go-ahead`、`review-handover`）。
+3. Sprint Goal 不变，计划可以调（Memory 的 `goal-fixed`、`commitment-table`）。
+4. 审阅的人不是做的人（Memory 的 `reviewer-required`）。
+5. 日志就是交接：冲刺日志开头的 `Now` 和 `Waiting for PO` 两行，写着冲刺到哪了、什么在等你（Memory 的 `log-is-the-handoff`）。
 
 ## 书面授权
 

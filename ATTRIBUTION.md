@@ -91,7 +91,7 @@
 | 许可 | **全版权保护**（All Rights Reserved），无开放许可 |
 | 官方网站 | https://www.thesprintbook.com/ |
 | 本仓库位置 | `plugins/ideo-scrum/skills/design-kernel/steps/`（设计冲刺原书摘录，按 IDEO 五阶段编号：`1-1`～`1-3` 共情 define-the-challenge、start-at-the-end、ask-the-experts；`2-1`～`2-3` 定义 make-a-map、how-might-we、pick-a-target；`3-1`～`3-5` 构思 remix-and-improve、sketch、decide、rumble、storyboard；`4-1`～`4-2` 原型 fake-it、prototype；`5-1`～`5-3` 测试 small-data、interview、learn；例图改画成 Mermaid 或文字） |
-| 使用范围 | 设计冲刺各章的**原文摘录**：只删不改，删去与 solo + AI 团队无关的段落（日程、场地与用品、部分长例子）；各文件标注章节出处。原书例图改画成 Mermaid 或文字，不含图片文件。术语保留原文（Decider、Facilitator 等）；对应到本插件角色的写法、作者的做法另放 `design-kernel/conventions/`，标为约定。 |
+| 使用范围 | 设计冲刺各章的**原文摘录**：只删不改，删去与 solo + AI 团队无关的段落（日程、场地与用品、部分长例子）；各文件标注章节出处。原书例图改画成 Mermaid 或文字，不含图片文件。术语保留原文（Decider、Facilitator 等）；对应到本插件角色的写法、作者的做法另放插件的 Memory（`skills/memory/`），标为约定。 |
 
 > **请支持正版**
 >

@@ -9,7 +9,7 @@ the same commands in the `sh` blocks (typed in a terminal) and in the `text` blo
 `/` (role entries in Claude Code or DSH); a trailing `# comment` is ignored; the same links.
 For every document, glossary included: every relative link and image resolves, and every #fragment names a heading
 in its target. Also: each README's version is the plugin's version; the English README's "How it differs"
-table repeats the Departures table of overview.md word for word (the Here and Why columns); every row of the
+table repeats the Departures table of details/departures.md word for word (the Here and Why columns); every row of the
 glossary has five filled cells, and the glossary has every term of the approved list (GLOSSARY_TERMS).
 
 Prints one JSON object and exits 1 when there are errors. It checks shape, not meaning: whether a sentence says
@@ -43,7 +43,7 @@ GLOSSARY_TERMS = [
     "Empathize", "Define", "Ideate", "Prototype", "Test", "Point of View", "How Might We", "Five-Act Interview",
     "rumble", "Lightning Demos", "Make a Map",
 ]
-OVERVIEW = "plugins/ideo-scrum/skills/scrum-kernel/overview.md"
+DEPARTURES_FILE = "plugins/ideo-scrum/skills/memory/details/departures.md"
 DEPARTURES = "Departures from the official guides"
 DIFFERS = "How it differs from textbook Scrum"
 PLUGIN_JSON = "plugins/ideo-scrum/.claude-plugin/plugin.json"
@@ -193,13 +193,13 @@ def check(root: Path) -> dict:
             if found != [version]:
                 errors.append(f"{name}: version {found} is not the plugin's {version}")
 
-    # the "How it differs" table repeats the Departures table of overview.md
+    # the "How it differs" table repeats the Departures table of details/departures.md
     departures = []
-    for sec in parse(read(root / OVERVIEW))["sections"]:
+    for sec in parse(read(root / DEPARTURES_FILE))["sections"]:
         if sec["title"] == DEPARTURES:
             departures = [(r[0], r[2]) for r in sec["table"][1:]]
     if not departures:
-        errors.append(f"{OVERVIEW}: no Departures table found")
+        errors.append(f"{DEPARTURES_FILE}: no Departures table found")
     if "README.md" in docs:
         rows = [s for s in docs["README.md"]["sections"] if s["title"] == DIFFERS]
         if len(rows) != 1:
@@ -237,10 +237,10 @@ STUB_ZH = "# 桩\n\n## 部分\n\n- 一\n- 二\n\n| 甲 | 乙 |\n| --- | --- |\n|
 
 
 def build_copy(dest: Path) -> None:
-    """A copy of what the check reads: the real documents (a stub for one that is not written yet), overview.md
+    """A copy of what the check reads: the real documents (a stub for one that is not written yet), details/departures.md
     and plugin.json, and an empty file at every other link target."""
     names = [n for pair in PAIRS for n in pair] + SINGLES
-    for name in names + [OVERVIEW, PLUGIN_JSON]:
+    for name in names + [DEPARTURES_FILE, PLUGIN_JSON]:
         (dest / name).parent.mkdir(parents=True, exist_ok=True)
         if (ROOT / name).is_file():
             shutil.copy(ROOT / name, dest / name)
@@ -273,8 +273,8 @@ def selftest() -> int:
          "not in the Departures table"),
         ("a stale version", "README.md", "**v", "**v1", "version"),
         ("a dead link", "README.md", "[Glossary](docs/glossary.md)", "[Glossary](docs/nope.md)", "dead link"),
-        ("a missing heading", "README.md", "overview.md#departures-from-the-official-guides",
-         "overview.md#no-such-heading", "no heading for #no-such-heading"),
+        ("a missing heading", "README.md", "departures.md#departures-from-the-official-guides",
+         "departures.md#no-such-heading", "no heading for #no-such-heading"),
         ("a zh link retargeted", "README.zh-CN.md", "[词汇表](docs/glossary.md)", "[词汇表](CHANGELOG.md)",
          "links differ"),
         ("a zh quick-start list item removed", "docs/quick-start.zh-CN.md",

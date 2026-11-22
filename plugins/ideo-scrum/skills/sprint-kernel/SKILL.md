@@ -1,6 +1,6 @@
 ---
 name: sprint-kernel
-description: "Use only when summoned to open, run, resume or close this plugin's Sprint: an ideo-scrum role command tells you to load it for Sprint work; the user names ideo-scrum or sprint-kernel for that work; or they ask to create or change the plugin's logs (ProductBacklog.md / 产品日志, SprintBacklog.md / sprint log / 冲刺日志, DesignBacklog.md / 设计日志) and the work involves a Sprint. When summoned, invoke this skill before answering, even for a brief request. General Sprint, Sprint Goal, Sprint Backlog, Planning, Review or Retro questions alone are not a summons: answer normally without loading this skill. Once summoned, read the sprint log conventions before planning or writing the log; use scrum-kernel first for the product log and roles. Covers Why, What, How, Increment, Test, refinement, checkpoints and closing, with no Sprint end date; the five Scrum events' source text is in `events/`. Design sprints belong to design-kernel, not this skill."
+description: "Use only when summoned to open, run, resume or close this plugin's Sprint: an ideo-scrum role command tells you to load it for Sprint work; the user names ideo-scrum or sprint-kernel for that work; or they ask to create or change the plugin's logs (ProductBacklog.md / 产品日志, SprintBacklog.md / sprint log / 冲刺日志, DesignBacklog.md / 设计日志) and the work involves a Sprint. When summoned, invoke this skill before answering, even for a brief request. General Sprint, Sprint Goal, Sprint Backlog, Planning, Review or Retro questions alone are not a summons: answer normally without loading this skill. Once summoned, read the Memory's Sprint rules before planning or writing the log; use scrum-kernel first for the product log and roles. Covers Why, What, How, Increment, Test, refinement, checkpoints and closing, with no Sprint end date; the five Scrum events' source text is in `events/`. Design sprints belong to design-kernel, not this skill."
 ---
 
 # Sprint Kernel
@@ -8,27 +8,27 @@ description: "Use only when summoned to open, run, resume or close this plugin's
 > Source: the events and Sprint Backlog excerpts are from the Scrum Guide Expansion Pack v2026.1 (Ralph Jocham, John Coleman, Jeff Sutherland); the rest is the plugin author's.
 > License: the quotations are CC BY-SA 4.0 (© 2025 Ralph Jocham, John Coleman, and Jeff Sutherland); the plugin's own text is MIT.
 
-A Sprint turns selected items into an Increment. This kernel holds what running one takes: the sprint log conventions in `conventions/`, and the five Scrum events in `events/`. The product log, the roles, and the rest of Scrum stay in the scrum-kernel skill (`../scrum-kernel/SKILL.md`, `../scrum-kernel/overview.md`); read it first if it is not loaded yet.
+A Sprint turns selected items into an Increment. This kernel holds what running one takes: the five Scrum events in `events/`, and the pointers to the Sprint rules in the Memory (`../memory/SKILL.md`). The product log, the roles, and the rest of Scrum stay in the scrum-kernel skill (`../scrum-kernel/SKILL.md`); read it first if it is not loaded yet.
 
 *(Author's methodology design for solo + AI teams, 2026-11-12 — not part of the Scrum Guide or SGEP.)*
 
-## Conventions
+## The Memory
 
-How a solo + AI team runs a Sprint — the five stages, the sprint log, who decides — is in `conventions/sprint-log.md`; the sprint log template is `../../template/sprint-backlog-template.md`. These are working conventions, not source text: follow what fits, override what doesn't, and note why. When you open, run, or close a Sprint, write a log, or answer a question about how to do any of these, read the matching convention first, even for a rough answer.
+How a solo + AI team runs a Sprint — the five stages, the sprint log, who decides — is in the memory skill (`../memory/SKILL.md`), its *Running a Sprint* section, with the longer rules in `../memory/details/` (`sprint.md`, `gates.md`, `refinement.md`, `closing.md`, `handoff.md`); the sprint log template is `../../template/sprint-backlog-template.md`. The role commands load the Memory after the kernels; if it is not loaded yet, invoke `ideo-scrum:memory` first. These are working conventions, not source text: follow what fits, depart from what doesn't, and note why. When you open, run, or close a Sprint, write a log, or answer a question about how to do any of these, read the matching Memory lines first, even for a rough answer.
 
 | File | What it covers | Read when |
 | --- | --- | --- |
-| `conventions/sprint-log.md` | The five stages of a Sprint — Why, What, How, Increment, Test — and its close | Opening, running, or closing a Sprint |
+| `../memory/SKILL.md`, `../memory/details/sprint.md` | The Memory's Sprint rules: the five stages of a Sprint — Why, What, How, Increment, Test — and its close | Opening, running, or closing a Sprint |
 | `../../template/sprint-backlog-template.md` | The sprint log template; the file made from it is `SprintBacklog.md` | Opening a Sprint |
 
-**Before drafting a Sprint Goal or a refinement, even in chat:** read `../scrum-kernel/overview.md`, `conventions/sprint-log.md`, and `events/scrum-event-sprint-planning.md` in full. Then read the material for the task:
+**Before drafting a Sprint Goal or a refinement, even in chat:** read the whole Memory list (`../memory/SKILL.md`) and, in full, `../memory/details/sprint.md`, `../memory/details/goal-fixed.md`, `../memory/details/gates.md`, `../memory/details/refinement.md`, and `events/scrum-event-sprint-planning.md`. Then read the material for the task:
 
 | Draft | Also read before drafting | Use in the draft |
 | --- | --- | --- |
 | Sprint Goal (Why) | The full `../scrum-kernel/references/scrum-artifact-sprint-backlog.md` (the excerpt below covers only its Sprint Backlog section), the full comments in `../../template/sprint-backlog-template.md` §§1.1–1.2, and the project's Product Goal in §1.2 of the product log | One objective about the value of this Sprint, toward the Product Goal. Keep item selection and the plan out of the Why. |
-| Item refinement (What) | The full `../scrum-kernel/references/scrum-artifact-product-backlog.md`, `../scrum-kernel/conventions/product-log.md`, `../ideo-kernel/IDEO-modes/define.md`, and `../ideo-kernel/methods/how-might-we-questions.md`, plus the full §2.2 comment in `../../template/sprint-backlog-template.md` | Take the POV word for word from the item or goal, frame HMWs that leave more than one solution open, distinguish what the Product Owner decides, what the Developer can propose, and what needs research, and propose checkable acceptance criteria. |
+| Item refinement (What) | The full `../scrum-kernel/references/scrum-artifact-product-backlog.md`, `../memory/details/product-log.md`, `../ideo-kernel/IDEO-modes/define.md`, and `../ideo-kernel/methods/how-might-we-questions.md`, plus the full §2.2 comment in `../../template/sprint-backlog-template.md` | Take the POV word for word from the item or goal, frame HMWs that leave more than one solution open, distinguish what the Product Owner decides, what the Developer can propose, and what needs research, and propose checkable acceptance criteria. |
 
-Read any other method in full before using it. Material already present in the conversation counts only for the text it covers; a link, a Skill call without the text, or an unfinished read is not enough. If required text is missing, say what is missing and stop before drafting. When the Product Owner says a draft misapplies the method, reread the applicable source and instructions before redrafting. Drafting does not give the go-ahead for the next stage; follow the decisions in the sprint log conventions.
+Read any other method in full before using it. Material already present in the conversation counts only for the text it covers; a link, a Skill call without the text, or an unfinished read is not enough. If required text is missing, say what is missing and stop before drafting. When the Product Owner says a draft misapplies the method, reread the applicable source and instructions before redrafting. Drafting does not give the go-ahead for the next stage; follow the Memory's stage-gate rules (`stage-gates`).
 
 ## The Scrum Events in the Expansion Pack
 

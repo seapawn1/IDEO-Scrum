@@ -1,8 +1,8 @@
 # Scrum Board Conventions
 
-> Working conventions: reference, not law — follow what fits, override what doesn't, note why. Source labels and short names are explained in convention 15 of `overview.md`, in the scrum-kernel skill folder, beside its `SKILL.md`. A convention with no label is the author's practice.
+> Working conventions: reference, not law — follow what fits, depart from what doesn't, note why. Source labels and short names are explained in Memory `rule-labels` (`details/names.md` in the memory skill). A convention with no label is the author's practice.
 
-The Scrum board is one page that shows where the project stands. Its template is `scrum-board-template.html`, beside this file in `board/`; this file is also the brief for whoever writes the page. Paths in this file, such as `overview.md`, `conventions/product-log.md` and those starting with `../`, are relative to the scrum-kernel skill folder, not to `board/`.
+The Scrum board is one page that shows where the project stands. Its template is `scrum-board-template.html`, beside this file in `board/`; this file is also the brief for whoever writes the page.
 
 ```mermaid
 flowchart TD
@@ -23,10 +23,10 @@ flowchart TD
 
 4. **The logs** — The product log is `scrum/ProductBacklog.md`. The open logs are `scrum/sprint-*/SprintBacklog.md`, `scrum/design-*/DesignBacklog.md`, and `scrum/ideo-*/IdeoBacklog.md`; nothing in `scrum/documents/`, which holds the archive. A Sprint or design that is open on another branch counts too: read its log as committed on that branch (git can show a file at a branch's latest commit), and give `branch <name> @ <commit>` as its source, the commit as its first seven characters. A log that is in this working copy is read from the working copy, with any change not yet committed, and its source is `working copy`. If one log is found on several branches, use the version with the newest commit. The product log is read the same way when it is not in this working copy; how to write its source is in convention 11 (`product.source`).
 5. **What it takes from a log** — Read these where the conventions say they are, and look for nothing else:
-    - the commitments: a one-row table whose first cell is `Commitment` (`承诺` in a Chinese log) and whose second cell is the exact text; the heading above it says which one it is (`overview.md`, convention 17): the Product, the Product Goal, the Sprint Goal, the design goal;
-    - `> Now:` in a Sprint log (`../sprint-kernel/conventions/sprint-log.md`, convention 22), a design log (`../design-kernel/conventions/design-log.md`, convention 24), and an IDEO log (`../ideo-kernel/conventions/ideo-log.md`, convention 4); the product log has none;
-    - in the product log, section 3.1: the item table has seven columns (`conventions/product-log.md`, convention 10); take the number, title, status, and size of each row and leave the rest in the log; and the number of rows in section 3.2;
-    - in a Sprint log, section 2.1: the numbers of the items it took, in the order the table lists them; and chapter 3: each row's `#` cell, its Work item cell, and whether its Done when cell begins with `✓` (`../sprint-kernel/conventions/sprint-log.md`, convention 9);
+    - the commitments: a one-row table whose first cell is `Commitment` (`承诺` in a Chinese log) and whose second cell is the exact text; the heading above it says which one it is (Memory `goal-fixed`, `commitment-table`): the Product, the Product Goal, the Sprint Goal, the design goal;
+    - `> Now:` in a Sprint log, a design log, and an IDEO log (Memory `log-is-the-handoff`); the product log has none;
+    - in the product log, section 3.1: the item table has seven columns (Memory `item-columns`); take the number, title, status, and size of each row and leave the rest in the log; and the number of rows in section 3.2;
+    - in a Sprint log, section 2.1: the numbers of the items it took, in the order the table lists them; and chapter 3: each row's `#` cell, its Work item cell, and whether its Done when cell begins with `✓` (Memory `increment-notes`, `mark-done`);
     - in a design log: the `From` field of the header, which says what the design is for; section 3.1, the chosen solution; and section 3.2, the storyboard, if there is one in the log;
     - in an IDEO log: its `For` field, which points to the log it serves, and its Now line.
 6. **Maps** — The product log's map is the Mermaid diagram in section 2.2; a design log's map is the one in its section 2.1. A node's label is the text inside the quotation marks of `["…"]`, `("…")`, or `{"…"}`; arrows and their labels are not nodes.

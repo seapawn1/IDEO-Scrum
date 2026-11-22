@@ -8,7 +8,7 @@
 # the Product Goal, and the Sprint Goal or design goal of the log that is open -- and prints them as
 # plain text; Claude Code adds that text to the model's context.
 #
-# How it reads the logs (the rules are in convention 17 of `overview.md` in the scrum-kernel skill):
+# How it reads the logs (the rules are Memory `goal-fixed` and `commitment-table`):
 #   - a commitment is a one-row table whose first cell is `Commitment` (`承诺` in a Chinese log); the
 #     second cell is the exact text;
 #   - the nearest heading above it says which one it is: Product, Product Goal (product log,

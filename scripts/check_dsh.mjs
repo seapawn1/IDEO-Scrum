@@ -125,23 +125,17 @@ test('the log templates and the board files sit in template/ and board/, are pac
       assert.ok(packed(rel), `${rel} must be listed in the package files`)
     }
   }
-  // A skill folder is the base of the paths in its SKILL.md and in the files beside it: a kernel's conventions/ (if it still has
-  // any), the memory skill's details/.
+  // A skill folder is the base of the paths in its SKILL.md and, for the memory skill, in the files of its details/.
   const skills = join(plugin, 'skills')
   const written = []
   for (const kernel of [...kernels, 'memory']) {
     const base = join(skills, kernel)
-    const folders = ['conventions', 'details'].map(name => join(base, name)).filter(dir => existsSync(dir))
-    const files = [join(base, 'SKILL.md'), ...folders.flatMap(dir => readdirSync(dir).map(name => join(dir, name)))]
-    if (kernel === 'scrum-kernel' && existsSync(join(base, 'overview.md'))) files.push(join(base, 'overview.md'))
+    const details = join(base, 'details')
+    const files = [join(base, 'SKILL.md'), ...(existsSync(details) ? readdirSync(details).map(name => join(details, name)) : [])]
     for (const file of files.filter(f => f.endsWith('.md'))) {
       const text = readFileSync(file, 'utf8')
-      // the old places: a template or a board file named under a kernel's conventions/ folder
-      assert.doesNotMatch(
-        text,
-        /conventions\/(?:(?:product|sprint|design|ideo)-backlog-template\.md|board-log\.md|scrum-board-template\.html)/,
-        `${file} still names a file at its old place`,
-      )
+      // the old places: the kernels' conventions/ folders and overview.md are gone, their rules moved to the memory skill
+      assert.doesNotMatch(text, /conventions\/|overview\.md/, `${file} still names a file at an old place`)
       for (const match of text.matchAll(/\.\.\/\.\.\/(template|board)\/([A-Za-z0-9._-]+)/g)) {
         const target = join(base, '..', '..', match[1], match[2])
         assert.ok(existsSync(target), `${file}: ${match[0]} does not resolve`)

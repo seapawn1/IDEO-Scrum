@@ -1,6 +1,6 @@
 ---
 name: ideo-kernel
-description: "Use when the user wants to brainstorm or diverge, define a problem, understand users, make a rough prototype, or test users' reactions — even without saying IDEO or design thinking. Invoke this skill before answering any such request, even for a quick outline. Also use for IDEO, the five modes, the IDEO five-stage method, named design-thinking methods, or questions about what people want or what counts as good with no ready answer. Every role loads this shared toolbox first: Empathize, Define, Ideate, Prototype, Test; interviews, journey maps, POV, HMW, brainstorming and user testing. The IDEO five-stage method is these five modes, not the design sprint; a run of their own uses an IDEO log. Read `conventions/ideo-log.md` for the boundary between a design sprint and the five modes. Use methods for a design stage or a stuck Sprint too. Prototypes are rough, quick and disposable, for learning, not formal delivery. This skill does not itself summon Scrum or a design sprint; a full design sprint is design-kernel."
+description: "Use when the user wants to brainstorm or diverge, define a problem, understand users, make a rough prototype, or test users' reactions — even without saying IDEO or design thinking. Invoke this skill before answering any such request, even for a quick outline. Also use for IDEO, the five modes, the IDEO five-stage method, named design-thinking methods, or questions about what people want or what counts as good with no ready answer. Every role loads this shared toolbox first: Empathize, Define, Ideate, Prototype, Test; interviews, journey maps, POV, HMW, brainstorming and user testing. The IDEO five-stage method is these five modes, not the design sprint; a run of their own uses an IDEO log. The Memory skill has the boundary between a design sprint and the five modes. Use methods for a design stage or a stuck Sprint too. Prototypes are rough, quick and disposable, for learning, not formal delivery. This skill does not itself summon Scrum or a design sprint; a full design sprint is design-kernel."
 ---
 
 # IDEO Kernel
@@ -14,15 +14,15 @@ This kernel is the plugin's shared toolbox and the foundation of every stage: th
 
 *(Author's methodology design for solo + AI teams, 2026-11-08.)*
 
-## Conventions
+## The Memory
 
-Whether a question needs a design sprint or the five modes, how the two relate, when to open an IDEO log, and how one ends are in `conventions/ideo-log.md`; the log template is `../../template/ideo-backlog-template.md`.
+Whether a question needs a design sprint or the five modes, how the two relate, when to open an IDEO log, and how one ends are in the memory skill (`../memory/SKILL.md`), its *The five modes and the IDEO log* section, with `../memory/details/ideo-ending.md` for the end; the role commands load it last, and if it is not loaded yet, invoke `ideo-scrum:memory`. The log template is `../../template/ideo-backlog-template.md`.
 
 ## IDEO design thinking
 
 Design Thinking is a **human-centered approach to innovation** that integrates the needs of people, the possibilities of technology, and the requirements for business success. Originating from IDEO and formalized at Stanford's Hasso Plattner Institute of Design (the d.school, founded by David Kelley), it is an iterative, non-linear methodology for tackling complex, ill-defined problems. Its core ethos is **bias toward action** — learning by doing rather than analysis alone.
 
-**Bias toward fast prototype validation.** The design work optimizes for speed of learning, not polish: a prototype must feel like a prototype — rough, quick, and disposable — built to learn, never a formal result. In a design sprint test, keep the surface real enough for honest reactions (`../design-kernel/steps/4-1-fake-it.md`). In a design sprint, disposable describes the prototype’s purpose and cost, not deleting the evidence: preserve the original as `../design-kernel/conventions/design-log.md`, convention 19, says. A standalone run of the five modes follows its own prototype handoff and disposal rule (`conventions/ideo-log.md`, convention 4), with no gates between modes.
+**Bias toward fast prototype validation.** The design work optimizes for speed of learning, not polish: a prototype must feel like a prototype — rough, quick, and disposable — built to learn, never a formal result. In a design sprint test, keep the surface real enough for honest reactions (`../design-kernel/steps/4-1-fake-it.md`). In a design sprint, disposable describes the prototype’s purpose and cost, not deleting the evidence: preserve the original, as Memory `design-ends` says (`../memory/details/design-ending.md`). A standalone run of the five modes follows its own prototype handoff and disposal rule (Memory `ideo-log-ends`), with no gates between modes.
 
 IDEO's five-mode model:
 

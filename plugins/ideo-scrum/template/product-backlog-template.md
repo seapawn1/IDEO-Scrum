@@ -1,7 +1,7 @@
 # Product Backlog — <product>
 
 > Product Owner: <name> | Started: <date>
-> How to write this log: `product-log.md` in the scrum-kernel skill's `conventions/` folder. How it fits with sprint and design logs: `overview.md`, beside the skill's `SKILL.md`.
+> How to write this log: the Memory's *The product log* section (the memory skill's `SKILL.md`). How it fits with sprint and design logs: `details/flow-maps.md` in the same skill.
 
 ## 1. Product
 
@@ -17,7 +17,7 @@
 | Commitment | <Product Goal> |
 | --- | --- |
 
-<!-- The table holds the current Product Goal. The optional vision line, reasons for the goal, and the directions after it are outside the commitment (product-log.md, conventions 4 and 18). -->
+<!-- The table holds the current Product Goal. The optional vision line, reasons for the goal, and the directions after it are outside the commitment (Memory `product-log-header`, `product-log-changes`). -->
 
 ### 1.3 Definition of Done
 
@@ -37,20 +37,20 @@
 
 ### 2.1 Stakeholders
 
-<!-- A short table of who the stakeholders are (product-log.md, convention 6). -->
+<!-- A short table of who the stakeholders are (Memory `stakeholder-table`). -->
 
 | Who | What they want | When to summon |
 | --- | --- | --- |
 
 ### 2.2 Map
 
-<!-- One map: actors on top, the ending at the bottom, five to fifteen steps in between, as a Mermaid flowchart TD; subsections after it only where a step needs more words (product-log.md, conventions 7 and 8). -->
+<!-- One map: actors on top, the ending at the bottom, five to fifteen steps in between, as a Mermaid flowchart TD; subsections after it only where a step needs more words (Memory `architecture-map`, `no-tbd`). -->
 
 ## 3. Product Backlog Items
 
 ### 3.1 Current items
 
-<!-- Numbered PBI-001, PBI-002, and so on (product-log.md, conventions 10 to 13 and 18). -->
+<!-- Numbered PBI-001, PBI-002, and so on (Memory `item-columns`, `numbers-not-ranks`, `items-with-sm`, `status-lives-here`, `product-log-changes`). -->
 
 | # | Title | User story | Place | Status | Size | Notes |
 | --- | --- | --- | --- | --- | --- | --- |

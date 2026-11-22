@@ -41,7 +41,7 @@
 ## 源材料与授权
 
 - 第三方摘录文件顶部带 `> Source:` 与 `> License:` 两行，License 与 ATTRIBUTION.md 一致；新来源先在 ATTRIBUTION.md 登记。命令类组件不设文件头两行，署名由 ATTRIBUTION.md 承担。
-- 原文优先：能用原文就用原文；例图改画成 Mermaid（`flowchart TD`）或文字，不放图片；不是原文的写法进 `conventions/`，标为约定建议。只删不改的摘录用脚本按行号取，删完查悬空的句子。
+- 原文优先：能用原文就用原文；例图改画成 Mermaid（`flowchart TD`）或文字，不放图片；不是原文的写法进 Memory（`plugins/ideo-scrum/skills/memory/`），标为约定建议。只删不改的摘录用脚本按行号取，删完查悬空的句子。
 - 授权：Scrum Guide 2020 / SGEP 为 CC BY-SA 4.0；d.school Bootleg 为 CC BY-NC-SA 4.0；《Sprint》(Knapp) 全版权，版权由 PO 负责、发布前声明。
 - 根目录 `references/` 是源材料原件，不入库；插件里 `skills/*/references/` 的摘录照常入库。
 
@@ -53,7 +53,7 @@
 
 - 按 Sprint Goal 收官；冲刺日志不写截止日；发版照常记进当期日志。
 - 计划外工作先登记 PBI，再由 PO 定进不进当前 Sprint；没做完的回产品日志。
-- Review 与 Retro 是收官时的动作，日志里不设章；流程见插件 sprint-kernel 的 `conventions/sprint-log.md`。
+- Review 与 Retro 是收官时的动作，日志里不设章；流程见插件 Memory 的 `review-at-close`、`retro-in-memory`（细则在 `skills/memory/details/closing.md`）。
 - Retro 只写记忆：`S:\SeaPawn-Memory\memory\IDEO-Scrum\`，Master 列候选、PO 挑要点，一条一个记忆文件；不写按冲刺打包的记忆档。
 - 收官：合入 main，关分支与 worktree；Review 与 Retro 只出一个提交。
 - worktree 用原生方式建（`--worktree` 或 Claude 建，落在 `.claude/worktrees/`），不裸跑 `git worktree add`；`.worktreeinclude` 决定带过去的文件。

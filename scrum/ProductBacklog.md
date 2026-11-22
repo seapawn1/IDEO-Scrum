@@ -48,7 +48,7 @@
 
 # 二、架构
 
-> 2.1 是谁，2.2 一张 Map。流程怎么走，见插件 scrum-kernel 的 `overview.md` 与各内核的 `conventions/`。
+> 2.1 是谁，2.2 一张 Map。流程怎么走，见插件的 Memory（`plugins/ideo-scrum/skills/memory/`）。
 
 ## 2.1 Stakeholders
 
@@ -103,7 +103,7 @@ flowchart TD
 
 # 三、Product Backlog Items
 
-> 编号只是枚举序，不是优先级。行按三组排：主线（新功能）、副线（插件的规矩与讲规矩的文档）、以后；不加节（PO 2026-11-12、11-13）。备注只写决定和开放点，做法到做的时候写进冲刺日志（PO 2026-11-13）。七列写法见插件 scrum-kernel 的 `conventions/product-log.md` 第 10 条。
+> 编号只是枚举序，不是优先级。行按三组排：主线（新功能）、副线（插件的规矩与讲规矩的文档）、以后；不加节（PO 2026-11-12、11-13）。备注只写决定和开放点，做法到做的时候写进冲刺日志（PO 2026-11-13）。七列写法见插件 Memory 的 `item-columns`（`skills/memory/details/product-log.md`）。
 
 ## 3.1 当前的 PBI
 

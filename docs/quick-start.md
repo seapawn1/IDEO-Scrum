@@ -15,7 +15,7 @@ In a Claude Code session:
 /ideo-scrum:scrum-master
 ```
 
-This Claude Code command calls the IDEO, Scrum, Sprint, and Design kernels in that order before starting work; you don't need to call them yourself. See the [role convention](../plugins/ideo-scrum/skills/scrum-kernel/overview.md#who-does-what) for the other roles.
+This Claude Code command calls the IDEO, Scrum, Sprint, and Design kernels, then the Memory, in that order before starting work; you don't need to call them yourself. See the [role rules](../plugins/ideo-scrum/skills/memory/details/roles.md) for the other roles.
 
 In a new DSH **Standard** session opened in your project directory:
 
@@ -67,11 +67,11 @@ When the Test stage is done, say "close". Review compresses and archives the spr
 
 ## Rules worth keeping
 
-1. You settle stage results and explicitly authorize entry or return ([overview](../plugins/ideo-scrum/skills/scrum-kernel/overview.md), convention 12).
-2. Building starts only after your go-ahead ([sprint log](../plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md), convention 8).
-3. The Sprint Goal stays fixed; the plan can change (overview, convention 17).
-4. Someone other than the builder reviews (sprint log, convention 14).
-5. The log is the handoff: the `Now` and `Waiting for PO` lines at the top of the sprint log say where the Sprint stands and what waits for you (sprint log, convention 22).
+1. You settle stage results and explicitly authorize entry or return ([Memory](../plugins/ideo-scrum/skills/memory/SKILL.md) `stage-gates`).
+2. Building starts only after your go-ahead ([Memory](../plugins/ideo-scrum/skills/memory/SKILL.md) `go-ahead`, `review-handover`).
+3. The Sprint Goal stays fixed; the plan can change (Memory `goal-fixed`, `commitment-table`).
+4. Someone other than the builder reviews (Memory `reviewer-required`).
+5. The log is the handoff: the `Now` and `Waiting for PO` lines at the top of the sprint log say where the Sprint stands and what waits for you (Memory `log-is-the-handoff`).
 
 ## Handing over in writing
 
