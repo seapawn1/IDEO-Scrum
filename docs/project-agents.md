@@ -22,10 +22,10 @@ The entry takes the open question, the constraints, and the exact files to read:
 ```
 
 - **It is manual by design.** Claude does not reach for it on its own, and the entry is not in Claude's list of invocable skills; you start it.
-- **The context is clean.** The entry passes only your question, your constraints and the file paths — not the discussion so far, not a draft answer, and not a leaning of yours.
+- **The brief is clean.** The entry passes only your question, your constraints and the file paths — not the discussion so far, not a draft answer, and not a leaning of yours.
 - **The answer is the advisor's.** It comes back with the verdict and the evidence, and the decision stays yours.
 
-**On the model.** The advisor's definition asks for Fable. If you name another model, the entry requests it for that call only and changes no settings. It **does not verify** which model the host actually ran. Checking whether the requested model ran, was substituted, or was unavailable is left for later; the entry does not attribute the answer to a specific model.
+**On the model.** The advisor's definition asks for Fable, which needs access on your account. To use another model, add `| model: opus` (or another name) to the request; the entry requests it for that call only and changes no settings. If Fable is not available to your account, the entry says so and asks which model to use. It **does not verify** which model the host actually ran. Checking whether the requested model ran, was substituted, or was unavailable is left for later; the entry does not attribute the answer to a specific model.
 
 ## Register a stakeholder from the product log
 
@@ -34,13 +34,13 @@ The entry takes the open question, the constraints, and the exact files to read:
 ```
 
 1. The Product Owner names a stakeholder in the product log's stakeholder table, in `scrum/ProductBacklog.md` §2.1 — in any language, with roles down the rows or across the columns.
-2. Register that role card; the entry shows the definition file and the one-line reference it would add, and writes nothing until you accept.
+2. Register that role card; the entry shows the definition file and the one-line reference it would add, and writes nothing until you accept. Claude Code may also ask for its own permission to write under `.claude/`; that prompt is separate from your acceptance.
 3. Declining leaves both untouched. A name already in use is reported, never overwritten, and never cleared by editing another scope.
 4. After a change, the old definition stays as it was until the new one is accepted; a half-finished write is reported part by part.
 
 ## Summon it by name
 
-Once registered, the same file serves both entries:
+Once registered, the same file serves the first two of these; the third needs no file:
 
 ```text
 Agent, subagent_type: "security-reviewer"

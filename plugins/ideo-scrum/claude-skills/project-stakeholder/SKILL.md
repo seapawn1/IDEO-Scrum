@@ -1,5 +1,6 @@
 ---
 name: project-stakeholder
+argument-hint: "<name of the role card in the product log's stakeholder table>"
 description: "Use when the user wants to turn a role card the Product Owner already agreed in the product log's stakeholder table into a project-level agent, so that this project can summon that stakeholder by name — first registration, an update, or a re-check for a name clash. The table may be in any language, with roles down the rows or across the columns; it finds the card either way. It shows the exact file it would write and the product-log reference it would add, and writes nothing until the user accepts; declining leaves both untouched. Not for an ad-hoc Stakeholder view (the `stakeholder` entry does that), not for ranking or deciding, and not for changing the shared Stakeholder command."
 ---
 
@@ -17,7 +18,7 @@ Read `scrum/ProductBacklog.md` and work from §2.1, the stakeholder table. **Its
 - **Roles down the columns** — one column per stakeholder, with a row per fact (this repository's own product log is written this way).
 - **Any language, and any set of facts.** A card may carry rows the template never had, such as what counts as a good outcome, what it may see, or what it is responsible for.
 
-So find the card by what it says, not by a fixed position: the **card** is the cell holding the stakeholder the user named, and its **facts** are the cells that line up with it — down its column when roles sit in columns, across its row when roles sit in rows. The cell that says when to summon it is the one whose companion label means that, in whatever language the table uses; if no such cell exists, say so rather than inventing one.
+So find the card by what it says, not by a fixed position: the **card** is the cell holding the stakeholder the user named, and its **facts** are the cells that line up with it — down its column when roles sit in columns, across its row when roles sit in rows. The cell that says when to summon it is the one whose companion label means that, in whatever language the table uses; if no such cell exists, say so rather than inventing one, and follow section 3 for what happens next.
 
 - Take only what the card actually states. Do not fill a fact the card leaves blank, do not normalise its wording away, and do not assume a field the table does not have.
 - If §2.1 is empty, or the user has not said which card, stop and ask. The Product Owner names stakeholders; you do not.
@@ -39,6 +40,8 @@ Show, as one proposed change:
 Wait for an explicit yes. "Show me" is not a yes, and a permission to write files is not an agreement to this content. If the user declines, write nothing — neither the file nor the reference — and say that both are unchanged.
 
 **When updating an existing definition**, also show a **diff** against the file and the reference as they stand now.
+
+**When the card has no when-to-summon cell**, show the definition file alone and say that the product log gets no reference because there is no cell to put it in. The user chooses: write the file without the reference, or stop until the Product Owner adds the cell. Never add a cell, row or column to the table yourself.
 
 ## 4. Write what was agreed, and only that
 
@@ -65,6 +68,8 @@ tools: Read, Grep, Glob, Skill
 **Do not put earlier reviews, opinions or meeting notes into the definition.** A definition that carries old verdicts stops being an independent view.
 
 **Keep the Review summoning right where it is.** At Sprint Review the Product Owner or Scrum Master summons the Stakeholder through a fresh subagent; registering a definition does not make the builder its summoner, and does not turn a standing PO assistant into an independent reviewer.
+
+**Expect the host's own prompt.** Claude Code may ask separately for permission to write under `.claude/`. That prompt is the host's and does not replace the user's yes to the preview: get the yes here first, then let the write reach the host's prompt.
 
 **Before writing, look again.** Re-read the target file and the product log's §2.1 and confirm neither changed since you showed the preview. If one did, stop and show the new difference instead of overwriting it.
 

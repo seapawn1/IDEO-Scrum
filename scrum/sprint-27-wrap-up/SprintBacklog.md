@@ -136,7 +136,7 @@
 | H3 | 86 的 DSH 部分（S） | `dsh/index.js` 角色表、`dsh/locale/en.json`、`zh.json`、`check_dsh.mjs`、`docs/maintaining*.md` 加 supporter；2.2 的 DSH 验收条目交 Master 转 IDEO 秘书会话 | `check_dsh` 通过且覆盖五个角色；`npm pack --dry-run` 含 `commands/supporter.md`；验收条目已交 Master |
 | H4 | 84 署名（S） | 五个 `IDEO-modes/*.md` 的头与 `ATTRIBUTION.md` 第 3 节补成两源，正文不动 | ✓ 2026-11-22 对基线逐文件比，正文逐字相同；头与第 3 节逐项对上；许可有链接或存档出处 |
 | H5 | 89 看板收尾态（S） | `check.py` 修三处并加正负例；`board/board-log.md` 第 12 条补一句；`template/ideo-backlog-template.md` 的 `For` 占位补提 `DesignBacklog.md` | `board_check selftest` 全过且含新增正负例；三态合成日志重跑通过；条文与脚本一致 |
-| H6 | 90 九条（S） | 做 ①②④⑤⑦⑧⑨，⑥ 在快速上手补一行，③ 不做；只动 `second-opinion`、`project-stakeholder`、`advisor.md` 的正文与 `docs/project-agents*.md`、`quick-start*.md`，不动任何 description | 九条各有结论与理由；做了的有 diff；`check_docs.py` 通过 |
+| H6 | 90 九条（S） | 做 ①②④⑤⑦⑧⑨，⑥ 在快速上手补一行，③ 不做；只动 `second-opinion`、`project-stakeholder`、`advisor.md` 的正文与 `docs/project-agents*.md`、`quick-start*.md`，不动任何 description | ✓ 2026-11-22 九条各有结论与理由；做了的有 diff；`check_docs.py` 通过 |
 | H7 | 收口 | `CHANGELOG.md` 的 Unreleased 补记；全仓 grep 复核；`validate --strict` 后派 `plugin-dev:plugin-validator`（Haiku，新命令与 frontmatter 改动属结构变化）；2.2 通过线提交冻结；报 Master 请放行 Test | 上述检查通过；通过线已提交；Master 审过 Increment |
 
 **Key choices**
@@ -187,6 +187,17 @@ Go-ahead: 2026-11-22，Master 按 PO 的书面授权（见第 4 章）放行 H1�
 - **接手点**：施工已放行（第 3 章末行：H1–H7，本分支提交，不推送、不改版本号、不发版；Test 另等放行）。H4、H6 不依赖位置，先做；H1，以及依赖它的 H5、H2 里引用看板约定的一处，等 Master 转来的 DSH 探测结果——读得到 `skills/` 之外的包内路径就用插件根的 `template/`、`board/`，读不到就退回各内核自己的 `template/`、看板放 `skills/scrum-kernel/board/`。做完一项，在第 3 章该行 Done when 前加 `✓ <日期>`，并在这里记改了什么、为什么。
 - **Master 放行 How（2026-11-22）**：条件 ① B、C 组触发通过线改成「≥ 改前臂」，依据 AGENTS.md「改了描述就重跑触发测试，结果不能比改前差」，担心噪声就加次数、不降线——已改 2.2 与 Risks，只差一次的组两臂同补一轮的规则现在写定；条件 ② H1 位置等探测。A 组 ≥6/9 与两条混用线照旧。
 - **H4 · 84 署名（2026-11-22）**：五个 `IDEO-modes/*.md` 的头三行统一改成两源——2010 *Design Process Mini-Guide* 为底本（CC BY-NC-SA 3.0 Unported），2018 *Design Thinking Bootleg* 为补料（CC BY-NC-SA 4.0）；各带可达链接（两份 CC 许可全文、2010 PDF 的 Wayback 存档、Stanford 页）。正文没动：对基线 `git diff --numstat` 每个文件 3 增 3 删，hunk 只在 `@@ -3,3 +3,3 @@`。`ATTRIBUTION.md` 第 3 节拆成 3.1（2010 底本：许可依据是 d.school「Design Resources」维基首页的声明，写明声明在首页、原站已下线、未另取书面确认，附两条存档链接）和 3.2（2018 补料与方法库，加五模式补料对应表：8／6／9／7／8 块，共 38，对应 2018 PDF 第 3–12 页）；NonCommercial 提示改成「两份许可都含」。Test 的头与另四个相同（PBI 要求五个都补双源），2018 补料没有保留独有表述写在 3.2 的表里。另改 `README.md`、`README.zh-CN.md` 授权表的 d.school 一行，免得与 `ATTRIBUTION.md` 不一致（PBI 原文没列，按「改一条规矩先找它的其他说法」顺手做）。证据：Wayback 首页与 PDF、Stanford 页、CC 3.0 许可全文四个链接实测均 200（2026-11-22）；仓外取证在 `S:/IDEO-Scrum-Archives/sprint-21-design-board/h6-9558a0a/checks/attribution-audit/`；`check_docs.py` 无错误。
+- **H6 · 90 九条（2026-11-22）**：逐条结论，涉及 `second-opinion`、`project-stakeholder` 两份 `SKILL.md`、`advisor.md`、`docs/project-agents*.md`、`docs/quick-start*.md`，没碰任何 description。
+  - ① 做：参数写法定为 `model: <name>`——`second-opinion` 的 `argument-hint` 加 `| model: <optional>`，§1 加第四项，§3 写明作为 `Agent` 调用的 `model` 参数（例 `model: "opus"`）；docs 写「在请求后面加 `| model: opus`」。
+  - ② 做：`project-stakeholder` §1 指向 §3；§3 加「没有何时召唤栏」的路径——只展示定义文件、不加引用，用户选「不带引用写文件」或「停下等 PO 加栏」，不自己改表。
+  - ③ **不做**：召唤示例（docs 里的 `Agent, subagent_type: ...`）改成 @-mention 或自然语言，按 Sprint 22 的来源条件要走 Review 批准并实机验证；现有示例准确、能用，成本高于收益，等 PO 体验后再定（Master 已认可）。
+  - ④ 做：`project-stakeholder` 加 `argument-hint`（角色卡名）。
+  - ⑤ 做：`project-stakeholder` §4 加「宿主自己的提示」一段（`.claude/` 写入另有权限确认，不替代用户对预览的 yes）；docs 第 2 步加一句，中英同改。
+  - ⑥ 做一行：README 已挂（`README.md:167`、`README.zh-CN.md:167`），快速上手没挂——在「迷路了怎么办」补一条，中英同改。
+  - ⑦ 做：我的读法——「两入口／三条列项」指 docs「按名召唤」的三条：开头写「同一份文件供两个入口使用」，第三条（临时看一眼）却不用文件。改成「供前两种用法使用，第三种不需要文件」，中英同改。归档里只有一句话、没有明细，这是我的读法；Master 若另有所指，请说，我再改。
+  - ⑧ 做：`second-opinion` §2 标题改「Keep the brief clean」，docs 的「The context is clean」改「The brief is clean」（中文「交给参谋的说明是干净的」），`advisor.md` 的「a context that carries none of the earlier discussion」改「a fresh context that was given only the brief」。
+  - ⑨ 做：`second-opinion` §3 与 docs 写明 `fable` 要账号有权限，用不了时说明并问换哪个模型，不自己选。
+  - 检查：`check_docs.py` 无错误（195 条链接）；`claude plugin validate --strict` 通过；description 没动，所以不触发触发测试；frontmatter 有两处加了 `argument-hint`，H7 的 `plugin-validator` 一并看。
 
 - **Master 写第 1、2 章（2026-11-22）**：PO：「你把 S7也先写出来吧。然后这两个我一起审掉。」Developer 原计划的头部与 1.2 改动由 Master 代写；提交等 PO 审后再定。
 
