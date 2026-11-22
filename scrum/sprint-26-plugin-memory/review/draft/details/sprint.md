@@ -17,7 +17,7 @@ The detail behind the Sprint lines that point here: opening, the How, the go-ahe
 - It is not the solution a design chose: if a design gave a solution, the plan is how to build it.
 - The Scrum Guide's measure, "decomposing Product Backlog items into smaller work items of one day or less", becomes one session here.
 - The Scrum Master and the Product Owner check the plan.
-- This departs from the Scrum Guide; the reason is in `long/departures.md`.
+- This departs from the Scrum Guide; the reason is in `details/departures.md`.
 
 ## The go-ahead (`go-ahead`, `review-handover`)
 
@@ -30,7 +30,7 @@ The detail behind the Sprint lines that point here: opening, the How, the go-ahe
 
 - Stop and check the work against the Sprint Goal at the end of each stage (`stage-gates`), whenever the AI is stuck, and whenever the Product Owner asks how things stand.
 - Stuck means one of these: waiting for a decision or a piece of information only the Product Owner can give, a block from outside the team, the same approach tried twice and failed, or the current How no longer showing how to reach the Sprint Goal; anything else is an adjustment inside the plan.
-- This departs from the Scrum Guide's Daily Scrum; the reason is in `long/departures.md`.
+- This departs from the Scrum Guide's Daily Scrum; the reason is in `details/departures.md`.
 
 ## Tests: criteria first (`tests-criteria-first`, `check-script-misses`)
 
@@ -46,7 +46,7 @@ The detail behind the Sprint lines that point here: opening, the How, the go-ahe
 - When the Developer only shares the Scrum Master's context, the Scrum Master still reviews: a shared context does not make it the builder.
 - Brief a review subagent with the task, the project's rules, and the decisions already issued.
 - The Scrum Master may send a subagent to do the review or to read a long diff, and still owns the conclusion.
-- This departs from the Scrum Guide; the reason is in `long/departures.md`.
+- This departs from the Scrum Guide; the reason is in `details/departures.md`.
 
 ## Record the tests (`record-the-tests`)
 

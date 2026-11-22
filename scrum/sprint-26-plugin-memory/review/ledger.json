@@ -1,13 +1,13 @@
 {
- "baseline_commit": "8db683cfc16a7f6b1669df2bfc6efa6f0e8e7982",
+ "baseline_commit": "fa40fa460e441579b34fb5ed6234f97946782ae0",
  "files": [
   {
    "short": "overview",
    "path": "plugins/ideo-scrum/skills/scrum-kernel/overview.md",
-   "blob": "77a9fa1b7649e0152da59e44da062a1c4d1a0936",
-   "sha1_text": "1329a97a0d04d23205b71b00bcee24e80ebc9812",
-   "lines": 119,
-   "chars": 17719,
+   "blob": "bf00e4f2fc131fa9d644f634f552e0ec60e7d46f",
+   "sha1_text": "54cc763b02e0c54e1f2185d1be407a0f09163b0f",
+   "lines": 127,
+   "chars": 21471,
    "headings": [
     {
      "line": 1,
@@ -30,19 +30,19 @@
      "text": "### Who does what"
     },
     {
-     "line": 91,
+     "line": 92,
      "text": "### Sessions"
     },
     {
-     "line": 96,
+     "line": 104,
      "text": "### About these conventions"
     },
     {
-     "line": 101,
+     "line": 109,
      "text": "### What stays fixed"
     },
     {
-     "line": 107,
+     "line": 115,
      "text": "## Departures from the official guides"
     }
    ],
@@ -97,7 +97,7 @@
      "heading": "Conventions / Where things live",
      "line_start": 61,
      "line_end": 61,
-     "text": "4. **Folders** — `scrum/` holds all of the Scrum work: `ProductBacklog.md`; `ScrumBoard.html`, the board written from the logs, which keeps no state of its own (`conventions/board-log.md`); `sprint-NN-<suffix>/` with `SprintBacklog.md` and its working files; `design-<suffix>/`, unnumbered, with `DesignBacklog.md`, prototypes, and other working material; `ideo-<suffix>/`, unnumbered, with `IdeoBacklog.md`, prototypes, and working files; and `documents/` (convention 5). The active folders may still hold work that ended and is awaiting Review; read the log’s `Now` before resuming. This is the author’s layout; use your project’s own places if it has them.",
+     "text": "4. **Folders** — `scrum/` holds all of the Scrum work: `ProductBacklog.md`; `ScrumBoard.html`, the board written from the logs, which keeps no state of its own (`../../board/board-log.md`); `sprint-NN-<suffix>/` with `SprintBacklog.md` and its working files; `design-<suffix>/`, unnumbered, with `DesignBacklog.md`, prototypes, and other working material; `ideo-<suffix>/`, unnumbered, with `IdeoBacklog.md`, prototypes, and working files; and `documents/` (convention 5). The active folders may still hold work that ended and is awaiting Review; read the log’s `Now` before resuming. This is the author’s layout; use your project’s own places if it has them.",
      "id": "overview#4",
      "chars": 659,
      "flags": [],
@@ -152,10 +152,10 @@
      "name": "Roles",
      "heading": "Conventions / Who does what",
      "line_start": 73,
-     "line_end": 85,
-     "text": "8. **Roles** — On a Claude Code role command, invoke the kernels in the order shown before doing any role work.\n\n   | Role | Home turf | Accountable for | Claude Code entry kernels, in order |\n   | --- | --- | --- | --- |\n   | Product Owner | The product log and its handoffs | Value direction; the Product Goal and Sprint Goals; which items enter a Sprint; the go-ahead; the items, decided with the Scrum Master; stage results and permissions to start or return (convention 12) | — (a person) |\n   | Scrum Master | Sprint logs and design logs | Facilitating Planning and refinement; recording; tracking; reviewing the How and the Increment; serves the Product Owner; acts for them within a written handover, and the accountability stays with the Product Owner; decisions made under it are recorded | ideo → scrum → sprint → design |\n   | Developer | The Sprint | The sprint log, the How, the Increment; the last check that nothing in refinement is unclear | ideo → scrum → sprint |\n   | Designer | The design | Ideas, prototypes, and tests for a design, from Ideate on (the Product Owner and the Scrum Master settle its research and definition); conclusions back to the product log and the Sprint that asked | ideo → scrum → design |\n   | Stakeholder | An outside view, or standing non-source chores | Looking as one row of the product log's stakeholder table; a PO assistant organizes logs, summarizes progress, relays settled work and maintains the board, but does not rank, decide, review or edit plugin files | ideo → scrum |\n\n   In Claude Code, use the Skill tool one at a time, wait for success, and skip only calls already successful in this conversation. Stop and report a failed load rather than substituting a file read. In DSH, native role entries instead preload ideo and scrum in order, then load sprint and design as needed for the work. Subagents a role dispatches load the ideo-kernel and scrum-kernel skills too.\n\n   The Product Owner, the Scrum Master, and the Developer keep the sprint log together; without a Developer, the Product Owner and the Scrum Master run the Sprint alone.",
+     "line_end": 86,
+     "text": "8. **Roles** — On a Claude Code role command, invoke the kernels in the order shown before doing any role work.\n\n   | Role | Home turf | Accountable for | Claude Code entry kernels, in order |\n   | --- | --- | --- | --- |\n   | Product Owner | The product log and its handoffs | Value direction; the Product Goal and Sprint Goals; which items enter a Sprint; the go-ahead; the items, decided with the Scrum Master; stage results and permissions to start or return (convention 12) | — (a person) |\n   | Scrum Master | Sprint logs and design logs | Facilitating Planning and refinement; recording; tracking; reviewing the How and the Increment; serves the Product Owner; acts for them within a written handover, and the accountability stays with the Product Owner; decisions made under it are recorded | ideo → scrum → sprint → design |\n   | Developer | The Sprint | The sprint log, the How, the Increment; the last check that nothing in refinement is unclear | ideo → scrum → sprint |\n   | Designer | The design | Ideas, prototypes, and tests for a design, from Ideate on (the Product Owner and the Scrum Master settle its research and definition); conclusions back to the product log and the Sprint that asked | ideo → scrum → design |\n   | Stakeholder | An outside view | Looking as one row of the product log's stakeholder table | ideo → scrum |\n   | Supporter | Standing chores that touch no source (in the Scrum Guide Expansion Pack a Supporter is a Stakeholder type) | Doing what is requested: keeping the board, organizing the product log, summarizing progress, relaying settled work, explaining the mechanism, and being the Product Owner's contact point (gathering what waits for them, sending back what is not theirs, carrying their answers back, relaying their own words as theirs); does not rank, decide, answer for the Product Owner, review or edit plugin files | ideo → scrum |\n\n   In Claude Code, use the Skill tool one at a time, wait for success, and skip only calls already successful in this conversation. Stop and report a failed load rather than substituting a file read. In DSH, native role entries instead preload ideo and scrum in order, then load sprint and design as needed for the work. Subagents a role dispatches load the ideo-kernel and scrum-kernel skills too.\n\n   The Product Owner, the Scrum Master, and the Developer keep the sprint log together; without a Developer, the Product Owner and the Scrum Master run the Sprint alone.",
      "id": "overview#8",
-     "chars": 2101,
+     "chars": 2459,
      "flags": [],
      "xrefs": [
       "convention 12"
@@ -165,8 +165,8 @@
      "number": 9,
      "name": "Only the Product Owner must be human",
      "heading": "Conventions / Who does what",
-     "line_start": 86,
-     "line_end": 86,
+     "line_start": 87,
+     "line_end": 87,
      "text": "9. **Only the Product Owner must be human** — The other roles may all be AI. This departs from the Scrum Guide Expansion Pack: see Departures.",
      "id": "overview#9",
      "chars": 142,
@@ -179,20 +179,22 @@
      "number": 10,
      "name": "Ask the Product Owner",
      "heading": "Conventions / Who does what",
-     "line_start": 87,
-     "line_end": 87,
-     "text": "10. **Ask the Product Owner** — Whoever is unsure asks the Product Owner, unless the Product Owner has sent that kind of question elsewhere.",
+     "line_start": 88,
+     "line_end": 88,
+     "text": "10. **Ask the Product Owner** — Whoever is unsure asks the Product Owner, unless the Product Owner has sent that kind of question elsewhere: convention 14 says where each kind goes.",
      "id": "overview#10",
-     "chars": 140,
+     "chars": 181,
      "flags": [],
-     "xrefs": []
+     "xrefs": [
+      "convention 14"
+     ]
     },
     {
      "number": 11,
      "name": "Product Owner as Developer",
      "heading": "Conventions / Who does what",
-     "line_start": 88,
-     "line_end": 88,
+     "line_start": 89,
+     "line_end": 89,
      "text": "11. **Product Owner as Developer** — When the Product Owner builds, they take part as a Developer, and the How is worked out with them.",
      "id": "overview#11",
      "chars": 135,
@@ -203,13 +205,14 @@
      "number": 12,
      "name": "Product Owner decides between stages",
      "heading": "Conventions / Who does what",
-     "line_start": 89,
-     "line_end": 89,
-     "text": "12. **Product Owner decides between stages** — The Product Owner settles each stage’s result. Before starting or returning to a stage of a Sprint or a design sprint, wait for explicit permission for that stage and scope. Approving a result is not permission to move on, though one message can say both clearly. While waiting, record the result or why a return is needed, but do not start or delegate that stage’s work. A new session may resume the same stage within its recorded permission and scope; earlier permission does not carry over to a return. The Scrum Master acts for the Product Owner only within a written handover covering the particular decision; handing over a review or a choice inside a stage does not hand over a stage transition. Record who decided, the date and basis, and the stage and scope authorized, including the written handover if used. Keep the decision at the end of its stage chapter; if permission arrives later, add that dated decision without replacing the earlier one. Record first entry when opening the log. These are stage decisions, not reviews, formal acceptance, or approval of each step. Sprint decisions: `../sprint-kernel/conventions/sprint-log.md`, convention 24; design decisions: `../design-kernel/conventions/design-log.md`, convention 26.",
+     "line_start": 90,
+     "line_end": 90,
+     "text": "12. **Product Owner decides between stages** — The Product Owner settles each stage’s result. Before starting or returning to a stage of a Sprint or a design sprint, wait for explicit stage permission (not a tool permission) for that stage and scope. Approving a result is not stage permission to move on, though one message can say both clearly. While waiting, record the result or why a return is needed, but do not start or delegate that stage’s work. A new session may resume the same stage within its recorded stage permission and scope; earlier stage permission does not carry over to a return. The Scrum Master acts for the Product Owner only within a written handover covering the particular decision; handing over a review or a choice inside a stage does not hand over a stage transition. The Product Owner's own words, relayed by the Supporter on the conditions in convention 14, count as theirs. Record who decided, the date and basis, and the stage and scope authorized, including the written handover if used. Keep the decision at the end of its stage chapter; if stage permission arrives later, add that dated decision without replacing the earlier one. Record first entry when opening the log. These are stage decisions, not reviews, formal acceptance, or approval of each step. Sprint decisions: `../sprint-kernel/conventions/sprint-log.md`, convention 24; design decisions: `../design-kernel/conventions/design-log.md`, convention 26.",
      "id": "overview#12",
-     "chars": 1288,
+     "chars": 1451,
      "flags": [],
      "xrefs": [
+      "convention 14",
       "convention 24",
       "convention 26"
      ]
@@ -218,8 +221,8 @@
      "number": 13,
      "name": "One Scrum Master per project",
      "heading": "Conventions / Sessions",
-     "line_start": 93,
-     "line_end": 93,
+     "line_start": 94,
+     "line_end": 94,
      "text": "13. **One Scrum Master per project** — Each project has one session as its Scrum Master, leading its Developer, Designer, and Stakeholders. A session above several projects only summarizes; each project's facts stay in its own logs.",
      "id": "overview#13",
      "chars": 232,
@@ -230,23 +233,26 @@
      "number": 14,
      "name": "Who gets which work",
      "heading": "Conventions / Sessions",
-     "line_start": 94,
-     "line_end": 94,
-     "text": "14. **Who gets which work** — Reviewing the work goes to the Scrum Master by default (`../sprint-kernel/conventions/sprint-log.md`, convention 14); when the Developer works in another session or tool, `../sprint-kernel/conventions/sprint-log.md`, convention 26, says how the two work together. Long-running upkeep — the board, summaries, tracking — goes to a standing Stakeholder session with a working identity the project writes down, such as PO assistant. That assistant relays only what the Product Owner or Scrum Master already decided; scope or item changes and go-aheads go through the Scrum Master, who chooses the receiving session. It does not rank, decide, review or edit plugin files; an independent outside view still comes from a fresh subagent. A small edit to one or two files the Scrum Master makes itself. Building goes to a new Developer session when a paragraph can brief it, or to a Developer that shares the Scrum Master's context when the work needs much of the discussion; such a Developer cannot review its own work.",
+     "line_start": 95,
+     "line_end": 102,
+     "text": "14. **Who gets which work** — Reviewing the work goes to the Scrum Master by default (`../sprint-kernel/conventions/sprint-log.md`, convention 14); when the Developer works in another session or tool, `../sprint-kernel/conventions/sprint-log.md`, convention 26, says how the two work together. Long-running upkeep — the board, summaries, tracking — goes to a standing Supporter session (the `supporter` entry); an independent outside view still comes from a fresh subagent (the `stakeholder` entry). A small edit to one or two files the Scrum Master makes itself. Building goes to a new Developer session when a paragraph can brief it, or to a Developer that shares the Scrum Master's context when the work needs much of the discussion; such a Developer cannot review its own work.\n\n    The Supporter and the Product Owner:\n\n    - **What the Supporter does** — It organizes the product log as the Product Owner or Scrum Master tells it (the Sprint, design and IDEO logs are written by their own sessions), keeps the board, summarizes progress, and relays what the Product Owner or Scrum Master already decided. It does not rank, decide, answer for the Product Owner, review or edit plugin files.\n    - **Where a question goes** — The Product Owner has sent these questions elsewhere than to themselves (convention 10), in three steps. First, what a role can decide itself, it decides: the Developer's approach, the Designer's solution details. Second, what belongs to the process, or lies inside a written handover, goes to the Scrum Master; with no Scrum Master session, this step goes straight to the Product Owner. Third, what only the Product Owner can decide or do goes to the Supporter, who gathers it and puts it to the Product Owner in one go, each question with the context needed to answer it: the Product Goal, the items and their order, a stage permission no handover covers, the Product Owner's own taste, and what needs the Product Owner in person — tool permissions and settings, `CLAUDE.md` or `AGENTS.md`, a push or a release. The Supporter sends back what is not the Product Owner's and says whose it is (the asker's own, or the Scrum Master's); it only sorts, it decides nothing. With no Supporter session, ask the Product Owner directly.\n    - **The answers back** — The Supporter carries the Product Owner's answers back word for word, for the log's owner to record. A question that still waits for the Product Owner's decision, a go-ahead no handover covers included, stays with the Supporter; once the Product Owner has decided or answered something about scope, items or a go-ahead, the Supporter hands it to the Scrum Master, who chooses the receiving session and records it.\n    - **The Product Owner's word, relayed** — What the Supporter relays as the Product Owner's own opinion counts as theirs, so the Product Owner need not say it again to each role: the relay must say that it is the Product Owner's opinion and carry their words, the date and where the Product Owner said it (the session's name and the time), and the receiver records it as `PO (via Supporter): <the words>` with that date and place. The receiver is the session the opinion concerns; for what the Product Owner has decided or answered about scope, items or a go-ahead it is the Scrum Master, as *The answers back* says: it records the relay and then hands it to the session that will act on it (the `supporter` entry says the same). These marks make the relay traceable; they do not verify who sent it. A relay is trusted because the Product Owner set up this Supporter, and where the host shows which session sent a message, the receiver notes that session's name beside the mark. The Supporter's own reading or suggestion is not the Product Owner's. The Scrum Guide allows this: \"The Product Owner may do the above work or may delegate the responsibility to others. Regardless, the Product Owner remains accountable.\" (Scrum Guide 2020). The relay does not cover tool permissions and settings, changes to `CLAUDE.md` or `AGENTS.md`, or outward actions such as a push or a release: those need the Product Owner's own confirmation.",
      "id": "overview#14",
-     "chars": 1041,
-     "flags": [],
+     "chars": 4132,
+     "flags": [
+      "quote"
+     ],
      "xrefs": [
       "convention 14",
-      "convention 26"
+      "convention 26",
+      "convention 10"
      ]
     },
     {
      "number": 15,
      "name": "Working conventions",
      "heading": "Conventions / About these conventions",
-     "line_start": 98,
-     "line_end": 98,
+     "line_start": 106,
+     "line_end": 106,
      "text": "15. **Working conventions** — Reference, not law. Each convention has a short name, for use in conversation, and only the exceptions carry a source label: a convention with no label is the author's practice — how the author works; **Supplement** — inferred by the author's assistant, not yet confirmed in practice; **Decide on the spot** — no fixed rule, decide when it comes up. When you override a convention, write what you did and why in the log's notes: the sprint log's Increment notes, or the chapter of the design log it concerns. The templates carry the flow; the convention files say how, and when a step may be skipped. They describe roles and steps, not the mechanics of any tool.",
      "id": "overview#15",
      "chars": 692,
@@ -260,8 +266,8 @@
      "number": 16,
      "name": "Templates record outputs",
      "heading": "Conventions / About these conventions",
-     "line_start": 99,
-     "line_end": 99,
+     "line_start": 107,
+     "line_end": 107,
      "text": "16. **Templates record outputs** — A template's chapters follow the flow, and its sections hold only what each step produced; how to do a step belongs in the conventions. A log made from a template keeps all of the template's headings, including the chapters filled in later, and adds no sections of its own; put work remarks in the sprint log’s Increment notes or the relevant design chapter. An optional explanation below a commitment table belongs in the commitment’s own section (convention 17).",
      "id": "overview#16",
      "chars": 499,
@@ -274,8 +280,8 @@
      "number": 17,
      "name": "Goal fixed, plan flexible",
      "heading": "Conventions / What stays fixed",
-     "line_start": 103,
-     "line_end": 105,
+     "line_start": 111,
+     "line_end": 113,
      "text": "17. **Goal fixed, plan flexible** — Each log has one fixed commitment: the Product Goal, the Sprint Goal, the design goal; the Definition of Done is not weakened either. Everything under a commitment — items, refinement points, acceptance criteria, the How, the chosen design solution — may change as you learn, and each log records what changed and why. Only the Product Owner changes a commitment, and only the Product Owner cancels a Sprint whose goal can no longer be met.\n    Keep the product statement in the product log's section 1.1, the Product Goal in its section 1.2, the Sprint Goal in the sprint log's section 1.1, and the design goal in the design log's section 1.2. Each has one one-row table: the first cell is `Commitment` (`承诺` in a Chinese log), the second is the exact text, without bold. Keep one copy, not another at the file’s top; its section heading identifies it. The table is the only source of the current commitment. Optional reasons can follow below it; they are not part of the commitment or what a reader extracts from the table. Exact text on a stage decision line is a snapshot of the commitment at that time, not a second source; do not update it when the current goal changes. Give each goal one short name and keep using that name. An IDEO log has no commitment of its own: its For field points to the log it serves.\n    The Scrum Guide says it this way. On the Product Goal: \"They must fulfill (or abandon) one objective before taking on the next.\" During the Sprint: \"No changes are made that would endanger the Sprint Goal\", \"Quality does not decrease\", and \"Scope may be clarified and renegotiated with the Product Owner as more is learned.\" And: \"Only the Product Owner has the authority to cancel the Sprint.\"",
      "id": "overview#17",
      "chars": 1752,
@@ -311,7 +317,7 @@
     {
      "line_start": 10,
      "line_end": 10,
-     "text": "The other files: `conventions/product-log.md` and `conventions/product-backlog-template.md`; `../sprint-kernel/conventions/sprint-log.md` and `../sprint-kernel/conventions/sprint-backlog-template.md`; for designs, `../design-kernel/conventions/design-log.md` and `../design-kernel/conventions/design-backlog-template.md`; for the five modes, `../ideo-kernel/conventions/ideo-log.md` and `../ideo-kernel/conventions/ideo-backlog-template.md` (paths are relative to the scrum-kernel skill folder, where this file sits beside `SKILL.md`; the Sprint files belong to the sprint-kernel skill, the design files to the design-kernel skill, the IDEO files to the ideo-kernel skill — read them when you open or resume a design, a Sprint, or a run of the five modes).",
+     "text": "The other files: `conventions/product-log.md` and `../../template/product-backlog-template.md`; `../sprint-kernel/conventions/sprint-log.md` and `../../template/sprint-backlog-template.md`; for designs, `../design-kernel/conventions/design-log.md` and `../../template/design-backlog-template.md`; for the five modes, `../ideo-kernel/conventions/ideo-log.md` and `../../template/ideo-backlog-template.md` (paths are relative to the scrum-kernel skill folder, where this file sits beside `SKILL.md`; the Sprint conventions belong to the sprint-kernel skill, the design conventions to the design-kernel skill, the IDEO conventions to the ideo-kernel skill, and the four log templates sit together in the plugin's `template/` folder, the board's files in its `board/` folder — read them when you open or resume a design, a Sprint, or a run of the five modes).",
      "kind": "paragraph",
      "heading": ""
     },
@@ -323,15 +329,15 @@
      "heading": "The map"
     },
     {
-     "line_start": 109,
-     "line_end": 109,
+     "line_start": 117,
+     "line_end": 117,
      "text": "Each departure is stated here once, with its reason; the convention named in the last column points back to this table.",
      "kind": "paragraph",
      "heading": "Departures from the official guides"
     },
     {
-     "line_start": 111,
-     "line_end": 119,
+     "line_start": 119,
+     "line_end": 127,
      "text": "| Here | The official guide | Why | See |\n| --- | --- | --- | --- |\n| Only the Product Owner must be human | SGEP: the Product Owner and the Scrum Master \"must be human\", and \"At least one Product Developer should be human\" | One person works with AI and keeps the value decisions | Convention 9 |\n| Designs sit beside Sprints | Scrum Guide: all the work \"happen within Sprints\" | A design delivers no Increment, may span several Sprints, and the Designer and the Developer are peers | Convention 2 |\n| The Product Owner decides the items with the Scrum Master | Scrum Guide: \"the Developers select items from the Product Backlog\" | The Product Owner sets the value direction, and the others say how much fits | `conventions/product-log.md`, convention 12 |\n| The How is a plan, and building waits for the go-ahead | Scrum Guide: how to build is \"at the sole discretion of the Developers\" | The Scrum Master and the Product Owner check the plan, because AI may drift | `../sprint-kernel/conventions/sprint-log.md`, conventions 7 and 8 |\n| Checkpoints replace the Daily Scrum | Scrum Guide: the Daily Scrum is \"a 15-minute event for the Developers\" | AI works by session, not by day | `../sprint-kernel/conventions/sprint-log.md`, convention 10 |\n| A reviewer is required | Scrum Guide: the Developers are accountable for \"Instilling quality by adhering to a Definition of Done\" | A Developer may drift, and a second look catches it | `../sprint-kernel/conventions/sprint-log.md`, convention 14 |\n| No Sprint end date | Scrum Guide: Sprints are \"fixed length events of one month or less\" | AI works by session, so the Product Owner watches at checkpoints for a Sprint that drags on | `../sprint-kernel/conventions/sprint-log.md`, convention 2 |",
      "kind": "table",
      "heading": "Departures from the official guides"
@@ -341,10 +347,10 @@
   {
    "short": "product-log",
    "path": "plugins/ideo-scrum/skills/scrum-kernel/conventions/product-log.md",
-   "blob": "813c0c2c32cf2143c0ebf8cb0969100d9ce56654",
-   "sha1_text": "1dcfc30c3865a3c3d961ca72b94526a0e4df3fac",
+   "blob": "13b79d5c5cbcc06b98bae6dd70583534de3dfacf",
+   "sha1_text": "e6936969622af8d6d003fdbd3b7cfda86dedeab1",
    "lines": 79,
-   "chars": 7927,
+   "chars": 7942,
    "headings": [
     {
      "line": 1,
@@ -635,7 +641,7 @@
     {
      "line_start": 8,
      "line_end": 8,
-     "text": "The product log is the first layer. Its template is `product-backlog-template.md`; the Scrum Master usually writes it with the Product Owner. Paths starting with `../` are relative to the scrum-kernel skill folder.",
+     "text": "The product log is the first layer. Its template is `../../template/product-backlog-template.md`; the Scrum Master usually writes it with the Product Owner. Paths starting with `../` are relative to the scrum-kernel skill folder.",
      "kind": "paragraph",
      "heading": ""
     },
@@ -657,11 +663,11 @@
   },
   {
    "short": "board-log",
-   "path": "plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md",
-   "blob": "a0d72002b572e5e88a916761151db051217f893c",
-   "sha1_text": "91705d884a228462c2b2f867f9e1f1f11073f724",
+   "path": "plugins/ideo-scrum/board/board-log.md",
+   "blob": "1bde5c807b71bcb0f3f833e013722ceb95c498ca",
+   "sha1_text": "c2fd6a9c2e1f30d4dba1aa875596ca26f61811be",
    "lines": 74,
-   "chars": 13843,
+   "chars": 14407,
    "headings": [
     {
      "line": 1,
@@ -719,9 +725,9 @@
      "heading": "What the board is",
      "line_start": 20,
      "line_end": 20,
-     "text": "3. **Where it lives, who writes it, and when** — Name it `scrum/ScrumBoard.html`, beside the product log. A cheap model writes it, because the work is copying and summarizing, not judging: a fresh subagent told to read this file and the template and to follow them, or a standing helper session of the Product Owner's. Write it when the Product Owner wants to look, or after a log has changed.",
+     "text": "3. **Where it lives, who writes it, and when** — Name it `scrum/ScrumBoard.html`, beside the product log. A cheap model writes it, because the work is copying and summarizing, not judging: a fresh subagent told to read this file and the template and to follow them, or the Supporter (the `supporter` entry). Write it when the Product Owner wants to look, or after a log has changed.",
      "id": "board-log#3",
-     "chars": 393,
+     "chars": 382,
      "flags": [],
      "xrefs": []
     },
@@ -731,11 +737,13 @@
      "heading": "What it reads",
      "line_start": 24,
      "line_end": 24,
-     "text": "4. **The logs** — The product log is `scrum/ProductBacklog.md`. The open logs are `scrum/sprint-*/SprintBacklog.md`, `scrum/design-*/DesignBacklog.md`, and `scrum/ideo-*/IdeoBacklog.md`; nothing in `scrum/documents/`, which holds the archive. A Sprint or design that is open on another branch counts too: read its log as committed on that branch (git can show a file at a branch's latest commit), and give `branch <name> @ <commit>` as its source, the commit as its first seven characters. A log that is in this working copy is read from the working copy, with any change not yet committed, and its source is `working copy`. If one log is found on several branches, use the version with the newest commit.",
+     "text": "4. **The logs** — The product log is `scrum/ProductBacklog.md`. The open logs are `scrum/sprint-*/SprintBacklog.md`, `scrum/design-*/DesignBacklog.md`, and `scrum/ideo-*/IdeoBacklog.md`; nothing in `scrum/documents/`, which holds the archive. A Sprint or design that is open on another branch counts too: read its log as committed on that branch (git can show a file at a branch's latest commit), and give `branch <name> @ <commit>` as its source, the commit as its first seven characters. A log that is in this working copy is read from the working copy, with any change not yet committed, and its source is `working copy`. If one log is found on several branches, use the version with the newest commit. The product log is read the same way when it is not in this working copy; how to write its source is in convention 11 (`product.source`).",
      "id": "board-log#4",
-     "chars": 705,
+     "chars": 843,
      "flags": [],
-     "xrefs": []
+     "xrefs": [
+      "convention 11"
+     ]
     },
     {
      "number": 5,
@@ -842,9 +850,9 @@
      "heading": "The data",
      "line_start": 59,
      "line_end": 59,
-     "text": "12. **Copied, and summarized** — What is marked ★ goes into the data exactly as the log has it: the same characters, the same language; never reworded, shortened, translated, or tidied. A long text such as a Now line is copied mechanically — with a command or a script — rather than retyped: a long text copied by hand loses a character. Only `product.map` and a design's `map`, `solution`, and `story` are summaries. A map stop's text is a few words cut from one node's label: leave out the step number (①, ②), anything in brackets (item numbers, file names), and the explanation after a colon; never reword. So `③ 写产品日志：Product · 架构 · PBI（product-log）` becomes `写产品日志`, and `⑥ 施工（sprint-log）` becomes `施工`. Keep the main line only — five to eight stops, none longer than about twenty characters — and leave out the people at the top, the ending, and every side branch except the design sprint, which is a stop of its own. The steps a Sprint goes through, one after another, are one stop, joined with ` → ` (`Planning → PO 放行 → 施工 → Test`). A design's `map` comes from its own section 2.1, in source order, without people, the ending, or side branches: five or six stops when the map has them, no invented stops; omit it when no map is recorded. On the product map, `note` holds the item numbers in the brackets of the stop's label, as `62 · 64`. `here` lists the ids of open Sprints and designs at that stop: a Sprint at the stop its Now line names (planning, building, or testing), a design at the design sprint stop; leave `here` out when no stop fits. `branch` is true for a stop beside the main line. A design's `solution` summarizes section 3.1: a short `title` for what was chosen and a short `text` for how it is used. Leave out a part the log does not give; a recorded choice without usage details is still a choice. Write `null` when no choice is recorded: drafts, sketches, or a storyboard alone are not a choice. Optional `story` is a short ordered list of `{\"title\", \"text\"}` frames from section 3.2 that illustrate the chosen solution; omit it without a storyboard. Add no facts to fill either field.",
+     "text": "12. **Copied, and summarized** — What is marked ★ goes into the data exactly as the log has it: the same characters, the same language; never reworded, shortened, translated, or tidied. A long text such as a Now line is copied mechanically — with a command or a script — rather than retyped: a long text copied by hand loses a character. Only `product.map` and a design's `map`, `solution`, and `story` are summaries. A map stop's text is a few words cut from one node's label: leave out the step number (①, ②), anything in brackets (item numbers, file names), and the explanation after a colon; never reword. So `③ 写产品日志：Product · 架构 · PBI（product-log）` becomes `写产品日志`, and `⑥ 施工（sprint-log）` becomes `施工`. Keep the main line only — five to eight stops, none longer than about twenty characters — and leave out the people at the top, the ending, and every side branch except the design sprint, which is a stop of its own. The steps a Sprint goes through, one after another, are one stop, joined with ` → ` (`Planning → PO 放行 → 施工 → Test`). A design's `map` comes from its own section 2.1, in source order, without people, the ending, or side branches: five or six stops when the map has them, no invented stops; omit it when no map is recorded. On the product map, `note` holds the item numbers in the brackets of the stop's label, as `62 · 64`. `here` lists the ids of open Sprints and designs at that stop: a Sprint at the stop its Now line names (planning, building, or testing), a design at the design sprint stop; leave `here` out when no stop fits. `branch` is true for a stop beside the main line. A design's `solution` summarizes section 3.1: a short `title` for what was chosen and a short `text` for how it is used. Leave out a part the log does not give; a recorded choice without usage details is still a choice. Write `null` when no choice is recorded: drafts, sketches, or a storyboard alone are not a choice. Optional `story` is a short ordered list of `{\"title\", \"text\"}` frames from section 3.2 that illustrate the chosen solution; omit it without a storyboard, and omit it when `solution` is `null`, because a story illustrates a chosen solution. Add no facts to fill either field.",
      "id": "board-log#12",
-     "chars": 2115,
+     "chars": 2201,
      "flags": [
       "CJK"
      ],
@@ -892,9 +900,9 @@
      "heading": "The data",
      "line_start": 63,
      "line_end": 63,
-     "text": "16. **Left out on purpose** — The page does not show what waits for the Product Owner, nor the five stages a Sprint passes through: the Product Owner asks the Scrum Master for those, and they change faster than a page is written. Items in the product log's section 3.2 are done or closed and are not shown, only counted. Leave out IDEO logs that serve only the product log, have no open host, or have concluded even if not yet archived. Read the state of the IDEO run itself from the `Now` line (for example, `本轮五模式已收尾` or `The IDEO run has concluded`, optionally after the mode); a next step such as `待收尾` or a mention of closed items is not a concluded run. A host whose own `Now` explicitly says the Sprint or design has ended is no longer open, even while its log awaits archiving; finishing one of its stages is not ending the host. This affects only nested IDEO entries, not the discovery of Sprint and design cards (convention 4). Do not add a card or a new log field.",
+     "text": "16. **Left out on purpose** — The page does not show what waits for the Product Owner, nor the five stages a Sprint passes through: the Product Owner asks the Scrum Master for those, and they change faster than a page is written. Items in the product log's section 3.2 are done or closed and are not shown, only counted. Leave out IDEO logs that serve only the product log, have no open host, or have concluded even if not yet archived. Read the state of the IDEO run itself from the `Now` line (for example, `本轮五模式已收尾` or `The IDEO run has concluded`, optionally after the mode); a next step such as `待收尾` or a mention of closed items is not a concluded run. A host whose own `Now` explicitly says the Sprint or design has ended is no longer open, even while its log awaits archiving: for example `已收官 · 2026-11-21`, `收官 · 2026-11-14`, `Sprint 01 has ended`, or, after a stage name, a line that also says the log awaits archiving, such as `Test: Concluded — awaiting archive`. Finishing one of its stages is not ending the host (`Prototype: concluded; Test next`). This affects only nested IDEO entries, not the discovery of Sprint and design cards (convention 4). Do not add a card or a new log field.",
      "id": "board-log#16",
-     "chars": 975,
+     "chars": 1203,
      "flags": [
       "CJK"
      ],
@@ -948,14 +956,14 @@
     {
      "line_start": 3,
      "line_end": 3,
-     "text": "> Working conventions: reference, not law — follow what fits, override what doesn't, note why. Source labels and short names are explained in convention 15 of `overview.md`, in the skill folder, beside `SKILL.md`. A convention with no label is the author's practice.",
+     "text": "> Working conventions: reference, not law — follow what fits, override what doesn't, note why. Source labels and short names are explained in convention 15 of `overview.md`, in the scrum-kernel skill folder, beside its `SKILL.md`. A convention with no label is the author's practice.",
      "kind": "quote",
      "heading": ""
     },
     {
      "line_start": 5,
      "line_end": 5,
-     "text": "The Scrum board is one page that shows where the project stands. Its template is `scrum-board-template.html`, beside this file; this file is also the brief for whoever writes the page. Paths starting with `../` are relative to the scrum-kernel skill folder.",
+     "text": "The Scrum board is one page that shows where the project stands. Its template is `scrum-board-template.html`, beside this file in `board/`; this file is also the brief for whoever writes the page. Paths in this file, such as `overview.md`, `conventions/product-log.md` and those starting with `../`, are relative to the scrum-kernel skill folder, not to `board/`.",
      "kind": "paragraph",
      "heading": ""
     },
@@ -971,10 +979,10 @@
   {
    "short": "sprint-log",
    "path": "plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md",
-   "blob": "6a3cf732317038e46cac8ef503539744737684da",
-   "sha1_text": "42ecfbb1cd17d6a762a69ecfaf538551f1d0bf78",
+   "blob": "9f08a8aa9ec69182cb8f53ef6a0fe1928c98f538",
+   "sha1_text": "a04d3b37c6f668c7ca1f355277f9c213b0a38235",
    "lines": 97,
-   "chars": 20083,
+   "chars": 20098,
    "headings": [
     {
      "line": 1,
@@ -1404,7 +1412,7 @@
     {
      "line_start": 8,
      "line_end": 8,
-     "text": "A Sprint turns selected items into an Increment. Its template is `sprint-backlog-template.md`; each section's comment says who writes it. Paths starting with `../` are relative to the sprint-kernel skill folder.",
+     "text": "A Sprint turns selected items into an Increment. Its template is `../../template/sprint-backlog-template.md`; each section's comment says who writes it. Paths starting with `../` are relative to the sprint-kernel skill folder.",
      "kind": "paragraph",
      "heading": ""
     },
@@ -1427,8 +1435,8 @@
   {
    "short": "design-log",
    "path": "plugins/ideo-scrum/skills/design-kernel/conventions/design-log.md",
-   "blob": "034c22bf5d1741aa494b7a97de1e22e405340d00",
-   "sha1_text": "be1a3c364f64a8b0a4b4ef110b34496b841785f7",
+   "blob": "632611c38f92416f432c53b4fc717cc5f0bf9ef3",
+   "sha1_text": "aaf3da20707bf1916981366d235785359237e2bb",
    "lines": 91,
    "chars": 21097,
    "headings": [
@@ -1877,7 +1885,7 @@
     {
      "line_start": 5,
      "line_end": 5,
-     "text": "The design log template is `design-backlog-template.md` in this folder. Paths here are relative to the design-kernel skill folder; the stages, the book's excerpts, and the methods are listed in this skill's `SKILL.md`. Where an excerpt describes the book's room — whiteboards, sticky notes, dot voting, a team at a table — these conventions say how a solo + AI team does that step, and they apply.",
+     "text": "The design log template is `../../template/design-backlog-template.md`. Paths here are relative to the design-kernel skill folder; the stages, the book's excerpts, and the methods are listed in this skill's `SKILL.md`. Where an excerpt describes the book's room — whiteboards, sticky notes, dot voting, a team at a table — these conventions say how a solo + AI team does that step, and they apply.",
      "kind": "paragraph",
      "heading": ""
     },
@@ -1914,10 +1922,10 @@
   {
    "short": "ideo-log",
    "path": "plugins/ideo-scrum/skills/ideo-kernel/conventions/ideo-log.md",
-   "blob": "358ca5d54cd8a48e63bcfa441d23f0f93b91d210",
-   "sha1_text": "31eb24b4bb82c641f6b7b13907d4b069b998833a",
+   "blob": "52df86def0bc3f2ef96e9c02e212380354f03891",
+   "sha1_text": "313cb7082237c1706fcb954b8b8c0cbb1cfb8881",
    "lines": 31,
-   "chars": 4366,
+   "chars": 4444,
    "headings": [
     {
      "line": 1,
@@ -1988,9 +1996,9 @@
      "heading": "The IDEO Log",
      "line_start": 31,
      "line_end": 31,
-     "text": "4. **Where it lives and how it ends** — The log, the prototypes, and the working material live in `scrum/ideo-<suffix>/`. It has no commitment of its own: For holds the relative path to the product log or sprint log it serves, where the commitment is kept. Keep `> Now:` on its own header line with the current mode and next step, followed by `> Waiting for PO:` with the number and short question of each pending decision, separated by semicolons, or `None`. Update both with the log change that causes them; this adds no gate between modes. The conclusions flow back to the log that asked for it — the product log or the sprint log — and the Product Owner decides what changes. When the work is done, keep the log: the first Sprint Review after that archives it (`../sprint-kernel/conventions/sprint-log.md`, convention 17). A prototype whose conclusions will be built goes to the Sprint that builds them, as that Sprint’s specification. If that Sprint is not open yet, keep the prototype in the IDEO folder until handoff. Any other standalone IDEO prototype is deleted when the work is done.",
+     "text": "4. **Where it lives and how it ends** — The log, the prototypes, and the working material live in `scrum/ideo-<suffix>/`. It has no commitment of its own: For holds the relative path to the log it serves — the product log, a Sprint's `SprintBacklog.md`, or a design's `DesignBacklog.md` — where the commitment is kept. Keep `> Now:` on its own header line with the current mode and next step, followed by `> Waiting for PO:` with the number and short question of each pending decision, separated by semicolons, or `None`. Update both with the log change that causes them; this adds no gate between modes. The conclusions flow back to the log that asked for it — the product log, the sprint log or the design log — and the Product Owner decides what changes. When the work is done, keep the log: the first Sprint Review after that archives it (`../sprint-kernel/conventions/sprint-log.md`, convention 17). A prototype whose conclusions will be built goes to the Sprint that builds them, as that Sprint’s specification. If that Sprint is not open yet, keep the prototype in the IDEO folder until handoff. Any other standalone IDEO prototype is deleted when the work is done.",
      "id": "ideo-log#4",
-     "chars": 1094,
+     "chars": 1172,
      "flags": [],
      "xrefs": [
       "convention 17"

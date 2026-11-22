@@ -26,9 +26,12 @@ DEFAULT_DIR = SPRINT / "review" / "draft"  # my own drafts are committed with th
 
 SECTIONS = ["roles", "product-log", "sprint", "design", "ideo", "board", "meta"]
 ROLES = {"dev", "sm", "des", "stk", "po"}
-LONG_FILES = {"roles-and-routing", "stage-gates", "goal-fixed", "layers-and-folders", "sprint-closing", "sprint-refinement",
-              "design-ending", "design-stages", "board-writing", "departures", "names", "product-log-details",
-              "ideo-ending", "handoff", "sprint-stages", "flow-maps"}
+LONG_FILES = {"roles", "gates", "goal-fixed", "folders", "closing", "refinement",
+              "design-ending", "design", "departures", "names", "product-log",
+              "ideo-ending", "handoff", "sprint", "flow-maps"}  # the files in details/
+# A file outside details/ that a line may point at (path relative to skills/memory/): the board conventions stay in board/
+# as the long file for the board (Master 2026-11-23), they are not copied into details/.
+EXTERNAL = {"board-log": "../../board/board-log.md"}
 REQUIRED = ["id", "line", "lines", "section", "long_file", "merged_into", "adds_to_target", "absorbed", "where_else", "note"]
 LINE = re.compile(r"^- \*\*([a-z0-9]+(?:-[a-z0-9]+){0,4})\*\*(?: \[([a-z,]+)\])? (.+)$")
 CJK = re.compile(r"[㐀-鿿　-〿＀-￯]")
@@ -66,10 +69,17 @@ def line_problems(line: str) -> list[str]:
     if CJK.search(line):
         errs.append(f"{handle}: the line has Chinese characters (Memory lines are English)")
     if re.search(r"convention\s+\d|conventions\s+\d|\bsee .*\.md\b", line, re.I):
-        errs.append(f"{handle}: refers to a convention number or a file instead of a handle or long/ file")
-    for lf in re.findall(r"long/([A-Za-z0-9_-]+)\.md", line):
-        if lf not in LONG_FILES:
-            errs.append(f"{handle}: long file {lf!r} is not in the list")
+        errs.append(f"{handle}: refers to a convention number or a file instead of a handle or a details/ file")
+    m2 = re.search(r" Read (\S+) first\.$", line)
+    if m2:
+        path = m2.group(1)
+        if path.startswith("details/"):
+            if not path.endswith(".md") or path[len("details/"):-3] not in LONG_FILES:
+                errs.append(f"{handle}: details file {path!r} is not in the list")
+        elif path not in EXTERNAL.values():
+            errs.append(f"{handle}: pointer {path!r} is neither a details/ file nor a known file outside it")
+    elif "details/" in line or "long/" in line or "→" in line:
+        errs.append(f"{handle}: a pointer ends the line as 'Read details/<file>.md first.'")
     if len(line) > LIMIT_HARD:
         errs.append(f"{handle}: {len(line)} characters (limit {LIMIT_HARD})")
     return errs
@@ -158,7 +168,7 @@ def run_check(d: pathlib.Path, complete: bool = True) -> int:
                 problems.append(f"{i}: 删 needs where_else (or '无' with a note)")
         if o["section"] not in SECTIONS and lines:
             problems.append(f"{i}: section {o['section']!r} not in {SECTIONS}")
-        if o["long_file"] and not str(o["long_file"]).startswith("NEW:") and o["long_file"] not in LONG_FILES:
+        if o["long_file"] and not str(o["long_file"]).startswith("NEW:") and o["long_file"] not in LONG_FILES | set(EXTERNAL):
             problems.append(f"{i}: long_file {o['long_file']!r} is not in the list (use NEW:<name>)")
         for ln in lines:
             for e in line_problems(ln):
@@ -198,13 +208,13 @@ def run_stats(d: pathlib.Path) -> int:
             sec[o.get("section")] += len(ln) + 1
             m = LINE.match(ln)
             roles[(m.group(2) if m and m.group(2) else "all")] += 1
-            if "long/" in ln:
+            if ln.endswith(" first."):
                 long_idx += 1
             if len(ln) > LIMIT_SOFT:
                 soft += 1
         if o.get("long_file"):
             longs[o["long_file"]] += 1
-    print(f"{n} lines, {total} characters (the size tier is decided by the carrier test: stand-ins of about 10,000 and 20,000 characters); {long_idx} index lines; {soft} lines over {LIMIT_SOFT}")
+    print(f"{n} lines, {total} characters (the list may weigh up to 16,000: the carrier test passed at 20,000, Master 2026-11-23); {long_idx} index lines; {soft} lines over {LIMIT_SOFT}")
     print("characters by section:", dict(sec))
     print("lines by role tag:", dict(roles))
     print("long files named:", dict(longs))
@@ -239,9 +249,11 @@ def selftest() -> int:
     check(any("roles" in e for e in line_problems("- **x-y** [boss] Do it.")), "planted defect: an unknown role")
     check(any("Chinese" in e for e in line_problems("- **x-y** 先问 PO。")), "planted defect: Chinese in a line")
     check(any("convention" in e for e in line_problems("- **x-y** Do it, see convention 24.")), "planted defect: a convention number")
-    check(any("not in the list" in e for e in line_problems("- **x-y** Do it. → long/made-up.md")), "planted defect: an unknown long file")
+    check(any("not in the list" in e for e in line_problems("- **x-y** Do it. Read details/made-up.md first.")), "planted defect: an unknown details file")
+    check(any("pointer ends" in e for e in line_problems("- **x-y** Do it. → long/stage-gates.md")), "planted defect: the old pointer form")
     check(any("characters" in e for e in line_problems("- **x-y** " + "a" * 230)), "planted defect: a line over the hard limit")
-    check(line_problems("- **stage-gates** Wait for the PO. → long/stage-gates.md") == [], "a known long file passes")
+    check(line_problems("- **stage-gates** Wait for the PO. Read details/gates.md first.") == [], "a known details file passes")
+    check(line_problems("- **board-rules** Read the board. Read ../../board/board-log.md first.") == [], "the board conventions, pointed at in place, pass")
     print("selftest:", "passed" if ok else "FAILED")
     return 0 if ok else 1
 

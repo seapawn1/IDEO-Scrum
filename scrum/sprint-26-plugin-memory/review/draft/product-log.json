@@ -13,10 +13,10 @@
   },
   {
     "id": "product-log#2",
-    "line": "- **blank-page** If the product cannot be written yet, start from a design and let its conclusions fill the log. → long/product-log-details.md",
+    "line": "- **blank-page** If the product cannot be written yet, start from a design and let its conclusions fill the log. Read details/product-log.md first.",
     "lines": null,
     "section": "product-log",
-    "long_file": "product-log-details",
+    "long_file": "product-log",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
@@ -112,10 +112,10 @@
   },
   {
     "id": "product-log#10",
-    "line": "- **item-columns** An item has seven columns: #, Title, User story, Place, Status, Size, Notes. → long/product-log-details.md",
+    "line": "- **item-columns** An item has seven columns: #, Title, User story, Place, Status, Size, Notes. Read details/product-log.md first.",
     "lines": null,
     "section": "product-log",
-    "long_file": "product-log-details",
+    "long_file": "product-log",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
@@ -179,7 +179,7 @@
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
-    "where_else": "The seven steps themselves are in the sprint-refinement long file.",
+    "where_else": "The seven steps themselves are in the refinement long file.",
     "note": ""
   },
   {

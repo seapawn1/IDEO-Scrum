@@ -1,19 +1,19 @@
 # 27 增量表（Sprint 26 行 11 的底稿）
 
-依据：Master 2026-11-23 给的「27 改了哪些」，加我对着 `git diff 2cb9420 2572530`（main 的 `2572530`，tag `sprint-27-wrap-up`）读到的最终文字。**这是同步前的预读，草稿本体和插件都没动**；按 Master 的顺序，先跑完 A1 正式测，再把 main 同步进分支，同步后照这张表逐项改，并重跑台账抽取与逐条文本比对（不靠这页）。
+依据：Master 2026-11-23 给的「27 改了哪些」，加我对着 `git diff 2cb9420 2572530`（main 的 `2572530`，tag `sprint-27-wrap-up`）读到的最终文字。**这是同步前的预读（草稿本体和插件当时都没动；同步与改稿已在 2026-11-23 做完，见最后一节）**；按 Master 的顺序，先跑完 A1 正式测，再把 main 同步进分支，同步后照这张表逐项改，并重跑台账抽取与逐条文本比对（不靠这页）。
 
 ## 一、规矩变了的
 
 | 27 改了什么 | 对草稿的影响 | 同步后怎么办 | 含义变了？ |
 | --- | --- | --- | --- |
-| `overview.md` 约定 8：角色表加 Supporter 一行（杂活、PO 的联络点；加载 ideo → scrum）；Stakeholder 一行缩成「An outside view」 | `role-entry` 一行字不变；`roles-and-routing.md` 的角色表过时 | 长文件角色表加 Supporter、改 Stakeholder 行；加载数 Master 5、Developer 4、Designer 4、Stakeholder 3、Supporter 3（ideo → scrum → memory） | 是（新增一个角色），交 Master 审 |
+| `overview.md` 约定 8：角色表加 Supporter 一行（杂活、PO 的联络点；加载 ideo → scrum）；Stakeholder 一行缩成「An outside view」 | `role-entry` 一行字不变；`roles.md` 的角色表过时 | 长文件角色表加 Supporter、改 Stakeholder 行；加载数 Master 5、Developer 4、Designer 4、Stakeholder 3、Supporter 3（ideo → scrum → memory） | 是（新增一个角色），交 Master 审 |
 | 约定 10：句末加「convention 14 says where each kind goes」 | `ask-the-po`（待 27）要重写 | 见下面约定 14 | 是 |
 | 约定 12：「stage permission（不是工具权限）」；新句：Supporter 按约定 14 转达的 PO 原话算数 | `stage-gates` 一行与 `stage-gates.md` 长文件缺这一句 | 行里「permission」改「stage permission」；长文件加那一句并指向 `po-word-relayed` | 是（新增一句），交 Master 审 |
-| 约定 14 整条重写：杂活（看板、汇总、产品日志整理）归 Supporter，外部视角仍来自全新子代理；新增四小条：**Supporter 做什么**、**问题往哪走**（自己定 → 问 Master → 经 Supporter 交 PO；没有 Master 会话就直接问 PO，没有 Supporter 会话就直接问 PO）、**答复怎么回**（原话带回；PO 对范围、条目、放行的决定交 Master 记）、**PO 的话经转达算数**（要标明是 PO 的意见、带原话、日期、在哪里说的；接收方记成 `PO (via Supporter): <原话>`；不含工具权限与设置、CLAUDE.md／AGENTS.md、推送与发布） | `who-gets-which-work`、`ask-the-po`（都标待 27）要重写；四小条是新规矩，清单里没有 | 重写两行，新增两行，把细节放进 `roles-and-routing.md`（草案见下） | 是（整条新），交 Master 审 |
+| 约定 14 整条重写：杂活（看板、汇总、产品日志整理）归 Supporter，外部视角仍来自全新子代理；新增四小条：**Supporter 做什么**、**问题往哪走**（自己定 → 问 Master → 经 Supporter 交 PO；没有 Master 会话就直接问 PO，没有 Supporter 会话就直接问 PO）、**答复怎么回**（原话带回；PO 对范围、条目、放行的决定交 Master 记）、**PO 的话经转达算数**（要标明是 PO 的意见、带原话、日期、在哪里说的；接收方记成 `PO (via Supporter): <原话>`；不含工具权限与设置、CLAUDE.md／AGENTS.md、推送与发布） | `who-gets-which-work`、`ask-the-po`（都标待 27）要重写；四小条是新规矩，清单里没有 | 重写两行，新增两行，把细节放进 `roles.md`（草案见下） | 是（整条新），交 Master 审 |
 | `board-log.md` 搬到 `plugins/ideo-scrum/board/`；第 3 条「常驻助手会话」改成「the Supporter」；第 4 条加指向第 11 条；第 12 条 `solution` 为 `null` 时也省略 `story`；第 16 条「待归档」要明确写出 | `board-writer`（待 27）要重写；其余在留在原处的文件里，清单不用动 | 见第三节（board-log 的去处） | 第 3 条是 |
 | `ideo-log.md` 约定 4：For 可以指向 `DesignBacklog.md`；结论可回产品日志、冲刺日志或设计日志 | `ideo-log-home`、`ideo-log-ends` 两行原句已泛指「它服务的日志」，不用改 | `ideo-ending.md` 长文件（手写）逐字跟新文 | 小，列入改动清单 |
 | `product-log.md`、`sprint-log.md`、`design-log.md`：只改了模板路径（`../../template/…`）；四份模板搬到插件根的 `template/`，design 与 ideo 两份的 For 占位改了 | 清单与长文件里提到模板文件名的地方 | 同步后 grep 模板文件名，改路径 | 否 |
-| `overview.md` 的「The other files」块与约定 4（文件夹）：模板在 `template/`，看板文件在 `board/` | `layers-and-folders.md` 长文件里的路径 | 改路径，板子的指向改成 `../../board/board-log.md` | 否 |
+| `overview.md` 的「The other files」块与约定 4（文件夹）：模板在 `template/`，看板文件在 `board/` | `folders.md` 长文件里的路径 | 改路径，板子的指向改成 `../../board/board-log.md` | 否 |
 
 ## 二、入口与外围（行 12–14 要对）
 
@@ -36,7 +36,7 @@
 
 ## 四、清单里 Supporter 这一块的草案（同步后量字数、定稿）
 
-约定 14 的四小条若各占一行，清单净增约 4 行、约 600 字符，会顶到 16,000 字符的上限边上。我的草案是**重写两行、净增两行**，细节放 `roles-and-routing.md`：
+约定 14 的四小条若各占一行，清单净增约 4 行、约 600 字符，会顶到 16,000 字符的上限边上。我的草案是**重写两行、净增两行**，细节放 `roles.md`：
 
 | 句柄 | 草案（≤150 字符，同步后量） | 去向 |
 | --- | --- | --- |
@@ -53,3 +53,13 @@
 2. 重跑 `extract_rules.py`（board-log 的路径要改），与旧台账逐条文本比对，确认变的只有上面第一节；差出来的列入改动清单。
 3. 照第一、三、四节改草稿与长文件，重跑 `check_drafts.py`、`assemble_memory.py`、`make_review.py`；改了含义的列单交 Master 审。
 4. DSH 副本重做；然后落盘（行 12）。
+
+## 六、同步后做了什么（2026-11-23）
+
+- **同步**：`git merge main`，没有冲突（`fa40fa4`）。
+- **台账重抽**：111 条规矩、29 个块的数目与编号都没变；文本变了的 16 项（脚本 `ledger_diff` 与旧台账逐条比）：overview#4、#8、#10、#12、#14，board-log#3、#4、#12、#16，ideo-log#4，另有 6 个块（overview@4、product-log@3、board-log@1、@2、sprint-log@3、design-log@2，多是模板路径）。和 Master 给的清单一致，没有多出来的。
+- **草稿**：`ask-the-po`、`who-gets-which-work`、`board-writer` 三行重写并去掉「待 27」；净增三行 `answers-back`、`po-word-relayed`、`relay-limits`（约定 14 的四小条，例外单列一行）；`stage-gates` 加 *stage* permission；`role-entry` 的「kernels」改「skills」（memory 是最后一个技能）；`roles.md` 按 27 合入后的约定 14 重写（含 Supporter 一行、A1 的加载序列、DSH 压缩后重载一句、约定 14 的四小条逐字）；`gates.md` 加 stage permission 与转达条款；`ideo-ending.md` 跟 ideo-log#4 的新文；`flow-maps.md` 的 Supporter 节点去掉「待定」。
+- **board-log 的去处**：删掉 `long/board-writing.md`；写看板的 4 行里 `board-rules` 指向 `../../board/board-log.md`；`check_drafts.py` 认得这种仓内路径（`EXTERNAL`），装配时核对文件在。
+- **PO 经 Master 的改名与指向**：`long/` 改 `details/`，指向改成 `Read details/<文件>.md first.`；每个指向多 13 个字符，所以把细则文件名取短（`roles`、`folders`、`product-log`、`refinement`、`sprint`、`design`、`closing`、`gates`，共 15 个文件），并把 19 行收短到 ≤150；没有改任何句柄。
+- **大小**：清单 105 行、14,741 字符（上限 16,000），`check_drafts` 0 个问题，装配无未解占位符与死链。
+- **还没做**：DSH 副本按新的 `dsh/index.js`（5 个角色）与 `check_dsh`（8 项）重做；描述、入口、`ATTRIBUTION.md` 登记 `roles.md` 里的 Scrum Guide 引文（行 12）；旧引用迁移用新文件重新出表（行 13）。

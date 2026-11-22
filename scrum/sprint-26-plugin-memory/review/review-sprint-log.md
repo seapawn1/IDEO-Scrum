@@ -23,13 +23,13 @@
 
 **理由**：命名规则（两位编号、上一期加一、后缀、与分支同名、tag 随收官）在 Memory 一行写全；模板 sprint-backlog-template.md 第 3 行只记 Branch，没有目录或编号规则，目录布局见 overview.md 第 4 条（第 61 行）`sprint-NN-<suffix>/`，不能说「留模板」。
 
-**新行**（长文件 `sprint-stages`）
+**新行**（长文件 `sprint`）
 
 ```text
-- **sprint-folder** One branch and folder per Sprint, scrum/sprint-NN-<suffix>/; the tag has the same name. → long/sprint-stages.md
+- **sprint-folder** One branch and folder per Sprint, scrum/sprint-NN-<suffix>/; the tag has the same name. Read details/sprint.md first.
 ```
 
-**备注**：'With a separate working copy if wanted' is dropped (optional); the folder layout under scrum/ is in the layers-and-folders long file.
+**备注**：'With a separate working copy if wanted' is dropped (optional); the folder layout under scrum/ is in the folders long file.
 
 ---
 
@@ -108,7 +108,7 @@
 - **share-goal-and-checks** [po,sm] Share the Sprint Goal and the checks to focus on with the Scrum Master and the Developer.
 ```
 
-**别处已有**：The summary-Sprint exception (several lines of work in one single-line commitment cell), the pointer to the full Definition of Done in section 1.3 and 'leaving out a check does not waive a standard' are in plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-backlog-template.md (lines 16, 20) and in dod-in-product-log.
+**别处已有**：The summary-Sprint exception (several lines of work in one single-line commitment cell), the pointer to the full Definition of Done in section 1.3 and 'leaving out a check does not waive a standard' are in plugins/ideo-scrum/template/sprint-backlog-template.md (lines 16, 20) and in dod-in-product-log.
 
 **备注**：The ideo-kernel fallback sentence is dropped (explanation).
 
@@ -162,10 +162,10 @@
 
 **理由**：七步是步骤，按约定「是步骤就归模板或流程文档」，移出 sprint-log 清单；清单留一行：精化由 Master 带、PO 定，问题清零后 PO 宣布结束。
 
-**新行**（长文件 `sprint-refinement`）
+**新行**（长文件 `refinement`）
 
 ```text
-- **refinement** [sm,po] The Scrum Master leads refinement with the PO; seven steps; the PO says when it is over. → long/sprint-refinement.md
+- **refinement** [sm,po] The Scrum Master leads refinement with the PO; seven steps; the PO says when it is over. Read details/refinement.md first.
 ```
 
 **备注**：Long file: the seven steps word for word, what is written into section 2.2 (what was settled and who decided, acceptance criteria, tests), and step 4's pointer to the design-sprint-or-five-modes boundary as the sprint-or-modes handle.
@@ -188,10 +188,10 @@
 
 **理由**：一行保留「方案到做法层级、每个工作项一个 session」；模板 sprint-backlog-template.md 第 37 行、commands/developer.md 第 33 行与 overview.md 第 116 行已覆盖方案内容、无分步和检查人。但「no file contents、不润色方案、能写出步骤就去做」和「设计给的是方案时，How 是把它造出来」只在原条（sprint-log.md 第 52 行），要留在清单或写进 developer.md 的 How 段。
 
-**新行**（长文件 `sprint-stages`）
+**新行**（长文件 `sprint`）
 
 ```text
-- **how-is-a-plan** [dev] The How is a plan of work items, each done within one session, each with its output and a done test. → long/sprint-stages.md
+- **how-is-a-plan** [dev] The How is a plan of work items, each done in one session, with an output and a done test. Read details/sprint.md first.
 - **no-steps** [dev] Keep the How at the level of approach: no steps, no file contents, no polishing; if you can write the steps, do the work.
 ```
 
@@ -216,10 +216,10 @@
 
 **理由**：「审方案不等于放行，放行只能 PO 给」是 PO 叫停过的事，必须留；后半句「PO 可把 How、新结构、全文的审阅交 Master，并把交接写进日志」模板 sprint-backlog-template.md 第 46 行没有，overview.md 第 12 条（第 89 行）只讲一般书面交接，应一并留在清单，不能「归模板」。
 
-**新行**（长文件 `sprint-stages`）
+**新行**（长文件 `sprint`）
 
 ```text
-- **go-ahead** Build only on the PO's go-ahead, with its date and reach (commit … push); approving a plan is not one. → long/sprint-stages.md
+- **go-ahead** Build only on the PO's go-ahead, with its date and reach (commit … push); approving a plan is not one. Read details/sprint.md first.
 - **review-handover** [po,sm] The PO may hand the review of the How, new structures and full texts to the Scrum Master in writing; not the go-ahead.
 ```
 
@@ -271,10 +271,10 @@
 
 **理由**：检查点的触发与「卡住」的定义已补全，规矩留。要改的是尾句「This departs from the Scrum Guide's Daily Scrum: see the Departures section ...」，是指路，删掉。
 
-**新行**（长文件 `sprint-stages`）
+**新行**（长文件 `sprint`）
 
 ```text
-- **checkpoints** Check the work against the Sprint Goal at each stage end, when stuck, and when the PO asks (a departure). → long/sprint-stages.md
+- **checkpoints** Check the work against the Sprint Goal at each stage end, when stuck, when the PO asks (a departure). Read details/sprint.md first.
 ```
 
 **备注**：Long file: what stuck means (waiting for a decision or information only the PO can give, a block from outside the team, the same approach tried twice and failed, or the current How no longer showing how to reach the Sprint Goal; anything else is an adjustment inside the plan). The pointer 'see the Departures section' is dropped; the reason is in the departures long file.
@@ -373,10 +373,10 @@
 
 **理由**：核心行为有依据，但条文过长。清单留一行：SM 默认审；SM 自己构建则全新子代理审；PO 点名的 Stakeholder 按 DoD 与验收标准逐条核；共享 SM 上下文的 Developer 不因此使 SM 成为构建者，SM 仍审；SM 可派子代理审阅或读长 diff，仍对结论负责（commands/scrum-master.md:58 有前半）。子代理简报等细则随全文进长文件 long/roles-and-routing.md。
 
-**新行**（长文件 `sprint-stages`）
+**新行**（长文件 `sprint`）
 
 ```text
-- **reviewer-required** The builder never reviews: the Scrum Master does, or a fresh subagent if the Scrum Master built it. → long/sprint-stages.md
+- **reviewer-required** The builder never reviews: the Scrum Master does, or a fresh subagent if the Scrum Master built. Read details/sprint.md first.
 ```
 
 **备注**：Long file keeps: a Stakeholder or fresh subagent when the PO names one, and a named Stakeholder checks item by item against the Definition of Done and the acceptance criteria; a fresh subagent that reviews work the Scrum Master built checks only whether it was done right; a Developer that only shares the Scrum Master's context does not make the Scrum Master the builder; how to brief a review subagent (the task, the project's rules, the decisions already issued); the Scrum Master may send a subagent to review or read a long diff and still owns the conclusion.
@@ -426,10 +426,10 @@
 
 **理由**：有依据（Sprint 14 新增）。清单留一行：每条完成标准和验收标准都要有有效证据，否则不算过；未观察到的信号记为未观察，反证记为未达并说明影响。其余细则（Outcome 与 Output 分开记、必需项未满足即拦下、不得声称整个 DoD 已通过、Sprint Test 须全部检查/审阅/验收通过、Test 内修复重测、退回上一阶段按阶段决定）逐条进长文件 long/stage-gates.md。
 
-**新行**（长文件 `sprint-stages`）
+**新行**（长文件 `sprint`）
 
 ```text
-- **record-the-tests** [dev] In chapter 5, show valid evidence for every applicable standard and criterion, else no pass. → long/sprint-stages.md
+- **record-the-tests** [dev] In chapter 5, show valid evidence for each applicable standard and criterion, else no pass. Read details/sprint.md first.
 ```
 
 **备注**：Long file keeps the whole rule: chapter 5 keeps the Developer's tests, the independent check and any PO acceptance; the result of each Output Done standard and item acceptance criterion, with the new evidence linked or the old evidence cited and why it still holds; a condition that did not arise is recorded with why it did not apply; Outcome Done signals are recorded apart from Output Done (an outcome required by the Sprint Goal, an item or a pass line set beforehand blocks the pass if unmet or unproven; otherwise a signal without evidence is 'not yet observed', contrary evidence 'not met' with its effect; do not claim the full DoD passed on those signals); the Increment's quality can pass on its own evidence, the Sprint Test passes only when all its required checks, review and acceptance pass; fix within Test and test again, a return to an earlier stage needs a stage decision.
@@ -454,10 +454,10 @@
 
 **与它重复或相邻**：sprint-log#18、sprint-log#19
 
-**新行**（长文件 `sprint-closing`）
+**新行**（长文件 `closing`）
 
 ```text
-- **review-at-close** At close, a Review: compress the sprint log to key decisions, archive it, refresh the product log. → long/sprint-closing.md
+- **review-at-close** At close, review: compress the sprint log to key decisions, archive it, refresh the product log. Read details/closing.md first.
 ```
 
 **备注**：Long file: the whole Review rule word for word (the archiving of ended designs and IDEO logs, the relay to a Sprint working elsewhere, the checks before updating references). The product-log freshening is fresh-at-review.
@@ -483,10 +483,10 @@
 
 **与它重复或相邻**：sprint-log#17
 
-**新行**（长文件 `sprint-closing`）
+**新行**（长文件 `closing`）
 
 ```text
-- **retro-in-memory** Retro saves only important reusable lessons, one memory entry each; no summary, no instruction files. → long/sprint-closing.md
+- **retro-in-memory** Retro saves only key reusable lessons, one memory entry each; no summary, no instruction files. Read details/closing.md first.
 ```
 
 **备注**：Long file keeps: no chapter in the log; the Developer saves; enough to use each principle alone (what broke or worked, why, what to do next time); with no project memory use the repository notes, still one entry per lesson; do not mix lessons with the plugin's conventions; an index may point to the entries but not copy them; discard one-off details, passing friction and notes without a demonstrated reusable reason, and infer no cause to make a remark a principle; an especially good improvement goes into the Definition of Done with the PO's consent; check whether the product log is still fresh. The *Supplement* sentence (ask where the PO held up the AI) goes there too, labelled.
@@ -519,10 +519,10 @@
 
 **与它重复或相邻**：sprint-log#17
 
-**新行**（长文件 `sprint-closing`）
+**新行**（长文件 `closing`）
 
 ```text
-- **one-closing-commit** Close with one commit after clearing old paths project-wide; then tag, merge, delete the branch. → long/sprint-closing.md
+- **one-closing-commit** Close with one commit after clearing old paths everywhere; then tag, merge, delete the branch. Read details/closing.md first.
 - **outward-needs-po** Push, release and other outward actions need the PO's consent; a stage permission never covers commit, merge or push.
 ```
 
@@ -599,7 +599,7 @@
 **新行**（长文件 `handoff`）
 
 ```text
-- **log-is-the-handoff** Keep a log's header current and write what matters into it before a session ends. → long/handoff.md
+- **log-is-the-handoff** Keep a log's header current and write what matters into it before a session ends. Read details/handoff.md first.
 ```
 
 **别处已有**：The Now and Waiting for PO header fields and reading them first are in the sprint log template (lines 4-5).
@@ -660,10 +660,10 @@
 
 **与它重复或相邻**：overview#12、sprint-log#22
 
-**新行**（长文件 `stage-gates`）
+**新行**（长文件 `gates`）
 
 ```text
-- **read-the-goal** Before each stage decision, read the exact goal (Sprint or design) from its table; if you cannot, stop. → long/stage-gates.md
+- **read-the-goal** Before a stage decision, read the exact goal text from its table; if you cannot, stop. Read details/gates.md first.
 ```
 
 **备注**：The old first line sprint-stage-decisions (the PO sets the goal before What, ends refinement before How, gives the go-ahead before building, authorizes Test apart from approving the Increment, then decides close or return) is the umbrella stage-gates line plus the Sprint section of the stage-gates long file. Long file: no placeholder is recorded as a commitment while no Sprint Goal is set; the goal's exact text goes in the section 1.1 table; its wording is kept on the dated decision line as a record, not as a source; show the text to the PO only when the goal changed, direction is at issue, or they ask; after Test the PO decides to close or to return; a Developer's checks while building are not Sprint Test.
@@ -715,7 +715,7 @@
 **新行**（长文件 `handoff`）
 
 ```text
-- **developer-elsewhere** With a Developer elsewhere, the sprint log stays the record: talk directly if you can, else take turns. → long/handoff.md
+- **developer-elsewhere** With a Developer elsewhere the sprint log stays the record; talk directly, else take turns. Read details/handoff.md first.
 ```
 
 **备注**：Long file, without tool names: sessions that can talk (another session in the same tool, or a Developer forked from the Scrum Master's session) talk directly, a long review is a file and the message gives its path; otherwise one working copy and turns, the one with the turn commits only within the authorized scope and if permitted, writes what was done in the notes and says whose turn is next, the reviewer's findings reach the Developer as a file the PO passes on, which the Developer copies into the log, and the PO carries only the word that it is the other side's turn. 'These are examples, not rules.'
@@ -737,13 +737,13 @@
 > > Source: quotations from The Scrum Guide 2020 (Ken Schwaber & Jeff Sutherland), marked where they appear.
 > > License: the quotations are CC BY-SA 4.0 (© 2020 Ken Schwaber and Jeff Sutherland).
 
-**新**：不进清单。去处或不要的理由：long/sprint-stages.md carries the Scrum Guide quotation (rule 7) with its Source and License lines.
+**新**：不进清单。去处或不要的理由：details/sprint.md carries the Scrum Guide quotation (rule 7) with its Source and License lines.
 
 ---
 
 ### sprint-log@3 · paragraph（第 8–8 行）
 
-> A Sprint turns selected items into an Increment. Its template is `sprint-backlog-template.md`; each section's comment says who writes it. Paths starting with `../` are relative to the sprint-kernel skill folder.
+> A Sprint turns selected items into an Increment. Its template is `../../template/sprint-backlog-template.md`; each section's comment says who writes it. Paths starting with `../` are relative to the sprint-kernel skill folder.
 
 **新**：不进清单。去处或不要的理由：Dropped: the sprint log template's section comments say who writes each section; that a Sprint turns selected items into an Increment is the Scrum Guide's own definition.
 
@@ -765,7 +765,7 @@
 >     T -. "PO authorizes a return to building" .-> I
 > ```
 
-**新**：不进清单。去处或不要的理由：Drawn in long/flow-maps.md, with the handles in the boxes; the list line flow-maps points there.
+**新**：不进清单。去处或不要的理由：Drawn in details/flow-maps.md, with the handles in the boxes; the list line flow-maps points there.
 
 ---
 
@@ -773,6 +773,6 @@
 
 > Conventions 20–26 hold at every step; see Throughout, below. Read each stage transition with convention 24; closing is a separate decision.
 
-**新**：不进清单。去处或不要的理由：long/stage-gates.md, Sprint part: closing is a separate decision from the stage transitions.
+**新**：不进清单。去处或不要的理由：details/gates.md, Sprint part: closing is a separate decision from the stage transitions.
 
 ---

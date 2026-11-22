@@ -4,12 +4,12 @@
     "line": null,
     "lines": null,
     "section": "board",
-    "long_file": "board-writing",
+    "long_file": "board-log",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
     "where_else": null,
-    "note": "The whole field table goes into the long file word for word: nothing else in the repository lists the fields. Open point for PO or Sprint 27 (PBI-89): the board check script requires product.source to be 'working copy' always, but the table also allows 'branch <name> @ <commit>'.",
+    "note": "The whole field table stays in board-log.md, which is not copied or deleted (Master 2026-11-23): nothing else in the repository lists the fields. The old open point (the board check script required product.source to be 'working copy' always, but the table also allows 'branch <name> @ <commit>') was closed by Sprint 27: check.py now accepts both.",
     "via": "board-rules"
   },
   {
@@ -17,7 +17,7 @@
     "line": null,
     "lines": null,
     "section": "board",
-    "long_file": "board-writing",
+    "long_file": "board-log",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
@@ -30,7 +30,7 @@
     "line": null,
     "lines": null,
     "section": "board",
-    "long_file": "board-writing",
+    "long_file": "board-log",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
@@ -47,7 +47,7 @@
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
-    "where_else": "plugins/ideo-scrum/skills/scrum-kernel/conventions/scrum-board-template.html: names() (lines 283-289) and the no-bar case (lines 538-539) implement it.",
+    "where_else": "plugins/ideo-scrum/board/scrum-board-template.html: names() (lines 283-289) and the no-bar case (lines 538-539) implement it.",
     "note": ""
   },
   {
@@ -67,12 +67,12 @@
     "line": null,
     "lines": null,
     "section": "board",
-    "long_file": "board-writing",
+    "long_file": "board-log",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
     "where_else": null,
-    "note": "The whole rule, including how a concluded IDEO run is read from its Now line and when a host counts as ended, is in the board-writing long file word for word.",
+    "note": "The whole rule, including how a concluded IDEO run is read from its Now line and when a host counts as ended, is in board-log.md (kept in place as the board's long file) word for word.",
     "via": "board-rules"
   },
   {
@@ -80,7 +80,7 @@
     "line": null,
     "lines": null,
     "section": "board",
-    "long_file": "board-writing",
+    "long_file": "board-log",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
@@ -93,12 +93,12 @@
     "line": null,
     "lines": null,
     "section": "board",
-    "long_file": "board-writing",
+    "long_file": "board-log",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
     "where_else": null,
-    "note": "The annotation proposed pointing to the board check script, but it sits in the repository's scripts/, outside plugins/ideo-scrum, so an installed plugin does not have it; the board-writing long file keeps the original check list.",
+    "note": "The annotation proposed pointing to the board check script, but it sits in the repository's scripts/, outside plugins/ideo-scrum, so an installed plugin does not have it; board-log.md (kept in place as the board's long file) keeps the original check list.",
     "via": "board-rules"
   },
   {
@@ -111,6 +111,6 @@
     "adds_to_target": "Nothing becomes true because it is on the board.",
     "absorbed": [],
     "where_else": null,
-    "note": "board-log#2 is drafted (board-owns-nothing); the sentence goes into the board-writing long file."
+    "note": "board-log#2 is drafted (board-owns-nothing); the sentence goes into board-log.md (kept in place as the board's long file)."
   }
 ]

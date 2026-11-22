@@ -150,10 +150,10 @@
 
 **理由**：先听当事人、一手与二手分开标留清单一行；PO 是当事人时先问具体经历再问其对含义的判断、否则先找 PO 能带来的用户，以及「文件与角色卡在后」这两条顺序要求只在 design-log.md:37，模板与 SKILL.md 的 Empathize 说明没有，应随本条进长文件，不能只归阶段说明。
 
-**新行**（长文件 `design-stages`）
+**新行**（长文件 `design`）
 
 ```text
-- **design-stages** Details of each design stage: people first, experts if unclear, the map, ideas, prototype, role-card test. → long/design-stages.md
+- **design-stages** Each design stage: people first, experts if unclear, the map, ideas, prototype, role-card test. Read details/design.md first.
 ```
 
 **备注**：The index line for the stage details. design-log#6: start Empathize with the people concerned; when the PO is the person concerned ask first for concrete experiences, then for their call on what it means, otherwise start with users the PO can bring; documents and role cards come after; mark each finding first-hand or second-hand; write the design goal as a vision, not a how; keep the one-row commitment table in 1.2.
@@ -176,7 +176,7 @@
 
 **理由**：行为规矩保留：先听当事人，再写挑战、设计目标与问题；只在仍不清楚时才找专家或做研究，并在之后精化目标与重画地图。专家构成、每张角色卡用新子代理、先画粗地图与「只记变化不记访谈」是细则，放长文件，清单留一行索引。
 
-**新**：只在长文件 `design-stages`，清单里由 `design-stages` 一行索引。
+**新**：只在长文件 `design`，清单里由 `design-stages` 一行索引。
 
 **备注**：After hearing the people, write the challenge, the design goal and the design questions; ask experts (the PO in the conversation, role cards each played by a fresh subagent) and do research only if still unclear; draft a rough map first; the log keeps what changed, not each interview; afterwards refine all three and redraw the map.
 
@@ -198,7 +198,7 @@
 
 **理由**：地图画法与「只画想要达到的体验、五六框一个回环」留清单一行；「外行一眼读不懂就是塞了方案」「地图+挑战+目标+问题就是 point of view、不另写」「PO 选 HMW、不 dot voting」三条只在 design-log.md:42，必须随本条进长文件；分支与方案不进图在 design-backlog-template.md:36，目标选择见 steps/2-3-pick-a-target.md，步骤文件里没有这些。
 
-**新**：只在长文件 `design-stages`，清单里由 `design-stages` 一行索引。
+**新**：只在长文件 `design`，清单里由 `design-stages` 一行索引。
 
 **备注**：Map: a Mermaid flowchart TD, actors at the top and the ending at the bottom, rough (five or six boxes, one loop), the experience we want not today's (today's goes in chapter 1 with sources; departs from the book); branches, exceptions and solutions are not in the map (a reader who never learned design who cannot read it at a glance means a solution is inside); the map with the challenge, goal and questions is the point of view; the PO picks the How Might We questions, no dot voting; no target step while the design runs; a blank-page design picks its target when it ends; split a map that holds more than one design's work.
 
@@ -219,7 +219,7 @@
 
 **理由**：Lightning Demos 可选：需要现成想法时让子代理并行搜；清单只作工作材料、不进日志（已在 convention 10），子代理画方案时清单分开给（已在 convention 11）。并行搜这一条只在 design-log.md:46，步骤文件 3-1 是书里的轮流 tour，不能替代，应留清单一行。
 
-**新**：只在长文件 `design-stages`，清单里由 `design-stages` 一行索引。
+**新**：只在长文件 `design`，清单里由 `design-stages` 一行索引。
 
 **备注**：Lightning Demos is optional: when existing ideas would help, have subagents search for them in parallel and keep the list as working material, not in the log; if subagents sketch, split the list among them so each starts from different ideas.
 
@@ -241,10 +241,10 @@
 
 **理由**：核心行为规矩：先发散、至少两种方法且其中一种来自 ideo-kernel、发散时不做判断，然后才收敛。删了会丢「不跳过发散直接出方案」的防线，故留。
 
-**新行**（长文件 `design-stages`）
+**新行**（长文件 `design`）
 
 ```text
-- **diverge-first** Sketchers diverge first: two methods, one of them an ideo-kernel Ideate method, quantity, no judgment. → long/design-stages.md
+- **diverge-first** Sketchers diverge first: two methods, one an ideo-kernel Ideate method, quantity, no judgment. Read details/design.md first.
 ```
 
 **备注**：The sentence 'when you brief a subagent, tell it so' and 'the ideas are working material and stay out of the log' are in the design-stages long file (section Ideate: diverge before you converge).
@@ -269,7 +269,7 @@
 
 **理由**：隔离子代理互不可见、各拿自己的材料与小结、先发散、不提供当前设计/规则/代码并叫它别读项目文件，这些留清单一行；工具把项目指令传给每个子代理时记进设计日志，以及 Decide on the spot 由 PO 定是否用子代理/用几个/什么模型，随本条进长文件（design-ideate.md）；steps/3-2-sketch.md 是逐字书摘，不能承接这些。
 
-**新**：只在长文件 `design-stages`，清单里由 `design-stages` 一行索引。
+**新**：只在长文件 `design`，清单里由 `design-stages` 一行索引。
 
 **备注**：Isolated solutions (optional, Decide on the spot): several fresh subagents that cannot see one another each sketch one complete solution in words or Mermaid, each with its own materials (chapters 1 and 2 and its own part of the ideas, or none until it has drawn) and its own summary (one summary for all makes them converge: two subagents given the same summary both drew a subway map), nothing about how things are solved today and told not to read the project's files; each diverges first; some tools hand the project's instructions to every subagent anyway and then that is noted in the design log; without subagents the main thread and the PO sketch together. Whether to use subagents, how many and on which model is decided within how the PO chose to run this round.
 
@@ -388,7 +388,7 @@
 
 **理由**：清单留做法一句：在设计文件夹里按选定方案做、真到能引起诚实反应、为学得快不为上线；「没有屏幕时原型要多真」随本条进长文件，不要并进 #21（#21 计划删清单，门的 #26 不含此决定）；部件清单已在 design-backlog-template.md:58-60 的第4章表，trial run、子代理分件与缝合、设计证据不算 Increment 分别在 SKILL.md:25、模板:67 与保留的 #19（design-log.md:70），理由要写明。Supplement 标签保留。
 
-**新**：只在长文件 `design-stages`，清单里由 `design-stages` 一行索引。
+**新**：只在长文件 `design`，清单里由 `design-stages` 一行索引。
 
 **备注**：Supplement. Build in the design folder from the chosen solution, real enough for honest reactions, made quickly for learning not production while the surface the tester sees appears real; keep it as design evidence, which does not make it an Increment; subagents can build parts while one session stitches; do a trial run against the solution and the design questions before testing and write what it found in chapter 5; list each part in chapter 4 with the design question it tests. Decide on the spot: how real the prototype must be when the product has no screen, agreed with the PO.
 
@@ -410,7 +410,7 @@
 
 **理由**：改：测试对象、取舍、只有 PO 时的例外、五个顾客的对照混在一条里。清单留「用角色卡测，每张是新子代理，只给卡、原型和任务」一句；其余（五个顾客的对照、增加轮数、只有 PO 时的例外）移到长文件或模板注释。
 
-**新**：只在长文件 `design-stages`，清单里由 `design-stages` 一行索引。
+**新**：只在长文件 `design`，清单里由 `design-stages` 一行索引。
 
 **备注**：Test with role cards, each a fresh subagent given only its card, the prototype and the tasks; the PO tests too; the Designer runs the Five-Act Interview; a grid of reactions is working material; chapter 5 keeps who tested, what showed up, and the answer to each design question; test with the role cards the prototype is about, add runs while patterns are unclear (the book tests five customers); when the thing is for the PO alone, the PO testing it is enough and no role card is made up.
 
@@ -461,8 +461,8 @@
 **新行**（长文件 `design-ending`）
 
 ```text
-- **design-ends** A design ends when the PO says its questions are answered or stops it; the next Review archives it. → long/design-ending.md
-- **design-conclusions** At its end, write the conclusions into the product log and pass them to the Sprint that asked. → long/design-ending.md
+- **design-ends** A design ends when the PO says its questions are answered or stops it; Review archives it. Read details/design-ending.md first.
+- **design-conclusions** At its end, write the conclusions into the product log, pass them to the asking Sprint. Read details/design-ending.md first.
 ```
 
 **备注**：Long file: the whole of the old rule, word for word, with the convention numbers replaced by handles (blank page: pick the target and let the PO order the items; mark the design concluded and awaiting archival in its Now line; keep the log and all original working material together until archival and link to the originals, a summary or a commit ID alone is not enough; if a Sprint builds the conclusions link to the prototype as a specification, never leave its only copy in a Sprint folder; the material is design evidence, never an Increment; with the PO's explicit permission merge the design branch into its base and delete it, pushing needs consent; a design has no Review or Retro of its own, the first Review that can read its complete log and material in its own checkout archives it; and the rest of the rule, which the ledger holds in full).
@@ -531,7 +531,7 @@
 
 **理由**：删：章节结构是模板的事，模板已有五章，并在第 8 行写明只记产出、不记步骤，本条与之重复。删了不丢内容；Memory 里不需要格式规定。
 
-**新**：不进清单。去处或不要的理由：plugins/ideo-scrum/skills/design-kernel/conventions/design-backlog-template.md has the five chapters, one per stage, and says each records what its stage produced, not the steps taken (line 8).
+**新**：不进清单。去处或不要的理由：plugins/ideo-scrum/template/design-backlog-template.md has the five chapters, one per stage, and says each records what its stage produced, not the steps taken (line 8).
 
 ---
 
@@ -626,10 +626,10 @@
 
 **与它重复或相邻**：design-log#21、design-log#24
 
-**新行**（长文件 `stage-gates`）
+**新行**（长文件 `gates`）
 
 ```text
-- **ideate-arrangement** Before Ideate, the PO settles how the round diverges; until then no gathering, sketching or delegating. → long/stage-gates.md
+- **ideate-arrangement** Until the PO settles how Ideate diverges, no gathering, sketching or delegating. Read details/gates.md first.
 ```
 
 **备注**：The old first line design-gates (a stage permission covers only that stage's design work, not a commit, merge or push) is folded into outward-needs-po and the stage-gates long file. Long file: the four-row table (what the log holds and the check at each stage) word for word, and 'would someone who never learned design have produced the same thing?'; record permission to start Empathize when opening and no placeholder goal as a commitment; record how far git permission reaches on the stage or ending decision line; record the Ideate arrangement in chapter 3 before the solution section; choosing a solution is not permission for Prototype and a trial run is not permission for Test; the goal's exact text goes in the 1.2 table and is read before each stage decision (the Product Goal too if direction is at issue), stop if it cannot be read, the wording on the dated decision line is a record not a source, show it to the PO only when the goal changed, direction is at issue or they ask; when a stage shows an earlier answer was wrong, report it and wait for permission to return; after Test the PO decides whether to end the design or return.
@@ -672,9 +672,9 @@
 
 ### design-log@2 · paragraph（第 5–5 行）
 
-> The design log template is `design-backlog-template.md` in this folder. Paths here are relative to the design-kernel skill folder; the stages, the book's excerpts, and the methods are listed in this skill's `SKILL.md`. Where an excerpt describes the book's room — whiteboards, sticky notes, dot voting, a team at a table — these conventions say how a solo + AI team does that step, and they apply.
+> The design log template is `../../template/design-backlog-template.md`. Paths here are relative to the design-kernel skill folder; the stages, the book's excerpts, and the methods are listed in this skill's `SKILL.md`. Where an excerpt describes the book's room — whiteboards, sticky notes, dot voting, a team at a table — these conventions say how a solo + AI team does that step, and they apply.
 
-**新**：不进清单。去处或不要的理由：The first section of long/design-stages.md: the template, and where the book describes its room (whiteboards, sticky notes, dot voting, a team at a table) these rules say how a solo + AI team does that step.
+**新**：不进清单。去处或不要的理由：The first section of details/design.md: the template, and where the book describes its room (whiteboards, sticky notes, dot voting, a team at a table) these rules say how a solo + AI team does that step.
 
 ---
 
@@ -692,7 +692,7 @@
 >     G -. "PO authorizes a return" .-> R["Resume the stage that needs work<br/>convention 26"]
 > ```
 
-**新**：不进清单。去处或不要的理由：Drawn in long/flow-maps.md, with the handles in the boxes; the list line flow-maps points there.
+**新**：不进清单。去处或不要的理由：Drawn in details/flow-maps.md, with the handles in the boxes; the list line flow-maps points there.
 
 ---
 
@@ -700,7 +700,7 @@
 
 > **The three loops.** Empathize and Define: the Product Owner and the Scrum Master settle the research and definition together; the Scrum Master records it, and the Designer takes over when Ideate is authorized (convention 3). Diverge and converge: the Product Owner first settles how to open up ideas; the AI can do the work, and a person picks the solution. Prototype and Test: the AI can do the work once each stage is authorized. Any stage decision handed to the Scrum Master still has to be within the written handover and recorded (`../scrum-kernel/overview.md`, convention 12).
 
-**新**：不进清单。去处或不要的理由：The section The three loops of long/design-stages.md, word for word.
+**新**：不进清单。去处或不要的理由：The section The three loops of details/design.md, word for word.
 
 ---
 
@@ -708,7 +708,7 @@
 
 > Conventions 20–27 hold at every step; see Throughout, below. Apply the entry and return rules in convention 26 at each transition.
 
-**新**：不进清单。去处或不要的理由：Dropped: a pointer to 'Throughout'; the entry and return rules at each transition are the stage-gates line and long/stage-gates.md.
+**新**：不进清单。去处或不要的理由：Dropped: a pointer to 'Throughout'; the entry and return rules at each transition are the stage-gates line and details/gates.md.
 
 ---
 
@@ -716,6 +716,6 @@
 
 > The conventions under Stages cover only what differs from the book or adds what it leaves out; for everything else, follow the excerpts.
 
-**新**：不进清单。去处或不要的理由：The first section of long/design-stages.md: these rules cover only what differs from the book or adds what it leaves out; for the rest follow the book's excerpts.
+**新**：不进清单。去处或不要的理由：The first section of details/design.md: these rules cover only what differs from the book or adds what it leaves out; for the rest follow the book's excerpts.
 
 ---

@@ -12,7 +12,7 @@ Treat Sprints and designs as peers under the product log: a Sprint, the Develope
 - A design's conclusions still land through a Sprint.
 - An Increment need not be code — the Definition of Done says what it is.
 
-This departs from the Scrum Guide; the reason is in `long/departures.md`.
+This departs from the Scrum Guide; the reason is in `details/departures.md`.
 
 ## Three layers (`three-layers`)
 
@@ -24,7 +24,7 @@ This departs from the Scrum Guide; the reason is in `long/departures.md`.
 | 3 | Increment: code or documents, as the Definition of Done says | Definition of Done | Developer | — |
 | 3 | Prototype: built to learn, never in an Increment; a design’s prototype stays with its design evidence | Design questions | Designer | — |
 
-The third layer is not a log and has no prescribed method; it relies on the skills of whoever does the work. Increments add up into the product. The design’s conclusions flow back; its working material, including the prototype, stays with the design and can be referenced by the Sprint that builds those conclusions (`long/design-ending.md`). The standalone IDEO log has its own rule (`ideo-log-home`, `ideo-log-ends`).
+The third layer is not a log and has no prescribed method; it relies on the skills of whoever does the work. Increments add up into the product. The design’s conclusions flow back; its working material, including the prototype, stays with the design and can be referenced by the Sprint that builds those conclusions (`details/design-ending.md`). The standalone IDEO log has its own rule (`ideo-log-home`, `ideo-log-ends`).
 
 ## Folders (`scrum-folders`)
 
@@ -42,7 +42,7 @@ The active folders may still hold work that ended and is awaiting Review; read t
 ## Where files go (`where-files-go`)
 
 - A file that serves only one log usually stays in its working folder and can be cleaned up when that work ends.
-- The design’s original working material is the exception: retain it with the design, then move it with its log into the existing `scrum/documents/` archive at Review (`long/design-ending.md`, `long/sprint-closing.md`).
+- The design’s original working material is the exception: retain it with the design, then move it with its log into the existing `scrum/documents/` archive at Review (`details/design-ending.md`, `details/closing.md`).
 - Files serving the whole Scrum also go into `scrum/documents/`, and the logs reference them.
 - A project can use its existing archive subfolders.
 - The project’s own documentation, such as a user manual or API notes, stays where the project keeps it, such as `docs/` at the root.

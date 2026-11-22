@@ -9,7 +9,7 @@
 
 ### board-log#1 · One board for the project
 
-`plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md` 第 18–18 行
+`plugins/ideo-scrum/board/board-log.md` 第 18–18 行
 
 **旧规矩原文**
 
@@ -35,7 +35,7 @@
 
 ### board-log#2 · It owns nothing
 
-`plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md` 第 19–19 行
+`plugins/ideo-scrum/board/board-log.md` 第 19–19 行
 
 **旧规矩原文**
 
@@ -57,17 +57,17 @@
 - **board-owns-nothing** The board only reads the logs: no state, no log changed from it; whether to commit it is the project's call.
 ```
 
-**备注**：board-log#19 adds: nothing becomes true because it is on the board; it goes into the board-writing long file. The reason for not committing it (delete it and write it again, every fact is the same; only the time differs) also goes there.
+**备注**：board-log#19 adds: nothing becomes true because it is on the board; it goes into board-log.md (kept in place as the board's long file). The reason for not committing it (delete it and write it again, every fact is the same; only the time differs) also goes there.
 
 ---
 
 ### board-log#3 · Where it lives, who writes it, and when
 
-`plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md` 第 20–20 行
+`plugins/ideo-scrum/board/board-log.md` 第 20–20 行
 
 **旧规矩原文**
 
-> 3. **Where it lives, who writes it, and when** — Name it `scrum/ScrumBoard.html`, beside the product log. A cheap model writes it, because the work is copying and summarizing, not judging: a fresh subagent told to read this file and the template and to follow them, or a standing helper session of the Product Owner's. Write it when the Product Owner wants to look, or after a log has changed.
+> 3. **Where it lives, who writes it, and when** — Name it `scrum/ScrumBoard.html`, beside the product log. A cheap model writes it, because the work is copying and summarizing, not judging: a fresh subagent told to read this file and the template and to follow them, or the Supporter (the `supporter` entry). Write it when the Product Owner wants to look, or after a log has changed.
 
 **出处与依据**：作者（把握：中）；种类：规矩
 - commit e578214 feat(Sprint 20): 块 9——看板新模板；看板改名 ScrumBoard.html / board-log.md / scrum-board-template.html
@@ -77,26 +77,24 @@
 
 **理由**：位置（scrum/ScrumBoard.html）、「便宜的模型写」并要它读本约定与模板、以及「PO 想看时或日志变了就写」都留；「PO 的常驻辅助会话」待 PBI-86 的秘书角色定下后按新说法改。
 
-**新行**（长文件 `board-writing`）
+**新行**（长文件 `board-log`）
 
 ```text
-- **board-writer** A cheap model writes scrum/ScrumBoard.html when the PO wants to look or a log changed.
-- **board-rules** What the board reads, the data it holds, how to copy and check it: read the long file before writing one. → long/board-writing.md
+- **board-writer** A cheap model or the Supporter writes scrum/ScrumBoard.html when the PO wants to look or a log changed.
+- **board-rules** What the board reads, the data it holds, how to copy and check it; the brief for its writer. Read ../../board/board-log.md first.
 ```
 
-**备注**：The long file says who writes it: a fresh subagent told to read the board rules and the template, or a standing helper session of the PO's (the wording of that helper waits for the secretary role of PBI-86 / Sprint 27).
-
-**待 27（`board-writer`）**：Sprint 27: the Supporter writes the board. Rewrite the line (and the 'who writes it' paragraph of the board-writing long file) when 27 is merged.
+**备注**：The writer is now a cheap model or the Supporter (Sprint 27). The board conventions stay in place as the board's long file (Master 2026-11-23: board-log.md is not merged into a Memory long file and not deleted); board-rules points at it, and the other rules of that file are indexed by board-rules.
 
 ---
 
 ### board-log#4 · The logs
 
-`plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md` 第 24–24 行
+`plugins/ideo-scrum/board/board-log.md` 第 24–24 行
 
 **旧规矩原文**
 
-> 4. **The logs** — The product log is `scrum/ProductBacklog.md`. The open logs are `scrum/sprint-*/SprintBacklog.md`, `scrum/design-*/DesignBacklog.md`, and `scrum/ideo-*/IdeoBacklog.md`; nothing in `scrum/documents/`, which holds the archive. A Sprint or design that is open on another branch counts too: read its log as committed on that branch (git can show a file at a branch's latest commit), and give `branch <name> @ <commit>` as its source, the commit as its first seven characters. A log that is in this working copy is read from the working copy, with any change not yet committed, and its source is `working copy`. If one log is found on several branches, use the version with the newest commit.
+> 4. **The logs** — The product log is `scrum/ProductBacklog.md`. The open logs are `scrum/sprint-*/SprintBacklog.md`, `scrum/design-*/DesignBacklog.md`, and `scrum/ideo-*/IdeoBacklog.md`; nothing in `scrum/documents/`, which holds the archive. A Sprint or design that is open on another branch counts too: read its log as committed on that branch (git can show a file at a branch's latest commit), and give `branch <name> @ <commit>` as its source, the commit as its first seven characters. A log that is in this working copy is read from the working copy, with any change not yet committed, and its source is `working copy`. If one log is found on several branches, use the version with the newest commit. The product log is read the same way when it is not in this working copy; how to write its source is in convention 11 (`product.source`).
 
 **出处与依据**：作者（把握：中）；种类：格式
 - commit ed53e1c feat(Sprint 20): 块 10——board-log.md 重写（19 条：数据的字段表、概括的规矩）
@@ -108,7 +106,7 @@
 
 **与它重复或相邻**：board-log#5
 
-**新**：只在长文件 `board-writing`，清单里由 `board-rules` 一行索引。
+**新**：只在长文件 `board-log`，清单里由 `board-rules` 一行索引。
 
 **备注**：The log paths, the rule that a Sprint or design open on another branch counts (read as committed there; source `branch <name> @ <commit>`), the working-copy rule and the newest-commit rule go into the long file word for word. My override of the verifiers: they pointed at the board check script, which is not in the plugin.
 
@@ -116,7 +114,7 @@
 
 ### board-log#5 · What it takes from a log
 
-`plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md` 第 25–31 行 · 标记：CJK
+`plugins/ideo-scrum/board/board-log.md` 第 25–31 行 · 标记：CJK
 
 **旧规矩原文**
 
@@ -138,7 +136,7 @@
 
 **与它重复或相邻**：board-log#4、board-log#11
 
-**新**：只在长文件 `board-writing`，清单里由 `board-rules` 一行索引。
+**新**：只在长文件 `board-log`，清单里由 `board-rules` 一行索引。
 
 **备注**：What to take from each log (six bullets) goes into the long file, convention numbers replaced by handles. My override of the verifiers, as for board-log#4.
 
@@ -146,7 +144,7 @@
 
 ### board-log#6 · Maps
 
-`plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md` 第 32–32 行
+`plugins/ideo-scrum/board/board-log.md` 第 32–32 行
 
 **旧规矩原文**
 
@@ -159,7 +157,7 @@
 
 **理由**：说明地图从产品日志 2.2 节、设计日志 2.1 节取，以及节点标签怎么取；地图概括与逐字核对都依赖它，不能只靠脚本。
 
-**新**：只在长文件 `board-writing`，清单里由 `board-rules` 一行索引。
+**新**：只在长文件 `board-log`，清单里由 `board-rules` 一行索引。
 
 **备注**：Maps: the product log's map is the Mermaid diagram in section 2.2, a design log's the one in its 2.1; a node's label is the text inside the quotation marks of the three bracket forms; arrows and their labels are not nodes.
 
@@ -167,7 +165,7 @@
 
 ### board-log#7 · The overview
 
-`plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md` 第 36–36 行
+`plugins/ideo-scrum/board/board-log.md` 第 36–36 行
 
 **旧规矩原文**
 
@@ -181,13 +179,13 @@
 
 **理由**：总览的版式与交互（流向、点亮去向、颜色）已由模板实现，check.py 对页面与模板逐字比。删了 Memory 不丢做事的规矩，版式依据留在设计卡里。
 
-**新**：不进清单。去处或不要的理由：plugins/ideo-scrum/skills/scrum-kernel/conventions/scrum-board-template.html draws the overview (flow, lighting, colours); the layout reasons are in the design archive of the board.
+**新**：不进清单。去处或不要的理由：plugins/ideo-scrum/board/scrum-board-template.html draws the overview (flow, lighting, colours); the layout reasons are in the design archive of the board.
 
 ---
 
 ### board-log#8 · The cards
 
-`plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md` 第 37–37 行
+`plugins/ideo-scrum/board/board-log.md` 第 37–37 行
 
 **旧规矩原文**
 
@@ -202,7 +200,7 @@
 
 **与它重复或相邻**：board-log#12
 
-**新**：只在长文件 `board-writing`，清单里由 `board-rules` 一行索引。
+**新**：只在长文件 `board-log`，清单里由 `board-rules` 一行索引。
 
 **备注**：Only the kept part goes into the long file: a design card has its own solution section that shows what was chosen and how it is used, even without a storyboard, or says that none is chosen; it invents no storyboard. The three-layer card layout stays with the template.
 
@@ -210,7 +208,7 @@
 
 ### board-log#9 · What the page works out itself
 
-`plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md` 第 38–38 行
+`plugins/ideo-scrum/board/board-log.md` 第 38–38 行
 
 **旧规矩原文**
 
@@ -223,7 +221,7 @@
 
 **理由**：Developer 改：进 board-writing 长文件，压成一两句。页面自算项的实现在模板脚本里，但「这些不写进数据」只在本条，写看板的模型不知道就可能多写字段。
 
-**新**：只在长文件 `board-writing`，清单里由 `board-rules` 一行索引。
+**新**：只在长文件 `board-log`，清单里由 `board-rules` 一行索引。
 
 **备注**：One or two sentences in the long file: the page works out a Sprint's name, short names, counts, order and links itself, so none of that is written in the data. My override of the verifiers' delete: that sentence is only here.
 
@@ -231,7 +229,7 @@
 
 ### board-log#10 · Links and sources
 
-`plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md` 第 39–39 行
+`plugins/ideo-scrum/board/board-log.md` 第 39–39 行
 
 **旧规矩原文**
 
@@ -245,7 +243,7 @@
 
 **理由**：分支上的日志不做死链，卡片写分支名与提交号，这是看板会不会坏的规矩。一行即可说清。
 
-**新**：只在长文件 `board-writing`，清单里由 `board-rules` 一行索引。
+**新**：只在长文件 `board-log`，清单里由 `board-rules` 一行索引。
 
 **备注**：A card links to its log relative to scrum/ only when its source is the working copy; a log only on another branch shows the branch and the commit, so no link is dead; every card's foot starts with its folder's name.
 
@@ -253,7 +251,7 @@
 
 ### board-log#11 · One block of data
 
-`plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md` 第 43–57 行 · 标记：quote
+`plugins/ideo-scrum/board/board-log.md` 第 43–57 行 · 标记：quote
 
 **旧规矩原文**
 
@@ -283,19 +281,19 @@
 
 **与它重复或相邻**：board-log#5
 
-**新**：只在长文件 `board-writing`，清单里由 `board-rules` 一行索引。
+**新**：只在长文件 `board-log`，清单里由 `board-rules` 一行索引。
 
-**备注**：The whole field table goes into the long file word for word: nothing else in the repository lists the fields. Open point for PO or Sprint 27 (PBI-89): the board check script requires product.source to be 'working copy' always, but the table also allows 'branch <name> @ <commit>'.
+**备注**：The whole field table stays in board-log.md, which is not copied or deleted (Master 2026-11-23): nothing else in the repository lists the fields. The old open point (the board check script required product.source to be 'working copy' always, but the table also allows 'branch <name> @ <commit>') was closed by Sprint 27: check.py now accepts both.
 
 ---
 
 ### board-log#12 · Copied, and summarized
 
-`plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md` 第 59–59 行 · 标记：CJK
+`plugins/ideo-scrum/board/board-log.md` 第 59–59 行 · 标记：CJK
 
 **旧规矩原文**
 
-> 12. **Copied, and summarized** — What is marked ★ goes into the data exactly as the log has it: the same characters, the same language; never reworded, shortened, translated, or tidied. A long text such as a Now line is copied mechanically — with a command or a script — rather than retyped: a long text copied by hand loses a character. Only `product.map` and a design's `map`, `solution`, and `story` are summaries. A map stop's text is a few words cut from one node's label: leave out the step number (①, ②), anything in brackets (item numbers, file names), and the explanation after a colon; never reword. So `③ 写产品日志：Product · 架构 · PBI（product-log）` becomes `写产品日志`, and `⑥ 施工（sprint-log）` becomes `施工`. Keep the main line only — five to eight stops, none longer than about twenty characters — and leave out the people at the top, the ending, and every side branch except the design sprint, which is a stop of its own. The steps a Sprint goes through, one after another, are one stop, joined with ` → ` (`Planning → PO 放行 → 施工 → Test`). A design's `map` comes from its own section 2.1, in source order, without people, the ending, or side branches: five or six stops when the map has them, no invented stops; omit it when no map is recorded. On the product map, `note` holds the item numbers in the brackets of the stop's label, as `62 · 64`. `here` lists the ids of open Sprints and designs at that stop: a Sprint at the stop its Now line names (planning, building, or testing), a design at the design sprint stop; leave `here` out when no stop fits. `branch` is true for a stop beside the main line. A design's `solution` summarizes section 3.1: a short `title` for what was chosen and a short `text` for how it is used. Leave out a part the log does not give; a recorded choice without usage details is still a choice. Write `null` when no choice is recorded: drafts, sketches, or a storyboard alone are not a choice. Optional `story` is a short ordered list of `{"title", "text"}` frames from section 3.2 that illustrate the chosen solution; omit it without a storyboard. Add no facts to fill either field.
+> 12. **Copied, and summarized** — What is marked ★ goes into the data exactly as the log has it: the same characters, the same language; never reworded, shortened, translated, or tidied. A long text such as a Now line is copied mechanically — with a command or a script — rather than retyped: a long text copied by hand loses a character. Only `product.map` and a design's `map`, `solution`, and `story` are summaries. A map stop's text is a few words cut from one node's label: leave out the step number (①, ②), anything in brackets (item numbers, file names), and the explanation after a colon; never reword. So `③ 写产品日志：Product · 架构 · PBI（product-log）` becomes `写产品日志`, and `⑥ 施工（sprint-log）` becomes `施工`. Keep the main line only — five to eight stops, none longer than about twenty characters — and leave out the people at the top, the ending, and every side branch except the design sprint, which is a stop of its own. The steps a Sprint goes through, one after another, are one stop, joined with ` → ` (`Planning → PO 放行 → 施工 → Test`). A design's `map` comes from its own section 2.1, in source order, without people, the ending, or side branches: five or six stops when the map has them, no invented stops; omit it when no map is recorded. On the product map, `note` holds the item numbers in the brackets of the stop's label, as `62 · 64`. `here` lists the ids of open Sprints and designs at that stop: a Sprint at the stop its Now line names (planning, building, or testing), a design at the design sprint stop; leave `here` out when no stop fits. `branch` is true for a stop beside the main line. A design's `solution` summarizes section 3.1: a short `title` for what was chosen and a short `text` for how it is used. Leave out a part the log does not give; a recorded choice without usage details is still a choice. Write `null` when no choice is recorded: drafts, sketches, or a storyboard alone are not a choice. Optional `story` is a short ordered list of `{"title", "text"}` frames from section 3.2 that illustrate the chosen solution; omit it without a storyboard, and omit it when `solution` is `null`, because a story illustrates a chosen solution. Add no facts to fill either field.
 
 **出处与依据**：作者（把握：高）；种类：规矩
 - archive scrum/documents/sprint/sprint-19-board-hook.md：「长文手抄丢一个字符」
@@ -307,7 +305,7 @@
 
 **与它重复或相邻**：board-log#17、board-log#8
 
-**新**：只在长文件 `board-writing`，清单里由 `board-rules` 一行索引。
+**新**：只在长文件 `board-log`，清单里由 `board-rules` 一行索引。
 
 **备注**：The whole rule goes into the long file: the map-stop rules (five to eight stops, no step numbers, brackets or explanation after a colon, the examples), note and here, branch, a design's map, the solution with its null case, story.
 
@@ -315,7 +313,7 @@
 
 ### board-log#13 · Groups and order
 
-`plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md` 第 60–60 行
+`plugins/ideo-scrum/board/board-log.md` 第 60–60 行
 
 **旧规矩原文**
 
@@ -328,7 +326,7 @@
 
 **理由**：group 是写进数据的字段（#11 字段表），不是页面自算；check.py 只核 group 与冲刺/设计一致（第394-401行），不核 later/next，只有参考生成器按状态推 later（第545行）。删了会丢“状态说以后才是 later，否则 next”这一句，留一行即可。
 
-**新**：只在长文件 `board-writing`，清单里由 `board-rules` 一行索引。
+**新**：只在长文件 `board-log`，清单里由 `board-rules` 一行索引。
 
 **备注**：The page puts the items of a Sprint or a design in that Sprint's or design's own order.
 
@@ -336,7 +334,7 @@
 
 ### board-log#14 · Work items and items
 
-`plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md` 第 61–61 行
+`plugins/ideo-scrum/board/board-log.md` 第 61–61 行
 
 **旧规矩原文**
 
@@ -349,13 +347,13 @@
 
 **理由**：工作项归属与“没有工作项命名条目就不画进度条”由模板脚本实现（scrum-board-template.html 第283-289行 names()、第538-539行），check.py 并不统计工作项（只取 3.1 表的号、标题、状态、大小，第252-253行）。删了不丢行为，模板还在。
 
-**新**：不进清单。去处或不要的理由：plugins/ideo-scrum/skills/scrum-kernel/conventions/scrum-board-template.html: names() (lines 283-289) and the no-bar case (lines 538-539) implement it.
+**新**：不进清单。去处或不要的理由：plugins/ideo-scrum/board/scrum-board-template.html: names() (lines 283-289) and the no-bar case (lines 538-539) implement it.
 
 ---
 
 ### board-log#15 · Escaping
 
-`plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md` 第 62–62 行
+`plugins/ideo-scrum/board/board-log.md` 第 62–62 行
 
 **旧规矩原文**
 
@@ -374,11 +372,11 @@
 
 ### board-log#16 · Left out on purpose
 
-`plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md` 第 63–63 行 · 标记：CJK
+`plugins/ideo-scrum/board/board-log.md` 第 63–63 行 · 标记：CJK
 
 **旧规矩原文**
 
-> 16. **Left out on purpose** — The page does not show what waits for the Product Owner, nor the five stages a Sprint passes through: the Product Owner asks the Scrum Master for those, and they change faster than a page is written. Items in the product log's section 3.2 are done or closed and are not shown, only counted. Leave out IDEO logs that serve only the product log, have no open host, or have concluded even if not yet archived. Read the state of the IDEO run itself from the `Now` line (for example, `本轮五模式已收尾` or `The IDEO run has concluded`, optionally after the mode); a next step such as `待收尾` or a mention of closed items is not a concluded run. A host whose own `Now` explicitly says the Sprint or design has ended is no longer open, even while its log awaits archiving; finishing one of its stages is not ending the host. This affects only nested IDEO entries, not the discovery of Sprint and design cards (convention 4). Do not add a card or a new log field.
+> 16. **Left out on purpose** — The page does not show what waits for the Product Owner, nor the five stages a Sprint passes through: the Product Owner asks the Scrum Master for those, and they change faster than a page is written. Items in the product log's section 3.2 are done or closed and are not shown, only counted. Leave out IDEO logs that serve only the product log, have no open host, or have concluded even if not yet archived. Read the state of the IDEO run itself from the `Now` line (for example, `本轮五模式已收尾` or `The IDEO run has concluded`, optionally after the mode); a next step such as `待收尾` or a mention of closed items is not a concluded run. A host whose own `Now` explicitly says the Sprint or design has ended is no longer open, even while its log awaits archiving: for example `已收官 · 2026-11-21`, `收官 · 2026-11-14`, `Sprint 01 has ended`, or, after a stage name, a line that also says the log awaits archiving, such as `Test: Concluded — awaiting archive`. Finishing one of its stages is not ending the host (`Prototype: concluded; Test next`). This affects only nested IDEO entries, not the discovery of Sprint and design cards (convention 4). Do not add a card or a new log field.
 
 **出处与依据**：PO 原话（把握：中）；种类：规矩
 - po scrum/documents/design/design-board.md：「那种都是众所周知的呀」
@@ -388,15 +386,15 @@
 
 **理由**：不画五个阶段、不显示等 PO 的事、IDEO 收尾看 Now 行保留；IDEO 归属与收尾判定已由 check.py 实现（第280-290、493-518行，判定见第161-186行），3.2 只计数见第255行。但“不新增卡片或日志字段”两处都没有（check.py 只拒多出的卡，第432、451行），一行里要保留这句。
 
-**新**：只在长文件 `board-writing`，清单里由 `board-rules` 一行索引。
+**新**：只在长文件 `board-log`，清单里由 `board-rules` 一行索引。
 
-**备注**：The whole rule, including how a concluded IDEO run is read from its Now line and when a host counts as ended, is in the board-writing long file word for word.
+**备注**：The whole rule, including how a concluded IDEO run is read from its Now line and when a host counts as ended, is in board-log.md (kept in place as the board's long file) word for word.
 
 ---
 
 ### board-log#17 · Steps
 
-`plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md` 第 67–72 行
+`plugins/ideo-scrum/board/board-log.md` 第 67–72 行
 
 **旧规矩原文**
 
@@ -416,7 +414,7 @@
 
 **与它重复或相邻**：board-log#12
 
-**新**：只在长文件 `board-writing`，清单里由 `board-rules` 一行索引。
+**新**：只在长文件 `board-log`，清单里由 `board-rules` 一行索引。
 
 **备注**：The five steps go word for word into the long file, with the convention numbers replaced by handles.
 
@@ -424,7 +422,7 @@
 
 ### board-log#18 · Check
 
-`plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md` 第 73–73 行
+`plugins/ideo-scrum/board/board-log.md` 第 73–73 行
 
 **旧规矩原文**
 
@@ -438,15 +436,15 @@
 
 **理由**：写完跑 scripts/board_check/check.py 并打开页面，确认是看板而不是报错页。核对项由脚本负责，不在 Memory 里重列。
 
-**新**：只在长文件 `board-writing`，清单里由 `board-rules` 一行索引。
+**新**：只在长文件 `board-log`，清单里由 `board-rules` 一行索引。
 
-**备注**：The annotation proposed pointing to the board check script, but it sits in the repository's scripts/, outside plugins/ideo-scrum, so an installed plugin does not have it; the board-writing long file keeps the original check list.
+**备注**：The annotation proposed pointing to the board check script, but it sits in the repository's scripts/, outside plugins/ideo-scrum, so an installed plugin does not have it; board-log.md (kept in place as the board's long file) keeps the original check list.
 
 ---
 
 ### board-log#19 · What the board does not do
 
-`plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md` 第 74–74 行
+`plugins/ideo-scrum/board/board-log.md` 第 74–74 行
 
 **旧规矩原文**
 
@@ -463,7 +461,7 @@
 
 **新**：并入 `board-log#2`。这条独有、要带过去的内容：Nothing becomes true because it is on the board.
 
-**备注**：board-log#2 is drafted (board-owns-nothing); the sentence goes into the board-writing long file.
+**备注**：board-log#2 is drafted (board-owns-nothing); the sentence goes into board-log.md (kept in place as the board's long file).
 
 ---
 
@@ -471,7 +469,7 @@
 
 ### board-log@1 · quote（第 3–3 行）
 
-> > Working conventions: reference, not law — follow what fits, override what doesn't, note why. Source labels and short names are explained in convention 15 of `overview.md`, in the skill folder, beside `SKILL.md`. A convention with no label is the author's practice.
+> > Working conventions: reference, not law — follow what fits, override what doesn't, note why. Source labels and short names are explained in convention 15 of `overview.md`, in the scrum-kernel skill folder, beside its `SKILL.md`. A convention with no label is the author's practice.
 
 **新**：不进清单。去处或不要的理由：The MEMORY.md header carries it: working conventions, follow what fits, override what doesn't, say why in the log's notes.
 
@@ -479,9 +477,9 @@
 
 ### board-log@2 · paragraph（第 5–5 行）
 
-> The Scrum board is one page that shows where the project stands. Its template is `scrum-board-template.html`, beside this file; this file is also the brief for whoever writes the page. Paths starting with `../` are relative to the scrum-kernel skill folder.
+> The Scrum board is one page that shows where the project stands. Its template is `scrum-board-template.html`, beside this file in `board/`; this file is also the brief for whoever writes the page. Paths in this file, such as `overview.md`, `conventions/product-log.md` and those starting with `../`, are relative to the scrum-kernel skill folder, not to `board/`.
 
-**新**：不进清单。去处或不要的理由：The intro of long/board-writing.md (the board is one page; its template; this brief).
+**新**：不进清单。去处或不要的理由：The intro of board-log.md itself, which stays in place in the plugin's board/ folder as the board's long file (the board is one page; its template; this brief).
 
 ---
 
@@ -496,6 +494,6 @@
 >     B -. "delete it, write it again" .-> L
 > ```
 
-**新**：不进清单。去处或不要的理由：Drawn in long/flow-maps.md, with the handles in the boxes; the list line flow-maps points there.
+**新**：不进清单。去处或不要的理由：Drawn in details/flow-maps.md, with the handles in the boxes; the list line flow-maps points there.
 
 ---

@@ -46,14 +46,14 @@
     "line": null,
     "lines": [
       "- **ideo-log-home** An IDEO log lives in scrum/ideo-<suffix>/ with its prototypes; it has no commitment, its For cell names the log it serves.",
-      "- **ideo-log-ends** Conclusions flow back to the log that asked and the PO decides; archive at the next Review. → long/ideo-ending.md"
+      "- **ideo-log-ends** Conclusions flow back to the log that asked and the PO decides; archive at the next Review. Read details/ideo-ending.md first."
     ],
     "section": "ideo",
     "long_file": "ideo-ending",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
-    "where_else": "The Now and Waiting for PO header format is in plugins/ideo-scrum/skills/ideo-kernel/conventions/ideo-backlog-template.md (lines 4-5); the archiving of an IDEO log is also in sprint-log#17 (the Review rule).",
+    "where_else": "The Now and Waiting for PO header format is in plugins/ideo-scrum/template/ideo-backlog-template.md (lines 4-5); the archiving of an IDEO log is also in sprint-log#17 (the Review rule).",
     "note": "Long file keeps the prototype handoff word for word: a prototype whose conclusions will be built goes to the Sprint that builds them, as that Sprint's specification; if that Sprint is not open yet it stays in the IDEO folder until the handoff; any other standalone IDEO prototype is deleted when the work is done. ideo-kernel's SKILL.md points back to this rule."
   }
 ]

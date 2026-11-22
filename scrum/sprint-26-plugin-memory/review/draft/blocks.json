@@ -44,12 +44,12 @@
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
-    "where_else": "A pointer list to the other convention files and templates; the sections and long files of MEMORY.md replace it. The templates stay in their skills' conventions/ folders.",
+    "where_else": "A pointer list to the other convention files and templates; the sections and long files of MEMORY.md replace it. Since Sprint 27 the four log templates sit together in the plugin's template/ folder and the board's files in board/.",
     "note": ""
   },
   {
     "id": "overview@5",
-    "line": "- **flow-maps** Process maps of the whole flow and of each log, with the lines that apply at each step. → long/flow-maps.md",
+    "line": "- **flow-maps** Process maps of the whole flow and of each log, with the lines that apply at each step. Read details/flow-maps.md first.",
     "lines": null,
     "section": "meta",
     "long_file": "flow-maps",
@@ -68,12 +68,12 @@
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
-    "where_else": "In long/departures.md, as its intro.",
+    "where_else": "In details/departures.md, as its intro.",
     "note": ""
   },
   {
     "id": "overview@7",
-    "line": "- **departures** The plugin departs from the Scrum Guide on purpose in seven places, each with its reason. → long/departures.md",
+    "line": "- **departures** The plugin departs from the Scrum Guide on purpose in seven places, each with its reason. Read details/departures.md first.",
     "lines": null,
     "section": "meta",
     "long_file": "departures",
@@ -104,7 +104,7 @@
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
-    "where_else": "long/goal-fixed.md carries the Scrum Guide quotations with their Source and License lines.",
+    "where_else": "details/goal-fixed.md carries the Scrum Guide quotations with their Source and License lines.",
     "note": ""
   },
   {
@@ -128,7 +128,7 @@
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
-    "where_else": "Drawn in long/flow-maps.md, with the handles in the boxes; the list line flow-maps points there.",
+    "where_else": "Drawn in details/flow-maps.md, with the handles in the boxes; the list line flow-maps points there.",
     "note": ""
   },
   {
@@ -160,11 +160,11 @@
     "line": null,
     "lines": null,
     "section": "meta",
-    "long_file": "board-writing",
+    "long_file": "board-log",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
-    "where_else": "The intro of long/board-writing.md (the board is one page; its template; this brief).",
+    "where_else": "The intro of board-log.md itself, which stays in place in the plugin's board/ folder as the board's long file (the board is one page; its template; this brief).",
     "note": ""
   },
   {
@@ -176,7 +176,7 @@
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
-    "where_else": "Drawn in long/flow-maps.md, with the handles in the boxes; the list line flow-maps points there.",
+    "where_else": "Drawn in details/flow-maps.md, with the handles in the boxes; the list line flow-maps points there.",
     "note": ""
   },
   {
@@ -200,7 +200,7 @@
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
-    "where_else": "long/sprint-stages.md carries the Scrum Guide quotation (rule 7) with its Source and License lines.",
+    "where_else": "details/sprint.md carries the Scrum Guide quotation (rule 7) with its Source and License lines.",
     "note": ""
   },
   {
@@ -224,7 +224,7 @@
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
-    "where_else": "Drawn in long/flow-maps.md, with the handles in the boxes; the list line flow-maps points there.",
+    "where_else": "Drawn in details/flow-maps.md, with the handles in the boxes; the list line flow-maps points there.",
     "note": ""
   },
   {
@@ -236,7 +236,7 @@
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
-    "where_else": "long/stage-gates.md, Sprint part: closing is a separate decision from the stage transitions.",
+    "where_else": "details/gates.md, Sprint part: closing is a separate decision from the stage transitions.",
     "note": ""
   },
   {
@@ -256,11 +256,11 @@
     "line": null,
     "lines": null,
     "section": "meta",
-    "long_file": "design-stages",
+    "long_file": "design",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
-    "where_else": "The first section of long/design-stages.md: the template, and where the book describes its room (whiteboards, sticky notes, dot voting, a team at a table) these rules say how a solo + AI team does that step.",
+    "where_else": "The first section of details/design.md: the template, and where the book describes its room (whiteboards, sticky notes, dot voting, a team at a table) these rules say how a solo + AI team does that step.",
     "note": ""
   },
   {
@@ -272,7 +272,7 @@
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
-    "where_else": "Drawn in long/flow-maps.md, with the handles in the boxes; the list line flow-maps points there.",
+    "where_else": "Drawn in details/flow-maps.md, with the handles in the boxes; the list line flow-maps points there.",
     "note": ""
   },
   {
@@ -280,11 +280,11 @@
     "line": null,
     "lines": null,
     "section": "meta",
-    "long_file": "design-stages",
+    "long_file": "design",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
-    "where_else": "The section The three loops of long/design-stages.md, word for word.",
+    "where_else": "The section The three loops of details/design.md, word for word.",
     "note": ""
   },
   {
@@ -296,7 +296,7 @@
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
-    "where_else": "Dropped: a pointer to 'Throughout'; the entry and return rules at each transition are the stage-gates line and long/stage-gates.md.",
+    "where_else": "Dropped: a pointer to 'Throughout'; the entry and return rules at each transition are the stage-gates line and details/gates.md.",
     "note": ""
   },
   {
@@ -304,11 +304,11 @@
     "line": null,
     "lines": null,
     "section": "meta",
-    "long_file": "design-stages",
+    "long_file": "design",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
-    "where_else": "The first section of long/design-stages.md: these rules cover only what differs from the book or adds what it leaves out; for the rest follow the book's excerpts.",
+    "where_else": "The first section of details/design.md: these rules cover only what differs from the book or adds what it leaves out; for the rest follow the book's excerpts.",
     "note": ""
   },
   {
@@ -344,7 +344,7 @@
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
-    "where_else": "Drawn in long/flow-maps.md, with the handles in the boxes; the list line flow-maps points there.",
+    "where_else": "Drawn in details/flow-maps.md, with the handles in the boxes; the list line flow-maps points there.",
     "note": ""
   }
 ]

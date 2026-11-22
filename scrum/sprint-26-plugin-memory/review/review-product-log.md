@@ -62,10 +62,10 @@
 
 **理由**：写不出产品和目标时改做一次设计，是 PO 审约定时定的走向，要留；但六行映射表和「链接设计、不抄设计日志」是细则，应进长文件，清单只留一行索引。
 
-**新行**（长文件 `product-log-details`）
+**新行**（长文件 `product-log`）
 
 ```text
-- **blank-page** If the product cannot be written yet, start from a design and let its conclusions fill the log. → long/product-log-details.md
+- **blank-page** If the product cannot be written yet, start from a design and let its conclusions fill the log. Read details/product-log.md first.
 ```
 
 **备注**：Long file: the six-row table (design log to product log), the IDEO methods alone not being enough, the stakeholder table written first because a design uses role cards from its first stage.
@@ -270,10 +270,10 @@
 
 **理由**：七列的定义只在原文；product-backlog-template.md 第 51–56 行只有列名与 PBI 编号提示，没有用户故事句式、Place/Status 取值、Size 的 S/M/L 界线与 Notes 内容，删了会丢。改为进长文件，清单留索引。
 
-**新行**（长文件 `product-log-details`）
+**新行**（长文件 `product-log`）
 
 ```text
-- **item-columns** An item has seven columns: #, Title, User story, Place, Status, Size, Notes. → long/product-log-details.md
+- **item-columns** An item has seven columns: #, Title, User story, Place, Status, Size, Notes. Read details/product-log.md first.
 ```
 
 **备注**：The table is kept word for word in the long file: the template has only the column names.
@@ -399,7 +399,7 @@
 - **acceptance-written-once** Acceptance criteria already in the product log are not repeated in the sprint log.
 ```
 
-**别处已有**：The seven steps themselves are in the sprint-refinement long file.
+**别处已有**：The seven steps themselves are in the refinement long file.
 
 ---
 
@@ -495,13 +495,13 @@
 > > Source: quotations from The Scrum Guide 2020 (Ken Schwaber & Jeff Sutherland), marked where they appear.
 > > License: the quotations are CC BY-SA 4.0 (© 2020 Ken Schwaber and Jeff Sutherland).
 
-**新**：不进清单。去处或不要的理由：long/goal-fixed.md carries the Scrum Guide quotations with their Source and License lines.
+**新**：不进清单。去处或不要的理由：details/goal-fixed.md carries the Scrum Guide quotations with their Source and License lines.
 
 ---
 
 ### product-log@3 · paragraph（第 8–8 行）
 
-> The product log is the first layer. Its template is `product-backlog-template.md`; the Scrum Master usually writes it with the Product Owner. Paths starting with `../` are relative to the scrum-kernel skill folder.
+> The product log is the first layer. Its template is `../../template/product-backlog-template.md`; the Scrum Master usually writes it with the Product Owner. Paths starting with `../` are relative to the scrum-kernel skill folder.
 
 **新**：不进清单。去处或不要的理由：The line write-product-log (the template; the Scrum Master usually writes the product log with the PO).
 
@@ -521,7 +521,7 @@
 >     F --> C
 > ```
 
-**新**：不进清单。去处或不要的理由：Drawn in long/flow-maps.md, with the handles in the boxes; the list line flow-maps points there.
+**新**：不进清单。去处或不要的理由：Drawn in details/flow-maps.md, with the handles in the boxes; the list line flow-maps points there.
 
 ---
 

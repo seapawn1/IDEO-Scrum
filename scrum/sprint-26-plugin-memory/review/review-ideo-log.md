@@ -96,7 +96,7 @@
 
 **旧规矩原文**
 
-> 4. **Where it lives and how it ends** — The log, the prototypes, and the working material live in `scrum/ideo-<suffix>/`. It has no commitment of its own: For holds the relative path to the product log or sprint log it serves, where the commitment is kept. Keep `> Now:` on its own header line with the current mode and next step, followed by `> Waiting for PO:` with the number and short question of each pending decision, separated by semicolons, or `None`. Update both with the log change that causes them; this adds no gate between modes. The conclusions flow back to the log that asked for it — the product log or the sprint log — and the Product Owner decides what changes. When the work is done, keep the log: the first Sprint Review after that archives it (`../sprint-kernel/conventions/sprint-log.md`, convention 17). A prototype whose conclusions will be built goes to the Sprint that builds them, as that Sprint’s specification. If that Sprint is not open yet, keep the prototype in the IDEO folder until handoff. Any other standalone IDEO prototype is deleted when the work is done.
+> 4. **Where it lives and how it ends** — The log, the prototypes, and the working material live in `scrum/ideo-<suffix>/`. It has no commitment of its own: For holds the relative path to the log it serves — the product log, a Sprint's `SprintBacklog.md`, or a design's `DesignBacklog.md` — where the commitment is kept. Keep `> Now:` on its own header line with the current mode and next step, followed by `> Waiting for PO:` with the number and short question of each pending decision, separated by semicolons, or `None`. Update both with the log change that causes them; this adds no gate between modes. The conclusions flow back to the log that asked for it — the product log, the sprint log or the design log — and the Product Owner decides what changes. When the work is done, keep the log: the first Sprint Review after that archives it (`../sprint-kernel/conventions/sprint-log.md`, convention 17). A prototype whose conclusions will be built goes to the Sprint that builds them, as that Sprint’s specification. If that Sprint is not open yet, keep the prototype in the IDEO folder until handoff. Any other standalone IDEO prototype is deleted when the work is done.
 
 **出处与依据**：作者（把握：中）；种类：规矩
 - commit 1e347b4 feat(Sprint 18): H2 交付 PBI-66 日志读取接口、目标引用与工作块完成标记（Now 与 Waiting for PO 行进入 ideo-log）
@@ -113,10 +113,10 @@
 
 ```text
 - **ideo-log-home** An IDEO log lives in scrum/ideo-<suffix>/ with its prototypes; it has no commitment, its For cell names the log it serves.
-- **ideo-log-ends** Conclusions flow back to the log that asked and the PO decides; archive at the next Review. → long/ideo-ending.md
+- **ideo-log-ends** Conclusions flow back to the log that asked and the PO decides; archive at the next Review. Read details/ideo-ending.md first.
 ```
 
-**别处已有**：The Now and Waiting for PO header format is in plugins/ideo-scrum/skills/ideo-kernel/conventions/ideo-backlog-template.md (lines 4-5); the archiving of an IDEO log is also in sprint-log#17 (the Review rule).
+**别处已有**：The Now and Waiting for PO header format is in plugins/ideo-scrum/template/ideo-backlog-template.md (lines 4-5); the archiving of an IDEO log is also in sprint-log#17 (the Review rule).
 
 **备注**：Long file keeps the prototype handoff word for word: a prototype whose conclusions will be built goes to the Sprint that builds them, as that Sprint's specification; if that Sprint is not open yet it stays in the IDEO folder until the handoff; any other standalone IDEO prototype is deleted when the work is done. ideo-kernel's SKILL.md points back to this rule.
 
@@ -155,6 +155,6 @@
 >     SEQ -. "a prototype must be tested<br/>with role cards first" .-> DS
 > ```
 
-**新**：不进清单。去处或不要的理由：Drawn in long/flow-maps.md, with the handles in the boxes; the list line flow-maps points there.
+**新**：不进清单。去处或不要的理由：Drawn in details/flow-maps.md, with the handles in the boxes; the list line flow-maps points there.
 
 ---

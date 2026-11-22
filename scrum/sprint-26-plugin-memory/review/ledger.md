@@ -1,21 +1,21 @@
 # 台账：六份约定文件的编号规矩（Sprint 26 行 1）
 
-由 `scripts/extract_rules.py` 生成；基线提交 `8db683c`。合计 **111** 条编号规矩、**29** 个非编号块。
+由 `scripts/extract_rules.py` 生成；基线提交 `fa40fa4`。合计 **111** 条编号规矩、**29** 个非编号块。
 覆盖检查：每个文件的每个非空行恰属于「标题」「一条规矩」「一个非编号块」之一，没有丢行、没有重复；编号连续；条数与 `grep` 一致。
 旧条的完整原文在 `ledger.json`（逐字），不抄进这里。
 
 | 文件 | 条数 | 非编号块 | 行数 | 字符 |
 | --- | --- | --- | --- | --- |
-| `scrum-kernel/overview.md` | 17 | 7 | 119 | 17,719 |
-| `scrum-kernel/conventions/product-log.md` | 18 | 5 | 79 | 7,927 |
-| `scrum-kernel/conventions/board-log.md` | 19 | 3 | 74 | 13,843 |
-| `sprint-kernel/conventions/sprint-log.md` | 26 | 5 | 97 | 20,083 |
+| `scrum-kernel/overview.md` | 17 | 7 | 127 | 21,471 |
+| `scrum-kernel/conventions/product-log.md` | 18 | 5 | 79 | 7,942 |
+| `board/board-log.md` | 19 | 3 | 74 | 14,407 |
+| `sprint-kernel/conventions/sprint-log.md` | 26 | 5 | 97 | 20,098 |
 | `design-kernel/conventions/design-log.md` | 27 | 6 | 91 | 21,097 |
-| `ideo-kernel/conventions/ideo-log.md` | 4 | 3 | 31 | 4,366 |
+| `ideo-kernel/conventions/ideo-log.md` | 4 | 3 | 31 | 4,444 |
 
 ## overview（17 条）
 
-`plugins/ideo-scrum/skills/scrum-kernel/overview.md` · blob `77a9fa1b76`
+`plugins/ideo-scrum/skills/scrum-kernel/overview.md` · blob `bf00e4f2fc`
 
 | id | 名称 | 所在节 | 行 | 字符 | 标记 | 引用其他约定 |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -26,16 +26,16 @@
 | overview#5 | Where files go | Conventions / Where things live | 62–62 | 698 | — | 2 |
 | overview#6 | Working material | Conventions / Where things live | 63–63 | 383 | — | 2 |
 | overview#7 | Names | Conventions / Where things live | 64–69 | 790 | — | 0 |
-| overview#8 | Roles | Conventions / Who does what | 73–85 | 2101 | — | 1 |
-| overview#9 | Only the Product Owner must be human | Conventions / Who does what | 86–86 | 142 | Departs | 0 |
-| overview#10 | Ask the Product Owner | Conventions / Who does what | 87–87 | 140 | — | 0 |
-| overview#11 | Product Owner as Developer | Conventions / Who does what | 88–88 | 135 | — | 0 |
-| overview#12 | Product Owner decides between stages | Conventions / Who does what | 89–89 | 1288 | — | 2 |
-| overview#13 | One Scrum Master per project | Conventions / Sessions | 93–93 | 232 | — | 0 |
-| overview#14 | Who gets which work | Conventions / Sessions | 94–94 | 1041 | — | 2 |
-| overview#15 | Working conventions | Conventions / About these conventions | 98–98 | 692 | Supplement、Decide on the spot | 0 |
-| overview#16 | Templates record outputs | Conventions / About these conventions | 99–99 | 499 | — | 1 |
-| overview#17 | Goal fixed, plan flexible | Conventions / What stays fixed | 103–105 | 1752 | quote、CJK | 0 |
+| overview#8 | Roles | Conventions / Who does what | 73–86 | 2459 | — | 1 |
+| overview#9 | Only the Product Owner must be human | Conventions / Who does what | 87–87 | 142 | Departs | 0 |
+| overview#10 | Ask the Product Owner | Conventions / Who does what | 88–88 | 181 | — | 1 |
+| overview#11 | Product Owner as Developer | Conventions / Who does what | 89–89 | 135 | — | 0 |
+| overview#12 | Product Owner decides between stages | Conventions / Who does what | 90–90 | 1451 | — | 3 |
+| overview#13 | One Scrum Master per project | Conventions / Sessions | 94–94 | 232 | — | 0 |
+| overview#14 | Who gets which work | Conventions / Sessions | 95–102 | 4132 | quote | 3 |
+| overview#15 | Working conventions | Conventions / About these conventions | 106–106 | 692 | Supplement、Decide on the spot | 0 |
+| overview#16 | Templates record outputs | Conventions / About these conventions | 107–107 | 499 | — | 1 |
+| overview#17 | Goal fixed, plan flexible | Conventions / What stays fixed | 111–113 | 1752 | quote、CJK | 0 |
 
 非编号块（7 个）：
 
@@ -44,14 +44,14 @@
 | quote | 3–3 | （文件头） | > These are working conventions — the author's reading of Scrum and de |
 | quote | 5–6 | （文件头） | > Source: quotations from The Scrum Guide 2020 (Ken Schwaber & Jeff Su |
 | paragraph | 8–8 | （文件头） | Source labels and short names are explained in convention 15. |
-| paragraph | 10–10 | （文件头） | The other files: `conventions/product-log.md` and `conventions/product |
+| paragraph | 10–10 | （文件头） | The other files: `conventions/product-log.md` and `../../template/prod |
 | fence:mermaid | 14–42 | The map | ```mermaid |
-| paragraph | 109–109 | Departures from the official guides | Each departure is stated here once, with its reason; the convention na |
-| table | 111–119 | Departures from the official guides | \| Here \| The official guide \| Why \| See \| |
+| paragraph | 117–117 | Departures from the official guides | Each departure is stated here once, with its reason; the convention na |
+| table | 119–127 | Departures from the official guides | \| Here \| The official guide \| Why \| See \| |
 
 ## product-log（18 条）
 
-`plugins/ideo-scrum/skills/scrum-kernel/conventions/product-log.md` · blob `813c0c2c32`
+`plugins/ideo-scrum/skills/scrum-kernel/conventions/product-log.md` · blob `13b79d5c5c`
 
 | id | 名称 | 所在节 | 行 | 字符 | 标记 | 引用其他约定 |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -80,20 +80,20 @@
 | --- | --- | --- | --- |
 | quote | 3–3 | （文件头） | > Working conventions: reference, not law — follow what fits, override |
 | quote | 5–6 | （文件头） | > Source: quotations from The Scrum Guide 2020 (Ken Schwaber & Jeff Su |
-| paragraph | 8–8 | （文件头） | The product log is the first layer. Its template is `product-backlog-t |
+| paragraph | 8–8 | （文件头） | The product log is the first layer. Its template is `../../template/pr |
 | fence:mermaid | 10–20 | （文件头） | ```mermaid |
 | paragraph | 22–22 | （文件头） | Convention 18 holds at every step; see Throughout, below. |
 
 ## board-log（19 条）
 
-`plugins/ideo-scrum/skills/scrum-kernel/conventions/board-log.md` · blob `a0d72002b5`
+`plugins/ideo-scrum/board/board-log.md` · blob `1bde5c807b`
 
 | id | 名称 | 所在节 | 行 | 字符 | 标记 | 引用其他约定 |
 | --- | --- | --- | --- | --- | --- | --- |
 | board-log#1 | One board for the project | What the board is | 18–18 | 425 | — | 0 |
 | board-log#2 | It owns nothing | What the board is | 19–19 | 322 | — | 0 |
-| board-log#3 | Where it lives, who writes it, and when | What the board is | 20–20 | 393 | — | 0 |
-| board-log#4 | The logs | What it reads | 24–24 | 705 | — | 0 |
+| board-log#3 | Where it lives, who writes it, and when | What the board is | 20–20 | 382 | — | 0 |
+| board-log#4 | The logs | What it reads | 24–24 | 843 | — | 1 |
 | board-log#5 | What it takes from a log | What it reads | 25–31 | 1442 | CJK | 6 |
 | board-log#6 | Maps | What it reads | 32–32 | 250 | — | 0 |
 | board-log#7 | The overview | What the page shows | 36–36 | 604 | — | 0 |
@@ -101,11 +101,11 @@
 | board-log#9 | What the page works out itself | What the page shows | 38–38 | 444 | — | 0 |
 | board-log#10 | Links and sources | What the page shows | 39–39 | 380 | — | 0 |
 | board-log#11 | One block of data | The data | 43–57 | 2089 | quote | 1 |
-| board-log#12 | Copied, and summarized | The data | 59–59 | 2115 | CJK | 0 |
+| board-log#12 | Copied, and summarized | The data | 59–59 | 2201 | CJK | 0 |
 | board-log#13 | Groups and order | The data | 60–60 | 377 | — | 0 |
 | board-log#14 | Work items and items | The data | 61–61 | 334 | — | 0 |
 | board-log#15 | Escaping | The data | 62–62 | 102 | — | 0 |
-| board-log#16 | Left out on purpose | The data | 63–63 | 975 | CJK | 1 |
+| board-log#16 | Left out on purpose | The data | 63–63 | 1203 | CJK | 1 |
 | board-log#17 | Steps | How to write it | 67–72 | 516 | — | 4 |
 | board-log#18 | Check | How to write it | 73–73 | 301 | — | 0 |
 | board-log#19 | What the board does not do | How to write it | 74–74 | 238 | — | 0 |
@@ -120,7 +120,7 @@
 
 ## sprint-log（26 条）
 
-`plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md` · blob `6a3cf73231`
+`plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-log.md` · blob `9f08a8aa9e`
 
 | id | 名称 | 所在节 | 行 | 字符 | 标记 | 引用其他约定 |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -157,13 +157,13 @@
 | --- | --- | --- | --- |
 | quote | 3–3 | （文件头） | > Working conventions: reference, not law — follow what fits, override |
 | quote | 5–6 | （文件头） | > Source: quotations from The Scrum Guide 2020 (Ken Schwaber & Jeff Su |
-| paragraph | 8–8 | （文件头） | A Sprint turns selected items into an Increment. Its template is `spri |
+| paragraph | 8–8 | （文件头） | A Sprint turns selected items into an Increment. Its template is `../. |
 | fence:mermaid | 10–22 | （文件头） | ```mermaid |
 | paragraph | 24–24 | （文件头） | Conventions 20–26 hold at every step; see Throughout, below. Read each |
 
 ## design-log（27 条）
 
-`plugins/ideo-scrum/skills/design-kernel/conventions/design-log.md` · blob `034c22bf5d`
+`plugins/ideo-scrum/skills/design-kernel/conventions/design-log.md` · blob `632611c38f`
 
 | id | 名称 | 所在节 | 行 | 字符 | 标记 | 引用其他约定 |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -200,7 +200,7 @@
 | 种类 | 行 | 所在节 | 首行 |
 | --- | --- | --- | --- |
 | quote | 3–3 | （文件头） | > Working conventions: reference, not law — follow what fits, override |
-| paragraph | 5–5 | （文件头） | The design log template is `design-backlog-template.md` in this folder |
+| paragraph | 5–5 | （文件头） | The design log template is `../../template/design-backlog-template.md` |
 | fence:mermaid | 7–17 | （文件头） | ```mermaid |
 | paragraph | 19–19 | （文件头） | **The three loops.** Empathize and Define: the Product Owner and the S |
 | paragraph | 21–21 | （文件头） | Conventions 20–27 hold at every step; see Throughout, below. Apply the |
@@ -208,14 +208,14 @@
 
 ## ideo-log（4 条）
 
-`plugins/ideo-scrum/skills/ideo-kernel/conventions/ideo-log.md` · blob `358ca5d54c`
+`plugins/ideo-scrum/skills/ideo-kernel/conventions/ideo-log.md` · blob `52df86def0`
 
 | id | 名称 | 所在节 | 行 | 字符 | 标记 | 引用其他约定 |
 | --- | --- | --- | --- | --- | --- | --- |
 | ideo-log#1 | Design sprint or the five modes | The Boundary | 22–22 | 557 | — | 2 |
 | ideo-log#2 | The five modes and the design sprint | The Two Together | 26–26 | 958 | quote | 1 |
 | ideo-log#3 | When to open an IDEO log | The IDEO Log | 30–30 | 646 | — | 1 |
-| ideo-log#4 | Where it lives and how it ends | The IDEO Log | 31–31 | 1094 | — | 1 |
+| ideo-log#4 | Where it lives and how it ends | The IDEO Log | 31–31 | 1172 | — | 1 |
 
 非编号块（3 个）：
 

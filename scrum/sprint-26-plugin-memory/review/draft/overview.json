@@ -13,10 +13,10 @@
   },
   {
     "id": "overview#2",
-    "line": "- **designs-beside-sprints** A design sits beside a Sprint, not in it: open one for an item that needs design. → long/layers-and-folders.md",
+    "line": "- **designs-beside-sprints** A design sits beside a Sprint, not in it: open one for an item that needs design. Read details/folders.md first.",
     "lines": null,
     "section": "meta",
-    "long_file": "layers-and-folders",
+    "long_file": "folders",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
@@ -25,10 +25,10 @@
   },
   {
     "id": "overview#3",
-    "line": "- **three-layers** Product log, then a sprint or design log, then the Increment or prototype. → long/layers-and-folders.md",
+    "line": "- **three-layers** Product log, then a sprint or design log, then the Increment or prototype. Read details/folders.md first.",
     "lines": null,
     "section": "meta",
-    "long_file": "layers-and-folders",
+    "long_file": "folders",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
@@ -37,10 +37,10 @@
   },
   {
     "id": "overview#4",
-    "line": "- **scrum-folders** All Scrum work lives under scrum/; use your project's own places if it has them. → long/layers-and-folders.md",
+    "line": "- **scrum-folders** All Scrum work lives under scrum/; use your project's own places if it has them. Read details/folders.md first.",
     "lines": null,
     "section": "meta",
-    "long_file": "layers-and-folders",
+    "long_file": "folders",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
@@ -49,10 +49,10 @@
   },
   {
     "id": "overview#5",
-    "line": "- **where-files-go** One log's files stay in its folder; design originals and shared files go to scrum/documents/. → long/layers-and-folders.md",
+    "line": "- **where-files-go** One log's files stay in its folder; design originals and shared files go to scrum/documents/. Read details/folders.md first.",
     "lines": null,
     "section": "meta",
-    "long_file": "layers-and-folders",
+    "long_file": "folders",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
@@ -75,7 +75,7 @@
     "id": "overview#7",
     "line": null,
     "lines": [
-      "- **names** Use the plugin's own terms (product log, sprint log, design log, IDEO log, PBI, role card) as defined. → long/names.md",
+      "- **names** Use the plugin's own terms (product log, sprint log, design log, IDEO log, PBI, role card) as defined. Read details/names.md first.",
       "- **fresh-subagent** A fresh subagent starts from its brief alone; a fork or copy of a session does not count."
     ],
     "section": "meta",
@@ -88,15 +88,15 @@
   },
   {
     "id": "overview#8",
-    "line": "- **role-entry** On a role command, load that role's kernels in order before any work; stop and report a failed load. → long/roles-and-routing.md",
+    "line": "- **role-entry** On a role command, load that role's skills in order before any work; stop and report a failed load. Read details/roles.md first.",
     "lines": null,
     "section": "roles",
-    "long_file": "roles-and-routing",
+    "long_file": "roles",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
     "where_else": null,
-    "note": "Long file: the role table, the DSH variant, the subagent rule, and the last sentence (the PO, the Scrum Master and the Developer keep the sprint log together; without a Developer the other two run the Sprint). Sprint 27 changes the table (Supporter role); sync later."
+    "note": "Long file: the role table, the DSH variant, the subagent rule, and the last sentence (the PO, the Scrum Master and the Developer keep the sprint log together; without a Developer the other two run the Sprint). Sprint 27 added the Supporter row and narrowed the Stakeholder row; the long file has both. The memory skill is the last step of every entry (Supporter: ideo, scrum, memory)."
   },
   {
     "id": "overview#9",
@@ -112,10 +112,10 @@
   },
   {
     "id": "overview#10",
-    "line": "- **ask-the-po** Whoever is unsure asks the PO, unless the PO sent that kind of question elsewhere. → long/roles-and-routing.md",
+    "line": "- **ask-the-po** Decide what is yours; process questions go to the Scrum Master; PO-only questions go to the Supporter. Read details/roles.md first.",
     "lines": null,
     "section": "roles",
-    "long_file": "roles-and-routing",
+    "long_file": "roles",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [
@@ -123,10 +123,7 @@
       "design-log#21"
     ],
     "where_else": null,
-    "note": "Absorbs sprint-log#25 and design-log#21 (the two indexes of what the PO decides): that list now sits in the roles-and-routing long file under this line, so there is one index, not three lines that overlap. The old 'always ask the PO for ... git and outward actions' is stricter than the convention (which only asks that a commit stay inside the go-ahead's reach) and is not carried as it stood.",
-    "pending": {
-      "ask-the-po": "Sprint 27 changes where a question goes: three tiers (decide and log it yourself; process questions to the Scrum Master; what only the PO decides goes to the Supporter, who collects it for the PO), and a PO opinion relayed by the Supporter counts as the PO's, with exceptions. Rewrite this line and the list in the long file when 27 is merged."
-    }
+    "note": "Sprint 27 rewrote convention 14 into three steps and this line is that routing in one sentence: decide what is yours; process questions go to the Scrum Master; PO-only questions go to the Supporter. With no Scrum Master session step 2 goes to the PO; with no Supporter session ask the PO directly (both in the long file). Absorbs sprint-log#25 and design-log#21 as before: the lists of what goes to the PO stay in the long file under the third step. The old 'always ask the PO for ... git and outward actions' is stricter than the convention and is not carried as it stood."
   },
   {
     "id": "overview#11",
@@ -142,15 +139,15 @@
   },
   {
     "id": "overview#12",
-    "line": "- **stage-gates** Wait for the PO's explicit permission to start or return to a stage; approving a result is not permission. → long/stage-gates.md",
+    "line": "- **stage-gates** Enter or return to a stage only on the PO's explicit stage permission; approving a result is not one. Read details/gates.md first.",
     "lines": null,
     "section": "roles",
-    "long_file": "stage-gates",
+    "long_file": "gates",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
     "where_else": null,
-    "note": "The whole rule goes to the long file: record the result while waiting but do not start or delegate; a new session resumes only inside the recorded scope; earlier permission does not carry over to a return; record who, when, basis, stage and scope; a later permission is added, not replaced; these are stage decisions, not reviews."
+    "note": "The whole rule goes to the long file: record the result while waiting but do not start or delegate; a new session resumes only inside the recorded scope; earlier permission does not carry over to a return; record who, when, basis, stage and scope; a later permission is added, not replaced; these are stage decisions, not reviews. Sprint 27 made it 'stage permission (not a tool permission)' and added that the PO's own words, relayed by the Supporter on the conditions in convention 14, count as theirs: the long file points to po-word-relayed."
   },
   {
     "id": "overview#13",
@@ -166,18 +163,20 @@
   },
   {
     "id": "overview#14",
-    "line": "- **who-gets-which-work** Scrum Master reviews, a helper does upkeep, a Developer builds and never reviews itself. → long/roles-and-routing.md",
-    "lines": null,
+    "line": null,
+    "lines": [
+      "- **who-gets-which-work** The Scrum Master reviews, the Supporter keeps the board, a Developer never reviews itself. Read details/roles.md first.",
+      "- **answers-back** The Supporter returns the PO's answers word for word; scope, item and go-ahead decisions go to the Scrum Master to record.",
+      "- **po-word-relayed** A relayed PO opinion counts as theirs: record `PO (via Supporter): <words>` with date and place. Read details/roles.md first.",
+      "- **relay-limits** A relay never covers tool permissions and settings, CLAUDE.md or AGENTS.md, a push or a release: those need the PO's own word."
+    ],
     "section": "roles",
-    "long_file": "roles-and-routing",
+    "long_file": "roles",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
     "where_else": null,
-    "note": "Long file keeps all five assignments: review, the other-session or other-tool Developer, upkeep, the Scrum Master's own small edit, and building. The words PO assistant are gone; Sprint 27 replaces them with the Supporter and adds the question routing: sync later.",
-    "pending": {
-      "who-gets-which-work": "Sprint 27 replaces the words PO assistant with the Supporter and adds the question routing. Rewrite when 27 is merged."
-    }
+    "note": "Sprint 27 rewrote it: upkeep goes to the Supporter (the supporter entry), an outside view still to a fresh subagent; four sub-rules follow: what the Supporter does (who-gets-which-work), where a question goes (ask-the-po), the answers back (answers-back) and the PO's word relayed (po-word-relayed, with its limits in relay-limits). The long file keeps all of it word for word, with the five assignments and the Supporter's duties."
   },
   {
     "id": "overview#15",
@@ -207,9 +206,9 @@
     "id": "overview#17",
     "line": null,
     "lines": [
-      "- **goal-fixed** Each log's commitment (a Goal, the Definition of Done) stays fixed; the plan under it may change. → long/goal-fixed.md",
+      "- **goal-fixed** Each log's commitment (a Goal, the Definition of Done) stays fixed; the plan under it may change. Read details/goal-fixed.md first.",
       "- **po-owns-commitments** Only the PO changes a commitment or cancels a Sprint whose goal can no longer be met.",
-      "- **commitment-table** Keep each commitment in a one-row table, the only source of it. → long/goal-fixed.md"
+      "- **commitment-table** Keep each commitment in a one-row table, the only source of it. Read details/goal-fixed.md first."
     ],
     "section": "roles",
     "long_file": "goal-fixed",

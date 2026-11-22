@@ -51,10 +51,10 @@
 
 **理由**：Departures 表（overview.md:114）只覆盖设计不交付 Increment、可跨 Sprint、Designer 与 Developer 并列；开设计的三种时机（product-log.md:27-38）、设计不属于 Sprint、逐项决定、Increment 不必是代码、结论经冲刺落地都要保留，取舍见 ideo-log.md:22。细则多，放长文件。
 
-**新行**（长文件 `layers-and-folders`）
+**新行**（长文件 `folders`）
 
 ```text
-- **designs-beside-sprints** A design sits beside a Sprint, not in it: open one for an item that needs design. → long/layers-and-folders.md
+- **designs-beside-sprints** A design sits beside a Sprint, not in it: open one for an item that needs design. Read details/folders.md first.
 ```
 
 **备注**：Long file must also carry: decide item by item; a design's conclusions still land through a Sprint; an Increment need not be code. The departure itself is in the departures long file.
@@ -87,10 +87,10 @@
 
 **理由**：三层表是框架图，属长文件内容，清单只留一行索引。改法：表保留；末段「The third layer is not a log…」与指向 design-log 19、ideo-log 4 的条号去掉，改成相对链接。
 
-**新行**（长文件 `layers-and-folders`）
+**新行**（长文件 `folders`）
 
 ```text
-- **three-layers** Product log, then a sprint or design log, then the Increment or prototype. → long/layers-and-folders.md
+- **three-layers** Product log, then a sprint or design log, then the Increment or prototype. Read details/folders.md first.
 ```
 
 **备注**：The table and the closing paragraph go to the long file; the convention numbers in the paragraph become handles.
@@ -103,7 +103,7 @@
 
 **旧规矩原文**
 
-> 4. **Folders** — `scrum/` holds all of the Scrum work: `ProductBacklog.md`; `ScrumBoard.html`, the board written from the logs, which keeps no state of its own (`conventions/board-log.md`); `sprint-NN-<suffix>/` with `SprintBacklog.md` and its working files; `design-<suffix>/`, unnumbered, with `DesignBacklog.md`, prototypes, and other working material; `ideo-<suffix>/`, unnumbered, with `IdeoBacklog.md`, prototypes, and working files; and `documents/` (convention 5). The active folders may still hold work that ended and is awaiting Review; read the log’s `Now` before resuming. This is the author’s layout; use your project’s own places if it has them.
+> 4. **Folders** — `scrum/` holds all of the Scrum work: `ProductBacklog.md`; `ScrumBoard.html`, the board written from the logs, which keeps no state of its own (`../../board/board-log.md`); `sprint-NN-<suffix>/` with `SprintBacklog.md` and its working files; `design-<suffix>/`, unnumbered, with `DesignBacklog.md`, prototypes, and other working material; `ideo-<suffix>/`, unnumbered, with `IdeoBacklog.md`, prototypes, and working files; and `documents/` (convention 5). The active folders may still hold work that ended and is awaiting Review; read the log’s `Now` before resuming. This is the author’s layout; use your project’s own places if it has them.
 
 **出处与依据**：作者（把握：中）；种类：格式
 - commit 9c9bd67 feat(PBI-39)：overview 文件与文档文件夹一节首次写入
@@ -115,10 +115,10 @@
 
 **与它重复或相邻**：overview#5
 
-**新行**（长文件 `layers-and-folders`）
+**新行**（长文件 `folders`）
 
 ```text
-- **scrum-folders** All Scrum work lives under scrum/; use your project's own places if it has them. → long/layers-and-folders.md
+- **scrum-folders** All Scrum work lives under scrum/; use your project's own places if it has them. Read details/folders.md first.
 ```
 
 ---
@@ -141,10 +141,10 @@
 
 **与它重复或相邻**：overview#6
 
-**新行**（长文件 `layers-and-folders`）
+**新行**（长文件 `folders`）
 
 ```text
-- **where-files-go** One log's files stay in its folder; design originals and shared files go to scrum/documents/. → long/layers-and-folders.md
+- **where-files-go** One log's files stay in its folder; design originals and shared files go to scrum/documents/. Read details/folders.md first.
 ```
 
 ---
@@ -201,7 +201,7 @@
 **新行**（长文件 `names`）
 
 ```text
-- **names** Use the plugin's own terms (product log, sprint log, design log, IDEO log, PBI, role card) as defined. → long/names.md
+- **names** Use the plugin's own terms (product log, sprint log, design log, IDEO log, PBI, role card) as defined. Read details/names.md first.
 - **fresh-subagent** A fresh subagent starts from its brief alone; a fork or copy of a session does not count.
 ```
 
@@ -211,7 +211,7 @@
 
 ### overview#8 · Roles
 
-`plugins/ideo-scrum/skills/scrum-kernel/overview.md` 第 73–85 行
+`plugins/ideo-scrum/skills/scrum-kernel/overview.md` 第 73–86 行
 
 **旧规矩原文**
 
@@ -223,7 +223,8 @@
 >    | Scrum Master | Sprint logs and design logs | Facilitating Planning and refinement; recording; tracking; reviewing the How and the Increment; serves the Product Owner; acts for them within a written handover, and the accountability stays with the Product Owner; decisions made under it are recorded | ideo → scrum → sprint → design |
 >    | Developer | The Sprint | The sprint log, the How, the Increment; the last check that nothing in refinement is unclear | ideo → scrum → sprint |
 >    | Designer | The design | Ideas, prototypes, and tests for a design, from Ideate on (the Product Owner and the Scrum Master settle its research and definition); conclusions back to the product log and the Sprint that asked | ideo → scrum → design |
->    | Stakeholder | An outside view, or standing non-source chores | Looking as one row of the product log's stakeholder table; a PO assistant organizes logs, summarizes progress, relays settled work and maintains the board, but does not rank, decide, review or edit plugin files | ideo → scrum |
+>    | Stakeholder | An outside view | Looking as one row of the product log's stakeholder table | ideo → scrum |
+>    | Supporter | Standing chores that touch no source (in the Scrum Guide Expansion Pack a Supporter is a Stakeholder type) | Doing what is requested: keeping the board, organizing the product log, summarizing progress, relaying settled work, explaining the mechanism, and being the Product Owner's contact point (gathering what waits for them, sending back what is not theirs, carrying their answers back, relaying their own words as theirs); does not rank, decide, answer for the Product Owner, review or edit plugin files | ideo → scrum |
 >
 >    In Claude Code, use the Skill tool one at a time, wait for success, and skip only calls already successful in this conversation. Stop and report a failed load rather than substituting a file read. In DSH, native role entries instead preload ideo and scrum in order, then load sprint and design as needed for the work. Subagents a role dispatches load the ideo-kernel and scrum-kernel skills too.
 >
@@ -238,19 +239,19 @@
 
 **理由**：角色表与加载细则放长文件，清单一行写角色命令按序加载内核；overview.md:85 末句（PO、SM、Developer 共同维护冲刺日志，无 Developer 时 PO 与 SM 两人跑冲刺）也要收进长文件，不能只留在被删的 overview。
 
-**新行**（长文件 `roles-and-routing`）
+**新行**（长文件 `roles`）
 
 ```text
-- **role-entry** On a role command, load that role's kernels in order before any work; stop and report a failed load. → long/roles-and-routing.md
+- **role-entry** On a role command, load that role's skills in order before any work; stop and report a failed load. Read details/roles.md first.
 ```
 
-**备注**：Long file: the role table, the DSH variant, the subagent rule, and the last sentence (the PO, the Scrum Master and the Developer keep the sprint log together; without a Developer the other two run the Sprint). Sprint 27 changes the table (Supporter role); sync later.
+**备注**：Long file: the role table, the DSH variant, the subagent rule, and the last sentence (the PO, the Scrum Master and the Developer keep the sprint log together; without a Developer the other two run the Sprint). Sprint 27 added the Supporter row and narrowed the Stakeholder row; the long file has both. The memory skill is the last step of every entry (Supporter: ideo, scrum, memory).
 
 ---
 
 ### overview#9 · Only the Product Owner must be human
 
-`plugins/ideo-scrum/skills/scrum-kernel/overview.md` 第 86–86 行 · 标记：Departs
+`plugins/ideo-scrum/skills/scrum-kernel/overview.md` 第 87–87 行 · 标记：Departs
 
 **旧规矩原文**
 
@@ -275,11 +276,11 @@
 
 ### overview#10 · Ask the Product Owner
 
-`plugins/ideo-scrum/skills/scrum-kernel/overview.md` 第 87–87 行
+`plugins/ideo-scrum/skills/scrum-kernel/overview.md` 第 88–88 行
 
 **旧规矩原文**
 
-> 10. **Ask the Product Owner** — Whoever is unsure asks the Product Owner, unless the Product Owner has sent that kind of question elsewhere.
+> 10. **Ask the Product Owner** — Whoever is unsure asks the Product Owner, unless the Product Owner has sent that kind of question elsewhere: convention 14 says where each kind goes.
 
 **出处与依据**：作者（把握：高）；种类：规矩
 - commit 9c9bd67 feat(PBI-39): scrum-kernel 约定总览 overview.md（当时在 conventions/overview.md，第 9 条标 Author's practice）
@@ -291,21 +292,19 @@
 
 **与它重复或相邻**：sprint-log#25
 
-**新行**（长文件 `roles-and-routing`）
+**新行**（长文件 `roles`）
 
 ```text
-- **ask-the-po** Whoever is unsure asks the PO, unless the PO sent that kind of question elsewhere. → long/roles-and-routing.md
+- **ask-the-po** Decide what is yours; process questions go to the Scrum Master; PO-only questions go to the Supporter. Read details/roles.md first.
 ```
 
-**备注**：Absorbs sprint-log#25 and design-log#21 (the two indexes of what the PO decides): that list now sits in the roles-and-routing long file under this line, so there is one index, not three lines that overlap. The old 'always ask the PO for ... git and outward actions' is stricter than the convention (which only asks that a commit stay inside the go-ahead's reach) and is not carried as it stood.
-
-**待 27（`ask-the-po`）**：Sprint 27 changes where a question goes: three tiers (decide and log it yourself; process questions to the Scrum Master; what only the PO decides goes to the Supporter, who collects it for the PO), and a PO opinion relayed by the Supporter counts as the PO's, with exceptions. Rewrite this line and the list in the long file when 27 is merged.
+**备注**：Sprint 27 rewrote convention 14 into three steps and this line is that routing in one sentence: decide what is yours; process questions go to the Scrum Master; PO-only questions go to the Supporter. With no Scrum Master session step 2 goes to the PO; with no Supporter session ask the PO directly (both in the long file). Absorbs sprint-log#25 and design-log#21 as before: the lists of what goes to the PO stay in the long file under the third step. The old 'always ask the PO for ... git and outward actions' is stricter than the convention and is not carried as it stood.
 
 ---
 
 ### overview#11 · Product Owner as Developer
 
-`plugins/ideo-scrum/skills/scrum-kernel/overview.md` 第 88–88 行
+`plugins/ideo-scrum/skills/scrum-kernel/overview.md` 第 89–89 行
 
 **旧规矩原文**
 
@@ -329,11 +328,11 @@
 
 ### overview#12 · Product Owner decides between stages
 
-`plugins/ideo-scrum/skills/scrum-kernel/overview.md` 第 89–89 行
+`plugins/ideo-scrum/skills/scrum-kernel/overview.md` 第 90–90 行
 
 **旧规矩原文**
 
-> 12. **Product Owner decides between stages** — The Product Owner settles each stage’s result. Before starting or returning to a stage of a Sprint or a design sprint, wait for explicit permission for that stage and scope. Approving a result is not permission to move on, though one message can say both clearly. While waiting, record the result or why a return is needed, but do not start or delegate that stage’s work. A new session may resume the same stage within its recorded permission and scope; earlier permission does not carry over to a return. The Scrum Master acts for the Product Owner only within a written handover covering the particular decision; handing over a review or a choice inside a stage does not hand over a stage transition. Record who decided, the date and basis, and the stage and scope authorized, including the written handover if used. Keep the decision at the end of its stage chapter; if permission arrives later, add that dated decision without replacing the earlier one. Record first entry when opening the log. These are stage decisions, not reviews, formal acceptance, or approval of each step. Sprint decisions: `../sprint-kernel/conventions/sprint-log.md`, convention 24; design decisions: `../design-kernel/conventions/design-log.md`, convention 26.
+> 12. **Product Owner decides between stages** — The Product Owner settles each stage’s result. Before starting or returning to a stage of a Sprint or a design sprint, wait for explicit stage permission (not a tool permission) for that stage and scope. Approving a result is not stage permission to move on, though one message can say both clearly. While waiting, record the result or why a return is needed, but do not start or delegate that stage’s work. A new session may resume the same stage within its recorded stage permission and scope; earlier stage permission does not carry over to a return. The Scrum Master acts for the Product Owner only within a written handover covering the particular decision; handing over a review or a choice inside a stage does not hand over a stage transition. The Product Owner's own words, relayed by the Supporter on the conditions in convention 14, count as theirs. Record who decided, the date and basis, and the stage and scope authorized, including the written handover if used. Keep the decision at the end of its stage chapter; if stage permission arrives later, add that dated decision without replacing the earlier one. Record first entry when opening the log. These are stage decisions, not reviews, formal acceptance, or approval of each step. Sprint decisions: `../sprint-kernel/conventions/sprint-log.md`, convention 24; design decisions: `../design-kernel/conventions/design-log.md`, convention 26.
 
 **出处与依据**：作者（把握：中）；种类：规矩
 - memory S:/SeaPawn-Memory/memory/IDEO-Scrum/delegated-choice-not-gate.md：「方案还没经 PO 确认，是我越过了关卡」
@@ -346,19 +345,19 @@
 
 **与它重复或相邻**：sprint-log#24、design-log#26
 
-**新行**（长文件 `stage-gates`）
+**新行**（长文件 `gates`）
 
 ```text
-- **stage-gates** Wait for the PO's explicit permission to start or return to a stage; approving a result is not permission. → long/stage-gates.md
+- **stage-gates** Enter or return to a stage only on the PO's explicit stage permission; approving a result is not one. Read details/gates.md first.
 ```
 
-**备注**：The whole rule goes to the long file: record the result while waiting but do not start or delegate; a new session resumes only inside the recorded scope; earlier permission does not carry over to a return; record who, when, basis, stage and scope; a later permission is added, not replaced; these are stage decisions, not reviews.
+**备注**：The whole rule goes to the long file: record the result while waiting but do not start or delegate; a new session resumes only inside the recorded scope; earlier permission does not carry over to a return; record who, when, basis, stage and scope; a later permission is added, not replaced; these are stage decisions, not reviews. Sprint 27 made it 'stage permission (not a tool permission)' and added that the PO's own words, relayed by the Supporter on the conditions in convention 14, count as theirs: the long file points to po-word-relayed.
 
 ---
 
 ### overview#13 · One Scrum Master per project
 
-`plugins/ideo-scrum/skills/scrum-kernel/overview.md` 第 93–93 行
+`plugins/ideo-scrum/skills/scrum-kernel/overview.md` 第 94–94 行
 
 **旧规矩原文**
 
@@ -384,11 +383,18 @@
 
 ### overview#14 · Who gets which work
 
-`plugins/ideo-scrum/skills/scrum-kernel/overview.md` 第 94–94 行
+`plugins/ideo-scrum/skills/scrum-kernel/overview.md` 第 95–102 行 · 标记：quote
 
 **旧规矩原文**
 
-> 14. **Who gets which work** — Reviewing the work goes to the Scrum Master by default (`../sprint-kernel/conventions/sprint-log.md`, convention 14); when the Developer works in another session or tool, `../sprint-kernel/conventions/sprint-log.md`, convention 26, says how the two work together. Long-running upkeep — the board, summaries, tracking — goes to a standing Stakeholder session with a working identity the project writes down, such as PO assistant. That assistant relays only what the Product Owner or Scrum Master already decided; scope or item changes and go-aheads go through the Scrum Master, who chooses the receiving session. It does not rank, decide, review or edit plugin files; an independent outside view still comes from a fresh subagent. A small edit to one or two files the Scrum Master makes itself. Building goes to a new Developer session when a paragraph can brief it, or to a Developer that shares the Scrum Master's context when the work needs much of the discussion; such a Developer cannot review its own work.
+> 14. **Who gets which work** — Reviewing the work goes to the Scrum Master by default (`../sprint-kernel/conventions/sprint-log.md`, convention 14); when the Developer works in another session or tool, `../sprint-kernel/conventions/sprint-log.md`, convention 26, says how the two work together. Long-running upkeep — the board, summaries, tracking — goes to a standing Supporter session (the `supporter` entry); an independent outside view still comes from a fresh subagent (the `stakeholder` entry). A small edit to one or two files the Scrum Master makes itself. Building goes to a new Developer session when a paragraph can brief it, or to a Developer that shares the Scrum Master's context when the work needs much of the discussion; such a Developer cannot review its own work.
+>
+>     The Supporter and the Product Owner:
+>
+>     - **What the Supporter does** — It organizes the product log as the Product Owner or Scrum Master tells it (the Sprint, design and IDEO logs are written by their own sessions), keeps the board, summarizes progress, and relays what the Product Owner or Scrum Master already decided. It does not rank, decide, answer for the Product Owner, review or edit plugin files.
+>     - **Where a question goes** — The Product Owner has sent these questions elsewhere than to themselves (convention 10), in three steps. First, what a role can decide itself, it decides: the Developer's approach, the Designer's solution details. Second, what belongs to the process, or lies inside a written handover, goes to the Scrum Master; with no Scrum Master session, this step goes straight to the Product Owner. Third, what only the Product Owner can decide or do goes to the Supporter, who gathers it and puts it to the Product Owner in one go, each question with the context needed to answer it: the Product Goal, the items and their order, a stage permission no handover covers, the Product Owner's own taste, and what needs the Product Owner in person — tool permissions and settings, `CLAUDE.md` or `AGENTS.md`, a push or a release. The Supporter sends back what is not the Product Owner's and says whose it is (the asker's own, or the Scrum Master's); it only sorts, it decides nothing. With no Supporter session, ask the Product Owner directly.
+>     - **The answers back** — The Supporter carries the Product Owner's answers back word for word, for the log's owner to record. A question that still waits for the Product Owner's decision, a go-ahead no handover covers included, stays with the Supporter; once the Product Owner has decided or answered something about scope, items or a go-ahead, the Supporter hands it to the Scrum Master, who chooses the receiving session and records it.
+>     - **The Product Owner's word, relayed** — What the Supporter relays as the Product Owner's own opinion counts as theirs, so the Product Owner need not say it again to each role: the relay must say that it is the Product Owner's opinion and carry their words, the date and where the Product Owner said it (the session's name and the time), and the receiver records it as `PO (via Supporter): <the words>` with that date and place. The receiver is the session the opinion concerns; for what the Product Owner has decided or answered about scope, items or a go-ahead it is the Scrum Master, as *The answers back* says: it records the relay and then hands it to the session that will act on it (the `supporter` entry says the same). These marks make the relay traceable; they do not verify who sent it. A relay is trusted because the Product Owner set up this Supporter, and where the host shows which session sent a message, the receiver notes that session's name beside the mark. The Supporter's own reading or suggestion is not the Product Owner's. The Scrum Guide allows this: "The Product Owner may do the above work or may delegate the responsibility to others. Regardless, the Product Owner remains accountable." (Scrum Guide 2020). The relay does not cover tool permissions and settings, changes to `CLAUDE.md` or `AGENTS.md`, or outward actions such as a push or a release: those need the Product Owner's own confirmation.
 
 **出处与依据**：作者（把握：中）；种类：规矩
 - commit 9c9bd67 feat(PBI-39): scrum-kernel 约定总览 overview.md（第 12 条 Author's practice，当时是一张分工表）
@@ -400,21 +406,22 @@
 
 **与它重复或相邻**：sprint-log#26
 
-**新行**（长文件 `roles-and-routing`）
+**新行**（长文件 `roles`）
 
 ```text
-- **who-gets-which-work** Scrum Master reviews, a helper does upkeep, a Developer builds and never reviews itself. → long/roles-and-routing.md
+- **who-gets-which-work** The Scrum Master reviews, the Supporter keeps the board, a Developer never reviews itself. Read details/roles.md first.
+- **answers-back** The Supporter returns the PO's answers word for word; scope, item and go-ahead decisions go to the Scrum Master to record.
+- **po-word-relayed** A relayed PO opinion counts as theirs: record `PO (via Supporter): <words>` with date and place. Read details/roles.md first.
+- **relay-limits** A relay never covers tool permissions and settings, CLAUDE.md or AGENTS.md, a push or a release: those need the PO's own word.
 ```
 
-**备注**：Long file keeps all five assignments: review, the other-session or other-tool Developer, upkeep, the Scrum Master's own small edit, and building. The words PO assistant are gone; Sprint 27 replaces them with the Supporter and adds the question routing: sync later.
-
-**待 27（`who-gets-which-work`）**：Sprint 27 replaces the words PO assistant with the Supporter and adds the question routing. Rewrite when 27 is merged.
+**备注**：Sprint 27 rewrote it: upkeep goes to the Supporter (the supporter entry), an outside view still to a fresh subagent; four sub-rules follow: what the Supporter does (who-gets-which-work), where a question goes (ask-the-po), the answers back (answers-back) and the PO's word relayed (po-word-relayed, with its limits in relay-limits). The long file keeps all of it word for word, with the five assignments and the Supporter's duties.
 
 ---
 
 ### overview#15 · Working conventions
 
-`plugins/ideo-scrum/skills/scrum-kernel/overview.md` 第 98–98 行 · 标记：Supplement、Decide on the spot
+`plugins/ideo-scrum/skills/scrum-kernel/overview.md` 第 106–106 行 · 标记：Supplement、Decide on the spot
 
 **旧规矩原文**
 
@@ -440,7 +447,7 @@
 
 ### overview#16 · Templates record outputs
 
-`plugins/ideo-scrum/skills/scrum-kernel/overview.md` 第 99–99 行
+`plugins/ideo-scrum/skills/scrum-kernel/overview.md` 第 107–107 行
 
 **旧规矩原文**
 
@@ -466,7 +473,7 @@
 
 ### overview#17 · Goal fixed, plan flexible
 
-`plugins/ideo-scrum/skills/scrum-kernel/overview.md` 第 103–105 行 · 标记：quote、CJK
+`plugins/ideo-scrum/skills/scrum-kernel/overview.md` 第 111–113 行 · 标记：quote、CJK
 
 **旧规矩原文**
 
@@ -485,9 +492,9 @@
 **新行**（长文件 `goal-fixed`）
 
 ```text
-- **goal-fixed** Each log's commitment (a Goal, the Definition of Done) stays fixed; the plan under it may change. → long/goal-fixed.md
+- **goal-fixed** Each log's commitment (a Goal, the Definition of Done) stays fixed; the plan under it may change. Read details/goal-fixed.md first.
 - **po-owns-commitments** Only the PO changes a commitment or cancels a Sprint whose goal can no longer be met.
-- **commitment-table** Keep each commitment in a one-row table, the only source of it. → long/goal-fixed.md
+- **commitment-table** Keep each commitment in a one-row table, the only source of it. Read details/goal-fixed.md first.
 ```
 
 **备注**：Long file carries the Scrum Guide quotations word for word with Source and License. The commitment-table line is relied on by the commitments hook, the board and the check script. sprint-log#20 adds: acceptance criteria may be renegotiated with the PO or the Scrum Master, changes and reasons go in the Increment notes. design-log#25 adds: sharpen the design goal during Empathize, then only the PO changes it.
@@ -523,9 +530,9 @@
 
 ### overview@4 · paragraph（第 10–10 行）
 
-> The other files: `conventions/product-log.md` and `conventions/product-backlog-template.md`; `../sprint-kernel/conventions/sprint-log.md` and `../sprint-kernel/conventions/sprint-backlog-template.md`; for designs, `../design-kernel/conventions/design-log.md` and `../design-kernel/conventions/design-backlog-template.md`; for the five modes, `../ideo-kernel/conventions/ideo-log.md` and `../ideo-kernel/conventions/ideo-backlog-template.md` (paths are relative to the scrum-kernel skill folder, where this file sits beside `SKILL.md`; the Sprint files belong to the sprint-kernel skill, the design files to the design-kernel skill, the IDEO files to the ideo-kernel skill — read them when you open or resume a design, a Sprint, or a run of the five modes).
+> The other files: `conventions/product-log.md` and `../../template/product-backlog-template.md`; `../sprint-kernel/conventions/sprint-log.md` and `../../template/sprint-backlog-template.md`; for designs, `../design-kernel/conventions/design-log.md` and `../../template/design-backlog-template.md`; for the five modes, `../ideo-kernel/conventions/ideo-log.md` and `../../template/ideo-backlog-template.md` (paths are relative to the scrum-kernel skill folder, where this file sits beside `SKILL.md`; the Sprint conventions belong to the sprint-kernel skill, the design conventions to the design-kernel skill, the IDEO conventions to the ideo-kernel skill, and the four log templates sit together in the plugin's `template/` folder, the board's files in its `board/` folder — read them when you open or resume a design, a Sprint, or a run of the five modes).
 
-**新**：不进清单。去处或不要的理由：A pointer list to the other convention files and templates; the sections and long files of MEMORY.md replace it. The templates stay in their skills' conventions/ folders.
+**新**：不进清单。去处或不要的理由：A pointer list to the other convention files and templates; the sections and long files of MEMORY.md replace it. Since Sprint 27 the four log templates sit together in the plugin's template/ folder and the board's files in board/.
 
 ---
 
@@ -564,20 +571,20 @@
 **新行**（长文件 `flow-maps`）
 
 ```text
-- **flow-maps** Process maps of the whole flow and of each log, with the lines that apply at each step. → long/flow-maps.md
+- **flow-maps** Process maps of the whole flow and of each log, with the lines that apply at each step. Read details/flow-maps.md first.
 ```
 
 ---
 
-### overview@6 · paragraph（第 109–109 行）
+### overview@6 · paragraph（第 117–117 行）
 
 > Each departure is stated here once, with its reason; the convention named in the last column points back to this table.
 
-**新**：不进清单。去处或不要的理由：In long/departures.md, as its intro.
+**新**：不进清单。去处或不要的理由：In details/departures.md, as its intro.
 
 ---
 
-### overview@7 · table（第 111–119 行）
+### overview@7 · table（第 119–127 行）
 
 > | Here | The official guide | Why | See |
 > | --- | --- | --- | --- |
@@ -592,7 +599,7 @@
 **新行**（长文件 `departures`）
 
 ```text
-- **departures** The plugin departs from the Scrum Guide on purpose in seven places, each with its reason. → long/departures.md
+- **departures** The plugin departs from the Scrum Guide on purpose in seven places, each with its reason. Read details/departures.md first.
 ```
 
 ---

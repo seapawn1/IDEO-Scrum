@@ -29,7 +29,7 @@ SKILLS = "plugins/ideo-scrum/skills"
 FILES = [
     ("overview", f"{SKILLS}/scrum-kernel/overview.md"),
     ("product-log", f"{SKILLS}/scrum-kernel/conventions/product-log.md"),
-    ("board-log", f"{SKILLS}/scrum-kernel/conventions/board-log.md"),
+    ("board-log", "plugins/ideo-scrum/board/board-log.md"),  # Sprint 27 moved it out of scrum-kernel/conventions/; it stays (it is the long file for the board)
     ("sprint-log", f"{SKILLS}/sprint-kernel/conventions/sprint-log.md"),
     ("design-log", f"{SKILLS}/design-kernel/conventions/design-log.md"),
     ("ideo-log", f"{SKILLS}/ideo-kernel/conventions/ideo-log.md"),
@@ -231,7 +231,7 @@ def render_md(ledger: dict) -> str:
         "| --- | --- | --- | --- | --- |",
     ]
     for f in ledger["files"]:
-        out.append(f"| `{f['path'].split('skills/')[1]}` | {len(f['rules'])} | {len(f['blocks'])} | {f['lines']} | {f['chars']:,} |")
+        out.append(f"| `{f['path'].removeprefix('plugins/ideo-scrum/skills/').removeprefix('plugins/ideo-scrum/')}` | {len(f['rules'])} | {len(f['blocks'])} | {f['lines']} | {f['chars']:,} |")
     for f in ledger["files"]:
         out += ["", f"## {f['short']}（{len(f['rules'])} 条）", "", f"`{f['path']}` · blob `{f['blob'][:10]}`", ""]
         out += ["| id | 名称 | 所在节 | 行 | 字符 | 标记 | 引用其他约定 |", "| --- | --- | --- | --- | --- | --- | --- |"]

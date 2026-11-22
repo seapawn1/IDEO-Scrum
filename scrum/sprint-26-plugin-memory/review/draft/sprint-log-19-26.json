@@ -3,11 +3,11 @@
     "id": "sprint-log#19",
     "line": null,
     "lines": [
-      "- **one-closing-commit** Close with one commit after clearing old paths project-wide; then tag, merge, delete the branch. → long/sprint-closing.md",
+      "- **one-closing-commit** Close with one commit after clearing old paths everywhere; then tag, merge, delete the branch. Read details/closing.md first.",
       "- **outward-needs-po** Push, release and other outward actions need the PO's consent; a stage permission never covers commit, merge or push."
     ],
     "section": "sprint",
-    "long_file": "sprint-closing",
+    "long_file": "closing",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
@@ -40,7 +40,7 @@
   },
   {
     "id": "sprint-log#22",
-    "line": "- **log-is-the-handoff** Keep a log's header current and write what matters into it before a session ends. → long/handoff.md",
+    "line": "- **log-is-the-handoff** Keep a log's header current and write what matters into it before a session ends. Read details/handoff.md first.",
     "lines": null,
     "section": "sprint",
     "long_file": "handoff",
@@ -69,10 +69,10 @@
   },
   {
     "id": "sprint-log#24",
-    "line": "- **read-the-goal** Before each stage decision, read the exact goal (Sprint or design) from its table; if you cannot, stop. → long/stage-gates.md",
+    "line": "- **read-the-goal** Before a stage decision, read the exact goal text from its table; if you cannot, stop. Read details/gates.md first.",
     "lines": null,
     "section": "sprint",
-    "long_file": "stage-gates",
+    "long_file": "gates",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
@@ -93,7 +93,7 @@
   },
   {
     "id": "sprint-log#26",
-    "line": "- **developer-elsewhere** With a Developer elsewhere, the sprint log stays the record: talk directly if you can, else take turns. → long/handoff.md",
+    "line": "- **developer-elsewhere** With a Developer elsewhere the sprint log stays the record; talk directly, else take turns. Read details/handoff.md first.",
     "lines": null,
     "section": "sprint",
     "long_file": "handoff",

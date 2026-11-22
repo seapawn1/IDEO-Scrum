@@ -1,6 +1,6 @@
 """Sprint 26 row 6: start a long Memory file from the ledger's verbatim text.
 
-    python -X utf8 -I scripts/long_from_ledger.py NAME [--force]    write review/draft/long/NAME.md from SPEC[NAME]
+    python -X utf8 -I scripts/long_from_ledger.py NAME [--force]    write review/draft/details/NAME.md from SPEC[NAME]
     python -X utf8 -I scripts/long_from_ledger.py --selftest
 
 A long file holds the old rules that a list line points at, word for word where the rule is the author's own and
@@ -21,11 +21,11 @@ import textwrap
 HERE = pathlib.Path(__file__).resolve().parent
 SPRINT = HERE.parent
 LEDGER = SPRINT / "review" / "ledger.json"
-OUT = SPRINT / "review" / "draft" / "long"
+OUT = SPRINT / "review" / "draft" / "details"
 
 # name -> title, intro, sections [(heading, [refs]) ...]; a ref is "sprint-log#17" (a rule) or "overview@7" (a block, 1-based)
 SPEC: dict[str, dict] = {
-    "stage-gates": {
+    "gates": {
         "title": "Stage gates: the Product Owner decides between stages",
         "intro": "Read this file before you start a stage, return to one, or record a stage decision, in a Sprint or in a design. The list lines that point here are `stage-gates`, `sprint-stage-decisions`, `read-the-goal`, `design-gates` and `ideate-arrangement`.",
         "sections": [
@@ -39,19 +39,8 @@ SPEC: dict[str, dict] = {
         "intro": "Read this file when you end a design, decide what happens to its material, or hand its conclusions to a Sprint. The list lines that point here are `design-ends` and `design-conclusions`.",
         "sections": [("The rule", ["design-log#19"])],
     },
-    "board-writing": {
-        "title": "Writing the Scrum board",
-        "intro": "This file is the brief for whoever writes the board page: what the board is, what it reads from the logs, the data it holds, what it leaves out, the steps to write it, and the check. Read it in full before you write or refresh `scrum/ScrumBoard.html`. The list lines that point here are `board-writer` and `board-rules`.",
-        "sections": [
-            ("What the board is and who writes it", ["board-log@2", "board-log#1", "board-log#2", "board-log#19", "board-log#3"]),
-            ("What it reads", ["board-log#4", "board-log#5", "board-log#6"]),
-            ("The data", ["board-log#11", "board-log#12", "board-log#13"]),
-            ("What the page works out itself, and how cards link", ["board-log#9", "board-log#10", "board-log#8"]),
-            ("What the board leaves out", ["board-log#16"]),
-            ("How to write it", ["board-log#17", "board-log#18"]),
-        ],
-    },
-    "sprint-stages": {
+    # board-writing is not generated any more: board-log.md stays in place as the board's long file (Master 2026-11-23)
+    "sprint": {
         "title": "The stages of a Sprint: the details",
         "intro": "The detail behind the Sprint lines that point here: opening, the How, the go-ahead, checkpoints, and the Test. Read it when you plan, build or test a Sprint. The list lines that point here are `sprint-folder`, `how-is-a-plan`, `go-ahead`, `checkpoints`, `reviewer-required` and `record-the-tests`.",
         "sections": [
@@ -64,7 +53,7 @@ SPEC: dict[str, dict] = {
             ("Record the tests (`record-the-tests`)", ["sprint-log#16"]),
         ],
     },
-    "design-stages": {
+    "design": {
         "title": "The stages of a design: the details",
         "intro": "The detail behind the design lines that point here, stage by stage. Read it when you run a design sprint, together with the design-kernel skill's step files. The list lines that point here are `design-stages` and `isolated-sketches`.",
         "sections": [
@@ -90,7 +79,7 @@ SPEC: dict[str, dict] = {
             ("The board", ["board-log@3"]),
         ],
     },
-    "roles-and-routing": {
+    "roles": {
         "title": "Roles and routing of work",
         "intro": "PENDING SPRINT 27: this is the text as it stands today; Sprint 27 changes the role table (a Supporter role), the routing of questions and the board writer, and this file is rewritten when it is merged. Read it when you start as a role, split work between sessions, or are unsure whom to ask. The list lines that point here are `role-entry`, `who-gets-which-work` and `ask-the-po`.",
         "sections": [
@@ -100,7 +89,7 @@ SPEC: dict[str, dict] = {
             ("What goes to the Product Owner (`ask-the-po`): the design's list", ["design-log#21"]),
         ],
     },
-    "sprint-closing": {
+    "closing": {
         "title": "Closing a Sprint",
         "intro": "Read this file when you close a Sprint: the Review, the Retrospective and the closing commit. The list lines that point here are `review-at-close`, `retro-in-memory` and `one-closing-commit`.",
         "sections": [

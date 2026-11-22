@@ -3,8 +3,8 @@
     python -X utf8 -I scripts/assemble_memory.py [--draft DIR] [--out DIR]
     python -X utf8 -I scripts/assemble_memory.py --selftest
 
-Reads the drafters' files (DIR/*.json, checked by check_drafts.py) and the long files (DIR/long/*.md); writes
-memory-draft/MEMORY.md (the list), memory-draft/long/*.md, and review/map-old-new.md (every old rule to its new line,
+Reads the drafters' files (DIR/*.json, checked by check_drafts.py) and the details files (DIR/details/*.md); writes
+memory-draft/MEMORY.md (the list), memory-draft/details/*.md, and review/map-old-new.md (every old rule to its new line,
 merge or deletion, and every new handle back to its old rules). It prints the sizes that matter for how Memory is
 carried: the whole list, and the slice each role would get from a hook.
 """
@@ -23,6 +23,7 @@ import check_drafts as cd  # noqa: E402
 SPRINT = HERE.parent
 DEFAULT_OUT = SPRINT / "memory-draft"
 MAP_FILE = SPRINT / "review" / "map-old-new.md"
+CAP = 16000  # the list's size cap in characters (Master 2026-11-23: the largest tier A1 passed is 20,000, less 20% for the token estimate)
 FILE_ORDER = ["overview", "product-log", "sprint-log", "design-log", "ideo-log", "board-log"]
 TITLES = {
     "roles": "Who does what, and who decides",
@@ -35,7 +36,7 @@ TITLES = {
 }
 HEADER = """# IDEO-Scrum Memory
 
-> The rules every role follows, one line each. A line marked `[dev,sm]` binds those roles; a line with no mark binds every role. `→ long/<file>.md` says where the detail is: read that file before you do what the line is about. These are working conventions: follow what fits, override what doesn't, and say why in the log's notes.
+> The rules every role follows, one line each. A line marked `[dev,sm]` binds those roles; a line with no mark binds every role. A line that ends in `Read details/<file>.md first.` has its detail in that file: read it before you do what the line is about. These are working conventions: follow what fits, override what doesn't, and say why in the log's notes.
 """
 
 
@@ -128,9 +129,9 @@ def handle_refs_unknown(out: pathlib.Path) -> dict[str, list[str]]:
     list or the name of a long file; anything else is a typo or a handle that was renamed."""
     text = (out / "MEMORY.md").read_text(encoding="utf-8")
     handles = set(re.findall(r"^- \*\*([a-z0-9-]+)\*\*", text, re.M))
-    longs = {p.stem for p in (out / "long").glob("*.md")}
+    longs = {p.stem for p in (out / "details").glob("*.md")} | set(cd.EXTERNAL)
     bad: dict[str, list[str]] = {}
-    for p in [out / "MEMORY.md", *sorted((out / "long").glob("*.md"))]:
+    for p in [out / "MEMORY.md", *sorted((out / "details").glob("*.md"))]:
         toks = set(re.findall(r"`([a-z0-9]+(?:-[a-z0-9]+)+)`", p.read_text(encoding="utf-8")))
         miss = sorted(t for t in toks if t not in handles and t not in longs and not re.match(r"sprint-[0-9]", t))
         if miss:
@@ -194,26 +195,29 @@ def main(argv: list[str]) -> int:
     text, flat = build(rows, mark_pending="--no-pending-marks" not in argv)
     out.mkdir(parents=True, exist_ok=True)
     (out / "MEMORY.md").write_text(text, encoding="utf-8", newline="\n")
-    long_src = d / "long"
-    (out / "long").mkdir(exist_ok=True)
+    long_src = d / "details"
+    (out / "details").mkdir(exist_ok=True)
     have, unresolved = set(), {}
     if long_src.is_dir():
         for p in sorted(long_src.glob("*.md")):
             body, bad = resolve(p.read_text(encoding="utf-8"), rows)
             body = strip_mermaid_ticks(body)
-            (out / "long" / p.name).write_text(body, encoding="utf-8", newline="\n")
+            (out / "details" / p.name).write_text(body, encoding="utf-8", newline="\n")
             have.add(p.stem)
             if bad:
                 unresolved[p.name] = sorted(set(bad))
-    referenced = set(re.findall(r"long/([A-Za-z0-9_-]+)\.md", text))
+    referenced = set(re.findall(r"Read details/([A-Za-z0-9_-]+)\.md first\.", text))
+    memory_dir = SPRINT.parents[1] / "plugins" / "ideo-scrum" / "skills" / "memory"  # where the skill will sit; the outside pointers are relative to it
+    outside = {k: (memory_dir / v).resolve().exists() for k, v in cd.EXTERNAL.items() if f"Read {v} first." in text}
     MAP_FILE.write_text(map_tables(rows, ann), encoding="utf-8", newline="\n")
     total = len(text)
-    print(f"MEMORY.md: {len(flat)} lines, {total} characters; slices a hook would carry per role: {role_slices(flat)}")
-    print("long files referenced but not written:", sorted(referenced - have) or "none")
-    print("long files written but not referenced:", sorted(have - referenced) or "none")
-    print("rule placeholders left unresolved in long files:", unresolved or "none")
+    print(f"MEMORY.md: {len(flat)} lines, {total} characters ({'within' if total <= CAP else 'OVER'} the {CAP:,}-character cap: carrier test passed at 20,000, Master 2026-11-23); slices a hook would carry per role: {role_slices(flat)}")
+    print("details files referenced but not written:", sorted(referenced - have) or "none")
+    print("files outside details/ that a line points at, and whether they exist:", outside or "none")
+    print("details files written but not referenced:", sorted(have - referenced) or "none")
+    print("rule placeholders left unresolved in details files:", unresolved or "none")
     bad = handle_refs_unknown(out)
-    print("backticked handles in the list or the long files that are no handle and no long file:", bad or "none")
+    print("backticked handles in the list or the details files that are no handle and no details file:", bad or "none")
     return 0
 
 

@@ -32,8 +32,8 @@ When the Product Owner explicitly permits the commit, merge, and branch cleanup,
 
 ## Handing off to a Sprint working elsewhere
 
-The hand-off of changed paths to a receiving Sprint, the check of its material references before it closes, and what to do when it closes while the design is still pending archival are in `long/sprint-closing.md` (Review): the two old rules said the same thing, and the Review's text is kept there once. Do not close with broken material links or rewrite verbatim historical commitment snapshots.
+The hand-off of changed paths to a receiving Sprint, the check of its material references before it closes, and what to do when it closes while the design is still pending archival are in `details/closing.md` (Review): the two old rules said the same thing, and the Review's text is kept there once. Do not close with broken material links or rewrite verbatim historical commitment snapshots.
 
 ## Open points for the Product Owner
 
-- The old design rule and the Review rule both described how a receiving Sprint takes over changed paths; the text is kept once, in `long/sprint-closing.md`, and this file points there.
+- The old design rule and the Review rule both described how a receiving Sprint takes over changed paths; the text is kept once, in `details/closing.md`, and this file points there.

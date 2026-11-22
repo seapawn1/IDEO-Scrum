@@ -23,32 +23,29 @@
       "board-log#19"
     ],
     "where_else": null,
-    "note": "board-log#19 adds: nothing becomes true because it is on the board; it goes into the board-writing long file. The reason for not committing it (delete it and write it again, every fact is the same; only the time differs) also goes there."
+    "note": "board-log#19 adds: nothing becomes true because it is on the board; it goes into board-log.md (kept in place as the board's long file). The reason for not committing it (delete it and write it again, every fact is the same; only the time differs) also goes there."
   },
   {
     "id": "board-log#3",
     "line": null,
     "lines": [
-      "- **board-writer** A cheap model writes scrum/ScrumBoard.html when the PO wants to look or a log changed.",
-      "- **board-rules** What the board reads, the data it holds, how to copy and check it: read the long file before writing one. → long/board-writing.md"
+      "- **board-writer** A cheap model or the Supporter writes scrum/ScrumBoard.html when the PO wants to look or a log changed.",
+      "- **board-rules** What the board reads, the data it holds, how to copy and check it; the brief for its writer. Read ../../board/board-log.md first."
     ],
     "section": "board",
-    "long_file": "board-writing",
+    "long_file": "board-log",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
     "where_else": null,
-    "note": "The long file says who writes it: a fresh subagent told to read the board rules and the template, or a standing helper session of the PO's (the wording of that helper waits for the secretary role of PBI-86 / Sprint 27).",
-    "pending": {
-      "board-writer": "Sprint 27: the Supporter writes the board. Rewrite the line (and the 'who writes it' paragraph of the board-writing long file) when 27 is merged."
-    }
+    "note": "The writer is now a cheap model or the Supporter (Sprint 27). The board conventions stay in place as the board's long file (Master 2026-11-23: board-log.md is not merged into a Memory long file and not deleted); board-rules points at it, and the other rules of that file are indexed by board-rules."
   },
   {
     "id": "board-log#4",
     "line": null,
     "lines": null,
     "section": "board",
-    "long_file": "board-writing",
+    "long_file": "board-log",
     "via": "board-rules",
     "merged_into": null,
     "adds_to_target": null,
@@ -61,7 +58,7 @@
     "line": null,
     "lines": null,
     "section": "board",
-    "long_file": "board-writing",
+    "long_file": "board-log",
     "via": "board-rules",
     "merged_into": null,
     "adds_to_target": null,
@@ -74,7 +71,7 @@
     "line": null,
     "lines": null,
     "section": "board",
-    "long_file": "board-writing",
+    "long_file": "board-log",
     "via": "board-rules",
     "merged_into": null,
     "adds_to_target": null,
@@ -91,7 +88,7 @@
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
-    "where_else": "plugins/ideo-scrum/skills/scrum-kernel/conventions/scrum-board-template.html draws the overview (flow, lighting, colours); the layout reasons are in the design archive of the board.",
+    "where_else": "plugins/ideo-scrum/board/scrum-board-template.html draws the overview (flow, lighting, colours); the layout reasons are in the design archive of the board.",
     "note": ""
   },
   {
@@ -99,7 +96,7 @@
     "line": null,
     "lines": null,
     "section": "board",
-    "long_file": "board-writing",
+    "long_file": "board-log",
     "via": "board-rules",
     "merged_into": null,
     "adds_to_target": null,
@@ -112,7 +109,7 @@
     "line": null,
     "lines": null,
     "section": "board",
-    "long_file": "board-writing",
+    "long_file": "board-log",
     "via": "board-rules",
     "merged_into": null,
     "adds_to_target": null,
@@ -125,7 +122,7 @@
     "line": null,
     "lines": null,
     "section": "board",
-    "long_file": "board-writing",
+    "long_file": "board-log",
     "via": "board-rules",
     "merged_into": null,
     "adds_to_target": null,

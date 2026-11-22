@@ -1,15 +1,16 @@
 # Stage gates: the Product Owner decides between stages
 
-Read this file before you start a stage, return to one, or record a stage decision, in a Sprint or in a design. The list lines that point here are `stage-gates`, `read-the-goal` and `ideate-arrangement`. The text is the old rules word for word, cut into bullets; the old pointers to convention numbers became handles.
+Read this file before you start a stage, return to one, or record a stage decision, in a Sprint or in a design. The list lines that point here are `stage-gates`, `read-the-goal` and `ideate-arrangement`. The text is the old rules word for word, cut into bullets; the old pointers to convention numbers became handles. Sprint 27 changed convention 12 in two ways, both here: it says *stage* permission (not a tool permission), and the Product Owner's own words relayed by the Supporter count as theirs.
 
 ## The rule, for both (`stage-gates`)
 
 - The Product Owner settles each stage’s result.
-- Before starting or returning to a stage of a Sprint or a design sprint, wait for explicit permission for that stage and scope. Approving a result is not permission to move on, though one message can say both clearly.
+- Before starting or returning to a stage of a Sprint or a design sprint, wait for explicit stage permission (not a tool permission) for that stage and scope. Approving a result is not stage permission to move on, though one message can say both clearly.
 - While waiting, record the result or why a return is needed, but do not start or delegate that stage’s work.
-- A new session may resume the same stage within its recorded permission and scope; earlier permission does not carry over to a return.
+- A new session may resume the same stage within its recorded stage permission and scope; earlier stage permission does not carry over to a return.
 - The Scrum Master acts for the Product Owner only within a written handover covering the particular decision; handing over a review or a choice inside a stage does not hand over a stage transition.
-- Record who decided, the date and basis, and the stage and scope authorized, including the written handover if used. Keep the decision at the end of its stage chapter; if permission arrives later, add that dated decision without replacing the earlier one. Record first entry when opening the log.
+- The Product Owner's own words, relayed by the Supporter on the conditions in `po-word-relayed`, count as theirs.
+- Record who decided, the date and basis, and the stage and scope authorized, including the written handover if used. Keep the decision at the end of its stage chapter; if stage permission arrives later, add that dated decision without replacing the earlier one. Record first entry when opening the log.
 - These are stage decisions, not reviews, formal acceptance, or approval of each step.
 - A stage permission does not by itself authorize a commit, merge or push: in a Sprint the go-ahead says how far it reaches (`go-ahead`); in a design the stage or ending decision line records how far git permission reaches; push, release and other outward actions need the Product Owner's consent (`outward-needs-po`).
 - The Sprint decisions are below under "In a Sprint"; the design decisions under "In a design".
@@ -45,4 +46,4 @@ At each gate ask: would someone who never learned design have produced the same 
 
 ## Open points for the Product Owner
 
-- None. Two old rules (the Sprint one and the design one) and the general one are now in one place; a session that picks a Sprint or a design up reads the header and then checks the recorded permission, which is in `long/handoff.md`.
+- None. Two old rules (the Sprint one and the design one) and the general one are now in one place; a session that picks a Sprint or a design up reads the header and then checks the recorded permission, which is in `details/handoff.md`.

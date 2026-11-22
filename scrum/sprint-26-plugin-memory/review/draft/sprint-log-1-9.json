@@ -1,15 +1,15 @@
 [
   {
     "id": "sprint-log#1",
-    "line": "- **sprint-folder** One branch and folder per Sprint, scrum/sprint-NN-<suffix>/; the tag has the same name. → long/sprint-stages.md",
+    "line": "- **sprint-folder** One branch and folder per Sprint, scrum/sprint-NN-<suffix>/; the tag has the same name. Read details/sprint.md first.",
     "lines": null,
     "section": "sprint",
-    "long_file": "sprint-stages",
+    "long_file": "sprint",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
     "where_else": null,
-    "note": "'With a separate working copy if wanted' is dropped (optional); the folder layout under scrum/ is in the layers-and-folders long file."
+    "note": "'With a separate working copy if wanted' is dropped (optional); the folder layout under scrum/ is in the folders long file."
   },
   {
     "id": "sprint-log#2",
@@ -47,7 +47,7 @@
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
-    "where_else": "The summary-Sprint exception (several lines of work in one single-line commitment cell), the pointer to the full Definition of Done in section 1.3 and 'leaving out a check does not waive a standard' are in plugins/ideo-scrum/skills/sprint-kernel/conventions/sprint-backlog-template.md (lines 16, 20) and in dod-in-product-log.",
+    "where_else": "The summary-Sprint exception (several lines of work in one single-line commitment cell), the pointer to the full Definition of Done in section 1.3 and 'leaving out a check does not waive a standard' are in plugins/ideo-scrum/template/sprint-backlog-template.md (lines 16, 20) and in dod-in-product-log.",
     "note": "The ideo-kernel fallback sentence is dropped (explanation)."
   },
   {
@@ -64,10 +64,10 @@
   },
   {
     "id": "sprint-log#6",
-    "line": "- **refinement** [sm,po] The Scrum Master leads refinement with the PO; seven steps; the PO says when it is over. → long/sprint-refinement.md",
+    "line": "- **refinement** [sm,po] The Scrum Master leads refinement with the PO; seven steps; the PO says when it is over. Read details/refinement.md first.",
     "lines": null,
     "section": "sprint",
-    "long_file": "sprint-refinement",
+    "long_file": "refinement",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
@@ -78,11 +78,11 @@
     "id": "sprint-log#7",
     "line": null,
     "lines": [
-      "- **how-is-a-plan** [dev] The How is a plan of work items, each done within one session, each with its output and a done test. → long/sprint-stages.md",
+      "- **how-is-a-plan** [dev] The How is a plan of work items, each done in one session, with an output and a done test. Read details/sprint.md first.",
       "- **no-steps** [dev] Keep the How at the level of approach: no steps, no file contents, no polishing; if you can write the steps, do the work."
     ],
     "section": "sprint",
-    "long_file": "sprint-stages",
+    "long_file": "sprint",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
@@ -93,11 +93,11 @@
     "id": "sprint-log#8",
     "line": null,
     "lines": [
-      "- **go-ahead** Build only on the PO's go-ahead, with its date and reach (commit … push); approving a plan is not one. → long/sprint-stages.md",
+      "- **go-ahead** Build only on the PO's go-ahead, with its date and reach (commit … push); approving a plan is not one. Read details/sprint.md first.",
       "- **review-handover** [po,sm] The PO may hand the review of the How, new structures and full texts to the Scrum Master in writing; not the go-ahead."
     ],
     "section": "sprint",
-    "long_file": "sprint-stages",
+    "long_file": "sprint",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],

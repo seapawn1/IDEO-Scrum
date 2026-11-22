@@ -3,8 +3,8 @@
     "id": "design-log#19",
     "line": null,
     "lines": [
-      "- **design-ends** A design ends when the PO says its questions are answered or stops it; the next Review archives it. → long/design-ending.md",
-      "- **design-conclusions** At its end, write the conclusions into the product log and pass them to the Sprint that asked. → long/design-ending.md"
+      "- **design-ends** A design ends when the PO says its questions are answered or stops it; Review archives it. Read details/design-ending.md first.",
+      "- **design-conclusions** At its end, write the conclusions into the product log, pass them to the asking Sprint. Read details/design-ending.md first."
     ],
     "section": "design",
     "long_file": "design-ending",
@@ -47,7 +47,7 @@
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
-    "where_else": "plugins/ideo-scrum/skills/design-kernel/conventions/design-backlog-template.md has the five chapters, one per stage, and says each records what its stage produced, not the steps taken (line 8).",
+    "where_else": "plugins/ideo-scrum/template/design-backlog-template.md has the five chapters, one per stage, and says each records what its stage produced, not the steps taken (line 8).",
     "note": ""
   },
   {
@@ -88,10 +88,10 @@
   },
   {
     "id": "design-log#26",
-    "line": "- **ideate-arrangement** Before Ideate, the PO settles how the round diverges; until then no gathering, sketching or delegating. → long/stage-gates.md",
+    "line": "- **ideate-arrangement** Until the PO settles how Ideate diverges, no gathering, sketching or delegating. Read details/gates.md first.",
     "lines": null,
     "section": "design",
-    "long_file": "stage-gates",
+    "long_file": "gates",
     "merged_into": null,
     "adds_to_target": null,
     "absorbed": [],
