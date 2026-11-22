@@ -19,6 +19,10 @@
 
 - **`commands/supporter.md` 新增**：Claude Code 加载序列 ideo → scrum（3 个技能含 memory，A1）；四个旧入口的「Ask the Product Owner」一条都改成指向约定 14，行 13 把它们迁成指向 Memory 句柄（`ask-the-po` 等）。
 - **DSH**：`dsh/index.js` 角色表 5 个并加 locale，`check_dsh` 8 项。我在副本上做的 A1 改动（`rolePrelude` 预载 ideo、scrum、memory）要按新的 `dsh/index.js` 与 `check_dsh` 重做并重跑，supporter 入口也要预载 memory。
+- **DSH 压缩后重载那句，备两种写法**（秘书实测：DSH 压缩把角色正文换成摘要，要模型自己重载 memory；Master 2026-11-23 定「到时候他定」）：
+  - 写法 A，放 `dsh/index.js` 的 `roleRouting`（在角色正文里，压缩后可能跟着没了）：`The IDEO and Scrum kernels and the Memory are already loaded below, in that order; do not call `skill` again for those, except that after the conversation has been compacted you call `memory` again before going on.`
+  - 写法 B，放 DSH 一直回放的命名上下文（`ctx.systemPrompt.context`，如 `ideo-scrum:memory-reload`，顺序排在 `ideo-scrum:commitments` 之后），有条件的写法，普通会话里不误触发：`If you loaded the `memory` skill in this conversation and the conversation has since been compacted, call `memory` again before going on.`；`check_dsh` 加一项断言（上下文在、文字对、不依赖会话里叫过哪个角色）。
+  - 行 14 的 DSH 验证加一项：压缩后没人问起清单内容时，模型会不会自己重载；A 不稳就换 B（或 A＋B 都放）。
 - **测试装置**：`scripts/stranger_test/driver.py` 在 27 里改了（`carrier_test.py` 在用它），同步后重跑 `carrier_test.py selftest`。
 - **检查脚本与文档**：`check.py`、`check_docs.py`、glossary、quick-start、README 都被改过，行 13 用同步后的文件重新生成 `refs_inventory.py` 与 `ref_migration_table.py`。
 
