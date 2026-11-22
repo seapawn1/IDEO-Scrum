@@ -494,6 +494,7 @@ def cmd_selftest(a) -> int:
 
 
 def main(argv: list[str]) -> int:
+    global TARGET_CHARS
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("selftest")
@@ -502,6 +503,7 @@ def main(argv: list[str]) -> int:
         p.add_argument("--out", required=True)
         p.add_argument("--parallel", type=int, default=5)
         p.add_argument("--runs", type=int, default=20)
+        p.add_argument("--chars", type=int, default=TARGET_CHARS, help="size of the stand-in Memory in characters (the default is the committed criteria's)")
     p = sub.add_parser("run")
     p.add_argument("--out", required=True)
     p.add_argument("--scenario", choices=sorted(SCENARIOS), required=True)
@@ -509,7 +511,10 @@ def main(argv: list[str]) -> int:
     p.add_argument("--role", default="developer")
     p.add_argument("--n", type=int, default=3)
     p.add_argument("--parallel", type=int, default=4)
+    p.add_argument("--chars", type=int, default=TARGET_CHARS, help="size of the stand-in Memory in characters (the default is the committed criteria's)")
     a = ap.parse_args(argv)
+    if getattr(a, "chars", None):
+        TARGET_CHARS = a.chars
     if a.cmd == "selftest":
         return cmd_selftest(a)
     if a.cmd == "build":
