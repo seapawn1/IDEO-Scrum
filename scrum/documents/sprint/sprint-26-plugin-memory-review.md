@@ -147,7 +147,7 @@
 1. 日志归档：完整日志压缩为 `scrum/documents/sprint/sprint-26-plugin-memory.md`；`scrum/sprint-26-plugin-memory/SprintBacklog.md` 删除（全文在 `331fc49`）。
 2. 产品日志：PBI-51、92–97 ✓ 并移到 3.2 的 Sprint 26 行（附日期）；PBI-98 留 3.1 为部分完成；登记 PBI-101、102、103；PBI-51、95、97 的备注更新。
 3. 总表 `scrum/documents/sprint-roadmap.md`：记 26 收官与 A 的决定。
-4. 版本 0.7.0：`plugin.json` 与 `package.json` 同号；README 首行升到 v0.7.0；0.7.0 的实机核对行留空，推送并更新本机后补（README 与 `docs/maintaining` 中英）。
+4. 版本 0.7.0：`plugin.json` 与 `package.json` 同号；README 首行升到 v0.7.0；0.7.0 的核对：Claude Code 上 0.6.3 → 0.7.0 已验（2026-11-23，见 `docs/maintaining`），6.0.3 → 0.7.0 未核，DSH 待核。
 5. CHANGELOG：Sprint 26 条目写在 `## [Unreleased]` 顶部，没有立 `[0.7.0]` 标题。`docs/maintaining.md` 的规矩是版本号升了不等于发布，标题在推送、打 tag 时再立（待 Master 定）。
 6. Retro 候选不进仓：`S:\IDEO-Scrum-Archives\sprint-26-plugin-memory\retro-candidates.md`。Retro 只写记忆（`closing.md` 第 2 步：不为凑提交建 Retro 文件）；Master 挑中的，由 Developer 在那个文件里标出。
 7. 检查：收官日志第 5.3 节全部通过。

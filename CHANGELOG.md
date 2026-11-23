@@ -2,7 +2,7 @@
 
 What changed in each release of IDEO-Scrum, newest first. Every release is a git tag named `vX.Y.Z`; the 1.x line is the tag `v1`. To upgrade, see the [README](README.md).
 
-## [Unreleased]
+## [0.7.0] — 2026-11-23
 
 - **Memory**: the plugin's conventions are now one Memory skill, `skills/memory/`: a checklist in `SKILL.md` (103 lines, one rule per line) and 15 detail files in `details/` for the rules that need more room. Every role loads it last. The five old convention files (`overview.md`, `product-log.md`, `sprint-log.md`, `design-log.md`, `ideo-log.md`) are deleted; the board's long file, `board/board-log.md`, stays with the board.
 - **Roles and DSH**: the five role commands load `ideo-scrum:memory` after the kernels, and a subagent is told to load the kernels and Memory first. DSH preloads Memory and, after a compaction, calls it again through its named context.
