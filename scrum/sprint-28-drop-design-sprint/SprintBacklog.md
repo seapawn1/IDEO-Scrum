@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 28 (drop-design-sprint)
 
 > Started: 2026-11-24 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: sprint-28-drop-design-sprint | Product Owner: SeaPawn | Scrum Master: lead | Developer: sprint-28-dev
-> Now: Increment — 工作项 #1–#5 已全部完成并通过静态自测（2026-11-24），内容改动已提交冲刺分支（未升号，仍 0.7.0），待 Master 进入 #6 审阅与全新 Codex 对抗审查
+> Now: Increment — 工作项 `#6`（Codex 对抗审查修订 + PO 指示清理 `scrum/sprint-26-plugin-memory/`）已完成修订、复测并提交冲刺分支（未升号，仍 `0.7.0`），待 Master 复核并勾选 `#6` 后进入 `#7`
 > Waiting for PO: None（PO 2026-11-24 全流程放权；遇阻塞、Test 未过或涉底线事项立即回报）
 > How to write this log: the Memory's *Running a Sprint* section (the memory skill's `SKILL.md`).
 > Keep every heading, even the ones filled later; add none. Work remarks go in chapter 4, Increment notes; an optional explanation of the commitment may follow its table (Memory `templates-record-outputs`, `goal-fixed`, `commitment-table`).
@@ -72,7 +72,7 @@
    - **PBI-104 粒度**：§2.1 保持 PBI-104/105/106 三条不强拆，在 §3 How 内把 PBI-104 切分为若干单会话工作块推进。
 5. **Test 方法、模型与冻结口径（Test 前提交冻结）**：
    - 结构与双宿主：`claude plugin validate --strict plugins/ideo-scrum`、`plugin-validator`（Haiku，由 Master 派全新子代理）、`node --test scripts/check_dsh.mjs`；DSH 实装与 4 角色入口通过 **DSH 网页端（侧边栏浏览器）** 直接验证。
-   - 看板、文档与迁移：`board_check` 全部自测＋用本仓真实日志生成离线 `ScrumBoard.html` 核验（兼出新版 README 双色截图）；`check_docs.py` 无死链；全仓旧路径／旧称法 grep 清零（**明确放行清单**：`scrum/documents/`、`CHANGELOG.md` 历史条目、`scrum/sprint-26-plugin-memory/`、`scrum/ProductBacklog.md` 历史行与 PBI-104 备注、`scrum/sprint-28-drop-design-sprint/SprintBacklog.md` 本期日志自身，以及 `ideo-kernel/` 内 d.school 原文摘录的 5 处普通英文词 `designer`）。
+   - 看板、文档与迁移：`board_check` 全部自测＋用本仓真实日志生成离线 `ScrumBoard.html` 核验（兼出新版 README 双色截图）；`check_docs.py` 无死链；全仓旧路径／旧称法 grep 清零（**明确放行清单**：`scrum/documents/`、`CHANGELOG.md` 历史条目、`scrum/ProductBacklog.md` 历史行与 PBI-104 备注、`scrum/sprint-28-drop-design-sprint/SprintBacklog.md` 本期日志自身，以及 `ideo-kernel/` 内 d.school 原文摘录的 5 处普通英文词 `designer`）。
    - 触发与边界回归：Claude Code 触发与关键边界测试直接使用当前已配好的 `claude` 命令跑（保留原 Q11 检验旧说法能干净命中 `ideo-kernel`，另验其余内核不回退、`How` 放开后仍守住 `go-ahead`、原型不进 Increment）；不重跑整套陌生人大测试（PBI-63）和 Memory 效果实验（留给 PBI-101）。
    - 版权与署名：`ATTRIBUTION.md` 与插件目录内 Knapp《Sprint》全版权摘录清零。
 
@@ -81,7 +81,7 @@
 
 ## 3. How
 
-<!-- The Developer writes this chapter as a plan for making the selected items, short and not in detail (Memory `how-is-a-plan`, `no-steps`): the work items in order, each with its output and how to tell it is done; the key choices and why; the risks and open points. The last line is the go-ahead (Memory `go-ahead`, `review-handover`). -->
+<!-- The Developer writes this chapter as a full solution plan for making the selected items (Memory `how-is-a-plan`): expand architecture, tradeoffs, interfaces, and steps to the depth the work needs. When multiple routes or design tradeoffs exist, treat How as IDEO Ideate — read `IDEO-modes/ideate.md` in the `ideo-kernel` skill and diverge before converging (Memory `diverge-first`, `isolated-sketches`); skip ceremony for straightforward changes. Keep the `# | Work item | Output | Done when` table below (each item done within one session, prefixed `✓ <date>` on completion), followed by Key choices, Risks and open points, and the go-ahead line at the end (Memory `go-ahead`, `review-handover`, `mark-done`). -->
 
 | # | Work item | Output | Done when |
 | --- | --- | --- | --- |
@@ -168,6 +168,26 @@ Go-ahead: 2026-11-24，PO SeaPawn 正式批准第 3 章 How 方案（含 `How �
 - **`#4`（`105-a`）**：更新 `board/board-log.md`（顶部补纯 Scrum 透明度声明）、`board/scrum-board-template.html`（彻底移除 `--design`、`designCard`、`ideoLines`）、`scripts/board_check/check.py`（移除设计卡与 IDEO 状态机；`work_item_table()` 改为按表头识别第 3 章含 `Work item`/`工作项` 与 `Done when`/`完成条件` 的 4 列表，跳过方案对比表、无表返回 `[]`）与 `fixtures/acme/scrum/ProductBacklog.md`；删除 `prepare_review.py`、`fixtures/review-expectations.json`、`fixtures/acme/scrum/{design-*,ideo-delta}/`。实测：`board_check/check.py selftest` 39/39 通过；用本仓真实日志生成 `scrum/ScrumBoard.html`（已 `.gitignore` 不入库）通过 `check --render`（`pbi: 10, nodes: 1, cards: 2, fail: false`）。
 - **`#5`（`104-d + 105-b + 106-b`）**：更新 `ATTRIBUTION.md`（清零 Knapp 第 4 节与 `Simon & Schuster`）、中英 `README`（与 `departures.md` 6 条逐字对齐，版本号仍守 `0.7.0`）、`docs/{quick-start,maintaining,project-agents}*.md`、`docs/glossary.md`（删 7 设计冲刺词条）、`scripts/check_docs.py`、`AGENTS.md`（仅改 PO 授权的第 13/31/45 行，未动 `CLAUDE.md`）；用 Edge 无头模式按本仓新版纯 Scrum 看板重截 `docs/images/board-overview-light.png` 与 `docs/images/board-overview.png` 并肉眼复核无设计卡。实测：`check_docs.py` 9 篇 188 链接 0 错，`check_docs.py --selftest` 17/17 通过，`npm pack --dry-run --json --ignore-scripts` 91 文件且 0 旧设计资产，全仓 grep 除 §2.2 放行清单及测试负例与 SGEP 原文文献 `[20]` 外命中 **0**。
 - **红线守卫**：未改版本号（仍 `0.7.0`）、未改 `CHANGELOG.md`、未改 `CLAUDE.md`、未改 `scrum/ProductBacklog.md`、未 merge/tag/push。下一步交 Master 进入 `#6` 审阅与全新 Codex 对抗审查。
+
+### 2026-11-24 `#6` 审阅修订与遗留清理记录（`sprint-28-dev`）
+
+- **PO 清理遗留目录指示（Memory `po-word-relayed`）**：
+  - `PO (via Supporter, 2026-11-24 03:47, S:\SeaPawn Supporter 会话 session-bc74018b): 「那肯定是删掉啊，直接很奇怪啊，为什么不删呢？」` —— Master 决定在 Sprint 28 `#6` 顺手删除 `scrum/sprint-26-plugin-memory/` 并同步取消放行清单豁免。
+  - 已彻底删除整个 `scrum/sprint-26-plugin-memory/`（110 个文件，含 `memory-draft/`、`review/`、`scripts/`；Sprint 26 已归档在 `scrum/documents/sprint/sprint-26-plugin-memory*.md`），并同步从本日志 §2.2 第 5 点全仓 grep 放行清单中移除 `scrum/sprint-26-plugin-memory/`。
+- **Codex 对抗审查（`codex-s28-review`）采纳项逐条处置**：
+  1. **`[高-1 + 中-1 + 低-3]` `plugins/ideo-scrum/hooks/commitments.sh`**：`find_root_set` 逐级拒绝 `$d/scrum` 与 `$d/scrum/ProductBacklog.md` 为 symlink，未命中且 `[ -e "$d/.git" ] || [ -L "$d/.git" ]` 时立即 `return 1` 止步不越界；开放冲刺循环逐级拒绝冲刺目录与 `SprintBacklog.md` 为 symlink；`read` 去掉 `rest` 以保留承诺正文中的真实 tab；保持纯 LF、POSIX `sh`、不用 `find`。经 `E:\GIT\Git\bin\sh.exe` 全用例实测通过（单冲刺、多冲刺、忽略 `design-*/`、嵌套 `.git` 目录与 `.git` 文件均止步、含 tab 承诺原文保真、Windows 原生 symlink 四类拦截全过）。
+  2. **`[高-2]` `scrum/sprint-28-drop-design-sprint/SprintBacklog.md:84`**：已将 §3 残留 `short and not in detail` / `no-steps` 的旧模板 HTML 注释替换为 `plugins/ideo-scrum/template/sprint-backlog-template.md:37` 现行注释。
+  3. **`[中-2/3/4]` `scripts/board_check/check.py`**：新增 `split_table_row()` 供 `parse_table_rows()` 与 `table_after()` 共用，按未转义管道符拆列并还原 `\|` 为 `|`；`work_item_table()` 第 3 章起点收紧为 `^##\s*3\.`，并按表头动态定位 `#` 列索引 `id_idx`；在 `selftest()` 补齐转义 `\|`、非默认列序、`### 3.` 子标题干扰回归用例（自测 39 → 43 全过）。
+  4. **`[中-5]` `plugins/ideo-scrum/skills/memory/details/flow-maps.md:31-34`**：全流程图改为从 `IDEO` 分别虚线连向 `A` 与 Sprint 五阶段 `S1`–`S5`，与同文件 Sprint 图及五阶段对照表一致。
+  5. **`[中-6]` `plugins/ideo-scrum/commands/developer.md:34`**：将 `IdeoBacklog.md or the Sprint log` 改为 `IdeoBacklog.md or the log served (the Sprint or product log)`。
+  6. **`[低-2]` `scripts/check_docs.py:207-212`**：Departures 表校验收紧为同时检测未知行、重复行、行数差及顺序错位（保证 `got != departures` 必报错），并在 `--selftest` 补齐换序与重复行用例（自测 17 → 19 全过）。
+  7. **`[低-4]` `plugins/ideo-scrum/skills/ideo-kernel/SKILL.md:25-29`**：将 4 条独立纪律列表项与 4 个句柄（`diverge-first`、`isolated-sketches`、`prototype-not-increment`、`keep-test-evidence`）拆清一一对应，`Optional Empathize/Define prompt` 移出列表作为下方独立一句。
+  8. **`[低-5]` `ATTRIBUTION.md:6-8`**：澄清第 8 行为不含任何**未授权商业书籍**全文或原始出版物，第三方内容均为遵循对应公开许可（CC BY-SA / CC BY-NC-SA）的署名全文或方法摘录（同步将第 6 行小标由「第三方摘录」改作「第三方内容」保持前后一致）。
+- **Master 明确不采纳的 3 条 Codex 意见（未改对应文件）**：
+  1. `docs/maintaining*.md:37`「五个角色」：系 2026-11-23 对 `0.7.0` 的历史实测记录（`0.7.0` 确为 5 角色），不可改写历史证据；现行架构第 15 行已是 4 角色。
+  2. `plugins/ideo-scrum/template/sprint-backlog-template.md:37`（`IDEO-modes/ideate.md`）：按 Sprint 17 规矩，模板复制到项目 `scrum/sprint-NN-*/` 后无法解析插件内相对 `../` 路径，故保持技能名＋包内相对路径写法。
+  3. `README*.md:116`：陈述 Claude Code 宽泛提示下的已知宿主实测限制（`a known limitation`），与触发契约不冲突，保留。
+- **状态说明**：本修订提交仍守版本号 `0.7.0`、未碰 `CHANGELOG.md` / `CLAUDE.md` / `scrum/ProductBacklog.md`、`AGENTS.md` 仍仅改 PO 授权第 13/31/45 行；工作项 `#6` 暂不打 `✓`，交 Master 复核确认。
 
 ## 5. Test
 

@@ -28,10 +28,12 @@ flowchart TD
     SH --> V
     SM -- "what only the PO decides (ask-the-po)" --> SU
     SU -- "asks the PO in one go; carries answers back (answers-back)" --> PO
-    IDEO -. "Empathize / Define on blank page or unclear goal" .-> A
-    IDEO -. "Empathize / Define / Ideate / Prototype / Test on demand" .-> S2
+    IDEO -. "Empathize / Define (blank page or unclear goal)" .-> A
+    IDEO -. "Empathize (unclear value or users)" .-> S1
+    IDEO -. "Define (POV / HMW in refinement)" .-> S2
     IDEO -. "Ideate (diverge-first, isolated-sketches)" .-> S3
-    IDEO -. "Prototype (never in Increment) & Test (keep-test-evidence)" .-> S4
+    IDEO -. "Prototype (prototype-not-increment)" .-> S4
+    IDEO -. "Test (user checks, keep-test-evidence)" .-> S5
     V --> E["End: Sprint Goal met, Increment delivered, Product Goal one step closer"]
 ```
 

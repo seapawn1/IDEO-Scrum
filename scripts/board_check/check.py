@@ -137,8 +137,17 @@ def now_line(text):
     return m.group(1).strip() if m else ""
 
 
+def split_table_row(line):
+    s = line.strip()
+    if s.startswith("|"):
+        s = s[1:]
+    if re.search(r"(?<!\\)\|$", s):
+        s = s[:-1]
+    return [c.replace(r"\|", "|").strip() for c in re.split(r"(?<!\\)\|", s)]
+
+
 def parse_table_rows(block_lines):
-    return [[c.strip() for c in ln.strip().strip("|").split("|")] for ln in block_lines]
+    return [split_table_row(ln) for ln in block_lines]
 
 
 def table_after(text, heading_re):
@@ -148,7 +157,7 @@ def table_after(text, heading_re):
             rows = []
             for nxt in lines[i + 1:]:
                 if nxt.startswith("|"):
-                    rows.append([c.strip() for c in nxt.strip().strip("|").split("|")])
+                    rows.append(split_table_row(nxt))
                 elif rows:
                     break
                 elif nxt.startswith("#"):
@@ -166,7 +175,7 @@ def work_item_table(text):
     lines = text.split("\n")
     start_idx = None
     for i, line in enumerate(lines):
-        if re.match(r"^#{2,3}\s*3\.", line):
+        if re.match(r"^##\s*3\.", line):
             start_idx = i + 1
             break
     if start_idx is None:
@@ -202,15 +211,15 @@ def work_item_table(text):
         if len(header) < 4:
             continue
         if any(WORK_ITEM_COL_RE.search(c) for c in header) and any(DONE_WHEN_COL_RE.search(c) for c in header):
-            # Locate column indices defensively (defaults to 0, 1, 3 for standard `# | Work item | Output | Done when`)
+            id_idx = next((idx for idx, c in enumerate(header) if c.strip() == "#"), 0)
             wi_idx = next((idx for idx, c in enumerate(header) if WORK_ITEM_COL_RE.search(c)), 1)
             dw_idx = next((idx for idx, c in enumerate(header) if DONE_WHEN_COL_RE.search(c)), 3)
             out = []
             for r in rows[2:]:
-                if r and r[0]:
+                if len(r) > id_idx and r[id_idx]:
                     title = r[wi_idx] if len(r) > wi_idx else ""
                     done = len(r) > dw_idx and r[dw_idx].startswith("✓")
-                    out.append((r[0], title, done))
+                    out.append((r[id_idx], title, done))
             return out
     return []
 
@@ -564,6 +573,47 @@ def selftest():
         if s2_blocks != []:
             failures.append("PBI-106 chapter 3 without work-item table expected [], got %r" % s2_blocks)
         check("PBI-106 solution tables in How pass", href, project=how_proj)
+
+        # Codex review regressions: escaped pipe \| in cells, non-default column order, and ### 3. subheading interference.
+        edge_proj = build_fixture("acme", pathlib.Path(tmp) / "edgecase")
+        ep_path = edge_proj / "scrum/ProductBacklog.md"
+        ep_text = ep_path.read_text(encoding="utf-8")
+        # Plant an escaped pipe in a ProductBacklog item title (exercises table_after)
+        ep_path.write_text(ep_text.replace("| PBI-1 | ", "| PBI-1 | A \\| B ", 1), encoding="utf-8")
+        es1_path = edge_proj / "scrum/sprint-01-alpha/SprintBacklog.md"
+        es1_text = es1_path.read_text(encoding="utf-8")
+        # Plant a `### 3.` subheading inside chapter 2 before `## 3. How`, and reorder columns + include \| in `## 3. How`
+        distractor_sub = (
+            "### 3. 备忘干扰项\n\n"
+            "| # | Work item | Output | Done when |\n"
+            "| --- | --- | --- | --- |\n"
+            "| 99 | 误命中子标题 | bad | ✓ 2026-11-24 |\n\n"
+            "## 3. How\n\n"
+            "| Work item | # | Done when | Output |\n"
+            "| --- | --- | --- | --- |\n"
+            "| 改 `a \\| b` 逻辑 | 1 | ✓ 2026-11-24 | `x \\| y` |\n"
+            "| 补测用例 | 2 | 测试通过 | 脚本 |\n\n"
+            "Go-ahead: 2026-11-24\n\n"
+        )
+        es1_path.write_text(
+            re.sub(r"## 3\. How[\s\S]*?(?=## 4\.)", distractor_sub, es1_text),
+            encoding="utf-8",
+        )
+        eref = reference_data(edge_proj, ACME_SUMM)
+        cases += 3
+        epbi1 = next((it for it in eref["items"] if it["id"] == "PBI-1"), None)
+        if not epbi1 or "A | B " not in epbi1["title"] or epbi1["group"] != "sprint":
+            failures.append("escaped pipe in ProductBacklog table_after failed: %r" % epbi1)
+        eblocks = card_data(eref, "sprint-01-alpha")["blocks"]
+        want_eblocks = [
+            {"n": "1", "title": "改 `a | b` 逻辑", "done": True},
+            {"n": "2", "title": "补测用例", "done": False},
+        ]
+        if eblocks != want_eblocks:
+            failures.append("escaped pipe / column order / ### 3. guard failed: got %r, want %r" % (eblocks, want_eblocks))
+        if any(b["n"] == "99" for b in eblocks):
+            failures.append("### 3. subheading interference leaked into work_item_table: %r" % eblocks)
+        check("escaped pipe, non-default column order, and ### 3. guard pass", eref, project=edge_proj)
 
         # Archived sprint logs under scrum/documents/ must not be discovered.
         archived = legacy / "scrum/documents/sprint-99-old"

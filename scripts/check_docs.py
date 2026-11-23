@@ -205,11 +205,16 @@ def check(root: Path) -> dict:
             errors.append(f"README.md: expected one section {DIFFERS!r}")
         else:
             got = [(r[0], r[1]) for r in rows[0]["table"][1:]]
-            for g in got:
-                if g not in departures:
-                    errors.append(f"README.md: row not in the Departures table word for word: {g[0]!r}")
+            unknown = [g for g in got if g not in departures]
+            for g in unknown:
+                errors.append(f"README.md: row not in the Departures table word for word: {g[0]!r}")
+            dups = [g[0] for i, g in enumerate(got) if g in got[:i]]
+            if dups:
+                errors.append(f"README.md: duplicate Departures row(s): {dups!r}")
             if len(got) != len(departures):
                 errors.append(f"README.md: {len(got)} rows, the Departures table has {len(departures)}")
+            elif not unknown and not dups and got != departures:
+                errors.append("README.md: Departures rows are out of order compared to details/departures.md")
 
     # the glossary: five filled cells in every row, and every approved term
     if GLOSSARY in docs:
@@ -270,6 +275,16 @@ def selftest() -> int:
          "table rows"),
         ("an en Departures cell changed", "README.md", "AI works by session, not by day", "AI works by session",
          "not in the Departures table"),
+        ("en Departures rows swapped", "README.md",
+         "| A reviewer is required | A Developer may drift, and a second look catches it |\n"
+         "| No Sprint end date | AI works by session, so the Product Owner watches at checkpoints for a Sprint that drags on |",
+         "| No Sprint end date | AI works by session, so the Product Owner watches at checkpoints for a Sprint that drags on |\n"
+         "| A reviewer is required | A Developer may drift, and a second look catches it |",
+         "out of order"),
+        ("en Departures row duplicated", "README.md",
+         "| No Sprint end date | AI works by session, so the Product Owner watches at checkpoints for a Sprint that drags on |",
+         "| A reviewer is required | A Developer may drift, and a second look catches it |",
+         "duplicate Departures row"),
         ("a stale version", "README.md", "**v", "**v1", "version"),
         ("a dead link", "README.md", "[Glossary](docs/glossary.md)", "[Glossary](docs/nope.md)", "dead link"),
         ("a missing heading", "README.md", "departures.md#departures-from-the-official-guides",

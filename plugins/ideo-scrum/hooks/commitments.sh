@@ -38,14 +38,18 @@ to_slashes() {
 }
 
 # Walk up from $1 until a directory holds scrum/ProductBacklog.md; put it in __root.
+# Stay in the nearest checkout/worktree (.git boundary) and do not follow symlinks.
 find_root_set() {
   to_slashes "$1"
   d=$__path
   i=0
   while [ -n "$d" ] && [ "$i" -lt 64 ]; do
-    if [ -f "$d/scrum/ProductBacklog.md" ]; then
+    if [ -d "$d/scrum" ] && [ ! -L "$d/scrum" ] && [ -f "$d/scrum/ProductBacklog.md" ] && [ ! -L "$d/scrum/ProductBacklog.md" ]; then
       __root=$d
       return 0
+    fi
+    if [ -e "$d/.git" ] || [ -L "$d/.git" ]; then
+      return 1
     fi
     case $d in
       [A-Za-z]:) return 1 ;;
@@ -140,7 +144,8 @@ main() {
   n_sprints=0
   sprint_file=
   for f in "$root"/scrum/sprint-*/SprintBacklog.md; do
-    [ -f "$f" ] || continue
+    __sdir=${f%/*}
+    [ -d "$__sdir" ] && [ ! -L "$__sdir" ] && [ -f "$f" ] && [ ! -L "$f" ] || continue
     n_sprints=$((n_sprints + 1))
     sprint_file=$f
   done
@@ -178,7 +183,7 @@ main() {
     }' "$@")
 
   product_text= goal_text= product_key= goal_key= sprint_text=
-  while IFS='	' read -r cur kind key text rest; do
+  while IFS='	' read -r cur kind key text; do
     case $cur.$kind in
       prod.product) product_text=$text; product_key=$key ;;
       prod.productgoal) goal_text=$text; goal_key=$key ;;

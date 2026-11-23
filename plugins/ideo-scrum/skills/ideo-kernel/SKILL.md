@@ -22,11 +22,13 @@ When to open an IDEO log, the four operational disciplines (diverge first, isola
 
 Design Thinking is a **human-centered approach to innovation** that integrates the needs of people, the possibilities of technology, and the requirements for business success. Originating from IDEO and formalized at Stanford's Hasso Plattner Institute of Design (the d.school, founded by David Kelley), it is an iterative, non-linear methodology for tackling complex, ill-defined problems. Its core ethos is **bias toward action** — learning by doing rather than analysis alone.
 
-**Working disciplines for solo + AI teams.** Four operational rules sit on top of the five modes (Memory `diverge-first`, `isolated-sketches`, `prototype-not-increment`, `keep-test-evidence` in `../memory/details/ideo-ending.md`):
-- **Diverge before converging**: explore multiple ideas with at least two methods (including at least one Ideate method here) before choosing a direction; when genuinely different approaches are wanted, let isolated fresh subagents sketch independently so they do not converge on one example.
-- **Prototypes are for learning, never an Increment**: keep prototypes rough, quick, and disposable — built to learn, never slipped into a formal Increment. While an associated Sprint is using a prototype as reference, keep it there and clean it up at Sprint close; otherwise prototype files may be deleted once the run ends.
-- **Preserve test evidence**: keep who tested, what showed up, and the answers to your questions in `IdeoBacklog.md` (or the log served) and archive them at Sprint Review whether or not the conclusions are built.
-- **Optional Empathize/Define prompt**: when framing a goal or challenge, also ask what failure assumptions could break it and turn each risky assumption into a testable question.
+**Working disciplines for solo + AI teams.** Four operational rules sit on top of the five modes (details in `../memory/details/ideo-ending.md`):
+- **Diverge before converging (`diverge-first`)**: explore multiple ideas with at least two methods (including at least one Ideate method here) before choosing a direction.
+- **Sketch in isolation (`isolated-sketches`)**: when genuinely different approaches are wanted, let isolated fresh subagents sketch independently so they do not converge on one example.
+- **Prototypes are for learning, never an Increment (`prototype-not-increment`)**: keep prototypes rough, quick, and disposable — built to learn, never slipped into a formal Increment. While an associated Sprint is using a prototype as reference, keep it there and clean it up at Sprint close; otherwise prototype files may be deleted once the run ends.
+- **Preserve test evidence (`keep-test-evidence`)**: keep who tested, what showed up, and the answers to your questions in `IdeoBacklog.md` (or the log served) and archive them at Sprint Review whether or not the conclusions are built.
+
+Optional Empathize/Define prompt: when framing a goal or challenge, also ask what failure assumptions could break it and turn each risky assumption into a testable question.
 
 IDEO's five-mode model:
 
