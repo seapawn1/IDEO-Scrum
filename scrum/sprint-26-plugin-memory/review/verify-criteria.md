@@ -62,3 +62,7 @@ B 臂的清单取 `432807e` 里三份 `SKILL.md` 的「Before drafting」段落�
 
 - **看门狗的线**：起初沿用载体测试的 2,000 MB。冒烟之后第一批两个会话在 1,899 MB 被它停掉（Supporter 同时在本机测 DSH，机器空闲内存本来就在 2.5 GB 上下）。这条线在这种状态下会停掉每一次运行，所以改成 1,200 MB（`--watchdog-mb`，默认 1200），并发 2、空闲不到 2.7 GiB 自动降到 1；被停的两个按规矩重跑一次，都跑成了。PO 的话是「直接跑，问题不大」，这条线只防真正的耗尽。
 - **V2 第一轮 0/3 之后改了入口里那一句，开第二轮**：第一轮（入口原句：「Subagents you dispatch load the ideo-kernel, scrum-kernel and memory skills too.」）3 个会话，子代理都没加载 memory，主会话照用户那句「不带规矩、不带背景」原样转交任务；事件流与证据留在 `round1-old-sentence/`（仓外）。照冻结的规矩改写，五个入口里同一句改成「A subagent you dispatch does not get these skills from you: begin its task with a line telling it to load the ideo-kernel, scrum-kernel and memory skills first, even when the task is small or was given to you word for word.」（不写 `ideo-scrum:` 前缀，两个宿主都读得通），第二轮再测 3 个会话，仍只报。**改后的插件树成了 C 臂**：V1、V3、V4、V5 都在改后的树上跑；改前冒烟的那一个 V1 会话一并留在 `round1-old-sentence/`，不计入。
+- **V4 的超时**（两次，都是技术失败，不计行为）：`trig-B-Q2-command-3` 与 `trig-C-Q2-command-2.attempt-1`，都是 600.7 秒到点，流里 12 个事件全是 `api_retry`（上游 502 `server_error`，重试到第 7 次，延迟最长约 38 秒），没有任何工具调用。C 的那次按规矩重跑一次，`trig-C-Q2-command-2` 66 秒过；B 的那次待重跑。
+- **内存**（2026-11-23）：开跑线 2.2 GiB、看门狗 1.2 GB，都照 Master 的定，不降。PO 2026-11-23 说过「直接跑」，是在空闲约 2.8 GiB 时说的；现在空闲 1.3–2.0 GiB，直接跑只会被看门狗停掉，所以开跑线仍设。空闲连续两小时到不了 2.2 GiB，就停下、列剩下的报 Master，由 Master 定继续等还是带缺口收官。
+- **V4 运行到当前**：54 次计划，45 次有效；Q11 直接路径 C 4/6（第 1、2 次只加载 ideo-kernel）、B 4/5（第 4 次同样只加载 ideo-kernel；第 6 次未跑）；Q3 直接两臂都 0/3（改前 432807e 也是 0，不是本期引入的）；9 次未跑，列在对 Master 的回信里。
+- **V2、V3 只报**：V2 子代理改写后 1/3，V3 模型自己叫角色 1/3。Master 定：两项都是 Review 的待研点候选，Review 时列给 PO。

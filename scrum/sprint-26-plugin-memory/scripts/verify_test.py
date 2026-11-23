@@ -235,7 +235,11 @@ def judge_sub(p: dict, canaries: tuple = (MEM_START, MEM_END)) -> dict:
         return {"agent": False, "memory_loaded": False}
     sub = [c for c in p["calls"] if c["parent"] == ag["id"]]
     mem = next((c for c in sub if skill_of(c) == "ideo-scrum:memory"), None)
-    return {"agent": True, "memory_loaded": memory_body_ok(mem, canaries), "delegation_prompt": (ag["input"] or {}).get("prompt"),
+    # the stream does not echo the body of a Skill that a subagent calls (only "Launching skill: ..."), so the evidence is the successful
+    # call; a Read of a file of the Memory's details/ by the subagent is the second sign that it saw the text (calibrated on the first probe)
+    details = [c for c in sub if c["name"] == "Read" and c["ok"] and "/skills/memory/" in ((c["input"] or {}).get("file_path") or "").replace("\\", "/")]
+    return {"agent": True, "memory_loaded": bool(mem and mem["ok"]), "memory_body_visible": memory_body_ok(mem, canaries),
+            "read_details": bool(details), "delegation_prompt": (ag["input"] or {}).get("prompt"),
             "sub_calls": [f"{c['name']}:{skill_of(c) or (c['input'] or {}).get('file_path') or ''}" for c in sub][:12],
             "sub_skills": [skill_of(c) for c in sub if c["name"] == "Skill"], "answer": (ag["text"] or "")[:300]}
 
@@ -436,16 +440,16 @@ def trial_list(group: str, arms: list[str], n: int) -> list[dict]:
         for k in range(1, n + 1):
             t.append({"group": "model", "arm": "C", "key": "developer", "n": k, "messages": MODEL_MESSAGES, "tools": TOOLS_NO_AGENT, "fixture": None})
     elif group == "trig":
-        for arm in arms:
-            for path, qs in (("direct", TRIG_DIRECT), ("command", TRIG_COMMAND)):
-                for q in qs:
-                    for k in range(1, n + 1):
+        for path, qs in (("direct", TRIG_DIRECT), ("command", TRIG_COMMAND)):  # the two arms alternate inside a cell: same hour, same machine state
+            for q in qs:
+                for k in range(1, n + 1):
+                    for arm in arms:
                         msg = TRIG_Q[q] if path == "direct" else f"/ideo-scrum:scrum-master {TRIG_Q[q]}"
                         t.append({"group": "trig", "arm": arm, "key": f"{q}-{path}", "n": k, "messages": [msg], "tools": TOOLS_NO_AGENT, "fixture": None})
     elif group == "s24":
-        for arm in arms:
-            for key in ("G1", "G2", "D1", "R1"):
-                for k in range(1, n + 1):
+        for key in ("G1", "G2", "D1", "R1"):
+            for k in range(1, n + 1):
+                for arm in arms:
                     msgs = [S24_ENTRY, S24_PROMPTS[key]] + ([S24_PROMPTS["G1_FIX"]] if key == "G1" else [])
                     t.append({"group": "s24", "arm": arm, "key": key, "n": k, "messages": msgs, "tools": TOOLS_NO_AGENT, "fixture": S24_FIXTURE[key]})
     else:
@@ -594,6 +598,7 @@ def cmd_run(a) -> int:
             todo.append(t)
     print(f"{len(trials)} trials in the group, {done} already have valid evidence, {len(todo)} to run (parallel {a.parallel})")
     gate = ct.Gate(a.soft_free_mb) if a.soft_free_mb else None
+    gave_up = {"v": False}
     deadline = time.time() + a.max_seconds if a.max_seconds else None
     left: list[str] = []
     stop = threading.Event()
@@ -606,6 +611,23 @@ def cmd_run(a) -> int:
         if WATCHDOG["tripped"]:
             left.append(t["tag"])
             return {"tag": t["tag"], "status": "not started (watchdog)", "seconds": 0}
+        if gave_up["v"]:
+            left.append(t["tag"])
+            return {"tag": t["tag"], "status": "not started (memory)", "seconds": 0}
+        # the start line (Master 2026-11-23): before each trial starts, free memory must be at least --wait-free-mb;
+        # if it stays under for --wait-seconds, nothing more starts and the rest is reported
+        if a.wait_free_mb:
+            t0 = time.time()
+            while ct.free_mb() < a.wait_free_mb:
+                if gave_up["v"] or WATCHDOG["tripped"]:
+                    break
+                if time.time() - t0 > a.wait_seconds:
+                    gave_up["v"] = True
+                    break
+                time.sleep(15)
+            if gave_up["v"]:
+                left.append(t["tag"])
+                return {"tag": t["tag"], "status": "not started (memory)", "seconds": 0}
         if gate:
             gate.enter()
         try:
@@ -625,9 +647,34 @@ def cmd_run(a) -> int:
     if WATCHDOG["tripped"]:
         print(f"[watchdog] tripped at {WATCHDOG['free_mb']} MB; stopped: {WATCHDOG['tags']}; the rest of the batch was not started")
         return 5
+    if gave_up["v"]:
+        print(f"[wait] free memory stayed under {a.wait_free_mb} MB for {a.wait_seconds} s: nothing more started; {len(left)} trials left to report")
+        return 6
     if left:
         print(f"[box] time box reached: {len(left)} trials not started, for the next call")
         return 4
+    return 0
+
+
+def cmd_rejudge(a) -> int:
+    """Read the evidence again from the streams with the current judges (after calibrating how the evidence is read)."""
+    out = pathlib.Path(a.out)
+    n = 0
+    for f in sorted((out / "trials").glob("*/evidence.json")):
+        if ".attempt-" in f.parent.name:
+            continue
+        res = json.loads(f.read_text(encoding="utf-8"))
+        if a.group and res["group"] != a.group:
+            continue
+        trial = {"group": res["group"], "arm": res["arm"], "key": res["key"], "n": res["n"],
+                 "fixture": S24_FIXTURE.get(res["key"]) if res["group"] == "s24" else None}
+        stream = f.parent / "stream.jsonl"
+        if not stream.exists():
+            continue
+        res["evidence"] = judge_trial(trial, out, stream)
+        f.write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
+        n += 1
+    print(f"{n} evidence files read again")
     return 0
 
 
@@ -777,10 +824,16 @@ def main(argv: list[str]) -> int:
     r.add_argument("--max-seconds", type=int, default=0)
     r.add_argument("--soft-free-mb", type=int, default=2765, help="below this the run drops to one session at a time (politeness, not a start condition); 0 = off")
     r.add_argument("--watchdog-mb", type=int, default=WATCHDOG_MB, help="stop the running sessions when free memory is under this twice in a row")
+    r.add_argument("--wait-free-mb", type=int, default=0, help="before starting, wait until free memory is at least this (with --wait-seconds)")
+    r.add_argument("--wait-seconds", type=int, default=480)
     r.add_argument("--skip-done", action="store_true")
     r.add_argument("--retry-limit", type=int, default=1, help="how many times a stopped trial may be run again")
     r.add_argument("--only", default="")
     r.set_defaults(fn=cmd_run)
+    rj = sub.add_parser("rejudge")
+    rj.add_argument("--out", required=True)
+    rj.add_argument("--group", default="")
+    rj.set_defaults(fn=cmd_rejudge)
     rp = sub.add_parser("report")
     rp.add_argument("--out", required=True)
     rp.set_defaults(fn=cmd_report)
