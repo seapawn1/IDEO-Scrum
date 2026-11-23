@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 28 (drop-design-sprint)
 
 > Started: 2026-11-24 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: sprint-28-drop-design-sprint | Product Owner: SeaPawn | Scrum Master: lead | Developer: sprint-28-dev
-> Now: Increment — 工作项 `#6`（Codex 对抗审查修订 + PO 指示清理 `scrum/sprint-26-plugin-memory/`）已完成修订、复测并提交冲刺分支（未升号，仍 `0.7.0`），待 Master 复核并勾选 `#6` 后进入 `#7`
+> Now: Increment — 工作项 `#1`–`#7` 全部完成（含 `0.8.0` Breaking 独立升号提交 `83ed411` 与冻结 Test 判据／脚本独立提交），Increment 已齐备，待 Master 核验后代行放行 Sprint Test
 > Waiting for PO: None（PO 2026-11-24 全流程放权；遇阻塞、Test 未过或涉底线事项立即回报）
 > How to write this log: the Memory's *Running a Sprint* section (the memory skill's `SKILL.md`).
 > Keep every heading, even the ones filled later; add none. Work remarks go in chapter 4, Increment notes; an optional explanation of the commitment may follow its table (Memory `templates-record-outputs`, `goal-fixed`, `commitment-table`).
@@ -90,8 +90,8 @@
 | 3 | 104-c 更新 Hook、DSH 适配与 `check_dsh.mjs` | 更新 `hooks/commitments.sh`、`hooks/hooks.json`、`dsh/index.js`、`dsh/commitments.js`、`dsh/locale/{en,zh}.json`、`scripts/check_dsh.mjs` | ✓ 2026-11-24 `node --test scripts/check_dsh.mjs` 全过（含忽略残余 `design-*/` 负例）；`commitments.sh` 实测单/多冲刺与忽略旧设计日志均退出 0；`claude plugin validate --strict plugins/ideo-scrum` 通过 |
 | 4 | 105-a 重构看板规范、HTML 模板与 `board_check` 校验套件 | 更新 `board/board-log.md`、`board/scrum-board-template.html`、`scripts/board_check/check.py`（表头匹配第 3 章工作项表兼容 PBI-106）与 `fixtures/acme/`；删除 `prepare_review.py`、`fixtures/review-expectations.json`、`design-*` 与 `ideo-delta/` 夹具 | ✓ 2026-11-24 `python -X utf8 -I scripts/board_check/check.py selftest` 全过（含表前方案表、无工作项表、忽略旧 `design-*/` 与 `ideo-*/` 新用例）；用本仓日志生成 `ScrumBoard.html` 通过 `check --render` |
 | 5 | 104-d + 105-b + 106-b 版权清零、中英文档、校验脚本、新版看板截图与 `AGENTS.md` 同步 | 更新 `ATTRIBUTION.md`、`README*.md`、`docs/{quick-start,maintaining,project-agents}*.md`、`docs/glossary.md`、`scripts/check_docs.py`、`AGENTS.md`（仅第 13/31/45 行，不动 `CLAUDE.md`）；用新版纯 Scrum 看板重截替换 `docs/images/board-overview{-light,}.png` | ✓ 2026-11-24 `python -X utf8 -I scripts/check_docs.py` 与 `--selftest` 0 错；全仓旧路径／旧称法／Knapp 版权 grep 除 §2.2 放行清单外命中 0；双色截图不含设计卡且正常显示 |
-| 6 | 104-e 大改约定审阅门禁（Master 审阅 + 全新 Codex 对抗审查）与修订提交 | 完成全部内容改动的 Master 审阅与全新 Codex 对抗审查，逐条闭环修订；提交内容改动（不含改号） | Master 与 Codex 必改项全部闭环，静态验证套件复跑全绿，形成干净的内容改动提交 |
-| 7 | 104-f 升号 `0.8.0`（Breaking）独立提交与冻结 Test 脚本／判据 | 独立提交更新 `plugin.json`、`package.json`、中英 `README` 首行版本与 `CHANGELOG.md`（`## [0.8.0]` 标 Breaking 并附旧 `scrum/design-*/` 迁移说明）；提交冻结触发与边界回归脚本及通过线 | 内容改动与改号严格分提交；`check_dsh.mjs`、`check_docs.py`、`npm pack --dry-run`、`--strict` 全过；Test 判据与脚本已提交冻结，可报 PO 放行 Test |
+| 6 | 104-e 大改约定审阅门禁（Master 审阅 + 全新 Codex 对抗审查）与修订提交 | 完成全部内容改动的 Master 审阅与全新 Codex 对抗审查，逐条闭环修订；提交内容改动（不含改号） | ✓ 2026-11-24 Master 独立复核 `97bbc54` 通过：8 组 Codex 采纳项与 PO 清理 `scrum/sprint-26-plugin-memory/` 全部闭环、静态校验全绿 |
+| 7 | 104-f 升号 `0.8.0`（Breaking）独立提交与冻结 Test 脚本／判据 | 独立提交更新 `plugin.json`、`package.json`、中英 `README` 首行版本与 `CHANGELOG.md`（`## [0.8.0]` 标 Breaking 并附旧 `scrum/design-*/` 迁移说明）；提交冻结触发与边界回归脚本及通过线 | ✓ 2026-11-24 Commit A（`83ed411`）纯 `0.8.0` 升号与 CHANGELOG 全套静态校验全绿；Commit B 冻结 `test-criteria.md` 与 `run_s28_tests.py`（`selftest` 34/34 通过，未提前跑正式测试） |
 
 **方案设计**
 
@@ -188,6 +188,19 @@ Go-ahead: 2026-11-24，PO SeaPawn 正式批准第 3 章 How 方案（含 `How �
   2. `plugins/ideo-scrum/template/sprint-backlog-template.md:37`（`IDEO-modes/ideate.md`）：按 Sprint 17 规矩，模板复制到项目 `scrum/sprint-NN-*/` 后无法解析插件内相对 `../` 路径，故保持技能名＋包内相对路径写法。
   3. `README*.md:116`：陈述 Claude Code 宽泛提示下的已知宿主实测限制（`a known limitation`），与触发契约不冲突，保留。
 - **状态说明**：本修订提交仍守版本号 `0.7.0`、未碰 `CHANGELOG.md` / `CLAUDE.md` / `scrum/ProductBacklog.md`、`AGENTS.md` 仍仅改 PO 授权第 13/31/45 行；工作项 `#6` 暂不打 `✓`，交 Master 复核确认。
+
+### 2026-11-24 `#7` 升号 `0.8.0`（Commit A）与冻结 Test 判据／脚本（Commit B）（`sprint-28-dev`）
+
+- **`#6` Master 独立复核通过**：Master 已完成对 `97bbc54` 的逐文件独立复核，8 组 Codex 采纳项与 PO 指示清理 `scrum/sprint-26-plugin-memory/` 全部通过，授权为 `#6` 打 `✓ 2026-11-24`。
+- **Commit A（`83ed411`，纯 `0.8.0` Breaking 版本升级，不夹带脚本与日志）**：
+  - 改动 7 个文件：`plugins/ideo-scrum/.claude-plugin/plugin.json`、`package.json`、`README.md`（第 5/69 行）、`README.zh-CN.md`（第 5/69 行）、`docs/maintaining.md`（第 45 行）、`docs/maintaining.zh-CN.md`（第 45 行）、`CHANGELOG.md`（新增 `## [0.8.0] — 2026-11-24` Breaking 条目与旧 `scrum/design-*/` 迁移说明）；保留既有 `0.6.3 → 0.7.0` 历史升级记述与 `0.7.0` 历史实测表未动。
+  - 静态验证全绿：`claude plugin validate --strict plugins/ideo-scrum`（exit 0，0 错）、`node --test scripts/check_dsh.mjs`（9/9）、`npm pack --dry-run --json --ignore-scripts`（`@seapawn/ideo-scrum@0.8.0`，91 文件）、`python -X utf8 -I scripts/check_docs.py`（9 篇 188 链接 0 错）与 `--selftest`（19/19）、`python -X utf8 -I scripts/board_check/check.py selftest`（43/43）。
+- **Commit B（冻结 Sprint 28 Test 判据与回归脚本）**：
+  - 新增 [test-criteria.md](test-criteria.md)（对齐 §1.2、§2.2、§3 F 与 `scrum/documents/headless-testing.md`，冻结静态／双宿主、看板／文档／版权、Claude Code 无头 T1/T2/T3 通过线及旧术语肯定／否定子句判定与人工复核规则）；
+  - 新增 [run_s28_tests.py](run_s28_tests.py)（复用 `scripts/stranger_test/driver.py` 白名单隔离、`neutral_parent`、`/context all`、`magpie claude run` 与 `taskkill /T /F` 进程树清理；从 Commit A `83ed411` 经 `git archive` 导出 `0.8.0` 插件核实 `Base directory`；T3 使用 `acceptEdits` 并在 `smoke` 实测可写以避免权限假阳性；支持 `selftest` / `smoke` / `run` / `report`）；
+  - 冻结前仅运行 `python -X utf8 -I scrum/sprint-28-drop-design-sprint/run_s28_tests.py selftest`：**34/34 PASS**（未提前运行正式测试）；
+  - 为 §3 `#6` 与 `#7` 勾选 `✓ 2026-11-24`，确认 `CLAUDE.md` 与 `scrum/ProductBacklog.md` 仍未改动。
+- **阶段状态**：**Increment 已齐备（`#1`–`#7` 全部完成），待 Master 核验后代行放行 Sprint Test。**
 
 ## 5. Test
 
