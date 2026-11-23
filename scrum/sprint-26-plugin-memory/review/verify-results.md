@@ -1,4 +1,4 @@
-# 行 14 验证结果（Sprint 26，Developer 自测；证据在仓外 `S:\IDEO-Scrum-Archives\sprint-26-plugin-memoryerify-14\`）
+# 行 14 验证结果（Sprint 26，Developer 自测；证据在仓外 `S:\IDEO-Scrum-Archives\sprint-26-plugin-memory\verify-14\`）
 
 判据：`review/verify-criteria.md`（先写定提交 `1c1676a`，之后只加运行记录，没改过线）。两个臂：B＝`432807e` 的插件树（`c08f0dfd15`），C＝`054d0c5` 的插件树（`d744b2fc12`）；C 的插件树到收官树只差版本与文档。证据只认事件流。
 
@@ -60,8 +60,10 @@ B、C 各补到 6 次的只有 Q11 直接（C 低于 B 时按冻结规矩补 3 �
 
 **超时**（技术失败，不计行为）：`trig-B-Q2-command-3` 与 `trig-C-Q2-command-2.attempt-1`，都是 600.7 秒到点，流里 12 个事件全是 `api_retry`（上游 502，`server_error`，重试到第 7 次，延迟最长约 38 秒），没有任何工具调用。两次都按规矩重跑一次，都过了（B 第 3 次 98.9 秒，C 第 2 次 66.1 秒）。
 
-## V5 Sprint 24「首稿前读全」：（运行中，见下方补充）
+## V5 Sprint 24「首稿前读全」：B 12/12，C 12/12，24/24 过
 
-## V6 DSH：（Supporter 测完，结果见 Master 转来的消息，待记入）
+题组与次数照旧，改后不比改前差（C ≥ B）。后台跑被系统因内存告急停掉（空闲时），没有部分试次计入；按 Master 指示改为前台分段续跑（`--skip-done`）。逐段记录在仓外 `verify-14\s24-seg*.log`，24 条均为 `pass=True`。
+
+## V6 DSH：秘书会话（Supporter）在本机 DSH 0.2.3-alpha.2 上测完：五个入口各 3 次预载齐全 15/15；压缩后模型先重载 memory 3/3；子代理调了 memory 3/3。逐项与判定见第 4 章「行 14 V1–V4 的结果与偏离」第 ⑦ 条；原始页见 `dsh-test-page.md`、`dsh-verify-page.md`。
 
 ## V7 脚本检查：（收官时在收官树上再跑一遍，结果记入第 4 章）
