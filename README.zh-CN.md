@@ -2,7 +2,7 @@
 
 # IDEO-Scrum
 
-一个面向 Claude Code 和 DeepSeek Harness（DSH）的插件：把 Design Thinking 与 Scrum Sprint 带给你一个人加 AI 做的项目。**v0.7.0**
+一个面向 Claude Code 和 DeepSeek Harness（DSH）的插件：把 Design Thinking 与 Scrum Sprint 带给你一个人加 AI 做的项目。**v0.8.0**
 
 [English](README.md) · [安装](#安装) · [快速上手](docs/quick-start.zh-CN.md) · [词汇表](docs/glossary.md) · [更新记录](CHANGELOG.md)（英文）
 
@@ -66,7 +66,7 @@ Developer：    计划写在冲刺日志第 3 章。你说「放行」之前，�
 
 检查：在终端里运行 `claude plugin list`，里面 `ideo-scrum@ideo-scrum` 显示已启用。
 
-**DeepSeek Harness（DSH `0.2.2-rc.5`）。** 这里的版本号是 DSH 宿主版本，不是 IDEO-Scrum 插件版本（`0.7.0`）。把本仓库克隆到会一直保留的目录。在 DSH 侧栏打开**插件 → 添加插件**，在**包名或地址**里填本仓库根目录（有 `package.json` 的目录）的绝对路径，然后点**安装**。DSH 把 `@seapawn/ideo-scrum` 链接到这个目录，不会复制一份。到你要做的项目目录新开一个 **Standard** 会话。
+**DeepSeek Harness（DSH `0.2.2-rc.5`）。** 这里的版本号是 DSH 宿主版本，不是 IDEO-Scrum 插件版本（`0.8.0`）。把本仓库克隆到会一直保留的目录。在 DSH 侧栏打开**插件 → 添加插件**，在**包名或地址**里填本仓库根目录（有 `package.json` 的目录）的绝对路径，然后点**安装**。DSH 把 `@seapawn/ideo-scrum` 链接到这个目录，不会复制一份。到你要做的项目目录新开一个 **Standard** 会话。
 
 ## 升级
 

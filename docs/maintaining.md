@@ -42,7 +42,7 @@ Moving from `6.0.3` to `0.6.3` lowers the SemVer version number (`6.0.3` > `0.6.
 
 ## Checking a candidate
 
-Keep `plugins/ideo-scrum/.claude-plugin/plugin.json` and [`package.json`](../package.json) on the same candidate version (`0.7.0`), keep both README top lines in sync with [`plugin.json`](../plugins/ideo-scrum/.claude-plugin/plugin.json), keep [`CHANGELOG.md`](../CHANGELOG.md) `## [Unreleased]` separate from published tag history (never rewrite shipped release notes or treat a version bump as a release), commit content changes and version bumps separately, and wait for Product Owner authorization before tagging, merging, or pushing.
+Keep `plugins/ideo-scrum/.claude-plugin/plugin.json` and [`package.json`](../package.json) on the same candidate version (`0.8.0`), keep both README top lines in sync with [`plugin.json`](../plugins/ideo-scrum/.claude-plugin/plugin.json), keep [`CHANGELOG.md`](../CHANGELOG.md) `## [Unreleased]` separate from published tag history (never rewrite shipped release notes or treat a version bump as a release), commit content changes and version bumps separately, and wait for Product Owner authorization before tagging, merging, or pushing.
 
 ```sh
 claude plugin validate --strict plugins/ideo-scrum

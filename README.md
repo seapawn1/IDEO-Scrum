@@ -2,7 +2,7 @@
 
 # IDEO-Scrum
 
-A plugin for Claude Code and DeepSeek Harness (DSH) that brings Design Thinking and Scrum Sprints to a project you build alone with AI. **v0.7.0**
+A plugin for Claude Code and DeepSeek Harness (DSH) that brings Design Thinking and Scrum Sprints to a project you build alone with AI. **v0.8.0**
 
 [中文](README.zh-CN.md) · [Install](#install) · [Quick start](docs/quick-start.md) · [Glossary](docs/glossary.md) · [Changelog](CHANGELOG.md)
 
@@ -66,7 +66,7 @@ A git repository for your project is recommended; the Scrum Master can set one u
 
 To check, run `claude plugin list` in a terminal: it shows `ideo-scrum@ideo-scrum` as enabled.
 
-**DeepSeek Harness (DSH `0.2.2-rc.5`).** The number in these instructions is the DSH host version, not the IDEO-Scrum plugin version (`0.7.0`). Clone this repository to a location you plan to keep. In the DSH sidebar, open **Plugins → Add plugin**. Enter the absolute path to the repository root (the folder with `package.json`) in **Package name or address** and select **Install**. DSH links `@seapawn/ideo-scrum` to that directory rather than copying it. Open a new **Standard** session in the project you want to work on.
+**DeepSeek Harness (DSH `0.2.2-rc.5`).** The number in these instructions is the DSH host version, not the IDEO-Scrum plugin version (`0.8.0`). Clone this repository to a location you plan to keep. In the DSH sidebar, open **Plugins → Add plugin**. Enter the absolute path to the repository root (the folder with `package.json`) in **Package name or address** and select **Install**. DSH links `@seapawn/ideo-scrum` to that directory rather than copying it. Open a new **Standard** session in the project you want to work on.
 
 ## Upgrade
 

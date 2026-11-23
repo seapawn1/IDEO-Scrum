@@ -42,7 +42,7 @@
 
 ## 候选如何核验
 
-保持 `plugins/ideo-scrum/.claude-plugin/plugin.json` 与 [`package.json`](../package.json) 的候选版本号一致（`0.7.0`），中英 README 顶部版本号与 [`plugin.json`](../plugins/ideo-scrum/.claude-plugin/plugin.json) 对齐，[`CHANGELOG.md`](../CHANGELOG.md) 中 `## [Unreleased]` 与已发布历史严格分开（不改已发布历史、不把改号当发布），内容改动与改号分开提交，并在打 tag、合并或推送前取得 PO 明确授权。
+保持 `plugins/ideo-scrum/.claude-plugin/plugin.json` 与 [`package.json`](../package.json) 的候选版本号一致（`0.8.0`），中英 README 顶部版本号与 [`plugin.json`](../plugins/ideo-scrum/.claude-plugin/plugin.json) 对齐，[`CHANGELOG.md`](../CHANGELOG.md) 中 `## [Unreleased]` 与已发布历史严格分开（不改已发布历史、不把改号当发布），内容改动与改号分开提交，并在打 tag、合并或推送前取得 PO 明确授权。
 
 ```sh
 claude plugin validate --strict plugins/ideo-scrum
