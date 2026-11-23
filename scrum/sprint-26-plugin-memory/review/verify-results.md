@@ -26,7 +26,7 @@
 消息「Please call the Skill tool now with the skill `ideo-scrum:developer`, then reply with the single word ready.」，3 个会话。1 个：模型叫了 developer，接着加载了 ideo、scrum、sprint、memory，Memory 正文到达，且在回复之前。2 个：模型叫了 developer 后直接回 ready，没有加载内核，也没有 Memory。
 - 只报；Review 的待研点候选。
 
-## V4 触发（B、C 各 54 次中的 54 次有效）
+## V4 触发（B、C 各 27 次，合计 54 次，全部有效）
 
 每格判据：C 的过数 ≥ B 的过数（第 28 行）。
 
@@ -64,6 +64,6 @@ B、C 各补到 6 次的只有 Q11 直接（C 低于 B 时按冻结规矩补 3 �
 
 题组与次数照旧，改后不比改前差（C ≥ B）。后台跑被系统因内存告急停掉（空闲时），没有部分试次计入；按 Master 指示改为前台分段续跑（`--skip-done`）。逐段记录在仓外 `verify-14\s24-seg*.log`，24 条均为 `pass=True`。
 
-## V6 DSH：秘书会话（Supporter）在本机 DSH 0.2.3-alpha.2 上测完：五个入口各 3 次预载齐全 15/15；压缩后模型先重载 memory 3/3；子代理调了 memory 3/3。逐项与判定见第 4 章「行 14 V1–V4 的结果与偏离」第 ⑦ 条；原始页见 `dsh-test-page.md`、`dsh-verify-page.md`。
+## V6 DSH：秘书会话（Supporter）在本机 DSH 0.2.3-alpha.2 上测完：五个入口各 3 次预载齐全 15/15；压缩后模型先重载 memory 3/3；子代理调了 memory 3/3。逐项与判定全文在 `331fc49` 的第 4 章「行 14 V1–V4 的结果与偏离」第 ⑦ 条；原始页见 `dsh-test-page.md`、`dsh-verify-page.md`。
 
 ## V7 脚本检查：收官树上全部通过（check_dsh 9/9；validate --strict 通过；check_docs 195 链接、0 错误，selftest 通过；board_check selftest 通过；check_paths、check_old_relay、clause_coverage（open 0）、refs_inventory 通过）。记录在收官日志第 5.3 节。

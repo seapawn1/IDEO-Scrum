@@ -16,7 +16,7 @@
 
 ## 1.1 决定
 
-- 2026-11-23，PO 在 Master 会话说「你决定即可」；Master 定 A：Sprint 26 收官，Outcome 如实写「未证」。
+- 2026-11-23，PO 直接对 Master 说「你决定即可」，委托 Master 决定；Master 定 A：Sprint 26 收官，Outcome 如实写「未证」。
 - 理由：对照臂不干净。M 臂的旧约定文件仍可读（P12-M-1 引用了约定 19 与 5），探针测的是「会不会去读规矩」，这一轮测不出 Memory 的增益。
 - Memory 照常落地：结构、角色加载、DSH 预载与压缩后重调都已验过。
 - 重新设计效果测试另开 PBI-101（对照臂隔离规矩文件；先在改前版本上预演；判据先冻结再测）。原 PBI-98 的 Outcome 验收移到 PBI-101；产品日志里 PBI-98 留为「部分完成」。
@@ -56,7 +56,7 @@
 | 项 | 结果 | 说明 |
 | --- | --- | --- |
 | V1 角色入口（Claude Code，C） | 15/15 过 | 五个入口各 3 次新会话，头几个工具调用按序加载内核，Memory 正文到达，之前没有别的工具调用 |
-| V2 子代理（只报，C） | 原句 0/3；改写后 主数 1/3、严格 0/3 | 改写后那句见第 4 章；主数按「Skill 调用成功」，严格按「正文到达」（偏离 1） |
+| V2 子代理（只报，C） | 原句 0/3；改写后 主数 1/3、严格 0/3 | 改写后那句见 `331fc49` 第 4 章；主数按「Skill 调用成功」，严格按「正文到达」（偏离 1） |
 | V3 模型自己叫角色（只报，C） | 1/3 | 1 次加载了内核与 memory；2 次只叫了角色就回 ready |
 | V4 触发（B、C 两臂共 54 次，每臂 27 次，全部有效） | 八格中七格过 | Q2 直接 3/3 对 3/3；Q2 命令 3/3 对 3/3；Q3 直接 0/3 对 0/3（持平，改前也是 0）；Q3 命令 3/3 对 3/3；Q4 直接 3/3 对 3/3；Q9 直接 3/3 对 3/3；Q10 直接 3/3 对 3/3；**Q11 直接 B 5/6 对 C 4/6，没过**（偏离 2） |
 | V5 Sprint 24「首稿前读全」 | B 12/12，C 12/12，24/24 过 | 改后不比改前差；后台跑被系统停，改前台分段续跑（偏离 5） |
@@ -80,7 +80,7 @@
 - `node --test scripts/check_dsh.mjs`：9/9（落盘后）。
 - `check_docs.py`：0 错误，195 个链接；`--selftest` 17 项过。`board_check` 自测 147 项过。
 - `check_paths.py --plugin` 过；`check_old_relay.py` 对 `plugins/`、`dsh/`、`docs/`、`README*` 零命中；`override` 作约定词在 `plugins/` 为零。
-- `refs_inventory.py`：有意保留清单 15 处（CHANGELOG 3、board_check 4、check_docs 6 与 departures.md 1、check_dsh 1），清单外 0。
+- `refs_inventory.py`：有意保留清单 20 处（CHANGELOG 8、board_check 4、check_docs 6、departures.md 1、check_dsh 1），清单外 0；迁移时是 15 处，收官时 CHANGELOG 新增 5 处引用旧约定作为历史。
 - 描述长度（上限 1024 字符）：design 1006、ideo 1009、memory 353、scrum 967、sprint 942。描述改动后的触发测试见 V4。
 
 ## 5. 偏离账（Master 定，Review 里写）
@@ -99,10 +99,10 @@
 ## 6. 限度
 
 - **对照臂不干净**（4.2）：探针测的是读规矩的行为，不是 Memory 的效果。Outcome 因此不能判。
-- **探针大多是常识题**：P1–P8 与 P12 在对照臂 3/3。这些题不读规矩也答对，本身无法区分两臂。
+- **探针的成绩**：对照臂 P1–P8、P12 守规矩 3/3，但对照臂能读到规矩文件（P12 答案引了约定 19），所以这些成绩不能说明「不读规矩也答对」，也不能区分两臂。
 - **样本小**：每探针 3 次，只能看见明显增益，给不出效应量。
 - **判卷对转折词一票否决**：P13-M-1 只因「不过」不守；P10-M-3 因「但」，另因禁词「1 到 N」（不在「不是／不要／别／不」之后）不守，去掉「但」仍不守。
-- **触发测试**：V4 沿用老题组；设计类题的触发需要更多样本（PBI 待登记）。
+- **触发测试**：V4 沿用老题组；设计类题的触发需要更多样本（已登记 PBI-103）。
 - **DSH**：压缩后只留摘要，靠命名上下文回放与重调；DSH 技能清单把四个内核的描述截到 500 字符（既有问题，Master 另登记）。
 - **实测模型**：探路与载体测都用 magpie 便宜模型，不是 Haiku，也不是 Sonnet。
 
@@ -112,7 +112,7 @@
 2. Q11 直接的读法（字面 vs 读到约定文件就算）。
 3. V2 取证口径（两个数都报；Master 定认哪个）。
 4. V3 只报 1/3（模型自己叫角色）。
-5. Q3 直接 0/0 两臂（老缺口，Sprint 17 题 3，与本期无关）。
+5. Q3 直接 0/3 两臂（老缺口，Sprint 17 题 3，与本期无关）。
 6. P12、P13 的细则专属检查：本次 0 入选，所以没有入选的细则专属探针。
 7. 探针没在改前版本上预演（Retro 候选）。
 8. `AGENTS.md` 其他「大改约定」「约定攒着集中改」的字面说法：Master 列为待研，是否改字面要 PO 亲口点头。
@@ -126,7 +126,7 @@
 - 探路 33 条，入选 0 条，N=0；过线公式 N<6 时「未证，不折算」。
 - 正式 Test（60 次）未开，Master 2026-11-23 指示：先别开，发 Master，由 Master 报 PO 决定。
 - 本期不能说 Memory 有或没有让 AI「不用每次手动说明」地守规矩：探针的对照臂能读到旧约定，证据不足以分开两臂。
-- 待 PO 定的 A／B（两个选项内容待 Master 转述）。
+- A 已定（PO 2026-11-23 委托，Master 定 A）；B 未采用。
 
 ## 9. PO 在 Review 时看的
 
@@ -139,7 +139,7 @@
 | 验证表 | `review/verify-results.md`；收官日志第 5 章 |
 | Outcome | `review/outcome-criteria.md`；仓外 `S:\IDEO-Scrum-Archives\sprint-26-plugin-memory\outcome-15\`（33 条答案） |
 
-已定：(a) Outcome 按 A 收官（PO「你决定即可」，Master 定）。
+已定：(a) Outcome 按 A 收官（PO 直接对 Master 说「你决定即可」，委托 Master 决定；Master 定 A）。
 仍待：(b) 审阅记录归档位置（`review/`、`scripts/`、`memory-draft/` 仍在 `scrum/sprint-26-plugin-memory/`，按 AGENTS 由 Master 与 PO 定）；(c) `AGENTS.md` 其他说法要不要改字面（需 PO 亲口点头）；(d) 版本 0.7.0 与推送、更新本机（PO 2026-11-23 已授权，由 Master 做）。
 
 ## 10. 收官记录（本提交做了什么；合入、打 tag、推送、更新由 Master 做）
@@ -152,3 +152,4 @@
 6. Retro 候选不进仓：`S:\IDEO-Scrum-Archives\sprint-26-plugin-memory\retro-candidates.md`。Retro 只写记忆（`closing.md` 第 2 步：不为凑提交建 Retro 文件）；Master 挑中的，由 Developer 在那个文件里标出。
 7. 检查：收官日志第 5.3 节全部通过。
 8. 待 Master：审；Codex 审；分支已包含 main（`main` 是分支的祖先，无需合并提交）；打 tag `sprint-26-plugin-memory` 与 `v0.7.0`；推送；更新本机 DSH 与 Claude Code 插件；关分支与 worktree。
+9. Codex 审 4c6a200（只读）：8 条处置，逐条成立并已修订；修订见紧随 4c6a200 的那个修订提交（不 amend）。
