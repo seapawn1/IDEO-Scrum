@@ -1,7 +1,7 @@
 # Product Backlog — <product>
 
 > Product Owner: <name> | Started: <date>
-> How to write this log: the Memory's *The product log* section (the memory skill's `SKILL.md`). How it fits with sprint and design logs: `details/flow-maps.md` in the same skill.
+> How to write this log: the Memory's *The product log* section (the memory skill's `SKILL.md`). How it fits with sprint and IDEO logs: `details/flow-maps.md` in the same skill.
 
 ## 1. Product
 

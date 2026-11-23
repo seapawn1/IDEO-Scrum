@@ -10,7 +10,7 @@
 | DSH 分发包 | `dsh/`、`package.json`、`cordis.patch.yml` | 从仓库根目录安装的 bundle；与 Claude 版共用方法论正文 |
 | 工作记录 | `scrum/` | 用本插件的方法论开发本插件的过程记录 |
 
-现状看 `scrum/ProductBacklog.md` 与 `git log`；开着的冲刺、设计看 `scrum/sprint-*/`、`scrum/design-*/`。已完成的冲刺与设计不回改（事实错误除外）。
+现状看 `scrum/ProductBacklog.md` 与 `git log`；开着的冲刺与 IDEO 研究看 `scrum/sprint-*/`、`scrum/ideo-*/`。已完成的冲刺与历史归档不回改（事实错误除外）。
 
 ## 本仓库的规矩
 
@@ -28,7 +28,7 @@
 ## 组件描述
 
 - `description` 是触发条件，不是自我介绍：`Use when...` + 具体场景词；同类组件要有区分度。
-- scrum、sprint、design 三个内核召唤才加载（角色命令叫、用户点名、建改本插件日志）；泛问通用词不加载；ideo-kernel 对发散、定义问题、原型、用户研究与测试放开。
+- scrum、sprint 两个内核召唤才加载（角色命令叫、用户点名、建改本插件日志）；泛问通用词不加载；ideo-kernel 对发散、定义问题、原型、用户研究与测试放开。
 - 「何时来」与「来了先做什么」分开写。
 - 描述上限 1024 字符，改前先量（ideo-kernel 已顶线 1023）；改了描述就重跑触发测试，结果不能比改前差。
 
@@ -42,7 +42,7 @@
 
 - 第三方摘录文件顶部带 `> Source:` 与 `> License:` 两行，License 与 ATTRIBUTION.md 一致；新来源先在 ATTRIBUTION.md 登记。命令类组件不设文件头两行，署名由 ATTRIBUTION.md 承担。
 - 原文优先：能用原文就用原文；例图改画成 Mermaid（`flowchart TD`）或文字，不放图片；不是原文的写法进 Memory（`plugins/ideo-scrum/skills/memory/`），标为约定建议。只删不改的摘录用脚本按行号取，删完查悬空的句子。
-- 授权：Scrum Guide 2020 / SGEP 为 CC BY-SA 4.0；d.school Bootleg 为 CC BY-NC-SA 4.0；《Sprint》(Knapp) 全版权，版权由 PO 负责、发布前声明。
+- 授权：Scrum Guide 2020 / SGEP 为 CC BY-SA 4.0；d.school Mini-Guide (2010) / Bootleg (2018) 为 CC BY-NC-SA 3.0 Unported / 4.0（非商业）。
 - 根目录 `references/` 是源材料原件，不入库；插件里 `skills/*/references/` 的摘录照常入库。
 
 ## 插件内容的自足性

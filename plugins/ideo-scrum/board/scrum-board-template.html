@@ -19,7 +19,7 @@
     color-scheme:light dark;
     --page:#EEF0F3; --bg:#FFFFFF; --panel:#F3F5F8; --edge:#D5DAE1; --edge2:#DCE1E7; --rule:#E3E7EC; --line:#C3CAD3; --node:#7C8793;
     --text:#1B2027; --dim:#5B6672;
-    --done:#1F8A63; --now:#A86A00; --sprint:#1D5FD1; --design:#8A3FC0;
+    --done:#1F8A63; --now:#A86A00; --sprint:#1D5FD1;
     --ring:rgba(27,32,39,.16); --ring-soft:rgba(27,32,39,.12); --shadow:rgba(20,30,50,.12);
     --chip:rgba(27,32,39,.06); --chip-done:rgba(31,138,99,.24); --glow:rgba(168,106,0,.45); --node-bg:#F3F6FB; --later:.72;
     --sans:"PingFang SC","Microsoft YaHei","Noto Sans SC","Segoe UI",system-ui,-apple-system,sans-serif;
@@ -29,7 +29,7 @@
     :root {
       --page:#0C0E11; --bg:#14171C; --panel:#1B1F26; --edge:#2A3038; --edge2:#2C333D; --rule:#262C35; --line:#3A414C; --node:#5B6470;
       --text:#E6E8EB; --dim:#8A93A0;
-      --done:#7BC6A4; --now:#F5B942; --sprint:#6EA8FE; --design:#C792EA;
+      --done:#7BC6A4; --now:#F5B942; --sprint:#6EA8FE;
       --ring:rgba(230,232,235,.16); --ring-soft:rgba(230,232,235,.14); --shadow:rgba(0,0,0,.45);
       --chip:rgba(255,255,255,.06); --chip-done:rgba(123,198,164,.3); --glow:rgba(245,185,66,.7); --node-bg:#171C24; --later:.55;
     }
@@ -63,14 +63,12 @@
   .pbi::before { content:""; position:absolute; left:-1.1rem; top:50%; width:1.1rem; height:2px; margin-top:-1px; background:var(--line); }
   .pbi b { font:600 .74rem var(--mono); color:var(--text); }
   .pbi.g-sprint b { color:var(--sprint); }
-  .pbi.g-design b { color:var(--design); }
   .pbi .s { display:block; font-size:.72rem; color:var(--dim); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
   .pbi.g-later { opacity:var(--later); }
   .pbi.on { opacity:1; border-color:var(--text); box-shadow:0 0 0 3px var(--ring-soft); }
   .nodes-col { position:relative; }
   .node { position:absolute; left:0; right:0; display:block; padding:.6rem .75rem; border:1.5px solid var(--c); border-radius:12px; z-index:2; background:var(--node-bg); background:color-mix(in srgb,var(--c) 9%,var(--bg)); }
   .node.sprint { --c:var(--sprint); }
-  .node.design { --c:var(--design); }
   .node.cur { box-shadow:0 0 0 3px var(--ring); }
   .node .k { font-size:.68rem; color:var(--dim); }
   .node b { display:block; font-size:1rem; line-height:1.3; margin:.1rem 0; }
@@ -83,8 +81,6 @@
   svg.wires { position:absolute; left:0; top:0; width:100%; height:100%; pointer-events:none; z-index:1; overflow:visible; }
   .wires path { fill:none; stroke-width:2; }
   .wires .s { stroke:var(--sprint); opacity:.9; }
-  .wires .d { stroke:var(--design); opacity:.9; }
-  .wires .x { stroke:var(--design); stroke-width:1.5; stroke-dasharray:3 3; }
   .ov.dim .pbi:not(.on), .ov.dim .node.off, .ov.dim .prod-circle { opacity:.35; }
   .ov.dim .wires path { opacity:.15; }
   .ov.dim .wires path.lit { opacity:1; }
@@ -126,28 +122,17 @@
   .metro li::before { content:""; position:absolute; left:.15rem; top:.55rem; width:.8rem; height:.8rem; border-radius:50%; border:3px solid var(--node); background:var(--bg); }
   .metro li.here { color:var(--now); font-weight:700; }
   .metro li.here::before { border-color:var(--now); background:var(--now); box-shadow:0 0 10px var(--glow); }
-  .metro li.br { padding-left:3rem; color:var(--design); font-size:.78rem; }
-  .metro li.br::before { left:1.5rem; top:.6rem; width:.6rem; height:.6rem; border-color:var(--design); }
+  .metro li.br { padding-left:3rem; color:var(--dim); font-size:.78rem; }
+  .metro li.br::before { left:1.5rem; top:.6rem; width:.6rem; height:.6rem; border-color:var(--node); }
   .metro li em { flex:none; font-style:normal; font-size:.7rem; font-weight:400; color:var(--dim); }
   .metro li.here em { color:var(--now); }
   .grp { margin:.7rem 0 .2rem; font-size:.68rem; color:var(--dim); }
   .r { display:flex; flex-wrap:wrap; align-items:baseline; gap:.1rem .7rem; font-size:.82rem; line-height:1.7; }
   .r b { min-width:3.8rem; font:600 .74rem var(--mono); color:var(--text); }
   .r.g-sprint b { color:var(--sprint); }
-  .r.g-design b { color:var(--design); }
   .r .t { flex:1 1 12rem; }
   .r em { font-style:normal; font-size:.7rem; color:var(--dim); }
   .r.g-later { opacity:var(--later); }
-  .design-solution { padding-left:.8rem; border-left:3px solid var(--design); }
-  .design-solution strong { display:block; font-size:1.08rem; line-height:1.4; }
-  .design-solution p { max-width:65ch; margin:0; font-size:.9rem; white-space:pre-line; }
-  .design-solution strong + p { margin-top:.35rem; }
-  .design-empty { margin:0; font-size:.84rem; color:var(--dim); }
-  .design-story { margin-top:.75rem; }
-  .design-story summary { cursor:pointer; font-size:.82rem; color:var(--dim); }
-  .story { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.4rem; }
-  .story div { flex:1 1 10rem; padding:.6rem .7rem; border-radius:8px; background:var(--panel); font-size:.78rem; line-height:1.5; color:var(--dim); }
-  .story b { display:block; margin-bottom:.2rem; font-size:.82rem; color:var(--text); }
   .foot { margin-top:1.2rem; padding-top:.7rem; border-top:1px solid var(--rule); font-size:.72rem; color:var(--dim); }
   .foot p { margin:.35rem 0 0; }
   .foot details { margin:.2rem 0; }
@@ -207,31 +192,27 @@
   var STR = {
     zh: {
       board: '看板', overview: '总览', back: '← 总览', updated: '更新', circle: '产品', hint: '点圆圈看产品的卡片',
-      sprint: '冲刺', design: '设计', forItem: '为', blocks: '工作块', here: '在这',
+      sprint: '冲刺', blocks: '工作块', here: '在这',
       closed: function (n) { return '已完成 ' + n + ' 组'; },
-      grp: { sprint: '在冲刺里', design: '在设计里', next: '待选', later: '以后' },
-      l1: '① 承诺', designGoal: '设计目标',
+      grp: { sprint: '在冲刺里', next: '待选', later: '以后' },
+      l1: '① 承诺',
       productL2: '② 路线 · 架构（主干）', productL3: function (n) { return '③ 条目 · 没做完的 ' + n + ' 条'; },
       sprintL2: '② 路线 · 条目往前走', sprintL3: function (d, t) { return '③ How · 工作块 ✓ ' + d + ' / ' + t; },
-      designL2: '② 路线 · 地图', designL3: '③ 方案', designStory: '故事板',
-      noDesignMap: '尚未记录地图主线', noSolution: '尚未选定方案', missingSolution: '没有方案数据',
       doneOf: function (d, t) { return '✓ ' + d + ' / ' + t; }, perItem: function (d, t) { return '✓ ' + d + ' / ' + t + ' 块'; },
-      now: '现在 · Now', ideo: 'IDEO 日志', notHere: '不在这个工作区',
-      emptyItems: '写好产品日志的条目，它们会从这里长出来', emptyNodes: '没有开着的冲刺或设计'
+      now: '现在 · Now', notHere: '不在这个工作区',
+      emptyItems: '写好产品日志的条目，它们会从这里长出来', emptyNodes: '没有开着的冲刺'
     },
     en: {
       board: 'Board', overview: 'Overview', back: '← Overview', updated: 'Updated', circle: 'Product', hint: 'Open the circle for the product card',
-      sprint: 'Sprint', design: 'Design', forItem: 'For', blocks: 'Work items', here: 'here',
+      sprint: 'Sprint', blocks: 'Work items', here: 'here',
       closed: function (n) { return 'Done · ' + n + ' groups'; },
-      grp: { sprint: 'In a Sprint', design: 'In a design', next: 'Up next', later: 'Later' },
-      l1: '① Commitments', designGoal: 'Design goal',
+      grp: { sprint: 'In a Sprint', next: 'Up next', later: 'Later' },
+      l1: '① Commitments',
       productL2: '② Route · architecture (backbone)', productL3: function (n) { return '③ Items · ' + n + ' not done'; },
       sprintL2: '② Route · items in order', sprintL3: function (d, t) { return '③ How · work items ✓ ' + d + ' / ' + t; },
-      designL2: '② Route · map', designL3: '③ Solution', designStory: 'Storyboard',
-      noDesignMap: 'No route recorded yet', noSolution: 'No solution chosen yet', missingSolution: 'Solution data unavailable',
       doneOf: function (d, t) { return '✓ ' + d + ' / ' + t; }, perItem: function (d, t) { return '✓ ' + d + ' / ' + t; },
-      now: 'Now', ideo: 'IDEO log', notHere: 'not in this working copy',
-      emptyItems: 'Write items in the product log; they will grow from here.', emptyNodes: 'No Sprint or design is open.'
+      now: 'Now', notHere: 'not in this working copy',
+      emptyItems: 'Write items in the product log; they will grow from here.', emptyNodes: 'No Sprint is open.'
     }
   };
 
@@ -256,8 +237,7 @@
   var P = D.product;
   var items = arr(D.items).filter(function (it) { return it && it.id; });
   var sprints = arr(D.sprints).filter(function (s) { return s && s.id; });
-  var designs = arr(D.designs).filter(function (d) { return d && d.id; });
-  var GROUPS = ['sprint', 'design', 'next', 'later'];
+  var GROUPS = ['sprint', 'next', 'later'];
   items.forEach(function (it) { it._g = GROUPS.indexOf(it.group) >= 0 ? it.group : 'next'; });
   document.title = (P.name ? P.name + ' · ' : '') + S.board;
 
@@ -269,15 +249,12 @@
   function numOf(id) { var m = /(\d+)\s*$/.exec(String(id)); return m ? m[1] : String(id); }
   function shortOf(t) { t = String(t || ''); var s = t.split(/——| — |：|: /)[0]; return s || t; }
   function sprintName(s) { var m = /^sprint-(\d+)/i.exec(String(s.id)); return m ? 'Sprint ' + m[1] : String(s.id); }
-  function designName(d) { return goalShort(d) || String(d.id).replace(/^design-/, ''); }
   function goalShort(s) {
     var g = String(s.goal || ''), i = g.search(/：|: /);
     return i > 0 && i <= 24 ? g.slice(0, i) : '';
   }
   function nameOf(id) {
-    var i;
-    for (i = 0; i < sprints.length; i++) { if (sprints[i].id === id) { return sprintName(sprints[i]); } }
-    for (i = 0; i < designs.length; i++) { if (designs[i].id === id) { return designName(designs[i]); } }
+    for (var i = 0; i < sprints.length; i++) { if (sprints[i].id === id) { return sprintName(sprints[i]); } }
     return String(id);
   }
   /* A work item names a product item when its text holds the item's id as written, or the id's number on its own. */
@@ -300,16 +277,14 @@
 
   var links = [];
   sprints.forEach(function (s) { arr(s.items).forEach(function (id) { links.push({ item: id, node: s.id, cls: 's' }); }); });
-  designs.forEach(function (d) { arr(d['for']).forEach(function (id) { links.push({ item: id, node: d.id, cls: 'd' }); }); });
 
-  /* Items that sit in a Sprint or a design are listed in that Sprint's or design's own order; the rest keep the product log's. */
+  /* Items that sit in a Sprint are listed in that Sprint's own order; the rest keep the product log's. */
   var rank = {};
   sprints.forEach(function (s, si) { arr(s.items).forEach(function (id, i) { if (!(id in rank)) { rank[id] = si * 1000 + i; } }); });
-  designs.forEach(function (d, di) { arr(d['for']).forEach(function (id, i) { if (!(id in rank)) { rank[id] = 100000 + di * 1000 + i; } }); });
   items.forEach(function (it, i) { it._o = i; });
   function inGroup(g) {
     var list = items.filter(function (it) { return it._g === g; });
-    if (g === 'sprint' || g === 'design') {
+    if (g === 'sprint') {
       list.sort(function (a, b) {
         var ra = a.id in rank ? rank[a.id] : 1e9, rb = b.id in rank ? rank[b.id] : 1e9;
         return (ra - rb) || (a._o - b._o);
@@ -362,14 +337,7 @@
       nodeEl[s.id] = a;
       nodesCol.appendChild(a);
     });
-    designs.forEach(function (d) {
-      var a = h('a', 'node design'), f = arr(d['for']);
-      a.href = '#' + d.id;
-      add(a, h('div', 'k', S.design), h('b', '', designName(d)), f.length ? h('div', 'g', S.forItem + ' ' + f.join(zh ? '、' : ', ')) : null);
-      nodeEl[d.id] = a;
-      nodesCol.appendChild(a);
-    });
-    if (any && !sprints.length && !designs.length) { nodesCol.appendChild(h('div', 'ghost', S.emptyNodes)); }
+    if (any && !sprints.length) { nodesCol.appendChild(h('div', 'ghost', S.emptyNodes)); }
 
     add(flow, wires, trunk, itemsCol, nodesCol);
     ov.appendChild(flow);
@@ -387,7 +355,7 @@
   function layout() {
     if (!flow.offsetWidth) { return; }
     var fr = flow.getBoundingClientRect(), gap = parseFloat(getComputedStyle(document.documentElement).fontSize) * 0.7;
-    var order = sprints.map(function (s) { return s.id; }).concat(designs.map(function (d) { return d.id; }));
+    var order = sprints.map(function (s) { return s.id; });
     var prevBottom = -gap, ncTop = nodesCol.getBoundingClientRect().top;
     order.forEach(function (id) {
       var n = nodeEl[id], ys = [];
@@ -424,16 +392,6 @@
       var x2 = b.left - fr.left, y2 = b.top + b.height / 2 - fr.top + (k - 1) * 3 - 3;
       var dx = Math.max(14, (x2 - x1) / 2);
       wires.appendChild(svgPath('M' + x1 + ' ' + y1 + ' C' + (x1 + dx) + ' ' + y1 + ' ' + (x2 - dx) + ' ' + y2 + ' ' + x2 + ' ' + y2, l.cls, l.item));
-    });
-    sprints.forEach(function (s) {
-      designs.forEach(function (d) {
-        var linked = arr(d['for']).some(function (id) { return arr(s.items).indexOf(id) >= 0; });
-        if (!linked) { return; }
-        var a = nodeEl[s.id].getBoundingClientRect(), b = nodeEl[d.id].getBoundingClientRect();
-        if (b.top <= a.bottom) { return; }
-        var x = a.left + a.width / 2 - fr.left;
-        wires.appendChild(svgPath('M' + x + ' ' + (a.bottom - fr.top) + ' V' + (b.top - fr.top), 'x'));
-      });
     });
     light(lit, true);
   }
@@ -477,9 +435,6 @@
     if (!text) { return null; }
     var d = h('details'), s = h('summary', '', S.now);
     return add(d, s, h('p', '', text));
-  }
-  function ideoLines(list) {
-    return arr(list).map(function (x) { return h('p', '', S.ideo + ' · ' + (x.id || '') + (x.now ? ': ' + x.now : '')); });
   }
   function sourceLine(src, path, file, folder) {
     var p = h('p');
@@ -549,43 +504,11 @@
       ol.appendChild(li);
     });
     if (arr(s.blocks).length) { l3.appendChild(ol); c.appendChild(l3); }
-    foot(c, [nowBlock(s.now)].concat(ideoLines(s.ideo), [sourceLine(s.source, s.id + '/SprintBacklog.md', 'SprintBacklog.md', s.id)]));
-  }
-
-  function designCard(d) {
-    var c = card(d.id);
-    add(c, bar(S.design + ' · ' + designName(d), 'var(--design)'));
-    add(c, add(layer(S.l1), commit(S.designGoal, d.goal, 'var(--design)')));
-
-    var l2 = layer(S.designL2), route = h('ol', 'metro'), stops = arr(d.map);
-    route.setAttribute('role', 'list');
-    stops.forEach(function (t) { add(route, add(h('li'), h('span', '', t))); });
-    add(c, add(l2, stops.length ? route : h('p', 'design-empty', S.noDesignMap)));
-
-    var l3 = layer(S.designL3), solution = d.solution;
-    var title = solution && typeof solution.title === 'string' && solution.title.trim();
-    var usage = solution && typeof solution.text === 'string' && solution.text.trim();
-    if (title || usage) {
-      l3.setAttribute('data-solution', 'chosen');
-      add(l3, add(h('div', 'design-solution'), title ? h('strong', '', title) : null, usage ? h('p', '', usage) : null));
-      var frames = arr(d.story).filter(function (x) {
-        return x && typeof x.title === 'string' && x.title.trim() && typeof x.text === 'string' && x.text.trim();
-      });
-      if (frames.length) {
-        var story = h('div', 'story');
-        frames.forEach(function (x) { add(story, add(h('div'), h('b', '', x.title), document.createTextNode(x.text || ''))); });
-        add(l3, add(h('details', 'design-story'), h('summary', '', S.designStory), story));
-      }
-    } else {
-      l3.setAttribute('data-solution', solution === null ? 'undecided' : 'unavailable');
-      add(l3, h('p', 'design-empty', solution === null ? S.noSolution : S.missingSolution));
-    }
-    add(c, l3);
-    foot(c, [nowBlock(d.now)].concat(ideoLines(d.ideo), [sourceLine(d.source, d.id + '/DesignBacklog.md', 'DesignBacklog.md', d.id)]));
+    foot(c, [nowBlock(s.now), sourceLine(s.source, s.id + '/SprintBacklog.md', 'SprintBacklog.md', s.id)]);
   }
 
   /* ---- showing a card ---- */
-  var defaultId = sprints.length ? sprints[0].id : (designs.length ? designs[0].id : 'product');
+  var defaultId = sprints.length ? sprints[0].id : 'product';
   function show(id) {
     Object.keys(cardEls).forEach(function (k) { cardEls[k].hidden = (k !== id); });
     circle.classList.toggle('cur', id === 'product');
@@ -603,7 +526,6 @@
   buildOverview();
   productCard();
   sprints.forEach(sprintCard);
-  designs.forEach(designCard);
   window.addEventListener('hashchange', function () {
     route();
     if (window.matchMedia('(max-width:640px)').matches) { window.scrollTo(0, 0); }

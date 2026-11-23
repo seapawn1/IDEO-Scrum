@@ -5,17 +5,16 @@
 # over the logs, POSIX shell for everything else.
 #
 # Runs on SessionStart and UserPromptSubmit (see hooks.json). It reads the commitments -- the Product,
-# the Product Goal, and the Sprint Goal or design goal of the log that is open -- and prints them as
+# the Product Goal, and the Sprint Goal of the Sprint log that is open -- and prints them as
 # plain text; Claude Code adds that text to the model's context.
 #
 # How it reads the logs (the rules are Memory `goal-fixed` and `commitment-table`):
 #   - a commitment is a one-row table whose first cell is `Commitment` (`承诺` in a Chinese log); the
 #     second cell is the exact text;
 #   - the nearest heading above it says which one it is: Product, Product Goal (product log,
-#     `scrum/ProductBacklog.md`), Sprint Goal (`scrum/sprint-*/SprintBacklog.md`), Design goal
-#     (`scrum/design-*/DesignBacklog.md`).
-#   - a Sprint or design counts as open while its folder is under `scrum/`; two or more open Sprints
-#     (or designs) are reported as a count, not by their goals, because the working copy has no single
+#     `scrum/ProductBacklog.md`), Sprint Goal (`scrum/sprint-*/SprintBacklog.md`).
+#   - a Sprint counts as open while its folder is under `scrum/`; two or more open Sprints
+#     are reported as a count, not by their goals, because the working copy has no single
 #     current one.
 #
 # It prints nothing, and always exits 0, when anything is missing or goes wrong: no product log, a file it
@@ -145,17 +144,9 @@ main() {
     n_sprints=$((n_sprints + 1))
     sprint_file=$f
   done
-  n_designs=0
-  design_file=
-  for f in "$root"/scrum/design-*/DesignBacklog.md; do
-    [ -f "$f" ] || continue
-    n_designs=$((n_designs + 1))
-    design_file=$f
-  done
 
   set -- "$prod_file"
   if [ "$n_sprints" -eq 1 ] && [ -r "$sprint_file" ]; then set -- "$@" "$sprint_file"; fi
-  if [ "$n_designs" -eq 1 ] && [ -r "$design_file" ]; then set -- "$@" "$design_file"; fi
 
   # One pass over the logs: strip CRs, follow the headings, take the first row of each kind.
   res=$(awk '
@@ -171,14 +162,12 @@ main() {
         sub(/^\|[ \t]*(承诺|Commitment)[ \t]*\|[ \t]*/, "", text)
         sub(/[ \t]*\|[ \t]*$/, "", text)
         kind = ""
-        if (heading ~ /Sprint Goal/) kind = "sprint"
-        else if (heading ~ /Product Goal/) kind = "productgoal"
-        else if (heading ~ /Design [Gg]oal|设计目标/) kind = "design"
+        if (heading ~ /Sprint Goal|冲刺目标/) kind = "sprint"
+        else if (heading ~ /Product Goal|产品目标/) kind = "productgoal"
         else if (heading ~ /Product|产品/) kind = "product"
         if (kind != "") {
           cur = "prod"
           if (FILENAME ~ /SprintBacklog\.md$/) cur = "sprint"
-          else if (FILENAME ~ /DesignBacklog\.md$/) cur = "design"
           k = cur SUBSEP kind
           if (!(k in seen)) {
             seen[k] = 1
@@ -188,13 +177,12 @@ main() {
       }
     }' "$@")
 
-  product_text= goal_text= product_key= goal_key= sprint_text= design_text=
+  product_text= goal_text= product_key= goal_key= sprint_text=
   while IFS='	' read -r cur kind key text rest; do
     case $cur.$kind in
       prod.product) product_text=$text; product_key=$key ;;
       prod.productgoal) goal_text=$text; goal_key=$key ;;
       sprint.sprint) sprint_text=$text ;;
-      design.design) design_text=$text ;;
     esac
   done <<EOF
 $res
@@ -222,15 +210,11 @@ EOF
       head_line='本项目日志里的承诺（原文）：'
       colon='：' open='（' close='）'
       many_sprints_pre='有 ' many_sprints_post=' 个冲刺开着，见看板'
-      many_designs_pre='有 ' many_designs_post=' 个设计开着，见看板'
-      design_label='设计目标'
       ;;
     *)
       head_line="Commitments from this project's logs (verbatim):"
       colon=': ' open=' (' close=')'
       many_sprints_pre='' many_sprints_post=' Sprints are open; see the board'
-      many_designs_pre='' many_designs_post=' designs are open; see the board'
-      design_label='Design goal'
       ;;
   esac
 
@@ -247,17 +231,6 @@ EOF
     esac
   elif [ "$n_sprints" -gt 1 ]; then
     out=$out$nl$many_sprints_pre$n_sprints$many_sprints_post
-  fi
-  if [ "$n_designs" -eq 1 ]; then
-    case $design_text in
-      '' | '<'*'>') ;;
-      *)
-        __dir=${design_file%/*}
-        out=$out$nl$design_label$open${__dir##*/}$close$colon$design_text
-        ;;
-    esac
-  elif [ "$n_designs" -gt 1 ]; then
-    out=$out$nl$many_designs_pre$n_designs$many_designs_post
   fi
 
   # When to inject. SessionStart always does (a new session, a resume, a clear, a compaction: the context has

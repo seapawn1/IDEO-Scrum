@@ -15,7 +15,7 @@
 /ideo-scrum:scrum-master
 ```
 
-这个 Claude Code 命令先依次调用 IDEO、Scrum、Sprint 和 Design 内核，再调用 Memory，然后开始工作；不用你逐个调用。其他角色的顺序见[角色规矩](../plugins/ideo-scrum/skills/memory/details/roles.md)。
+这个 Claude Code 命令先依次调用 IDEO、Scrum 和 Sprint 内核，再调用 Memory，然后开始工作；不用你逐个调用。其他角色的顺序见[角色规矩](../plugins/ideo-scrum/skills/memory/details/roles.md)。
 
 在项目目录里新开的 DSH **Standard** 会话中：
 
@@ -41,7 +41,7 @@ Scrum Master 和你一起写 `scrum/ProductBacklog.md`：产品、Product Goal�
 | --- | --- |
 ```
 
-「Commitment」那几行逐字写着你的产品陈述和目标。它们保持不变，只有你能改。表下可以写解释，但解释不是承诺的一部分。如果你还说不出产品是什么、Product Goal 该是什么，Scrum Master 会和你一起开一个设计，等你放行后再开始共情。
+「Commitment」那几行逐字写着你的产品陈述和目标。它们保持不变，只有你能改。表下可以写解释，但解释不是承诺的一部分。如果你还说不出产品是什么、Product Goal 该是什么，说明共情还不够：Scrum Master 会陪你用 IDEO 五模式（Empathize 与 Define）补齐产品日志。
 
 ## 3. 开一个冲刺
 
@@ -51,7 +51,7 @@ Scrum Master 和你一起写 `scrum/ProductBacklog.md`：产品、Product Goal�
 | --- | --- | --- |
 | Why | 定下 Sprint Goal 与核验重点，完整 DoD 仍生效 | Sprint Goal；是否开始 What |
 | What | 从产品日志里选条目，并精化 | 精化到此为止；是否开始 How |
-| How | 写一份计划，不写步骤 | 放行 |
+| How | 写方案式计划和工作项（多路线取舍时用 IDEO Ideate） | 放行 |
 | Increment | 动手做，笔记记在冲刺日志里 | 可以进入测试了 |
 | Test | 测试和审阅 | 收官，或者回去再做 |
 
@@ -63,7 +63,7 @@ Scrum Master 和你一起写 `scrum/ProductBacklog.md`：产品、Product Goal�
 
 ## 5. 收官
 
-Test 阶段完成后，说「收官」。Review 把冲刺日志压缩后归档到 `scrum/documents/`，刷新产品日志。Retro 只把重要教训一条一条写进项目记忆；工具没有项目记忆时，存入仓库里逐条可找回的教训笔记，不写指令文件或每期 Retro 汇总。没有重要教训就不写条目。一个收官提交只装 Review 和 Retro 实际产生的仓内改动，不复制仓外记忆，也不为提交凑 Retro 文件。已结束设计的原始材料随日志归档；承接其结论的冲刺只引用它，不在收官时删掉原件。这个提交打上冲刺文件夹的名字作 tag，合并进主分支；这些 Scrum Master 可以替你做。推送要等你点头。
+Test 阶段完成后，说「收官」。Review 把冲刺日志压缩后归档到 `scrum/documents/`，刷新产品日志。Retro 只把重要教训一条一条写进项目记忆；工具没有项目记忆时，存入仓库里逐条可找回的教训笔记，不写指令文件或每期 Retro 汇总。没有重要教训就不写条目。一个收官提交只装 Review 和 Retro 实际产生的仓内改动，不复制仓外记忆，也不为提交凑 Retro 文件。已结束的 IDEO 日志连同测试证据与结论归档进 `scrum/documents/ideo/`；供冲刺参考的临时原型随冲刺收官清理。这个提交打上冲刺文件夹的名字作 tag，合并进主分支；这些 Scrum Master 可以替你做。推送要等你点头。
 
 ## 值得记住的规矩
 
@@ -85,5 +85,5 @@ Test 阶段完成后，说「收官」。Review 把冲刺日志压缩后归档�
 
 - 问「现在到哪了？」：Scrum Master 读 `Now` 和 `Waiting for PO` 两行，告诉你。
 - 要看板：一页看清项目走到哪，由日志写成 `scrum/ScrumBoard.html`。交给 supporter（秘书）：Claude Code 用 `/ideo-scrum:supporter`，DSH 用 `/supporter`。
-- 想弄清人要什么，叫 Designer：Claude Code 用 `/ideo-scrum:designer`，DSH 用 `/designer`。
+- 想弄清人要什么或发散方案，用 IDEO 五模式：共情与测试找 Scrum Master，构思、原型与测试找 Developer——或直接点名 `ideo-kernel`。
 - 想请一个外面的视角，或请参谋给第二意见，见[项目 Agent](project-agents.zh-CN.md)。

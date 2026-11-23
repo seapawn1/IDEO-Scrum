@@ -61,7 +61,7 @@
 | 出品 | Hasso Plattner Institute of Design at Stanford University (d.school) |
 | 许可 | **CC BY-NC-SA 4.0** — https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode |
 | 原始出处 | https://dschool.stanford.edu/tools/design-thinking-bootleg（许可标注在这个页面上；它指向的 PDF 本身没写许可，第 90 页标 Bootleg 2018） |
-| 本仓库位置 | `plugins/ideo-scrum/skills/ideo-kernel/IDEO-modes/`（五模式的补料，见下表；设计冲刺的原书摘录在 `design-kernel/`，属第 4 节 Knapp 来源）<br>`plugins/ideo-scrum/skills/ideo-kernel/methods/`（方法库） |
+| 本仓库位置 | `plugins/ideo-scrum/skills/ideo-kernel/IDEO-modes/`（五模式的补料，见下表）<br>`plugins/ideo-scrum/skills/ideo-kernel/methods/`（方法库） |
 | 修改说明 | 方法库条目补充 Use Before / Use Notes / Do Not Use When 字段。 |
 
 五模式里 2018 补料的对应（对 2018 PDF 逐词比对）：
@@ -82,24 +82,6 @@
 
 ---
 
-## 4. Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days
-
-| 项 | 内容 |
-|---|---|
-| 作者 | Jake Knapp, with John Zeratsky and Braden Kowitz |
-| 出版 | Simon & Schuster, 2016 |
-| 许可 | **全版权保护**（All Rights Reserved），无开放许可 |
-| 官方网站 | https://www.thesprintbook.com/ |
-| 本仓库位置 | `plugins/ideo-scrum/skills/design-kernel/steps/`（设计冲刺原书摘录，按 IDEO 五阶段编号：`1-1`～`1-3` 共情 define-the-challenge、start-at-the-end、ask-the-experts；`2-1`～`2-3` 定义 make-a-map、how-might-we、pick-a-target；`3-1`～`3-5` 构思 remix-and-improve、sketch、decide、rumble、storyboard；`4-1`～`4-2` 原型 fake-it、prototype；`5-1`～`5-3` 测试 small-data、interview、learn；例图改画成 Mermaid 或文字） |
-| 使用范围 | 设计冲刺各章的**原文摘录**：只删不改，删去与 solo + AI 团队无关的段落（日程、场地与用品、部分长例子）；各文件标注章节出处。原书例图改画成 Mermaid 或文字，不含图片文件。术语保留原文（Decider、Facilitator 等）；对应到本插件角色的写法、作者的做法另放插件的 Memory（`skills/memory/`），标为约定。 |
-
-> **请支持正版**
->
-> 本仓库摘录了该书讲方法的多章原文（有删节），不含书中图片文件，也不含全书。摘录无法替代原书。
-> 若 Design Sprint 方法对你有用，请购买原书：https://www.thesprintbook.com/
-
----
-
 ## 侵权处理
 
 若你是上述任一材料的权利人，认为本仓库的使用超出了许可范围，请通过 GitHub Issue 联系，我会及时移除或修改相关内容。
@@ -108,4 +90,4 @@
 
 ## 免责声明
 
-上述各来源的原作者与出品方**未对本仓库作任何形式的背书**，亦不对本仓库内容的准确性或适用性承担责任。本仓库是独立的第三方整理，与 Scrum.org、scrumexpansion.org、Stanford d.school、IDEO、Simon & Schuster 均无关联。
+上述各来源的原作者与出品方**未对本仓库作任何形式的背书**，亦不对本仓库内容的准确性或适用性承担责任。本仓库是独立的第三方整理，与 Scrum.org、scrumexpansion.org、Stanford d.school、IDEO 均无关联。

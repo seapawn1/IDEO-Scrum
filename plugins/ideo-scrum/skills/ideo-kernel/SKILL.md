@@ -1,6 +1,6 @@
 ---
 name: ideo-kernel
-description: "Use when the user wants to brainstorm or diverge, define a problem, understand users, make a rough prototype, or test users' reactions — even without saying IDEO or design thinking. Invoke this skill before answering any such request, even for a quick outline. Also use for IDEO, the five modes, the IDEO five-stage method, named design-thinking methods, or questions about what people want or what counts as good with no ready answer. Every role loads this shared toolbox first: Empathize, Define, Ideate, Prototype, Test; interviews, journey maps, POV, HMW, brainstorming and user testing. The IDEO five-stage method is these five modes, not the design sprint; a run of their own uses an IDEO log. The Memory skill has the boundary between a design sprint and the five modes. Use methods for a design stage or a stuck Sprint too. Prototypes are rough, quick and disposable, for learning, not formal delivery. This skill does not itself summon Scrum or a design sprint; a full design sprint is design-kernel."
+description: "Use when the user wants to brainstorm or diverge, define a problem, frame a design goal or user-journey map, understand users, make a rough prototype, or test users' reactions — even without saying IDEO or design thinking. Invoke this skill before answering any such request, even for a quick outline. Also use for IDEO, the five modes, the IDEO five-stage method, named design-thinking methods, or questions about what people want or what counts as good with no ready answer. Every role loads this shared toolbox first: Empathize, Define, Ideate, Prototype, Test; interviews, journey maps, POV, HMW, brainstorming and user testing. A multi-method or multi-session run uses an IDEO log (IdeoBacklog.md); use methods inside a Sprint whenever the work calls for them. Prototypes are rough, quick and disposable, built to learn and never formal Increments. This skill does not itself summon Scrum."
 ---
 
 # IDEO Kernel
@@ -10,19 +10,23 @@ description: "Use when the user wants to brainstorm or diverge, define a problem
 
 ## The Shared Toolbox
 
-This kernel is the plugin's shared toolbox and the foundation of every stage: the IDEO five modes and the method catalog. Every role loads it first. Each stage of a design (design-kernel skill) stands on one of the five modes, and a design must use the modes and methods in every stage (the rule is in the design-kernel skill's `SKILL.md`) — the design sprint's own techniques are added on top of these, not in place of them. A Scrum Sprint (sprint-kernel skill) uses the methods whenever the work calls for them — for example, when the team is stuck mid-Sprint.
+This kernel is the plugin's shared toolbox and the foundation of every practice: the IDEO five modes and the method catalog. Every role loads it first. Scrum Sprints (sprint-kernel skill) are the single delivery track, and they draw on these modes and methods whenever the work calls for them — for example, running Empathize and Define when a blank-page product goal is unclear, framing problems in refinement, ideating solution options in How, prototyping to test an assumption, or testing with users.
 
-*(Author's methodology design for solo + AI teams, 2026-11-08.)*
+*(Author's methodology design for solo + AI teams, 2026-11-08; revised 2026-11-24.)*
 
 ## The Memory
 
-Whether a question needs a design sprint or the five modes, how the two relate, when to open an IDEO log, and how one ends are in the memory skill (`../memory/SKILL.md`), its *The five modes and the IDEO log* section, with `../memory/details/ideo-ending.md` for the end; the role commands load it last, and if it is not loaded yet, invoke `ideo-scrum:memory`. The log template is `../../template/ideo-backlog-template.md`.
+When to open an IDEO log, the four operational disciplines (diverge first, isolated subagent sketches, prototypes never entering Increments, preserving test evidence), and how an IDEO log archives are in the memory skill (`../memory/SKILL.md`), its *The five modes and the IDEO log* section, with details in `../memory/details/ideo-ending.md`; the role commands load it last, and if it is not loaded yet, invoke `ideo-scrum:memory`. The log template is `../../template/ideo-backlog-template.md`.
 
 ## IDEO design thinking
 
 Design Thinking is a **human-centered approach to innovation** that integrates the needs of people, the possibilities of technology, and the requirements for business success. Originating from IDEO and formalized at Stanford's Hasso Plattner Institute of Design (the d.school, founded by David Kelley), it is an iterative, non-linear methodology for tackling complex, ill-defined problems. Its core ethos is **bias toward action** — learning by doing rather than analysis alone.
 
-**Bias toward fast prototype validation.** The design work optimizes for speed of learning, not polish: a prototype must feel like a prototype — rough, quick, and disposable — built to learn, never a formal result. In a design sprint test, keep the surface real enough for honest reactions (`../design-kernel/steps/4-1-fake-it.md`). In a design sprint, disposable describes the prototype’s purpose and cost, not deleting the evidence: preserve the original, as Memory `design-ends` says (`../memory/details/design-ending.md`). A standalone run of the five modes follows its own prototype handoff and disposal rule (Memory `ideo-log-ends`), with no gates between modes.
+**Working disciplines for solo + AI teams.** Four operational rules sit on top of the five modes (Memory `diverge-first`, `isolated-sketches`, `prototype-not-increment`, `keep-test-evidence` in `../memory/details/ideo-ending.md`):
+- **Diverge before converging**: explore multiple ideas with at least two methods (including at least one Ideate method here) before choosing a direction; when genuinely different approaches are wanted, let isolated fresh subagents sketch independently so they do not converge on one example.
+- **Prototypes are for learning, never an Increment**: keep prototypes rough, quick, and disposable — built to learn, never slipped into a formal Increment. While an associated Sprint is using a prototype as reference, keep it there and clean it up at Sprint close; otherwise prototype files may be deleted once the run ends.
+- **Preserve test evidence**: keep who tested, what showed up, and the answers to your questions in `IdeoBacklog.md` (or the log served) and archive them at Sprint Review whether or not the conclusions are built.
+- **Optional Empathize/Define prompt**: when framing a goal or challenge, also ask what failure assumptions could break it and turn each risky assumption into a testable question.
 
 IDEO's five-mode model:
 
@@ -31,7 +35,7 @@ IDEO's five-mode model:
 | **Empathize** | Understand users deeply | Observe, engage, immerse in users' lives to uncover real needs | `IDEO-modes/empathize.md` | When the user needs to understand people — observe, engage, immerse — to discover deep needs from human behavior and emotion |
 | **Define** | Frame the right problem | Synthesize findings into a Point of View (user + need + insight) | `IDEO-modes/define.md` | When empathy findings are collected and a meaningful challenge needs framing — craft a Point of View (user + need + insight) |
 | **Ideate** | Generate possibilities | Diverge — brainstorm radical alternatives beyond the obvious | `IDEO-modes/ideate.md` | When a POV is ready and a wide range of ideas is needed — diverge and explore, don't converge too early |
-| **Prototype** | Make ideas tangible | Build low-cost artifacts to test; "build to think" | `IDEO-modes/prototype.md` | When selected ideas need low-cost prototypes — build, fail fast, iterate and learn; keep it fast and prototype-feeling — rough, quick, and disposable, built to learn, never a formal result; in a design sprint test, the surface the tester sees should still appear real (see above) |
+| **Prototype** | Make ideas tangible | Build low-cost artifacts to test; "build to think" | `IDEO-modes/prototype.md` | When selected ideas need low-cost prototypes — build, fail fast, iterate and learn; keep it fast and prototype-feeling — rough, quick, and disposable, built to learn, never a formal Increment |
 | **Test** | Learn from users | Put prototypes in front of real users; iterate based on feedback | `IDEO-modes/test.md` | When prototypes are ready for user feedback — test in real contexts, continue learning about users |
 
 The process is **not linear** — teams move back and forth between modes as insights emerge. Empathize and Ideate are divergent (opening up possibilities); Define and Prototype are convergent (narrowing toward solutions); Test feeds learning back into any mode.
@@ -95,9 +99,9 @@ In the table, each method is listed once; **Modes** names the modes it serves.
 
 ## Use Protocol
 
-1. Confirm the current mode, and the design or Sprint the work belongs to.
+1. Confirm the current mode, and the Sprint, product log, or IDEO log the work belongs to.
 2. Prefer a method whose Modes include the current mode and whose trigger matches the current work. A method from another mode is fine when its trigger fits the work — say which mode it comes from and why.
 3. Before using the method, read its document under `methods/`. Never invoke a method only by name — state which method you are using and why it fits the current mode.
 4. Treat the `Cleaned Transcription` section as source text.
 5. Treat `Use Before`, `Use Notes`, and `Do Not Use When` as project-specific notes, not source text.
-6. When the work needs a full design — from a challenge to a tested prototype — use the design-kernel skill; when findings must become planned, executable work, hand off to the sprint-kernel skill.
+6. When exploration spans more than one or two methods or more than one session, record it in an IDEO log (`IdeoBacklog.md`, Memory `open-ideo-log`); when findings must become planned, executable work, hand off to the sprint-kernel skill.

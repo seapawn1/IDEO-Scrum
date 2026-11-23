@@ -1,6 +1,6 @@
 # 维护 IDEO-Scrum
 
-本页写给在 Claude Code 与 DeepSeek Harness（DSH）两个宿主之间维护本仓库的人。如果你是用插件做自己的项目冲刺或设计，请看[快速上手](quick-start.zh-CN.md)、[README](../README.zh-CN.md) 和[词汇表](glossary.md)。([English](maintaining.md))
+本页写给在 Claude Code 与 DeepSeek Harness（DSH）两个宿主之间维护本仓库的人。如果你是用插件做自己的项目冲刺，请看[快速上手](quick-start.zh-CN.md)、[README](../README.zh-CN.md) 和[词汇表](glossary.md)。([English](maintaining.md))
 
 ## 双宿主，正文只维护一份
 
@@ -12,9 +12,9 @@
 | 承诺上下文 | [`hooks.json`](../plugins/ideo-scrum/hooks/hooks.json) 在 `SessionStart` 与 `UserPromptSubmit` 用 POSIX `sh` 跑 [`commitments.sh`](../plugins/ideo-scrum/hooks/commitments.sh) | [`dsh/index.js`](../dsh/index.js) 通过 [`dsh/commitments.js`](../dsh/commitments.js) 注册 `systemPrompt.context`（`ideo-scrum:commitments`，`order: 130`，`interpolate: false`） |
 | 打包与元数据 | [`plugin.json`](../plugins/ideo-scrum/.claude-plugin/plugin.json) 与 [`.claude-plugin/marketplace.json`](../.claude-plugin/marketplace.json) | [`package.json`](../package.json)（`@seapawn/ideo-scrum`）、[`cordis.patch.yml`](../cordis.patch.yml)、[`dsh/locale/en.json`](../dsh/locale/en.json)、[`dsh/locale/zh.json`](../dsh/locale/zh.json) 与 `plugins/ideo-scrum/icon.png` |
 
-- **角色与内核注册（`dsh/index.js`）**：剥离 YAML frontmatter（要求单行双引号 JSON 兼容的 `description`，且 `SKILL.md` 的 `name` 与目录名一致），注册四个内核与五个用户可调用角色（`/scrum-master`、`/developer`、`/designer`、`/stakeholder`、`/supporter`，去掉 `ideo-scrum:` 前缀），在每个角色正文前加上 DSH 工具映射与路由提示，并按序预载 `ideo-kernel`、`scrum-kernel` 和 `memory` 原文，同时保持 `sprint-kernel` 与 `design-kernel` 按需加载；压缩后，若 Memory 的正文已不在对话里，命名上下文 `ideo-scrum:memory` 会提示重新加载。
+- **角色与内核注册（`dsh/index.js`）**：剥离 YAML frontmatter（要求单行双引号 JSON 兼容的 `description`，且 `SKILL.md` 的 `name` 与目录名一致），注册三个内核加 Memory 与四个用户可调用角色（`/scrum-master`、`/developer`、`/stakeholder`、`/supporter`，去掉 `ideo-scrum:` 前缀），在每个角色正文前加上 DSH 工具映射与路由提示，并按序预载 `ideo-kernel`、`scrum-kernel` 和 `memory` 原文，同时保持 `sprint-kernel` 按需加载；压缩后，若 Memory 的正文已不在对话里，命名上下文 `ideo-scrum:memory` 会提示重新加载。
 - **打包白名单（`package.json`）**：`files` 只列 `cordis.patch.yml`、`dsh/`、`ATTRIBUTION.md`、`plugins/ideo-scrum/commands/`、`plugins/ideo-scrum/skills/`、`plugins/ideo-scrum/template/`、`plugins/ideo-scrum/board/` 与 `plugins/ideo-scrum/icon.png`（不包含 `hooks/` 和 `.claude-plugin/`），不带 `dependencies` 或 `scripts`，且 `engines.dsh` 写为 `>=0.2.2-rc.5 <0.3.0`。
-- **承诺适配（`dsh/commitments.js`）**：在最近的 `.git` 边界内查找对应标题下的 `Commitment`（`承诺`）行（[Memory](../plugins/ideo-scrum/skills/memory/SKILL.md) 的 `goal-fixed`、`commitment-table`），跳过软链接的 `scrum/` 目录，多冲刺或多设计并存时只报数量，并遵循 `IDEO_SCRUM_COMMITMENTS=off`；压缩后补入依赖 DSH 对命名 `runtime-context` 的处理，在 DSH `0.2.2-rc.5` 配 `0.6.3` 上已实机验证（2026-11-21）：压缩后 `runtime-context` 快照逐字携带同样 3 条承诺。
+- **承诺适配（`dsh/commitments.js`）**：在最近的 `.git` 边界内查找对应标题下的 `Commitment`（`承诺`）行（[Memory](../plugins/ideo-scrum/skills/memory/SKILL.md) 的 `goal-fixed`、`commitment-table`），跳过软链接的 `scrum/` 目录，多冲刺并存时只报数量，并遵循 `IDEO_SCRUM_COMMITMENTS=off`；压缩后补入依赖 DSH 对命名 `runtime-context` 的处理，在 DSH `0.2.2-rc.5` 配 `0.6.3` 上已实机验证（2026-11-21）：压缩后 `runtime-context` 快照逐字携带同样 3 条承诺。
 
 ## 仓库规则从哪里读
 
@@ -38,7 +38,7 @@
 
 - **不要混淆两种旧基线**：Claude Code 有公开的 `v6.0.3` git tag 与市场发布版，而 DSH 的 `b2679aa` 只是本地仓库链接（不是旧公开 npm 或注册表包）。
 - **核对实际加载来源与版本**：查看 Claude 生效的版本缓存目录或 DSH 链接的本地目录及原生会话事件，不要只看磁盘上的 `package.json`、`plugin.json`，也不要以模型自述为准。在 DSH 中重启后务必新开 **Standard** 会话，因为 Minimal 会话不挂载技能加载器，旧会话也可能残留旧上下文。
-- **确认项目日志原样保留**：迁移前后核对 `scrum/ProductBacklog.md` 以及开着的 `scrum/sprint-*/SprintBacklog.md`、`scrum/design-*/DesignBacklog.md` 未发生改动。
+- **确认项目日志原样保留**：迁移前后核对 `scrum/ProductBacklog.md` 以及开着的 `scrum/sprint-*/SprintBacklog.md`、`scrum/ideo-*/IdeoBacklog.md` 未发生改动。
 
 ## 候选如何核验
 

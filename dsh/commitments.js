@@ -21,7 +21,6 @@ function projectLogs(cwd) {
 function headingKind(heading) {
   if (/Sprint Goal|冲刺目标/i.test(heading)) return 'sprintGoal'
   if (/Product Goal|产品目标/i.test(heading)) return 'productGoal'
-  if (/Design Goal|设计目标/i.test(heading)) return 'designGoal'
   if (/Product|产品/i.test(heading)) return 'product'
 }
 
@@ -77,17 +76,14 @@ export function readCommitments(cwd) {
     if (goal) lines.push(`Product Goal${colon}${goal}`)
 
     const dirs = optional(() => readdirSync(logs, { withFileTypes: true }))?.filter(entry => entry.isDirectory()) ?? []
-    for (const [kind, file, label, countText] of [
-      ['sprint', 'SprintBacklog.md', 'Sprint Goal', n => zh ? `有 ${n} 个冲刺开着，见看板` : `${n} Sprints are open; see the board`],
-      ['design', 'DesignBacklog.md', zh ? '设计目标' : 'Design goal', n => zh ? `有 ${n} 个设计开着，见看板` : `${n} designs are open; see the board`],
-    ]) {
-      const open = dirs.filter(({ name }) => name.startsWith(`${kind}-`) && optional(() => stat(join(logs, name, file)))?.isFile())
-      if (open.length > 1) lines.push(countText(open.length))
-      if (open.length === 1) {
-        const name = open[0].name
-        const text = optional(() => filled(logCommitments(join(logs, name, file)), `${kind}Goal`))
-        if (text) lines.push(zh ? `${label}（${name}）${colon}${text}` : `${label} (${name})${colon}${text}`)
-      }
+    const open = dirs.filter(({ name }) => name.startsWith('sprint-') && optional(() => stat(join(logs, name, 'SprintBacklog.md')))?.isFile())
+    if (open.length > 1) {
+      lines.push(zh ? `有 ${open.length} 个冲刺开着，见看板` : `${open.length} Sprints are open; see the board`)
+    }
+    if (open.length === 1) {
+      const name = open[0].name
+      const text = optional(() => filled(logCommitments(join(logs, name, 'SprintBacklog.md')), 'sprintGoal'))
+      if (text) lines.push(zh ? `Sprint Goal（${name}）${colon}${text}` : `Sprint Goal (${name})${colon}${text}`)
     }
     return lines.join('\n')
   } catch {

@@ -7,10 +7,10 @@ export const name = 'ideo-scrum'
 export const inject = ['skills', 'systemPrompt', 'workingDirectory']
 
 const plugin = new URL('../plugins/ideo-scrum/', import.meta.url)
-const kernels = ['ideo-kernel', 'scrum-kernel', 'sprint-kernel', 'design-kernel', 'memory']
-const roles = ['scrum-master', 'developer', 'designer', 'stakeholder', 'supporter']
+const kernels = ['ideo-kernel', 'scrum-kernel', 'sprint-kernel', 'memory']
+const roles = ['scrum-master', 'developer', 'stakeholder', 'supporter']
 const toolMapping = 'DSH host adapter: Use `skill` with `{"name":"<skill-name>"}` for Skill calls. Drop the `ideo-scrum:` prefix from the name. Resolve resources relative to the base directory of the skill that references them.'
-const roleRouting = 'The IDEO and Scrum kernels and the Memory are already loaded below, in that order; do not call `skill` again for those. Load `sprint-kernel` for Scrum Sprint work and `design-kernel` for design sprint work, unless their instructions are already in the conversation. When the work needs both, wait for `sprint-kernel` before loading `design-kernel`. Use `read` with an absolute file path based on the kernel that named the resource, not a search of the project.'
+const roleRouting = 'The IDEO and Scrum kernels and the Memory are already loaded below, in that order; do not call `skill` again for those. Load `sprint-kernel` for Scrum Sprint work, unless its instructions are already in the conversation. Use `read` with an absolute file path based on the kernel that named the resource, not a search of the project.'
 
 function readEntry(url, skillName) {
   const path = fileURLToPath(url)
@@ -44,8 +44,6 @@ function rolePrelude(entries) {
 export function apply(ctx) {
   const entries = kernels.map(kernel => readEntry(new URL(`skills/${kernel}/SKILL.md`, plugin), kernel))
   for (const entry of entries) {
-    // The canonical design entry also contains a namespaced tool call.
-    if (entry.name === 'design-kernel') entry.content = `${toolMapping}\n${entry.content}`
     ctx.effect(() => ctx.skills.register(entry))
   }
   const prelude = rolePrelude(entries)

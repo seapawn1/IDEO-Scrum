@@ -5,7 +5,7 @@ description: "Use only when summoned: an ideo-scrum role command tells you to lo
 
 # IDEO-Scrum Memory
 
-> The rules every role follows, one line each. A line marked `[dev,sm]` binds those roles; a line with no mark binds every role. A line that ends in `Read details/<file>.md first.` has its detail in that file: read it before you do what the line is about. These are working conventions: follow what fits; where one does not fit, depart from it and write what you did and why in the log's notes (a Sprint's Increment notes, or the chapter of the design log it concerns).
+> The rules every role follows, one line each. A line marked `[dev,sm]` binds those roles; a line with no mark binds every role. A line that ends in `Read details/<file>.md first.` has its detail in that file: read it before you do what the line is about. These are working conventions: follow what fits; where one does not fit, depart from it and write what you did and why in the log's notes (a Sprint's Increment notes, or the relevant chapter of an IDEO log).
 
 
 ## Who does what, and who decides
@@ -28,14 +28,14 @@ description: "Use only when summoned: an ideo-scrum role command tells you to lo
 
 - **one-product-log** Start every project, new or old, from one product log.
 - **write-product-log** Write the product log from the template; for an old project, from README, issues, plans, leaving history to version control.
-- **blank-page** If the product cannot be written yet, start from a design and let its conclusions fill the log. Read details/product-log.md first.
+- **blank-page** If the product or Product Goal cannot be written yet, Empathize has not gone far enough: use the IDEO five modes (Empathize/Define) to fill the log. Read details/product-log.md first.
 - **facts-then-questions** [sm] *Supplement.* Look up facts yourself; ask the PO in one numbered message, each with a recommended answer.
 - **product-log-header** Product statement (1.1) and Product Goal (1.2): one-row commitment tables; no Now or Waiting for PO line (other logs only).
 - **dod-in-product-log** Keep the full Definition of Done in 1.3; a Sprint picks where to focus checks, never which standards apply.
 - **dod-standards** Write standards precisely; keep only what holds across the product; item-specific or tentative ones go in acceptance criteria.
 - **stakeholder-table** List stakeholders in 2.1 in a short table; a Stakeholder subagent gets one row, the AI fills in details; if empty, ask the PO.
 - **architecture-map** Open 2.2 with a Mermaid flowchart TD map: actors (AI too) on top, ending at the bottom, 5-15 steps; subsections only if needed.
-- **no-tbd** Turn an unclear point into an item; a Sprint or a design works it out.
+- **no-tbd** Turn an unclear point into an item; a Sprint or the IDEO five modes work it out.
 - **no-technical-design** Keep technical design out of the product log; modules and interfaces live in the Increment.
 - **item-columns** An item has seven columns: #, Title, User story, Place, Status, Size, Notes. Read details/product-log.md first.
 - **numbers-not-ranks** Number items only to count them, every number unique; the PO ranks when an order is needed.
@@ -56,8 +56,7 @@ description: "Use only when summoned: an ideo-scrum role command tells you to lo
 - **share-goal-and-checks** [po,sm] Share the Sprint Goal and the checks to focus on with the Scrum Master and the Developer.
 - **select-items** [po,sm] Copy items into 2.1 word for word; each serves the Sprint Goal: add a missing one to the product log first; never pad.
 - **refinement** [sm,po] The Scrum Master leads refinement with the PO; seven steps; the PO says when it is over. Read details/refinement.md first.
-- **how-is-a-plan** [dev] The How is a plan of work items, each done in one session, with an output and a done test. Read details/sprint.md first.
-- **no-steps** [dev] Keep the How at the level of approach: no steps, no file contents, no polishing; if you can write the steps, do the work.
+- **how-is-a-plan** [dev] Write chapter 3 as a full solution plan (use IDEO Ideate for multi-route tradeoffs), keeping the work items table (each <=1 session). Read details/sprint.md first.
 - **go-ahead** Build only on the PO's go-ahead, with its date and reach (commit … push); approving a plan is not one. Read details/sprint.md first.
 - **review-handover** [po,sm] The PO may hand the review of the How, new structures and full texts to the Scrum Master in writing; not the go-ahead.
 - **increment-notes** [dev] Keep chapter 4 as the full record: a new session goes by the notes alone and does not work everything out again.
@@ -82,34 +81,14 @@ description: "Use only when summoned: an ideo-scrum role command tells you to lo
 - **read-the-goal** Before a stage decision, read the exact goal text from its table; if you cannot, stop. Read details/gates.md first.
 - **developer-elsewhere** With a Developer elsewhere the sprint log stays the record; talk directly, else take turns. Read details/handoff.md first.
 
-## Running a design sprint
-
-- **question-needs-design** A question of what people want or what is good: look for a ready answer, else pick a design sprint or the five modes.
-- **open-a-design** Open a design for a design sprint and start with Empathize on the PO's permission, never with solutions; a blank page is one.
-- **hard-point-only** From a Sprint, take out only the hard point that needs design; the rest of the Sprint goes on.
-- **design-roles** [po,sm,des] The PO and Scrum Master settle Empathize and Define; the Designer takes over at Ideate. Read details/design.md first.
-- **one-session-both-roles** [po,sm,des] A design often needs one session; the PO decides if it plays both roles; its name goes in both header fields.
-- **design-branch** A design opens its own branch off the Sprint branch or main; never name it <sprint-branch>/<name> (git cannot hold a and a/b).
-- **design-folder** A design lives in scrum/design-<suffix>/ (suffix: subject, no number); prototypes and working material never go into an Increment.
-- **design-stages** Each design stage: people first, experts if unclear, the map, ideas, prototype, role-card test. Read details/design.md first.
-- **diverge-first** Diverge first: at least two methods, at least one ideo-kernel Ideate method; quantity, no judgment. Read details/design.md first.
-- **talk-with-po** The main thread talks ideas over with the PO and merges all lines before converging; with none from the PO, it sketches one.
-- **choose-with-po** [po,sm] The Scrum Master leads the choice, the PO decides, no consensus hunt; role-card poll if asked; only the choice in 3.1.
-- **combine-or-rumble** Combine winners that fit; when two conflict, prototype both and let the test decide; the PO decides which.
-- **storyboard** Write a storyboard of about fifteen steps in 3.2 only when the solution needs one before the prototype; the Designer writes it.
-- **criteria-before-test** Before testing, write what counts as a yes, a no or a not yet for each design question, and what role cards cannot show.
-- **design-ends** A design ends when the PO says its questions are answered or stops it; Review archives it. Read details/design-ending.md first.
-- **design-conclusions** At its end, write the conclusions into the product log, pass them to the asking Sprint. Read details/design-ending.md first.
-- **ideo-in-every-stage** Each design stage takes its methods from the IDEO mode it stands on; output goes in that stage's design-log chapter.
-- **ideate-arrangement** Before the PO's go-ahead for Ideate, nobody gathers ideas, sketches or sends out subagents. Read details/gates.md first.
-- **small-design** A small design is still a design: keep the log, shrink each stage to a line or two, skip no stage, keep the stage permissions.
-
 ## The five modes and the IDEO log
 
-- **sprint-or-modes** The PO picks: a full design is usually a design sprint; the five modes are the base of everything, used piecemeal elsewhere.
-- **research-as-empathize** Chat or IDEO-log research can count as Empathize material, but a design sprint still starts on the PO's permission.
-- **open-ideo-log** Outside a design: 1-2 methods in one session go in the log served; more opens an IDEO log. Read details/ideo-ending.md first.
-- **ideo-log-ends** Conclusions flow back to the log that asked and the PO decides; archive at the next Review. Read details/ideo-ending.md first.
+- **open-ideo-log** Use the IDEO five modes across the Sprint: 1-2 methods in one session go in the log served; more opens an IDEO log (`IdeoBacklog.md`). Read details/ideo-ending.md first.
+- **diverge-first** Diverge before converging: at least two methods, including at least one ideo-kernel Ideate method; quantity first, judgment later. Read details/ideo-ending.md first.
+- **isolated-sketches** When distinct approaches are wanted, have fresh isolated subagents sketch separately without sharing one example summary. Read details/ideo-ending.md first.
+- **prototype-not-increment** Prototypes are rough, quick and built to learn — never put a prototype into an Increment. Read details/ideo-ending.md first.
+- **keep-test-evidence** Keep who tested, what showed up, and the answers in `IdeoBacklog.md` or the log served, whether or not conclusions are built. Read details/ideo-ending.md first.
+- **ideo-log-ends** Conclusions flow back to the log that asked and the PO decides; archive the IDEO log to `scrum/documents/ideo/` at the next Review. Read details/ideo-ending.md first.
 
 ## The Scrum board
 
@@ -120,14 +99,13 @@ description: "Use only when summoned: an ideo-scrum role command tells you to lo
 
 ## About these rules
 
-- **designs-beside-sprints** A design sits beside a Sprint, not in it: open one for an item that needs design. Read details/folders.md first.
-- **three-layers** Product log, then a sprint or design log, then the Increment or prototype. Read details/folders.md first.
+- **three-layers** Product log, then sprint log, then Increment; prototypes built with the IDEO five modes stay outside Increments. Read details/folders.md first.
 - **scrum-folders** All Scrum work lives under scrum/; use your project's own places if it has them. Read details/folders.md first.
-- **where-files-go** One log's files stay in its folder; design originals and shared files go to scrum/documents/. Read details/folders.md first.
+- **where-files-go** One log's files stay in its folder; archived logs, IDEO test evidence and shared files go to scrum/documents/. Read details/folders.md first.
 - **working-material** Keep working material out of the log; big files in scrum/documents/; Retro lessons: memory only. Read details/folders.md first.
-- **names** Use the plugin's own terms (product log, sprint log, design log, IDEO log, PBI, role card) as defined. Read details/names.md first.
+- **names** Use the plugin's own terms (product log, sprint log, IDEO log, PBI, role card) as defined. Read details/names.md first.
 - **fresh-subagent** A fresh subagent starts from its brief alone; a fork or copy of a session does not count.
 - **rule-labels** No label: author's practice; *Supplement*: inferred, unconfirmed; *Decide on the spot*: no fixed rule. Read details/names.md first.
 - **templates-record-outputs** A template section holds only what its step produced; keep every heading, add none. Read details/names.md first.
 - **flow-maps** Process maps of the whole flow and of each log, with the lines that apply at each step. Read details/flow-maps.md first.
-- **departures** The plugin departs from the Scrum Guide on purpose in seven places, each with its reason. Read details/departures.md first.
+- **departures** The plugin departs from the Scrum Guide on purpose in six places, each with its reason. Read details/departures.md first.

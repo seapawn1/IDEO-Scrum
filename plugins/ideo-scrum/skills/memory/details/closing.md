@@ -5,12 +5,9 @@ Read this file when you close a Sprint: the Review, the Retrospective and the cl
 ## Review (`review-at-close`)
 
 - Close with a Review: compress the sprint log to its key decisions, rename it `sprint-NN-<suffix>.md`, and move it into `scrum/documents/` or the project’s existing archive subfolder there.
-- **Ended designs.** An ended design is archived by the first Review that can read its complete log and all original material in its own checkout. Without that complete set, leave the design pending archival and do not move its log or material from another worktree. Archive its log as `design-<suffix>.md` and keep its original material together in a folder beside it, out of the active design path. Preserve the decision trail and verify that the archive is readable before updating references in this checkout.
-- **A Sprint working elsewhere that builds on the design.** Hand off the old and new paths to any receiving Sprint; that Sprint first checks that the originals are readable at the new path in its own checkout, then updates its references there. While building, keep a readable old reference until the new one is available in that checkout. When the design is already archived on the target base (`main`), in this checkout, or in an integration branch ready alongside this Sprint, before the receiving Sprint closes check its actual material references — including those in its log being archived — and the originals against that combined target state, and update broken links before closing; an old link that works only in the current worktree is not sufficient.
-- If the receiving Sprint closes while the design is still pending archival everywhere, keep the usable active reference, note the pending archival, and merge to `main`; the later archiving Review searches the whole project before its closing commit (`one-closing-commit`, step 1) so those archived Sprint references are updated too, and reports any unmerged branches still holding stale active paths to the Scrum Master.
+- **Ended IDEO logs.** Archive ended IDEO logs as `scrum/documents/ideo/ideo-<suffix>.md` (preserving recorded test evidence, conclusions, and any key supporting evidence beside the archived log; `keep-test-evidence`, `ideo-log-ends`). Clean up temporary prototypes used as reference in the Sprint once the Sprint closes (`prototype-not-increment`).
 - Leave verbatim historical commitment snapshots unchanged. Report stale active paths on other branches to the Scrum Master, rather than changing those branches.
-- Archive ended IDEO logs as `ideo-<suffix>.md`, handling their prototypes as `ideo-log-ends` says.
-- Clean up ordinary working files in `scrum/`, including outdated ones in `scrum/documents/`; check that this does not remove design originals or break links to them, even when the receiving Sprint closes.
+- Clean up ordinary working files in `scrum/`, including outdated ones in `scrum/documents/`; check that this does not remove archived logs or preserved test evidence.
 - Write the Stakeholders’ views and any changes to the product log or Product Goal into the product log and refresh it (`fresh-at-review`). For an outside view, the Product Owner or the Scrum Master — never the builder — summons Stakeholders from the product log’s table.
 
 ## Fresh at every Review (`fresh-at-review`)
@@ -33,7 +30,7 @@ Read this file when you close a Sprint: the Review, the Retrospective and the cl
 
 ## Disputed and to-research points (`disputed-points`)
 
-- At every Review and every Retro, the Scrum Master lists the points of the Sprint or design that were disputed, or that need deep research.
+- At every Review and every Retro, the Scrum Master lists the points of the Sprint or IDEO discovery that were disputed, or that need deep research.
 - The Product Owner picks which of them go into `scrum/documents/` and which into memory (as lessons, one entry each, as `retro-in-memory` says).
 - Anything that has to be done about a point still goes into the product log first, as an item (`no-tbd`, `new-work-registered`).
 

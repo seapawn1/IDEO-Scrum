@@ -1,28 +1,27 @@
-"""Check a written scrum/ScrumBoard.html against the project's logs (acceptance 68-4).
+"""Check a written scrum/ScrumBoard.html against the project's logs (acceptance 68-4, updated for PBI-105 & PBI-106).
 
     python -X utf8 -I scripts/board_check/check.py check --project DIR [--page FILE] [--template FILE] [--render]
     python -X utf8 -I scripts/board_check/check.py selftest
     python -X utf8 -I scripts/board_check/check.py ref --project DIR --summaries FILE --out FILE
 
-`check` compares the data block with the logs and the rest of the page with the template. It checks copied fields,
-map labels, sources, design solution structure, and IDEO log placement. It does not judge whether a summary makes
-sense or follows the map's main line. `--render` counts the rendered elements, not their visual readability.
+`check` compares the data block with the logs (ProductBacklog.md and open SprintBacklog.md files only) and the rest of
+the page with the template. It checks copied fields, map labels, sources, and chapter 3 work items (matched by header so
+solution comparison tables in How do not interfere). It does not judge whether a summary makes sense or follows the
+map's main line. `--render` counts the rendered elements, not their visual readability.
 
 `selftest` checks reference pages for fixture projects and verifies that deliberate data errors are reported.
-`ref` writes a data file from the logs and supplied summaries; give each design a solution object or an explicit null.
+`ref` writes a data file from the logs and supplied summaries.
 """
 import argparse
 import copy
 import json
 import os
 import pathlib
-import posixpath
 import re
 import shutil
 import subprocess
 import sys
 import tempfile
-from collections import Counter
 
 HERE = pathlib.Path(__file__).resolve().parent
 REPO = HERE.parents[1]
@@ -30,10 +29,12 @@ TEMPLATE = REPO / "plugins/ideo-scrum/board/scrum-board-template.html"
 PLACEHOLDER = '{"todo": "Replace this line with the board data (board-log.md lists the fields)."}'
 # the data block runs to the next script, so a stray </script> inside the data cannot hide itself
 BLOCK_RE = re.compile(r'(<script type="application/json" id="board-data">)(.*?)(</script>\s*<script>)', re.S)
-LOG_FILES = {"sprint": "SprintBacklog.md", "design": "DesignBacklog.md", "ideo": "IdeoBacklog.md"}
+LOG_FILES = {"sprint": "SprintBacklog.md"}
 PRODUCT_LOG = "scrum/ProductBacklog.md"
 PATHS = {k: re.compile(r"^scrum/(%s-[^/]+)/%s$" % (k, v)) for k, v in LOG_FILES.items()}
-GROUPS = ("sprint", "design", "next", "later")
+GROUPS = ("sprint", "next", "later")
+WORK_ITEM_COL_RE = re.compile(r"(?:work\s*item|工作项)", re.I)
+DONE_WHEN_COL_RE = re.compile(r"(?:done\s*when|完成条件)", re.I)
 BROWSERS = [r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
             r"C:\Program Files\Microsoft\Edge\Application\msedge.exe",
             r"C:\Program Files\Google\Chrome\Application\chrome.exe"]
@@ -51,18 +52,19 @@ def norm_nl(text):
 
 
 def discover(root):
-    """The open Sprint, design, and IDEO logs: in the working copy, else on a branch (the newest commit wins)."""
+    """Open Sprint logs: in the working copy, else on a branch (the newest commit wins). Ignores documents/ and IDEO."""
     root = pathlib.Path(root)
     found = {}
     scrum = root / "scrum"
-    for dirpath, dirs, files in os.walk(scrum):
-        dirs[:] = [d for d in dirs if d != "documents"]
-        for f in files:
-            rel = (pathlib.Path(dirpath) / f).relative_to(root).as_posix()
-            for kind, pat in PATHS.items():
-                m = pat.match(rel)
-                if m:
-                    found[(kind, m.group(1))] = {"path": rel, "source": "working copy", "commit": ""}
+    if scrum.is_dir():
+        for dirpath, dirs, files in os.walk(scrum):
+            dirs[:] = [d for d in dirs if d != "documents"]
+            for f in files:
+                rel = (pathlib.Path(dirpath) / f).relative_to(root).as_posix()
+                for kind, pat in PATHS.items():
+                    m = pat.match(rel)
+                    if m:
+                        found[(kind, m.group(1))] = {"path": rel, "source": "working copy", "commit": ""}
     if (root / ".git").exists():
         best = {}
         for branch in (git(root, "for-each-ref", "--format=%(refname:short)", "refs/heads") or "").split():
@@ -93,9 +95,7 @@ def read_log(root, path, source):
 
 
 def find_product_log(root):
-    """(text, source) of the product log, read as board-log.md conventions 4 and 11 say: from the working copy when it
-    is there (source `working copy`), else from the branch whose latest commit is the newest and that holds it
-    (source `branch <name> @ <commit>`, the commit as its first seven characters). (None, None) when there is none."""
+    """(text, source) of the product log: from the working copy when present, else from the newest branch holding it."""
     root = pathlib.Path(root)
     in_copy = root / PRODUCT_LOG
     if in_copy.is_file():
@@ -116,10 +116,7 @@ def find_product_log(root):
 
 
 def commitments(text):
-    """{kind: exact text} from the one-row tables whose first cell is Commitment / 承诺; the heading says which.
-    A heading may be left in English or put into Chinese (产品, 产品目标, 冲刺目标, 设计目标): a stranger's AI writing
-    the log in Chinese translated "1.1 Product" to "1.1 产品" (formal run 1, 2026-11-14), which the commitments hook
-    (commitments.sh) reads, and this check has to read too."""
+    """{kind: exact text} from one-row Commitment/承诺 tables; nearest heading selects product/product_goal/sprint_goal."""
     out, head = {}, ""
     for line in text.split("\n"):
         if line.startswith("#"):
@@ -129,7 +126,6 @@ def commitments(text):
             h = head.lower()
             kind = ("sprint_goal" if ("sprint goal" in h or "冲刺目标" in h)
                     else "product_goal" if ("product goal" in h or "产品目标" in h)
-                    else "design_goal" if ("design goal" in h or "设计目标" in h)
                     else "product" if ("product" in h or "产品" in h) else "")
             if kind and kind not in out:
                 out[kind] = m.group(1)
@@ -141,85 +137,8 @@ def now_line(text):
     return m.group(1).strip() if m else ""
 
 
-def header_field(text, name):
-    # 只从页首引用的字段起点取值；Question 中提到的 For: 不是字段。
-    for line in text.splitlines():
-        if line.startswith("##"):
-            break
-        if not line.startswith(">"):
-            continue
-        for field in line[1:].split("|"):
-            label, colon, value = field.strip().partition(":")
-            if colon and label == name:
-                return value.strip()
-    return ""
-
-
-def ideo_host(text, log_path):
-    value = header_field(text, "For")
-    link = re.fullmatch(r"\[[^\]]*\]\(([^)]+)\)", value)
-    value = (link[1] if link else value.strip("`")).strip().replace("\\", "/")
-    path = posixpath.normpath(value)
-    if not path.startswith("scrum/"):
-        path = posixpath.normpath(posixpath.join(posixpath.dirname(log_path), path))
-    for kind in ("sprint", "design"):
-        match = PATHS[kind].fullmatch(path)
-        if match:
-            return kind + "s", match[1]
-    return None
-
-
-MODE_PREFIX = re.compile(r"^(?:Empathize|Define|Ideate|Prototype|Test|共情|定义|构思|原型|测试)\s*[:：·]\s*", re.I)
-ENDED_EN = r"(?:concluded|closed|ended)"
-ENDED_ZH = r"已(?:收尾|结束|关闭)"
-# 「待归档」只认明确的等待说法（看板约定 16：同句写明日志在等归档）：awaiting／awaits／pending 紧挨着 archive、archival、
-# archiving（中间可夹 Review 或 PO 一个词），或「待」「等待」紧挨着「归档」（中间可夹 Review）。只是提到归档
-# （`archive this after PO review`、「归档旧原型」）不算。
-AWAITS_ARCHIVE = re.compile(
-    r"\b(?:awaiting|awaits?|pending)\s+(?:(?:Review|PO)\s+)?archiv(?:e|al|ing)\b|(?:待|等待)\s*(?:Review\s*)?归档",
-    re.I,
-)
-
-
-def matches_end_state(state, english, chinese):
-    # 从状态开头读完整表述，不在后文搜索收尾关键词。
-    return bool(re.match(
-        rf"(?:{english}|{chinese})(?=$|\s*(?:[.。:：·,，—–;；（(]|-\s|\d{{4}}-\d{{2}}-\d{{2}}\b))",
-        state, re.I,
-    ))
-
-
-def ideo_concluded(now):
-    return matches_end_state(
-        MODE_PREFIX.sub("", now, count=1),
-        rf"(?:(?:this|the)\s+(?:IDEO\s+)?run\s+(?:(?:is|has(?:\s+been)?)\s+)?)?{ENDED_EN}",
-        rf"(?:(?:本轮|本次)\s*)?(?:(?:IDEO\s*)?五模式\s*)?{ENDED_ZH}",
-    )
-
-
-def host_concluded(now, kind):
-    # 只供 IDEO 条目决定归属；阶段结束不等于宿主结束，也不据此移除宿主卡。
-    if kind == "sprints":
-        english_subject = r"sprint(?:\s+\d+)?"
-        chinese_subject = r"(?:本(?:期|次|轮)?)?冲刺(?:\s*\d+)?"
-        # 冲刺日志收官时 Now 写「已收官 · …」，也有写「收官 · …」的；两种都认。
-        chinese_state = r"(?:(?:已\s*)?收官|已(?:收尾|结束|关闭))"
-    else:
-        english_subject = r"design(?:\s+sprint)?"
-        chinese_subject = r"(?:本(?:次|轮)?)?设计(?:冲刺)?"
-        chinese_state = ENDED_ZH
-    state = MODE_PREFIX.sub("", now, count=1)
-    # 没有主语的「已结束」「Concluded」写在 Now 开头，就是宿主结束。前面带着阶段名时（设计日志约定 19 的
-    # `Test: Concluded — awaiting archive`），要同句明确写出在等归档才算：「Prototype: concluded; Test next」只是一个阶段完了，
-    # 「Test: Concluded; archive this after PO review」只是提到归档，都不算。
-    if (state == now or AWAITS_ARCHIVE.search(state)) and matches_end_state(
-            state, ENDED_EN, rf"(?:(?:本期|本次|本轮)\s*)?{chinese_state}"):
-        return True
-    return matches_end_state(
-        state,
-        rf"(?:(?:this|the)\s+)?{english_subject}(?:\s+(?:(?:is|has(?:\s+been)?)\s+)?|\s*[:：]\s*){ENDED_EN}",
-        rf"{chinese_subject}\s*{chinese_state}",
-    )
+def parse_table_rows(block_lines):
+    return [[c.strip() for c in ln.strip().strip("|").split("|")] for ln in block_lines]
 
 
 def table_after(text, heading_re):
@@ -235,6 +154,64 @@ def table_after(text, heading_re):
                 elif nxt.startswith("#"):
                     break
             return rows[2:]
+    return []
+
+
+def work_item_table(text):
+    """Find the chapter 3 work-item table by header (Work item/工作项 + Done when/完成条件), skipping solution tables.
+
+    Scans all Markdown tables inside `## 3.` up to the next `## ` heading (ignoring fenced code blocks). Returns
+    `[(n, title, done_bool), ...]` for the matching 4+ column table, or `[]` if chapter 3 has no work-item table.
+    """
+    lines = text.split("\n")
+    start_idx = None
+    for i, line in enumerate(lines):
+        if re.match(r"^#{2,3}\s*3\.", line):
+            start_idx = i + 1
+            break
+    if start_idx is None:
+        return []
+
+    section_lines = []
+    in_fence = False
+    for line in lines[start_idx:]:
+        if re.match(r"^\s*```", line):
+            in_fence = not in_fence
+            section_lines.append("")
+            continue
+        if not in_fence and re.match(r"^#{1,2}\s+", line):
+            break
+        section_lines.append("" if in_fence else line)
+
+    tables = []
+    cur = []
+    for line in section_lines:
+        if line.startswith("|"):
+            cur.append(line)
+        elif cur:
+            tables.append(cur)
+            cur = []
+    if cur:
+        tables.append(cur)
+
+    for tbl in tables:
+        rows = parse_table_rows(tbl)
+        if len(rows) < 2:
+            continue
+        header = rows[0]
+        if len(header) < 4:
+            continue
+        if any(WORK_ITEM_COL_RE.search(c) for c in header) and any(DONE_WHEN_COL_RE.search(c) for c in header):
+            # Locate column indices defensively (defaults to 0, 1, 3 for standard `# | Work item | Output | Done when`)
+            wi_idx = next((idx for idx, c in enumerate(header) if WORK_ITEM_COL_RE.search(c)), 1)
+            dw_idx = next((idx for idx, c in enumerate(header) if DONE_WHEN_COL_RE.search(c)), 3)
+            out = []
+            for r in rows[2:]:
+                if r and r[0]:
+                    title = r[wi_idx] if len(r) > wi_idx else ""
+                    done = len(r) > dw_idx and r[dw_idx].startswith("✓")
+                    out.append((r[0], title, done))
+            return out
     return []
 
 
@@ -257,29 +234,15 @@ def map_labels(text, heading_re):
     return []
 
 
-def has_section_content(text, number):
-    text = re.sub(r"<!--.*?-->", "", text, flags=re.S)
-    start = re.search(r"^(#{2,6})[ \t]+" + re.escape(number) + r"(?=[ \t.:：]|$)[^\n]*$", text, re.M)
-    if not start:
-        return False
-    following = text[start.end():]
-    end = re.search(r"^#{1,%d}[ \t]+" % len(start.group(1)), following, re.M)
-    return bool((following[:end.start()] if end else following).strip())
-
-
 def squash(s):
     s = re.sub(r"<br\s*/?>", " ", s)
     s = re.sub(r"[①②③④⑤⑥⑦⑧⑨⑩]", "", s)
     return re.sub(r"\s+", " ", s).strip()
 
 
-def has_id(text, item_id):
-    return re.search(r"(?<![A-Za-z0-9])%s(?![0-9])" % re.escape(item_id), text) is not None
-
-
 def read_project(root):
     root = pathlib.Path(root)
-    P = {"product": None, "sprints": {}, "designs": {}, "ideo": {}}
+    P = {"product": None, "sprints": {}}
     text, product_source = find_product_log(root)
     if text is None:
         return P
@@ -297,32 +260,8 @@ def read_project(root):
             P["sprints"][ident] = {
                 "source": info["source"], "goal": commitments(body).get("sprint_goal", ""), "now": now_line(body),
                 "items": [r[0] for r in table_after(body, r"^#{2,3}\s*2\.1\b") if r and r[0]],
-                "blocks": [(r[0], r[1], len(r) > 3 and r[3].startswith("✓"))
-                           for r in table_after(body, r"^#{2,3}\s*3\.") if r and r[0]]}
-        elif kind == "design":
-            frm = header_field(body, "From")
-            P["designs"][ident] = {
-                "source": info["source"], "goal": commitments(body).get("design_goal", ""), "now": now_line(body),
-                "for": [i[0] for i in items if has_id(frm, i[0])],
-                "map_labels": map_labels(body, r"^#{2,3}\s*2\.1\b"),
-                "has_solution_section": has_section_content(body, "3.1"),
-                "has_storyboard_section": has_section_content(body, "3.2")}
-        else:
-            P["ideo"][ident] = {"now": now_line(body), "host": ideo_host(body, info["path"])}
+                "blocks": work_item_table(body)}
     return P
-
-
-def expected_ideo(project):
-    """按看板约定 11、16 得到每条应展示的 IDEO 日志唯一的宿主和 Now。"""
-    expected = {}
-    for ident, log in project["ideo"].items():
-        if not log["host"] or ideo_concluded(log["now"]):
-            continue
-        kind, host_id = log["host"]
-        host = project[kind].get(host_id)
-        if host is not None and not host_concluded(host["now"], kind):
-            expected[ident] = host_id, log["now"]
-    return expected
 
 
 # ---------------------------------------------------------------- the page
@@ -354,13 +293,8 @@ def check_page(page, project, template_text=None):
     P = read_project(project)
     if P["product"] is None:
         return errors + ["no scrum/ProductBacklog.md in the project"], warnings
-    check_data(D, P, errors, warnings, separate_solution=uses_solution_data(template_text))
+    check_data(D, P, errors, warnings)
     return errors, warnings
-
-
-def uses_solution_data(template_text):
-    # 历史体验测试显式传入当时的模板，不能用新版字段要求倒判旧页面。
-    return template_text is None or "data-solution" in template_text
 
 
 def eq(errors, label, got, want):
@@ -389,7 +323,7 @@ def stop_warnings(text):
     return out
 
 
-def check_data(D, P, errors, warnings, *, separate_solution=True):
+def check_data(D, P, errors, warnings):
     if not isinstance(D, dict):
         errors.append("the data is not an object")
         return
@@ -397,7 +331,7 @@ def check_data(D, P, errors, warnings, *, separate_solution=True):
         errors.append("lang must be zh or en, not %r" % D.get("lang"))
     if not re.match(r"^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$", str(D.get("generated", ""))):
         errors.append("generated must be YYYY-MM-DD HH:MM, not %r" % D.get("generated"))
-    for key in ("items", "sprints", "designs"):
+    for key in ("items", "sprints"):
         if not isinstance(D.get(key), list):
             errors.append("%s must be a list" % key)
             return
@@ -423,17 +357,12 @@ def check_data(D, P, errors, warnings, *, separate_solution=True):
             if g["id"] == w["id"] and g != w:
                 errors.append("items %s: the page has %r, the log has %r" % (w["id"], g, w))
     in_sprint = {i for s in D["sprints"] if isinstance(s, dict) for i in (s.get("items") or [])}
-    in_design = {i for d in D["designs"] if isinstance(d, dict) for i in (d.get("for") or [])}
     for it in D["items"]:
         g, ident = it.get("group"), it.get("id")
         if g not in GROUPS:
             errors.append("item %s: group %r is not one of %s" % (ident, g, "/".join(GROUPS)))
         elif (g == "sprint") != (ident in in_sprint):
             errors.append("item %s: group %r does not match the Sprints (in a Sprint's items: %s)" % (ident, g, ident in in_sprint))
-        elif g == "design" and ident not in in_design:
-            errors.append("item %s: group design, but no design is for it" % ident)
-        elif g in ("next", "later") and ident in in_design:
-            errors.append("item %s: a design is for it, so its group is design" % ident)
 
     # the map of the product
     stops = prod.get("map") if isinstance(prod.get("map"), list) else []
@@ -441,7 +370,7 @@ def check_data(D, P, errors, warnings, *, separate_solution=True):
         errors.append("product.map must be a list")
     if stops and not 2 <= len(stops) <= 10:
         warnings.append("product.map has %d stops; five to eight is meant" % len(stops))
-    ids = {s.get("id") for s in D["sprints"] if isinstance(s, dict)} | {d.get("id") for d in D["designs"] if isinstance(d, dict)}
+    ids = {s.get("id") for s in D["sprints"] if isinstance(s, dict)}
     for i, stop in enumerate(stops):
         if not isinstance(stop, dict) or not str(stop.get("text", "")).strip():
             errors.append("product.map[%d] needs a text" % i)
@@ -455,12 +384,7 @@ def check_data(D, P, errors, warnings, *, separate_solution=True):
                 errors.append("product.map[%d] note %r: %s is not in the map" % (i, stop.get("note"), num))
         for h in stop.get("here") or []:
             if h not in ids:
-                errors.append("product.map[%d] here %r is not an open Sprint or design" % (i, h))
-
-    listed = {h for stop in stops if isinstance(stop, dict) for h in (stop.get("here") or [])}
-    for d in D["designs"]:
-        if isinstance(d, dict) and stops and d.get("id") not in listed:
-            warnings.append("design %s is open but no stop of product.map lists it in here" % d.get("id"))
+                errors.append("product.map[%d] here %r is not an open Sprint" % (i, h))
 
     # Sprints
     sdata = {s.get("id"): s for s in D["sprints"] if isinstance(s, dict)}
@@ -481,77 +405,6 @@ def check_data(D, P, errors, warnings, *, separate_solution=True):
             if i not in known:
                 warnings.append("sprint %s: item %s is not an item that is not done" % (ident, i))
 
-    # designs
-    ddata = {d.get("id"): d for d in D["designs"] if isinstance(d, dict)}
-    if set(ddata) != set(P["designs"]):
-        errors.append("designs: the page has %s, the open design logs are %s" % (sorted(ddata), sorted(P["designs"])))
-    for ident, d in ddata.items():
-        w = P["designs"].get(ident)
-        if not w:
-            continue
-        eq(errors, "design %s goal" % ident, d.get("goal"), w["goal"])
-        eq(errors, "design %s now" % ident, d.get("now"), w["now"])
-        eq(errors, "design %s for" % ident, d.get("for"), w["for"])
-        eq(errors, "design %s source" % ident, d.get("source"), w["source"])
-        route = d.get("map", [])
-        if not isinstance(route, list):
-            errors.append("design %s map must be a list of stop texts" % ident)
-        elif not route and w["map_labels"]:
-            errors.append("design %s map is empty but section 2.1 contains a map" % ident)
-        else:
-            for i, node in enumerate(route):
-                if not isinstance(node, str) or not node.strip() or not in_map(node, w["map_labels"]):
-                    errors.append("design %s map[%d] %r is not found in the design log's map" % (ident, i, node))
-                    continue
-                for wn in stop_warnings(node):
-                    warnings.append("design %s map[%d] %s" % (ident, i, wn))
-        # 只自动核结构与有无出处，摘要意思和地图主线的顺序交给读卡和源文对账。
-        solution = d.get("solution")
-        if separate_solution:
-            if "solution" not in d:
-                errors.append("design %s needs a solution object or an explicit null" % ident)
-            elif solution is None and w["has_solution_section"]:
-                warnings.append("design %s: section 3.1 has content; verify that it records no chosen solution" % ident)
-            elif solution is not None:
-                if (not isinstance(solution, dict) or not solution or solution.keys() - {"title", "text"}
-                        or any(not isinstance(v, str) or not v.strip() for v in solution.values())):
-                    errors.append("design %s solution needs a nonempty title or text" % ident)
-                elif not w["has_solution_section"]:
-                    errors.append("design %s solution has no source in section 3.1" % ident)
-        story = d.get("story", [])
-        if (not isinstance(story, list) or any(not isinstance(x, dict) or
-                any(not isinstance(x.get(k), str) or not x[k].strip() for k in ("title", "text")) for x in story)):
-            errors.append("design %s story must be a list of frames with a title and a text" % ident)
-        elif separate_solution and story and (solution is None or not w["has_storyboard_section"]):
-            errors.append("design %s story needs a chosen solution and a source in section 3.2" % ident)
-
-    # 保留全部挂载，避免后出现的正确宿主覆盖先出现的错误宿主。
-    placed = {}
-    owners = [("product", prod)] + [(v.get("id"), v) for v in D["sprints"] + D["designs"] if isinstance(v, dict)]
-    for owner_id, owner in owners:
-        entries = owner.get("ideo", [])
-        if not isinstance(entries, list):
-            errors.append("ideo under %s must be a list" % owner_id)
-            continue
-        for entry in entries:
-            if not isinstance(entry, dict) or not isinstance(entry.get("id"), str) or not entry["id"]:
-                errors.append("ideo under %s needs a log id" % owner_id)
-                continue
-            placed.setdefault(entry["id"], []).append((owner_id, entry.get("now")))
-    expected = expected_ideo(P)
-    for ident, (host, now) in expected.items():
-        locations = placed.get(ident, [])
-        if not locations:
-            errors.append("ideo %s: the open host %s is missing this log" % (ident, host))
-        elif len(locations) != 1:
-            errors.append("ideo %s: appears more than once; it belongs only under %s" % (ident, host))
-        else:
-            actual_host, actual_now = locations[0]
-            eq(errors, "ideo %s host" % ident, actual_host, host)
-            eq(errors, "ideo %s now" % ident, actual_now, now)
-    for ident in placed.keys() - expected.keys():
-        errors.append("ideo %s: shown but not eligible for the board" % ident)
-
 
 def render_counts(page_path):
     exe = next((b for b in BROWSERS if os.path.isfile(b)), None)
@@ -560,12 +413,9 @@ def render_counts(page_path):
     r = subprocess.run([exe, "--headless", "--disable-gpu", "--allow-file-access-from-files", "--virtual-time-budget=5000",
                         "--dump-dom", pathlib.Path(page_path).resolve().as_uri()], capture_output=True, timeout=120)
     dom = r.stdout.decode("utf-8", "replace")
-    # the noscript note also says class="fail"; what counts is a message in place of the board inside #app
-    return {"pbi": len(re.findall(r'class="pbi[ "]', dom)), "nodes": len(re.findall(r'class="node (?:sprint|design)[ "]', dom)),
+    return {"pbi": len(re.findall(r'class="pbi[ "]', dom)), "nodes": len(re.findall(r'class="node sprint[ "]', dom)),
             "fail": re.search(r'id="app"[^>]*>\s*<div class="fail"', dom) is not None,
-            "cards": len(re.findall(r'class="card"', dom)),
-            "solutions": dict(Counter(re.findall(r'<div\b[^>]*\bdata-solution="([a-z]+)"', dom))),
-            "storyboards": len(re.findall(r'<details class="design-story">', dom))}
+            "cards": len(re.findall(r'class="card"', dom))}
 
 
 # ---------------------------------------------------------------- a perfect writer, and the self-test
@@ -576,34 +426,16 @@ def reference_data(root, summ):
     items = []
     for i in pp["items"]:
         in_s = any(i[0] in s["items"] for s in P["sprints"].values())
-        in_d = any(i[0] in d["for"] for d in P["designs"].values())
-        grp = "sprint" if in_s else "design" if in_d else "later" if re.search(r"以后|later", i[2], re.I) else "next"
+        grp = "sprint" if in_s else "later" if re.search(r"以后|later", i[2], re.I) else "next"
         items.append({"id": i[0], "title": i[1], "status": i[2], "size": i[3], "group": grp})
     name = pp["statement"].split("：")[0].split(": ")[0]
     sprints = [{"id": k, "goal": v["goal"], "now": v["now"], "items": v["items"], "source": v["source"],
                 "blocks": [{"n": b[0], "title": b[1], "done": b[2]} for b in v["blocks"]]} for k, v in P["sprints"].items()]
-    designs = []
-    design_summaries = summ.get("designs", {})
-    for k, v in P["designs"].items():
-        summary = design_summaries.get(k, {})
-        if "solution" not in summary:
-            raise ValueError("design %s: summaries need a solution object or an explicit null; reread section 3.1" % k)
-        if v["map_labels"] and not summary.get("map"):
-            raise ValueError("design %s: summaries need the route from section 2.1" % k)
-        design = {"id": k, "for": v["for"], "goal": v["goal"], "now": v["now"], "source": v["source"],
-                  "solution": summary["solution"]}
-        for key in ("map", "story"):
-            if key in summary:
-                design[key] = summary[key]
-        designs.append(design)
-    by_id = {x["id"]: x for x in sprints + designs}
-    for ident, (host, now) in expected_ideo(P).items():
-        by_id[host].setdefault("ideo", []).append({"id": ident, "now": now})
     lang = "zh" if re.search(r"[\u4e00-\u9fff]", pp["statement"]) else "en"
-    return {"lang": lang, "generated": "2026-11-14 12:00",
+    return {"lang": lang, "generated": "2026-11-24 12:00",
             "product": {"name": name, "statement": pp["statement"], "goal": pp["goal"], "source": pp["source"],
                         "map": summ.get("map", []), "closed": pp["closed"]},
-            "items": items, "sprints": sprints, "designs": designs}
+            "items": items, "sprints": sprints}
 
 
 def make_page(data, template_text):
@@ -614,268 +446,142 @@ def make_page(data, template_text):
 
 ACME_SUMM = {
     "map": [{"text": "下单", "here": ["sprint-01-alpha"]},
-            {"text": "发货", "here": ["sprint-02-beta"]},
-            {"text": "设计冲刺", "branch": True,
-             "here": ["design-gamma", "design-feedback-sample", "design-choosing"]}],
-    "designs": {
-        "design-gamma": {
-            "map": ["单子失败", "筛出失败批次", "重试", "查看重试结果", "确认成功或放弃"],
-            "solution": {"title": "分批重试流程", "text": "失败的批次单独重试，成功的批次不动。"},
-            "story": [{"title": "发现失败", "text": "店员在订单台看到失败的批次。"},
-                      {"title": "单独重试", "text": "店员只重试失败批次，成功批次无需重试。"}]},
-        "design-feedback-sample": {
-            "map": ["用产品时发现问题", "交给手边的 AI", "记下反馈", "在会话里用上反馈", "更新产品时取回"],
-            "solution": {"title": "记一下就够：全局说明管路线，反馈进全局记忆",
-                         "text": "PO 只说「记一下」，不用报位置；手边的 AI 按产品记入全局记忆。"
-                                 "反馈在会话里马上生效，更新产品时集中取回，由 PO 决定要改什么。"}},
-        "design-choosing": {
-            "map": ["打开订单", "提交退款申请", "查看退款进度", "收到退款通知", "核对退款去向"],
-            "solution": None}
-    }
+            {"text": "发货", "here": ["sprint-02-beta"]}],
 }
 
 
-def build_fixture(name, workdir, branch=False, product_branches=()):
-    dest = pathlib.Path(workdir) / name
-    shutil.copytree(HERE / "fixtures" / name, dest)
+def build_fixture(name, dst, branch=False, product_branches=()):
+    """Copy a fixture into dst. If branch=True, move sprint-02-beta onto its own git branch.
+    If product_branches is given, put the product log only on those branches (last is newest)."""
+    src = HERE / "fixtures" / name
+    shutil.copytree(src, dst, dirs_exist_ok=True)
+    if not (branch or product_branches):
+        return dst
+
+    def run(*a, env=None):
+        subprocess.run(["git", "-C", str(dst), *a], check=True, capture_output=True, env=env)
+
+    run("init", "-q", "-b", "main")
+    run("config", "user.email", "t@t")
+    run("config", "user.name", "t")
     if product_branches:
-        # main has no product log; each named branch holds it, committed one day after the one before
-        env = ["-c", "user.name=t", "-c", "user.email=t@example.com", "-c", "commit.gpgsign=false"]
-
-        def g(*a, day=None):
-            when = {} if day is None else {"GIT_COMMITTER_DATE": "2026-02-%02dT12:00:00 +0000" % day,
-                                          "GIT_AUTHOR_DATE": "2026-02-%02dT12:00:00 +0000" % day}
-            subprocess.run(["git", "-C", str(dest), *env, *a], capture_output=True, check=True, env={**os.environ, **when})
-        product = dest / PRODUCT_LOG
-        hold = pathlib.Path(workdir) / "hold-product"
-        shutil.move(str(product), str(hold))
-        g("init", "-q", "-b", "main")
-        g("add", "-A")
-        g("commit", "-q", "-m", "main", day=1)
-        for number, branch_name in enumerate(product_branches, start=2):
-            g("checkout", "-q", "-b", branch_name, "main")
-            shutil.copy(str(hold), str(product))
-            g("add", "-A")
-            g("commit", "-q", "-m", "product log on " + branch_name, day=number)
-            g("checkout", "-q", "main")
-            if product.exists():
-                product.unlink()
-    if branch:
-        env = ["-c", "user.name=t", "-c", "user.email=t@example.com", "-c", "commit.gpgsign=false"]
-
-        def g(*a):
-            subprocess.run(["git", "-C", str(dest), *env, *a], capture_output=True, check=True)
-        g("init", "-q", "-b", "main")
-        moved = dest / "scrum/sprint-02-beta"
-        hold = pathlib.Path(workdir) / "hold"
-        shutil.move(str(moved), str(hold))
-        g("add", "-A")
-        g("commit", "-q", "-m", "main")
-        g("checkout", "-q", "-b", "sprint-02-beta")
-        shutil.move(str(hold), str(moved))
-        g("add", "-A")
-        g("commit", "-q", "-m", "sprint 02")
-        g("checkout", "-q", "main")
-        shutil.rmtree(moved, ignore_errors=True)  # git already took it away; the working copy of main does not have it
-    return dest
+        pl = dst / PRODUCT_LOG
+        pl_text = pl.read_text(encoding="utf-8")
+        pl.unlink()
+        (dst / ".keep").write_text("base\n", encoding="utf-8")
+        run("add", ".")
+        run("commit", "-qm", "base without product log")
+        for idx, bname in enumerate(product_branches):
+            run("checkout", "-qb", bname, "main")
+            pl.write_text(pl_text, encoding="utf-8")
+            run("add", PRODUCT_LOG)
+            stamp = "2026-11-14T12:0%d:00Z" % idx
+            env = {**os.environ, "GIT_AUTHOR_DATE": stamp, "GIT_COMMITTER_DATE": stamp}
+            run("commit", "-qm", "product log on " + bname, env=env)
+        run("checkout", "-q", "main")
+        return dst
+    s2 = dst / "scrum/sprint-02-beta"
+    tmp = dst.parent / "_s2"
+    shutil.move(str(s2), str(tmp))
+    run("add", ".")
+    run("commit", "-qm", "base")
+    run("checkout", "-qb", "sprint-02-beta")
+    shutil.move(str(tmp), str(s2))
+    run("add", ".")
+    run("commit", "-qm", "sprint 2")
+    run("checkout", "-q", "main")
+    return dst
 
 
 def selftest():
     tpl = TEMPLATE.read_text(encoding="utf-8")
+    tmp = tempfile.mkdtemp(prefix="board-selftest-")
     failures, cases = [], 0
-    tmp = tempfile.mkdtemp(prefix="bc-")
-    try:
-        def check(label, data=None, page=None, project=None, want_ok=True, expect="", expect_warning=""):
-            nonlocal cases
-            cases += 1
-            text = page if page is not None else make_page(data, tpl)
-            errs, warnings = check_page(text, project, tpl)
-            if want_ok and errs:
-                failures.append("%s: expected pass, got %s" % (label, errs[:3]))
-            if not want_ok and not errs:
-                failures.append("%s: damage not caught" % label)
-            if not want_ok and errs and expect and not any(expect in e for e in errs):
-                failures.append("%s: caught, but not by the %r check: %s" % (label, expect, errs[:2]))
-            if expect_warning and not any(expect_warning in w for w in warnings):
-                failures.append("%s: expected warning %r, got %s" % (label, expect_warning, warnings[:2]))
 
-        acme = build_fixture("acme", tmp)
+    def check(label, data=None, page=None, project=None, want_ok=True, expect="", expect_warning=""):
+        nonlocal cases
+        cases += 1
+        p = page if page is not None else make_page(data, tpl)
+        errs, warns = check_page(p, project, tpl)
+        ok = not errs
+        if ok != want_ok:
+            failures.append("%s: expected ok=%s, got ok=%s (errors=%s)" % (label, want_ok, ok, errs))
+        elif expect and not any(expect in e for e in errs):
+            failures.append("%s: expected error containing %r, got %s" % (label, expect, errs))
+        elif expect_warning and not any(expect_warning in w for w in warns):
+            failures.append("%s: expected warning containing %r, got %s" % (label, expect_warning, warns))
+
+    def card_data(data, ident):
+        return next(c for c in data["sprints"] if c["id"] == ident)
+
+    try:
+        acme = build_fixture("acme", pathlib.Path(tmp) / "acme")
         ref = reference_data(acme, ACME_SUMM)
         check("acme reference passes", ref, project=acme)
-        # 夹具对照只约束这份已知输入，不把固定站名或文案当成通用判据。
-        expectations = json.loads((HERE / "fixtures/review-expectations.json").read_text(encoding="utf-8"))
-        design_cards = {d["id"]: d for d in ref["designs"]}
-        for case in expectations["cases"]:
-            cases += 1
-            card = design_cards.get(case["id"], {})
-            actual = (card.get("goal"), card.get("map"), bool(card.get("solution")), bool(card.get("story")))
-            want = (case["goal"], case["route"], case["solution_title"] is not None, case["has_storyboard"])
-            if actual != want:
-                failures.append("design fixture %s: expected %r, reference generated %r" % (case["case"], want, actual))
-        cases += 3
-        if len(stop_warnings("① 写产品日志：Product · 架构 · PBI（product-log）")) < 3:
-            failures.append("a stop copied whole is not flagged")
-        if stop_warnings("写产品日志"):
-            failures.append("a clean stop is flagged")
-        _, warns = check_page(make_page(ref, tpl), acme, tpl)
-        if warns:
-            failures.append("the reference page has warnings: %s" % warns[:2])
-        blank = build_fixture("blank", tmp)
-        check("blank reference passes", reference_data(blank, {}), project=blank)
-        # a log whose headings were put into Chinese (formal run 1: "1.1 产品") reads the same as the English one
-        zh_dir = pathlib.Path(tmp) / "zhcase"
-        zh_dir.mkdir()
-        zh = build_fixture("acme", zh_dir)
-        for rel, pairs in (("scrum/ProductBacklog.md", (("## 1.1 Product", "## 1.1 产品"),
-                                                         ("## 1.2 Product Goal", "## 1.2 产品目标"))),
-                           ("scrum/sprint-01-alpha/SprintBacklog.md", (("### 1.1 Sprint Goal", "### 1.1 冲刺目标"),)),
-                           ("scrum/sprint-02-beta/SprintBacklog.md", (("### 1.1 Sprint Goal", "### 1.1 冲刺目标"),))):
-            path = zh / rel
-            body = path.read_text(encoding="utf-8")
-            for old, new in pairs:
-                if old not in body:
-                    failures.append("zh headings: %r not found in the %s fixture" % (old, rel))
-                body = body.replace(old, new)
-            path.write_text(body, encoding="utf-8")
+
+        blank = build_fixture("blank", pathlib.Path(tmp) / "blank")
+        check("blank project passes", reference_data(blank, {}), project=blank)
+
+        # Legacy design-* and ideo-* folders must be ignored by discovery and board data.
+        legacy = build_fixture("acme", pathlib.Path(tmp) / "legacy")
+        (legacy / "scrum/design-old").mkdir(parents=True)
+        (legacy / "scrum/design-old/DesignBacklog.md").write_text(
+            "# Design Backlog — old\n\n### 1.2 Design goal\n\n| 承诺 | 旧设计目标 |\n| --- | --- |\n", encoding="utf-8")
+        (legacy / "scrum/ideo-notes").mkdir(parents=True)
+        (legacy / "scrum/ideo-notes/IdeoBacklog.md").write_text(
+            "# IDEO Backlog — notes\n\n> For: ../sprint-01-alpha/SprintBacklog.md\n> Now: Empathize\n", encoding="utf-8")
+        lref = reference_data(legacy, ACME_SUMM)
         cases += 1
-        en_p, zh_p = read_project(acme), read_project(zh)
-        if not en_p["product"]["statement"] or not en_p["product"]["goal"]:
-            failures.append("zh headings: the English fixture has no Product or Product Goal to compare with")
-        if (zh_p["product"]["statement"], zh_p["product"]["goal"]) != (en_p["product"]["statement"], en_p["product"]["goal"]):
-            failures.append("zh headings: 产品 / 产品目标 are not read as Product / Product Goal")
-        if {k: v["goal"] for k, v in zh_p["sprints"].items()} != {k: v["goal"] for k, v in en_p["sprints"].items()} \
-                or not all(v["goal"] for v in zh_p["sprints"].values()):
-            failures.append("zh headings: 冲刺目标 is not read as the Sprint Goal")
-        def card_data(data, ident):
-            return next(c for c in data["sprints"] + data["designs"] if c["id"] == ident)
+        if set(k for k, _ in discover(legacy)) != {"sprint"}:
+            failures.append("legacy discovery found non-sprint logs: %r" % list(discover(legacy)))
+        check("legacy design-* and ideo-* ignored", lref, project=legacy)
 
-        # 每个归属样本只改变一项条件；期望不从参考生成器或判卷推导。
-        id_dir = pathlib.Path(tmp) / "ideocase"
-        id_dir.mkdir()
-        ideo = build_fixture("acme", id_dir)
-        lo = ideo / "scrum/ideo-delta/IdeoBacklog.md"
-        body = lo.read_text(encoding="utf-8")
-        active = "Test：把重试间隔拿给两位店员看"
-        design_path = "../design-gamma/DesignBacklog.md"
-        sprint_path = "../sprint-01-alpha/SprintBacklog.md"
-
-        def placement(label, text, now, host, reject_on="design-gamma"):
-            lo.write_text(text, encoding="utf-8")
-            data = reference_data(ideo, ACME_SUMM)
-            entry = {"id": "ideo-delta", "now": now}
-            actual = [(c["id"], x) for c in data["sprints"] + data["designs"] for x in c.get("ideo", [])]
-            want = [(host, entry)] if host else []
-            if actual != want:
-                failures.append("%s: expected %r, reference generated %r" % (label, want, actual))
-            check(label, data, project=ideo)
-            if host is None:
-                shown = copy.deepcopy(data)
-                owner = next((c for c in shown["sprints"] + shown["designs"] if c["id"] == reject_on), None)
-                if owner is None:
-                    failures.append("%s: card %s should still be on the board" % (label, reject_on))
-                else:
-                    owner.setdefault("ideo", []).append(entry)
-                    check(label + " incorrectly shown", shown, project=ideo, want_ok=False, expect="not eligible")
-
-        scenarios = [
-            ("open for a design", design_path, active, "design-gamma"),
-            ("open for a Sprint", "[Sprint 01](%s)" % sprint_path, active, "sprint-01-alpha"),
-            ("open for the product log", "`scrum/ProductBacklog.md`", active, None),
-            ("concluded in English", design_path, "concluded 2026-11-14 — the frame is found", None),
-            ("concluded with an English full stop", design_path, "Test: concluded.", None),
-            ("concluded in an English sentence", design_path, "Test: The IDEO run has concluded; awaiting archive.", None),
-            ("concluded in Chinese", design_path, "测试：本轮已收尾（待归档）", None),
-            ("concluded in a Chinese sentence", design_path, "测试：本轮五模式已收尾，待归档", None),
-            ("still waiting to close", design_path, "测试：待收尾", "design-gamma"),
-            ("closed mentioned in ongoing work", design_path, "Test: review closed cases", "design-gamma"),
-            ("host log absent", "../sprint-09-closed/SprintBacklog.md", active, None),
-            ("a note is not a host log", "../design-gamma/Notes.md", active, None),
-            ("host log archived under documents", "../documents/design-gamma.md", active, None),
-        ]
-        for label, target, now, host in scenarios:
-            text = body.replace("For: " + design_path, "For: " + target, 1).replace(
-                "> Now: " + active, "> Now: " + now, 1)
-            placement(label, text, now, host)
-
-        sprint_body = body.replace("For: " + design_path, "For: " + sprint_path, 1)
-        full_header = (
-            "> Opened 2026-11-13 | Question: Which log should receive the conclusion? Suggested For: ../sprint-02-beta/SprintBacklog.md"
-            " | For: " + sprint_path + " | Product Owner: SeaPawn | Who runs it: AI"
+        # PBI-106: Chapter 3 with a solution comparison table BEFORE the work-item table, and Chapter 3 without a work-item table.
+        how_proj = build_fixture("acme", pathlib.Path(tmp) / "howcase")
+        s1_path = how_proj / "scrum/sprint-01-alpha/SprintBacklog.md"
+        s1_text = s1_path.read_text(encoding="utf-8")
+        comparison_tbl = (
+            "## 3. How\n\n"
+            "**方案对比**\n\n"
+            "| 方案 | 优点 | 缺点 |\n"
+            "| --- | --- | --- |\n"
+            "| A 方案 | 简单 | 扩展弱 |\n"
+            "| B 方案 | 灵活 | 略重 |\n\n"
         )
-        with_question = sprint_body.replace(sprint_body.splitlines()[2], full_header, 1)
-        placement("only the For field sets the host", with_question, active, "sprint-01-alpha")
-
-        # 只改现有宿主的 Now，保持 IDEO 在办且 For 不变，宿主卡本身必须仍可发现。
-        # 每个宿主有几种「整个宿主结束」的写法（应不再挂 IDEO）和几种「只是一个阶段结束」的写法（仍挂）。
-        # 带阶段名的 `Test: Concluded — awaiting archive` 是设计日志约定 19 要求的写法（Sprint 23 合流回验里没识别出来）。
-        host_states = [
-            ("sprint-01-alpha", sprint_path, sprint_body,
-             ("Test: Sprint 01 has ended; awaiting Review archive.", "Test: Concluded — awaiting archive",
-              "收官 · 2026-11-14，Sprint Goal 达成", "已收官 · 2026-11-21，PO 确认 Review 通过",
-              "Closed · 2026-11-14 — Sprint Goal met",
-              "Test: Concluded; awaiting Review archive", "测试：已结束（待 Review 归档）"),
-             ("Test: The Sprint's first test has ended; next test pending.", "收官前待 PO 确认",
-              "Increment: first work item done; Test next",
-              "Test: Concluded; archive this after PO review", "测试：已结束，归档旧原型")),
-            ("design-gamma", design_path, body,
-             ("测试：设计已结束（待 Review 归档）", "Test: Concluded — awaiting archive", "测试：已结束，待归档",
-              "Test: Concluded — awaiting archival", "测试：已结束（待 Review 归档）"),
-             ("测试：第一轮已结束，继续核对设计问题", "Prototype: Concluded; Test next",
-              "Prototype: concluded — PO picks the prototype next",
-              "Test: Concluded; archive this after PO review", "测试：已结束，归档旧原型")),
-        ]
-        for host, target, text, closed_nows, stage_nows in host_states:
-            host_file = (lo.parent / target).resolve()
-            original = host_file.read_text(encoding="utf-8")
-            prefix = "> Now: "
-            for host_now, want_host, state in ([(n, None, "ended but not archived") for n in closed_nows]
-                                               + [(n, host, "one stage of work ended") for n in stage_nows]):
-                updated = original.replace(prefix + now_line(original), prefix + host_now, 1)
-                host_file.write_text(updated, encoding="utf-8")
-                placement("%s %s: %s" % (host, state, host_now), text, active, want_host, reject_on=host)
-            host_file.write_text(original, encoding="utf-8")
-
-        # 单句判断（不经夹具）：每种明确的「待归档」写法、每种「只是提到归档」的写法各一例，两种宿主都试。
-        # 阶段名后的「已结束」只在同句明确写出在等归档时才算宿主结束（看板约定 16）。
-        for kind in ("sprints", "designs"):
-            for now, want in (
-                ("Test: Concluded — awaiting archive", True), ("Test: Concluded; awaiting Review archive", True),
-                ("Test: Concluded — awaiting archival", True), ("Test: Concluded, pending archival", True),
-                ("Test: Concluded; awaits archiving", True), ("测试：已结束，待归档", True),
-                ("测试：已结束（待 Review 归档）", True), ("测试：已结束，等待归档", True),
-                ("Test: Concluded; archive this after PO review", False), ("Test: Concluded; will archive later", False),
-                ("Test: Concluded; archived the old runs", False), ("Test: Concluded; no archiving needed", False),
-                ("测试：已结束，归档旧原型", False), ("测试：已结束；已归档的旧原型另放", False),
-                ("Prototype: Concluded; Test next", False),
-            ):
-                cases += 1
-                if host_concluded(now, kind) is not want:
-                    failures.append("host_concluded(%r, %r) should be %s" % (now, kind, want))
-
-        # 第三态：设计日志已迁出活动路径、只剩归档，不出活动卡（board-log 第 4 条：`scrum/documents/` 里的不读）。
-        archived = lo.parent.parent / "documents/design-archived"
-        archived.mkdir(parents=True, exist_ok=True)
-        shutil.copy(lo.parent.parent / "design-gamma/DesignBacklog.md", archived / "DesignBacklog.md")
+        s1_path.write_text(s1_text.replace("## 3. How\n", comparison_tbl, 1), encoding="utf-8")
+        s2_path = how_proj / "scrum/sprint-02-beta/SprintBacklog.md"
+        s2_path.write_text(re.sub(
+            r"## 3\. How[\s\S]*?(?=## 4\.)",
+            "## 3. How\n\n方案对比仅用正文写清，不设工作项表。\n\n| Option | Pros | Cons |\n| --- | --- | --- |\n| X | fast | rough |\n\nGo-ahead: 2026-11-24\n\n",
+            s2_path.read_text(encoding="utf-8"),
+        ), encoding="utf-8")
+        href = reference_data(how_proj, ACME_SUMM)
         cases += 1
-        if any("archived" in ident for _, ident in discover(ideo)):
-            failures.append("an archived design under scrum/documents/ is found as an open log")
-        shutil.rmtree(lo.parent.parent / "documents")
+        s1_blocks = card_data(href, "sprint-01-alpha")["blocks"]
+        s2_blocks = card_data(href, "sprint-02-beta")["blocks"]
+        if len(s1_blocks) != 3 or s1_blocks[0]["n"] != "1" or not s1_blocks[0]["done"]:
+            failures.append("PBI-106 table after comparison table failed: %r" % s1_blocks)
+        if s2_blocks != []:
+            failures.append("PBI-106 chapter 3 without work-item table expected [], got %r" % s2_blocks)
+        check("PBI-106 solution tables in How pass", href, project=how_proj)
 
-        # 两张同类卡可交换遍历顺序；保留正确挂载再向错误卡复制，不能只测移走原条目。
-        lo.write_text(sprint_body, encoding="utf-8")
-        double = reference_data(ideo, ACME_SUMM)
-        double["sprints"].sort(key=lambda card: card["id"])
-        card_data(double, "sprint-02-beta")["ideo"] = [{"id": "ideo-delta", "now": active}]
-        check("duplicate IDEO, correct host first", double, project=ideo, want_ok=False, expect="appears more than once")
-        double["sprints"].reverse()
-        check("duplicate IDEO, correct host last", double, project=ideo, want_ok=False, expect="appears more than once")
+        # Archived sprint logs under scrum/documents/ must not be discovered.
+        archived = legacy / "scrum/documents/sprint-99-old"
+        archived.mkdir(parents=True)
+        shutil.copy(legacy / "scrum/sprint-01-alpha/SprintBacklog.md", archived / "SprintBacklog.md")
+        cases += 1
+        if any("99" in ident for _, ident in discover(legacy)):
+            failures.append("archived sprint under scrum/documents/ was discovered")
+
+        # Branch discovery
         br_dir = pathlib.Path(tmp) / "branchcase"
         br_dir.mkdir()
         branch = build_fixture("acme", br_dir, branch=True)
         bref = reference_data(branch, ACME_SUMM)
         check("branch case reference passes", bref, project=branch)
-        sp2 = next(s for s in bref["sprints"] if s["id"] == "sprint-02-beta")
-        check("branch case: the source is a branch", bref, project=branch) if sp2["source"].startswith("branch ") else \
+        sp2 = card_data(bref, "sprint-02-beta")
+        cases += 1
+        if not sp2["source"].startswith("branch "):
             failures.append("branch case: sprint-02 was not found on its branch (%s)" % sp2["source"])
 
         def mutate(label, fn, expect, base=ref, project=acme):
@@ -883,11 +589,10 @@ def selftest():
             fn(d)
             check(label, d, project=project, want_ok=False, expect=expect)
 
-        # the product log in the working copy: its source is `working copy`, and a branch form is wrong (convention 4)
-        mutate("a branch source for a product log that is in the working copy",
+        mutate("a branch source for a product log in working copy",
                lambda d: d["product"].update(source="branch main @ 1234567"), "product.source")
 
-        # the product log only on branches (conventions 4 and 11): `branch <name> @ <commit>`, the newest commit wins
+        # Product log only on branches
         pb_dir = pathlib.Path(tmp) / "productbranch"
         pb_dir.mkdir()
         pb = build_fixture("acme", pb_dir, product_branches=("product-old", "product-new"))
@@ -897,76 +602,37 @@ def selftest():
                                   check=True).stdout.strip()
 
         pbref = reference_data(pb, ACME_SUMM)
-        cases += 1
-        if (pb / PRODUCT_LOG).exists():
-            failures.append("product branch case: the working copy should not hold the product log")
         want_source = "branch product-new @ " + tip("product-new")[:7]
+        cases += 1
         if pbref["product"]["source"] != want_source:
-            failures.append("product branch case: expected the newest branch %r, reference wrote %r" % (
-                want_source, pbref["product"]["source"]))
-        check("product log only on a branch: the branch form passes", pbref, project=pb)
-        mutate("a product log only on a branch, but the source says working copy",
+            failures.append("product branch case: expected %r, got %r" % (want_source, pbref["product"]["source"]))
+        check("product log only on a branch passes", pbref, project=pb)
+        mutate("product log only on a branch says working copy",
                lambda d: d["product"].update(source="working copy"), "product.source", base=pbref, project=pb)
-        mutate("a product log on two branches, but the older one is named",
+        mutate("product log on older branch",
                lambda d: d["product"].update(source="branch product-old @ " + tip("product-old")[:7]), "product.source",
                base=pbref, project=pb)
-        mutate("a product log only on a branch, but the commit is not the branch's tip",
+        mutate("product log wrong commit",
                lambda d: d["product"].update(source="branch product-new @ 1234567"), "product.source",
                base=pbref, project=pb)
 
         mutate("a character of the Product changed", lambda d: d["product"].update(statement=d["product"]["statement"] + "。"), "product.statement")
-        mutate("the Product Goal changed", lambda d: d["product"].update(goal=d["product"]["goal"][1:]), "product.goal")
-        mutate("closed count wrong", lambda d: d["product"].update(closed=9), "product.closed")
-        mutate("an item left out", lambda d: d["items"].pop(0), "items")
-        mutate("an item invented", lambda d: d["items"].append({"id": "PBI-99", "title": "x", "status": "待选", "size": "S", "group": "next"}), "items")
-        mutate("items swapped", lambda d: d["items"].reverse(), "items")
-        mutate("an item title changed", lambda d: d["items"][0].update(title="别的标题"), "items")
-        mutate("a Sprint item in group next", lambda d: d["items"][0].update(group="next"), "group")
-        mutate("a bad group word", lambda d: d["items"][0].update(group="soon"), "group")
-        mutate("the Sprint Goal changed", lambda d: d["sprints"][0].update(goal=d["sprints"][0]["goal"] + "x"), "goal")
-        mutate("the Now line cut short", lambda d: d["sprints"][0].update(now=d["sprints"][0]["now"][:-2]), " now")
-        mutate("a Sprint's items out of order", lambda d: d["sprints"][0].update(items=["PBI-9"]), "items")
-        mutate("a block marked done that is not", lambda d: d["sprints"][0]["blocks"][1].update(done=True), "blocks")
-        mutate("a block title changed", lambda d: d["sprints"][0]["blocks"][0].update(title="骨架"), "blocks")
-        mutate("a Sprint left out", lambda d: d["sprints"].pop(), "sprints")
-        mutate("a Sprint invented", lambda d: d["sprints"].append(dict(d["sprints"][0], id="sprint-09-ghost")), "sprints")
-        mutate("a wrong source", lambda d: d["sprints"][0].update(source="branch x @ 1234567"), "source")
-        mutate("a map stop that is not in the map", lambda d: d["product"]["map"].append({"text": "不存在的一步"}), "map")
-        mutate("a note number that is not in the map", lambda d: d["product"]["map"][0].update(note="77"), "note")
-        mutate("a here id that does not exist", lambda d: d["product"]["map"][0].update(here=["sprint-77-x"]), "here")
-        mutate("a design map node that is not in the map", lambda d: card_data(d, "design-gamma")["map"].append("编出来的"), "map[")
-        mutate("a design with a source map loses its route",
-               lambda d: card_data(d, "design-gamma").pop("map"), "map is empty but section 2.1 contains a map")
-        no_route = copy.deepcopy(ACME_SUMM)
-        no_route["designs"]["design-gamma"].pop("map")
-        cases += 1
-        try:
-            reference_data(acme, no_route)
-        except ValueError as exc:
-            if "design-gamma: summaries need the route from section 2.1" not in str(exc):
-                failures.append("a missing route was rejected for the wrong reason: %s" % exc)
-        else:
-            failures.append("reference data omitted a route even though section 2.1 contains a map")
-        mutate("a design for the wrong item", lambda d: card_data(d, "design-gamma").update({"for": ["PBI-1"]}), "for")
-        mutate("a selected design loses its solution field without a storyboard",
-               lambda d: card_data(d, "design-feedback-sample").pop("solution"), "explicit null")
-        false_null = copy.deepcopy(ref)
-        card_data(false_null, "design-feedback-sample")["solution"] = None
-        check("a selected design without a storyboard is mistaken for undecided", false_null, project=acme,
-              expect_warning="design design-feedback-sample: section 3.1 has content")
-        mutate("a solution invented for an undecided design",
-               lambda d: card_data(d, "design-choosing").update(solution={"title": "退回余额"}), "section 3.1")
-        mutate("a storyboard invented for a design without one",
-               lambda d: card_data(d, "design-feedback-sample").update(story=[{"title": "x", "text": "y"}]), "section 3.2")
-        mutate("a storyboard kept for a design with no chosen solution",
-               lambda d: card_data(d, "design-choosing").update(story=[{"title": "x", "text": "y"}]), "chosen solution")
-        mutate("a design story with a frame without text",
-               lambda d: card_data(d, "design-gamma")["story"].append({"title": "x", "text": ""}), "story")
-        mutate("an IDEO log omitted", lambda d: card_data(d, "design-gamma").pop("ideo"), "missing this log")
-        mutate("an IDEO log under the wrong owner",
-               lambda d: card_data(d, "sprint-01-alpha").update(ideo=card_data(d, "design-gamma").pop("ideo")), "ideo ideo-delta host")
-        mutate("an IDEO Now rewritten",
-               lambda d: card_data(d, "design-gamma")["ideo"][0].update(now="Test：验证间隔"), "ideo ideo-delta now")
+        mutate("a character of the Product Goal changed", lambda d: d["product"].update(goal=d["product"]["goal"].rstrip("）")), "product.goal")
+        mutate("a wrong product name", lambda d: d["product"].update(name="Other"), "product.name")
+        mutate("a wrong closed count", lambda d: d["product"].update(closed=99), "product.closed")
+        mutate("an item omitted", lambda d: d["items"].pop(), "items:")
+        mutate("an item reworded", lambda d: d["items"][0].update(title="列表"), "items PBI-1")
+        mutate("an item in the wrong group", lambda d: d["items"][0].update(group="next"), "group")
+        mutate("an obsolete design group rejected", lambda d: d["items"][2].update(group="design"), "not one of sprint/next/later")
+        mutate("an invented map stop", lambda d: d["product"]["map"].append({"text": "不存在的站"}), "not found in the product log")
+        mutate("an invented map note", lambda d: d["product"]["map"][0].update(note="999"), "not in the map")
+        mutate("an invented here id", lambda d: d["product"]["map"][0].update(here=["sprint-99-nope"]), "not an open Sprint")
+        mutate("a Sprint omitted", lambda d: d["sprints"].pop(), "sprints:")
+        mutate("a Sprint Goal changed", lambda d: card_data(d, "sprint-01-alpha").update(goal="改写"), "sprint sprint-01-alpha goal")
+        mutate("a Sprint Now changed", lambda d: card_data(d, "sprint-01-alpha").update(now="改写"), "sprint sprint-01-alpha now")
+        mutate("a Sprint item changed", lambda d: card_data(d, "sprint-01-alpha").update(items=["PBI-2"]), "sprint sprint-01-alpha items")
+        mutate("a Sprint source changed", lambda d: card_data(d, "sprint-01-alpha").update(source="branch x @ 1234567"), "sprint sprint-01-alpha source")
+        mutate("a Sprint block done flipped", lambda d: card_data(d, "sprint-01-alpha")["blocks"][0].update(done=False), "sprint sprint-01-alpha blocks")
         mutate("a bad time", lambda d: d.update(generated="today"), "generated")
         mutate("a bad lang", lambda d: d.update(lang="fr"), "lang")
 
@@ -1026,12 +692,8 @@ def main():
             try:
                 raw, _ = split_page(norm_nl(page.read_text(encoding="utf-8")))
                 D = json.loads(raw)
-                drawn = {"pbi": len(D["items"]), "nodes": len(D["sprints"]) + len(D["designs"]),
-                         "cards": 1 + len(D["sprints"]) + len(D["designs"])}
-                if uses_solution_data(tpl) and not errors:
-                    drawn["solutions"] = dict(Counter(
-                        "undecided" if d["solution"] is None else "chosen" for d in D["designs"]))
-                    drawn["storyboards"] = sum(bool(d.get("story")) for d in D["designs"])
+                drawn = {"pbi": len(D["items"]), "nodes": len(D["sprints"]),
+                         "cards": 1 + len(D["sprints"])}
                 for key, want in drawn.items():
                     if counts[key] != want:
                         out["errors"].append("the page drew %r %s, the data has %r" % (counts[key], key, want))

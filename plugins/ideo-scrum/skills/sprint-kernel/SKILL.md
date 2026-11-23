@@ -1,6 +1,6 @@
 ---
 name: sprint-kernel
-description: "Use only when summoned to open, run, resume or close this plugin's Sprint: an ideo-scrum role command tells you to load it for Sprint work; the user names ideo-scrum or sprint-kernel for that work; or they ask to create or change the plugin's logs (ProductBacklog.md / 产品日志, SprintBacklog.md / sprint log / 冲刺日志, DesignBacklog.md / 设计日志) and the work involves a Sprint. When summoned, invoke this skill before answering, even for a brief request. General Sprint, Sprint Goal, Sprint Backlog, Planning, Review or Retro questions alone are not a summons: answer normally without loading this skill. Once summoned, read the Memory's Sprint rules before planning or writing the log; use scrum-kernel first for the product log and roles. Covers Why, What, How, Increment, Test, refinement, checkpoints and closing, with no Sprint end date; the five Scrum events' source text is in `events/`. Design sprints belong to design-kernel, not this skill."
+description: "Use only when summoned to open, run, resume or close this plugin's Sprint: an ideo-scrum role command tells you to load it for Sprint work; the user names ideo-scrum or sprint-kernel for that work; or they ask to create or change the plugin's logs (ProductBacklog.md / 产品日志, SprintBacklog.md / sprint log / 冲刺日志) and the work involves a Sprint. When summoned, invoke this skill before answering, even for a brief request. General Sprint, Sprint Goal, Sprint Backlog, Planning, Review or Retro questions alone are not a summons: answer normally without loading this skill. Once summoned, read the Memory's Sprint rules before planning or writing the log; use scrum-kernel first for the product log and roles. Covers Why, What, How (including solution design with IDEO Ideate when needed, waiting for go-ahead), Increment, Test, refinement, checkpoints and closing, with no Sprint end date; the five Scrum events' source text is in `events/`."
 ---
 
 # Sprint Kernel
@@ -29,6 +29,20 @@ How a solo + AI team runs a Sprint — the five stages, the sprint log, who deci
 | Item refinement (What) | The full `../scrum-kernel/references/scrum-artifact-product-backlog.md`, `../memory/details/product-log.md`, `../ideo-kernel/IDEO-modes/define.md`, and `../ideo-kernel/methods/how-might-we-questions.md`, plus the full §2.2 comment in `../../template/sprint-backlog-template.md` | Take the POV word for word from the item or goal, frame HMWs that leave more than one solution open, distinguish what the Product Owner decides, what the Developer can propose, and what needs research, and propose checkable acceptance criteria. |
 
 Read any other method in full before using it. Material already present in the conversation counts only for the text it covers; a link, a Skill call without the text, or an unfinished read is not enough. If required text is missing, say what is missing and stop before drafting. When the Product Owner says a draft misapplies the method, reread the applicable source and instructions before redrafting. Drafting does not give the go-ahead for the next stage; follow the Memory's stage-gate rules (`stage-gates`).
+
+## Using IDEO Modes Across a Sprint
+
+The IDEO five modes (`../ideo-kernel/SKILL.md`) are the shared toolbox behind every Sprint stage — invoke them on demand when the work calls for them, and skip ceremony when the path is already straightforward. In particular, **How corresponds to Ideate**: when a Sprint involves multiple viable routes, design or architecture tradeoffs, or solution options, read `../ideo-kernel/IDEO-modes/ideate.md` first and diverge before converging (using isolated fresh subagents when distinct approaches are needed; Memory `diverge-first`, `isolated-sketches`); straightforward small changes need no ceremony.
+
+| Sprint stage | On-demand IDEO mode | When to pull it in |
+| --- | --- | --- |
+| **Why** | Empathize (`../ideo-kernel/IDEO-modes/empathize.md`) | The goal or user need behind the Sprint is unclear |
+| **What** | Define (`../ideo-kernel/IDEO-modes/define.md`) | Refining items into POV, HMW questions, and crisp scope |
+| **How** | Ideate (`../ideo-kernel/IDEO-modes/ideate.md`) | Choosing between routes, architecture tradeoffs, or solution proposals before writing the plan |
+| **Increment** | Prototype (`../ideo-kernel/IDEO-modes/prototype.md`) | Low-fidelity, disposable checks of risky assumptions (never put prototypes into an Increment; Memory `prototype-not-increment`) |
+| **Test** | Test (`../ideo-kernel/IDEO-modes/test.md`) | Validating experience and gathering user or role-card reactions (Memory `keep-test-evidence`) |
+
+*(Author's working guide for solo + AI teams, 2026-11-24 — not part of the Scrum Guide or SGEP.)*
 
 ## The Scrum Events in the Expansion Pack
 

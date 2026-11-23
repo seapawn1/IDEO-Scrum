@@ -15,7 +15,7 @@ In a Claude Code session:
 /ideo-scrum:scrum-master
 ```
 
-This Claude Code command calls the IDEO, Scrum, Sprint, and Design kernels, then the Memory, in that order before starting work; you don't need to call them yourself. See the [role rules](../plugins/ideo-scrum/skills/memory/details/roles.md) for the other roles.
+This Claude Code command calls the IDEO, Scrum, and Sprint kernels, then the Memory, in that order before starting work; you don't need to call them yourself. See the [role rules](../plugins/ideo-scrum/skills/memory/details/roles.md) for the other roles.
 
 In a new DSH **Standard** session opened in your project directory:
 
@@ -41,7 +41,7 @@ The Scrum Master writes `scrum/ProductBacklog.md` with you: the product, the Pro
 | --- | --- |
 ```
 
-The Commitment rows hold your product statement and your goal word for word. They stay fixed, and only you change them. An optional explanation below the table is not part of the commitment. If you cannot say yet what the product is or what its Product Goal should be, the Scrum Master works with you on a design once you authorize Empathize.
+The Commitment rows hold your product statement and your goal word for word. They stay fixed, and only you change them. An optional explanation below the table is not part of the commitment. If you cannot say yet what the product is or what its Product Goal should be, Empathize has not gone far enough: the Scrum Master works with you through the IDEO five modes (Empathize and Define) to fill the product log.
 
 ## 3. Open a Sprint
 
@@ -51,7 +51,7 @@ Ask the Scrum Master to open a Sprint and authorize Why. It gets a branch and a 
 | --- | --- | --- |
 | Why | The Sprint Goal and verification priorities are set; the full DoD still applies | The Sprint Goal; whether What may start |
 | What | Items are selected from the product log and refined | That refinement is over; whether How may start |
-| How | A plan is written, not steps | The go-ahead |
+| How | A solution plan and work items are written (using IDEO Ideate when choosing between routes) | The go-ahead |
 | Increment | The work is built, with notes in the sprint log | That it can go into testing |
 | Test | The work is tested and reviewed | To close, or to go back |
 
@@ -63,7 +63,7 @@ A Developer session (`/ideo-scrum:developer` in Claude Code, `/developer` in DSH
 
 ## 5. Close
 
-When the Test stage is done, say "close". Review compresses and archives the sprint log in `scrum/documents/` and refreshes the product log. Retro saves only important lessons as separately findable entries in project memory, or in repository lesson notes (still one separately findable entry per lesson) if the tool has no project memory, never in an instructions file or a Sprint Retro summary. With no important lesson, save no entry. One closing commit holds only the changes Review and Retro actually made inside the repository; do not copy outside memory or invent a Retro file for it. Finished designs keep their original material with their archived logs; a Sprint using it as a specification links to it rather than deleting it at close. The commit is tagged with the Sprint folder's name and merged into the main branch; the Scrum Master can do this for you. Pushing waits for your consent.
+When the Test stage is done, say "close". Review compresses and archives the sprint log in `scrum/documents/` and refreshes the product log. Retro saves only important lessons as separately findable entries in project memory, or in repository lesson notes (still one separately findable entry per lesson) if the tool has no project memory, never in an instructions file or a Sprint Retro summary. With no important lesson, save no entry. One closing commit holds only the changes Review and Retro actually made inside the repository; do not copy outside memory or invent a Retro file for it. Finished IDEO logs archive into `scrum/documents/ideo/` together with their test evidence and conclusions; temporary prototypes used as Sprint reference are cleaned up at close. The commit is tagged with the Sprint folder's name and merged into the main branch; the Scrum Master can do this for you. Pushing waits for your consent.
 
 ## Rules worth keeping
 
@@ -85,5 +85,5 @@ Handover, 2026-11-14: the Product Owner hands the Scrum Master settling the resu
 
 - Ask "Where are we?": the Scrum Master reads `Now` and `Waiting for PO` and tells you.
 - Ask for the board: a one-page view of where the project stands, written from the logs into `scrum/ScrumBoard.html`. Hand it to the supporter: `/ideo-scrum:supporter` in Claude Code, `/supporter` in DSH.
-- To find out what people want, call the Designer: `/ideo-scrum:designer` in Claude Code, `/designer` in DSH.
+- To find out what people want or explore solution options, use the IDEO five modes with the Scrum Master (Empathize and Test) or Developer (Ideate, Prototype and Test) — or ask directly for `ideo-kernel`.
 - To bring in an outside view or ask for a second opinion, see [project agents](project-agents.md).

@@ -55,5 +55,5 @@ In the tested interactive session, a newly written definition became available a
 ## Host boundaries
 
 - **Claude Code** is the host these two entries were built and measured on; the host behaviour quoted above was measured on version 2.1.329.
-- **DSH** does not get these entries. Its bundle carries the four kernels and the five role commands, and nothing here claims project-level agents work there.
+- **DSH** does not get these entries. Its bundle carries the three kernels and the four role commands, and nothing here claims project-level agents work there.
 - **A project without Workflows** still summons a registered stakeholder as a plain agent by name; Workflows add a second entry, not a requirement.

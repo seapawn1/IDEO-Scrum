@@ -10,8 +10,8 @@ import { readCommitments } from '../dsh/commitments.js'
 
 const root = fileURLToPath(new URL('../', import.meta.url))
 const plugin = join(root, 'plugins', 'ideo-scrum')
-const roles = ['scrum-master', 'developer', 'designer', 'stakeholder', 'supporter']
-const kernels = ['ideo-kernel', 'scrum-kernel', 'sprint-kernel', 'design-kernel']
+const roles = ['scrum-master', 'developer', 'stakeholder', 'supporter']
+const kernels = ['ideo-kernel', 'scrum-kernel', 'sprint-kernel']
 
 function mount() {
   const skills = new Map()
@@ -46,9 +46,10 @@ function canonical(path) {
   return { description: JSON.parse(description), content }
 }
 
-test('register the five role bodies and kernels with resolvable resource bases', () => {
+test('register the four role bodies and three kernels with resolvable resource bases', () => {
   const { skills, contexts, dispose } = mount()
   assert.deepEqual([...skills.keys()], [...kernels, 'memory', ...roles])
+  assert.ok(!skills.has('design-kernel') && !skills.has('designer'))
   for (const [name, entry] of skills) {
     const role = roles.includes(name)
     const expected = canonical(entry.path)
@@ -65,12 +66,12 @@ test('register the five role bodies and kernels with resolvable resource bases',
       const s = entry.content.indexOf(scrum)
       const m = entry.content.indexOf(memory)
       assert.ok(i >= 0 && s > i && m > s, `${name} must preload the ideo and scrum bodies and the Memory, in that order`)
-      assert.doesNotMatch(entry.content, /Preloaded kernel: (?:sprint|design)-kernel/)
+      assert.doesNotMatch(entry.content, /Preloaded kernel: sprint-kernel/)
     }
-    if (!role && name !== 'design-kernel') assert.equal(entry.content, expected.content)
+    if (!role) assert.equal(entry.content, expected.content)
   }
-  const design = skills.get('design-kernel')
-  assert.match(readFileSync(join(design.resourceBase.path, '..', 'ideo-kernel', 'IDEO-modes', 'empathize.md'), 'utf8'), /Empathize/i)
+  const sprint = skills.get('sprint-kernel')
+  assert.match(readFileSync(join(sprint.resourceBase.path, '..', 'ideo-kernel', 'IDEO-modes', 'ideate.md'), 'utf8'), /Ideate/i)
   dispose()
   assert.equal(skills.size + contexts.size, 0)
 })
@@ -115,7 +116,7 @@ test('the log templates and the board files sit in template/ and board/, are pac
   const manifest = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'))
   const packed = path => manifest.files.some(entry => (entry.endsWith('/') ? path.startsWith(entry) : path === entry))
   const moved = {
-    template: ['product-backlog-template.md', 'sprint-backlog-template.md', 'design-backlog-template.md', 'ideo-backlog-template.md'],
+    template: ['product-backlog-template.md', 'sprint-backlog-template.md', 'ideo-backlog-template.md'],
     board: ['board-log.md', 'scrum-board-template.html'],
   }
   for (const [folder, names] of Object.entries(moved)) {
@@ -134,8 +135,8 @@ test('the log templates and the board files sit in template/ and board/, are pac
     const files = [join(base, 'SKILL.md'), ...(existsSync(details) ? readdirSync(details).map(name => join(details, name)) : [])]
     for (const file of files.filter(f => f.endsWith('.md'))) {
       const text = readFileSync(file, 'utf8')
-      // the old places: the kernels' conventions/ folders and overview.md are gone, their rules moved to the memory skill
-      assert.doesNotMatch(text, /conventions\/|overview\.md/, `${file} still names a file at an old place`)
+      // the old places: conventions/, overview.md, and removed design-sprint assets must not reappear
+      assert.doesNotMatch(text, /conventions\/|overview\.md|design-kernel|DesignBacklog|design-backlog/, `${file} still names a removed or old file`)
       for (const match of text.matchAll(/\.\.\/\.\.\/(template|board)\/([A-Za-z0-9._-]+)/g)) {
         const target = join(base, '..', '..', match[1], match[2])
         assert.ok(existsSync(target), `${file}: ${match[0]} does not resolve`)
@@ -152,17 +153,19 @@ test('the log templates and the board files sit in template/ and board/, are pac
   }
 })
 
-test('keep verbatim commitments from a bilingual log set and a nested working directory', t => {
+test('keep verbatim commitments from a bilingual log set, ignore legacy design logs, and support nested working directories', t => {
   const { dir, put } = fixture(t)
   put('scrum/ProductBacklog.md', '\uFEFF### 1.1 产品\r\n| 承诺 | A  \\|  B |\r\n### 1.2 产品目标\r\n| 承诺 | Keep `{{literal}}`  unchanged. |\r\n')
   put('scrum/sprint-one/SprintBacklog.md', '### 冲刺目标\n| 承诺 | 当前冲刺，不约定截止日。 |\n')
+  // Legacy design-sprint folders left in older checkouts must be ignored.
   put('scrum/design-one/DesignBacklog.md', '### 1.2 Design goal\n| Commitment | Check one assumption. |\n')
   put('scrum/documents/design-archived/DesignBacklog.md', '### Design goal\n| Commitment | Do not read this. |\n')
   const text = readCommitments(join(dir, 'scrum', 'sprint-one'))
   assert.equal(text, [
     '本项目日志里的承诺（原文）：', 'Product：A  \\|  B', 'Product Goal：Keep `{{literal}}`  unchanged.',
-    'Sprint Goal（sprint-one）：当前冲刺，不约定截止日。', '设计目标（design-one）：Check one assumption.',
+    'Sprint Goal（sprint-one）：当前冲刺，不约定截止日。',
   ].join('\n'))
+  assert.doesNotMatch(text, /设计目标|Design goal|Check one assumption/)
   put('scrum/sprint-another/SprintBacklog.md', '### Sprint Goal\n| Commitment | Different goal. |\n')
   assert.match(readCommitments(dir), /有 2 个冲刺开着，见看板/)
   assert.doesNotMatch(readCommitments(dir), /Different goal|当前冲刺/)
@@ -181,12 +184,11 @@ test('skip absent logs, empty placeholders, nested Git checkouts and linked log 
   assert.equal(readCommitments(join(dir, 'subproject')), '')
 })
 
-test('an unreadable Sprint log does not drop the product or design commitments', t => {
+test('an unreadable Sprint log does not drop the product commitments', t => {
   const { dir, put } = fixture(t)
   const file = join(dir, 'scrum', 'sprint-one', 'SprintBacklog.md')
   put('scrum/ProductBacklog.md', '# Product\n| Commitment | Product stays visible. |\n')
   put('scrum/sprint-one/SprintBacklog.md', '## Sprint Goal\n| Commitment | Sprint text is unavailable. |\n')
-  put('scrum/design-one/DesignBacklog.md', '## Design Goal\n| Commitment | Design stays visible. |\n')
   const open = fs.openSync
   const stub = t.mock.method(fs, 'openSync', (path, ...args) => {
     if (path === file) throw Object.assign(new Error('read denied'), { code: 'EACCES' })
@@ -196,7 +198,6 @@ test('an unreadable Sprint log does not drop the product or design commitments',
   try {
     const text = readCommitments(dir)
     assert.match(text, /Product: Product stays visible\./)
-    assert.match(text, /Design goal \(design-one\): Design stays visible\./)
     assert.doesNotMatch(text, /Sprint text is unavailable/)
     assert.ok(stub.mock.calls.some(call => call.arguments[0] === file))
   } finally {

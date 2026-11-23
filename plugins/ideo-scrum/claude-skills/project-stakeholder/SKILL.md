@@ -62,7 +62,7 @@ tools: Read, Grep, Glob, Skill
 **The body** carries, in this order:
 
 1. The role card's identity, in the card's own words.
-2. The kernel entry: invoke `ideo-scrum:ideo-kernel` and then `ideo-scrum:scrum-kernel` with the `Skill` tool, in that order; load `ideo-scrum:sprint-kernel` or `ideo-scrum:design-kernel` only when the work involves one. Reading a file is not invoking a skill.
+2. The kernel entry: invoke `ideo-scrum:ideo-kernel` and then `ideo-scrum:scrum-kernel` with the `Skill` tool, in that order; load `ideo-scrum:sprint-kernel` only when the work involves a Sprint. Reading a file is not invoking a skill.
 3. The card's stated boundaries — what it may see, what it is responsible for, and what it is not.
 
 **Do not put earlier reviews, opinions or meeting notes into the definition.** A definition that carries old verdicts stops being an independent view.

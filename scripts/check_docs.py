@@ -34,14 +34,13 @@ SINGLES = [GLOSSARY]
 # The term list the Product Owner and the Scrum Master approved for the glossary (Sprint 20, docs-outline C, plus
 # the two Definitions of Done): the first column of its tables must hold every one of them.
 GLOSSARY_TERMS = [
-    "product log", "sprint log", "design log", "IDEO log", "PBI", "Commitment", "Now / Waiting for PO",
+    "product log", "sprint log", "IDEO log", "PBI", "Commitment", "Now / Waiting for PO",
     "Increment notes", "role card", "the Map", "board", "scrum/documents/",
-    "Product Owner", "Scrum Master", "Developer", "Designer", "Stakeholder", "Supporter", "fresh subagent",
+    "Product Owner", "Scrum Master", "Developer", "Stakeholder", "Supporter", "fresh subagent",
     "written handover", "go-ahead", "checkpoint",
     "the five stages of a Sprint", "refinement", "Review / Retro / closing commit", "small Sprint", "kernel",
-    "commitments hook", "Definition of Outcome Done / Output Done", "design sprint", "the five modes",
-    "Empathize", "Define", "Ideate", "Prototype", "Test", "Point of View", "How Might We", "Five-Act Interview",
-    "rumble", "Lightning Demos", "Make a Map",
+    "commitments hook", "Definition of Outcome Done / Output Done", "the five modes",
+    "Empathize", "Define", "Ideate", "Prototype", "Test", "Point of View", "How Might We",
 ]
 DEPARTURES_FILE = "plugins/ideo-scrum/skills/memory/details/departures.md"
 DEPARTURES = "Departures from the official guides"
@@ -283,12 +282,12 @@ def selftest() -> int:
          "/ideo-scrum:developer\n```", "slash-command blocks differ"),
         ("a zh DSH role entry changed", "docs/quick-start.zh-CN.md", "/scrum-master\n```",
          "/developer\n```", "slash-command blocks differ"),
-        ("a glossary term renamed", "docs/glossary.md", "| rumble | 对决 |", "| rumbles | 对决 |",
-         "missing term 'rumble'"),
+        ("a glossary term renamed", "docs/glossary.md", "| Ideate | 构思 |", "| Ideates | 构思 |",
+         "missing term 'Ideate'"),
         ("a glossary cell dropped", "docs/glossary.md", "| Empathize | 共情 |", "| Empathize |",
          "five filled cells"),
-        ("a glossary link broken", "docs/glossary.md", "design-kernel/steps/3-4-rumble.md",
-         "design-kernel/steps/3-4-rumbl.md", "dead link"),
+        ("a glossary link broken", "docs/glossary.md", "ideo-kernel/IDEO-modes/empathize.md",
+         "ideo-kernel/IDEO-modes/empathiz.md", "dead link"),
     ]
     failures = []
     base = Path(tempfile.mkdtemp(prefix="check-docs-"))

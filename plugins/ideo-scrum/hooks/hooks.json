@@ -1,5 +1,5 @@
 {
-  "description": "Puts the commitments written in the project's logs (Product, Product Goal, the open Sprint Goal or design goal) into Claude's context. Switch off with IDEO_SCRUM_COMMITMENTS=off.",
+  "description": "Puts the commitments written in the project's logs (Product, Product Goal, and the open Sprint Goal) into Claude's context. Switch off with IDEO_SCRUM_COMMITMENTS=off.",
   "hooks": {
     "SessionStart": [
       {

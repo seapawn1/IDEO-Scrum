@@ -34,7 +34,7 @@
 
 ## 3. How
 
-<!-- The Developer writes this chapter as a plan for making the selected items, short and not in detail (Memory `how-is-a-plan`, `no-steps`): the work items in order, each with its output and how to tell it is done; the key choices and why; the risks and open points. The last line is the go-ahead (Memory `go-ahead`, `review-handover`). -->
+<!-- The Developer writes this chapter as a full solution plan for making the selected items (Memory `how-is-a-plan`): expand architecture, tradeoffs, interfaces, and steps to the depth the work needs. When multiple routes or design tradeoffs exist, treat How as IDEO Ideate — read `IDEO-modes/ideate.md` in the `ideo-kernel` skill and diverge before converging (Memory `diverge-first`, `isolated-sketches`); skip ceremony for straightforward changes. Keep the `# | Work item | Output | Done when` table below (each item done within one session, prefixed `✓ <date>` on completion), followed by Key choices, Risks and open points, and the go-ahead line at the end (Memory `go-ahead`, `review-handover`, `mark-done`). -->
 
 | # | Work item | Output | Done when |
 | --- | --- | --- | --- |

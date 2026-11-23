@@ -10,14 +10,18 @@ The detail behind the Sprint lines that point here: opening, the How, the go-ahe
 - Give each Sprint one branch, with a separate working copy if wanted, and one folder, `scrum/sprint-NN-<suffix>/`: a two-digit number — the previous Sprint's plus one, starting at 01 — and a suffix saying what the Sprint is about.
 - The folder's name is also the branch's name, and the tag's at close.
 
-## How: a plan, not steps (`how-is-a-plan`, `no-steps`)
+## How: a real solution plan (`how-is-a-plan`)
 
-- The Developer writes chapter 3 as a plan for making the selected items: the work items in order, each done within one session, each with its output and how to tell it is done; the key choices and their reasons; the known risks and open points.
-- Write it to the level of approach, not steps: no step-by-step instructions, no file contents, no polishing of the plan; if you can write the steps, do the work.
-- It is not the solution a design chose: if a design gave a solution, the plan is how to build it.
+- The Developer writes chapter 3 as a full solution plan for making the selected items — architecture, interfaces, tradeoffs, and steps to whatever depth the work needs — while keeping the `# | Work item | Output | Done when` table (each work item done within one session, with its output and how to tell it is done, prefixed `✓ <date>` when finished), the key choices and their reasons, and the known risks and open points.
+- **How corresponds to IDEO Ideate:** when the work has multiple viable routes, design or architecture tradeoffs, or solution proposals to choose from, read `../ideo-kernel/IDEO-modes/ideate.md` first and diverge before converging (`diverge-first`, `isolated-sketches`); straightforward small changes need no ceremony.
+- **On-demand IDEO modes across the five Sprint stages:**
+  - **Why** → Empathize (`../ideo-kernel/IDEO-modes/empathize.md`): when the goal or user need is unclear;
+  - **What** → Define (`../ideo-kernel/IDEO-modes/define.md`): when refining items into POV, HMW questions, and crisp scope;
+  - **How** → Ideate (`../ideo-kernel/IDEO-modes/ideate.md`): when exploring routes or architecture tradeoffs before committing to a plan;
+  - **Increment** → Prototype (`../ideo-kernel/IDEO-modes/prototype.md`): when low-fidelity disposable checks are needed (never put prototypes into an Increment; `prototype-not-increment`);
+  - **Test** → Test (`../ideo-kernel/IDEO-modes/test.md`): when validating experience with users or role cards (`keep-test-evidence`).
 - The Scrum Guide's measure, "decomposing Product Backlog items into smaller work items of one day or less", becomes one session here.
-- The Scrum Master and the Product Owner check the plan.
-- This departs from the Scrum Guide; the reason is in `details/departures.md`.
+- The Scrum Master and the Product Owner review the plan, and building waits for the Product Owner's go-ahead (`go-ahead`). This departs from the Scrum Guide; the reason is in `details/departures.md`.
 
 ## The go-ahead (`go-ahead`, `review-handover`)
 

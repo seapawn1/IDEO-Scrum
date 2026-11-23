@@ -8,9 +8,8 @@ Where a rule departs from the official guide on purpose, this table says so and 
 | Here | The official guide | Why | See |
 | --- | --- | --- | --- |
 | Only the Product Owner must be human | SGEP: the Product Owner and the Scrum Master "must be human", and "At least one Product Developer should be human" | One person works with AI and keeps the value decisions | `only-po-human` |
-| Designs sit beside Sprints | Scrum Guide: all the work "happen within Sprints" | A design delivers no Increment, may span several Sprints, and the Designer and the Developer are peers | `designs-beside-sprints` |
 | The Product Owner decides the items with the Scrum Master | Scrum Guide: "the Developers select items from the Product Backlog" | The Product Owner sets the value direction, and the others say how much fits | `items-with-sm` |
-| The How is a plan, and building waits for the go-ahead | Scrum Guide: how to build is "at the sole discretion of the Developers" | The Scrum Master and the Product Owner check the plan, because AI may drift | `how-is-a-plan`, `no-steps`, `go-ahead`, `review-handover` |
+| Building waits for the go-ahead | Scrum Guide: how to build is "at the sole discretion of the Developers" | The Scrum Master and the Product Owner review the plan, and building waits for the go-ahead because AI may drift | `how-is-a-plan`, `go-ahead`, `review-handover` |
 | Checkpoints replace the Daily Scrum | Scrum Guide: the Daily Scrum is "a 15-minute event for the Developers" | AI works by session, not by day | `checkpoints` |
 | A reviewer is required | Scrum Guide: the Developers are accountable for "Instilling quality by adhering to a Definition of Done" | A Developer may drift, and a second look catches it | `reviewer-required` |
 | No Sprint end date | Scrum Guide: Sprints are "fixed length events of one month or less" | AI works by session, so the Product Owner watches at checkpoints for a Sprint that drags on | `no-end-date` |

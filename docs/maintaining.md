@@ -1,6 +1,6 @@
 # Maintaining IDEO-Scrum
 
-This guide is for maintainers of the IDEO-Scrum repository across Claude Code and DeepSeek Harness (DSH). If you are using the plugin to run a project Sprint or design, read [Quick start](quick-start.md), the [README](../README.md), and the [Glossary](glossary.md) instead. ([中文](maintaining.zh-CN.md))
+This guide is for maintainers of the IDEO-Scrum repository across Claude Code and DeepSeek Harness (DSH). If you are using the plugin to run a project Sprint, read [Quick start](quick-start.md), the [README](../README.md), and the [Glossary](glossary.md) instead. ([中文](maintaining.zh-CN.md))
 
 ## Two hosts, one source
 
@@ -12,9 +12,9 @@ This guide is for maintainers of the IDEO-Scrum repository across Claude Code an
 | Commitments context | [`hooks.json`](../plugins/ideo-scrum/hooks/hooks.json) runs [`commitments.sh`](../plugins/ideo-scrum/hooks/commitments.sh) via POSIX `sh` on `SessionStart` and `UserPromptSubmit` | [`dsh/index.js`](../dsh/index.js) registers `systemPrompt.context` (`ideo-scrum:commitments`, `order: 130`, `interpolate: false`) via [`dsh/commitments.js`](../dsh/commitments.js) |
 | Packaging and metadata | [`plugin.json`](../plugins/ideo-scrum/.claude-plugin/plugin.json) and [`.claude-plugin/marketplace.json`](../.claude-plugin/marketplace.json) | [`package.json`](../package.json) (`@seapawn/ideo-scrum`), [`cordis.patch.yml`](../cordis.patch.yml), [`dsh/locale/en.json`](../dsh/locale/en.json), [`dsh/locale/zh.json`](../dsh/locale/zh.json), and `plugins/ideo-scrum/icon.png` |
 
-- **Role and kernel registration (`dsh/index.js`)**: strips YAML frontmatter (requiring one double-quoted JSON-compatible `description` line, plus matching `name` on `SKILL.md`), registers the four kernels and five user-invocable roles (`/scrum-master`, `/developer`, `/designer`, `/stakeholder`, `/supporter`, without the `ideo-scrum:` prefix), prepends the DSH tool-mapping and routing prelude, and preloads `ideo-kernel` then `scrum-kernel` then `memory` verbatim before each role body while keeping `sprint-kernel` and `design-kernel` on demand; after a compaction, when Memory's text is no longer in the conversation, the named context `ideo-scrum:memory` prompts the model to load it again.
+- **Role and kernel registration (`dsh/index.js`)**: strips YAML frontmatter (requiring one double-quoted JSON-compatible `description` line, plus matching `name` on `SKILL.md`), registers the three kernels plus Memory and the four user-invocable roles (`/scrum-master`, `/developer`, `/stakeholder`, `/supporter`, without the `ideo-scrum:` prefix), prepends the DSH tool-mapping and routing prelude, and preloads `ideo-kernel` then `scrum-kernel` then `memory` verbatim before each role body while keeping `sprint-kernel` on demand; after a compaction, when Memory's text is no longer in the conversation, the named context `ideo-scrum:memory` prompts the model to load it again.
 - **Bundle whitelist (`package.json`)**: `files` includes only `cordis.patch.yml`, `dsh/`, `ATTRIBUTION.md`, `plugins/ideo-scrum/commands/`, `plugins/ideo-scrum/skills/`, `plugins/ideo-scrum/template/`, `plugins/ideo-scrum/board/`, and `plugins/ideo-scrum/icon.png` (excluding `hooks/` and `.claude-plugin/`), has no `dependencies` or `scripts`, and sets `engines.dsh` to `>=0.2.2-rc.5 <0.3.0`.
-- **Commitments adapter (`dsh/commitments.js`)**: reads the `Commitment` (`承诺`) row under the matching heading ([Memory](../plugins/ideo-scrum/skills/memory/SKILL.md) `goal-fixed`, `commitment-table`) inside the nearest `.git` root, ignores symlinked `scrum/` directories, reports counts when multiple Sprints or designs are open, and honors `IDEO_SCRUM_COMMITMENTS=off`. Compaction replay relies on DSH's named `runtime-context` handling; on DSH `0.2.2-rc.5` with `0.6.3` it was verified live (2026-11-21): after `compact`, the `runtime-context` snapshot carried the same three commitments verbatim.
+- **Commitments adapter (`dsh/commitments.js`)**: reads the `Commitment` (`承诺`) row under the matching heading ([Memory](../plugins/ideo-scrum/skills/memory/SKILL.md) `goal-fixed`, `commitment-table`) inside the nearest `.git` root, ignores symlinked `scrum/` directories, reports counts when multiple Sprints are open, and honors `IDEO_SCRUM_COMMITMENTS=off`. Compaction replay relies on DSH's named `runtime-context` handling; on DSH `0.2.2-rc.5` with `0.6.3` it was verified live (2026-11-21): after `compact`, the `runtime-context` snapshot carried the same three commitments verbatim.
 
 ## Where repository rules load from
 
@@ -38,7 +38,7 @@ Moving from `6.0.3` to `0.6.3` lowers the SemVer version number (`6.0.3` > `0.6.
 
 - **Do not conflate the two baselines**: Claude Code had a public `v6.0.3` git tag and marketplace release, whereas DSH `b2679aa` was only a linked local repository checkout (not an earlier public npm or registry package).
 - **Verify the actual loaded source and version**: inspect the active Claude version-cache directory or DSH's linked checkout path plus native session events, rather than checking `package.json` or `plugin.json` on disk or asking the model what version it thinks is loaded. In DSH, always open a new **Standard** session after restarting DSH because Minimal sessions do not mount the skill loader and an existing session can retain prior context.
-- **Confirm project logs survive unchanged**: verify `scrum/ProductBacklog.md` and any open `scrum/sprint-*/SprintBacklog.md` or `scrum/design-*/DesignBacklog.md` files before and after migration.
+- **Confirm project logs survive unchanged**: verify `scrum/ProductBacklog.md` and any open `scrum/sprint-*/SprintBacklog.md` or `scrum/ideo-*/IdeoBacklog.md` files before and after migration.
 
 ## Checking a candidate
 
