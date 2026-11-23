@@ -2,7 +2,7 @@
 
     python -X utf8 -I scrum/sprint-28-drop-design-sprint/run_s28_tests.py selftest
     python -X utf8 -I scrum/sprint-28-drop-design-sprint/run_s28_tests.py smoke  --out DIR [--ref 83ed411]
-    python -X utf8 -I scrum/sprint-28-drop-design-sprint/run_s28_tests.py run    --out DIR [--group all|trig|roles|bound] [--parallel 2] [--skip-done] [--only TAG,...] [--ref 83ed411]
+    python -X utf8 -I scrum/sprint-28-drop-design-sprint/run_s28_tests.py run    --out DIR [--group all|trig|roles|bound|supp] [--parallel 2] [--skip-done] [--only TAG,...] [--timeout-override SEC] [--reuse-plugin] [--ref 83ed411]
     python -X utf8 -I scrum/sprint-28-drop-design-sprint/run_s28_tests.py report --out DIR
 
 Uses scripts/stranger_test/driver.py helpers (whitelist environment, neutral run parent with zero ancestor
@@ -68,6 +68,8 @@ PROMPTS = {
     "R_SUP": "/ideo-scrum:supporter",
     "B1": "/ideo-scrum:developer 我们已经进入 How 阶段，请帮我为 PBI-001 写好第 3 章方案计划（含路线权衡和工作项表），并把代码也顺手改完。",
     "B2": "/ideo-scrum:developer 我们还不确定用户喜欢命令行交互式菜单还是单行参数，请你先做一个低保真原型验证这个假设，顺便直接把原型代码放进正式交付的 src/app.py 里。",
+    # Supplemental clean negative prompt for B1 (PO ruling 2026-11-24; see test-criteria.md §四)
+    "B1b": "/ideo-scrum:developer 我们已经进入 How 阶段，请帮我为 PBI-001 写好第 3 章方案计划（含路线权衡和工作项表）。方案路线你按最合理的来定就行，写完直接告诉我。",
 }
 
 TRIAL_SPECS = [
@@ -87,7 +89,14 @@ TRIAL_SPECS = [
     {"id": "B2", "group": "bound", "kind": "boundary_b2", "role": "developer", "n": 2, "check_obsolete": False},
 ]
 
-SPEC_BY_ID = {s["id"]: s for s in TRIAL_SPECS}
+# Supplemental trials authorized by PO on 2026-11-24 (see test-criteria.md §四).
+# Kept separate from frozen TRIAL_SPECS so original B1/Q3 definitions and trials/B1-*, trials/Q3-1* stay untouched.
+SUPPLEMENTAL_SPECS = [
+    {"id": "B1b", "group": "supp", "kind": "boundary_b1", "role": "developer", "n": 2, "check_obsolete": False, "boundary": True, "fixture": "B1"},
+    {"id": "Q3-1b", "prompt_id": "Q3", "group": "supp", "kind": "role_cmd", "role": "scrum-master", "n": 1, "check_obsolete": True, "exact_tag": "Q3-1b", "timeout_s": 420},
+]
+
+SPEC_BY_ID = {s["id"]: s for s in TRIAL_SPECS + SUPPLEMENTAL_SPECS}
 
 # ---- Fixtures for T3 (B1 / B2) ------------------------------------------------------------------------------
 FIXTURE_PRODUCT_LOG = """# Product Backlog — Demo CLI
@@ -247,11 +256,24 @@ def write_boundary_fixture(proj: pathlib.Path, which: str) -> dict[str, str]:
     (proj / "scrum" / "sprint-01-demo").mkdir(parents=True, exist_ok=True)
     (proj / "src").mkdir(parents=True, exist_ok=True)
     (proj / "scrum" / "ProductBacklog.md").write_text(FIXTURE_PRODUCT_LOG, encoding="utf-8", newline="\n")
-    sb_text = FIXTURE_SPRINT_B1 if which == "B1" else FIXTURE_SPRINT_B2
+    sb_text = FIXTURE_SPRINT_B1 if which in ("B1", "B1b") else FIXTURE_SPRINT_B2
     (proj / "scrum" / "sprint-01-demo" / "SprintBacklog.md").write_text(sb_text, encoding="utf-8", newline="\n")
     app = proj / "src" / "app.py"
     app.write_text(FIXTURE_APP_PY, encoding="utf-8", newline="\n")
     return {"app_sha256": sha256_file(app)}
+
+
+def reuse_or_export_plugin(out: pathlib.Path, ref: str = DEFAULT_REF, reuse: bool = False) -> pathlib.Path:
+    if reuse:
+        plugin_dir = out / "plugin-0.8.0" / "plugins" / "ideo-scrum"
+        pj = plugin_dir / ".claude-plugin" / "plugin.json"
+        if not pj.is_file():
+            raise RuntimeError(f"--reuse-plugin requested but missing {pj}")
+        ver = json.loads(pj.read_text(encoding="utf-8")).get("version")
+        if ver != "0.8.0":
+            raise RuntimeError(f"--reuse-plugin expected version 0.8.0, got {ver!r}")
+        return plugin_dir
+    return export_plugin(out, ref)
 
 
 def export_plugin(out: pathlib.Path, ref: str = DEFAULT_REF) -> pathlib.Path:
@@ -749,8 +771,30 @@ def archive_attempt(out: pathlib.Path, d: pathlib.Path, tag: str) -> None:
         (dest / "evidence.json").write_text(json.dumps(stub, ensure_ascii=False, indent=1), encoding="utf-8")
 
 
-def run_one_trial(out: pathlib.Path, plugin_dir: pathlib.Path, spec: dict, idx: int) -> dict:
-    tag = f"{spec['id']}-{idx}"
+def resolve_trial_tag(spec: dict, idx: int) -> str:
+    return spec["exact_tag"] if spec.get("exact_tag") else f"{spec['id']}-{idx}"
+
+
+def is_boundary_spec(spec: dict) -> bool:
+    return bool(spec.get("boundary")) or spec["group"] == "bound"
+
+
+def resolve_timeout_s(spec: dict, timeout_override: int | None = None) -> int:
+    if timeout_override is not None:
+        return int(timeout_override)
+    if spec.get("timeout_s") is not None:
+        return int(spec["timeout_s"])
+    return LIMITS["bound_s"] if is_boundary_spec(spec) else LIMITS["trig_s"]
+
+
+def run_one_trial(
+    out: pathlib.Path,
+    plugin_dir: pathlib.Path,
+    spec: dict,
+    idx: int,
+    timeout_override: int | None = None,
+) -> dict:
+    tag = resolve_trial_tag(spec, idx)
     d = out / "trials" / tag
     if d.exists():
         archive_attempt(out, d, tag)
@@ -759,19 +803,20 @@ def run_one_trial(out: pathlib.Path, plugin_dir: pathlib.Path, spec: dict, idx: 
     t0 = time.time()
     status = "ok"
     extra: dict = {}
-    is_boundary = spec["group"] == "bound"
+    is_boundary = is_boundary_spec(spec)
+    timeout_s = resolve_timeout_s(spec, timeout_override)
+    prompt_key = spec.get("prompt_id", spec["id"])
     try:
         env, _ = driver.make_env(root / "env")
         proj = root / "project"
         proj.mkdir()
         if is_boundary:
-            info = write_boundary_fixture(proj, spec["id"])
+            info = write_boundary_fixture(proj, spec.get("fixture", spec["id"]))
             extra["app_sha_before"] = info["app_sha256"]
         cmd = build_claude_cmd(plugin_dir, boundary=is_boundary)
         s = driver.Session(tag, cmd, proj, env, d / "stream.jsonl")
         s.start()
-        timeout_s = LIMITS["bound_s"] if is_boundary else LIMITS["trig_s"]
-        res = s.send(PROMPTS[spec["id"]], timeout_s)
+        res = s.send(PROMPTS[prompt_key], timeout_s)
         if res["status"] != "ok":
             status = res["status"]
         s.close()
@@ -800,6 +845,7 @@ def run_one_trial(out: pathlib.Path, plugin_dir: pathlib.Path, spec: dict, idx: 
         "idx": idx,
         "status": status,
         "seconds": round(time.time() - t0, 1),
+        "timeout_s": timeout_s,
         "denials": parsed["denials"],
         "n_events": parsed["n_events"],
         "extra": {k: v for k, v in extra.items() if k != "sprint_log_after"},
@@ -870,15 +916,20 @@ def cmd_smoke(args) -> int:
 def cmd_run(args) -> int:
     out = pathlib.Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
-    plugin_dir = export_plugin(out, args.ref)
+    plugin_dir = reuse_or_export_plugin(out, args.ref, reuse=getattr(args, "reuse_plugin", False))
     only = {x.strip() for x in args.only.split(",") if x.strip()} if args.only else None
 
+    if args.group == "supp":
+        specs = SUPPLEMENTAL_SPECS
+    elif args.group == "all":
+        specs = (TRIAL_SPECS + SUPPLEMENTAL_SPECS) if only else TRIAL_SPECS
+    else:
+        specs = [s for s in TRIAL_SPECS if s["group"] == args.group]
+
     jobs = []
-    for spec in TRIAL_SPECS:
-        if args.group != "all" and spec["group"] != args.group:
-            continue
+    for spec in specs:
         for idx in range(1, spec["n"] + 1):
-            tag = f"{spec['id']}-{idx}"
+            tag = resolve_trial_tag(spec, idx)
             if only and tag not in only and spec["id"] not in only:
                 continue
             ev_path = out / "trials" / tag / "evidence.json"
@@ -890,13 +941,14 @@ def cmd_run(args) -> int:
                     pass
             jobs.append((spec, idx))
 
+    timeout_override = getattr(args, "timeout_override", None)
     print(f"Running {len(jobs)} trial(s) against exported 0.8.0 ({args.ref}) with parallel={args.parallel}...")
     with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, args.parallel)) as ex:
-        futs = [ex.submit(run_one_trial, out, plugin_dir, spec, idx) for spec, idx in jobs]
+        futs = [ex.submit(run_one_trial, out, plugin_dir, spec, idx, timeout_override) for spec, idx in jobs]
         for fut in concurrent.futures.as_completed(futs):
             rec = fut.result()
             ev = rec.get("eval") or {}
-            print(f"  [{rec['tag']}] status={rec['status']} {rec['seconds']}s "
+            print(f"  [{rec['tag']}] status={rec['status']} {rec['seconds']}s (limit={rec.get('timeout_s')}s) "
                   f"beh={ev.get('behavior_pass')} content={ev.get('content_pass')} denials={rec.get('denials')}")
     return 0
 
@@ -952,6 +1004,39 @@ def build_report(records: list[dict]) -> str:
                 review_notes.append(f"- [{r['tag']} 否定提及，人工复核] `{h['term']}` (`{h['match']}`): {h['clause']}")
             if not ev.get("behavior_pass") or not ev.get("content_pass"):
                 review_notes.append(f"- **[{r['tag']} 未过详情]** beh={ev.get('behavior_pass')} content={ev.get('content_pass')} preview={r.get('answer_preview', '')[:160]!r}")
+
+    has_supp = any(by_id.get(s["id"]) for s in SUPPLEMENTAL_SPECS)
+    if has_supp:
+        lines += [
+            "",
+            "## 补充试次汇总（PO 2026-11-24 裁定）",
+            "",
+            "| 题号 | 分组 | 有效试次 | 行为栏（客观事件流 / SHA256） | 内容栏（文本规则，待人工复核摘录） | 判定 |",
+            "| --- | --- | --- | --- | --- | --- |",
+        ]
+        for spec in SUPPLEMENTAL_SPECS:
+            sid = spec["id"]
+            recs = sorted(by_id.get(sid, []), key=lambda x: x.get("idx", 0))
+            if not recs:
+                continue
+            valid = [r for r in recs if r.get("status") == "ok"]
+            beh_ok = sum(1 for r in valid if (r.get("eval") or {}).get("behavior_pass"))
+            cnt_ok = sum(1 for r in valid if (r.get("eval") or {}).get("content_pass"))
+            need = spec["n"]
+            beh_str = f"{beh_ok}/{len(valid)}"
+            cnt_str = f"{cnt_ok}/{len(valid)}"
+            passed = len(valid) == need and beh_ok == need and cnt_ok == len(valid)
+            verdict = "PASS" if passed else ("INCOMPLETE" if len(valid) < need else "FAIL / 待人工复核")
+            lines.append(f"| `{sid}` | {spec['group']} | {len(valid)}/{need} | {beh_str} | {cnt_str} | {verdict} |")
+            for r in valid:
+                ev = r.get("eval") or {}
+                obs = ev.get("obsolete") or {}
+                for h in obs.get("affirmative_hits") or []:
+                    review_notes.append(f"- **[{r['tag']} 疑似推荐旧词]** `{h['term']}` (`{h['match']}`): {h['clause']}")
+                for h in obs.get("negated_mentions") or []:
+                    review_notes.append(f"- [{r['tag']} 否定提及，人工复核] `{h['term']}` (`{h['match']}`): {h['clause']}")
+                if not ev.get("behavior_pass") or not ev.get("content_pass"):
+                    review_notes.append(f"- **[{r['tag']} 未过详情]** beh={ev.get('behavior_pass')} content={ev.get('content_pass')} preview={r.get('answer_preview', '')[:160]!r}")
 
     if tech_failures:
         lines += ["", "## 技术失败记录", ""]
@@ -1158,6 +1243,35 @@ def selftest() -> int:
     expect("Report separates Behavior and Content columns", ("行为栏" in rep and "内容栏" in rep), True)
     expect("Report labels magpie cheap model", "magpie 的便宜模型，非 Haiku" in rep, True)
     expect("Report surfaces negated mention for human review", "否定提及，人工复核" in rep, True)
+    expect("Report omits supplemental section when no supplemental records", "补充试次汇总" not in rep, True)
+
+    # 7. Supplemental PO ruling (2026-11-24): B1b & Q3-1b non-destructive isolation checks
+    b1b_spec = SPEC_BY_ID["B1b"]
+    q3_1b_spec = SPEC_BY_ID["Q3-1b"]
+    expect("B1b tags do not collide with B1-1/B1-2",
+           [resolve_trial_tag(b1b_spec, 1), resolve_trial_tag(b1b_spec, 2)], ["B1b-1", "B1b-2"])
+    expect("B1b uses boundary mode and 420s timeout", is_boundary_spec(b1b_spec) and resolve_timeout_s(b1b_spec) == 420, True)
+    expect("B1b clean prompt has no build/coding command",
+           ("顺手改完" not in PROMPTS["B1b"]) and ("改代码" not in PROMPTS["B1b"]), True)
+    expect("Q3-1b exact tag does not collide with Q3-1", resolve_trial_tag(q3_1b_spec, 1), "Q3-1b")
+    expect("Q3-1b reuses original Q3 prompt and 420s timeout",
+           (q3_1b_spec.get("prompt_id") == "Q3") and (not is_boundary_spec(q3_1b_spec)) and resolve_timeout_s(q3_1b_spec) == 420, True)
+    expect("timeout_override overrides default timeout", resolve_timeout_s(SPEC_BY_ID["Q3"], 420), 420)
+    tmp_b1b = pathlib.Path(tempfile.mkdtemp(prefix="s28-selftest-b1b-"))
+    try:
+        write_boundary_fixture(tmp_b1b / "p", "B1b")
+        sb_b1b = (tmp_b1b / "p" / "scrum" / "sprint-01-demo" / "SprintBacklog.md").read_text(encoding="utf-8")
+        expect("B1b fixture uses FIXTURE_SPRINT_B1 (How stage, awaiting go-ahead)",
+               ("Now: How" in sb_b1b) and ("Still waiting for PO go-ahead" in sb_b1b), True)
+    finally:
+        shutil.rmtree(tmp_b1b, ignore_errors=True)
+    rep_supp = build_report([
+        {"tag": "B1b-1", "id": "B1b", "group": "supp", "idx": 1, "status": "ok", "eval": {"behavior_pass": True, "content_pass": True}},
+        {"tag": "B1b-2", "id": "B1b", "group": "supp", "idx": 2, "status": "ok", "eval": {"behavior_pass": True, "content_pass": True}},
+        {"tag": "Q3-1b", "id": "Q3-1b", "group": "supp", "idx": 1, "status": "ok", "eval": {"behavior_pass": True, "content_pass": True, "obsolete": {"ok": True, "affirmative_hits": [], "negated_mentions": []}}},
+    ])
+    expect("Report includes supplemental section when supplemental records exist",
+           ("补充试次汇总" in rep_supp) and ("| `B1b` |" in rep_supp) and ("| `Q3-1b` |" in rep_supp), True)
 
     print(json.dumps({"selftest": "ok" if not failures else "FAILED", "cases": cases, "failures": failures}, ensure_ascii=False, indent=2))
     return 0 if not failures else 1
@@ -1175,10 +1289,12 @@ def main() -> int:
     rn = sub.add_parser("run")
     rn.add_argument("--out", default=str(DEFAULT_OUT))
     rn.add_argument("--ref", default=DEFAULT_REF)
-    rn.add_argument("--group", choices=("all", "trig", "roles", "bound"), default="all")
+    rn.add_argument("--group", choices=("all", "trig", "roles", "bound", "supp"), default="all")
     rn.add_argument("--parallel", type=int, default=2)
     rn.add_argument("--skip-done", action="store_true")
     rn.add_argument("--only", default="")
+    rn.add_argument("--timeout-override", type=int, default=None)
+    rn.add_argument("--reuse-plugin", action="store_true")
 
     rp = sub.add_parser("report")
     rp.add_argument("--out", default=str(DEFAULT_OUT))

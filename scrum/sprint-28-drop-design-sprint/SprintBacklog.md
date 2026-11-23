@@ -1,7 +1,7 @@
 # Sprint Backlog — Sprint 28 (drop-design-sprint)
 
 > Started: 2026-11-24 | Closes when the Sprint Goal is met or the Product Owner stops the Sprint | Branch: sprint-28-drop-design-sprint | Product Owner: SeaPawn | Scrum Master: lead | Developer: sprint-28-dev
-> Now: Increment — 工作项 `#1`–`#7` 全部完成（含 `0.8.0` Breaking 独立升号提交 `83ed411` 与冻结 Test 判据／脚本独立提交），Increment 已齐备，待 Master 核验后代行放行 Sprint Test
+> Now: Test 通过（2026-11-24，Master 按 PO 全面放权核验放行），进入 Review 与收官
 > Waiting for PO: None（PO 2026-11-24 全流程放权；遇阻塞、Test 未过或涉底线事项立即回报）
 > How to write this log: the Memory's *Running a Sprint* section (the memory skill's `SKILL.md`).
 > Keep every heading, even the ones filled later; add none. Work remarks go in chapter 4, Increment notes; an optional explanation of the commitment may follow its table (Memory `templates-record-outputs`, `goal-fixed`, `commitment-table`).
@@ -200,8 +200,83 @@ Go-ahead: 2026-11-24，PO SeaPawn 正式批准第 3 章 How 方案（含 `How �
   - 新增 [run_s28_tests.py](run_s28_tests.py)（复用 `scripts/stranger_test/driver.py` 白名单隔离、`neutral_parent`、`/context all`、`magpie claude run` 与 `taskkill /T /F` 进程树清理；从 Commit A `83ed411` 经 `git archive` 导出 `0.8.0` 插件核实 `Base directory`；T3 使用 `acceptEdits` 并在 `smoke` 实测可写以避免权限假阳性；支持 `selftest` / `smoke` / `run` / `report`）；
   - 冻结前仅运行 `python -X utf8 -I scrum/sprint-28-drop-design-sprint/run_s28_tests.py selftest`：**34/34 PASS**（未提前运行正式测试）；
   - 为 §3 `#6` 与 `#7` 勾选 `✓ 2026-11-24`，确认 `CLAUDE.md` 与 `scrum/ProductBacklog.md` 仍未改动。
-- **阶段状态**：**Increment 已齐备（`#1`–`#7` 全部完成），待 Master 核验后代行放行 Sprint Test。**
+- **阶段状态**：**Increment 已齐备（`#1`–`#7` 全部完成）。**
+- **Increment 决定与 Sprint Test 放行（2026-11-24，Master 按 PO 2026-11-24 全流程放权代行）**：复核 `83ed411`（`0.8.0` 纯升号提交）与 `7c2f1fd`（冻结 `test-criteria.md` 与 `run_s28_tests.py`，`selftest` 34/34 PASS）均严格分离且工作树干净，放行进入 Sprint Test。本决定时 Sprint Goal 原文：「把插件收敛为「Scrum Sprint 单主轨 + IDEO 五模式工具箱」：去掉设计冲刺与 Designer 角色、让看板聚焦 Scrum、让 Sprint 的 How 回归真正的方案计划，让熟手与陌生人不再在两套流程间纠结，照着一套清晰且无全版权包袱的规矩就能走通探索与交付。」
+
+### 2026-11-24 Test 阶段 PO 原话指示与补充裁定
+
+- **测试模型指示（PO 2026-11-24 原话）**：「测试的话，其实你可以找一个比较轻量的对吧？不过你好像是做端到端测试。那也没关系了，那外部里面你就可以选那个 OpenCode 的 DeepSeek 去测试，然后 Claude Code 的话也是选 DeepSeek 的 OpCode 去测试.」——按此执行：DSH 网页端 S6 与 Claude Code 无头回归均采用 PO 指定的轻量测试模型（按 `headless-testing.md` 证据记述口径，日志与报告中记作「magpie 的便宜模型，非 Haiku」及 DSH 轻量测试模型，不写模型 ID 与提供方）。
+- **未过线项上报与 PO 裁定（2026-11-24）**：首轮 25 试次跑完后，9 个题型全部过线，另有 `B1`（0/2，题面由 PO 直接说「并把代码也顺手改完」，属非有效负例）与 `Q3`（2/3，`Q3-1` 两次 300s 过度读文件超时）未达冻结过线；按红线立即停止并上报 PO。PO 2026-11-24 原话裁定：「`B1  选A  Q3选A吧`」——即：`B1` 保留 `B1-1`/`B1-2` 原始证据不删，依 `stage-gate-negative-prompts` 新增干净负例 `B1b`（仅委派 How 内方案选择，不夹带改代码指令）补测 2 次；`Q3` 保留 `Q3-1`/`Q3-1.attempt-1` 原始证据不删，放宽超时至 `420s` 补跑 `Q3-1b` 1 次凑足 3 次有效试次；不改 `0.8.0` 插件本体（`83ed411`）、不改已冻结判据正文（仅在 `test-criteria.md` 末尾追加第四节补充裁定）。
 
 ## 5. Test
 
 <!-- Record the Developer’s tests, the independent review and any required Product Owner acceptance. Trace each Output Done standard and item criterion to new evidence, still-valid earlier evidence and why it holds, or a stated condition that did not arise and why. Keep missing evidence visible; record outcome signals separately and judge the Test against the pass lines set beforehand (Memory `record-the-tests`). End with the Product Owner’s close or return decision (Memory `stage-gates`, `read-the-goal`). -->
+
+> 被测插件候选提交：`83ed411`（`0.8.0` Breaking 纯升号提交，插件代码与内容提交 `97bbc54` 相比仅改 `plugin.json`/`package.json` 版本号、`CHANGELOG.md`、中英 `README` 与 `docs/maintaining*.md` 版本标注，共 7 文件 `+17/-8`）；冻结判据提交：`7c2f1fd`（补测期间仅在 `test-criteria.md` 末尾追加第四节补充裁定与在 `run_s28_tests.py` 增量扩展 `supp` 分组，未触碰插件本体与旧试次证据）。仓外原始记录与脚本报告均归档在 `S:\IDEO-Scrum-Archives\sprint-28-drop-design-sprint\`。
+
+### 5.1 静态、打包与双宿主验证（S1–S6）
+
+| 编号 | 被测提交 | 验证结果与客观证据 | 判定 |
+| --- | --- | --- | --- |
+| **S1** | `83ed411` / `7c2f1fd` | `claude plugin validate --strict plugins/ideo-scrum` 退出码 `0`、`0 errors`（识别 6 skills、4 commands、1 agent、2 hooks，无 `design-kernel` 与 `designer`）。 | **PASS** |
+| **S2** | `83ed411` / `7c2f1fd` | Master 派全新独立 `plugin-validator` 子代理（`s28-plugin-val-080`）完成 10 步全审：manifest、目录结构、4 commands、1 agent、6 skills（全部 84 个 Memory 句柄与全部相对路径解析无错）、hooks、安全、文件组织全部通过；**0 阻塞项**；3 条非阻塞提示（`advisor.md` 的 `model: fable` 属既有账户条件别名并已在 `second-opinion` 注明回退；`commitments.sh` 无 `CLAUDE_PLUGIN_DATA`/`TMPDIR` 时回落 `/tmp` 的多用户提示；`supporter.md` 正文 `board/board-log.md` 惯例路径写法，Memory 已给精确相对路径）均不阻塞。 | **PASS** |
+| **S3** | `83ed411` / `7c2f1fd` | `node --test scripts/check_dsh.mjs`：**9/9 PASS**（含 4 角色、3 内核 + Memory、内联 SGEP 逐字一致、模板与看板路径、双语承诺与残余 `design-*/` 忽略负例、嵌套 `.git`/symlink 隔离、Memory 重载提示）。 | **PASS** |
+| **S4** | `83ed411` / `7c2f1fd` | `npm pack --dry-run --json --ignore-scripts`：包名 `@seapawn/ideo-scrum`、版本 `0.8.0`、共 `91` 个文件，`0` 个已删设计冲刺资产。 | **PASS** |
+| **S5** | `97bbc54` 实测；`7c2f1fd` 复验（`97bbc54..7c2f1fd` 未改该脚本） | `plugins/ideo-scrum/hooks/commitments.sh` 纯 LF（`0` CR、`278` LF）、不含 `find`、`E:\GIT\Git\bin\sh.exe -n` 语法检查退出 `0`；`97bbc54` 上经 POSIX `sh` 全用例实测（单冲刺、多冲刺、忽略 `design-*/`、承诺含 tab 保真、嵌套 `.git` 目录／文件止步、4 类 symlink 拦截）全过。 | **PASS** |
+| **S6** | `83ed411` / `7c2f1fd`（临时 DSH profile `v28-s6` 直连本工作树，测完即停服并删临时 profile） | 在 DSH 网页端（侧边栏浏览器，PO 指定轻量测试模型，Standard 模式）加载 `0.8.0`：斜杠指令菜单实证 4 个角色入口（`developer`、`scrum-master`、`stakeholder`、`supporter`，均标 `仅用户`）与 `ideo-kernel`/`scrum-kernel`/`sprint-kernel`/`memory`，**0 `/designer`**、**0 `design-kernel`**；实测 `/scrum-master` 会话 `session-d4be243a-d93f-40cb-9171-3ad33e0ca3c2`（24 事件，原生 `session.v4.jsonl.zstd` 存于 `S:\IDEO-Scrum-Archives\sprint-28-drop-design-sprint\dsh-s6-web\sessions\`）逐项核验：`strictOrder: true`（`# IDEO` 1160 → `# Scrum Kernel` 14610 → `# IDEO-Scrum Memory` 27294）、`hasCommitments: true`、`hasProductGoal: true`、`catalogHasDesign: false`、`anyDesignKernel: false`、`anyDesignerRole: false`；工作区日志未被改动。 | **PASS** |
+
+### 5.2 看板、文档、版权与迁移验证（D1–D6）
+
+| 编号 | 被测提交 | 验证结果与客观证据 | 判定 |
+| --- | --- | --- | --- |
+| **D1** | `7c2f1fd`（脚本同 `97bbc54`/`83ed411`） | `python -X utf8 -I scripts/board_check/check.py selftest`：**43/43 PASS**（覆盖表前方案对比表、无工作项表、忽略旧 `design-*/` 与 `ideo-*/`、转义 `\|`、非默认列序、`### 3.` 子标题干扰）。 | **PASS** |
+| **D2** | `7c2f1fd` | 本仓真实日志渲染离线 `scrum/ScrumBoard.html`（已 gitignore）并跑 `python -X utf8 -I scripts/board_check/check.py check --project . --render`：`ok: true, errors: [], warnings: [], render: {pbi: 10, nodes: 1, fail: false, cards: 2}`（仅产品卡 + Sprint 28 卡，无设计卡）；双色 README 截图已肉眼复核无设计卡。 | **PASS** |
+| **D3** | `7c2f1fd` | `python -X utf8 -I scripts/check_docs.py`：9 篇文档、188 条链接 **0 errors**；`--selftest`：**19/19 PASS**（含 Departures 换序与重复行拦截）。 | **PASS** |
+| **D4** | `7c2f1fd` | Master 全仓程序化区分大小写与不区分大小写双扫已删设计冲刺／Designer／Knapp／`no-steps`／`sprint-26-plugin-memory` 旧词与旧路径：除冻结放行清单（`scrum/documents/`、`CHANGELOG.md` 历史条目、`scrum/ProductBacklog.md` 历史行与备注、`scrum/sprint-28-drop-design-sprint/`、d.school 原文小写 `designer`、SGEP 文献 `[20]`、`check.py`/`check_dsh.mjs` 负例测试及 `.git` 元信息）外 **0 意外命中**（`scrum/sprint-26-plugin-memory/` 已于 `97bbc54` 彻底删除，不再豁免）。 | **PASS** |
+| **D5** | `83ed411` / `7c2f1fd` | 全部 11 个带 `description` 组件实测均 ≤ 1024 字符（最长 `supporter.md` 977、`scrum-kernel` 943、`sprint-kernel` 940、`ideo-kernel` 894、`scrum-master` 729、`project-stakeholder` 690、`advisor` 638、`developer` 630、`stakeholder` 599、`second-opinion` 418、`memory` 353）。 | **PASS** |
+| **D6** | `83ed411` / `7c2f1fd` | `plugins/ideo-scrum/` 内 Knapp《Sprint》15 篇全版权摘录与 `ATTRIBUTION.md` 中 `Simon & Schuster` 署名节清零，`ATTRIBUTION.md:8` 澄清不含任何未授权商业书籍全文或原始出版物。 | **PASS** |
+
+### 5.3 独立审查记录（`#6`）
+
+- **Master 独立审阅**：逐文件复核施工提交 `b5a027d` 与修订提交 `97bbc54`，确认 4 纪律落位、单主轨架构、PBI-105/106 契约、版本号与 `CLAUDE.md`/`ProductBacklog.md` 红线均合规。
+- **全新 Codex 对抗审查（`codex-s28-adv-review`，审 `b5a027d` 相对 `c9b9b97`）**：提出 4 条 Must-Fix 与 5 条 Should-Fix；采纳 8 组修订落盘于 `97bbc54`（`commitments.sh` symlink 拦截 + `.git` 止步 + tab 保真、`SprintBacklog.md` 旧模板注释、`board_check` 转义管道符与表头列定位、`flow-maps.md` 补全五阶段虚线、`developer.md` 补产品日志、`check_docs.py` Departures 顺序与去重、`ideo-kernel` 4 纪律拆清、`ATTRIBUTION.md` 措辞澄清），3 条不采纳理由记于第 4 章。
+
+### 5.4 Claude Code 无头触发与关键边界回归（T1 / T2 / T3）
+
+- **执行环境与隔离**：从 `83ed411` 经 `git archive` 导出独立 `0.8.0` 副本至仓外 `S:\IDEO-Scrum-Archives\sprint-28-drop-design-sprint\plugin-0.8.0`（87/87 文件 SHA256 与 `83ed411` 一致）；脚本自测 `run_s28_tests.py selftest` **43/43 PASS**；模型口径：**magpie 的便宜模型，非 Haiku**；冒烟验证 **3/3 PASS**（中性目录 `/context all` 为 `[]` 0 祖先指令文件，T1/T2 只读 `dontAsk` 与 T3 可写 `acceptEdits` 均 0 工具泄露、`Base directory` 指向导出 `0.8.0` 副本，T3 实证可写 `probe.txt`）。
+- **正式 11 项 + PO 2026-11-24 裁定补测结果汇总**（报告：`S:\IDEO-Scrum-Archives\sprint-28-drop-design-sprint\report.md`）：
+
+| 题号 | 分组 | 有效试次 | 行为栏（事件流 / SHA256） | 内容栏（规则 + 人工复核） | 旧术语命中 | 判定 |
+| --- | --- | --- | --- | --- | --- | --- |
+| `Q11`（覆盖 PBI-103） | T1 直接触发 | 3/3 | **3/3** 命中 `ideo-kernel` | **3/3** 引导至 IDEO 五模式 | 0 | **PASS** |
+| `Q9` | T1 直接触发 | 3/3 | **3/3** 命中 `ideo-kernel` | **3/3** 不推荐设计冲刺 | 0 | **PASS** |
+| `Q10` | T1 直接触发 | 3/3 | **3/3** 命中 `ideo-kernel` | **3/3** 引导至 IDEO 五模式 | 0 | **PASS** |
+| `Q2` | T1 角色精化 | 3/3 | **3/3** 4 技能严格按序 | **3/3** 不推荐设计冲刺 | 0 | **PASS** |
+| `Q3` + 补测 `Q3-1b` | T1 角色白纸 | 3/3 有效（保留旧 `Q3-1` 两次 300s 超时） | **3/3** 4 技能严格按序（`Q3-1b` 60.5s, 9 工具） | **3/3** 命中 `blank-page` 先 Empathize/Define 再回流产品日志 | 0 | **PASS**（按 PO 选 A 补齐） |
+| `G1` / `G2` | T1 反误触发 | 4/4（各 2/2） | **0/4** 误触发 | **4/4** 正常直答 | 0 | **PASS** |
+| `R_STK` / `R_SUP` | T2 角色加载 | 2/2（各 1/1） | **2/2** 3 技能严格按序 | **2/2** 正常作答 | 0 | **PASS** |
+| `B1`（保留作废）→ 补测 `B1b` | T3 `go-ahead` 边界 | 2/2 有效（保留旧 `B1-1`/`B1-2` 原证） | **2/2** 4 技能按序 + `src/app.py` SHA256 严格一致（`144.1s` / `147.9s`） | **2/2** 落盘完整 Ideate 方案权衡与工作项表并明确等 PO `go-ahead` | 0 | **PASS**（按 PO 选 A 干净负例） |
+| `B2` | T3 原型边界 | 2/2 | **2/2** 4 技能按序 + `src/app.py` SHA256 严格一致 | **2/2** 明确拒绝原型入正式交付 | 0 | **PASS** |
+
+- **作废／补测说明与 Master 抽查核验**：
+  1. `B1-1`/`B1-2`（0/2）因原题面含 PO 直接指令「并把代码也顺手改完」，依 Sprint 23 教训 `stage-gate-negative-prompts` 判定为非有效负例，原始记录完整保留；PO 裁定选 A 补跑干净负例 `B1b-1`/`B1b-2`，Master 已直接精读 `B1b-1/SprintBacklog.after.md`、`B1b-1/evidence.json`、`B1b-2/evidence.json`，确认 `src/app.py` 前后 SHA256 严格一致（`8390137f...`）、§3 产出真实 Ideate 路线权衡表与工作项表并显式等待 PO `go-ahead`。
+  2. `Q3-1`（300.8s / 300.9s 两次超时）均已按序加载全部 4 技能，超时系便宜模型在开放题下连续串行 `Read` 40+ 份 `ideo-kernel/methods/*.md` 触发进程树超时；原始记录完整保留；PO 裁定选 A 放宽至 420s 补跑 `Q3-1b`，实际仅用 60.5s、9 次工具调用即完成，Master 已直接复核 `Q3-1b/evidence.json` 确认行为与 `blank-page` 内容双过。
+
+### 5.5 DoD 对账（Output Done 与 Outcome Done 分列）
+
+- **Definition of Output Done（7/7 全过）**：
+  1. **内容忠实**：Knapp《Sprint》全版权摘录彻底清零；SGEP 内联摘录（`check_dsh` 校验逐字一致）与 d.school `IDEO-modes/`/`methods/` 原文逐字未损；自有约定与 6 条偏离明确标注。
+  2. **署名**：`ATTRIBUTION.md` 清零 `Simon & Schuster` 且与留存摘录一致，D6 通过。
+  3. **可导航**：`s28-plugin-val-080` 与 `check_dsh` 核实全部相对路径与 84 条 Memory 句柄均可解析且 ≤2 跳。
+  4. **无死链**：`check_docs.py` 188 条链接 0 错。
+  5. **插件校验**：`claude plugin validate --strict`（S1）与独立 `plugin-validator`（S2）双过。
+  6. **描述长度**：11 个组件 `description` 全部 ≤ 1024 字符（D5）。
+  7. **DSH 分发**：`check_dsh.mjs` 9/9（S3）、`npm pack` 0.8.0 干净打包（S4）、DSH 网页端实装与原生事件验证（S6）全过。
+- **Definition of Outcome Done（单独记录，不冒充已过）**：按 §2.2 冻结口径，本期不重跑整套陌生人端到端体验测试（PBI-63）与 Memory 长期效果对照实验（留待 PBI-101 在 0.8.0 定型后推进），两条产品级 Outcome 信号记为本期未新测。
+
+### 5.6 Test 判定（Master 按 PO 2026-11-24 全流程放权代行）
+
+- **判定（2026-11-24，Scrum Master `lead`）**：**通过，放行进入 Review 与收官。**
+- **核验依据**：S1–S6、D1–D6、独立 Codex 对抗审查（`97bbc54` 闭环）、独立 `plugin-validator`（S2）及 Claude Code 无头触发与边界回归 11 项有效试次（含 PO 2026-11-24 裁定选 A 的 `B1b` 2/2 与 `Q3-1b` 1/1，覆盖关闭 PBI-103）全部达标，Output Done 7/7 全过，Outcome Done 如实标注未新测。
+- **本决定时 Sprint Goal 原文**：「把插件收敛为「Scrum Sprint 单主轨 + IDEO 五模式工具箱」：去掉设计冲刺与 Designer 角色、让看板聚焦 Scrum、让 Sprint 的 How 回归真正的方案计划，让熟手与陌生人不再在两套流程间纠结，照着一套清晰且无全版权包袱的规矩就能走通探索与交付。」
+
