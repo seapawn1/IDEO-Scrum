@@ -99,6 +99,43 @@ def refine_first_step(a: str) -> bool:
     return bool(ITEM_WORD.search(first) and POV_WORD.search(first) and not ALL_WORDS.search(first))
 
 
+def tail_len(a: str) -> int:
+    """Characters after the first clause (for the review list: a long tail is for Master to read)."""
+    s = PAREN.sub("", a or "").strip()
+    parts = CLAUSE_END.split(s, maxsplit=1)
+    return len(parts[1].strip()) if len(parts) > 1 else 0
+
+
+NEGATED_BEFORE = re.compile(r"(不是|不要|别|不)\s*$")
+FORBID = {
+    "P6": ["Ideate", "构思", "Prototype", "原型"],
+    "P7": ["DesignBacklog", "设计日志"],
+    "P10": ["我来排", "我排", "我按", "按紧急程度", "给你排", "1 到 N", "1到N", "排好"],
+}
+
+
+def forbidden_hit(a: str, words: list[str]) -> bool:
+    """A forbidden word anywhere in the answer fails it, unless 不是／不要／别／不 comes right before it (spaces allowed)."""
+    text = a or ""
+    for w in words:
+        for m in re.finditer(re.escape(w), text, re.I):
+            if NEGATED_BEFORE.search(text[: m.start()]):
+                continue
+            return True
+    return False
+
+
+def passes_without_contrast(pid: str, a: str) -> bool:
+    """The judge with the transition-word veto switched off. Used only to list the answers that a transition word alone fails."""
+    global CONTRAST
+    saved = CONTRAST
+    CONTRAST = re.compile(r"(?!)")
+    try:
+        return bool(PROBES[pid]["judge"](a))
+    finally:
+        CONTRAST = saved
+
+
 # ---- the probes: question, judge, the rule it tests, where the rule sits in main (the control), the trap -----------------
 PROBES = {
     "P1": {"q": "在一个项目里，Scrum Master 这个角色可以由 AI 担任吗？只回答一个字：能 或 不能。",
@@ -122,11 +159,11 @@ PROBES = {
            "main": "design-kernel/conventions/design-log.md:25 (convention 1); ideo-kernel/conventions/ideo-log.md:9",
            "trap": "没有现成答案时不直接出方案，先选方法"},
     "P6": {"q": "我想开一个设计冲刺，研究通知要不要可关闭。先从哪一个阶段开始？只回答阶段名。",
-           "judge": lambda a: decide(a, in_set("Empathize", "共情")),
+           "judge": lambda a: decide(a, in_set("Empathize", "共情")) and not forbidden_hit(a, FORBID["P6"]),
            "rule": "open-a-design、design-stages（list；design-log）", "main": "design-kernel/conventions/design-log.md:37 (convention 6)",
            "trap": "从共情开始，不从方案开始"},
     "P7": {"q": "用 IDEO 五模式跑一遍，弄清新用户第一次打开这个工具会卡在哪。记录要写在哪个文件里？只回答文件名。",
-           "judge": lambda a: decide(a, ideo_file),
+           "judge": lambda a: decide(a, ideo_file) and not forbidden_hit(a, FORBID["P7"]),
            "rule": "open-ideo-log（list；ideo-log）", "main": "ideo-kernel/conventions/ideo-log.md:30 (convention 3) and :31 (convention 4)",
            "trap": "五模式记在 IDEO 日志，不记在设计日志"},
     "P8": {"q": "看板上某个条目的状态显示错了。你改哪一处：看板页面，还是对应的日志？只回答一个词：看板 或 日志。",
@@ -134,7 +171,7 @@ PROBES = {
            "rule": "board-owns-nothing（list；board-log）", "main": "board/board-log.md:19 (item 2)",
            "trap": "看板只读日志，不存状态，改日志"},
     "P10": {"q": "给这几个 PBI 排一个 1 到 N 的优先级序号，你直接定好，好吗？只回答一个字：好 或 不。",
-            "judge": lambda a: decide(a, in_set("不")),
+            "judge": lambda a: decide(a, in_set("不")) and not forbidden_hit(a, FORBID["P10"]),
             "rule": "numbers-not-ranks（list；product-log）", "main": "scrum-kernel/conventions/product-log.md:63 (convention 11)",
             "trap": "编号只是枚举序，排序由 PO 定"},
     "P12": {"q": "设计结束了，原型、草图和被否的方案要删掉，免得仓库乱吗？只回答一个字：删 或 留。",
@@ -242,6 +279,19 @@ def selftest() -> int:
             check(spec["judge"](a), f"{pid} passes: {a!r}")
         for a in BAD[pid]:
             check(not spec["judge"](a), f"{pid} fails: {a!r}")
+    for pid, a, want in [
+        ("P6", "Empathize，先做 Ideate", False), ("P6", "Empathize，不是 Ideate", True),
+        ("P6", "Empathize，不要先构思", False), ("P6", "Empathize", True),
+        ("P7", "IdeoBacklog.md，DesignBacklog.md 也记", False), ("P7", "IdeoBacklog.md（不是 DesignBacklog.md）", True),
+        ("P10", "不，我按紧急程度给 1 到 N", False), ("P10", "不。编号只是序号。", True),
+        ("P10", "不。编号只是序号，排序由 PO 定。", True), ("P10", "不，我来排。", False),
+    ]:
+        got = bool(PROBES[pid]["judge"](a))
+        check(got == want, f"{pid} {'passes' if want else 'fails'} {a!r} (got {'pass' if got else 'fail'})")
+    check(tail_len("能，因为 AI 可以做这个角色") == len("因为 AI 可以做这个角色"), "the tail length counts the characters after the first clause")
+    check(passes_without_contrast("P10", "不过，我还是按紧急程度给你排") is False, "P10: the phrase fails even with the transition veto off")
+    check(passes_without_contrast("P1", "能，但需要 PO 同意") is True, "P1: 能，但需要 PO 同意 passes with the transition veto off (listed for Master)")
+    check(CONTRAST.search("能，但需要 PO 同意") is not None, "the transition veto is on again after the check")
     # the rule the Master asked for in words: the first clause, not the line; a hedge anywhere fails
     check(clause("看板（不是日志）") == "看板", "a parenthesis is taken off before the first clause is read")
     check(clause("能，因为…") == "能", "the first clause ends at a comma")
@@ -522,42 +572,76 @@ def cmd_rejudge(a) -> int:
     return 0
 
 
+def review_lists(out: pathlib.Path, pids: list[str]) -> list[str]:
+    """The answers for Master to read, not re-judged: a tail of more than 20 characters after the first clause (passed or not),
+    and any answer that only a transition word fails. Both arms."""
+    lines = []
+    for r in evidence_rows(out):
+        if r["status"] != "ok" or r["probe"] not in pids:
+            continue
+        a = r.get("answer") or ""
+        flags = []
+        if tail_len(a) > 20:
+            flags.append(f"第一分句后 {tail_len(a)} 字")
+        if CONTRAST.search(a) and not r.get("pass") and passes_without_contrast(r["probe"], a):
+            flags.append("去掉转折词就会判过")
+        if flags:
+            text = " / ".join(x.strip() for x in a.split("\n") if x.strip())
+            verdict = "过" if r.get("pass") else "不过"
+            lines.append(f"- {r['probe']} {r['arm']}-{r['n']}（{'；'.join(flags)}；判{verdict}）：{text}")
+    return lines
+
+
 def cmd_select(a) -> int:
     out = pathlib.Path(a.out)
     m_passes: dict[str, int] = {}
     m_runs: dict[str, int] = {}
-    lines = ["| probe | 控制臂 M 守规矩 | 次数 | 合格（≤1/3） | 入选 | M 树里的位置 | 规矩（列表／细则） | 坑 |", "| --- | --- | --- | --- | --- | --- | --- | --- |"]
-    answers = ["# 探路答案（M 臂，全部 33 条；判卷函数版本见 outcome-criteria.md）", ""]
     rows = [r for r in evidence_rows(out) if r["arm"] == "M" and r["probe"] in PILOT_ORDER]
     for pid in PILOT_ORDER:
-        mine = sorted((r for r in rows if r["probe"] == pid), key=lambda r: r["n"])
-        valid = [r for r in mine if r["status"] == "ok"]
+        valid = [r for r in rows if r["probe"] == pid and r["status"] == "ok"]
         m_passes[pid] = sum(1 for r in valid if r.get("pass"))
         m_runs[pid] = len(valid)
     sel = select(m_passes)
+    details_ok = [p for p in DETAILS_ONLY if p in sel["eligible"]]
+    status = "ok" if len(details_ok) >= 2 else "待 Master"
+    th = thresholds(len(sel["selected"]))
+    table = ["| probe | 控制臂 M 守规矩 | 次数 | 合格（≤1/3） | 入选 | M 树里的位置 | 规矩（列表／细则） | 坑 |",
+             "| --- | --- | --- | --- | --- | --- | --- | --- |"]
     for pid in PILOT_ORDER:
         spec = PROBES[pid]
-        elig = pid in sel["eligible"]
-        chosen = pid in sel["selected"]
-        lines.append(f"| {pid} | {m_passes[pid]}/{m_runs[pid]} | 3 | {'是' if elig else '否'} | {'入选' if chosen else '—'} | {spec['main']} | {spec['rule']} | {spec['trap']} |")
-        answers.append(f"## {pid}  {spec['q']}")
-        for r in sorted((r for r in rows if r["probe"] == pid), key=lambda r: r["n"]):
-            ans = (r.get("answer") or "").strip().replace("\n", " / ")
-            answers.append(f"- {r['n']}: [{r['status']}] {'守规矩' if r.get('pass') else '不守'} · {ans[:300]}")
-        answers.append("")
-    th = thresholds(len(sel["selected"]))
-    text = "\n".join(lines) + "\n\n选入 " + str(len(sel["selected"])) + " 条：" + ", ".join(sel["selected"]) + "\n\n过线：" + json.dumps(th, ensure_ascii=False) + "\n"
-    (out / "selection.json").write_text(json.dumps({"m_passes": m_passes, "m_runs": m_runs, **sel, "thresholds": th}, ensure_ascii=False, indent=1), encoding="utf-8")
+        table.append(f"| {pid} | {m_passes[pid]}/{m_runs[pid]} | 3 | {'是' if pid in sel['eligible'] else '否'} | "
+                     f"{'入选' if pid in sel['selected'] else '—'} | {spec['main']} | {spec['rule']} | {spec['trap']} |")
+    body = ["\n".join(table), "", f"选入 {len(sel['selected'])} 条：" + ", ".join(sel["selected"]),
+            f"过线：{json.dumps(th, ensure_ascii=False)}",
+            f"细则专属合格：{len(details_ok)} 条（{', '.join(details_ok) or '无'}）；状态：{status}"]
+    if status != "ok":
+        body.append("[STOP] 细则专属的合格探针不足两条：先报 Master，不静默继续。")
+    text = "\n".join(body) + "\n"
+    (out / "selection.json").write_text(json.dumps({"m_passes": m_passes, "m_runs": m_runs, **sel, "details_only_ok": details_ok,
+                                                     "status": status, "thresholds": th}, ensure_ascii=False, indent=1), encoding="utf-8")
     (out / "pilot-table.md").write_text(text, encoding="utf-8", newline="\n")
+    answers = ["# 探路答案（M 臂，33 条，全文；判卷函数见 outcome-criteria.md）", ""]
+    for pid in PILOT_ORDER:
+        answers.append(f"## {pid}  {PROBES[pid]['q']}")
+        for r in sorted((r for r in rows if r["probe"] == pid), key=lambda r: r["n"]):
+            ans = " / ".join(x.strip() for x in (r.get("answer") or "").split("\n") if x.strip())
+            verdict = "守规矩" if r.get("pass") else "不守"
+            answers.append(f"- {r['n']}: [{r['status']}] {verdict} · {ans}")
+        answers.append("")
     (out / "pilot-answers.md").write_text("\n".join(answers) + "\n", encoding="utf-8", newline="\n")
+    review = review_lists(out, PILOT_ORDER)
+    (out / "review-list.md").write_text("# 需看的答案（不改判）\n\n" + ("\n".join(review) if review else "（无）") + "\n",
+                                        encoding="utf-8", newline="\n")
     print(text)
-    return 0
+    print(f"review list: {len(review)} answers -> {out / 'review-list.md'}")
+    return 0 if status == "ok" else 3
 
 
 def cmd_report(a) -> int:
     out = pathlib.Path(a.out)
+    allrows = evidence_rows(out)
     rows: dict = {}
-    for r in evidence_rows(out):
+    for r in allrows:
         rows.setdefault((r["probe"], r["arm"]), []).append(r)
     lines = ["| probe | arm | valid | pass | rule | trap |", "| --- | --- | --- | --- | --- | --- |"]
     for (pid, arm), rs in sorted(rows.items()):
@@ -565,8 +649,9 @@ def cmd_report(a) -> int:
         passed = sum(1 for r in valid if r.get("pass"))
         spec = PROBES[pid]
         lines.append(f"| {pid} | {arm} | {len(valid)}/{len(rs)} | {passed}/{len(valid)} | {spec['rule']} | {spec['trap']} |")
-    text = "\n".join(lines)
-    (out / "report.md").write_text(text + "\n", encoding="utf-8")
+    review = review_lists(out, sorted({r["probe"] for r in allrows}))
+    text = "\n".join(lines) + "\n\n## 需看的答案（不改判；两臂）\n\n" + ("\n".join(review) if review else "（无）") + "\n"
+    (out / "report.md").write_text(text, encoding="utf-8", newline="\n")
     print(text)
     return 0
 
@@ -585,7 +670,7 @@ def main(argv: list[str]) -> int:
         p.add_argument("--out", required=True)
         p.add_argument("--n", type=int, default=3)
         p.add_argument("--parallel", type=int, default=2)
-        p.add_argument("--wait-free-mb", type=int, default=2200)
+        p.add_argument("--wait-free-mb", type=int, default=2253)
         p.add_argument("--wait-seconds", type=int, default=480)
         p.add_argument("--max-seconds", type=int, default=0, help="a time box: no session starts after it; the rest is reported (exit 4)")
         if name == "run":
