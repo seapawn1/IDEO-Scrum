@@ -23,7 +23,7 @@
 
 **换目标**（2026-11-13）：「优化现有插件」（2026-11-12 定）换成产品化——PO 定产品化更要紧，优化转为常态。更早的目标见 git 历史。
 
-**本轮与之后**：v0.7.0（Sprint 21–27，含 Memory 机制 PBI-51）已发布，前期六期分工归档见[六期总表](documents/sprint-roadmap.md)。下一步聚焦架构精简（移除设计冲刺与 Designer、看板去设计卡、放开 Sprint How 形态约束：PBI-104～106）；Memory 效果测试（PBI-101）留待重构定型后进行；公开方法论分享（PBI-12）留待以后。
+**本轮与之后**：v0.8.0（Sprint 28，移除设计冲刺与 Designer、看板聚焦 Scrum、放开 Sprint How 为方案计划并锚定 Ideate、清零 Knapp 全版权摘录）已发布，前期六期分工归档见[六期总表](documents/sprint-roadmap.md)。下一步聚焦 Memory 效果测试重新设计（PBI-101）、DSH 技能描述截断核查（PBI-100）及按需评估 Stakeholder 自动登记（PBI-87）；公开方法论分享（PBI-12）留待以后。
 
 ## 1.3 Definition of Done
 
@@ -38,7 +38,7 @@
 
 | 维度 | 标准 |
 | --- | --- |
-| 内容忠实 | 忠于源材料（SGEP / d.school / Sprint）；方法论设计部分（融合、solo+AI）标注来源与依据 |
+| 内容忠实 | 忠于源材料（SGEP / d.school）；方法论设计部分（融合、solo+AI）标注来源与依据 |
 | 署名 | 第三方摘录带 Source / License 两行，与 ATTRIBUTION.md 一致 |
 | 可导航 | 从 SKILL.md 入口 ≤2 跳到达任意 reference |
 | 无死链 | 所有 markdown 内部链接可解析，无 404 |
@@ -66,38 +66,34 @@
 
 ## 2.2 架构
 
-> 照 Make a Map 画：上面是人，下面是结局，中间是步骤；括号里是挂在这一步上的 PBI。
+> 上面是人，下面是结局，中间是步骤；括号里是挂在这一步上的 PBI。Scrum Sprint 是产品日志之下的唯一交付主轨，IDEO 五模式是各阶段按需调用的共享工具箱。
 
 ```mermaid
 flowchart TD
     U["用户：懂 Scrum 的 solo 开发者（也是 PO）"]
     M["Master"]
     D["Developer"]
-    G["Designer"]
     S["Stakeholder（含 Supporter）"]
+    IDEO["共享工具箱：IDEO 五模式（共情·定义·构思·原型·测试；1–2 方法就地记，多轮开 IDEO 日志）"]
     U --> A["① 装插件，读 README 与快速上手（PBI-62、64）"]
     A --> A2["② 召唤角色进门（PBI-73、81）"]
     A2 --> B["③ 写产品日志：Product · 架构 · PBI（product-log）"]
     M --> B
-    B --> C["④ Planning：Why → What（精化）→ How（计划，不是步骤）（sprint-log）"]
-    B -- "某条 PBI 要设计" --> X0{"设计冲刺还是五模式？（ideo-log）"}
-    X0 -- "设计冲刺" --> X["设计冲刺：五个阶段，各站在一个 IDEO 模式上（design-log）"]
-    X0 -- "五模式" --> I["五模式：一两个方法就地用，或开 IDEO 日志（ideo-log）"]
-    B -- "白纸：产品和 Product Goal 写不出来" --> X
-    C -- "精化碰到难点" --> X0
-    G --> X
-    S --> X
-    X -- "结论回流" --> B
-    I -- "结论回流" --> B
-    C --> P["⑤ PO 放行"]
-    P --> W["⑥ 施工（sprint-log）"]
+    B --> C["④ Planning：Why → What（精化）→ How（方案计划，锚定 Ideate）"]
+    IDEO -. "白纸／目标不清：Empathize · Define" .-> B
+    IDEO -. "精化与 How 方案发散：Define · Ideate" .-> C
+    C --> P["⑤ PO 放行（go-ahead）"]
+    P --> W["⑥ 施工（Increment）"]
+    D --> C
     D --> W
+    IDEO -. "验证假设：低保真原型（不进 Increment）" .-> W
     W --> R["⑦ Test：测试 · 审阅 · PO 决定收官或回去"]
-    R --> V["⑧ Review：冲刺日志、已结束的设计日志与 IDEO 日志归档 · 产品日志保鲜"]
+    IDEO -. "用户测试并留证" .-> R
+    R --> V["⑧ Review：冲刺日志与已结束的 IDEO 日志归档 · 产品日志保鲜"]
     S --> V
     V --> T["⑨ Retro（PBI-69）"]
     T --> E["结局：Sprint Goal 达成，增量交付，Product Goal 向前一步（体验测试 PBI-63 从 ① 走到这里）"]
-    C -. "日志头部" .-> K["看进度：看板卡片 · 目标常驻 hook（PBI-68）"]
+    C -. "日志头部" .-> K["看进度：纯 Scrum 看板卡片 · 目标常驻 hook（PBI-68）"]
     K -.-> U
 ```
 
@@ -111,13 +107,9 @@ flowchart TD
 
 | 编号 | 标题 | 用户故事 | 架构定位 | 当前状态 | 规模 | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
-| PBI-104 | 移除设计冲刺与 Designer 角色，统一为 Sprint + IDEO 五模式 | 作为熟手／陌生人，我想插件只保留 Scrum Sprint 单主轨与 IDEO 五模式共享工具箱，以便不再为选设计冲刺还是五模式纠结、架构更扁平且无全版权包袱 | 插件全链路：内核、角色、Memory、Hook、DSH、文档与测试 | 待选 | L | 来源：PO 2026-11-24 决定。删 `design-kernel`（含 Knapp《Sprint》15 篇全版权摘录）、`commands/designer.md`、`template/design-backlog-template.md`；保留 `IdeoBacklog.md` 作为唯一设计研究日志；角色精简为 4 个（Master 陪 PO 做共情／测试，Developer 承接发散／原型／测试，守住低保真一次性原型不进 Increment）；重构 Memory，将 `Start at the End` 与 `Make a Map` 核心思路按需抽象融入产品日志／IDEO 约定（不保留 Knapp 摘录，彻底清掉全版权来源）；同步改 Hook（`commitments.sh`）、DSH（`dsh/`）、`ATTRIBUTION.md`、中英 README／docs 与测试。 |
-| PBI-105 | 看板移除设计冲刺卡，只保留产品卡与冲刺卡 | 作为熟手，我想看板只保留产品卡和冲刺卡，以便一眼聚焦 Scrum 进度、不再维护冗余的设计卡 | 插件：看板（`board/`）与校验脚本 | 待选 | M | 来源：PO 2026-11-24 决定（随 PBI-104 同步）。`board-log.md`、`scrum-board-template.html`、`board_check` 及相关说明彻底去掉设计冲刺卡与独立设计／IDEO 展示，仅留产品卡与冲刺卡；How 进度行读取口径随 PBI-106 解耦（PO 2026-11-24：进度行无所谓）。 |
-| PBI-106 | Sprint How 放开形态约束，回归 Scrum 原文 | 作为 Developer／PO，我想在 Sprint 第 3 章（How）按 Scrum 原文自由产出真正的方案式计划，以便不被「只能写简短工作项、不是方案」的额外规定束缚 | 插件：Memory（`details/sprint.md`、`details/departures.md`）与 `sprint-backlog-template.md` | 待选 | S | 来源：PO 2026-11-24 决定。去掉 Memory 与模板中 `no-steps` 及过度限制 How 形态的额外约束——去掉设计冲刺后，How 本质上对应方案发散与落地定案（类似 IDEO Ideate 产出方案），之前将其降格为简短步骤不妥；**保留 `go-ahead`（施工前 PO 放行门）**，回归 Scrum Guide／SGEP 对 Sprint Backlog How 的原文定义。 |
 | PBI-87 | 调研：Stakeholder 角色是否可选自动登记为 Agent | 作为 PO，我想评估让 Stakeholder 角色按需或自动登记为项目 Agent 的可能，以便少手工操作又能守住边界 | 插件：`project-stakeholder`／产品日志 §2.1 | 待选 | S | 来源：PO 2026-11-21 原话：「你记得stakeholder角色是否自动登记agent，计入一个反馈PBI里面吧？还是一个PBI？我觉得可以一类可能反馈，因为我可能要测试一下，未来有可能放开去自动创建agent去，这个你要记得最好。」内容：先测手动登记的实际使用体验；若合适，再研究可选的批量／自动登记（默认关闭，逐张预览或规则化确认），不改变「PO 定角色、登记不改共享命令、Review 召唤权不变」的边界。按想法／反馈类登记，暂不排期。**未来需测试**：召唤 subagent 与 Workflow 时，是否会局限在已给的 agent 角色列表和产品日志 Stakeholder 表格之内；能否跳出这个约定，新建角色来做 subagent／Workflow。PO 2026-11-22：要先体验，本轮不收。PO 2026-11-24：不着急，DSH 侧目前用不到 `claude-skills/`（`project-stakeholder`、`second-opinion`）与 `agents/advisor.md`，保持现状（先不做进 DSH），等以后真想做时再推进。 |
-| PBI-100 | DSH：技能描述在技能清单里被截到 500 字符 | 作为用 DSH 的熟手，我想让各内核的描述在 DSH 的技能清单里完整可见，以便按名召唤和自然触发都不受截断影响 | 分发：DSH | 待选 | 待估 | 来源：Sprint 26 判据 ⑥ 的 DSH 实测（秘书会话，2026-11-23，DSH 0.2.3-alpha.2）：技能清单把每条描述截到 500 字符，design、ideo、scrum、sprint 四个内核都被截（scrum-kernel 原文 968 字符）。要查清截断对触发的影响，再定是缩短描述，还是给 DSH 另写一份短描述。 |
-| PBI-101 | Memory 效果测试：重新设计 | 作为 PO，我想知道 Memory 是否让 AI 不用每次手动说明就照规矩做，以便决定要不要继续投入 | 插件：测试方法（Memory 效果） | 待选 | 待估 | 来源：Sprint 26 收官。PO 2026-11-23 直接对 Master 说「你决定即可」，委托 Master 决定；Master 定 A。上一轮的对照臂不干净：M 臂的旧约定文件仍可读，探针测的是「会不会去读规矩」。做法要点：对照臂隔离规矩文件；先在改前版本上预演；判据先冻结再测。原 PBI-98 已关闭（PO 2026-11-24），其 Outcome 验收全权由本条承接；待 PBI-104～106 重构定型后再推进。 |
-| PBI-103 | Q11 类题的触发：设计类题用更多样本判 | 作为熟手，我想让设计类问题稳定触发设计内核，以便问「怎么做设计」时不漏加载 | 插件：design-kernel、ideo-kernel 的描述与触发 | 待选 | 待估 | 来源：Sprint 26 V4，Q11 直接（设计类题）字面判 B 5/6、C 4/6 未过；Master 定带着收官、登记（不改判）。PO 2026-11-24 确认：随 PBI-104 删除 `design-kernel` 后一并关闭，届时仅验纯 `ideo-kernel` 触发。 |
+| PBI-100 | DSH：技能描述在技能清单里被截到 500 字符 | 作为用 DSH 的熟手，我想让各内核的描述在 DSH 的技能清单里完整可见，以便按名召唤和自然触发都不受截断影响 | 分发：DSH | 待选 | 待估 | 来源：Sprint 26 判据 ⑥ 的 DSH 实测（秘书会话，2026-11-23，DSH 0.2.3-alpha.2）：技能清单把每条描述截到 500 字符，design、ideo、scrum、sprint 四个内核都被截（scrum-kernel 原文 968 字符；v0.8.0 移除 `design-kernel` 后余 ideo、scrum、sprint 三内核受此影响）。要查清截断对触发的影响，再定是缩短描述，还是给 DSH 另写一份短描述。 |
+| PBI-101 | Memory 效果测试：重新设计 | 作为 PO，我想知道 Memory 是否让 AI 不用每次手动说明就照规矩做，以便决定要不要继续投入 | 插件：测试方法（Memory 效果） | 待选 | 待估 | 来源：Sprint 26 收官。PO 2026-11-23 直接对 Master 说「你决定即可」，委托 Master 决定；Master 定 A。上一轮的对照臂不干净：M 臂的旧约定文件仍可读，探针测的是「会不会去读规矩」。做法要点：对照臂隔离规矩文件；先在改前版本上预演；判据先冻结再测。原 PBI-98 已关闭（PO 2026-11-24），其 Outcome 验收全权由本条承接；PBI-104～106 已于 Sprint 28（v0.8.0）定型，可择期推进。 |
 | PBI-12 | 方法论分享——公开系列 | 作为读者，我想要一套公开的方法论分享（系列文章、网页或视频），讲清 solo + AI 怎么用 Scrum 和设计思维，以便不装插件也能学会、用到自己的项目里 | 产品之外：分享线（1.2「之后」） | 以后 | L | 决定：下一步做（PO 2026-11-13）；公开发布前过一遍授权（d.school 非商业）、经 PO 确认。素材：[ExpertNotes.md](documents/ExpertNotes.md)、`git show 3f43476:scrum/documents/five-stage-mapping.svg`（图里冲刺还是旧的三段，用前改成五个阶段；2026-11-14 PO 整理 documents 时从仓库删去）。来源：2026-10-24 PO 改为方法论分享 |
 | PBI-102 | 远程并发跑测试 | 作为 Developer，我想让无头测试能远程并发跑，以便不被本机内存限制 | 分发：测试基础设施 | 以后 | 待估 | PO 2026-11-23 定：不做，记在以后。来源：Sprint 26 的测试里本机内存紧张时，系统多次收走后台任务。 |
 | PBI-107 | 调研：Sprint 第 2 章改写为问题／恐惧 | 作为 PO，我想在未来评估是否将 Sprint 第 2 章从 DoD 改为聚焦当前问题与恐惧，以便更直接对齐关键风险 | 插件：冲刺日志模板与 Memory | 以后 | 待估 | 来源：PO 2026-11-24。本次架构重构暂不动 Sprint 第 2 章 DoD 结构，作为未来备选想法留档。 |
@@ -154,3 +146,4 @@ flowchart TD
 | Sprint 26（2026-11-22～11-23，0.7.0 待发布） | PBI-51 ✓ 2026-11-23、92 ✓ 2026-11-23、93 ✓ 2026-11-22、94 ✓ 2026-11-22、95 ✓ 2026-11-22（board-log 不转，留 `board/`，Master 2026-11-23 定）、96 ✓ 2026-11-23、97 ✓ 2026-11-23（board-log 留原处，旧约定删）；98 部分（Outcome 未证，重做见 PBI-101）；登记 101、102、103 | Memory 进插件：`skills/memory/` 清单 103 行、细则 15 个；五份旧约定删；角色入口与 DSH 带上 Memory。验证：角色入口 15/15，DSH 预载 15/15、压缩后重载 3/3，触发七格过一格待研。Outcome 未证：探路 33 条入选 0 条，对照臂不干净；PO 2026-11-23「你决定即可」，Master 定 A 收官 | [documents/sprint/sprint-26-plugin-memory.md](documents/sprint/sprint-26-plugin-memory.md)；审阅 [documents/sprint/sprint-26-plugin-memory-review.md](documents/sprint/sprint-26-plugin-memory-review.md) |
 | Sprint 27（2026-11-22～11-23，版本不动，仍是 0.6.3 的未发布候选） | PBI-84 署名（IDEO 五模式双源）、PBI-85 模板与看板归位、PBI-86 Supporter 角色与改称、PBI-89 看板收尾态、PBI-90 入口九条意见 | 新角色 Supporter（秘书）：杂活、PO 的联络点、转达的 PO 意见视同 PO 的、三级分流，各角色叫法统一；模板进插件根 `template/`、看板文件进 `board/`；看板认得收尾待归档的写法（检查脚本也认只在分支上的产品日志）；五个 IDEO 模式文件署名补齐 2010／2018 双源；项目 Agent 与参谋入口九条意见做了八条（不改召唤示例）。触发测试 A 组 9／9、B 组 4／9 对 3／9、C 组 9／9；无头加载 3／3；DSH 实装三条全过；Codex 与熟手视角各提的意见都已修；旧称法与旧路径 grep 只剩放行的归档里的历史记述。 | [documents/sprint/sprint-27-wrap-up.md](documents/sprint/sprint-27-wrap-up.md) |
 | 产品日志整理（2026-11-24） | PBI-98 关闭（加载已在 Sprint 26 验完） | 避免与 PBI-101 重复挂账：未证的 Outcome 验收全权由 PBI-101 承接，Q11 触发见 PBI-103（PO 2026-11-24 确认） | git 历史；[documents/sprint/sprint-26-plugin-memory.md](documents/sprint/sprint-26-plugin-memory.md) |
+| Sprint 28（2026-11-24，v0.8.0 Breaking） | PBI-104 移除设计冲刺与 Designer、PBI-105 看板去设计卡、PBI-106 Sprint How 放开为方案计划；随 `design-kernel` 移除一并关闭 PBI-103 | 收敛为 Scrum Sprint 单主轨 + IDEO 五模式共享工具箱（4 角色、3 内核 + Memory 84 句柄 + 6 条偏离），保留 4 条操作纪律（先发散再收敛、隔离子代理防趋同、原型不进 Increment、保留测试证据），清零 Knapp《Sprint》15 篇全版权摘录与 `Simon & Schuster` 署名，删遗留 `scrum/sprint-26-plugin-memory/`；看板仅留产品卡与冲刺卡，`board_check` 按表头识别工作项表；Sprint How 放开为方案计划、锚定 `How ↔ Ideate` 并守住 `go-ahead`。验证：S1–S6（含独立 `plugin-validator`、DSH 网页端 4 角色与原生事件）、D1–D6（自测 43/43、文档 188 链 0 错、全仓 grep 0 意外命中）、Codex 对抗审查 8 组修订闭环、无头回归 11 项全过（含 Q11 3/3 覆盖 PBI-103、PO 裁定补测 `B1b` 2/2 与 `Q3-1b` 1/1、0 旧术语命中）；「熟手」与「陌生人」外部 Review 均 0 阻塞且满意；Output Done 7/7 全过，Outcome 本期未新测。 | [documents/sprint/sprint-28-drop-design-sprint.md](documents/sprint/sprint-28-drop-design-sprint.md) |
