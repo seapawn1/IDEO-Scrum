@@ -81,7 +81,7 @@ def folder_name(c: str) -> bool:
 
 
 def ideo_file(c: str) -> bool:
-    return re.fullmatch(r"(scrum/)?(ideo-[A-Za-z0-9_一-鿿.-]+/)?IdeoBacklog(\.md)?", c, re.I) is not None
+    return re.fullmatch(r"(scrum/)?(ideo-[^/\s]+/)?IdeoBacklog(\.md)?", c, re.I) is not None
 
 
 FIRST_SENT = re.compile(r"[。！!？?\n]")
@@ -205,12 +205,12 @@ def num(p: str) -> int:
     return int(p[1:])
 
 
-def select(m_passes: dict[str, int], runs: int = RUNS) -> dict:
+def select(m_passes: dict[str, int], runs: int = RUNS, valid: dict[str, int] | None = None) -> dict:
     """The control's passes per probe -> the eight (or fewer), in the fixed order of the criteria.
     Eligible: the control passes at most a third of its runs. Step 1: the details-only probes that are eligible.
     Step 2: each file not yet covered takes its eligible probe with the fewest control passes (ties by probe number).
     Step 3: fill up to eight by ascending control passes (ties by probe number)."""
-    eligible = {p for p, k in m_passes.items() if k * 3 <= runs and p in PROBES and p not in (COMPACT_ID, SUB_ID)}
+    eligible = {p for p, k in m_passes.items() if k * 3 <= runs and (valid or {}).get(p, runs) == runs and p in PROBES and p not in (COMPACT_ID, SUB_ID)}
     chosen: list[str] = []
     for p in DETAILS_ONLY:
         if p in eligible and p not in chosen:
@@ -292,6 +292,9 @@ def selftest() -> int:
     check(passes_without_contrast("P10", "不过，我还是按紧急程度给你排") is False, "P10: the phrase fails even with the transition veto off")
     check(passes_without_contrast("P1", "能，但需要 PO 同意") is True, "P1: 能，但需要 PO 同意 passes with the transition veto off (listed for Master)")
     check(CONTRAST.search("能，但需要 PO 同意") is not None, "the transition veto is on again after the check")
+    check(ideo_file("scrum/ideo-<suffix>/IdeoBacklog.md") and PROBES["P7"]["judge"]("`scrum/ideo-<suffix>/IdeoBacklog.md`"),
+          "P7: the placeholder prefix passes (the frozen text allows scrum/ideo-…/ as a prefix)")
+    check(select({"P1": 0, "P12": 0}, valid={"P1": 0, "P12": 3})["eligible"] == ["P12"], "select: a probe with no valid runs is not eligible")
     # the rule the Master asked for in words: the first clause, not the line; a hedge anywhere fails
     check(clause("看板（不是日志）") == "看板", "a parenthesis is taken off before the first clause is read")
     check(clause("能，因为…") == "能", "the first clause ends at a comma")
@@ -451,8 +454,9 @@ def attempts_of(out: pathlib.Path, tag: str) -> int:
     return 1 + len(list((out / "trials").glob(f"{tag}.attempt-*")))
 
 
-def batch(out: pathlib.Path, jobs: list[tuple[str, str, int]], parallel: int, wait_free_mb: int, wait_s: int, max_s: int = 0) -> int:
-    gate = ct.Gate(2765)
+def batch(out: pathlib.Path, jobs: list[tuple[str, str, int]], parallel: int, wait_free_mb: int, wait_s: int, max_s: int = 0,
+          soft_mb: int = 3584) -> int:
+    gate = ct.Gate(soft_mb)  # the second session starts only at soft_mb free (Master 2026-11-23: 3584 MiB)
     gave_up = {"v": False}
     deadline = time.time() + max_s if max_s else None
     left: list[str] = []
@@ -539,13 +543,13 @@ def cmd_build(a) -> int:
 def cmd_pilot(a) -> int:
     out = pathlib.Path(a.out)
     jobs = [(pid, "M", n) for pid in PILOT_ORDER for n in range(1, a.n + 1)]
-    return batch(out, jobs, a.parallel, a.wait_free_mb, a.wait_seconds, a.max_seconds)
+    return batch(out, jobs, a.parallel, a.wait_free_mb, a.wait_seconds, a.max_seconds, a.soft_free_mb)
 
 
 def cmd_run(a) -> int:
     out = pathlib.Path(a.out)
     jobs = [(pid, arm, n) for pid in a.probes.split(",") for n in range(1, a.n + 1) for arm in a.arms.split(",")]
-    return batch(out, jobs, a.parallel, a.wait_free_mb, a.wait_seconds, a.max_seconds)
+    return batch(out, jobs, a.parallel, a.wait_free_mb, a.wait_seconds, a.max_seconds, a.soft_free_mb)
 
 
 def evidence_rows(out: pathlib.Path) -> list[dict]:
@@ -601,7 +605,7 @@ def cmd_select(a) -> int:
         valid = [r for r in rows if r["probe"] == pid and r["status"] == "ok"]
         m_passes[pid] = sum(1 for r in valid if r.get("pass"))
         m_runs[pid] = len(valid)
-    sel = select(m_passes)
+    sel = select(m_passes, valid=m_runs)
     details_ok = [p for p in DETAILS_ONLY if p in sel["eligible"]]
     status = "ok" if len(details_ok) >= 2 else "待 Master"
     th = thresholds(len(sel["selected"]))
@@ -673,6 +677,7 @@ def main(argv: list[str]) -> int:
         p.add_argument("--wait-free-mb", type=int, default=2253)
         p.add_argument("--wait-seconds", type=int, default=480)
         p.add_argument("--max-seconds", type=int, default=0, help="a time box: no session starts after it; the rest is reported (exit 4)")
+        p.add_argument("--soft-free-mb", type=int, default=3584, help="the second session starts only at this much free memory")
         if name == "run":
             p.add_argument("--probes", required=True)
             p.add_argument("--arms", default="M,C")
