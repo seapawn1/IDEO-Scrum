@@ -94,3 +94,4 @@
   - 授权范围：DSH 临时读 26 工作树（交 Supporter 做）；收官放行与推送已同意；Review、Retro 的内容由 Master 定、事后报；一直做到全部合入 main、推送远端、更新本机 DSH 与 Claude Code 上的插件（收官照常升版本号）。
   - 仍回 PO：改 Product Goal、取消冲刺、推翻 PO 说过的话、PO 点名要看的品味；GitHub Release 这类超出推送的公开发布；CLAUDE.md／AGENTS.md 除 44、56 行以外的改动；宿主要 PO 在场确认的权限提示。
   - 核对点照旧留成动作：推送前扫提交，推送后 `ls-remote`，装完核版本，审阅派 Codex。
+- **26 收官（2026-11-23，Developer 按 Master 指示记）**：PO 在 Master 会话说「你决定即可」，Master 定 A：Sprint 26 收官，Outcome 如实写「未证」。理由：对照臂不干净，这一轮测不出 Memory 的增益（探路 33 条，入选 0 条）。Memory 照常落地（结构、加载、DSH 都已验过）。重新设计效果测试另开 PBI-101。日志归档 [sprint-26-plugin-memory.md](sprint/sprint-26-plugin-memory.md)；版本 0.7.0 待推送。

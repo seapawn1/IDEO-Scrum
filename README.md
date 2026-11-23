@@ -2,7 +2,7 @@
 
 # IDEO-Scrum
 
-A plugin for Claude Code and DeepSeek Harness (DSH) that brings Design Thinking and Scrum Sprints to a project you build alone with AI. **v0.6.3**
+A plugin for Claude Code and DeepSeek Harness (DSH) that brings Design Thinking and Scrum Sprints to a project you build alone with AI. **v0.7.0**
 
 [中文](README.zh-CN.md) · [Install](#install) · [Quick start](docs/quick-start.md) · [Glossary](docs/glossary.md) · [Changelog](CHANGELOG.md)
 
@@ -66,7 +66,7 @@ A git repository for your project is recommended; the Scrum Master can set one u
 
 To check, run `claude plugin list` in a terminal: it shows `ideo-scrum@ideo-scrum` as enabled.
 
-**DeepSeek Harness (DSH `0.2.2-rc.5`).** The number in these instructions is the DSH host version, not the IDEO-Scrum plugin version (`0.6.3`). Clone this repository to a location you plan to keep. In the DSH sidebar, open **Plugins → Add plugin**. Enter the absolute path to the repository root (the folder with `package.json`) in **Package name or address** and select **Install**. DSH links `@seapawn/ideo-scrum` to that directory rather than copying it. Open a new **Standard** session in the project you want to work on.
+**DeepSeek Harness (DSH `0.2.2-rc.5`).** The number in these instructions is the DSH host version, not the IDEO-Scrum plugin version (`0.7.0`). Clone this repository to a location you plan to keep. In the DSH sidebar, open **Plugins → Add plugin**. Enter the absolute path to the repository root (the folder with `package.json`) in **Package name or address** and select **Install**. DSH links `@seapawn/ideo-scrum` to that directory rather than copying it. Open a new **Standard** session in the project you want to work on.
 
 ## Upgrade
 
@@ -78,7 +78,7 @@ claude plugin update ideo-scrum@ideo-scrum
 
 Then run `/reload-plugins` in a session that is already open. Third-party marketplaces do not update themselves by default: to have Claude Code do it, open `/plugin`, go to Marketplaces, select `ideo-scrum` and choose Enable auto-update. What changed in each release is in the [changelog](CHANGELOG.md).
 
-Coming from `6.0.3`, this same update moves you to `0.6.3`: the lower number is expected, and the update was verified on Claude Code `2.1.329` without uninstalling. To check what actually loaded, and for the DSH migration, see [Migrating an existing installation](docs/maintaining.md#migrating-an-existing-installation).
+Coming from `6.0.3`, this same update moves you to `0.7.0`: the lower number is expected. The `0.6.3` update path was verified on Claude Code `2.1.329` without uninstalling; the `0.7.0` check is pending and is filled in after the push and the local update. To check what actually loaded, and for the DSH migration, see [Migrating an existing installation](docs/maintaining.md#migrating-an-existing-installation).
 
 **DSH.** On DSH `0.2.2-rc.5`, a link to a local directory has no in-place update button in the plugin details, only **Uninstall**. The path verified for `6.0.3 → 0.6.3` is: in **Plugins**, **Uninstall** the old link, then **Add plugin** with the new path, restart DSH, and open a new **Standard** session. Updating a linked checkout in place is not separately tested.
 

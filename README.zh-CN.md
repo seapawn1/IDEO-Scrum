@@ -2,7 +2,7 @@
 
 # IDEO-Scrum
 
-一个面向 Claude Code 和 DeepSeek Harness（DSH）的插件：把 Design Thinking 与 Scrum Sprint 带给你一个人加 AI 做的项目。**v0.6.3**
+一个面向 Claude Code 和 DeepSeek Harness（DSH）的插件：把 Design Thinking 与 Scrum Sprint 带给你一个人加 AI 做的项目。**v0.7.0**
 
 [English](README.md) · [安装](#安装) · [快速上手](docs/quick-start.zh-CN.md) · [词汇表](docs/glossary.md) · [更新记录](CHANGELOG.md)（英文）
 
@@ -66,7 +66,7 @@ Developer：    计划写在冲刺日志第 3 章。你说「放行」之前，�
 
 检查：在终端里运行 `claude plugin list`，里面 `ideo-scrum@ideo-scrum` 显示已启用。
 
-**DeepSeek Harness（DSH `0.2.2-rc.5`）。** 这里的版本号是 DSH 宿主版本，不是 IDEO-Scrum 插件版本（`0.6.3`）。把本仓库克隆到会一直保留的目录。在 DSH 侧栏打开**插件 → 添加插件**，在**包名或地址**里填本仓库根目录（有 `package.json` 的目录）的绝对路径，然后点**安装**。DSH 把 `@seapawn/ideo-scrum` 链接到这个目录，不会复制一份。到你要做的项目目录新开一个 **Standard** 会话。
+**DeepSeek Harness（DSH `0.2.2-rc.5`）。** 这里的版本号是 DSH 宿主版本，不是 IDEO-Scrum 插件版本（`0.7.0`）。把本仓库克隆到会一直保留的目录。在 DSH 侧栏打开**插件 → 添加插件**，在**包名或地址**里填本仓库根目录（有 `package.json` 的目录）的绝对路径，然后点**安装**。DSH 把 `@seapawn/ideo-scrum` 链接到这个目录，不会复制一份。到你要做的项目目录新开一个 **Standard** 会话。
 
 ## 升级
 
@@ -78,7 +78,7 @@ claude plugin update ideo-scrum@ideo-scrum
 
 然后在已经打开的会话里运行 `/reload-plugins`。第三方市场默认不会自动更新：想让 Claude Code 代劳，打开 `/plugin`，进 Marketplaces，选 `ideo-scrum`，选 Enable auto-update。每个版本改了什么，见[更新记录](CHANGELOG.md)（英文）。
 
-从 `6.0.3` 过来，同一条更新命令就会升到 `0.6.3`：版本号变小是正常的，这条路径已在 Claude Code `2.1.329` 上验证过，不用卸载重装。要核对实际加载的是哪一版，以及 DSH 的迁移，见[已装用户怎样迁移](docs/maintaining.zh-CN.md#已装用户怎样迁移)。
+从 `6.0.3` 过来，同一条更新命令就会升到 `0.7.0`：版本号变小是正常的。`0.6.3` 的这条路径已在 Claude Code `2.1.329` 上验证过，不用卸载重装；`0.7.0` 的核对待推送并更新本机之后补。要核对实际加载的是哪一版，以及 DSH 的迁移，见[已装用户怎样迁移](docs/maintaining.zh-CN.md#已装用户怎样迁移)。
 
 **DSH。** 在 DSH `0.2.2-rc.5` 上，指向本地目录的链接在插件详情页没有原地更新按钮，只有**卸载**。`6.0.3 → 0.6.3` 实测通过的路径是：在**插件**页**卸载**旧链接，再用**添加插件**填新路径，重启 DSH，然后新开一个 **Standard** 会话。原地更新链接仓库未单独实测。
 

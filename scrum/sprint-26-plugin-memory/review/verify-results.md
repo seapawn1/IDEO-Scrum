@@ -66,4 +66,4 @@ B、C 各补到 6 次的只有 Q11 直接（C 低于 B 时按冻结规矩补 3 �
 
 ## V6 DSH：秘书会话（Supporter）在本机 DSH 0.2.3-alpha.2 上测完：五个入口各 3 次预载齐全 15/15；压缩后模型先重载 memory 3/3；子代理调了 memory 3/3。逐项与判定见第 4 章「行 14 V1–V4 的结果与偏离」第 ⑦ 条；原始页见 `dsh-test-page.md`、`dsh-verify-page.md`。
 
-## V7 脚本检查：（收官时在收官树上再跑一遍，结果记入第 4 章）
+## V7 脚本检查：收官树上全部通过（check_dsh 9/9；validate --strict 通过；check_docs 195 链接、0 错误，selftest 通过；board_check selftest 通过；check_paths、check_old_relay、clause_coverage（open 0）、refs_inventory 通过）。记录在收官日志第 5.3 节。

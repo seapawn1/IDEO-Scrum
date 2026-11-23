@@ -32,6 +32,8 @@ Moving from `6.0.3` to `0.6.3` lowers the SemVer version number (`6.0.3` > `0.6.
 | --- | --- | --- |
 | Claude Code | `v6.0.3` (`d681c69`), marketplace install from `./plugins/ideo-scrum` via the [version cache](https://code.claude.com/docs/en/plugins/loading#versions-and-updates) | **Verified 2026-11-20 (Claude Code `2.1.329`)**: `claude plugin marketplace update ideo-scrum` + `claude plugin update ideo-scrum@ideo-scrum` accepts the downgrade directly (`6.0.3 → 0.6.3`, `updateOutcome: "updated"`); `claude plugin list` and the new session both point at the `0.6.3` version-cache path; roles, kernels, startup and post-`/compact` commitment hooks were checked; `scrum/` unchanged. |
 | DSH (`0.2.2-rc.5`) | Local directory link to commit `b2679aa` (`@seapawn/ideo-scrum`, `private: true`, not a public registry release) | **Verified 2026-11-21 (isolated instance)**: the plugin details show no in-place update for a local link, only **Uninstall**; uninstall, **Add plugin** with the new path, restart, and a new **Standard** session loaded `0.6.3` (the profile's package entry and Junction both switch), with `/scrum-master` (preloaded `ideo-kernel` → `scrum-kernel`), the three commitments and the project's two rule files verified from native events; `scrum/` unchanged. Updating a linked checkout in place is **not separately tested**. |
+| Claude Code `0.7.0` | from `0.6.3` or `v6.0.3`, same marketplace path | （留空：推送并更新本机后核对） |
+| DSH `0.7.0` | from the linked checkout at `0.6.3` | （留空：推送并更新本机后核对） |
 
 - **Do not conflate the two baselines**: Claude Code had a public `v6.0.3` git tag and marketplace release, whereas DSH `b2679aa` was only a linked local repository checkout (not an earlier public npm or registry package).
 - **Verify the actual loaded source and version**: inspect the active Claude version-cache directory or DSH's linked checkout path plus native session events, rather than checking `package.json` or `plugin.json` on disk or asking the model what version it thinks is loaded. In DSH, always open a new **Standard** session after restarting DSH because Minimal sessions do not mount the skill loader and an existing session can retain prior context.
@@ -39,7 +41,7 @@ Moving from `6.0.3` to `0.6.3` lowers the SemVer version number (`6.0.3` > `0.6.
 
 ## Checking a candidate
 
-Keep `plugins/ideo-scrum/.claude-plugin/plugin.json` and [`package.json`](../package.json) on the same candidate version (`0.6.3`), keep both README top lines in sync with [`plugin.json`](../plugins/ideo-scrum/.claude-plugin/plugin.json), keep [`CHANGELOG.md`](../CHANGELOG.md) `## [Unreleased]` separate from published tag history (never rewrite shipped release notes or treat a version bump as a release), commit content changes and version bumps separately, and wait for Product Owner authorization before tagging, merging, or pushing.
+Keep `plugins/ideo-scrum/.claude-plugin/plugin.json` and [`package.json`](../package.json) on the same candidate version (`0.7.0`), keep both README top lines in sync with [`plugin.json`](../plugins/ideo-scrum/.claude-plugin/plugin.json), keep [`CHANGELOG.md`](../CHANGELOG.md) `## [Unreleased]` separate from published tag history (never rewrite shipped release notes or treat a version bump as a release), commit content changes and version bumps separately, and wait for Product Owner authorization before tagging, merging, or pushing.
 
 ```sh
 claude plugin validate --strict plugins/ideo-scrum

@@ -23,7 +23,7 @@
 
 **换目标**（2026-11-13）：「优化现有插件」（2026-11-12 定）换成产品化——PO 定产品化更要紧，优化转为常态。更早的目标见 git 历史。
 
-**本轮与之后**：插件的记忆机制（PBI-51）排入本轮；公开方法论分享（PBI-12）留待以后。六期的分工、范围与反馈去向见[六期总表](documents/sprint-roadmap.md)。
+**本轮与之后**：插件的记忆机制（PBI-51，Sprint 26）已收官，效果测试另开 PBI-101；公开方法论分享（PBI-12）留待以后。六期的分工、范围与反馈去向见[六期总表](documents/sprint-roadmap.md)。
 
 ## 1.3 Definition of Done
 
@@ -111,17 +111,13 @@ flowchart TD
 
 | 编号 | 标题 | 用户故事 | 架构定位 | 当前状态 | 规模 | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
-| PBI-51 | 通读：全插件约定逐条审去留 | 作为熟手，我想让插件的每条约定都有审过的去留和依据，以便转进 Memory 的都是该留的规矩 | 插件：四内核与角色 | 规划：Sprint 26 | M | 做插件约定，不做全局知识库，不收项目 Retro。PO 与 Developer 通读整个插件，逐条审约定；PO 定方向，可交 AI 自动化实施。不配置则不自动加载，开启才自动，始终可手动调用；是否用 Skill／命令留给共作。来源 F01、F05、F16、Sprint 14 Stakeholder。PO 2026-11-22：并入 PBI-85 的「记忆与约定另立包」；形状取混合——以短清单为主，长的单开文件、清单里留索引（PO：「说白了就是 Claude.md 和 memory 这两个混合」）；插件 Memory 与 Claude Code 自带的记忆是两套系统，只是同名；加载写进角色入口还是用 hook，留到本期再议。PO 以 Developer 身份共作，与 Sprint 27 并行，分工见[总表](documents/sprint-roadmap.md)。 Sprint 26 精化（2026-11-22）把本条切成 51、92–98：51 只留通读与逐条审（六份约定文件每条标出处与建议；PO 原定整份草稿一次逐条过目，2026-11-23 改为本期免审，由 Master 监督审阅，PO 在 Review 时看结果），其余见 92–98；做法见 Sprint 26 冲刺日志。读法（2026-11-22，与 Sprint 26 目标一致）：叫出角色就无条件带上 Memory；上面的「开启才自动」指可选、默认关的 hook。 |
-| PBI-92 | Memory：形状、载体与带上方式 | 作为熟手，我想让 Memory 放在一处、照定好的样子写、叫出角色就带上，以便规矩只有一份又随叫随到 | 插件：四内核与角色 | 规划：Sprint 26 | M | 自 PBI-51 切出（Sprint 26 精化，2026-11-22）。定位置与名字、带上方式（含子代理；hook 可选、默认关）、共用与分角色；先交大纲与实测。PO 2026-11-23 定 A1：独立 `memory` 技能，由角色入口调用；「dsh要支持要记得」。 |
-| PBI-93 | Memory 草稿：sprint-log 与 ideo-log | 作为熟手，我想让 sprint-log 与 ideo-log 的规矩各转成一行或一个长文件，以便照着就能守 | 插件：sprint-kernel、ideo-kernel 的约定 | 规划：Sprint 26 | S | 自 PBI-51 切出。草稿放冲刺文件夹；句型照 92 的示范写；PO 2026-11-23 本期免审，由 Master 审定。 |
-| PBI-94 | Memory 草稿：design-log 与 product-log | 作为熟手，我想让 design-log 与 product-log 的规矩各转成一行或一个长文件，以便照着就能守 | 插件：design-kernel、scrum-kernel 的约定 | 规划：Sprint 26 | M | 自 PBI-51 切出。句型照 92 的示范写；审定同 93。 |
-| PBI-95 | Memory 草稿：board-log 与 overview | 作为熟手，我想让 board-log、overview 和角色命令里重复的规矩各转成一行或一个长文件，以便照着就能守 | 插件：scrum-kernel 的约定与角色命令 | 规划：Sprint 26 | M | 自 PBI-51 切出。这两份 Sprint 27 要改，放在最后；27 已合入就按合入后的文件写。审定同 93。 |
-| PBI-96 | Memory 草稿：汇总与对抗审查 | 作为熟手，我想让整份 Memory 草稿先过 Master 审和独立的对抗审查，以便落盘前就把错漏改掉 | 插件：四内核与角色 | 规划：Sprint 26 | S | 自 PBI-51 切出。字符预算、逐字、句柄唯一、索引无死链的检查都要通过；PO 2026-11-23 本期免审，Master 审定、对抗审查过即可落盘，PO 在 Review 时看结果。 |
-| PBI-97 | Memory：落盘与引用迁移 | 作为熟手，我想让 Memory 落进插件、旧约定删掉、各处引用都指到新位置，以便只有一份规矩、链接都通 | 插件：四内核、角色入口、docs 与检查脚本 | 规划：Sprint 26 | M | 自 PBI-51 切出。等 Sprint 27 合入 main 再做；旧约定转完就删（PO 2026-11-22）；全仓 grep 旧引用为零；改 `AGENTS.md` 里的引用须 PO 直接点头。 |
-| PBI-98 | Memory：角色带上与验证 | 作为熟手，我想叫出任一角色就带上同一套规矩，以便不用每次手动说明 | 插件：角色入口与 DSH | 规划：Sprint 26 | M | 自 PBI-51 切出。Claude Code 与 DSH 各验一次；触发测试不比改前差；Outcome「不用每次手动说明」按 Sprint 26 冲刺日志 2.2 定的判据过线。 |
+| PBI-98 | Memory：角色带上与验证 | 作为熟手，我想叫出任一角色就带上同一套规矩，以便不用每次手动说明 | 插件：角色入口与 DSH | 部分完成（Sprint 26 收官） | M | 部分完成（2026-11-23）：Claude Code 与 DSH 各验过（V1–V6），触发七格过、一格 Q11 字面未过（待研，PBI-103）。验收里的 Outcome「不用每次手动说明」未证：探路 33 条入选 0 条，对照臂不干净；PO 2026-11-23 定 A 收官，如实写未证。余下的效果测试重做见 PBI-101。 |
 | PBI-87 | 调研：Stakeholder 角色是否可选自动登记为 Agent | 作为 PO，我想评估让 Stakeholder 角色按需或自动登记为项目 Agent 的可能，以便少手工操作又能守住边界 | 插件：`project-stakeholder`／产品日志 §2.1 | 待选 | S | 来源：PO 2026-11-21 原话：「你记得stakeholder角色是否自动登记agent，计入一个反馈PBI里面吧？还是一个PBI？我觉得可以一类可能反馈，因为我可能要测试一下，未来有可能放开去自动创建agent去，这个你要记得最好。」内容：先测手动登记的实际使用体验；若合适，再研究可选的批量／自动登记（默认关闭，逐张预览或规则化确认），不改变「PO 定角色、登记不改共享命令、Review 召唤权不变」的边界。按想法／反馈类登记，暂不排期。**未来需测试**：召唤 subagent 与 Workflow 时，是否会局限在已给的 agent 角色列表和产品日志 Stakeholder 表格之内；能否跳出这个约定，新建角色来做 subagent／Workflow。PO 2026-11-22：要先体验，本轮不收。 |
 | PBI-100 | DSH：技能描述在技能清单里被截到 500 字符 | 作为用 DSH 的熟手，我想让各内核的描述在 DSH 的技能清单里完整可见，以便按名召唤和自然触发都不受截断影响 | 分发：DSH | 待选 | 待估 | 来源：Sprint 26 判据 ⑥ 的 DSH 实测（秘书会话，2026-11-23，DSH 0.2.3-alpha.2）：技能清单把每条描述截到 500 字符，design、ideo、scrum、sprint 四个内核都被截（scrum-kernel 原文 968 字符）。要查清截断对触发的影响，再定是缩短描述，还是给 DSH 另写一份短描述。 |
+| PBI-101 | Memory 效果测试：重新设计 | 作为 PO，我想知道 Memory 是否让 AI 不用每次手动说明就照规矩做，以便决定要不要继续投入 | 插件：测试方法（Memory 效果） | 待选 | 待估 | 来源：Sprint 26 收官，PO 2026-11-23 定 A（Master 转述）。上一轮的对照臂不干净：M 臂的旧约定文件仍可读，探针测的是「会不会去读规矩」。做法要点：对照臂隔离规矩文件；先在改前版本上预演；判据先冻结再测。原 PBI-98 的 Outcome 验收移到这里。 |
+| PBI-103 | Q11 类题的触发：设计类题用更多样本判 | 作为熟手，我想让设计类问题稳定触发设计内核，以便问「怎么做设计」时不漏加载 | 插件：design-kernel、ideo-kernel 的描述与触发 | 待选 | 待估 | 来源：Sprint 26 V4，Q11 直接（设计类题）字面判 B 5/6、C 4/6 未过；Master 定带着收官、登记（不改判）。先核对题面与 description 的口径是否一致，再用更多样本判。 |
 | PBI-12 | 方法论分享——公开系列 | 作为读者，我想要一套公开的方法论分享（系列文章、网页或视频），讲清 solo + AI 怎么用 Scrum 和设计思维，以便不装插件也能学会、用到自己的项目里 | 产品之外：分享线（1.2「之后」） | 以后 | L | 决定：下一步做（PO 2026-11-13）；公开发布前过一遍授权（d.school 非商业）、经 PO 确认。素材：[ExpertNotes.md](documents/ExpertNotes.md)、`git show 3f43476:scrum/documents/five-stage-mapping.svg`（图里冲刺还是旧的三段，用前改成五个阶段；2026-11-14 PO 整理 documents 时从仓库删去）。来源：2026-10-24 PO 改为方法论分享 |
+| PBI-102 | 远程并发跑测试 | 作为 Developer，我想让无头测试能远程并发跑，以便不被本机内存限制 | 分发：测试基础设施 | 以后 | 待估 | PO 2026-11-23 定：不做，记在以后。来源：Sprint 26 的测试里本机内存紧张时，系统多次收走后台任务。 |
 
 ## 3.2 已完成 / 已关闭的 PBI
 
@@ -152,4 +148,5 @@ flowchart TD
 | Sprint 23（2026-11-21） | PBI-76 DoD、PBI-77 阶段放行、PBI-78 承诺、PBI-79 设计归档、PBI-69 Retro | DoD、阶段授权、承诺按原文、设计工作材料保全、Retro 分条记忆；按冻结口径 10/10，s10 定向复测 3/3。跨期核对及 Sprint 21 熟手提出的非阻塞留项见归档。 | [documents/sprint/sprint-23-log-rules.md](documents/sprint/sprint-23-log-rules.md) |
 | Sprint 24（2026-11-21） | PBI-80 起草前读原文、PBI-81 顺序加载、PBI-82 内联原文、PBI-83 承诺 hook | 候选四题首稿前读全 12/12 对基线 0/12；四角色 4／3／3／2；Sprint Backlog 原文加载 3/3。两夹具 hook 常态 P50 降约 91%，已测承诺语义不变；未重测全流程 Outcome。 | [documents/sprint/sprint-24-loading-reliability.md](documents/sprint/sprint-24-loading-reliability.md) |
 | Sprint 25（2026-11-21） | PBI-72 DSH 分发：验收与跨宿主维护说明 | 两个宿主的 0.6.3 新装、6.0.3 迁移与共用规则读取均在隔离环境取证；保留各自迁移步骤及实调角色边界。Claude 与 DSH 本地候选同为 0.6.3，尚未发布。 | [documents/sprint/sprint-25-dsh-docs.md](documents/sprint/sprint-25-dsh-docs.md) |
+| Sprint 26（2026-11-22～11-23，0.7.0 待发布） | PBI-51 ✓ 2026-11-23、92 ✓ 2026-11-23、93 ✓ 2026-11-22、94 ✓ 2026-11-22、95 ✓ 2026-11-22（board-log 不转，留 `board/`，Master 2026-11-23 定）、96 ✓ 2026-11-23、97 ✓ 2026-11-23（board-log 留原处，旧约定删）；98 部分（Outcome 未证，重做见 PBI-101）；登记 101、102、103 | Memory 进插件：`skills/memory/` 清单 103 行、细则 15 个；五份旧约定删；角色入口与 DSH 带上 Memory。验证：角色入口 15/15，DSH 预载 15/15、压缩后重载 3/3，触发七格过一格待研。Outcome 未证：探路 33 条入选 0 条，对照臂不干净；PO 2026-11-23「你决定即可」，Master 定 A 收官 | [documents/sprint/sprint-26-plugin-memory.md](documents/sprint/sprint-26-plugin-memory.md)；审阅 [documents/sprint/sprint-26-plugin-memory-review.md](documents/sprint/sprint-26-plugin-memory-review.md) |
 | Sprint 27（2026-11-22～11-23，版本不动，仍是 0.6.3 的未发布候选） | PBI-84 署名（IDEO 五模式双源）、PBI-85 模板与看板归位、PBI-86 Supporter 角色与改称、PBI-89 看板收尾态、PBI-90 入口九条意见 | 新角色 Supporter（秘书）：杂活、PO 的联络点、转达的 PO 意见视同 PO 的、三级分流，各角色叫法统一；模板进插件根 `template/`、看板文件进 `board/`；看板认得收尾待归档的写法（检查脚本也认只在分支上的产品日志）；五个 IDEO 模式文件署名补齐 2010／2018 双源；项目 Agent 与参谋入口九条意见做了八条（不改召唤示例）。触发测试 A 组 9／9、B 组 4／9 对 3／9、C 组 9／9；无头加载 3／3；DSH 实装三条全过；Codex 与熟手视角各提的意见都已修；旧称法与旧路径 grep 只剩放行的归档里的历史记述。 | [documents/sprint/sprint-27-wrap-up.md](documents/sprint/sprint-27-wrap-up.md) |

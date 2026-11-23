@@ -2,15 +2,15 @@
 
 由 `scripts/refs_inventory.py` 生成：活文件里所有指向六份旧约定的引用（档案 `scrum/documents/` 与 `references/` 不动）。落盘迁移时，每一处要么改指 Memory 的 handle，要么随旧文件一起删。
 
-合计 15 处：路径 3、编号 5（其中解析不出目标 4）、标题 7。六份约定文件自己里面 0 处，别处 0 处。
+合计 20 处：路径 8、编号 5（其中解析不出目标 4）、标题 7。六份约定文件自己里面 0 处，别处 0 处。
 
 ## 按文件
 
 | 文件 | 处数 |
 | --- | --- |
+| `CHANGELOG.md` | 8 |
 | `scripts/check_docs.py` | 6 |
 | `scripts/board_check/check.py` | 4 |
-| `CHANGELOG.md` | 3 |
 | `plugins/ideo-scrum/skills/memory/details/departures.md` | 1 |
 | `scripts/check_dsh.mjs` | 1 |
 
@@ -25,7 +25,7 @@
 
 | 文件 | 处数 | 理由 |
 | --- | --- | --- |
-| `CHANGELOG.md` | 3 | the release history: its entries say what the files said then |
+| `CHANGELOG.md` | 8 | the release history: its entries say what the files said then |
 | `scripts/board_check/check.py` | 4 | numbers of board-log.md's own conventions; board-log.md stays at plugins/ideo-scrum/board/ |
 | `plugins/ideo-scrum/skills/memory/details/departures.md` | 1 | its own heading |
 | `scripts/check_docs.py` | 6 | the Departures table the README is checked against now lives in the Memory's details/departures.md |

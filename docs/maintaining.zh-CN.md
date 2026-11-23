@@ -32,6 +32,8 @@
 | --- | --- | --- |
 | Claude Code | `v6.0.3`（`d681c69`），通过[版本缓存](https://code.claude.com/docs/en/plugins/loading#versions-and-updates)从 `./plugins/ideo-scrum` 市场安装 | **已实机验证（2026-11-20，Claude Code `2.1.329`）**：`claude plugin marketplace update ideo-scrum` + `claude plugin update ideo-scrum@ideo-scrum` 直接接受降号（`6.0.3 → 0.6.3`，`updateOutcome: "updated"`）；`claude plugin list` 与新会话都指向 `0.6.3` 版本缓存路径；角色、内核、启动与 `/compact` 后承诺 hook 均已核验；`scrum/` 未变。 |
 | DSH（`0.2.2-rc.5`） | 本地目录链接至提交 `b2679aa`（`@seapawn/ideo-scrum`，`private: true`，非公开注册表发布版） | **已实机验证（2026-11-21，隔离实例）**：插件详情页对本地链接没有原地更新，只有**卸载**；卸载后**添加插件**填新路径、重启、新开 **Standard** 会话，加载的 `0.6.3`（profile 的包条目与 Junction 均切换），`/scrum-master`（预载 `ideo-kernel` → `scrum-kernel`）、3 条承诺与项目两份规则文件均从原生事件核验；`scrum/` 未变。原地更新链接仓库**未单独实测**。 |
+| Claude Code `0.7.0` | 从 `0.6.3` 或 `v6.0.3` 过来，同一个市场路径 | （留空：推送并更新本机后核对） |
+| DSH `0.7.0` | 从 `0.6.3` 的本地链接检出过来 | （留空：推送并更新本机后核对） |
 
 - **不要混淆两种旧基线**：Claude Code 有公开的 `v6.0.3` git tag 与市场发布版，而 DSH 的 `b2679aa` 只是本地仓库链接（不是旧公开 npm 或注册表包）。
 - **核对实际加载来源与版本**：查看 Claude 生效的版本缓存目录或 DSH 链接的本地目录及原生会话事件，不要只看磁盘上的 `package.json`、`plugin.json`，也不要以模型自述为准。在 DSH 中重启后务必新开 **Standard** 会话，因为 Minimal 会话不挂载技能加载器，旧会话也可能残留旧上下文。
@@ -39,7 +41,7 @@
 
 ## 候选如何核验
 
-保持 `plugins/ideo-scrum/.claude-plugin/plugin.json` 与 [`package.json`](../package.json) 的候选版本号一致（`0.6.3`），中英 README 顶部版本号与 [`plugin.json`](../plugins/ideo-scrum/.claude-plugin/plugin.json) 对齐，[`CHANGELOG.md`](../CHANGELOG.md) 中 `## [Unreleased]` 与已发布历史严格分开（不改已发布历史、不把改号当发布），内容改动与改号分开提交，并在打 tag、合并或推送前取得 PO 明确授权。
+保持 `plugins/ideo-scrum/.claude-plugin/plugin.json` 与 [`package.json`](../package.json) 的候选版本号一致（`0.7.0`），中英 README 顶部版本号与 [`plugin.json`](../plugins/ideo-scrum/.claude-plugin/plugin.json) 对齐，[`CHANGELOG.md`](../CHANGELOG.md) 中 `## [Unreleased]` 与已发布历史严格分开（不改已发布历史、不把改号当发布），内容改动与改号分开提交，并在打 tag、合并或推送前取得 PO 明确授权。
 
 ```sh
 claude plugin validate --strict plugins/ideo-scrum
