@@ -83,3 +83,14 @@
 - **PO 全面放权**：「我不审了，后面自动过吧，你作为master监督审阅他们……」「26 27的review这些交给你和codex就可以，我只负责放行什么的」。所以 26 改为 PO 免审：Master 审定，派 Codex 或全新子代理做对抗审查，PO 只管放行。上表 26 一行里的「照常由 PO 过」「PO 强审」，由此替代；原话与范围见两期日志第 4 章。
 - **26 的载体**：PO 定 A1——独立 `memory` 技能，由角色入口调用；「dsh要支持要记得」。
 - **问题分流**：PO 定三级分流（自己定 → 问 Master → 经 Supporter 交 PO），Supporter 转达的 PO 意见算 PO 的（有例外），已随 27 写进约定 14。
+- **PO 中途审了 Memory 草稿**：PO 在 Supporter 会话里逐条审（2026-11-23 02:55–03:4x），口径是「只要与 Memory 其它条目、各技能的说法不矛盾，就算过、就保留」。
+  - 意见：要改 7 处，要补 2 处，其中一处是新规矩——Review／Retro 时由 Master 列出异议点和待研点，PO 挑哪些落 `documents/`、哪些落记忆。
+  - 处置：Master 全部转给 26 Developer。PO 交 Master 判的几点：ideate-arrangement 只强调放行这一关；sprint-or-modes 照 PO 的话重写；modes-are-not-the-sprint 整条删。
+  - relay-limits：Master 原判不放宽（Supporter 把它误记成「交 Master 判断」），PO 已推翻。经 PO 授权的 Supporter 转达，在权限、设置、CLAUDE.md／AGENTS.md、推送发布上也算 PO 的话；PO 在 Master 会话亲口说：「我授权之后，然后我让 supporter 去发，那实际上也认为是我的意见」。宿主只认动手会话里确认的，照宿主来，写进细则。
+  - 改完 PO 不看第二遍，Master 复核后落盘。原话与处置记在 26 的 `review/po-review-2026-11-23.md` 和日志第 4 章。
+- **Codex 对抗审查的修改**：26 Developer 在 `6a0bee9` 改完 15 条，并对 111 条规矩做了分句覆盖核查；Master 审过。附带一个条件：落盘后拿插件里的文件重跑覆盖核查。
+- **删两条 PBI**：PBI-91 是 PO 定不做；PBI-99 的原话是「我记得99这个肯定是要删的，因为我已经审略完了」（经 Supporter，2026-11-23 03:5x）。Supporter 在 `d143bbd` 删掉了这两条。照 answers-back，条目的增删本该交 Master 记，这次内容无误，不回改。
+- **26 收官的书面授权**（PO 在 Master 会话里亲口说，2026-11-23 约 04:2x，原话逐字）：「然后前面那几个点，我现在就开始授权，好吧。啊，一个是让 DSA 是临时读什么工作数啊。你直接让那个 supporter 帮你做就行。然后那个推送收关放行，我现在都都那个同意了。然后的话，嗯，最后 review review 和 retro 的内容我也同意了。反正到最后你你直接我给你授权到什么地步呢，就是说全部都 merge 完。后推送到远端，然后跟心我们这个本地的插件，一个是 DSH，还有一个是那个claude code。这两个都要更新。」
+  - 授权范围：DSH 临时读 26 工作树（交 Supporter 做）；收官放行与推送已同意；Review、Retro 的内容由 Master 定、事后报；一直做到全部合入 main、推送远端、更新本机 DSH 与 Claude Code 上的插件（收官照常升版本号）。
+  - 仍回 PO：改 Product Goal、取消冲刺、推翻 PO 说过的话、PO 点名要看的品味；GitHub Release 这类超出推送的公开发布；CLAUDE.md／AGENTS.md 除 44、56 行以外的改动；宿主要 PO 在场确认的权限提示。
+  - 核对点照旧留成动作：推送前扫提交，推送后 `ls-remote`，装完核版本，审阅派 Codex。
