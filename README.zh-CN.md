@@ -78,7 +78,7 @@ claude plugin update ideo-scrum@ideo-scrum
 
 然后在已经打开的会话里运行 `/reload-plugins`。第三方市场默认不会自动更新：想让 Claude Code 代劳，打开 `/plugin`，进 Marketplaces，选 `ideo-scrum`，选 Enable auto-update。每个版本改了什么，见[更新记录](CHANGELOG.md)（英文）。
 
-从 `0.6.3` 升到 `0.7.0`，Claude Code 上已验（2.1.326，`claude plugin update` 成功、已启用，未卸载）。从 `6.0.3` 升到 `0.7.0` 预计是同一条更新路径，尚未验。DSH 上 `0.7.0` 的路径待核。要核对实际加载的是哪一版，以及 DSH 的迁移，见[已装用户怎样迁移](docs/maintaining.zh-CN.md#已装用户怎样迁移)。
+从 `0.6.3` 升到 `0.7.0`，Claude Code 上已验（2.1.326，`claude plugin update` 成功、已启用，未卸载）。从 `6.0.3` 升到 `0.7.0` 预计是同一条更新路径，尚未验。DSH 上 `0.7.0` 的路径已在 2026-11-23 用桌面端 profile 的临时副本核过（桌面端本身未开）。要核对实际加载的是哪一版，以及 DSH 的迁移，见[已装用户怎样迁移](docs/maintaining.zh-CN.md#已装用户怎样迁移)。
 
 **DSH。** 在 DSH `0.2.2-rc.5` 上，指向本地目录的链接在插件详情页没有原地更新按钮，只有**卸载**。`6.0.3 → 0.6.3` 实测通过的路径是：在**插件**页**卸载**旧链接，再用**添加插件**填新路径，重启 DSH，然后新开一个 **Standard** 会话。原地更新链接仓库未单独实测。
 

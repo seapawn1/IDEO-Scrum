@@ -34,7 +34,7 @@
 | DSH（`0.2.2-rc.5`） | 本地目录链接至提交 `b2679aa`（`@seapawn/ideo-scrum`，`private: true`，非公开注册表发布版） | **已实机验证（2026-11-21，隔离实例）**：插件详情页对本地链接没有原地更新，只有**卸载**；卸载后**添加插件**填新路径、重启、新开 **Standard** 会话，加载的 `0.6.3`（profile 的包条目与 Junction 均切换），`/scrum-master`（预载 `ideo-kernel` → `scrum-kernel`）、3 条承诺与项目两份规则文件均从原生事件核验；`scrum/` 未变。原地更新链接仓库**未单独实测**。 |
 | Claude Code `0.7.0` | 从 `0.6.3` 过来，同一个市场路径 | 2026-11-23，本机 `claude plugin update` 从 0.6.3 到 0.7.0 成功，`claude plugin list` 显示 0.7.0 enabled；Claude Code 2.1.326；重开会话后的入口核对待做 |
 | Claude Code `0.7.0` | 从 `6.0.3` 过来，同一个市场路径 | 未核 |
-| DSH `0.7.0` | 从 `0.6.3` 的本地链接检出过来 | 待核（Supporter 用桌面端 profile 的临时副本核，内存够时） |
+| DSH `0.7.0` | 从 `0.6.3` 的本地链接检出过来 | 2026-11-23，Supporter 用桌面端 profile 的临时副本核过（指向主检出的 0.7.0；桌面端本身未开；DSH `0.2.2-rc.5`，`npx @latest`）。菜单里五个角色与 `memory` 都在；`/developer` 会话预载 ideo、scrum、memory 三份。临时副本没有第三方 `node_modules`，启动时 `dshmarket` 跳过，与本核对无关。临时 profile 已删。 |
 
 - **不要混淆两种旧基线**：Claude Code 有公开的 `v6.0.3` git tag 与市场发布版，而 DSH 的 `b2679aa` 只是本地仓库链接（不是旧公开 npm 或注册表包）。
 - **核对实际加载来源与版本**：查看 Claude 生效的版本缓存目录或 DSH 链接的本地目录及原生会话事件，不要只看磁盘上的 `package.json`、`plugin.json`，也不要以模型自述为准。在 DSH 中重启后务必新开 **Standard** 会话，因为 Minimal 会话不挂载技能加载器，旧会话也可能残留旧上下文。
